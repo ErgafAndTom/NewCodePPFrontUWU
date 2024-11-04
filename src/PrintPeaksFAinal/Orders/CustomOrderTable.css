@@ -1,0 +1,258 @@
+/* CustomOrderTable.css */
+
+/*@font-face {*/
+/*    font-family: 'Gotham';*/
+/*    src: url('fonts/Gotham.woff2') format('woff2'),*/
+/*    url('fonts/Gotham.woff') format('woff');*/
+/*    font-weight: normal;*/
+/*    font-style: normal;*/
+/*}*/
+
+body {
+    display: flex;
+    font-family: 'Gotham', Arial, sans-serif;
+    /*margin: 10px;*/
+    /*background-color: rgba(233, 230, 218, 0.5); !* Прозорість 50% *!*/
+}
+
+.CustomOrderTable-order-list {
+    width: 100%;
+    /*max-width: 1720px;*/
+
+    /*background-color: #F2EFE8; !* Фон списку замовлень *!*/
+    background-color: #E9E6DA; /* Фон списку замовлень */
+    padding: 0.3vw;
+    /*box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);*/
+    border-radius: 12px;
+    margin-top: 1vh;
+}
+
+.CustomOrderTable-header, .CustomOrderTable-row {
+    display: flex;
+    background-color: #f1f1f1;
+    /*background-color: #F2EFE8;*/
+
+}
+
+.CustomOrderTable-header {
+    background-color: #e2e2e2;
+    /*background-color: #F2EFE8;*/
+    font-weight: bold;
+
+}
+
+.CustomOrderTable-header-cell, .CustomOrderTable-cell {
+    flex: 1;
+    padding: 0.3vw;
+    text-align: center;
+    font-size: 11px; /* Одинаковий розмір шрифту */
+    word-break: break-word;
+
+}
+
+.CustomOrderTable-header-cell {
+    background-color: #F2EFE8; /* Фон для заголовків колонок */
+    border-bottom: 1px solid #FFC107;
+}
+
+.CustomOrderTable-left-rounded {
+    border-top-left-radius: 12px;
+}
+
+.CustomOrderTable-right-rounded {
+    border-top-right-radius: 12px;
+}
+
+.CustomOrderTable-cell {
+    /*background-color: #F2EFE8; !* Фон для замовлень та колонок *!*/
+    background-color: #E9E6DA; /* Фон для замовлень та колонок */
+    border-bottom: 1px solid #ddd;
+}
+
+.CustomOrderTable-row {
+    background-color: #fff;
+    /*border-bottom: 1px solid #ddd;*/
+}
+
+.CustomOrderTable-row:hover {
+    background-color: #f9f9f9;
+}
+
+.CustomOrderTable-toggle-btn {
+    background-color: #FAB416;
+    color: white;
+    border: none;
+    padding: 0.3vw;
+    border-radius: 6px;
+    cursor: pointer;
+    font-size: 11px;
+}
+
+.CustomOrderTable-toggle-btn:hover {
+    background-color: #e0a40e;
+}
+
+.CustomOrderTable-order-details {
+    padding: 0.1vw;
+    background-color: #F2EFE8;
+    border-top: 1px solid #eee;
+    border-radius: 12px;
+    /*margin-top: 5px;*/
+}
+
+.CustomOrderTable-user-details {
+    margin-bottom: 1px;
+    font-size: 12px; /* Текст вирівнюється по розміру з іншими елементами */
+    text-align: left; /* Вирівнювання тексту по лівому краю */
+}
+
+.CustomOrderTable-order-units {
+
+}
+
+.CustomOrderTable-order-unit {
+    background-color: #F2EFE8;
+    /*padding: 10px;*/
+    padding: 0.3vw;
+    border-radius: 8px;
+
+}
+
+.CustomOrderTable-order-unit-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background-color: #E9E6DA;
+    padding: 0.3vw;
+    border-radius: 12px;
+    cursor: pointer;
+}
+
+.CustomOrderTable-order-unit-header div {
+    flex: 1;
+    text-align: left;
+    font-size: 11px;
+}
+
+.CustomOrderTable-toggle-unit-btn {
+    background-color: #FAB416;
+    color: white;
+    border: none;
+    padding: 0.3vw;
+    border-radius: 6px;
+    cursor: pointer;
+    font-size: 11px;
+}
+
+.CustomOrderTable-toggle-unit-btn:hover {
+    background-color: #e0a40e;
+}
+
+.CustomOrderTable-order-unit-units {
+    margin-top: 10px;
+    padding-left: 20px;
+    border-left: 1px solid #ddd;
+}
+
+.CustomOrderTable-order-unit-unit {
+    background-color: #F9F9F9;
+    padding: 8px;
+    border-radius: 6px;
+    margin-bottom: 5px;
+}
+
+.CustomOrderTable-order-unit-unit p {
+    margin: 3px 0;
+    font-size: 11px; /* Шрифт для основних елементів */
+    text-align: left;
+}
+
+.CustomOrderTable-no-unit-units {
+    padding: 8px;
+    color: #777;
+    font-style: italic;
+    font-size: 11px;
+}
+
+.CustomOrderTable-no-order-units {
+    padding: 10px;
+    color: #777;
+    font-style: italic;
+    font-size: 11px;
+}
+
+.CustomOrderTable-photo {
+    width: 50px;
+    height: auto;
+    border-radius: 4px;
+}
+
+.CustomOrderTable-telegram-link {
+    color: #3C60A6;
+    text-decoration: none;
+}
+
+.CustomOrderTable-telegram-link:hover {
+    text-decoration: underline;
+}
+
+.CustomOrderTable-pay-btn {
+    padding: 5px 10px;
+    border-radius: 8px;
+    color: white;
+    display: inline-block;
+    font-size: 11px;
+}
+
+.CustomOrderTable-pay-paid {
+    background-color: #008249;
+}
+
+.CustomOrderTable-pay-pending {
+    background-color: #EE3C23;
+    padding: 0.3vw;
+    border-radius: 6px;
+}
+
+.CustomOrderTable-kassa-btn,
+.CustomOrderTable-invoice-btn,
+.CustomOrderTable-delete-btn {
+    padding: 5px;
+    border: none;
+    border-radius: 12px;
+    font-size: 11px;
+    cursor: pointer;
+}
+
+.CustomOrderTable-invoice-btn {
+    background-color: #FAB416;
+    color: white;
+    padding: 0.3vw;
+    border-radius: 6px;
+}
+
+.CustomOrderTable-invoice-btn:hover {
+    background-color: #e0a40e;
+}
+
+.CustomOrderTable-kassa-btn {
+    background-color: #FAB416;
+    color: white;
+    padding: 0.3vw;
+    border-radius: 6px;
+}
+
+.CustomOrderTable-kassa-btn:hover {
+    background-color: #e0a40e;
+}
+
+.CustomOrderTable-delete-btn {
+    background-color: #EE3C23;
+    color: white;
+    padding: 0.3vw;
+    border-radius: 6px;
+}
+
+.CustomOrderTable-delete-btn:hover {
+    background-color: #c72e19;
+}

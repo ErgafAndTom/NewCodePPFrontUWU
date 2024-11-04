@@ -1,0 +1,236 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+	font-family: Gotham, sans-serif;
+}
+
+body {
+    font-family: Gotham, sans-serif;
+    background-color: #E9E6DA;
+    color: black;
+}
+
+.container {
+    width: 100%;
+    max-width: 1740;
+    margin: 0 auto;
+    padding: 5px;
+	
+}
+
+header {
+    display: flex;
+    align-items: left;
+    background-color: #E9E6DA;
+    padding: 0px;
+	margin-left: 0;
+}
+
+.logo h1 {
+	line-height: 14px;
+    font-size: 16px;
+    font-weight: bold;
+	;
+}
+
+
+.top-menu {
+    display: flex;
+	 padding-left: 50px;
+	height: 40px;
+	 margin-top: 0px;
+    border-radius: 1vw;
+    background: black;
+}
+
+.top-menu button {
+	display: flex;
+    margin:auto;
+    background-color: #E9E6DA;
+    border: 1px solid #707070;
+    padding: 10px;
+    cursor: pointer;
+	font-size: 11px;
+}
+
+.main-content {
+    display: flex;
+    margin-top: 5px;
+	
+}
+
+.side-menu {
+	width: 8vw;
+	height: 42vw;
+    border-radius: 10px;
+    background-color: #E9E6DA;
+    padding: 5px;
+    border: 1px solid #707070;
+}
+
+.order-number {
+    margin: auto;
+    background-color: #FAB416;
+    color: black;
+    padding: 2px;
+    width: 100%;
+    text-align: center;
+    font-size: 11px;
+    border-radius: 5px;
+    border: 1px solid #707070;
+    height: auto;
+}
+
+.icons {
+    margin-top: 20px;
+}
+
+.icon-item img {
+    width: 100px;
+    margin-bottom: 10px;
+}
+
+.content-area {
+    flex-grow: 1;
+    padding: 20px;
+}
+
+.image-gallery {
+    display: flex;
+    justify-content: space-between;
+}
+
+.image-gallery img {
+    width: 150px;
+}
+
+.action-buttons {
+    margin-top: 20px;
+}
+
+.action-buttons .btn {
+    margin-right: 10px;
+    padding: 10px;
+    border: none;
+    background-color: #ddd;
+    cursor: pointer;
+}
+
+.action-buttons .highlighted {
+    background-color: #f0e68c;
+}
+
+.details-panel {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 20px;
+}
+
+.print-settings label,
+.print-settings input,
+.print-settings select {
+    display: block;
+    margin-bottom: 10px;
+}
+
+.price-calculation {
+    margin-left: 20px;
+}
+
+footer {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background-color: #f0e68c;
+    padding: 10px;
+    margin-top: 20px;
+}
+
+.customer-info p {
+    margin-bottom: 5px;
+}
+
+.order-summary div {
+    margin-bottom: 10px;
+}
+
+.order-summary label {
+    margin-right: 10px;
+}
+
+.order-summary input {
+    padding: 5px;
+    border: 1px solid #ccc;
+}
+
+.buttons button {
+    margin-right: 10px;
+    padding: 10px;
+    background-color: #ffc107;
+    border: none;
+    color: white;
+    cursor: pointer;
+}
+.ButtonClients {
+	border-top-left-radius: 10px;
+	border-bottom-left-radius:  10px;
+}
+.ButtonSetting {
+	border-top-right-radius: 10px;
+	border-bottom-right-radius: 10px;
+}
+
+.NumberOrdersColor{
+	display: flex;
+    margin:auto;
+    padding: 3px;
+    cursor: pointer;
+	font-size: 11px;
+}
+.NumberOrdersColorRed {
+    width: 1vw;
+	height: 2vw;
+	 margin:auto;
+	padding: 0px;
+    background-color: #EE3C23;
+    border: 0px solid #707070;
+    border-top-left-radius: 5px;
+    border-bottom-left-radius: 5px;
+}
+.NumberOrdersColorGrey {
+	
+	width: 1vw;
+	height: 2vw;
+	background-color: #B7B7B7;
+    border: 0px solid #707070;
+	margin:auto;
+	padding: 0px;
+   
+}
+.NumberOrdersColorOrange {
+	width: 1vw;
+	height: 2vw;
+	background-color: #FAB416;
+    border: 0px solid #707070;
+	margin:auto;
+	padding: 0px;
+}
+.NumberOrdersColorBlue {
+	width: 1vw;
+	height: 2vw;
+	background-color: #3C60A6;
+    border: 0px solid #707070;
+	margin:auto;
+	padding: 0px;
+}
+.NumberOrdersColorGreen {
+	width: 1vw;
+	height: 2vw;
+	background-color: #008249;
+    border: 0px solid #707070;
+	margin:auto;
+	padding: 0px;
+	 border-top-right-radius: 5px;
+    border-bottom-right-radius: 5px;
+}

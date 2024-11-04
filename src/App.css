@@ -1,0 +1,55 @@
+@font-face {
+  font-family: 'GothamBold';
+  src: url('../data/gotham_bold.otf');
+  font-weight: normal;
+  font-style: normal;
+}
+@font-face {
+  font-family: 'GothamBook';
+  src: url('../data/gotham_book.otf');
+  font-weight: normal;
+  font-style: normal;
+}
+@font-face {
+  font-family: 'GTWalsheimPro';
+  src: url('../data/fontGTWalsheimPro/GTWalsheimPro-Regular.woff2');
+  font-weight: normal;
+  font-style: normal;
+}
+* {
+  -webkit-touch-callout: none; /* iOS Safari */
+  -webkit-user-select: none;   /* Chrome/Safari/Opera */
+  -khtml-user-select: none;    /* Konqueror */
+  -moz-user-select: none;      /* Firefox */
+  -ms-user-select: none;       /* Internet Explorer/Edge */
+  user-select: none;           /* Non-prefixed version, currently*/
+  /*font-family: 'GTWalsheimPro', Regular;*/
+  /*font-style: normal;*/
+  /*font-family: Montserrat, sans-serif;*/
+  /*font-weight: 700;*/
+  /*font-size: 1.1vw;*/
+  /*!*background: rgba(245, 245, 245, 0.96);*!*/
+  /*!* Друк *!*/
+}
+
+body {
+  background: #E9E6DA;
+}
+
+@keyframes App-logo-spin {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+.textInButtonsInMenuMain {
+  font-size: 1.96vh;
+  border: transparent solid 0.1vh;
+  border-radius: 2vh;
+  /*margin: 2vh;*/
+  padding: 1vh;
+  /*font-weight: 500;*/
+}

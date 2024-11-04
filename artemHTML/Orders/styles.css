@@ -1,0 +1,149 @@
+@font-face {
+    font-family: 'Gotham';
+    src: url('fonts/Gotham.woff2') format('woff2'),
+    url('fonts/Gotham.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
+}
+
+body {
+	display: flex;
+    font-family: 'Gotham', Arial, sans-serif;
+    margin: 10px;
+    background-color: rgba(233, 230, 218, 0.5); /* Прозорість 50% */
+}
+.order-list {
+    width: 100%;
+    max-width: 1720px;
+    margin: 0 auto;
+    background-color: #F2EFE8; /* Фон списку замовлень */
+    padding: 10px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    border-radius: 12px;
+}
+
+h1 {
+    text-align: center;
+    color: black;
+    font-size: 12px;
+}
+
+table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 10px;
+}
+
+thead {
+    background-color: #F2EFE8;
+}
+
+th {
+    padding: 7px;
+    text-align: center;
+    border-bottom: 2px solid #FFC107;
+    font-size: 11px; /* Однаковий розмір шрифту */
+    background-color: #f9f9f9; /* Фон для замовлень та колонок */
+}
+td {
+    padding: 7px;
+    text-align: center;
+    border-bottom: 2px solid #ddd;
+    font-size: 11px; /* Однаковий розмір шрифту */
+    background-color: #F2EFE8; /* Фон для замовлень та колонок */
+}
+
+th {
+	padding: 7px;
+    text-align: center;
+    background-color: #f9f9f9; /* Фон для заголовків колонок */
+    font-weight: bold;
+}
+
+td {
+    text-align: center;
+	
+}
+
+.left-rounded {
+    border-top-left-radius: 12px;
+    
+}
+
+.right-rounded {
+    border-top-right-radius: 12px;
+   
+}
+
+button {
+    padding: 5px;
+    border: none;
+    border-radius: 12px;
+    font-size: 11px;
+    cursor: pointer;
+}
+
+.invoice-btn {
+    background-color: #FAB416;
+    color: white;
+}
+
+.invoice-btn:hover {
+    background-color: #e0a40e;
+}
+.kassa-btn {
+    background-color: #FAB416;
+    color: white;
+}
+.kassa-btn:hover
+{
+    background-color: #e0a40e;
+}
+
+.delete-btn {
+    background-color: #EE3C23;
+    color: white;
+}
+
+.delete-btn:hover {
+    background-color: #c72e19;
+}
+
+.order-details {
+	display: flex;
+	width: 100%;
+	max-width: 1720px;
+	margin: 0 auto; 
+	background-color: #f9f9f9;
+    padding: 5px;
+    margin-top: 5px;
+    border-radius: 12px;
+}
+
+.sub-order {
+	display: flex;
+	width: 100%;
+		margin: 0 auto;
+    max-width: 300px;
+    background-color: #F2EFE8;
+    padding: 5px;
+    margin-top: 5px;
+    border-radius: 12px;
+}
+
+.sub-order p {
+    margin: 5px 0;
+    font-size: 11px; /* Шрифт для основних елементів субзамовлення */
+    text-align: left;
+}
+
+.order-details p {
+    font-size: 12px; /* Текст вирівнюється по розміру з іншими елементами */
+    text-align: left; /* Вирівнювання тексту по лівому краю */
+    margin: 5px 0; /* Відступи між абзацами */
+}
+.pay-btn
+{
+    background-color: #008249;
+    color: white;
+}
