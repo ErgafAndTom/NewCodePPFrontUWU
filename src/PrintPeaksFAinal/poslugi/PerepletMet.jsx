@@ -8,9 +8,9 @@ import NewNoModalLamination from "./newnomodals/NewNoModalLamination";
 import NewNoModalCornerRounding from "./newnomodals/NewNoModalBig";
 import NewNoModalCute from "./newnomodals/NewNoModalCute";
 import NewNoModalHoles from "./newnomodals/NewNoModalHoles";
-import versantIcon from "../public/versant80@2x.png";
+import versantIcon from '../../components/newUIArtem/printers/p6.svg';
 import Materials2 from "./newnomodals/Materials2";
-import {Navigate, useNavigate} from "react-router-dom";
+import {useNavigate} from "react-router-dom";
 
 const PerepletMet = ({
                        thisOrder,
