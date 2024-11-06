@@ -64,10 +64,14 @@ function OneProductInOrders({item, cash = false, handleAmountChange, index}) {
                                     <div className="adminFontTable">x</div>
                                     <div className="adminFontTable">{unitItem.priceForOneThis}</div>
                                     <div className="adminFontTable" style={{marginTop: "0.5vw", fontSize: "0.5vw"}}>грн</div>
+                                    {/*<div className="adminFontTable">=</div>*/}
+                                    {/*<div className="adminFontTable ">{unitItem.priceForThis} </div>*/}
+                                    {/*<div className="adminFontTable " style={{marginTop: "0.5vw", fontSize: "0.5vw"}}>грн/1шт</div>*/}
+                                    <div className="adminFontTable">x</div>
+                                    <div className="adminFontTable ">{item.amount}</div>
                                     <div className="adminFontTable">=</div>
-                                    <div
-                                        className="adminFontTable ">{unitItem.priceForThis} </div>
-                                    <div className="adminFontTable "style={{marginTop: "0.5vw", fontSize: "0.5vw"}}>грн</div>
+                                    <div className="adminFontTable ">{unitItem.priceForAllThis} </div>
+                                    <div className="adminFontTable " style={{marginTop: "0.5vw", fontSize: "0.5vw"}}>грн</div>
                                 </div>
                             </div>
                         ))}
