@@ -2,7 +2,7 @@ import {MDBContainer} from "mdb-react-ui-kit";
 import {Row} from "react-bootstrap";
 import React, {useCallback, useEffect, useState} from "react";
 import axios from '../../api/axiosInstance';
- 
+import Loader from "../../components/calc/Loader";
 import NewNoModalSize from "./newnomodals/NewNoModalSize";
 import NewNoModalLamination from "./newnomodals/NewNoModalLamination";
 import NewNoModalCornerRounding from "./newnomodals/NewNoModalBig";

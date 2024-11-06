@@ -17,10 +17,10 @@ const Laminator = ({
                            newThisOrder,
                            setNewThisOrder,
                            selectedThings2,
-                           setShowNewSheetCut,
+                           setShowLaminator,
                            setThisOrder,
                            setSelectedThings2,
-                           showNewSheetCut
+                           showLaminator
                        }) => {
     const [load, setLoad] = useState(false);
     const navigate = useNavigate();
@@ -31,11 +31,11 @@ const Laminator = ({
         setIsAnimating(false); // Начинаем анимацию закрытия
         setTimeout(() => {
             setIsVisible(false)
-            setShowNewSheetCut(false);
+            setShowLaminator(false);
         }, 300); // После завершения анимации скрываем модальное окно
     }
     const handleShow = useCallback((event) => {
-        setShowNewSheetCut(true);
+        setShowLaminator(true);
     }, []);
 
 
@@ -82,7 +82,7 @@ const Laminator = ({
             orderId: thisOrder.id,
             toCalc: {
                 nameOrderUnit: "Листова продукція з порізкою",
-                type: "SheetCut",
+                type: "Laminator",
                 size: size,
                 material: material,
                 color: color,
@@ -102,7 +102,7 @@ const Laminator = ({
                 setThisOrder(response.data);
                 // setSelectedThings2(response.data.order.OrderUnits || []);
                 setSelectedThings2(response.data.OrderUnits);
-                setShowNewSheetCut(false)
+                setShowLaminator(false)
             })
             .catch(error => {
                 if(error.response.status === 403){
@@ -154,14 +154,14 @@ const Laminator = ({
     }, [size, material, color, lamination, big, cute, cuteLocal, holes, holesR, count]);
 
     useEffect(() => {
-        if (showNewSheetCut) {
+        if (showLaminator) {
             setIsVisible(true); // Сначала показываем модальное окно
             setTimeout(() => setIsAnimating(true), 100); // После короткой задержки запускаем анимацию появления
         } else {
             setIsAnimating(false); // Начинаем анимацию закрытия
             setTimeout(() => setIsVisible(false), 300); // После завершения анимации скрываем модальное окно
         }
-    }, [showNewSheetCut]);
+    }, [showLaminator]);
 
     if (prices) {
         return (
@@ -198,7 +198,7 @@ const Laminator = ({
                         }}>
                             <div className="d-flex">
                                 <div className="m-auto text-center fontProductName">
-                                    Листівки / Візитки / Флаєра/ Буклети / Дипломи / Брошури / Зіни / Презентації / Афіши / Плакати / ...
+                                    Ламінатор
                                 </div>
                                 <div
                                     className="btn btn-close btn-lg"

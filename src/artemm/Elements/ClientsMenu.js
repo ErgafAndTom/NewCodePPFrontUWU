@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import axios from '../../api/axiosInstance';
 import { Modal, Button, Table } from 'react-bootstrap'; // Виправлено імпорти
-import './ClientsMenu.css';
+// import './ClientsMenuu.css';
 import barcode from '../public/mask-group-10.svg';
 import profile from '../public/mask-group-11@2x.png';
 import signal from './img/303c7b213ec59d3734dfbbd2249f4a7a.png';

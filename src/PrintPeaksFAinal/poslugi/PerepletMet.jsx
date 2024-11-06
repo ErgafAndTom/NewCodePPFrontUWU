@@ -2,7 +2,7 @@ import {MDBContainer} from "mdb-react-ui-kit";
 import {Row} from "react-bootstrap";
 import React, {useCallback, useEffect, useState} from "react";
 import axios from '../../api/axiosInstance';
- 
+import Loader from "../../components/calc/Loader";
 import NewNoModalSize from "./newnomodals/NewNoModalSize";
 import NewNoModalLamination from "./newnomodals/NewNoModalLamination";
 import NewNoModalCornerRounding from "./newnomodals/NewNoModalBig";
@@ -17,10 +17,10 @@ const PerepletMet = ({
                        newThisOrder,
                        setNewThisOrder,
                        selectedThings2,
-                       setShowNewSheetCut,
+                       setShowPerepletMet,
                        setThisOrder,
                        setSelectedThings2,
-                       showNewSheetCut
+                       showPerepletMet
                    }) => {
     const [load, setLoad] = useState(false);
     const navigate = useNavigate();
@@ -31,11 +31,11 @@ const PerepletMet = ({
         setIsAnimating(false); // Начинаем анимацию закрытия
         setTimeout(() => {
             setIsVisible(false)
-            setShowNewSheetCut(false);
+            setShowPerepletMet(false);
         }, 300); // После завершения анимации скрываем модальное окно
     }
     const handleShow = useCallback((event) => {
-        setShowNewSheetCut(true);
+        setShowPerepletMet(true);
     }, []);
 
 
@@ -102,7 +102,7 @@ const PerepletMet = ({
                 setThisOrder(response.data);
                 // setSelectedThings2(response.data.order.OrderUnits || []);
                 setSelectedThings2(response.data.OrderUnits);
-                setShowNewSheetCut(false)
+                setShowPerepletMet(false)
             })
             .catch(error => {
                 if(error.response.status === 403){
@@ -154,14 +154,14 @@ const PerepletMet = ({
     }, [size, material, color, lamination, big, cute, cuteLocal, holes, holesR, count]);
 
     useEffect(() => {
-        if (showNewSheetCut) {
+        if (showPerepletMet) {
             setIsVisible(true); // Сначала показываем модальное окно
             setTimeout(() => setIsAnimating(true), 100); // После короткой задержки запускаем анимацию появления
         } else {
             setIsAnimating(false); // Начинаем анимацию закрытия
             setTimeout(() => setIsVisible(false), 300); // После завершения анимации скрываем модальное окно
         }
-    }, [showNewSheetCut]);
+    }, [showPerepletMet]);
 
     if (prices) {
         return (
@@ -198,7 +198,7 @@ const PerepletMet = ({
                         }}>
                             <div className="d-flex">
                                 <div className="m-auto text-center fontProductName">
-                                    Листівки / Візитки / Флаєра/ Буклети / Дипломи / Брошури / Зіни / Презентації / Афіши / Плакати / ...
+                                    мет
                                 </div>
                                 <div
                                     className="btn btn-close btn-lg"

@@ -17,10 +17,10 @@ const BigOvshik = ({
                          newThisOrder,
                          setNewThisOrder,
                          selectedThings2,
-                         setShowNewSheetCut,
+                         showBigOvshik,
                          setThisOrder,
                          setSelectedThings2,
-                         showNewSheetCut
+                         setShowBigOvshik
                      }) => {
     const [load, setLoad] = useState(false);
     const navigate = useNavigate();
@@ -31,11 +31,11 @@ const BigOvshik = ({
         setIsAnimating(false); // Начинаем анимацию закрытия
         setTimeout(() => {
             setIsVisible(false)
-            setShowNewSheetCut(false);
+            setShowBigOvshik(false);
         }, 300); // После завершения анимации скрываем модальное окно
     }
     const handleShow = useCallback((event) => {
-        setShowNewSheetCut(true);
+        setShowBigOvshik(true);
     }, []);
 
 
@@ -82,7 +82,7 @@ const BigOvshik = ({
             orderId: thisOrder.id,
             toCalc: {
                 nameOrderUnit: "Листова продукція з порізкою",
-                type: "SheetCut",
+                type: "BigOvshik",
                 size: size,
                 material: material,
                 color: color,
@@ -102,7 +102,7 @@ const BigOvshik = ({
                 setThisOrder(response.data);
                 // setSelectedThings2(response.data.order.OrderUnits || []);
                 setSelectedThings2(response.data.OrderUnits);
-                setShowNewSheetCut(false)
+                setShowBigOvshik(false)
             })
             .catch(error => {
                 if(error.response.status === 403){
@@ -154,14 +154,14 @@ const BigOvshik = ({
     }, [size, material, color, lamination, big, cute, cuteLocal, holes, holesR, count]);
 
     useEffect(() => {
-        if (showNewSheetCut) {
+        if (showBigOvshik) {
             setIsVisible(true); // Сначала показываем модальное окно
             setTimeout(() => setIsAnimating(true), 100); // После короткой задержки запускаем анимацию появления
         } else {
             setIsAnimating(false); // Начинаем анимацию закрытия
             setTimeout(() => setIsVisible(false), 300); // После завершения анимации скрываем модальное окно
         }
-    }, [showNewSheetCut]);
+    }, [showBigOvshik]);
 
     if (prices) {
         return (
@@ -198,7 +198,7 @@ const BigOvshik = ({
                         }}>
                             <div className="d-flex">
                                 <div className="m-auto text-center fontProductName">
-                                    Листівки / Візитки / Флаєра/ Буклети / Дипломи / Брошури / Зіни / Презентації / Афіши / Плакати / ...
+                                    Биговщик
                                 </div>
                                 <div
                                     className="btn btn-close btn-lg"

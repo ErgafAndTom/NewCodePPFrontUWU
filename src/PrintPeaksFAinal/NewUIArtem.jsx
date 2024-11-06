@@ -1,9 +1,9 @@
 import React, {useEffect, useState} from "react";
-import '../components/newUIArtem/StyleArtem.css';
+import './userInNewUiArtem/StyleArtem.css';
 import './CPM.css';
 import './global.css';
 import './adminStylesCrm.css';
-// import './StylesOld.css';
+// import './StylesOl d.css';
 import './Wide.css';
 import './MainWindow.css';
 import {Link, useNavigate, useParams} from "react-router-dom";
@@ -43,7 +43,12 @@ import NewPhoto from "./poslugi/NewPhoto";
 import NewNote from "./poslugi/NewNote";
 import ModalDeleteOrderUnit from "./ModalDeleteOrderUnit";
 import Loader from "../components/calc/Loader";
-import ClientChangerUIArtem from "../components/newUIArtem/clients/ClientChangerUIArtem";
+import ClientChangerUIArtem from "./userInNewUiArtem/ClientChangerUIArtem";
+import Laminator from "./poslugi/Laminator";
+import Vishichka from "./poslugi/Vishichka";
+import PerepletNeMet from "./poslugi/PerepletNeMet";
+import PerepletMet from "./poslugi/PerepletMet";
+import BigOvshik from "./poslugi/BigOvshik";
 
 const NewUIArtem = () => {
     const navigate = useNavigate();
@@ -300,6 +305,7 @@ const NewUIArtem = () => {
                             }}>
                                 <div className="d-flex flex-column">
                                     <div
+                                        onClick={(event) => setShowBigOvshik(true)}
                                         className="cursorPointer printers gif" style={{width: "7vw", marginleft: "0vw"}}>
                                         <img src={imgg10} className="card-img-top noanim" alt="..."/>
                                         <img src={imgg10} className="card-img-top anim" alt="..."/>
@@ -307,11 +313,13 @@ const NewUIArtem = () => {
                                 </div>
                                 <div className="d-flex flex-column">
                                     <div
+                                        onClick={(event) => setShowPerepletMet(true)}
                                         className="cursorPointer printers gif" style={{width: "8vw", marginLeft: "0vw"}}>
                                         <img src={imgg6} className="card-img-top noanim" alt="..."/>
                                         <img src={img9} className="card-img-top anim" alt="..."/>
                                     </div>
                                     <div
+                                        onClick={(event) => setShowPerepletNeMet(true)}
                                         className="cursorPointer printers gif" style={{width: "8vw", marginLeft: "0vw"}}>
                                         <img src={imgg7} className="card-img-top noanim" alt="..."/>
                                         <img src={img7} className="card-img-top anim" alt="..."/>
@@ -319,11 +327,13 @@ const NewUIArtem = () => {
                                 </div>
                                 <div className="d-flex flex-column">
                                     <div
+                                        onClick={(event) => setShowLaminator(true)}
                                         className="cursorPointer printers gif " style={{width: "8vw", marginLeft: "0vw"}}>
                                         <img src={imgg8} className="card-img-top noanim" alt="..."/>
                                         <img src={img8} className="card-img-top anim" alt="..."/>
                                     </div>
                                     <div
+                                        onClick={(event) => setShowVishichka(true)}
                                         className="cursorPointer printers gif" style={{width: "7vw", marginLeft: "0vw"}}>
                                         <img src={imgg9} className="card-img-top noanim" alt="..."/>
                                         <img src={img4} className="card-img-top anim" alt="..."/>
@@ -485,9 +495,12 @@ const NewUIArtem = () => {
                                                   setNewThisOrder={setNewThisOrder}
                                                   handleThisOrderChange={handleThisOrderChange}/>
                         ) : (
-                            <ClientChangerUIArtem client={thisOrder.User} thisOrder={thisOrder}
-                                                  setNewThisOrder={setNewThisOrder}
-                                                  handleThisOrderChange={handleThisOrderChange}/>
+                            <div>
+                                <Loader/>
+                            </div>
+                            // <ClientChangerUIArtem client={thisOrder.User} thisOrder={thisOrder}
+                            //                       setNewThisOrder={setNewThisOrder}
+                            //                       handleThisOrderChange={handleThisOrderChange}/>
                             // <ClientChangerUIArtem client={{email: "null", id: 0, phone: "+00000000",}}/>
                         )}
                     </div>
@@ -580,66 +593,66 @@ const NewUIArtem = () => {
                     />
                 }
 
-                {/*{showBigOvshik &&*/}
-                {/*    <BigOvshik*/}
-                {/*        productName={productName}*/}
-                {/*        thisOrder={thisOrder} newThisOrder={newThisOrder}*/}
-                {/*        selectedThings2={selectedThings2}*/}
-                {/*        setNewThisOrder={setNewThisOrder}*/}
-                {/*        setShowBigOvshik={setShowBigOvshik}*/}
-                {/*        showBigOvshik={showBigOvshik}*/}
-                {/*        setThisOrder={setThisOrder}*/}
-                {/*        setSelectedThings2={setSelectedThings2}*/}
-                {/*    />*/}
-                {/*}*/}
-                {/*{showPerepletMet &&*/}
-                {/*    <PerepletMet*/}
-                {/*        productName={productName}*/}
-                {/*        thisOrder={thisOrder} newThisOrder={newThisOrder}*/}
-                {/*        selectedThings2={selectedThings2}*/}
-                {/*        setNewThisOrder={setNewThisOrder}*/}
-                {/*        setShowPerepletMet={setShowPerepletMet}*/}
-                {/*        showPerepletMet={showPerepletMet}*/}
-                {/*        setThisOrder={setThisOrder}*/}
-                {/*        setSelectedThings2={setSelectedThings2}*/}
-                {/*    />*/}
-                {/*}*/}
-                {/*{showPerepletNeMet &&*/}
-                {/*    <PerepletNeMet*/}
-                {/*        productName={productName}*/}
-                {/*        thisOrder={thisOrder} newThisOrder={newThisOrder}*/}
-                {/*        selectedThings2={selectedThings2}*/}
-                {/*        setNewThisOrder={setNewThisOrder}*/}
-                {/*        setShowPerepletNeMet={setShowPerepletNeMet}*/}
-                {/*        showPerepletNeMet={showPerepletNeMet}*/}
-                {/*        setThisOrder={setThisOrder}*/}
-                {/*        setSelectedThings2={setSelectedThings2}*/}
-                {/*    />*/}
-                {/*}*/}
-                {/*{showLaminator &&*/}
-                {/*    <Laminator*/}
-                {/*        productName={productName}*/}
-                {/*        thisOrder={thisOrder} newThisOrder={newThisOrder}*/}
-                {/*        selectedThings2={selectedThings2}*/}
-                {/*        setNewThisOrder={setNewThisOrder}*/}
-                {/*        setShowLaminator={setShowLaminator}*/}
-                {/*        showLaminator={showLaminator}*/}
-                {/*        setThisOrder={setThisOrder}*/}
-                {/*        setSelectedThings2={setSelectedThings2}*/}
-                {/*    />*/}
-                {/*}*/}
-                {/*{showVishichka &&*/}
-                {/*    <Vishichka*/}
-                {/*        productName={productName}*/}
-                {/*        thisOrder={thisOrder} newThisOrder={newThisOrder}*/}
-                {/*        selectedThings2={selectedThings2}*/}
-                {/*        setNewThisOrder={setNewThisOrder}*/}
-                {/*        setShowVishichka={setShowVishichka}*/}
-                {/*        showVishichka={showVishichka}*/}
-                {/*        setThisOrder={setThisOrder}*/}
-                {/*        setSelectedThings2={setSelectedThings2}*/}
-                {/*    />*/}
-                {/*}*/}
+                {showBigOvshik &&
+                    <BigOvshik
+                        productName={productName}
+                        thisOrder={thisOrder} newThisOrder={newThisOrder}
+                        selectedThings2={selectedThings2}
+                        setNewThisOrder={setNewThisOrder}
+                        setShowBigOvshik={setShowBigOvshik}
+                        showBigOvshik={showBigOvshik}
+                        setThisOrder={setThisOrder}
+                        setSelectedThings2={setSelectedThings2}
+                    />
+                }
+                {showPerepletMet &&
+                    <PerepletMet
+                        productName={productName}
+                        thisOrder={thisOrder} newThisOrder={newThisOrder}
+                        selectedThings2={selectedThings2}
+                        setNewThisOrder={setNewThisOrder}
+                        setShowPerepletMet={setShowPerepletMet}
+                        showPerepletMet={showPerepletMet}
+                        setThisOrder={setThisOrder}
+                        setSelectedThings2={setSelectedThings2}
+                    />
+                }
+                {showPerepletNeMet &&
+                    <PerepletNeMet
+                        productName={productName}
+                        thisOrder={thisOrder} newThisOrder={newThisOrder}
+                        selectedThings2={selectedThings2}
+                        setNewThisOrder={setNewThisOrder}
+                        setShowPerepletNeMet={setShowPerepletNeMet}
+                        showPerepletNeMet={showPerepletNeMet}
+                        setThisOrder={setThisOrder}
+                        setSelectedThings2={setSelectedThings2}
+                    />
+                }
+                {showLaminator &&
+                    <Laminator
+                        productName={productName}
+                        thisOrder={thisOrder} newThisOrder={newThisOrder}
+                        selectedThings2={selectedThings2}
+                        setNewThisOrder={setNewThisOrder}
+                        setShowLaminator={setShowLaminator}
+                        showLaminator={showLaminator}
+                        setThisOrder={setThisOrder}
+                        setSelectedThings2={setSelectedThings2}
+                    />
+                }
+                {showVishichka &&
+                    <Vishichka
+                        productName={productName}
+                        thisOrder={thisOrder} newThisOrder={newThisOrder}
+                        selectedThings2={selectedThings2}
+                        setNewThisOrder={setNewThisOrder}
+                        setShowVishichka={setShowVishichka}
+                        showVishichka={showVishichka}
+                        setThisOrder={setThisOrder}
+                        setSelectedThings2={setSelectedThings2}
+                    />
+                }
             </div>
         );
     }

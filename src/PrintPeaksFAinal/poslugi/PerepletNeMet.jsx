@@ -17,10 +17,10 @@ const PerepletNeMet = ({
                          newThisOrder,
                          setNewThisOrder,
                          selectedThings2,
-                         setShowNewSheetCut,
+                         setShowPerepletNeMet,
                          setThisOrder,
                          setSelectedThings2,
-                         showNewSheetCut
+                         showPerepletNeMet
                      }) => {
     const [load, setLoad] = useState(false);
     const navigate = useNavigate();
@@ -31,11 +31,11 @@ const PerepletNeMet = ({
         setIsAnimating(false); // Начинаем анимацию закрытия
         setTimeout(() => {
             setIsVisible(false)
-            setShowNewSheetCut(false);
+            setShowPerepletNeMet(false);
         }, 300); // После завершения анимации скрываем модальное окно
     }
     const handleShow = useCallback((event) => {
-        setShowNewSheetCut(true);
+        setShowPerepletNeMet(true);
     }, []);
 
 
@@ -102,7 +102,7 @@ const PerepletNeMet = ({
                 setThisOrder(response.data);
                 // setSelectedThings2(response.data.order.OrderUnits || []);
                 setSelectedThings2(response.data.OrderUnits);
-                setShowNewSheetCut(false)
+                setShowPerepletNeMet(false)
             })
             .catch(error => {
                 if(error.response.status === 403){
@@ -154,14 +154,14 @@ const PerepletNeMet = ({
     }, [size, material, color, lamination, big, cute, cuteLocal, holes, holesR, count]);
 
     useEffect(() => {
-        if (showNewSheetCut) {
+        if (showPerepletNeMet) {
             setIsVisible(true); // Сначала показываем модальное окно
             setTimeout(() => setIsAnimating(true), 100); // После короткой задержки запускаем анимацию появления
         } else {
             setIsAnimating(false); // Начинаем анимацию закрытия
             setTimeout(() => setIsVisible(false), 300); // После завершения анимации скрываем модальное окно
         }
-    }, [showNewSheetCut]);
+    }, [showPerepletNeMet]);
 
     if (prices) {
         return (
@@ -198,7 +198,7 @@ const PerepletNeMet = ({
                         }}>
                             <div className="d-flex">
                                 <div className="m-auto text-center fontProductName">
-                                    Листівки / Візитки / Флаєра/ Буклети / Дипломи / Брошури / Зіни / Презентації / Афіши / Плакати / ...
+                                    НЕ мет
                                 </div>
                                 <div
                                     className="btn btn-close btn-lg"

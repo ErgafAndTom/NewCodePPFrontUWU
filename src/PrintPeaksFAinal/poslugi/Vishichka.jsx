@@ -17,10 +17,10 @@ const Vishichka = ({
                            newThisOrder,
                            setNewThisOrder,
                            selectedThings2,
-                           setShowNewSheetCut,
+                           setShowVishichka,
                            setThisOrder,
                            setSelectedThings2,
-                           showNewSheetCut
+                           showVishichka
                        }) => {
     const [load, setLoad] = useState(false);
     const navigate = useNavigate();
@@ -31,11 +31,11 @@ const Vishichka = ({
         setIsAnimating(false); // Начинаем анимацию закрытия
         setTimeout(() => {
             setIsVisible(false)
-            setShowNewSheetCut(false);
+            setShowVishichka(false);
         }, 300); // После завершения анимации скрываем модальное окно
     }
     const handleShow = useCallback((event) => {
-        setShowNewSheetCut(true);
+        setShowVishichka(true);
     }, []);
 
 
@@ -82,7 +82,7 @@ const Vishichka = ({
             orderId: thisOrder.id,
             toCalc: {
                 nameOrderUnit: "Листова продукція з порізкою",
-                type: "SheetCut",
+                type: "Vishichka",
                 size: size,
                 material: material,
                 color: color,
@@ -102,7 +102,7 @@ const Vishichka = ({
                 setThisOrder(response.data);
                 // setSelectedThings2(response.data.order.OrderUnits || []);
                 setSelectedThings2(response.data.OrderUnits);
-                setShowNewSheetCut(false)
+                setShowVishichka(false)
             })
             .catch(error => {
                 if(error.response.status === 403){
@@ -154,14 +154,14 @@ const Vishichka = ({
     }, [size, material, color, lamination, big, cute, cuteLocal, holes, holesR, count]);
 
     useEffect(() => {
-        if (showNewSheetCut) {
+        if (showVishichka) {
             setIsVisible(true); // Сначала показываем модальное окно
             setTimeout(() => setIsAnimating(true), 100); // После короткой задержки запускаем анимацию появления
         } else {
             setIsAnimating(false); // Начинаем анимацию закрытия
             setTimeout(() => setIsVisible(false), 300); // После завершения анимации скрываем модальное окно
         }
-    }, [showNewSheetCut]);
+    }, [showVishichka]);
 
     if (prices) {
         return (
@@ -198,7 +198,7 @@ const Vishichka = ({
                         }}>
                             <div className="d-flex">
                                 <div className="m-auto text-center fontProductName">
-                                    Листівки / Візитки / Флаєра/ Буклети / Дипломи / Брошури / Зіни / Презентації / Афіши / Плакати / ...
+                                    Висічка
                                 </div>
                                 <div
                                     className="btn btn-close btn-lg"

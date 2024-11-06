@@ -8,6 +8,7 @@ import MaterialsInPhoto from "./newnomodals/photo/MaterialsInPhoto";
 import SizesInPhoto from "./newnomodals/photo/SizesInPhoto";
 import PhotoPosluga from "./newnomodals/photo/PhotoPosluga";
 import {useNavigate} from "react-router-dom";
+import Loader from "../../components/calc/Loader";
 
 const NewPhoto = ({thisOrder, newThisOrder, setNewThisOrder, selectedThings2, showNewPhoto, setShowNewPhoto, setThisOrder, setSelectedThings2}) => {
     // const [show, setShow] = useState(false);
