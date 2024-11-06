@@ -8,6 +8,8 @@ import NewNoModalCute from "./newnomodals/NewNoModalCute";
 import NewNoModalHoles from "./newnomodals/NewNoModalHoles";
 import versantIcon from '../../components/newUIArtem/printers/binder.svg';
 import {useNavigate} from "react-router-dom";
+import LaminationSize from "./newnomodals/LaminationSize";
+import SizeNoSize from "./newnomodals/SizeNoSize";
 
 const BigOvshik = ({
                          thisOrder,
@@ -41,14 +43,14 @@ const BigOvshik = ({
         y: 420
     });
     const [material, setMaterial] = useState({
-        type: "Папір",
+        type: "Не потрібно",
         thickness: "Тонкі",
         material: "",
         materialId: "",
         typeUse: null
     });
     const [color, setColor] = useState({
-        sides: "односторонній",
+        sides: "Не потрібно",
         one: "",
         two: "",
         allSidesColor: "CMYK",
@@ -78,7 +80,7 @@ const BigOvshik = ({
         let dataToSend = {
             orderId: thisOrder.id,
             toCalc: {
-                nameOrderUnit: "Листова продукція з порізкою",
+                nameOrderUnit: "Постпресс",
                 type: "BigOvshik",
                 size: size,
                 material: material,
@@ -126,7 +128,7 @@ const BigOvshik = ({
 
     useEffect(() => {
         let dataToSend = {
-            type: "SheetCut",
+            type: "BigOvshik",
             size: size,
             material: material,
             color: color,
@@ -210,42 +212,18 @@ const BigOvshik = ({
                                 <MDBContainer fluid style={{width: '100%'}}>
                                     <Row xs={1} md={6} className="g-2">
                                         <div className="d-flex flex-column">
-                                            {/*<NewNoModalSize*/}
-                                            {/*    size={size}*/}
-                                            {/*    setSize={setSize}*/}
-                                            {/*    prices={prices}*/}
-                                            {/*    type={"SheetCut"}*/}
-                                            {/*    buttonsArr={["односторонній", "двосторонній",]}*/}
-                                            {/*    color={color}*/}
-                                            {/*    setColor={setColor}*/}
-                                            {/*    count={count}*/}
-                                            {/*    setCount={setCount}*/}
-                                            {/*    defaultt={"А3 (297 х 420 мм)"}*/}
-                                            {/*/>*/}
-                                            {/*/!*<NewNoModalMaterial*!/*/}
-                                            {/*<Materials2*/}
-                                            {/*    material={material}*/}
-                                            {/*    setMaterial={setMaterial}*/}
-                                            {/*    count={count}*/}
-                                            {/*    setCount={setCount}*/}
-                                            {/*    prices={prices}*/}
-                                            {/*    selectArr={["3,5 мм", "4 мм", "5 мм", "6 мм", "8 мм"]}*/}
-                                            {/*    name={"Чорно-білий друк на монохромному принтері:"}*/}
-                                            {/*    buttonsArr={["Тонкі",*/}
-                                            {/*        "Середньої щільності",*/}
-                                            {/*        "Цупкі", "Самоклеючі"]}*/}
-                                            {/*    typeUse={null}*/}
-                                            {/*/>*/}
-                                            {/*<NewNoModalLamination*/}
-                                            {/*    lamination={lamination}*/}
-                                            {/*    setLamination={setLamination}*/}
-                                            {/*    prices={prices}*/}
-                                            {/*    type={"SheetCut"}*/}
-                                            {/*    buttonsArr={["З глянцевим ламінуванням",*/}
-                                            {/*        "З матовим ламінуванням",*/}
-                                            {/*        "З ламінуванням Soft Touch",]}*/}
-                                            {/*    selectArr={["30", "80", "100", "125", "250"]}*/}
-                                            {/*/>*/}
+                                            <SizeNoSize
+                                                size={size}
+                                                setSize={setSize}
+                                                prices={prices}
+                                                type={"SheetCut"}
+                                                buttonsArr={["односторонній", "двосторонній",]}
+                                                color={color}
+                                                setColor={setColor}
+                                                count={count}
+                                                setCount={setCount}
+                                                defaultt={"А3 (297 х 420 мм)"}
+                                            />
                                             <NewNoModalCornerRounding
                                                 big={big}
                                                 setBig={setBig}
@@ -324,20 +302,20 @@ const BigOvshik = ({
                                     <div className="d-flex justify-content-between pricesBlockContainer">
                                         <div className="">
 
-                                            <div className="fontInfoForPricing">
-                                                Друк: {pricesThis.priceForDrukThisUnit} грн * {pricesThis.skolko} шт
-                                                = {pricesThis.priceForDrukThisUnit * pricesThis.skolko} грн
-                                            </div>
-                                            <div className="fontInfoForPricing">
-                                                Матеріали: {pricesThis.priceForThisUnitOfPapper}грн. * {pricesThis.skolko} шт
-                                                = {pricesThis.priceForThisUnitOfPapper * pricesThis.skolko}грн.
-                                            </div>
+                                            {/*<div className="fontInfoForPricing">*/}
+                                            {/*    Друк: {pricesThis.priceForDrukThisUnit} грн * {pricesThis.skolko} шт*/}
+                                            {/*    = {pricesThis.priceForDrukThisUnit * pricesThis.skolko} грн*/}
+                                            {/*</div>*/}
+                                            {/*<div className="fontInfoForPricing">*/}
+                                            {/*    Матеріали: {pricesThis.priceForThisUnitOfPapper}грн. * {pricesThis.skolko} шт*/}
+                                            {/*    = {pricesThis.priceForThisUnitOfPapper * pricesThis.skolko}грн.*/}
+                                            {/*</div>*/}
 
-                                            <div className="fontInfoForPricing">
-                                                Ламінація: {pricesThis.priceForThisUnitOfLamination} грн
-                                                * {pricesThis.skolko} шт
-                                                = {pricesThis.priceForThisAllUnitsOfLamination} грн
-                                            </div>
+                                            {/*<div className="fontInfoForPricing">*/}
+                                            {/*    Ламінація: {pricesThis.priceForThisUnitOfLamination} грн*/}
+                                            {/*    * {pricesThis.skolko} шт*/}
+                                            {/*    = {pricesThis.priceForThisAllUnitsOfLamination} грн*/}
+                                            {/*</div>*/}
                                             <div className="fontInfoForPricing">
                                                 Згинання {pricesThis.priceForThisUnitOfBig} грн * {count} шт
                                                 = {pricesThis.priceForAllUnitsOfBig} грн
@@ -363,13 +341,13 @@ const BigOvshik = ({
                                             <div className="fontInfoForPricing1">
                                                 Загалом: {pricesThis.price} грн
                                             </div>
-                                            <div className="fontInfoForPricing">
-                                                - З одного аркуша A3 можливо
-                                                зробити {pricesThis.skolkoListovNaOdin} виробів
-                                            </div>
-                                            <div className="fontInfoForPricing">
-                                                - Затрачено {pricesThis.skolko} аркушів (SR A3)
-                                            </div>
+                                            {/*<div className="fontInfoForPricing">*/}
+                                            {/*    - З одного аркуша A3 можливо*/}
+                                            {/*    зробити {pricesThis.skolkoListovNaOdin} виробів*/}
+                                            {/*</div>*/}
+                                            {/*<div className="fontInfoForPricing">*/}
+                                            {/*    - Затрачено {pricesThis.skolko} аркушів (SR A3)*/}
+                                            {/*</div>*/}
                                         </div>
 
 

@@ -44,14 +44,14 @@ const PerepletNeMet = ({
         y: 420
     });
     const [material, setMaterial] = useState({
-        type: "Папір",
+        type: "Не потрібно",
         thickness: "Тонкі",
         material: "",
         materialId: "",
         typeUse: null
     });
     const [color, setColor] = useState({
-        sides: "односторонній",
+        sides: "Не потрібно",
         one: "",
         two: "",
         allSidesColor: "CMYK",
@@ -81,8 +81,8 @@ const PerepletNeMet = ({
         let dataToSend = {
             orderId: thisOrder.id,
             toCalc: {
-                nameOrderUnit: "Листова продукція з порізкою",
-                type: "SheetCut",
+                nameOrderUnit: "PerepletNeMet",
+                type: "PerepletNeMet",
                 size: size,
                 material: material,
                 color: color,
@@ -129,7 +129,7 @@ const PerepletNeMet = ({
 
     useEffect(() => {
         let dataToSend = {
-            type: "SheetCut",
+            type: "PerepletNeMet",
             size: size,
             material: material,
             color: color,

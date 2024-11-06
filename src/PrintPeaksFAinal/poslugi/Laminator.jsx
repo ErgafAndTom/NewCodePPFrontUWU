@@ -40,14 +40,14 @@ const Laminator = ({
         y: 420
     });
     const [material, setMaterial] = useState({
-        type: "Папір",
+        type: "Не потрібно",
         thickness: "Тонкі",
         material: "",
         materialId: "",
         typeUse: null
     });
     const [color, setColor] = useState({
-        sides: "односторонній",
+        sides: "Не потрібно",
         one: "",
         two: "",
         allSidesColor: "CMYK",
@@ -125,7 +125,7 @@ const Laminator = ({
 
     useEffect(() => {
         let dataToSend = {
-            type: "SheetCut",
+            type: "Laminator",
             size: size,
             material: material,
             color: color,
@@ -323,33 +323,33 @@ const Laminator = ({
                                     <div className="d-flex justify-content-between pricesBlockContainer">
                                         <div className="">
 
-                                            <div className="fontInfoForPricing">
-                                                Друк: {pricesThis.priceForDrukThisUnit} грн * {pricesThis.skolko} шт
-                                                = {pricesThis.priceForDrukThisUnit * pricesThis.skolko} грн
-                                            </div>
-                                            <div className="fontInfoForPricing">
-                                                Матеріали: {pricesThis.priceForThisUnitOfPapper}грн. * {pricesThis.skolko} шт
-                                                = {pricesThis.priceForThisUnitOfPapper * pricesThis.skolko}грн.
-                                            </div>
+                                            {/*<div className="fontInfoForPricing">*/}
+                                            {/*    Друк: {pricesThis.priceForDrukThisUnit} грн * {pricesThis.skolko} шт*/}
+                                            {/*    = {pricesThis.priceForDrukThisUnit * pricesThis.skolko} грн*/}
+                                            {/*</div>*/}
+                                            {/*<div className="fontInfoForPricing">*/}
+                                            {/*    Матеріали: {pricesThis.priceForThisUnitOfPapper}грн. * {pricesThis.skolko} шт*/}
+                                            {/*    = {pricesThis.priceForThisUnitOfPapper * pricesThis.skolko}грн.*/}
+                                            {/*</div>*/}
 
                                             <div className="fontInfoForPricing">
                                                 Ламінація: {pricesThis.priceForThisUnitOfLamination} грн
                                                 * {pricesThis.skolko} шт
                                                 = {pricesThis.priceForThisAllUnitsOfLamination} грн
                                             </div>
-                                            <div className="fontInfoForPricing">
-                                                Згинання {pricesThis.priceForThisUnitOfBig} грн * {count} шт
-                                                = {pricesThis.priceForAllUnitsOfBig} грн
-                                            </div>
-                                            <div className=" fontInfoForPricing">
-                                                Свердління отворів: {pricesThis.priceForThisUnitOfCute} грн * {count} шт
-                                                = {pricesThis.priceForAllUnitsOfCute} грн
-                                            </div>
-                                            <div className="fontInfoForPricing">
-                                                Суруглення кутів: {pricesThis.priceForThisUnitOfHoles} грн * {count} шт
-                                                = {pricesThis.priceForAllUnitsOfHoles} грн
+                                            {/*<div className="fontInfoForPricing">*/}
+                                            {/*    Згинання {pricesThis.priceForThisUnitOfBig} грн * {count} шт*/}
+                                            {/*    = {pricesThis.priceForAllUnitsOfBig} грн*/}
+                                            {/*</div>*/}
+                                            {/*<div className=" fontInfoForPricing">*/}
+                                            {/*    Свердління отворів: {pricesThis.priceForThisUnitOfCute} грн * {count} шт*/}
+                                            {/*    = {pricesThis.priceForAllUnitsOfCute} грн*/}
+                                            {/*</div>*/}
+                                            {/*<div className="fontInfoForPricing">*/}
+                                            {/*    Суруглення кутів: {pricesThis.priceForThisUnitOfHoles} грн * {count} шт*/}
+                                            {/*    = {pricesThis.priceForAllUnitsOfHoles} грн*/}
 
-                                            </div>
+                                            {/*</div>*/}
                                             {/*<div className="fontInfoForPricing">*/}
                                             {/*    {pricesThis.priceForThisUnitOfPapper * pricesThis.skolko}+*/}
                                             {/*    {pricesThis.priceForDrukThisUnit * pricesThis.skolko}+*/}
@@ -362,13 +362,13 @@ const Laminator = ({
                                             <div className="fontInfoForPricing1">
                                                 Загалом: {pricesThis.price} грн
                                             </div>
-                                            <div className="fontInfoForPricing">
-                                                - З одного аркуша A3 можливо
-                                                зробити {pricesThis.skolkoListovNaOdin} виробів
-                                            </div>
-                                            <div className="fontInfoForPricing">
-                                                - Затрачено {pricesThis.skolko} аркушів (SR A3)
-                                            </div>
+                                            {/*<div className="fontInfoForPricing">*/}
+                                            {/*    - З одного аркуша A3 можливо*/}
+                                            {/*    зробити {pricesThis.skolkoListovNaOdin} виробів*/}
+                                            {/*</div>*/}
+                                            {/*<div className="fontInfoForPricing">*/}
+                                            {/*    - Затрачено {pricesThis.skolko} аркушів (SR A3)*/}
+                                            {/*</div>*/}
                                         </div>
 
 

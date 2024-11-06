@@ -44,14 +44,14 @@ const Vishichka = ({
         y: 420
     });
     const [material, setMaterial] = useState({
-        type: "Папір",
+        type: "Не потрібно",
         thickness: "Тонкі",
         material: "",
         materialId: "",
         typeUse: null
     });
     const [color, setColor] = useState({
-        sides: "односторонній",
+        sides: "Не потрібно",
         one: "",
         two: "",
         allSidesColor: "CMYK",
@@ -81,7 +81,7 @@ const Vishichka = ({
         let dataToSend = {
             orderId: thisOrder.id,
             toCalc: {
-                nameOrderUnit: "Листова продукція з порізкою",
+                nameOrderUnit: "Vishichka",
                 type: "Vishichka",
                 size: size,
                 material: material,
@@ -129,7 +129,7 @@ const Vishichka = ({
 
     useEffect(() => {
         let dataToSend = {
-            type: "SheetCut",
+            type: "Vishichka",
             size: size,
             material: material,
             color: color,
