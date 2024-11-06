@@ -8,11 +8,11 @@ import Files from "./files/Files";
 import CreateOrder from "./createorder/CreateOrder";
 import {Login} from "../../PrintPeaksFAinal/login/Login";
 import {UsersTable} from "../../PrintPeaksFAinal/user/UsersTable";
-import {Admin} from "../admin/Admin";
+// import {Admin} from "../admin/Admin";
 import Profile from "../../PrintPeaksFAinal/user/Profile";
 import CustomOrderTable from "../../PrintPeaksFAinal/Orders/CustomOrderTable";
 import NewUIArtem from "../../PrintPeaksFAinal/NewUIArtem";
-import ClientPip from "../../PrintPeaksFAinal/ClientPip";
+// import ClientPip from "../../PrintPeaksFAinal/ClientPip";
 import {TableStorage} from "../../PrintPeaksFAinal/Storage/TableStorage";
 
 const AfterNav = () => {
@@ -62,7 +62,7 @@ const AfterNav = () => {
                 {/*    {token ? <Redirect to="/profile" /> : <Login />}*/}
                 {/*</Route>*/}
 
-                <Route path="/admin" element={<Admin/>} />
+                {/*<Route path="/admin" element={<Admin/>} />*/}
                 <Route path="/currentUser" element={<Profile/>} />
 
                 {/*<Route path="/Orders" element={<Orders/>} />*/}

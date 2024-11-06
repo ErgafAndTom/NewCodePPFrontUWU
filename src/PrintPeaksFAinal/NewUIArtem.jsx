@@ -366,28 +366,44 @@ const NewUIArtem = () => {
                                                          width: '32.1vw',
                                                      }}>
                                                     <Modal.Header className="d-flex w-100">
-                                                        <div
-                                                            className="piecesord">
-                                                            <div
-                                                                className="adminFontTable booooold"
-                                                            >
-                                                                {thing.name}:</div>
-                                                            <div
-                                                                className="adminFontTable booooold"
-                                                                style={{fontSize: "0.9vw", marginLeft: "3vw"}}>
-                                                                {thing.amount}</div>
-                                                            <div className="adminFontTable booooold"
-                                                                 style={{fontSize: "0.5vw", marginTop: "1.5vh"}}> шт
+                                                        <div className="piecesord">
+                                                            <div className="adminFontTable">
+                                                                {thing.name}:
+                                                            </div>
+                                                            <div className="adminFontTable"
+                                                                 style={{fontSize: "0.9vw", marginLeft: "3vw"}}>
+                                                                {thing.amount}
+                                                            </div>
+                                                            <div className="adminFontTable"
+                                                                 style={{fontSize: "0.5vw", marginTop: "1.5vh"}}>
+                                                                шт
                                                             </div>
                                                         </div>
-                                                        <div
-                                                            className="priceord">
-                                                            <div
-                                                                className="adminFontTable booooold"
-                                                                style={{fontSize: "0.9vw"}}>
-                                                                {thing.priceForThis}</div>
+                                                        <div className="priceord">
+                                                            <div className="adminFontTable"
+                                                                 style={{fontSize: "0.9vw"}}>
+                                                                x
+                                                            </div>
+                                                        </div>
+                                                        <div className="priceord">
+                                                            <div className="adminFontTable"
+                                                                 style={{fontSize: "0.9vw"}}>{thing.priceForOneThis}</div>
+                                                            <div className="adminFontTable"
+                                                                 style={{fontSize: "0.5vw", marginTop: "1.5vh"}}> грн
+                                                            </div>
+                                                        </div>
+                                                        <div className="priceord">
+                                                            <div className="adminFontTable"
+                                                                 style={{fontSize: "0.9vw"}}>
+                                                                =
+                                                            </div>
+                                                        </div>
+                                                        <div className="priceord">
                                                             <div className="adminFontTable booooold"
-                                                                 style={{fontSize: "0.5vw", marginTop: "1.5vh"}} > грн </div>
+                                                                 style={{fontSize: "0.9vw"}}>{thing.priceForOneThis}</div>
+                                                            <div className="adminFontTable"
+                                                                 style={{fontSize: "0.5vw", marginTop: "1.5vh"}}> грн
+                                                            </div>
                                                         </div>
                                                         <div
                                                             onClick={(e) => handleThingClickDelete2(thing)}
@@ -416,11 +432,11 @@ const NewUIArtem = () => {
                                                             <div
                                                                 className="d-flex justify-content-center adminFontTable align-items-last"
                                                                 style={{marginLeft: "1.5vw"}}>На
-                                                                аркуші міститься: {thing.amountCanPushToOneList} виробів</div>
+                                                                аркуші міститься: {thing.newField4} виробів</div>
                                                             <div
                                                                 className="d-flex justify-content-self-end adminFontTable"
                                                                 style={{marginLeft: "1.5vw"}}
-                                                            > Використано: {thing.amountListForOne} аркушів</div>
+                                                            > Використано: {thing.newField5} аркушів</div>
                                                         </div>
                                                     </div>
                                                 </div>

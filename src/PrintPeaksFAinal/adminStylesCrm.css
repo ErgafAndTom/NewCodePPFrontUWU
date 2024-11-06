@@ -183,5 +183,6 @@
     flex-direction: row;
     display: flex;
     margin-left: 1vw;
+    white-space: nowrap;
 
 }

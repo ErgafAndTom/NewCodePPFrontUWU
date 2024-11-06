@@ -9,13 +9,13 @@ import {TableOrders} from "./table/TableOrders";
 import {TableActions} from "./table/TableActions";
 import {CollapseAi} from "./CollapseAi";
 import Desktop from "./crm/Desktop/Desktop";
-import './adminStylesCrm.css';
+// import './adminStylesCrm.css';
 import {TableStorage} from "../../PrintPeaksFAinal/Storage/TableStorage";
 import CrmCash from "./crm/CrmCash/CrmCash";
 import {CrmSettings} from "./crm/Settings/CrmSettings";
 import Products from "./crm/Products/Products";
 // import CoefTest from "./crm/CoefTest";
-import CalcNew from "../calcnew/CalcNew";
+// import CalcNew from "../calcnew/CalcNew";
 import TelegrammBot from "./crm/chats/TelegramBot";
 import Loader2 from "../calc/Loader2";
 import Test2 from "./Test2";
@@ -102,9 +102,9 @@ export const Admin = () => {
                 {whoPick === "Продукти" &&
                     <Products name={whoPick}/>
                 }
-                {whoPick === "Считалочка" &&
-                    <CalcNew name={whoPick}/>
-                }
+                {/*{whoPick === "Считалочка" &&*/}
+                {/*    <CalcNew name={whoPick}/>*/}
+                {/*}*/}
                 {/*{whoPick === "КоєфТест" &&*/}
                 {/*    <CoefTest name={whoPick}/>*/}
                 {/*}*/}
