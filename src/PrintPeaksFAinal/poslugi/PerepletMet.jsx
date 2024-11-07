@@ -3,14 +3,10 @@ import {Row} from "react-bootstrap";
 import React, {useCallback, useEffect, useState} from "react";
 import axios from '../../api/axiosInstance';
 import Loader from "../../components/calc/Loader";
-import NewNoModalSize from "./newnomodals/NewNoModalSize";
-import NewNoModalLamination from "./newnomodals/NewNoModalLamination";
-import NewNoModalCornerRounding from "./newnomodals/NewNoModalBig";
-import NewNoModalCute from "./newnomodals/NewNoModalCute";
-import NewNoModalHoles from "./newnomodals/NewNoModalHoles";
 import versantIcon from '../../components/newUIArtem/printers/p6.svg';
-import Materials2 from "./newnomodals/Materials2";
 import {useNavigate} from "react-router-dom";
+import PerepletSize from "./newnomodals/PerepletSize";
+import PerepletPereplet from "./newnomodals/PerepletPereplet";
 
 const PerepletMet = ({
                        thisOrder,
@@ -44,6 +40,13 @@ const PerepletMet = ({
         y: 420
     });
     const [material, setMaterial] = useState({
+        type: "Не потрібно",
+        thickness: "Тонкі",
+        material: "",
+        materialId: "",
+        typeUse: null
+    });
+    const [pereplet, setPereplet] = useState({
         type: "Не потрібно",
         thickness: "Тонкі",
         material: "",
@@ -198,7 +201,7 @@ const PerepletMet = ({
                         }}>
                             <div className="d-flex">
                                 <div className="m-auto text-center fontProductName">
-                                    мет
+                                    Перепліт
                                 </div>
                                 <div
                                     className="btn btn-close btn-lg"
@@ -213,7 +216,7 @@ const PerepletMet = ({
                                 <MDBContainer fluid style={{width: '100%'}}>
                                     <Row xs={1} md={6} className="g-2">
                                         <div className="d-flex flex-column">
-                                            <NewNoModalSize
+                                            <PerepletSize
                                                 size={size}
                                                 setSize={setSize}
                                                 prices={prices}
@@ -225,58 +228,67 @@ const PerepletMet = ({
                                                 setCount={setCount}
                                                 defaultt={"А3 (297 х 420 мм)"}
                                             />
+                                            <PerepletPereplet
+                                                pereplet={pereplet}
+                                                setPereplet={setPereplet}
+                                                prices={prices}
+                                                type={"SheetCut"}
+                                                buttonsArr={["Брошурування до 120 аркушів", "Брошурування від 120 до 280 аркушів",]}
+                                                defaultt={"А3 (297 х 420 мм)"}
+                                            />
+
                                             {/*<NewNoModalMaterial*/}
-                                            <Materials2
-                                                material={material}
-                                                setMaterial={setMaterial}
-                                                count={count}
-                                                setCount={setCount}
-                                                prices={prices}
-                                                selectArr={["3,5 мм", "4 мм", "5 мм", "6 мм", "8 мм"]}
-                                                name={"Чорно-білий друк на монохромному принтері:"}
-                                                buttonsArr={["Тонкі",
-                                                    "Середньої щільності",
-                                                    "Цупкі", "Самоклеючі"]}
-                                                typeUse={null}
-                                            />
-                                            <NewNoModalLamination
-                                                lamination={lamination}
-                                                setLamination={setLamination}
-                                                prices={prices}
-                                                type={"SheetCut"}
-                                                buttonsArr={["З глянцевим ламінуванням",
-                                                    "З матовим ламінуванням",
-                                                    "З ламінуванням Soft Touch",]}
-                                                selectArr={["30", "80", "100", "125", "250"]}
-                                            />
-                                            <NewNoModalCornerRounding
-                                                big={big}
-                                                setBig={setBig}
-                                                prices={prices}
-                                                type={"SheetCut"}
-                                                buttonsArr={[]}
-                                                selectArr={["", "1", "2", "3", "4", "5", "6", "7", "8", "9"]}
-                                            />
-                                            <NewNoModalCute
-                                                cute={cute}
-                                                setCute={setCute}
-                                                cuteLocal={cuteLocal}
-                                                setCuteLocal={setCuteLocal}
-                                                prices={prices}
-                                                type={"SheetCut"}
-                                                buttonsArr={[]}
-                                                selectArr={["3", "6", "8", "10", "13"]}
-                                            />
-                                            <NewNoModalHoles
-                                                holes={holes}
-                                                setHoles={setHoles}
-                                                holesR={holesR}
-                                                setHolesR={setHolesR}
-                                                prices={prices}
-                                                type={"SheetCut"}
-                                                buttonsArr={[]}
-                                                selectArr={["", "3,5 мм", "4 мм", "5 мм", "6 мм", "8 мм"]}
-                                            />
+                                            {/*<Materials2*/}
+                                            {/*    material={material}*/}
+                                            {/*    setMaterial={setMaterial}*/}
+                                            {/*    count={count}*/}
+                                            {/*    setCount={setCount}*/}
+                                            {/*    prices={prices}*/}
+                                            {/*    selectArr={["3,5 мм", "4 мм", "5 мм", "6 мм", "8 мм"]}*/}
+                                            {/*    name={"Чорно-білий друк на монохромному принтері:"}*/}
+                                            {/*    buttonsArr={["Тонкі",*/}
+                                            {/*        "Середньої щільності",*/}
+                                            {/*        "Цупкі", "Самоклеючі"]}*/}
+                                            {/*    typeUse={null}*/}
+                                            {/*/>*/}
+                                            {/*<NewNoModalLamination*/}
+                                            {/*    lamination={lamination}*/}
+                                            {/*    setLamination={setLamination}*/}
+                                            {/*    prices={prices}*/}
+                                            {/*    type={"SheetCut"}*/}
+                                            {/*    buttonsArr={["З глянцевим ламінуванням",*/}
+                                            {/*        "З матовим ламінуванням",*/}
+                                            {/*        "З ламінуванням Soft Touch",]}*/}
+                                            {/*    selectArr={["30", "80", "100", "125", "250"]}*/}
+                                            {/*/>*/}
+                                            {/*<NewNoModalCornerRounding*/}
+                                            {/*    big={big}*/}
+                                            {/*    setBig={setBig}*/}
+                                            {/*    prices={prices}*/}
+                                            {/*    type={"SheetCut"}*/}
+                                            {/*    buttonsArr={[]}*/}
+                                            {/*    selectArr={["", "1", "2", "3", "4", "5", "6", "7", "8", "9"]}*/}
+                                            {/*/>*/}
+                                            {/*<NewNoModalCute*/}
+                                            {/*    cute={cute}*/}
+                                            {/*    setCute={setCute}*/}
+                                            {/*    cuteLocal={cuteLocal}*/}
+                                            {/*    setCuteLocal={setCuteLocal}*/}
+                                            {/*    prices={prices}*/}
+                                            {/*    type={"SheetCut"}*/}
+                                            {/*    buttonsArr={[]}*/}
+                                            {/*    selectArr={["3", "6", "8", "10", "13"]}*/}
+                                            {/*/>*/}
+                                            {/*<NewNoModalHoles*/}
+                                            {/*    holes={holes}*/}
+                                            {/*    setHoles={setHoles}*/}
+                                            {/*    holesR={holesR}*/}
+                                            {/*    setHolesR={setHolesR}*/}
+                                            {/*    prices={prices}*/}
+                                            {/*    type={"SheetCut"}*/}
+                                            {/*    buttonsArr={[]}*/}
+                                            {/*    selectArr={["", "3,5 мм", "4 мм", "5 мм", "6 мм", "8 мм"]}*/}
+                                            {/*/>*/}
                                         </div>
                                     </Row>
                                 </MDBContainer>
