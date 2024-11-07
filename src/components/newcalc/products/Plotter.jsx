@@ -188,8 +188,8 @@ const Plotter = ({thisOrder, newThisOrder, setNewThisOrder, selectedThings2, sho
                 // padding: "20px"
             }}>
                 <div className="d-flex">
-                    <div className="adminFont m-auto text-center fontProductName">Стікера / Стікерпаки /
-                        Наліпки / Бірки
+                    <div className="adminFont m-auto text-center fontProductName">
+                        Стікера / Стікерпаки / Наліпки / Бірки
                     </div>
                     <div
                         className="btn btn-close btn-lg"

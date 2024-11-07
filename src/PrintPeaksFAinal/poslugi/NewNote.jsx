@@ -165,8 +165,7 @@ const NewNote = ({thisOrder, newThisOrder, setNewThisOrder, selectedThings2, sho
             }}>
                 <div className="d-flex">
                     <div className="adminFont m-auto text-center fontProductName">
-                        Візитки / Листівки /
-                        Флаєри / Плакати
+                        Візитки / Листівки / Флаєри / Плакати
                     </div>
                     <div
                         className="btn btn-close btn-lg"
