@@ -59,7 +59,12 @@ const Materials2 = ({material, setMaterial, count, setCount, prices, type, name,
         axios.post(`/materials/NotAll`, data)
             .then(response => {
                 console.log(response.data);
-                setPaper(response.data.toSend.rows)
+                setPaper(response.data.rows)
+                setMaterial({
+                    ...material,
+                    material: response.data.rows[0].name,
+                    materialId: response.data.rows[0].id,
+                })
             })
             .catch(error => {
                 if(error.response.status === 403){
@@ -67,7 +72,7 @@ const Materials2 = ({material, setMaterial, count, setCount, prices, type, name,
                 }
                 console.log(error.message);
             })
-    }, [material]);
+    }, [material.thickness]);
 
     useEffect(() => {
         let data = {
@@ -84,12 +89,12 @@ const Materials2 = ({material, setMaterial, count, setCount, prices, type, name,
         axios.post(`/materials/NotAll`, data)
             .then(response => {
                 console.log(response.data);
-                setPaper(response.data.toSend.rows)
+                setPaper(response.data.rows)
                 setMaterial({
                     ...material,
                     thickness: "Тонкі",
-                    material: response.data.toSend.rows[0].name,
-                    materialId: response.data.toSend.rows[0].id,
+                    material: response.data.rows[0].name,
+                    materialId: response.data.rows[0].id,
                 })
             })
             .catch(error => {

@@ -6,7 +6,7 @@ import plastick from './plastick.svg';
 import metall from './metall.svg';
 import diplom from './diplom.svg';
 
-const PerepletPereplet = ({pereplet, setPereplet, prices, buttonsArr, selectArr}) => {
+const PerepletPereplet = ({pereplet, setPereplet, prices, buttonsArr, selectArr, size}) => {
     const [thisLaminationSizes, setThisLaminationSizes] = useState([]);
     const navigate = useNavigate();
 
@@ -189,16 +189,34 @@ const PerepletPereplet = ({pereplet, setPereplet, prices, buttonsArr, selectArr}
                                     className={"Диплом" === pereplet.type ? 'buttonsArtem buttonsArtemActive' : 'buttonsArtem'}
                                     onClick={() => handleClickType("Диплом")}
                                 >
-                                    <div className="d-flex flex-column align-content-center align-items-center" style={{
-                                        width: "5vw",
-                                        height: "100%",
-                                        opacity: "Диплом" === pereplet.size ? '100%' : '90%',
-                                        whiteSpace: "nowrap",
-                                    }}>
+                                    <div className="d-flex flex-column align-content-center align-items-center"
+                                         style={{
+                                             width: "5vw",
+                                             height: "100%",
+                                             opacity: "Диплом" === pereplet.size ? '100%' : '90%',
+                                             whiteSpace: "nowrap",
+                                         }}>
                                         <img src={diplom} alt="Диплом" style={{height: "5vw"}}/>
                                         {"Диплом"}
                                     </div>
                                 </button>
+                                {/*{size.x === 297 &*/}
+                                {/*    <button*/}
+                                {/*        className={"Диплом" === pereplet.type ? 'buttonsArtem buttonsArtemActive' : 'buttonsArtem'}*/}
+                                {/*        onClick={() => handleClickType("Диплом")}*/}
+                                {/*    >*/}
+                                {/*        <div className="d-flex flex-column align-content-center align-items-center"*/}
+                                {/*             style={{*/}
+                                {/*                 width: "5vw",*/}
+                                {/*                 height: "100%",*/}
+                                {/*                 opacity: "Диплом" === pereplet.size ? '100%' : '90%',*/}
+                                {/*                 whiteSpace: "nowrap",*/}
+                                {/*             }}>*/}
+                                {/*            <img src={diplom} alt="Диплом" style={{height: "5vw"}}/>*/}
+                                {/*            {"Диплом"}*/}
+                                {/*        </div>*/}
+                                {/*    </button>*/}
+                                {/*}*/}
                             </div>
                         </div>) : (<div>
 

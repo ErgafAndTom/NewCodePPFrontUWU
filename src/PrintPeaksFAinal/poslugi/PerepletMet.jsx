@@ -47,7 +47,7 @@ const PerepletMet = ({
         typeUse: null
     });
     const [pereplet, setPereplet] = useState({
-        type: "Не потрібно",
+        type: "",
         thickness: "Тонкі",
         material: "",
         materialId: "",
@@ -214,7 +214,7 @@ const PerepletMet = ({
                             </div>
                             <div className="d-flex flex-column">
                                 <MDBContainer fluid style={{width: '100%'}}>
-                                    <Row xs={1} md={6} className="g-2">
+                                    <Row xs={1} md={6} className="">
                                         <div className="d-flex flex-column">
                                             <PerepletSize
                                                 size={size}
@@ -229,6 +229,7 @@ const PerepletMet = ({
                                                 defaultt={"А3 (297 х 420 мм)"}
                                             />
                                             <PerepletPereplet
+                                                size={size}
                                                 pereplet={pereplet}
                                                 setPereplet={setPereplet}
                                                 prices={prices}

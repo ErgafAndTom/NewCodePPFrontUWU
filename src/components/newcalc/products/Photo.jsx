@@ -112,7 +112,7 @@ const Photo = ({thisOrder, newThisOrder, setNewThisOrder, selectedThings2, setSh
                 </div>
                 <div className="d-flex flex-column">
                     <MDBContainer fluid style={{width: '95vw'}}>
-                        <Row xs={1} md={6} className="g-2">
+                        <Row xs={1} md={6} className="">
                             <Col>
                                 <Card className="colorCards">
                                     <Card.Body>

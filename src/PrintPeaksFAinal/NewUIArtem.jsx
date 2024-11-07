@@ -281,7 +281,7 @@ const NewUIArtem = () => {
                                     <img src={imgg3} className="card-img-top noanim" alt="..."/>
                                     <img src={img2} className="card-img-top anim" alt="..."/>
                                 </div>
-                                <div className="d-flex flex-column">
+                                <div className="d-flex flex-column justify-content-center">
                                     <div
                                         // onClick={(event) => setShowNewPhoto(event, "Photo")}
                                         className="cursorPointer printers gif" style={{width: "6vw"}}>
@@ -303,7 +303,7 @@ const NewUIArtem = () => {
                                 height: "19.4vh",
                                 borderRadius: "1vw"
                             }}>
-                                <div className="d-flex flex-column">
+                                <div className="d-flex flex-column justify-content-center">
                                     <div
                                         onClick={(event) => setShowBigOvshik(true)}
                                         className="cursorPointer printers gif" style={{width: "7vw", marginleft: "0vw"}}>
@@ -311,21 +311,21 @@ const NewUIArtem = () => {
                                         <img src={imgg10} className="card-img-top anim" alt="..."/>
                                     </div>
                                 </div>
-                                <div className="d-flex flex-column">
+                                <div className="d-flex flex-column align-content-center align-items-center justify-content-center">
                                     <div
                                         onClick={(event) => setShowPerepletMet(true)}
                                         className="cursorPointer printers gif" style={{width: "8vw", marginLeft: "0vw"}}>
                                         <img src={imgg6} className="card-img-top noanim" alt="..."/>
                                         <img src={img9} className="card-img-top anim" alt="..."/>
                                     </div>
-                                    <div
-                                        onClick={(event) => setShowPerepletNeMet(true)}
-                                        className="cursorPointer printers gif" style={{width: "8vw", marginLeft: "0vw"}}>
-                                        <img src={imgg7} className="card-img-top noanim" alt="..."/>
-                                        <img src={img7} className="card-img-top anim" alt="..."/>
-                                    </div>
+                                    {/*<div*/}
+                                    {/*    onClick={(event) => setShowPerepletNeMet(true)}*/}
+                                    {/*    className="cursorPointer printers gif" style={{width: "8vw", marginLeft: "0vw"}}>*/}
+                                    {/*    <img src={imgg7} className="card-img-top noanim" alt="..."/>*/}
+                                    {/*    <img src={img7} className="card-img-top anim" alt="..."/>*/}
+                                    {/*</div>*/}
                                 </div>
-                                <div className="d-flex flex-column">
+                                <div className="d-flex flex-column justify-content-center">
                                     <div
                                         onClick={(event) => setShowLaminator(true)}
                                         className="cursorPointer printers gif " style={{width: "8vw", marginLeft: "0vw"}}>
@@ -633,18 +633,18 @@ const NewUIArtem = () => {
                         setSelectedThings2={setSelectedThings2}
                     />
                 }
-                {showPerepletNeMet &&
-                    <PerepletNeMet
-                        productName={productName}
-                        thisOrder={thisOrder} newThisOrder={newThisOrder}
-                        selectedThings2={selectedThings2}
-                        setNewThisOrder={setNewThisOrder}
-                        setShowPerepletNeMet={setShowPerepletNeMet}
-                        showPerepletNeMet={showPerepletNeMet}
-                        setThisOrder={setThisOrder}
-                        setSelectedThings2={setSelectedThings2}
-                    />
-                }
+                {/*{showPerepletNeMet &&*/}
+                {/*    <PerepletNeMet*/}
+                {/*        productName={productName}*/}
+                {/*        thisOrder={thisOrder} newThisOrder={newThisOrder}*/}
+                {/*        selectedThings2={selectedThings2}*/}
+                {/*        setNewThisOrder={setNewThisOrder}*/}
+                {/*        setShowPerepletNeMet={setShowPerepletNeMet}*/}
+                {/*        showPerepletNeMet={showPerepletNeMet}*/}
+                {/*        setThisOrder={setThisOrder}*/}
+                {/*        setSelectedThings2={setSelectedThings2}*/}
+                {/*    />*/}
+                {/*}*/}
                 {showLaminator &&
                     <Laminator
                         productName={productName}

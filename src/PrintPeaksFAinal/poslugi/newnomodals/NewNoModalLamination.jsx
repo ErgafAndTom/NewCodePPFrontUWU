@@ -67,7 +67,13 @@ const NewNoModalLamination = ({lamination, setLamination, prices, buttonsArr, se
         axios.post(`/materials/NotAll`, data)
             .then(response => {
                 console.log(response.data);
-                setThisLaminationSizes(response.data.toSend.rows)
+                setThisLaminationSizes(response.data.rows)
+                // setLamination({
+                //     ...lamination,
+                //     material: response.data.rows[0].name,
+                //     materialId: response.data.rows[0].id,
+                //     size: "125 мкм"
+                // })
             })
             .catch(error => {
                 if(error.response.status === 403){

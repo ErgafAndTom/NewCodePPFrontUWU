@@ -9,8 +9,8 @@ import NewNoModalCornerRounding from "./newnomodals/NewNoModalBig";
 import NewNoModalCute from "./newnomodals/NewNoModalCute";
 import NewNoModalHoles from "./newnomodals/NewNoModalHoles";
 import versantIcon from "../public/versant80@2x.png";
-import NewNoModalMaterial from "./newnomodals/NewNoModalMaterial";
-import {Navigate, useNavigate} from "react-router-dom";
+// import NewNoModalMaterial from "./newnomodals/NewNoModalMaterial";
+import {useNavigate} from "react-router-dom";
 
 const NewNote = ({thisOrder, newThisOrder, setNewThisOrder, selectedThings2, showNewNote, setShowNewNote, setThisOrder, setSelectedThings2}) => {
     const [load, setLoad] = useState(false);
@@ -179,20 +179,20 @@ const NewNote = ({thisOrder, newThisOrder, setNewThisOrder, selectedThings2, sho
                 </div>
                 <div className="d-flex flex-column">
                     <MDBContainer fluid style={{width: '100%'}}>
-                        <Row xs={1} md={6} className="g-2">
+                        <Row xs={1} md={6} className="">
                             <div className="d-flex flex-column">
-                                <NewNoModalMaterial
-                                    material={material}
-                                    setMaterial={setMaterial}
-                                    count={count}
-                                    setCount={setCount}
-                                    prices={prices}
-                                    selectArr={["3,5 мм", "4 мм", "5 мм", "6 мм", "8 мм"]}
-                                    name={"Кольоровий друк на промисловій цифровій машині:"}
-                                    buttonsArr={["З глянцевим ламінуванням",
-                                        "З матовим ламінуванням",
-                                        "З ламінуванням Soft Touch",]}
-                                />
+                                {/*<NewNoModalMaterial*/}
+                                {/*    material={material}*/}
+                                {/*    setMaterial={setMaterial}*/}
+                                {/*    count={count}*/}
+                                {/*    setCount={setCount}*/}
+                                {/*    prices={prices}*/}
+                                {/*    selectArr={["3,5 мм", "4 мм", "5 мм", "6 мм", "8 мм"]}*/}
+                                {/*    name={"Кольоровий друк на промисловій цифровій машині:"}*/}
+                                {/*    buttonsArr={["З глянцевим ламінуванням",*/}
+                                {/*        "З матовим ламінуванням",*/}
+                                {/*        "З ламінуванням Soft Touch",]}*/}
+                                {/*/>*/}
                                 <NewNoModalSize
                                     size={size}
                                     setSize={setSize}

@@ -110,7 +110,7 @@ const Note = ({thisOrder, newThisOrder, setNewThisOrder, selectedThings2, setSho
                 </div>
                 <div className="d-flex flex-column">
                     <MDBContainer fluid style={{width: '100%'}}>
-                        <Row xs={1} md={6} className="g-2">
+                        <Row xs={1} md={6} className="">
                             <Col>
                                 <ModalSize size={size} setSize={setSize} prices={prices} type={"Note"}/>
                             </Col>

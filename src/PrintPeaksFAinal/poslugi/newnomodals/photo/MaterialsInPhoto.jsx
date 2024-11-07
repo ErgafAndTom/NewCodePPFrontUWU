@@ -4,7 +4,7 @@ import axios from '../../../../api/axiosInstance';
 import UserProfileForm from "../../../user/UserProfileForm";
 import {Navigate, useNavigate} from "react-router-dom";
 
-const Materials2 = ({material, setMaterial, count, setCount, prices, type, name, buttonsArr, selectArr, typeUse}) => {
+const MaterialsInPhoto = ({material, setMaterial, count, setCount, prices, type, name, buttonsArr, selectArr, typeUse}) => {
     const [paper, setPaper] = useState([]);
     const navigate = useNavigate();
     let handleSelectChange = (e) => {
@@ -65,7 +65,7 @@ const Materials2 = ({material, setMaterial, count, setCount, prices, type, name,
         axios.post(`/materials/NotAll`, data)
             .then(response => {
                 console.log(response.data);
-                setPaper(response.data.toSend.rows)
+                setPaper(response.data.rows)
             })
             .catch(error => {
                 if(error.response.status === 403){
@@ -90,12 +90,12 @@ const Materials2 = ({material, setMaterial, count, setCount, prices, type, name,
         axios.post(`/materials/NotAll`, data)
             .then(response => {
                 console.log(response.data);
-                setPaper(response.data.toSend.rows)
+                setPaper(response.data.rows)
                 setMaterial({
                     ...material,
                     thickness: "Тонкі",
-                    material: response.data.toSend.rows[0].name,
-                    materialId: response.data.toSend.rows[0].id,
+                    material: response.data.rows[0].name,
+                    materialId: response.data.rows[0].id,
                 })
             })
             .catch(error => {
@@ -178,4 +178,4 @@ const Materials2 = ({material, setMaterial, count, setCount, prices, type, name,
     )
 };
 
-export default Materials2;
+export default MaterialsInPhoto;

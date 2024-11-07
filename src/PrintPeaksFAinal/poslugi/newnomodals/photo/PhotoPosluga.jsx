@@ -1,8 +1,8 @@
 import React, {useEffect, useState} from "react";
 import axios from '../../../../api/axiosInstance';
-import {Navigate, useNavigate} from "react-router-dom";
+import {useNavigate} from "react-router-dom";
 
-const NewNoModalLamination = ({lamination, setLamination, prices, buttonsArr, selectArr}) => {
+const PhotoPosluga = ({lamination, setLamination, prices, buttonsArr, selectArr}) => {
     const [thisLaminationSizes, setThisLaminationSizes] = useState([]);
     const navigate = useNavigate();
 
@@ -47,35 +47,35 @@ const NewNoModalLamination = ({lamination, setLamination, prices, buttonsArr, se
         })
     }
 
-    useEffect(() => {
-        let data = {
-            name: "MaterialsPrices",
-            inPageCount: 999999,
-            currentPage: 1,
-            search: "",
-            columnName: {
-                column: "id",
-                reverse: false
-            },
-            material: {
-                type: "Ламінування",
-                material: lamination.material,
-                materialId: lamination.materialId,
-                thickness: lamination.size,
-            }
-        }
-        axios.post(`/materials/NotAll`, data)
-            .then(response => {
-                console.log(response.data);
-                setThisLaminationSizes(response.data.toSend.rows)
-            })
-            .catch(error => {
-                if(error.response.status === 403){
-                    navigate('/login');
-                }
-                console.log(error.message);
-            })
-    }, [lamination]);
+    // useEffect(() => {
+    //     let data = {
+    //         name: "MaterialsPrices",
+    //         inPageCount: 999999,
+    //         currentPage: 1,
+    //         search: "",
+    //         columnName: {
+    //             column: "id",
+    //             reverse: false
+    //         },
+    //         material: {
+    //             type: "Ламінування",
+    //             material: lamination.material,
+    //             materialId: lamination.materialId,
+    //             thickness: lamination.size,
+    //         }
+    //     }
+    //     axios.post(`/materials/NotAll`, data)
+    //         .then(response => {
+    //             console.log(response.data);
+    //             setThisLaminationSizes(response.data.rows)
+    //         })
+    //         .catch(error => {
+    //             if(error.response.status === 403){
+    //                 navigate('/login');
+    //             }
+    //             console.log(error.message);
+    //         })
+    // }, [lamination]);
 
     return (<div className="d-flex allArtemElem">
         <div style={{display: 'flex', alignItems: 'center',}}>
@@ -132,4 +132,4 @@ const NewNoModalLamination = ({lamination, setLamination, prices, buttonsArr, se
     </div>)
 };
 
-export default NewNoModalLamination;
+export default PhotoPosluga;

@@ -95,7 +95,7 @@ const SheetCut = () => {
                 </div>
                 <div className="d-flex flex-column">
                     <MDBContainer fluid style={{width: '95vw'}}>
-                        <Row xs={1} md={6} className="g-2">
+                        <Row xs={1} md={6} className="">
                             <Col>
                                 <ModalSize size={size} setSize={setSize} prices={prices} type={"Sheet"}/>
                             </Col>

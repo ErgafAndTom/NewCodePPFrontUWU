@@ -199,7 +199,7 @@ const NewSheetCutBw = ({thisOrder, newThisOrder, setNewThisOrder, selectedThings
                 </div>
                 <div className="d-flex flex-column">
                     <MDBContainer fluid style={{width: '100%'}}>
-                        <Row xs={1} md={6} className="g-2">
+                        <Row xs={1} md={6} className="">
                             {/*<Col>*/}
                             {/*    <NewNoModalSize size={size} setSize={setSize} prices={prices} type={"SheetCut"}/>*/}
                             {/*</Col>*/}
