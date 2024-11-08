@@ -3,14 +3,12 @@ import {Row} from "react-bootstrap";
 import React, {useCallback, useEffect, useState} from "react";
 import axios from '../../api/axiosInstance';
 import NewNoModalSize from "./newnomodals/NewNoModalSize";
-import NewNoModalLamination from "./newnomodals/NewNoModalLamination";
-import NewNoModalCornerRounding from "./newnomodals/NewNoModalBig";
-import NewNoModalCute from "./newnomodals/NewNoModalCute";
-import NewNoModalHoles from "./newnomodals/NewNoModalHoles";
 import versantIcon from '../../components/newUIArtem/printers/p9.svg';
 import Materials2 from "./newnomodals/Materials2";
 import {useNavigate} from "react-router-dom";
 import Loader from "../../components/calc/Loader";
+import PerepletPereplet from "./newnomodals/PerepletPereplet";
+import VishichkaVibor from "./newnomodals/vishichka/VishichkaVibor";
 
 const Vishichka = ({
                            thisOrder,
@@ -61,6 +59,13 @@ const Vishichka = ({
         material: "",
         materialId: "",
         size: ""
+    });
+    const [vishichka, setVishichka] = useState({
+        type: "",
+        thickness: "Тонкі",
+        material: "",
+        materialId: "",
+        typeUse: null
     });
     const [big, setBig] = useState("Не потрібно");
     const [cute, setCute] = useState("Не потрібно");
@@ -233,10 +238,17 @@ const Vishichka = ({
                                             prices={prices}
                                             selectArr={["3,5 мм", "4 мм", "5 мм", "6 мм", "8 мм"]}
                                             name={"Чорно-білий друк на монохромному принтері:"}
-                                            buttonsArr={["Тонкі",
-                                                "Середньої щільності",
-                                                "Цупкі", "Самоклеючі"]}
+                                            buttonsArr={["Цупкі", "Самоклеючі"]}
                                             typeUse={null}
+                                        />
+                                        <VishichkaVibor
+                                            size={size}
+                                            vishichka={vishichka}
+                                            setVishichka={setVishichka}
+                                            prices={prices}
+                                            type={"SheetCut"}
+                                            buttonsArr={["З плотерною надсічкою на надрукованих аркушах", "З плотерною порізкою стікерпаків", "З плотерною порізкою окремими виробами",]}
+                                            defaultt={"А3 (297 х 420 мм)"}
                                         />
                                         {/*<NewNoModalLamination*/}
                                         {/*    lamination={lamination}*/}

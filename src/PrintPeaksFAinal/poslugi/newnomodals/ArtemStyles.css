@@ -97,6 +97,9 @@
     border-bottom: 5px solid #FFA500; /* Желтая линия под select */
     font-family: Gotham-Bold, 'GothamBold', sans-serif;
 }
+.buttonsArtemNotActive {
+    filter: grayscale(100%);
+}
 
 .pricesBlockContainer {
     width: 90vw;
