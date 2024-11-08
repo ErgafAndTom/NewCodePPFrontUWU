@@ -14,6 +14,7 @@ import CustomOrderTable from "../../PrintPeaksFAinal/Orders/CustomOrderTable";
 import NewUIArtem from "../../PrintPeaksFAinal/NewUIArtem";
 // import ClientPip from "../../PrintPeaksFAinal/ClientPip";
 import {TableStorage} from "../../PrintPeaksFAinal/Storage/TableStorage";
+import CustomStorageTable from "../../PrintPeaksFAinal/Storage/CustomStorageTable";
 
 const AfterNav = () => {
     const pricesIsLoading = useSelector(state => state.prices.pricesIsLoading);
@@ -75,7 +76,7 @@ const AfterNav = () => {
 
                 {/*<Route path="/Cash" element={<CrmCash2/>} />*/}
                 {/*<Route path="/Cash/:id" element={<CrmCash2/>} />*/}
-                <Route path="/Storage" element={<TableStorage name={"Склад"}/>} />
+                <Route path="/Storage" element={<CustomStorageTable name={"Склад"}/>} />
                 <Route path="/Devices" element={<TableStorage name={"Devices"}/>} />
                 <Route path="/Desktop" element={<Desktop/>} />
                 {/*<Route path="/Desktop" element={<NewUIArtem/>} />*/}

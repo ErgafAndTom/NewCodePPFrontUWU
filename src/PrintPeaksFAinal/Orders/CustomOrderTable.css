@@ -47,7 +47,10 @@ body {
     text-align: center;
     font-size: 11px; /* Одинаковий розмір шрифту */
     word-break: break-word;
-
+}
+.CustomOrderTable-cellCan:hover {
+    background-color: rgba(0, 0, 0, 0.1);
+    cursor: pointer;
 }
 
 .CustomOrderTable-header-cell {

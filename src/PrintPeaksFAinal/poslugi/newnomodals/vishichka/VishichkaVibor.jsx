@@ -129,7 +129,7 @@ const VishichkaVibor = ({vishichka, setVishichka, prices, buttonsArr, selectArr,
                             {/*        </div>*/}
                             {/*    </button>))}*/}
                             {/*</div>*/}
-                            <div className="d-flex">
+                            <div className="d-flex align-content-between justify-content-lg-between">
                                 <button
                                     className={"З плотерною надсічкою на надрукованих аркушах" === vishichka.type ? 'buttonsArtem buttonsArtemActive' : 'buttonsArtem buttonsArtemNotActive'}
                                     onClick={() => handleClickType("З плотерною надсічкою на надрукованих аркушах")}

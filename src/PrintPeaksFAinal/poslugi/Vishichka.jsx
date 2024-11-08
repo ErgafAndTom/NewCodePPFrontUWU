@@ -348,24 +348,24 @@ const Vishichka = ({
                                             = {pricesThis.priceForThisUnitOfPapper * pricesThis.skolko}грн.
                                         </div>
 
+                                        {/*<div className="fontInfoForPricing">*/}
+                                        {/*    Ламінація: {pricesThis.priceForThisUnitOfLamination} грн*/}
+                                        {/*    * {pricesThis.skolko} шт*/}
+                                        {/*    = {pricesThis.priceForThisAllUnitsOfLamination} грн*/}
+                                        {/*</div>*/}
                                         <div className="fontInfoForPricing">
-                                            Ламінація: {pricesThis.priceForThisUnitOfLamination} грн
-                                            * {pricesThis.skolko} шт
-                                            = {pricesThis.priceForThisAllUnitsOfLamination} грн
+                                            Висічка {pricesThis.priceForThisUnitOfVishichka} грн * {count} шт
+                                            = {pricesThis.priceForAllUnitsOfVishichka} грн
                                         </div>
-                                        <div className="fontInfoForPricing">
-                                            Згинання {pricesThis.priceForThisUnitOfBig} грн * {count} шт
-                                            = {pricesThis.priceForAllUnitsOfBig} грн
-                                        </div>
-                                        <div className=" fontInfoForPricing">
-                                            Свердління отворів: {pricesThis.priceForThisUnitOfCute} грн * {count} шт
-                                            = {pricesThis.priceForAllUnitsOfCute} грн
-                                        </div>
-                                        <div className="fontInfoForPricing">
-                                            Суруглення кутів: {pricesThis.priceForThisUnitOfHoles} грн * {count} шт
-                                            = {pricesThis.priceForAllUnitsOfHoles} грн
+                                        {/*<div className=" fontInfoForPricing">*/}
+                                        {/*    Свердління отворів: {pricesThis.priceForThisUnitOfCute} грн * {count} шт*/}
+                                        {/*    = {pricesThis.priceForAllUnitsOfCute} грн*/}
+                                        {/*</div>*/}
+                                        {/*<div className="fontInfoForPricing">*/}
+                                        {/*    Суруглення кутів: {pricesThis.priceForThisUnitOfHoles} грн * {count} шт*/}
+                                        {/*    = {pricesThis.priceForAllUnitsOfHoles} грн*/}
 
-                                        </div>
+                                        {/*</div>*/}
                                         {/*<div className="fontInfoForPricing">*/}
                                         {/*    {pricesThis.priceForThisUnitOfPapper * pricesThis.skolko}+*/}
                                         {/*    {pricesThis.priceForDrukThisUnit * pricesThis.skolko}+*/}

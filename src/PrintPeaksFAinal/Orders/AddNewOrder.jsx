@@ -109,7 +109,7 @@ function AddNewOrder({namem, data, setData, inPageCount, setInPageCount, current
                 </Offcanvas.Header>
                 <Offcanvas.Body>
                     <Form onSubmit={saveAll}>
-                        {filteredMetadata.map((metaItem) => (
+                        {filteredMetadata.map((metaItem, iter) => (
                             <InputGroup className="mb-3" key={metaItem.field}>
                                 <Form.Control
                                     placeholder={metaItem.comment || metaItem.field}

@@ -76,7 +76,7 @@ export const TableStorage = ({name}) => {
                     pageCount={pageCount}
                     setPageCount={setPageCount}
                 />
-                <div style={{ maxWidth: '99vw', overflow: 'auto', height: "80vh", background: "#E9E6DA", marginTop: "1vh", borderRadius: "0.5vw" }}>
+                <div style={{ maxWidth: '99vw', overflowX: 'auto', overflowY: 'hidden', height: "80vh", background: "transparent" }}>
                     <Table bordered hover variant="" size="sm" >
                         <thead>
                         <tr className="">
@@ -108,7 +108,7 @@ export const TableStorage = ({name}) => {
                             ))}
                         </tr>
                         </thead>
-                        <tbody>
+                        <tbody style={{ maxWidth: '99vw', overflowX: 'auto', height: "80vh", background: "transparent" }}>
                         {data.rows.map((item, iter) => (
                             <tr key={item.id} >
                                 {data.metadata.map((metaItem, iter2) => (
