@@ -1,146 +1,9 @@
-.ClientsMenuu {
-    width: 28vw;
-    height: 7vh;
-    background-color: #E9E6DA;
-    border-radius: 1.5vh;
-    display: flex;
-    margin-top: 0.5vw;
-    margin-left: 0.3vw;
-    flex-direction: column-reverse;
-    border: gray 0.1vw solid;
-}
 
-.left-section {
-    /*border: #1a1e21 solid 0.1vw;*/
-    height: 7vh;
-    display: flex;
-    align-items: center;
-}
-
-
-.barcode {
-    height: 6.8vh;
-    width: 3vw;
-    position: relative;
-   /*border-bottom-left-radius: 10px;*/
-   /* border-top-left-radius: 10px;*/
-    cursor: pointer;
-    margin-top: 0.1vw;
-    margin-left: -0.8vw;
-    transform: rotate(180deg);}
-
-.profile-photo {
-    height: 6vh;
-    margin-left: 0.3vw;
-    border-radius: 0.1vw;
-    cursor: pointer;
-}
-
-.middle-section {
-    position: relative;
-    height: 7vh;
-    width: 25vw;
-    display: flex;
-    margin-left: 0.3vw;
-    flex-direction: column;
-
-}
-
-.clientname {
-    width: 18vw;
-    height: 3vh;
-    font-size: 20px;
-    color: black;
-    display: flex;
-}
-
-.nicknameArtemCli {
-    margin-top: 0.2vw;
-    font-size: 0.8vw;
-    cursor: pointer;
-    color: #0088cc;
-    height: 2vh;
-}
-.telegram-icons {
-    height: 2vh;
-    cursor: pointer;
-}
-
-.contact-number {
-    height: 1.7vh;
-    font-size: 0.8vw;
-    color: black;
-    display: flex;
-   }
-
-.messenger-icons img {
-    height: 1.7vh;
-    cursor: pointer;
-    margin-left: 0.3vw;
-}
-
-.right-section {
-    /*position: relative;*/
-    flex-direction: row;
-    display: flex;
-    /*align-items: flex-end;*/
-    justify-content: flex-end;
-    height: 6.9vh;
-    width: 14vw;
-    }
-.discount-button {
-    /*position: revert;*/
-    display: flex;
-    align-items:center;
-    width: 2VW;
-    height: 6.8vh;
-    cursor: pointer;
-    border: 0px;
-    margin-left: -0.2vw;
-    margin-top: 0.1vw;
-    background-color: #E9E6DA;
-    border-top-right-radius: 1vw;
-    border-bottom-right-radius: 1vw;
-    border-top-left-radius: 0vw;
-    border-bottom-left-radius: 0vw;
-
-
-}
-.discountwords {
-    transform: rotate(90deg);
-    height: 1vh;
-    color: red;
-    font-size: 1vw;
-}
-.discount-button:hover {
-    background-color: #FAB416;
-    border-top-right-radius: 0.7vw;
-    border-bottom-right-radius: 0.7vw;
-    border-top-left-radius: 0vw;
-    border-bottom-left-radius: 0vw;
-
-}
-.files-button {
-    background-color: #E9E6DA;
-    /*position: relative;*/
-    width: 2vw;
-    height: 6.8vh;
-    display: flex;
-    align-items: center;
-    /*justify-content: center;*/
-    cursor: pointer;
-    border: 0px;
-    margin-top: 0.1vw;
-    margin-right:0vw;
-}
 .FilesButton-icons {
-    height: 2vh;
-    cursor: pointer;
-    align-items: center;
-    margin-right: 0.3vw;
-    /*border: transparent;*/
-}
 
+    cursor: pointer;
+
+}
 .files-button:hover {
     background-color: #FAB416;
     border-top-right-radius: 0vw;
@@ -149,51 +12,40 @@
     border-bottom-left-radius: 0vw;
 
 }
-.addclient {
-    background-color: #E9E6DA;
-    border-radius: 0.7vw;
-    margin-left: 0.3vw;
-    border: 1px;
-    border: black;
-    }
-.addclient-icons {
-    align-items: center;
-    height: 2vh;
-    cursor: pointer;
-    margin-left: 0.7vh;
-margin-right: 0.7vh;
-}
+
 
 .addclient:hover {
     background-color: #FAB416;
    border-radius: 0.7vw;
 
 }
-.ChangeClient {
-    background-color: #E9E6DA;
-    border-radius: 0.7vw;
-    height: 7vh;
-    border: #F2EFE8;
-}
-.ChangeClient-icons {
-    display: flex;
-    align-items: center;
-    height: 2.5vh;
-    cursor: pointer;
-    margin-left: 0.4vh;
-    margin-right: 0.4vh;
+
+/* Tooltip container */
+.tooltip {
+    position: relative;
+    display: inline-block;
 }
 
-.clientsproject {
-    display: flex;
-    flex-direction: row;
-    border: #F2EFE8;
-    /*margin-top: 0.5vw;*/
-    /*margin-left: 0vw;*/
-    /*border: gray 0.1vw solid;*/
-    /*border-radius: 0.7vw;*/
-    /*padding: 0.3vw;*/
+/* Tooltip text */
+.tooltip .tooltiptext {
+    visibility: hidden;
+    width: 120px;
+    background-color: black;
+    color: #fff;
+    text-align: center;
+    border-radius: 6px;
+    padding: 5px 0;
+
+    /* Position the tooltip text - see examples below! */
+    position: absolute;
+    z-index: 1;
 }
+
+/* Show the tooltip text when you mouse over the tooltip container */
+.tooltip:hover .tooltiptext {
+    visibility: visible;
+}
+
 
 .ChangeClient:hover {
     background-color: #FAB416;

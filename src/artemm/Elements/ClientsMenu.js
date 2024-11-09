@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import axios from '../../api/axiosInstance';
 import { Modal, Button, Table } from 'react-bootstrap'; // Виправлено імпорти
-// import './ClientsMenuu.css';
+// import './ClientsMenu.css';
 import barcode from '../public/mask-group-10.svg';
 import profile from '../public/mask-group-11@2x.png';
 import signal from './img/303c7b213ec59d3734dfbbd2249f4a7a.png';
@@ -137,6 +137,7 @@ const ClientsMenu = ({ user = {} }) => {
                 <div className="ClientsMenu">
                     <div className="d-flex">
                         <div className="left-section">
+
                             <img src={barcode} alt="Штрих-код" className="barcode" onClick={printBarcode}/>
                             <img src={profile} alt="Профіль" className="profile-photo" onClick={openUserSettings}/>
                         </div>
@@ -156,7 +157,7 @@ const ClientsMenu = ({ user = {} }) => {
                                 {telegramlogin}
                             </div>
                         </div>
-                        <div className="right-section">
+                        <div className="right-section" style={{justifyContent: 'flex-end'}}>
                             <button className="files-button">
                                 <img src={FilesButton} alt="FilesButton" className="FilesButton-icons"
                                      onClick={() => window.open('https://drive.google.com', '_blank')}/>
@@ -164,11 +165,12 @@ const ClientsMenu = ({ user = {} }) => {
                             <button className="discount-button">
                                 <div className="discountwords">-15%</div>
                             </button>
+                            <button className="addclient">
+                                <img src={addclienticons} alt="addclients" className="addclient-icons"
+                                     onClick={() => window.open('https://drive.google.com', '_blank')}/>
+                            </button>
                         </div>
-                        <button className="addclient">
-                            <img src={addclienticons} alt="addclients" className="addclient-icons"
-                                 onClick={() => window.open('https://drive.google.com', '_blank')}/>
-                        </button>
+
                     </div>
                 </div>
             </div>

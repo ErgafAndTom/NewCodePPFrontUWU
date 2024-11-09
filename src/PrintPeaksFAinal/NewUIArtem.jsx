@@ -49,6 +49,7 @@ import Vishichka from "./poslugi/Vishichka";
 import PerepletNeMet from "./poslugi/PerepletNeMet";
 import PerepletMet from "./poslugi/PerepletMet";
 import BigOvshik from "./poslugi/BigOvshik";
+import ClientsMenu from "../artemm/Elements/ClientsMenu";
 
 const NewUIArtem = () => {
     const navigate = useNavigate();
@@ -505,11 +506,17 @@ const NewUIArtem = () => {
                                 </div>
                             </div>
                         </div>
-                        {thisOrder && thisOrder.User ? (
-                            // <ClientsMenu client={thisOrder.User}/>
-                            <ClientChangerUIArtem client={thisOrder.User} thisOrder={thisOrder}
-                                                  setNewThisOrder={setNewThisOrder}
-                                                  handleThisOrderChange={handleThisOrderChange}/>
+                        { thisOrder && thisOrder.User ? (
+                            <div className="ClientsMenuAll">
+
+                                <ClientChangerUIArtem
+                                    client={thisOrder.User}
+                                    thisOrder={thisOrder}
+                                    setNewThisOrder={setNewThisOrder}
+                                    handleThisOrderChange={handleThisOrderChange}
+                                />
+                                {/*<ClientsMenu client={thisOrder.User} />*/}
+                            </div>
                         ) : (
                             <div>
                                 <Loader/>

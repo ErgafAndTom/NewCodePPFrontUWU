@@ -1,5 +1,6 @@
 import React, {useCallback, useEffect, useState} from "react";
 import './ClientArtem.css';
+import  './ClientsMenuu.css'
 // import Image from "react-bootstrap/Image";
 import whiteSVG from "../../components/whiteSVG.svg";
 import axios from "../../api/axiosInstance";
@@ -7,11 +8,15 @@ import Form from "react-bootstrap/Form";
 import ChangeClienticons from "./img/Group 1476.png";
 import barcode from "./public/mask-group-10.svg";
 import profile from "./public/mask-group-11@2x.png";
+import viberlogo from "./img/viber.png";
+import signallogo from "./img/signal.png";
+import whatsapplogo from "./img/whatsapp.png";
 import telegram from "./img/Telegram-icon-on-transparent-background-PNG.png";
 import FilesButton from "./img/files-icon.png";
 import addclienticons from "./img/Path 13360.png";
 
 const ClientChangerUIArtem = ({thisOrder, handleThisOrderChange, setNewThisOrder}) => {
+
     const [isLoad, setIsLoad] = useState(false);
     const [typeSelect, setTypeSelect] = useState("");
     const [users, setUsers] = useState([]);
@@ -51,6 +56,7 @@ const ClientChangerUIArtem = ({thisOrder, handleThisOrderChange, setNewThisOrder
         setNewThisOrder(updatedThisOrder)
         setShow(false);
     };
+
     console.log(thisOrder);
 
     useEffect(() => {
@@ -106,6 +112,11 @@ const ClientChangerUIArtem = ({thisOrder, handleThisOrderChange, setNewThisOrder
     };
 
     const toggleUserList = () => {
+        setShow(true)
+    };
+
+
+    const AddNewUser = () => {
         setShow(true)
     };
 
@@ -207,48 +218,118 @@ const ClientChangerUIArtem = ({thisOrder, handleThisOrderChange, setNewThisOrder
                 </div>
             ) : (
                 <div className="clientsproject">
-                    <button className="ChangeClient" onClick={toggleUserList}>
-                        <img src={ChangeClienticons} alt="ChangeClient" style={{width: "1.7vw", height: "1.7vw", marginLeft: "auto"}} className="ChangeClient-icons"/>
-                    </button>
-                    <div className="ClientsMenuu">
+
+                    <div className="ClientsMenuu" style={{marginTop: "3vh", width: "33.5vw"}}>
                         <div className="d-flex">
                             <div className="left-section">
-                                <img src={barcode} alt="Штрих-код" style={{width: "1.7vw", height: "1.7vw", marginLeft: "auto"}} className="barcode" onClick={printBarcode}/>
-                                <img src={profile} alt="Профіль" style={{width: "1.7vw", height: "1.7vw", marginLeft: "auto"}} className="profile-photo" onClick={openUserSettings}/>
+                                <button className="ChangeClient" style={{
+                                    width: "3vw",
+                                    height: "3.5vw",
+                                    marginLeft: "auto",
+                                    border: "0px",
+                                    borderRadius: "0.5vw"
+                                }} onClick={toggleUserList} title="Вибрати клієнта">
+                                    <img src={ChangeClienticons} alt="ChangeClient"
+                                         style={{width: "1.7vw", height: "1.7hw", marginLeft: "auto"}}
+                                         className="ChangeClient-icons"/>
+                                </button>
+                                <button className="BarcodeClientMenu" style={{
+                                    width: "2.3vw",
+                                    height: "3.5vw",
+                                    marginLeft: "0.3vw",
+                                    borderRadius: "0.5vw",
+                                    background: "transparent",
+                                    border: "0px",
+                                    padding: "0px"
+                                }}>
+
+                                    <img src={barcode} alt="bar-code"
+                                         style={{width: "3.4vw", height: "6.5vh",}}
+                                         className="barcodeclientmenuimg"
+                                         onClick={printBarcode}/>
+                                </button>
+                                <img src={profile} alt="Профіль"
+                                     style={{width: "3.5vw", marginLeft: "0.3vw",}}
+                                     className="profile-photo" onClick={openUserSettings}/>
                             </div>
-                            <div className="middle-section">
-                                <div className="username">
-                                    {/*{thisOrder.User.username}*/}
+                            <div className="middle-section" style={{marginLeft: "0.3vw",}}>
+                                <div className="username" style={{fontSize: "1vw", fontWeight: "bold"}}>
+                                    {thisOrder.User.firstName} {thisOrder.User.lastName} {thisOrder.User.familyName}
                                 </div>
-                                <div className="contact-number">
-                                    {thisOrder.User.phoneNumber}
-                                    <div className="nicknameArtemCli">
-                                        <img style={{width: "1.7vw", height: "1.7vw", marginLeft: "auto"}} src={thisOrder.User.signal} alt="Signal" className="img-fluid"
+                                <div className="contact-number" style={{
+                                    display: "flex",
+                                    flexDirection: "row",
+                                    height: "1vw",
+                                    alignItems: "center"
+                                }}>
+                                    <div className="nicknameArtemCli"
+                                         style={{fontSize: "1vw", display: "flex", alignItems: "center", marginTop: "0.2vw"}}>
+                                        {thisOrder.User.phoneNumber}
+                                        <img style={{width: "0.9vw", marginLeft: "0.3vw", alignItems: "center"}}
+                                             src={signallogo}
+                                             alt="Signal" className="img-fluid"
                                              onClick={() => openMessenger('signal')}/>
-                                        <img style={{width: "1.7vw", height: "1.7vw", marginLeft: "auto"}} src={thisOrder.User.viber} alt="Viber" className="img-fluid"
+                                        <img style={{width: "0.9vw", marginLeft: "0.3vw", alignItems: "center"}}
+                                             src={viberlogo} alt="Viber" className="img-fluid"
                                              onClick={() => openMessenger('viber')}/>
-                                        <img style={{width: "1.7vw", height: "1.7vw", marginLeft: "auto"}} src={thisOrder.User.watsap} alt="WhatsApp" className="img-fluid"
+                                        <img style={{width: "0.9vw", marginLeft: "0.3vw", alignItems: "center"}}
+                                             src={whatsapplogo} alt="WhatsApp" className="img-fluid"
                                              onClick={() => openMessenger('whatsapp')}/>
                                     </div>
                                 </div>
-                                <div className="nicknameArtemCli">
-                                    <img src={telegram} alt="Telegram" style={{width: "1.7vw", height: "1.7vw", marginLeft: "auto"}} className="img-fluid"
+                                <div className="nicknameArtemCli" style={{display: "flex", alignItems: "center", color: "#239cd7", marginTop: "0.2vw"}}>
+                                    {thisOrder.User.telegram}
+                                    <img src={telegram} alt="Telegram" style={{width: "0.9vw", marginLeft: "0.3vw"}}
+                                         className="img-fluid"
                                          onClick={() => openMessenger('telegram')}/>
-                                    {thisOrder.User.telegramlogin}
                                 </div>
                             </div>
-                            <div className="right-section">
-                                <button className="files-button">
-                                    <img src={FilesButton} style={{width: "1.7vw", height: "1.7vw", marginLeft: "auto"}} alt="FilesButton" className="FilesButton-icons"
-                                         onClick={() => window.open('https://drive.google.com', '_blank')}/>
+
+                            <div className="right-section"
+                                 style={{justifyContent: 'flex-end', display: 'flex', marginLeft: 'auto'}}>
+                                <div className="discount-button" data-toggle="tooltip" data-placement="top"
+                                     title="Знижка" style={{
+                                    transform: "rotate(360deg)",
+                                    alignItems: "center",
+                                    marginTop: "0.3vw",
+                                    fontSize: "1.9vw"
+                                }}>
+                                    <div className="discountwords"
+                                         style={{transform: "rotate(90deg)"}}>{thisOrder.User.discount}
+                                    </div>
+                                    <div className="ProzentClient" style={{transform: "rotate(90deg)", fontSize: "1vw", marginLeft: "0.5vw"}}>%</div>
+                                </div>
+                                <button className="files-button d-flex justify-content-center align-items-center align-content-center" style={{
+                                    width: "3vw",
+                                    height: "3.5vw",
+                                    marginLeft: "0.3vw",
+                                    border: "0px",
+                                    borderRadius: "0.5vw",
+                                    display: "flex",
+                                    alignItems: "center",
+                                    justifyContent: "center"
+                                }} onClick={() => window.open('https://drive.google.com', '_blank')}>
+
+                                    <img src={FilesButton} style={{
+                                        // width: "1.7vw",
+                                        height: "1.7vw",
+                                        alignItems: "center",
+                                        justifyContent: "center",
+                                        display: "flex",
+                                    }} alt="FilesButton"
+                                         className="FilesButton-icons d-flex justify-content-center align-items-center align-content-center"/>
                                 </button>
-                                <button className="discount-button">
-                                    <div className="discountwords">-15%</div>
-                                </button>
+
                             </div>
-                            <button className="addclient">
-                                <img src={addclienticons} style={{width: "1.7vw", height: "1.7vw", marginLeft: "auto"}} alt="addclients" className="addclient-icons"
-                                     onClick={() => window.open('https://drive.google.com', '_blank')}/>
+                            <button className="addclient" style={{
+                                width: "3vw",
+                                height: "3.5vw",
+                                marginLeft: "0.3vw",
+                                border: "0px",
+                                borderRadius: "0.5vw"
+                            }} onClick={AddNewUser}>
+                                <img src={addclienticons} style={{width: "1.5vw",  marginLeft: "auto"}} alt="addclients" className="addclient-icons"
+                                     />
                             </button>
                         </div>
                     </div>
