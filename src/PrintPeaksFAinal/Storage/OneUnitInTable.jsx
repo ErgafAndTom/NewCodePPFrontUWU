@@ -1,10 +1,4 @@
-import React, {useCallback, useEffect, useState} from 'react';
-// import {Button} from "react-bootstrap";
-import Form from "react-bootstrap/Form";
-import axios from '../../api/axiosInstance';
-import redIcon from '../../components/redIcon.svg';
-import StatusBar from "../Orders/StatusBar";
-import {useNavigate} from "react-router-dom";
+import React from 'react';
 
 const OneItemInTable = ({itemData, tablPosition, item, metaItem, handleItemClickRed}) => {
 
@@ -39,8 +33,8 @@ const OneItemInTable = ({itemData, tablPosition, item, metaItem, handleItemClick
     }
     if (tablPosition === "photo") {
         return (
-            <div style={{overflow: 'hidden', whiteSpace: "nowrap", textOverflow: "ellipsis", background: "transparent"}}
-                 className="adminFontTable d-flex align-content-center justify-content-center m-auto p-0">{itemData}</div>
+            <div className="CustomOrderTable-cell"
+                 style={{border: "0.05vw solid #F2EFE8"}}>{itemData}</div>
         )
     }
 

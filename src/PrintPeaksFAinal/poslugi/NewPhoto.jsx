@@ -40,6 +40,13 @@ const NewPhoto = ({thisOrder, newThisOrder, setNewThisOrder, selectedThings2, sh
         materialId: "",
         typeUse: "Фото"
     });
+    const [photo, setPhoto] = useState({
+        type: "Не потрібно",
+        thickness: "",
+        material: "Офісний папір А3 80-90 г/м2",
+        materialId: "",
+        typeUse: "Фото"
+    });
     const [color, setColor] = useState({
         sides: "односторонній",
         one: "",
@@ -81,6 +88,7 @@ const NewPhoto = ({thisOrder, newThisOrder, setNewThisOrder, selectedThings2, sh
                 holes: holes,
                 holesR: holesR,
                 count: count,
+                photo: photo,
             }
         };
 
@@ -127,6 +135,7 @@ const NewPhoto = ({thisOrder, newThisOrder, setNewThisOrder, selectedThings2, sh
             cuteLocal: cuteLocal,
             holes: holes,
             count: count,
+            photo: photo,
         }
         axios.post(`/calc/pricing`, dataToSend)
             .then(response => {
@@ -139,7 +148,7 @@ const NewPhoto = ({thisOrder, newThisOrder, setNewThisOrder, selectedThings2, sh
                 }
                 console.log(error.message);
             })
-    }, [size, material, color, lamination, big, cute, cuteLocal, holes, holesR, count]);
+    }, [size, material, color, lamination, big, cute, cuteLocal, holes, holesR, count, photo]);
 
     useEffect(() => {
         if (showNewPhoto) {
@@ -226,8 +235,8 @@ const NewPhoto = ({thisOrder, newThisOrder, setNewThisOrder, selectedThings2, sh
 
                                         />
                                         <PhotoPosluga
-                                            lamination={lamination}
-                                            setLamination={setLamination}
+                                            photo={photo}
+                                            setPhoto={setPhoto}
                                             prices={prices}
                                             type={"SheetCut"}
                                             buttonsArr={["З глянцевим ламінуванням",

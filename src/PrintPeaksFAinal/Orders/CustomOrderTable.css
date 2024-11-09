@@ -44,8 +44,8 @@ body {
 .CustomOrderTable-header-cell, .CustomOrderTable-cell {
     flex: 1;
     padding: 0.3vw;
-    text-align: center;
-    font-size: 11px; /* Одинаковий розмір шрифту */
+    text-align: start;
+    font-size: 0.5vw; /* Одинаковий розмір шрифту */
     word-break: break-word;
 }
 .CustomOrderTable-cellCan:hover {
