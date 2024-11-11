@@ -3,13 +3,13 @@ import './userInNewUiArtem/StyleArtem.css';
 import './CPM.css';
 import './global.css';
 import './adminStylesCrm.css';
-// import './StylesOl d.css';
 import './Wide.css';
 import './MainWindow.css';
 import {Link, useNavigate, useParams} from "react-router-dom";
 import axios from '../api/axiosInstance';
 import OneOrderButton from "../components/newUIArtem/orders/OneOrderButton";
 import {Modal} from "react-bootstrap";
+import Tooltip from './TooltipButton2';
 
 
 // Usage of ClientsMenu
@@ -46,10 +46,8 @@ import Loader from "../components/calc/Loader";
 import ClientChangerUIArtem from "./userInNewUiArtem/ClientChangerUIArtem";
 import Laminator from "./poslugi/Laminator";
 import Vishichka from "./poslugi/Vishichka";
-import PerepletNeMet from "./poslugi/PerepletNeMet";
 import PerepletMet from "./poslugi/PerepletMet";
 import BigOvshik from "./poslugi/BigOvshik";
-import ClientsMenu from "../artemm/Elements/ClientsMenu";
 
 const NewUIArtem = () => {
     const navigate = useNavigate();
@@ -61,7 +59,7 @@ const NewUIArtem = () => {
     const [error, setError] = useState(null);
     const {id} = useParams();
     const [thisOrder, setThisOrder] = useState({
-        id: id
+        // id: id
     });
     const [newThisOrder, setNewThisOrder] = useState({
         id: id
@@ -153,7 +151,7 @@ const NewUIArtem = () => {
                 navigate(`/Orders/${response.data.id}`);
             })
             .catch(error => {
-                if(error.response.status === 403){
+                if (error.response.status === 403) {
                     navigate('/login');
                 }
                 console.log(error.message);
@@ -170,14 +168,14 @@ const NewUIArtem = () => {
             axios.post(`/Orders/OneOrder`, data)
                 .then(response => {
                     // console.log(axios);
-                    // console.log(response.data);
+                    console.log(response.data);
                     setThisOrder(response.data)
                     setSelectedThings2(response.data.OrderUnits)
                     setIsLoad(false)
                 })
                 .catch((error, response) => {
                     console.log(error.message);
-                    if(error.response.status === 403){
+                    if (error.response.status === 403) {
                         navigate('/login');
                     }
                     setIsLoad(false)
@@ -186,7 +184,7 @@ const NewUIArtem = () => {
         }
     }, [id]);
 
-    if(thisOrder){
+    if (thisOrder.User) {
         return (
             <div
                 style={{height: "87vh"}}
@@ -198,44 +196,50 @@ const NewUIArtem = () => {
                         background: "#E9E6DA",
                         borderRadius: "1.5vh",
                         padding: "0.7vh",
-
                         marginLeft: "0.5vw",
                         height: "vh",
 
                     }}>
                         <div className="d-flex">
+                            <Tooltip text="___На перевірці" position="right">
+                                <div className="iconButtonNewUI" style={{
+                                    background: "#848484",
+                                    borderBottomLeftRadius: "0.5vw",
+                                    borderTopLeftRadius: "0.5vw",
+                                    height: "2vw",
+                                    width: "1.2vw"
+                                }}>
+                                </div>
+                            </Tooltip>
+                            <Tooltip text="В роботі" position="right">
+                                <div className="iconButtonNewUI" style={{
+                                    background: "#FFCC00",
+                                    height: "2vw",
+                                    width: "1.2vw"
+                                }}>
+                                </div>
+                            </Tooltip>
+                            <Tooltip text="Готово" position="right">
+                                <div className="iconButtonNewUI" style={{
+                                    background: "#3C60A6",
+                                    height: "2vw",
+                                    width: "1.2vw"
 
-                            <div className="iconButtonNewUI" style={{
-                                background: "#848484",
-                                borderBottomLeftRadius: "0.5vw",
-                                borderTopLeftRadius: "0.5vw",
-                                height: "2vw",
-                                width: "1.2vw"
-                            }}>
-                            </div>
-                            <div className="iconButtonNewUI" style={{
-                                background: "#FFCC00",
-                                height: "2vw",
-                                width: "1.2vw"
-                            }}>
-                            </div>
-                            <div className="iconButtonNewUI" style={{
-                                background: "#3C60A6",
-                                height: "2vw",
-                                width: "1.2vw"
-
-
-                            }}>
-                            </div>
-                            <div className="iconButtonNewUI" style={{
-                                background: "#008249",
-                                height: "2vw",
-                                width: "1.2vw",
-                                borderBottomRightRadius: "0.5vw",
-                                borderTopRightRadius: "0.5vw"
-                            }}>
-                            </div>
+                                }}>
+                                </div>
+                            </Tooltip>
+                            <Tooltip text="Віддали" position="right">
+                                <div className="iconButtonNewUI" style={{
+                                    background: "#008249",
+                                    height: "2vw",
+                                    width: "1.2vw",
+                                    borderBottomRightRadius: "0.5vw",
+                                    borderTopRightRadius: "0.5vw"
+                                }}>
+                                </div>
+                            </Tooltip>
                         </div>
+                        {/*<OneOrderButton item={thisOrder} thisOrder={thisOrder}/>*/}
                         {orders && (
                             <div
                                 className="OrdersContainer d-flex flex-column"
@@ -291,7 +295,8 @@ const NewUIArtem = () => {
                                     </div>
                                     <div
                                         onClick={(event) => setShowNewPhoto(true)}
-                                        className="cursorPointer printers gif" style={{width: "9vw", marginLeft: "0vw"}}>
+                                        className="cursorPointer printers gif"
+                                        style={{width: "9vw", marginLeft: "0vw"}}>
                                         <img src={imgg4} className="card-img-top noanim" alt="..."/>
                                         <img src={img3} className="card-img-top anim"
                                              style={{width: "6vw", marginLeft: "1.7vw"}} alt="..."/>
@@ -307,15 +312,18 @@ const NewUIArtem = () => {
                                 <div className="d-flex flex-column justify-content-center">
                                     <div
                                         onClick={(event) => setShowBigOvshik(true)}
-                                        className="cursorPointer printers gif" style={{width: "7vw", marginleft: "0vw"}}>
+                                        className="cursorPointer printers gif"
+                                        style={{width: "7vw", marginleft: "0vw"}}>
                                         <img src={imgg10} className="card-img-top noanim" alt="..."/>
                                         <img src={imgg10} className="card-img-top anim" alt="..."/>
                                     </div>
                                 </div>
-                                <div className="d-flex flex-column align-content-center align-items-center justify-content-center">
+                                <div
+                                    className="d-flex flex-column align-content-center align-items-center justify-content-center">
                                     <div
                                         onClick={(event) => setShowPerepletMet(true)}
-                                        className="cursorPointer printers gif" style={{width: "8vw", marginLeft: "0vw"}}>
+                                        className="cursorPointer printers gif"
+                                        style={{width: "8vw", marginLeft: "0vw"}}>
                                         <img src={imgg6} className="card-img-top noanim" alt="..."/>
                                         <img src={img9} className="card-img-top anim" alt="..."/>
                                     </div>
@@ -329,13 +337,15 @@ const NewUIArtem = () => {
                                 <div className="d-flex flex-column justify-content-center">
                                     <div
                                         onClick={(event) => setShowLaminator(true)}
-                                        className="cursorPointer printers gif " style={{width: "8vw", marginLeft: "0vw"}}>
+                                        className="cursorPointer printers gif "
+                                        style={{width: "8vw", marginLeft: "0vw"}}>
                                         <img src={imgg8} className="card-img-top noanim" alt="..."/>
                                         <img src={img8} className="card-img-top anim" alt="..."/>
                                     </div>
                                     <div
                                         onClick={(event) => setShowVishichka(true)}
-                                        className="cursorPointer printers gif" style={{width: "7vw", marginLeft: "0vw"}}>
+                                        className="cursorPointer printers gif"
+                                        style={{width: "7vw", marginLeft: "0vw"}}>
                                         <img src={imgg9} className="card-img-top noanim" alt="..."/>
                                         <img src={img4} className="card-img-top anim" alt="..."/>
                                     </div>
@@ -362,55 +372,90 @@ const NewUIArtem = () => {
                                         <div key={index} className="d-flex containerNewUI HoverOrderUnits shadow-sm"
                                              style={{border: "1px #dcd9ce solid", margin: "0.2vw",}}>
                                             {thing.OrderUnitUnits.length !== 0 ? (
-                                                <div className="d-flex flex-column justify-content-start align-items-start"
-                                                     style={{
-                                                         width: '32.1vw',
-                                                     }}>
-                                                    <Modal.Header className="d-flex w-100">
-                                                        <div className="piecesord">
-                                                            <div className="adminFontTable">
-                                                                {thing.name}:
+                                                <div
+                                                    className="d-flex flex-column justify-content-start align-items-start"
+                                                    style={{
+                                                        width: '32.1vw',
+                                                    }}>
+                                                    <Modal.Header className="d-flex w-100"
+                                                                  style={{position: "relative"}}>
+                                                        <div
+                                                            className="piecesord d-flex align-items-center overflow-visible"
+                                                            style={{
+                                                                marginLeft: "1vw",
+                                                                padding: "0.5vw",
+                                                                position: "relative"
+                                                            }}>
+                                                            <div className="adminFontTable d-flex align-items-center"
+                                                            >
+                                                                {thing.name}
+                                                                <div className="d-flex align-items-center">
+                                                                    <div className="adminFontTable">
+                                                                        ( {thing.newField2}
+                                                                    </div>
+                                                                    <div className="adminFontTable" style={{
+                                                                        marginTop: "0.5vw",
+                                                                        fontSize: "0.5vw"
+                                                                    }}>
+                                                                        мм
+                                                                    </div>
+                                                                </div>
+                                                                <div className="d-flex align-items-center">
+                                                                    <div className="adminFontTable">x</div>
+                                                                    <div className="adminFontTable">
+                                                                        {thing.newField3}
+                                                                    </div>
+                                                                    <div className="adminFontTable" style={{
+                                                                        marginTop: "0.5vw",
+                                                                        fontSize: "0.5vw"
+                                                                    }}>мм
+                                                                    </div>
+                                                                    )
+                                                                </div>
                                                             </div>
                                                             <div className="adminFontTable"
-                                                                 style={{fontSize: "0.9vw", marginLeft: "3vw"}}>
+                                                                 style={{fontSize: "0.9vw", marginLeft: "1vw"}}>
                                                                 {thing.amount}
                                                             </div>
                                                             <div className="adminFontTable"
                                                                  style={{fontSize: "0.5vw", marginTop: "1.5vh"}}>
                                                                 шт
                                                             </div>
-                                                        </div>
-                                                        <div className="priceord">
-                                                            <div className="adminFontTable"
-                                                                 style={{fontSize: "0.9vw"}}>
-                                                                x
+                                                            <div className="priceord d-flex align-items-center">
+                                                                <div className="adminFontTable booooold"
+                                                                     style={{fontSize: "0.9vw", color: "#EE3C23"}}>
+                                                                    {thing.priceForThis}
+                                                                </div>
+                                                                <div className="adminFontTable "
+                                                                     style={{
+                                                                         fontSize: "0.5vw",
+                                                                         marginTop: "1.5vh",
+                                                                         color: "#EE3C23"
+                                                                     }}>
+                                                                    грн
+                                                                </div>
                                                             </div>
                                                         </div>
-                                                        <div className="priceord">
-                                                            <div className="adminFontTable"
-                                                                 style={{fontSize: "0.9vw"}}>{thing.priceForOneThis}</div>
-                                                            <div className="adminFontTable"
-                                                                 style={{fontSize: "0.5vw", marginTop: "1.5vh"}}> грн
-                                                            </div>
-                                                        </div>
-                                                        <div className="priceord">
-                                                            <div className="adminFontTable"
-                                                                 style={{fontSize: "0.9vw"}}>
-                                                                =
-                                                            </div>
-                                                        </div>
-                                                        <div className="priceord">
-                                                            <div className="adminFontTable booooold"
-                                                                 style={{fontSize: "0.9vw"}}>{thing.priceForOneThis}</div>
-                                                            <div className="adminFontTable"
-                                                                 style={{fontSize: "0.5vw", marginTop: "1.5vh"}}> грн
-                                                            </div>
-                                                        </div>
+
                                                         <div
                                                             onClick={(e) => handleThingClickDelete2(thing)}
-                                                            className="btn btn-close"
-                                                            style={{margin: "0.5vw"}}
-                                                        ></div>
+                                                            className="battonClosed"
+                                                            style={{
+                                                                margin: "0.5vw",
+                                                                zIndex: "99",
+                                                                width: "1.5vw",
+                                                                height: "1.5vw",
+                                                                borderRadius: "50%",
+                                                                // backgroundColor: "#EE3C23",
+                                                                // color: "white",
+                                                                fontSize: "0.8vw",
+                                                                fontWeight: "bold",
+                                                                position: "absolute",
+                                                                right: "-1.3vw",
+                                                                top: "-0.3vw",
+                                                            }}
+                                                        >✕
+                                                        </div>
                                                     </Modal.Header>
                                                     <OneProductInOrders item={thing} cash={true}
                                                                         handleAmountChange={handleAmountChange}
@@ -426,18 +471,26 @@ const NewUIArtem = () => {
                                                             min={1}
                                                             value={thing.amount}
                                                             className="adminFontTable"
-                                                            style={{height: "2.5vh", width: "3vw", borderRadius: "0.7vh", background: "#F2EFE8", borderColor: "#F2EFE8"}}
+                                                            style={{
+                                                                height: "2.5vh",
+                                                                width: "3vw",
+                                                                borderRadius: "0.7vh",
+                                                                background: "#F2EFE8",
+                                                                borderColor: "#F2EFE8"
+                                                            }}
                                                             // onChange={(event) => handleAmountChange1(thing, 'amount', event)}
                                                         />
                                                         <div className="d-flex">
                                                             <div
                                                                 className="d-flex justify-content-center adminFontTable align-items-last"
                                                                 style={{marginLeft: "1.5vw"}}>На
-                                                                аркуші міститься: {thing.newField4} виробів</div>
+                                                                аркуші міститься: {thing.newField4} виробів
+                                                            </div>
                                                             <div
                                                                 className="d-flex justify-content-self-end adminFontTable"
                                                                 style={{marginLeft: "1.5vw"}}
-                                                            > Використано: {thing.newField5} аркушів</div>
+                                                            > Використано: {thing.newField5} аркушів
+                                                            </div>
                                                         </div>
                                                     </div>
                                                 </div>
@@ -457,15 +510,15 @@ const NewUIArtem = () => {
                             )}
                         </div>
                         <div className="d-flex flex-column" style={{marginLeft: "0.3vw"}}>
-                            <div className="containerNewUI containerDetailsThisOrder" style={{border: "0vw"}}>
+                            <div className="containerNewUI containerDetailsThisOrder " style={{border: "0vw"}}>
                                 <div className="paymentmenu">
-                                    <button className="paya" style={{marginTop: "1.4vw"}}>
+                                    <button className="paya " style={{marginTop: "1.4vw"}}>
                                         <p className="print" style={{margin: 0}}>Взяти в роботу</p>
                                     </button>
-                                    <button className="payb">
+                                    <button className="payb grayFonColorBackground ">
 
-                                            <div className="base12"></div>
-                                            <div className="div37">Оплатити</div>
+                                        <div className="base12"></div>
+                                        <div className="div37">Оплатити</div>
 
                                     </button>
 
@@ -473,40 +526,43 @@ const NewUIArtem = () => {
                                     <div className="paye">
                                         <div className="div39">Загальна сума:</div>
                                         <div className="component-1969-13">
-                                            <div className="container-l-color"></div>
-                                            <input className="input-text1" type="text"/>
 
-                                            <div className="component-1969-13-child"></div>
-                                            <div className="label1">грн</div>
+                                            <input className="input-text1"
+                                                   value={`${thisOrder.price} грн`}
+                                                   type="text"/>
+
+
                                         </div>
                                     </div>
 
                                     <div className="payg">
                                         <div className="div42"> Знижка</div>
                                         <div className="component-1969-13">
-                                            <div className="container-l-color"></div>
-                                            <input className="input-text1" type="text"/>
+                                            <input
+                                                className="input-text1"
+                                                // value={thisOrder.User}
+                                                value={`${thisOrder.User.discount} %`}
+                                                type="text"/>
 
-                                            <div className="component-1969-13-child"></div>
-                                            <div className="label1">грн</div>
+
                                         </div>
                                     </div>
                                     <div className="payh">
                                         <div className="div43">К оплаті</div>
                                         <div className="component-1969-13">
-                                            <div className="container-l-color"></div>
 
-                                            <input className="input-text1" type="text"/>
+                                            <input className="input-text1"
+                                                   value={`${thisOrder.price - ((thisOrder.price * thisOrder.User.discount)) / 100} грн`}
+                                                   type="text"/>
 
-                                            <div className="component-1969-13-child"></div>
-                                            <div className="label1">грн</div>
+
                                         </div>
                                     </div>
 
                                 </div>
                             </div>
                         </div>
-                        { thisOrder && thisOrder.User ? (
+                        {thisOrder && thisOrder.User ? (
                             <div className="ClientsMenuAll">
 
                                 <ClientChangerUIArtem
@@ -680,7 +736,7 @@ const NewUIArtem = () => {
         );
     }
 
-    if(error){
+    if (error) {
         return (
             <h1 className="d-flex justify-content-center align-items-center">
                 {error}

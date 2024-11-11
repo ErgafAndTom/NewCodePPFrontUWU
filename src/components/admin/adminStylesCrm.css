@@ -13,7 +13,7 @@
     font-size: 1.4vh;
     font-weight: 400;
     margin: 0.1vw;
-    margin-left: 0.5vw;
+    /*margin-left: 0.5vw;*/
     align-items: flex-start /* Вертикальне вирівнювання тексту */
 }
 .paginationZakaz {

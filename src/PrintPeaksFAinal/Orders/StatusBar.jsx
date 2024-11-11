@@ -2,15 +2,20 @@ import React from 'react';
 
 function StatusBar({item}) {
     const style = {
-        // color:
-        //     item.status === 'створено' ? '#000000' :
-        //         item.status === 'В роботі' ? '#00ffe7' :
-        //             item.status === 'Зроблено' ? '#ffffff' :
-        //                 item.status === 'Відвантажено' ? '#ffea00' :
-        //                     item.status === 'Відміна' ? '#72ff00' :
-        //                         '#ffffff',
-        overflow: 'hidden', whiteSpace: "nowrap", textOverflow: "ellipsis", height: "100%", borderRadius: "6px", padding: "1vw",
-        color: "black",
+        color:
+            item.status === 'Створено' ? '#000000' :
+                item.status === 'В роботі' ? '#00ffe7' :
+                    item.status === 'Зроблено' ? '#ffffff' :
+                        item.status === 'Відвантажено' ? '#ffea00' :
+                            item.status === 'Відміна' ? '#72ff00' :
+                                '#ffffff',
+        overflow: 'hidden',
+        whiteSpace: "nowrap",
+        textOverflow: "ellipsis",
+        // height: "100%",
+        borderRadius: "6px",
+        padding: "1vw",
+        // color: "black",
         backgroundColor:
             item.status === 'Створено' ? '#F2EFE8' :
                 item.status === 'В роботі' ? '#fab416' :

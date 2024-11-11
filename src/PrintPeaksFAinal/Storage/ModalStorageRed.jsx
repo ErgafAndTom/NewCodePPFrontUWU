@@ -1,8 +1,6 @@
-import React, {useCallback, useEffect, useState} from 'react';
-// import {Button} from "react-bootstrap";
+import React, {useEffect, useState} from 'react';
 import Form from "react-bootstrap/Form";
 import axios from '../../api/axiosInstance';
-import redIcon from '../../components/redIcon.svg';
 import StatusBar from "../Orders/StatusBar";
 import {useNavigate} from "react-router-dom";
 
@@ -32,6 +30,7 @@ const ModalStorageRed = ({
         left: `${0}px`
     });
     const [load, setLoad] = useState(false);
+    const [error, setError] = useState(null);
     const [isVisible, setIsVisible] = useState(false);
     const [isAnimating, setIsAnimating] = useState(false);
     const handleCloseModal = () => {
@@ -71,7 +70,7 @@ const ModalStorageRed = ({
     let saveThis = (event) => {
         let data = {
             tableName: tableName,
-            id: item.id,
+            id: thisItemForModal.id,
             tablePosition: tablPosition,
             input: modalInput,
             search: typeSelect,
@@ -84,6 +83,7 @@ const ModalStorageRed = ({
         }
         console.log(data);
         console.log(url);
+        setError(null)
         setLoad(true)
         axios.put(url, data)
             .then(response => {
@@ -97,6 +97,8 @@ const ModalStorageRed = ({
                 if (error.response.status === 403) {
                     navigate('/login');
                 }
+                setError(error.message)
+                setLoad(false)
                 console.log(error.message);
             })
     }
@@ -158,78 +160,88 @@ const ModalStorageRed = ({
         }
     }, [showRed]);
 
-    return (
-        <>
-            {isVisible === true ? (
-                <div className="">
-                    <div style={{
-                        width: "100vw",
-                        zIndex: "99",
-                        height: "100vh",
-                        background: "rgba(0, 0, 0, 0.5)",
-                        opacity: isAnimating ? 1 : 0, // для анимации прозрачности
-                        transition: "opacity 0.1s ease-in-out", // плавная анимация
-                        position: "fixed",
-                        left: "0",
-                        bottom: "0"
-                    }} onClick={handleCloseModal}></div>
-                    <div style={{
-                        ...modalStyle,
-                        zIndex: "100", // модальное окно поверх затемненного фона
-                        position: "fixed",
-                        background: "#dcd9ce",
-                        borderRadius: "1vw",
-                        maxWidth: "90vw", // ограничение по ширине
-                        padding: "0.5vw",
-                        transform: isAnimating ? "translate(-50%, -50%) scale(1)" : "translate(-50%, -30%) scale(0.8)", // анимация масштаба
-                        opacity: isAnimating ? 1 : 0, // анимация прозрачности
-                        transition: "opacity 0.1s ease-in-out, transform 0.1s ease-in-out", // плавная анимация
-                    }} className="shadow-lg">
+    if (thisItemForModal) {
+        return (
+            <>
+                {isVisible === true ? (
+                    <div className="">
                         <div style={{
-                            // height: '90vh',
-                            // overflow: 'auto',
-                        }}>
-                            <Form.Control
-                                type="text"
-                                placeholder={"Значення..."}
-                                value={modalInput}
-                                className="adminFontTable shadow-lg bg-transparent"
-                                onChange={(event) => setModalInput(event.target.value)}
-                                style={{border: "solid 1px #cccabf", borderRadius: "0"}}
-                            />
-                            <button className="adminFontTable"
-                                    onClick={handleCloseModal}>Закрити
-                            </button>
-                            {load && (
-                                <button disabled className="adminFontTable">Збереження
-                                    змін</button>
-                            )}
-                            {!load && (
-                                <button className="adminFontTable" onClick={saveThis}>Зберегти
-                                    зміни</button>
-                            )}
+                            width: "100vw",
+                            zIndex: "99",
+                            height: "100vh",
+                            background: "rgba(0, 0, 0, 0.5)",
+                            opacity: isAnimating ? 1 : 0, // для анимации прозрачности
+                            transition: "opacity 0.1s ease-in-out", // плавная анимация
+                            position: "fixed",
+                            left: "0",
+                            bottom: "0"
+                        }} onClick={handleCloseModal}></div>
+                        <div style={{
+                            ...modalStyle,
+                            zIndex: "100", // модальное окно поверх затемненного фона
+                            position: "fixed",
+                            background: "#dcd9ce",
+                            borderRadius: "1vw",
+                            maxWidth: "90vw", // ограничение по ширине
+                            padding: "0.5vw",
+                            transform: isAnimating ? "translate(-50%, -50%) scale(1)" : "translate(-50%, -30%) scale(0.8)", // анимация масштаба
+                            opacity: isAnimating ? 1 : 0, // анимация прозрачности
+                            transition: "opacity 0.1s ease-in-out, transform 0.1s ease-in-out", // плавная анимация
+                        }} className="shadow-lg">
+                            <div style={{
+                                // height: '90vh',
+                                // overflow: 'auto',
+                            }}>
+                                <Form.Control
+                                    type="text"
+                                    placeholder={"Значення..."}
+                                    value={modalInput}
+                                    className="adminFontTable shadow-lg bg-transparent"
+                                    onChange={(event) => setModalInput(event.target.value)}
+                                    style={{border: "solid 1px #cccabf", borderRadius: "0"}}
+                                />
+                                <button className="adminFontTable"
+                                        onClick={handleCloseModal}>Закрити
+                                </button>
+                                {load && (<>
+                                    <button disabled className="adminFontTable">Збереження
+                                        змін</button>
+                                </>)}
+                                {!load && (
+                                    <>
+                                    <button className="adminFontTable" onClick={saveThis}>Зберегти
+                                        зміни</button>
+                                    </>
+                                )}
+                                {error && (
+                                    <div style={{
+                                        background: "#ff0000",
+                                        color: "black"
+                                    }} className="adminFontTable" >{error}</div>
+                                )}
+                            </div>
                         </div>
                     </div>
-                </div>
-            ) : (
-                <div
-                    // className="adminFontTable redStorageItem d-flex align-content-center justify-content-center m-auto p-0"
-                    // className="CustomOrderTable-cell"
-                    className="d-none"
-                    // style={{
-                    //     overflow: 'hidden',
-                    //     whiteSpace: "nowrap",
-                    //     textOverflow: "ellipsis",
-                    //     height: "100%",
-                    // }}
-                    // >
-                    // {itemData}
-                    // <img src={redIcon} alt="red" className="redIcon"/>
-                >
-                </div>
-            )}
-        </>
-    )
+                ) : (
+                    <div
+                        // className="adminFontTable redStorageItem d-flex align-content-center justify-content-center m-auto p-0"
+                        // className="CustomOrderTable-cell"
+                        className="d-none"
+                        // style={{
+                        //     overflow: 'hidden',
+                        //     whiteSpace: "nowrap",
+                        //     textOverflow: "ellipsis",
+                        //     height: "100%",
+                        // }}
+                        // >
+                        // {itemData}
+                        // <img src={redIcon} alt="red" className="redIcon"/>
+                    >
+                    </div>
+                )}
+            </>
+        )
+    }
 };
 
 export default ModalStorageRed

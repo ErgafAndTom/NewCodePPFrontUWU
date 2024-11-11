@@ -57,6 +57,15 @@
 .promoCodeInputsContainer {
     margin-top: 4.1vw;
 }
+.battonClosed {
+    color: black;
+    cursor: pointer;
+    /*background: #0c4128;*/
+}
+.battonClosed:hover {
+    color: #EE3C23
+    /*background: #ff0000;*/
+}
 .white{
     background: white;
     z-index: 5;

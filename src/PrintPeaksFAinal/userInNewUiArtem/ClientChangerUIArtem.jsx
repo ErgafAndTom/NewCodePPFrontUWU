@@ -14,10 +14,11 @@ import whatsapplogo from "./img/whatsapp.png";
 import telegram from "./img/Telegram-icon-on-transparent-background-PNG.png";
 import FilesButton from "./img/files-icon.png";
 import addclienticons from "./img/Path 13360.png";
-import Tooltip from '../TooltipButton2'; //
+import Tooltip from '../TooltipButton2';
+import {useNavigate} from "react-router-dom"; //
 
 const ClientChangerUIArtem = ({thisOrder, handleThisOrderChange, setNewThisOrder}) => {
-
+    const navigate = useNavigate();
     const [showAddUser, setShowAddUser] = useState(false);
     const [isLoad, setIsLoad] = useState(false);
     const [typeSelect, setTypeSelect] = useState("");
@@ -59,7 +60,7 @@ const ClientChangerUIArtem = ({thisOrder, handleThisOrderChange, setNewThisOrder
         setShow(false);
     };
 
-    console.log(thisOrder);
+    // console.log(thisOrder);
 
     useEffect(() => {
         let data = {
@@ -71,14 +72,14 @@ const ClientChangerUIArtem = ({thisOrder, handleThisOrderChange, setNewThisOrder
         }
         axios.post(`/user/all`, data)
             .then(response => {
-                console.log(response.data);
+                // console.log(response.data);
                 setUsers(response.data)
                 // setPageCount(Math.ceil(response.data.result.count / inPageCount))
             })
             .catch(error => {
-                // if(error.response.status === 403){
-                //     navigate('/login');
-                // }
+                if(error.response.status === 403){
+                    navigate('/login');
+                }
                 console.log(error.message);
             })
     }, [typeSelect]);
@@ -179,7 +180,7 @@ const ClientChangerUIArtem = ({thisOrder, handleThisOrderChange, setNewThisOrder
                                 >
                                     <div className="d-flex">
                                         <div className="adminFont btn btn-sm">
-                                            {thing.clientId} {thing.firstName} {thing.lastName} {thing.familyName}
+                                            {thing.clientId} {thing.firstName} {thing.lastName} {thing.familyName} {thing.discount}
                                         </div>
                                         <div className="adminFont btn btn-sm">
                                             {thing.role}
@@ -223,17 +224,21 @@ const ClientChangerUIArtem = ({thisOrder, handleThisOrderChange, setNewThisOrder
                     <div className="ClientsMenuu" style={{marginTop: "3vh", width: "33.5vw"}}>
                         <div className="d-flex">
                             <div className="left-section">
-                                <button className="ChangeClient" style={{
+                                <Tooltip text="Вибрати клієнта">
+                                <button className="ChangeClient grayFonColorBackground " style={{
                                     width: "3vw",
                                     height: "3.5vw",
                                     marginLeft: "0.3vw",
                                     border: "0px",
-                                    borderRadius: "0.5vw"
+                                    borderRadius: "0.5vw",
+
                                 }} onClick={toggleUserList} title="Вибрати клієнта">
-                                    <img src={ChangeClienticons} alt="ChangeClient"
+                                    <img src={ChangeClienticons} alt="ChangeClient "
                                          style={{width: "1.7vw", height: "1.7hw", marginLeft: "auto"}}
                                          className="ChangeClient-icons"/>
                                 </button>
+                                    </Tooltip>
+                                <Tooltip text="Штрих-код клієнта">
                                 <button className="BarcodeClientMenu" style={{
                                     width: "2.3vw",
                                     height: "3.5vw",
@@ -249,6 +254,7 @@ const ClientChangerUIArtem = ({thisOrder, handleThisOrderChange, setNewThisOrder
                                          className="barcodeclientmenuimg"
                                          onClick={printBarcode}/>
                                 </button>
+                                    </Tooltip>
                                 <img src={profile} alt="Профіль"
                                      style={{width: "3.5vw", marginLeft: "0.3vw",}}
                                      className="profile-photo" onClick={openUserSettings}/>
@@ -310,7 +316,7 @@ const ClientChangerUIArtem = ({thisOrder, handleThisOrderChange, setNewThisOrder
                                     <div className="ProzentClient" style={{transform: "rotate(90deg)", fontSize: "1vw", marginLeft: "0.5vw"}}>%</div>
                                 </div>
 </Tooltip>
-                                <Tooltip text="Файли кліента"><button className="files-button d-flex justify-content-center align-items-center align-content-center" style={{
+                                <Tooltip text="Файли кліента"><button className="files-button d-flex grayFonColorBackground  justify-content-center align-items-center align-content-center" style={{
                                     width: "3vw",
                                     height: "3.5vw",
                                     marginLeft: "0.3vw",
@@ -333,7 +339,7 @@ const ClientChangerUIArtem = ({thisOrder, handleThisOrderChange, setNewThisOrder
 
                             </div>
                             <Tooltip text="Додати кліента">
-                            <button className="addclient" style={{
+                            <button className="addclient grayFonColorBackground " style={{
                                 width: "3vw",
                                 height: "3.5vw",
                                 marginLeft: "0.3vw",

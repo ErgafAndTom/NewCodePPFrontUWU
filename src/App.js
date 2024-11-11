@@ -1,6 +1,7 @@
 import './bootstrap.css';
 import './bootstrap.css.map';
 import './App.css';
+import './Colors.css';
 import './StylesOld.css';
 import './index.css';
 import './global.css';

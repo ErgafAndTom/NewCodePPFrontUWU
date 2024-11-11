@@ -98,7 +98,8 @@ button {
 }
 
 .sub-order {
-    background-color: #F2EFE8;
+    /*background-color: #F2EFE8;*/
+    background-color: #E9E6DA;
     padding: 10px;
     margin-top: 20px;
     border-radius: 12px;

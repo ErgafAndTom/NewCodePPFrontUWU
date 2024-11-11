@@ -88,7 +88,6 @@ body {
     padding: 0.3vw;
     border-radius: 6px;
     cursor: pointer;
-    font-size: 11px;
 }
 
 .CustomOrderTable-toggle-btn:hover {
@@ -100,7 +99,7 @@ body {
     background-color: #F2EFE8;
     border-top: 1px solid #eee;
     border-radius: 12px;
-    /*margin-top: 5px;*/
+    margin: 1vw;
 }
 
 .CustomOrderTable-user-details {
@@ -110,7 +109,7 @@ body {
 }
 
 .CustomOrderTable-order-units {
-
+    display: flex;
 }
 
 .CustomOrderTable-order-unit {
@@ -204,17 +203,19 @@ body {
     border-radius: 8px;
     color: white;
     display: inline-block;
-    font-size: 11px;
+    /*font-size: 11px;*/
 }
 
 .CustomOrderTable-pay-paid {
     background-color: #008249;
+    color: white;
 }
 
 .CustomOrderTable-pay-pending {
     background-color: #EE3C23;
     padding: 0.3vw;
     border-radius: 6px;
+    color: white;
 }
 
 .CustomOrderTable-kassa-btn,
@@ -223,7 +224,6 @@ body {
     padding: 5px;
     border: none;
     border-radius: 12px;
-    font-size: 11px;
     cursor: pointer;
 }
 

@@ -1,29 +1,40 @@
 import React, { Component } from 'react';
 
+
 // Для інлайн-стилів використовуйте такі стилі:
 const tooltipContainerStyle = {
     position: 'relative',
     display: 'inline-block',
     cursor: 'pointer',
+    width: 'auto',
+    maxWidth: '10vw',
+
 };
 
 const tooltipTextStyle = {
+    whiteSpace: 'nowrap',
     visibility: 'hidden',
     width: 'auto',
-    backgroundColor: 'transparent',
-    color: 'black',
+    // maxWidth: '10vw',
+    backgroundColor: '#F2EFE8',
+    color: '#575756',
     textAlign: 'center',
     borderRadius: '6px',
-    // padding: '5px',
+    padding: '0.3vw',
     fontFamily: 'Ink Free, sans-serif',
-    fontSize: '1vw',
+    fontSize: '0.7vw',
     position: 'absolute',
     zIndex: '1',
-    bottom: '105%',
+    bottom: '110%',
     left: '50%',
     transform: 'translateX(-50%)',
     opacity: '0',
     transition: 'opacity 1s',
+    // whiteSpace: 'normal', // Allow wrapping
+    wordWrap: 'break-word', // Break long words
+    maxWidth: '95vw', // Ensure it doesn't exceed viewport width
+    maxHeight: '90vh', // Ensure it doesn't exceed viewport height
+    overflow: 'auto', // Allow scrolling if content exceeds height
 };
 
 const tooltipTextVisibleStyle = {
