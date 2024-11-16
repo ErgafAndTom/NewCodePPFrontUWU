@@ -358,7 +358,7 @@ const ClientChangerUIArtem = ({thisOrder, handleThisOrderChange, setNewThisOrder
                                         {/*    marginLeft: "-31.9vw",*/}
                                         {/*    marginTop: "-20.5vw",*/}
                                         {/*}} alt="www"/>*/}
-                                        <AddUserWindow showAddUser={showAddUser} setShowAddUser={setShowAddUser} user={thisOrder.User}/>
+                                        <AddUserWindow showAddUser={showAddUser} setShowAddUser={setShowAddUser} thisOrder={thisOrder}/>
                                     </div>
                                 }
                             </Tooltip>

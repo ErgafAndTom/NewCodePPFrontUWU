@@ -1,4 +1,8 @@
 import React, {useEffect, useState} from "react";
+import axios from "../../api/axiosInstance";
+import {useNavigate} from "react-router-dom";
+import NewSheetCutBw from "../poslugi/NewSheetCutBw";
+import Loader2 from "../../components/calc/Loader2";
 const styles = {
     inputContainer: {
         display: "flex",
@@ -70,9 +74,13 @@ const styles = {
         cursor: "pointer",
     },
 };
-function AddUserWindow({showAddUser, setShowAddUser, user}) {
+function AddUserWindow({showAddUser, setShowAddUser, thisOrder}) {
+    const navigate = useNavigate();
     const [isVisible, setIsVisible] = useState(false);
+    const [error, setError] = useState(null);
+    const [load, setLoad] = useState(false);
     const [isAnimating, setIsAnimating] = useState(false);
+    const [credentials, setCredentials] = useState({ username: '', email: '', phoneNumber: '', telegram: '', firstName: '', lastName: '', familyName: '', sity: '', nomerNP: '' });
     const handleClose = () => {
         setIsAnimating(false); // Начинаем анимацию закрытия
         setTimeout(() => {
@@ -80,6 +88,35 @@ function AddUserWindow({showAddUser, setShowAddUser, user}) {
             setShowAddUser(false);
         }, 300); // После завершения анимации скрываем модальное окно
     }
+
+    const handleChange = (e) => {
+        setCredentials({
+            ...credentials,
+            [e.target.name]: e.target.value
+        });
+    };
+
+    const handleSaveOrder = (event, valueName) => {
+        let dataToSend = {
+            thisOrderId: thisOrder.id,
+            credentials
+        }
+        setLoad(true)
+        axios.post(`/user/registerInOrder`, dataToSend)
+            .then(response => {
+                console.log(response.data);
+                setLoad(false)
+                handleClose()
+            })
+            .catch(error => {
+                if (error.response.status === 403) {
+                    navigate('/login');
+                }
+                setError(error)
+                setLoad(false)
+                console.log(error.message);
+            })
+    };
 
     useEffect(() => {
         if (showAddUser) {
@@ -132,7 +169,7 @@ function AddUserWindow({showAddUser, setShowAddUser, user}) {
                 }}>
                     <div style={styles.inputContainer}>
                         <span style={styles.icon}>👤</span>
-                        <input type="text" placeholder="Нік" style={styles.input1}/>
+                        <input onChange={handleChange} type="text" value={credentials.username} placeholder="Нік" name="username" style={styles.input1}/>
                         <div style={styles.avatarContainer}>
                             <img
                                 src="path/to/avatar.jpg" // Replace with actual image path
@@ -144,7 +181,7 @@ function AddUserWindow({showAddUser, setShowAddUser, user}) {
 
                     <div style={styles.inputContainer}>
                         <span style={styles.icon}>✈️</span>
-                        <input type="text" placeholder="@telegram" style={styles.input1}/>
+                        <input onChange={handleChange} type="text" value={credentials.telegram} placeholder="@telegram" name="telegram" style={styles.input1}/>
                         <div style={styles.avatarContainer}>
                             <button style={styles.importButton}>Імпорт з Telegram</button>
                         </div>
@@ -152,22 +189,28 @@ function AddUserWindow({showAddUser, setShowAddUser, user}) {
 
                     <div style={styles.inputContainer}>
                         <span style={styles.icon}>📧</span>
-                        <input type="email" placeholder="E-mail" style={styles.input}/>
+                        <input onChange={handleChange} type="email" value={credentials.email} placeholder="E-mail" name="email" style={styles.input}/>
                     </div>
 
                     <div style={styles.inputContainer}>
                         <span style={styles.icon}>📞</span>
-                        <input type="tel" placeholder="Номер телефона" style={styles.input}/>
+                        <input onChange={handleChange} type="tel" value={credentials.phoneNumber} placeholder="Номер телефона" name="phoneNumber" style={styles.input}/>
                     </div>
 
                     <div style={styles.inputContainer}>
                         <span style={styles.novaPoshtaIcon}>Нова Пошта</span>
-                        <input type="text" placeholder="Місто" style={styles.inputSmall}/>
-                        <input type="text" placeholder="Відділення" style={styles.inputSmall}/>
+                        <input onChange={handleChange} type="text" value={credentials.sity} placeholder="Місто" name="sity" style={styles.inputSmall}/>
+                        <input onChange={handleChange} type="text" value={credentials.nomerNP} placeholder="Відділення" name="nomerNP" style={styles.inputSmall}/>
                     </div>
                 </div>
 
-                <button style={styles.addButton}>Додати клієнта</button>
+                <button style={styles.addButton} onClick={handleSaveOrder}>Додати клієнта</button>
+                {load &&
+                    <div style={{color: "red"}}><Loader2/></div>
+                }
+                {error &&
+                    <div style={{color: "red"}}>{error.message}</div>
+                }
             </div>
         </div>
     );
