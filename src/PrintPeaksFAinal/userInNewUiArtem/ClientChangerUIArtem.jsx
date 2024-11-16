@@ -15,7 +15,8 @@ import telegram from "./img/Telegram-icon-on-transparent-background-PNG.png";
 import FilesButton from "./img/files-icon.png";
 import addclienticons from "./img/Path 13360.png";
 import Tooltip from '../TooltipButton2';
-import {useNavigate} from "react-router-dom"; //
+import {useNavigate} from "react-router-dom";
+import AddUserWindow from "../user/AddUserWindow"; //
 
 const ClientChangerUIArtem = ({thisOrder, handleThisOrderChange, setNewThisOrder}) => {
     const navigate = useNavigate();
@@ -315,7 +316,7 @@ const ClientChangerUIArtem = ({thisOrder, handleThisOrderChange, setNewThisOrder
                                     </div>
                                     <div className="ProzentClient" style={{transform: "rotate(90deg)", fontSize: "1vw", marginLeft: "0.5vw"}}>%</div>
                                 </div>
-</Tooltip>
+                                </Tooltip>
                                 <Tooltip text="Файли кліента"><button className="files-button d-flex grayFonColorBackground  justify-content-center align-items-center align-content-center" style={{
                                     width: "3vw",
                                     height: "3.5vw",
@@ -346,20 +347,20 @@ const ClientChangerUIArtem = ({thisOrder, handleThisOrderChange, setNewThisOrder
                                 border: "0px",
                                 borderRadius: "0.5vw"
                             }} onClick={AddNewUser}>
-                                {showAddUser &&
-                                    <div style={{ }} className="position-relative">
-                                        <img src={www} className="position-absolute" style={{
-                                            width: "35.5vw",
-                                            marginLeft: "-31.9vw",
-                                            marginTop: "-20.5vw",
-                                        }} alt="www"/>
-                                    </div>
-                                }
-
                                 <img src={addclienticons} style={{width: "1.5vw",  marginLeft: "auto"}} alt="addclients" className="addclient-icons"
                                      />
 
-                                 </button>
+                            </button>
+                                {showAddUser &&
+                                    <div style={{ }} className="">
+                                        {/*<img src={www} className="position-absolute" style={{*/}
+                                        {/*    width: "35.5vw",*/}
+                                        {/*    marginLeft: "-31.9vw",*/}
+                                        {/*    marginTop: "-20.5vw",*/}
+                                        {/*}} alt="www"/>*/}
+                                        <AddUserWindow showAddUser={showAddUser} setShowAddUser={setShowAddUser} user={thisOrder.User}/>
+                                    </div>
+                                }
                             </Tooltip>
                         </div>
                     </div>
