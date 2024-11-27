@@ -34,10 +34,10 @@ const NewSheetCutBw = ({thisOrder, newThisOrder, setNewThisOrder, selectedThings
     });
     const [material, setMaterial] = useState({
         type: "Папір",
-        thickness: "Тонкі",
+        thickness: "Тонкий",
         material: "",
         materialId: "",
-        typeUse: null
+        typeUse: "Тонкий"
     });
     const [color, setColor] = useState({
         sides: "односторонній",
@@ -70,7 +70,7 @@ const NewSheetCutBw = ({thisOrder, newThisOrder, setNewThisOrder, selectedThings
             orderId: thisOrder.id,
             toCalc: {
                 nameOrderUnit: "Листова продукція Ч/Б",
-                type: "SheetCut",
+                type: "SheetCutBW",
                 size: size,
                 material: material,
                 color: color,
@@ -117,7 +117,7 @@ const NewSheetCutBw = ({thisOrder, newThisOrder, setNewThisOrder, selectedThings
 
     useEffect(() => {
         let dataToSend = {
-            type: "SheetCut",
+            type: "SheetCutBW",
             size: size,
             material: material,
             color: color,
@@ -128,12 +128,15 @@ const NewSheetCutBw = ({thisOrder, newThisOrder, setNewThisOrder, selectedThings
             holes: holes,
             count: count,
         }
+        setLoad(true)
         axios.post(`/calc/pricing`, dataToSend)
             .then(response => {
                 // console.log(response.data);
                 setPricesThis(response.data.prices)
+                setError(null)
             })
             .catch(error => {
+                setError(error)
                 if(error.response.status === 403){
                     navigate('/login');
                 }
@@ -185,7 +188,7 @@ const NewSheetCutBw = ({thisOrder, newThisOrder, setNewThisOrder, selectedThings
                     }}>
                         <div className="d-flex">
                             <div className="m-auto text-center fontProductName ">
-                                Документів / Договору / Дипломної роботи /Курсової роботи / Реферату / Аналізів /
+                                Чорно-білий друк: Документів / Договору / Дипломної роботи /Курсової роботи / Реферату / Аналізів /
                                 Квитків / ...
                             </div>
                             <div
@@ -227,7 +230,7 @@ const NewSheetCutBw = ({thisOrder, newThisOrder, setNewThisOrder, selectedThings
                                             prices={prices}
                                             selectArr={["3,5 мм", "4 мм", "5 мм", "6 мм", "8 мм"]}
                                             name={"Чорно-білий друк на монохромному принтері:"}
-                                            buttonsArr={["Тонкі"]}
+                                            buttonsArr={["Тонкий"]}
                                             typeUse={null}
                                         />
                                         <NewNoModalLamination
@@ -296,6 +299,9 @@ const NewSheetCutBw = ({thisOrder, newThisOrder, setNewThisOrder, selectedThings
                                     </div>
                                 )}
                             </div>
+                            {error &&
+                                <div>{error.message}</div>
+                            }
                             {null === pricesThis ? (
                                 <div style={{width: '50vw'}}>
 

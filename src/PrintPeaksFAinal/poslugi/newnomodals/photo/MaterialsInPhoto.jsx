@@ -4,7 +4,7 @@ import axios from '../../../../api/axiosInstance';
 import UserProfileForm from "../../../user/UserProfileForm";
 import {Navigate, useNavigate} from "react-router-dom";
 
-const MaterialsInPhoto = ({material, setMaterial, count, setCount, prices, type, name, buttonsArr, selectArr, typeUse}) => {
+const MaterialsInPhoto = ({material, setMaterial, count, setCount, prices, type, name, buttonsArr, selectArr, typeUse, size}) => {
     const [paper, setPaper] = useState([]);
     const navigate = useNavigate();
     let handleSelectChange = (e) => {
@@ -60,7 +60,39 @@ const MaterialsInPhoto = ({material, setMaterial, count, setCount, prices, type,
                 column: "id",
                 reverse: false
             },
-            material: material
+            material: material,
+            size: size
+        }
+        axios.post(`/materials/NotAll`, data)
+            .then(response => {
+                console.log(response.data);
+                setPaper(response.data.rows)
+                setMaterial({
+                    ...material,
+                    material: response.data.rows[0].name,
+                    materialId: response.data.rows[0].id,
+                })
+            })
+            .catch(error => {
+                if(error.response.status === 403){
+                    navigate('/login');
+                }
+                console.log(error.message);
+            })
+    }, [size]);
+
+    useEffect(() => {
+        let data = {
+            name: "MaterialsPrices",
+            inPageCount: 999999,
+            currentPage: 1,
+            search: "",
+            columnName: {
+                column: "id",
+                reverse: false
+            },
+            material: material,
+            size: size
         }
         axios.post(`/materials/NotAll`, data)
             .then(response => {
@@ -85,18 +117,18 @@ const MaterialsInPhoto = ({material, setMaterial, count, setCount, prices, type,
                 column: "id",
                 reverse: false
             },
-            material: material
+            material: material,
         }
         axios.post(`/materials/NotAll`, data)
             .then(response => {
                 console.log(response.data);
                 setPaper(response.data.rows)
-                setMaterial({
-                    ...material,
-                    thickness: "Тонкі",
-                    material: response.data.rows[0].name,
-                    materialId: response.data.rows[0].id,
-                })
+                // setMaterial({
+                //     ...material,
+                //     thickness: "Тонкі",
+                //     material: response.data.rows[0].name,
+                //     materialId: response.data.rows[0].id,
+                // })
             })
             .catch(error => {
                 if(error.response.status === 403){
@@ -163,12 +195,15 @@ const MaterialsInPhoto = ({material, setMaterial, count, setCount, prices, type,
                                 value={item.name}
                                 data-id={item.id}
                             >
-                                <>{"id:"}</>
-                                <>{item.id}</>
-                                <>{" "}</>
+                                {/*<>{"id:"}</>*/}
+                                {/*<>{item.id}</>*/}
+                                {/*<>{" "}</>*/}
                                 <>{item.name}</>
                                 <>{" "}</>
-                                <>({item.thickness})</>
+                                <>{item.thickness} gsm</>
+                                {/*<>{"id:"}</>*/}
+                                {/*<>{item.typeUse}</>*/}
+                                {/*<>{" "}</>*/}
                             </option>
                         ))}
                     </select>

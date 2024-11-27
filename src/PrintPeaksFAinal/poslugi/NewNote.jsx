@@ -282,6 +282,9 @@ const NewNote = ({thisOrder, newThisOrder, setNewThisOrder, selectedThings2, sho
                             </div>
                         )}
                     </div>
+                    {error &&
+                        <div>{error.message}</div>
+                    }
                     {null === pricesThis ? (
                         <div style={{width: '50vw'}}>
 

@@ -9,6 +9,7 @@ import SizesInPhoto from "./newnomodals/photo/SizesInPhoto";
 import PhotoPosluga from "./newnomodals/photo/PhotoPosluga";
 import {useNavigate} from "react-router-dom";
 import Loader from "../../components/calc/Loader";
+import NewSheetCutBw from "./NewSheetCutBw";
 
 const NewPhoto = ({thisOrder, newThisOrder, setNewThisOrder, selectedThings2, showNewPhoto, setShowNewPhoto, setThisOrder, setSelectedThings2}) => {
     // const [show, setShow] = useState(false);
@@ -34,18 +35,18 @@ const NewPhoto = ({thisOrder, newThisOrder, setNewThisOrder, selectedThings2, sh
         y: 420
     });
     const [material, setMaterial] = useState({
-        type: "Папір",
+        type: "Фотопапір",
         thickness: "",
-        material: "Офісний папір А3 80-90 г/м2",
+        material: "",
         materialId: "",
-        typeUse: "Фото"
+        typeUse: "А3"
     });
     const [photo, setPhoto] = useState({
         type: "Не потрібно",
-        thickness: "",
-        material: "Офісний папір А3 80-90 г/м2",
+        thickness: "Тонкий",
+        material: "",
         materialId: "",
-        typeUse: "Фото"
+        typeUse: "Тонкий"
     });
     const [color, setColor] = useState({
         sides: "односторонній",
@@ -141,8 +142,10 @@ const NewPhoto = ({thisOrder, newThisOrder, setNewThisOrder, selectedThings2, sh
             .then(response => {
                 // console.log(response.data);
                 setPricesThis(response.data.prices)
+                setError(null)
             })
             .catch(error => {
+                setError(error)
                 if(error.response.status === 403){
                     navigate('/login');
                 }
@@ -215,9 +218,10 @@ const NewPhoto = ({thisOrder, newThisOrder, setNewThisOrder, selectedThings2, sh
                                             count={count}
                                             setCount={setCount}
                                             prices={prices}
+                                            size={size}
                                             selectArr={["3,5 мм", "4 мм", "5 мм", "6 мм", "8 мм"]}
                                             name={"Фото друк на фото принтері:"}
-                                            buttonsArr={["Тонкі",
+                                            buttonsArr={["Тонкий",
                                                 "Середньої щільності",
                                                 "Цупкі", "Самоклеючі"]}
                                             typeUse={"Фото"}
@@ -314,6 +318,9 @@ const NewPhoto = ({thisOrder, newThisOrder, setNewThisOrder, selectedThings2, sh
                                     </div>
                                 )}
                             </div>
+                            {error &&
+                                <div>{error.message}</div>
+                            }
                             {null === pricesThis ? (
                                 <div style={{width: '50vw'}}>
 

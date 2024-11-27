@@ -103,9 +103,11 @@ const Plotter = ({thisOrder, newThisOrder, setNewThisOrder, selectedThings2, sho
             .then(response => {
                 // console.log(response.data);
                 setPrices(response.data)
+                setError(null)
             })
             .catch(error => {
                 console.log(error.message);
+                setError(error)
             })
     }, []);
 
@@ -372,6 +374,9 @@ const Plotter = ({thisOrder, newThisOrder, setNewThisOrder, selectedThings2, sho
                         {/*    <CardProduct key={item.id} name={name} data={data} setData={setData} item={item}/>*/}
                         {/*))}*/}
                     </MDBContainer>
+                    {error &&
+                        <div>{error.message}</div>
+                    }
                     {null === pricesThis ? (
                         <div style={{width: '50vw'}}>
 

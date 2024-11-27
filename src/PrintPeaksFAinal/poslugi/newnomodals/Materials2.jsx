@@ -31,7 +31,7 @@ const Materials2 = ({material, setMaterial, count, setCount, prices, type, name,
                 thickness: e,
                 material: material.material,
                 materialId: material.materialId,
-                typeUse: typeUse
+                typeUse: e
             })
         } else {
             setMaterial({
@@ -39,7 +39,7 @@ const Materials2 = ({material, setMaterial, count, setCount, prices, type, name,
                 thickness: e,
                 material: material.material,
                 materialId: material.materialId,
-                typeUse: typeUse
+                typeUse: e
             })
         }
     }
@@ -90,18 +90,18 @@ const Materials2 = ({material, setMaterial, count, setCount, prices, type, name,
             .then(response => {
                 console.log(response.data);
                 setPaper(response.data.rows)
-                setMaterial({
-                    ...material,
-                    thickness: "Тонкі",
-                    material: response.data.rows[0].name,
-                    materialId: response.data.rows[0].id,
-                })
+                // setMaterial({
+                //     ...material,
+                //     thickness: "Тонкі",
+                //     material: response.data.rows[0].name,
+                //     materialId: response.data.rows[0].id,
+                // })
             })
             .catch(error => {
+                console.log(error.message);
                 if(error.response.status === 403){
                     navigate('/login');
                 }
-                console.log(error.message);
             })
     }, []);
 
@@ -157,7 +157,10 @@ const Materials2 = ({material, setMaterial, count, setCount, prices, type, name,
                                 <>{" "}</>
                                 <>{item.name}</>
                                 <>{" "}</>
-                                <>({item.thickness})</>
+                                <>{item.thickness} gsm</>
+                                <>{"id:"}</>
+                                <>{item.typeUse}</>
+                                <>{" "}</>
                             </option>
                         ))}
                     </select>

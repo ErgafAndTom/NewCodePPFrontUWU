@@ -74,7 +74,7 @@ const styles = {
         cursor: "pointer",
     },
 };
-function AddUserWindow({showAddUser, setShowAddUser, thisOrder}) {
+function AddUserWindow({showAddUser, setShowAddUser, thisOrder, setThisOrder}) {
     const navigate = useNavigate();
     const [isVisible, setIsVisible] = useState(false);
     const [error, setError] = useState(null);
@@ -98,14 +98,15 @@ function AddUserWindow({showAddUser, setShowAddUser, thisOrder}) {
 
     const handleSaveOrder = (event, valueName) => {
         let dataToSend = {
+            ...credentials,
             thisOrderId: thisOrder.id,
-            credentials
         }
         setLoad(true)
         axios.post(`/user/registerInOrder`, dataToSend)
             .then(response => {
                 console.log(response.data);
                 setLoad(false)
+                setThisOrder(response.data)
                 handleClose()
             })
             .catch(error => {

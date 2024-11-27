@@ -51,6 +51,7 @@ const PerepletMet = ({
         thickness: "Тонкі",
         material: "",
         materialId: "",
+        size: "",
         typeUse: null
     });
     const [color, setColor] = useState({
@@ -96,12 +97,13 @@ const PerepletMet = ({
                 holes: holes,
                 holesR: holesR,
                 count: count,
+                pereplet: pereplet,
             }
         };
 
         axios.post(`/orders/OneOrder/OneOrderUnitInOrder`, dataToSend)
             .then(response => {
-                // console.log(response.data);
+                console.log(response.data);
                 setThisOrder(response.data);
                 // setSelectedThings2(response.data.order.OrderUnits || []);
                 setSelectedThings2(response.data.OrderUnits);
@@ -143,18 +145,22 @@ const PerepletMet = ({
             holes: holes,
             holesR: holesR,
             count: count,
+            pereplet: pereplet,
         }
         axios.post(`/calc/pricing`, dataToSend)
             .then(response => {
+                console.log(response.data);
                 setPricesThis(response.data.prices)
+                setError(null)
             })
             .catch(error => {
+                setError(error)
                 if(error.response.status === 403){
                     navigate('/login');
                 }
                 console.log(error.message);
             })
-    }, [size, material, color, lamination, big, cute, cuteLocal, holes, holesR, count]);
+    }, [size, material, color, lamination, big, cute, cuteLocal, holes, holesR, count, pereplet]);
 
     useEffect(() => {
         if (showPerepletMet) {
@@ -331,6 +337,9 @@ const PerepletMet = ({
                                     </div>
                                 )}
                             </div>
+                            {error &&
+                                <div>{error.message}</div>
+                            }
                             {null === pricesThis ? (
                                 <div style={{width: '50vw'}}>
 
@@ -340,32 +349,8 @@ const PerepletMet = ({
                                     <div className="">
 
                                         <div className="fontInfoForPricing">
-                                            Друк: {pricesThis.priceForDrukThisUnit} грн * {pricesThis.skolko} шт
-                                            = {pricesThis.priceForDrukThisUnit * pricesThis.skolko} грн
-                                        </div>
-                                        <div className="fontInfoForPricing">
-                                            Матеріали: {pricesThis.priceForThisUnitOfPapper}грн.
-                                            * {pricesThis.skolko} шт
-                                            = {pricesThis.priceForThisUnitOfPapper * pricesThis.skolko}грн.
-                                        </div>
-
-                                        <div className="fontInfoForPricing">
-                                            Ламінація: {pricesThis.priceForThisUnitOfLamination} грн
-                                            * {pricesThis.skolko} шт
-                                            = {pricesThis.priceForThisAllUnitsOfLamination} грн
-                                        </div>
-                                        <div className="fontInfoForPricing">
-                                            Згинання {pricesThis.priceForThisUnitOfBig} грн * {count} шт
-                                            = {pricesThis.priceForAllUnitsOfBig} грн
-                                        </div>
-                                        <div className=" fontInfoForPricing">
-                                            Свердління отворів: {pricesThis.priceForThisUnitOfCute} грн * {count} шт
-                                            = {pricesThis.priceForAllUnitsOfCute} грн
-                                        </div>
-                                        <div className="fontInfoForPricing">
-                                            Суруглення кутів: {pricesThis.priceForThisUnitOfHoles} грн * {count} шт
-                                            = {pricesThis.priceForAllUnitsOfHoles} грн
-
+                                            Брушурування {pereplet.material} {pereplet.size}: {pricesThis.priceForOneOfPereplet} грн * {count} шт
+                                             = {pricesThis.price} грн
                                         </div>
                                         {/*<div className="fontInfoForPricing">*/}
                                         {/*    {pricesThis.priceForThisUnitOfPapper * pricesThis.skolko}+*/}
@@ -379,13 +364,13 @@ const PerepletMet = ({
                                         <div className="fontInfoForPricing1">
                                             Загалом: {pricesThis.price} грн
                                         </div>
-                                        <div className="fontInfoForPricing">
-                                            - З одного аркуша A3 можливо
-                                            зробити {pricesThis.skolkoListovNaOdin} виробів
-                                        </div>
-                                        <div className="fontInfoForPricing">
-                                            - Затрачено {pricesThis.skolko} аркушів (SR A3)
-                                        </div>
+                                        {/*<div className="fontInfoForPricing">*/}
+                                        {/*    - З одного аркуша A3 можливо*/}
+                                        {/*    зробити {pricesThis.skolkoListovNaOdin} виробів*/}
+                                        {/*</div>*/}
+                                        {/*<div className="fontInfoForPricing">*/}
+                                        {/*    - Затрачено {pricesThis.skolko} аркушів (SR A3)*/}
+                                        {/*</div>*/}
                                     </div>
 
 

@@ -18,7 +18,7 @@ import Tooltip from '../TooltipButton2';
 import {useNavigate} from "react-router-dom";
 import AddUserWindow from "../user/AddUserWindow"; //
 
-const ClientChangerUIArtem = ({thisOrder, handleThisOrderChange, setNewThisOrder}) => {
+const ClientChangerUIArtem = ({thisOrder, handleThisOrderChange, setNewThisOrder, setThisOrder}) => {
     const navigate = useNavigate();
     const [showAddUser, setShowAddUser] = useState(false);
     const [isLoad, setIsLoad] = useState(false);
@@ -358,7 +358,7 @@ const ClientChangerUIArtem = ({thisOrder, handleThisOrderChange, setNewThisOrder
                                         {/*    marginLeft: "-31.9vw",*/}
                                         {/*    marginTop: "-20.5vw",*/}
                                         {/*}} alt="www"/>*/}
-                                        <AddUserWindow showAddUser={showAddUser} setShowAddUser={setShowAddUser} thisOrder={thisOrder}/>
+                                        <AddUserWindow showAddUser={showAddUser} setShowAddUser={setShowAddUser} thisOrder={thisOrder} setThisOrder={setThisOrder}/>
                                     </div>
                                 }
                             </Tooltip>

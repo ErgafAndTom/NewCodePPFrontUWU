@@ -28,8 +28,8 @@ const ModalSize = ({size, setSize, type, buttonsArr, color, setColor, count, set
             // {name: "SR А3 (310 х 440 мм)", x: 310, y: 440},
             // {name: "90х50 мм", x: 90, y: 50},
             // {name: "85x55 мм", x: 85, y: 55},
-            {name: "100х150 мм", x: 100, y: 150},
-            // {name: "200х100 мм", x: 200, y: 100},
+            {name: "100 х 150 мм", x: 100, y: 150},
+            {name: "130 х 180 мм", x: 130, y: 180},
             // {name: "50х50 мм", x: 50, y: 50},
             // {name: "60х60 мм", x: 60, y: 60},
             // {name: "70х70 мм", x: 70, y: 70},
@@ -38,7 +38,7 @@ const ModalSize = ({size, setSize, type, buttonsArr, color, setColor, count, set
             // {name: "100x100 мм", x: 100, y: 100},
             // {name: "120х120 мм", x: 120, y: 120},
             // {name: "130х180 мм", x: 130, y: 180},
-            {name: "Polaroid(72х86 мм)", x: 72, y: 86},
+            {name: "Polaroid (72 х 86 мм)", x: 72, y: 86},
         ]
         minXYValue = 45
         maxXYValue = 445

@@ -108,8 +108,10 @@ const Vishichka = ({
                 // setSelectedThings2(response.data.order.OrderUnits || []);
                 setSelectedThings2(response.data.OrderUnits);
                 setShowVishichka(false)
+                setError(null)
             })
             .catch(error => {
+                setError(error)
                 if(error.response.status === 403){
                     navigate('/login');
                 }
@@ -330,6 +332,9 @@ const Vishichka = ({
                                     </div>
                                 )}
                             </div>
+                            {error &&
+                                <div>{error.message}</div>
+                            }
                             {null === pricesThis ? (
                                 <div style={{width: '50vw'}}>
 

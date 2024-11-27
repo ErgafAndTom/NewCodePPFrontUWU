@@ -62,6 +62,7 @@ const NewNoModalLamination = ({lamination, setLamination, prices, buttonsArr, se
                 material: lamination.material,
                 materialId: lamination.materialId,
                 thickness: lamination.size,
+                typeUse: "А3"
             }
         }
         axios.post(`/materials/NotAll`, data)
@@ -72,7 +73,7 @@ const NewNoModalLamination = ({lamination, setLamination, prices, buttonsArr, se
                 //     ...lamination,
                 //     material: response.data.rows[0].name,
                 //     materialId: response.data.rows[0].id,
-                //     size: "125 мкм"
+                //     size: `${response.data.rows[0].thickness} мкм`
                 // })
             })
             .catch(error => {

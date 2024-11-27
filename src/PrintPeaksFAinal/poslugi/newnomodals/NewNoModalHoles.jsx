@@ -13,10 +13,10 @@ const iconArray = [
     holeIcon1,
     holeIcon2,
     holeIcon3,
-    holeIcon4,
-    holeIcon5,
-    holeIcon6,
-    holeIcon7,
+    // holeIcon4,
+    // holeIcon5,
+    // holeIcon6,
+    // holeIcon7,
 ];
 
 const NewNoModalHoles = ({holes, setHoles, holesR, setHolesR, prices, buttonsArr, selectArr}) => {

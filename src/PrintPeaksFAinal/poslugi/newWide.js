@@ -129,9 +129,11 @@ const NewWide = ({thisOrder, newThisOrder, setNewThisOrder, selectedThings2, set
             .then(response => {
                 // console.log(response.data);
                 setPricesThis(response.data.prices)
+                setError(null)
             })
             .catch(error => {
                 console.log(error.message);
+                setError(error)
             })
     }, [size, material, color, lamination, big, cute, cuteLocal, holes, holesR, count]);
 
@@ -181,7 +183,6 @@ const NewWide = ({thisOrder, newThisOrder, setNewThisOrder, selectedThings2, set
                             <div className="adminFont m-auto text-center fontProductName">
                                 Великі плакати / Креслення / Фотографії / Афіши / Лекала / ...
                             </div>
-                            y
                             <div
                                 className="btn btn-close btn-lg"
                                 style={{
@@ -276,6 +277,9 @@ const NewWide = ({thisOrder, newThisOrder, setNewThisOrder, selectedThings2, set
                                     </div>
                                 )}
                             </div>
+                            {error &&
+                                <div>{error.message}</div>
+                            }
                             {null === pricesThis ? (
                                 <div style={{width: '50vw'}}>
 

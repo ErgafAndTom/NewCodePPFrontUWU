@@ -554,8 +554,6 @@ const NewUIArtem = () => {
                                             <input className="input-text1"
                                                    value={`${thisOrder.price - ((thisOrder.price * thisOrder.User.discount)) / 100} грн`}
                                                    type="text"/>
-
-
                                         </div>
                                     </div>
 
@@ -568,6 +566,7 @@ const NewUIArtem = () => {
                                 <ClientChangerUIArtem
                                     client={thisOrder.User}
                                     thisOrder={thisOrder}
+                                    setThisOrder={setThisOrder}
                                     setNewThisOrder={setNewThisOrder}
                                     handleThisOrderChange={handleThisOrderChange}
                                 />

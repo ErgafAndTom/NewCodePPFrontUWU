@@ -45,10 +45,10 @@ const NewSheetCut = ({
     });
     const [material, setMaterial] = useState({
         type: "Папір",
-        thickness: "Тонкі",
+        thickness: "Тонкий",
         material: "",
         materialId: "",
-        typeUse: null
+        typeUse: "Тонкий"
     });
     const [color, setColor] = useState({
         sides: "односторонній",
@@ -144,8 +144,10 @@ const NewSheetCut = ({
         axios.post(`/calc/pricing`, dataToSend)
             .then(response => {
                 setPricesThis(response.data.prices)
+                setError(null)
             })
             .catch(error => {
+                setError(error)
                 if(error.response.status === 403){
                     navigate('/login');
                 }
@@ -234,9 +236,9 @@ const NewSheetCut = ({
                                             prices={prices}
                                             selectArr={["3,5 мм", "4 мм", "5 мм", "6 мм", "8 мм"]}
                                             name={"Чорно-білий друк на монохромному принтері:"}
-                                            buttonsArr={["Тонкі",
-                                                "Середньої щільності",
-                                                "Цупкі", "Самоклеючі"]}
+                                            buttonsArr={["Тонкий",
+                                                "Середній",
+                                                "Цупкий", "Самоклеючі"]}
                                             typeUse={null}
                                         />
                                         <NewNoModalLamination
@@ -319,6 +321,9 @@ const NewSheetCut = ({
                                     </div>
                                 )}
                             </div>
+                            {error &&
+                                <div>{error.message}</div>
+                            }
                             {null === pricesThis ? (
                                 <div style={{width: '50vw'}}>
 
@@ -347,11 +352,11 @@ const NewSheetCut = ({
                                             = {pricesThis.priceForAllUnitsOfBig} грн
                                         </div>
                                         <div className=" fontInfoForPricing">
-                                            Свердління отворів: {pricesThis.priceForThisUnitOfCute} грн * {count} шт
+                                            Скруглення кутів: {pricesThis.priceForThisUnitOfCute} грн * {count} шт
                                             = {pricesThis.priceForAllUnitsOfCute} грн
                                         </div>
                                         <div className="fontInfoForPricing">
-                                            Суруглення кутів: {pricesThis.priceForThisUnitOfHoles} грн * {count} шт
+                                             Свердління отворів: {pricesThis.priceForThisUnitOfHoles} грн * {count} шт
                                             = {pricesThis.priceForAllUnitsOfHoles} грн
 
                                         </div>

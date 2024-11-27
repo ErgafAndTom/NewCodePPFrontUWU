@@ -52,10 +52,10 @@ const ModalSize = ({size, setSize, type, buttonsArr, color, setColor, count, set
         invalid = `Будь-ласка введіть розмір від ${minXYValue} до ${maxXYValue} (y до ${yMaxValue}).`
     } else if (type === "SheetCutBw") {
         formats = [
-            {name: "А6 (105 х 148 мм)", x: 105, y: 148},
-            {name: "A5 (148 х 210 мм)", x: 148, y: 210},
+            // {name: "А6 (105 х 148 мм)", x: 105, y: 148},
+            // {name: "A5 (148 х 210 мм)", x: 148, y: 210},
             {name: "A4 (210 x 297 мм)", x: 210, y: 297},
-            {name: "А3 (297 х 420 мм)", x: 297, y: 420},
+            // {name: "А3 (297 х 420 мм)", x: 297, y: 420},
         ]
         minXYValue = 45
         maxXYValue = 445

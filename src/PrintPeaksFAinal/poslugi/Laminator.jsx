@@ -140,8 +140,10 @@ const Laminator = ({
         axios.post(`/calc/pricing`, dataToSend)
             .then(response => {
                 setPricesThis(response.data.prices)
+                setError(null)
             })
             .catch(error => {
+                setError(error)
                 if(error.response.status === 403){
                     navigate('/login');
                 }
@@ -314,6 +316,9 @@ const Laminator = ({
                                     </div>
                                 )}
                             </div>
+                            {error &&
+                                <div>{error.message}</div>
+                            }
                             {null === pricesThis ? (
                                 <div style={{width: '50vw'}}>
 
