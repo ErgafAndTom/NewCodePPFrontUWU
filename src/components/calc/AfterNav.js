@@ -54,8 +54,8 @@ const AfterNav = () => {
     return (
         <div>
             <Routes>
-                <Route path="/" element={<MainWindow/>} />
                 <Route path="/" element={<Desktop/>} />
+                {/*<Route path="/" element={<Desktop/>} />*/}
                 <Route path="/files" element={<Files/>} />
                 <Route path="/createOrder" element={<CreateOrder/>} />
                 <Route path="/login" element={<Login/>} />

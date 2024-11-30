@@ -113,6 +113,23 @@ const Vishichka = ({
             .catch(error => {
                 setError(error)
                 if(error.response.status === 403){
+                    if (error) {
+                        if (error.response) {
+                            if (typeof error.response.status === 'undefined') {
+                                // Handle the scenario where status is undefined
+                                console.log('Error response status is undefined');
+                            } else {
+                                // Handle other cases where status is defined
+                                console.log('Error response status is:', error.response.status);
+                            }
+                        } else {
+                            // Handle cases where there is no error response
+                            console.log('Error response is undefined');
+                        }
+                    } else {
+                        // Handle cases where error is not present
+                        console.log('No error occurred');
+                    }
                     navigate('/login');
                 }
                 console.log(error.message);
@@ -170,246 +187,251 @@ const Vishichka = ({
         }
     }, [showVishichka]);
 
-    return (
-        <>
-            {isVisible === true ? (
-                <div>
-                    <div
-                        style={{
-                            width: "100vw",
-                            zIndex: "99",
-                            height: "100vh",
-                            background: "rgba(0, 0, 0, 0.5)",
-                            opacity: isAnimating ? 1 : 0, // для анимации прозрачности
-                            transition: "opacity 0.3s ease-in-out", // плавная анимация
+    if (pricesThis) {
+        return (
+            <>
+                {isVisible === true ? (
+                    <div>
+                        <div
+                            style={{
+                                width: "100vw",
+                                zIndex: "99",
+                                height: "100vh",
+                                background: "rgba(0, 0, 0, 0.5)",
+                                opacity: isAnimating ? 1 : 0, // для анимации прозрачности
+                                transition: "opacity 0.3s ease-in-out", // плавная анимация
+                                position: "fixed",
+                                left: "0",
+                                bottom: "0"
+                            }}
+                            onClick={handleClose}
+                        ></div>
+                        <div className="d-flex flex-column" style={{
+                            zIndex: "100",
                             position: "fixed",
-                            left: "0",
-                            bottom: "0"
-                        }}
-                        onClick={handleClose}
-                    ></div>
-                    <div className="d-flex flex-column" style={{
-                        zIndex: "100",
-                        position: "fixed",
-                        background: "#dcd9ce",
-                        top: "50%",
-                        left: "50%",
-                        transform: isAnimating ? "translate(-50%, -50%) scale(1)" : "translate(-50%, -50%) scale(0.8)", // анимация масштаба
-                        opacity: isAnimating ? 1 : 0, // анимация прозрачности
-                        transition: "opacity 0.3s ease-in-out, transform 0.3s ease-in-out", // плавная анимация
-                        borderRadius: "1vw",
-                        width: "95vw",
-                        height: "95vh",
-                        // padding: "20px"
-                    }}>
-                        <div className="d-flex">
-                            <div className="m-auto text-center fontProductName">
-                                Висічка
-                            </div>
-                            <div
-                                className="btn btn-close btn-lg"
-                                style={{
-                                    margin: "0.5vw",
-                                }}
-                                onClick={handleClose}
-                            >
-                            </div>
-                        </div>
-                        <div className="d-flex flex-column">
-                            <MDBContainer fluid style={{width: '100%'}}>
-                                <Row xs={1} md={6} className="">
-                                    <div className="d-flex flex-column">
-                                        <NewNoModalSize
-                                            size={size}
-                                            setSize={setSize}
-                                            prices={prices}
-                                            type={"SheetCut"}
-                                            buttonsArr={["односторонній", "двосторонній",]}
-                                            color={color}
-                                            setColor={setColor}
-                                            count={count}
-                                            setCount={setCount}
-                                            defaultt={"А3 (297 х 420 мм)"}
-                                        />
-                                        {/*<NewNoModalMaterial*/}
-                                        <Materials2
-                                            material={material}
-                                            setMaterial={setMaterial}
-                                            count={count}
-                                            setCount={setCount}
-                                            prices={prices}
-                                            selectArr={["3,5 мм", "4 мм", "5 мм", "6 мм", "8 мм"]}
-                                            name={"Чорно-білий друк на монохромному принтері:"}
-                                            buttonsArr={["Цупкі", "Самоклеючі"]}
-                                            typeUse={null}
-                                        />
-                                        <VishichkaVibor
-                                            size={size}
-                                            vishichka={vishichka}
-                                            setVishichka={setVishichka}
-                                            prices={prices}
-                                            type={"SheetCut"}
-                                            buttonsArr={["З плотерною надсічкою на надрукованих аркушах", "З плотерною порізкою стікерпаків", "З плотерною порізкою окремими виробами",]}
-                                            defaultt={"А3 (297 х 420 мм)"}
-                                        />
-                                        {/*<NewNoModalLamination*/}
-                                        {/*    lamination={lamination}*/}
-                                        {/*    setLamination={setLamination}*/}
-                                        {/*    prices={prices}*/}
-                                        {/*    type={"SheetCut"}*/}
-                                        {/*    buttonsArr={["З глянцевим ламінуванням",*/}
-                                        {/*        "З матовим ламінуванням",*/}
-                                        {/*        "З ламінуванням Soft Touch",]}*/}
-                                        {/*    selectArr={["30", "80", "100", "125", "250"]}*/}
-                                        {/*/>*/}
-                                        {/*<NewNoModalCornerRounding*/}
-                                        {/*    big={big}*/}
-                                        {/*    setBig={setBig}*/}
-                                        {/*    prices={prices}*/}
-                                        {/*    type={"SheetCut"}*/}
-                                        {/*    buttonsArr={[]}*/}
-                                        {/*    selectArr={["", "1", "2", "3", "4", "5", "6", "7", "8", "9"]}*/}
-                                        {/*/>*/}
-                                        {/*<NewNoModalCute*/}
-                                        {/*    cute={cute}*/}
-                                        {/*    setCute={setCute}*/}
-                                        {/*    cuteLocal={cuteLocal}*/}
-                                        {/*    setCuteLocal={setCuteLocal}*/}
-                                        {/*    prices={prices}*/}
-                                        {/*    type={"SheetCut"}*/}
-                                        {/*    buttonsArr={[]}*/}
-                                        {/*    selectArr={["3", "6", "8", "10", "13"]}*/}
-                                        {/*/>*/}
-                                        {/*<NewNoModalHoles*/}
-                                        {/*    holes={holes}*/}
-                                        {/*    setHoles={setHoles}*/}
-                                        {/*    holesR={holesR}*/}
-                                        {/*    setHolesR={setHolesR}*/}
-                                        {/*    prices={prices}*/}
-                                        {/*    type={"SheetCut"}*/}
-                                        {/*    buttonsArr={[]}*/}
-                                        {/*    selectArr={["", "3,5 мм", "4 мм", "5 мм", "6 мм", "8 мм"]}*/}
-                                        {/*/>*/}
-                                    </div>
-                                </Row>
-                            </MDBContainer>
+                            background: "#dcd9ce",
+                            top: "50%",
+                            left: "50%",
+                            transform: isAnimating ? "translate(-50%, -50%) scale(1)" : "translate(-50%, -50%) scale(0.8)", // анимация масштаба
+                            opacity: isAnimating ? 1 : 0, // анимация прозрачности
+                            transition: "opacity 0.3s ease-in-out, transform 0.3s ease-in-out", // плавная анимация
+                            borderRadius: "1vw",
+                            width: "95vw",
+                            height: "95vh",
+                            // padding: "20px"
+                        }}>
                             <div className="d-flex">
-                                {thisOrder && (
-                                    <div
-                                        className="d-flex align-content-between justify-content-between"
-                                        style={{
-                                            width: "90vw",
-                                            marginLeft: "2.5vw",
-                                            fontFamily: "Gotham",
-                                            fontWeight: "bold",
-                                            display: 'flex',
-                                            justifyContent: 'center',
-                                            alignItems: 'center',
-                                            transition: "all 0.3s ease",
-                                            height: '3vw',
-                                        }}
-                                    >
-                                        <div
-                                            className="btn btn-warning" style={{
-                                            borderRadius: '0.627vw',
-                                            // border: '0.08vw solid gray',
-                                            padding: '0.2vw 0.7vw',
-                                        }}
-                                            onClick={addNewOrderUnit}
-                                        >
-                                            Додати до замовлення
+                                <div className="m-auto text-center fontProductName">
+                                    Висічка
+                                </div>
+                                <div
+                                    className="btn btn-close btn-lg"
+                                    style={{
+                                        margin: "0.5vw",
+                                    }}
+                                    onClick={handleClose}
+                                >
+                                </div>
+                            </div>
+                            <div className="d-flex flex-column">
+                                <MDBContainer fluid style={{width: '100%'}}>
+                                    <Row xs={1} md={6} className="">
+                                        <div className="d-flex flex-column">
+                                            <NewNoModalSize
+                                                size={size}
+                                                setSize={setSize}
+                                                prices={prices}
+                                                type={"SheetCut"}
+                                                buttonsArr={["односторонній", "двосторонній",]}
+                                                color={color}
+                                                setColor={setColor}
+                                                count={count}
+                                                setCount={setCount}
+                                                defaultt={"А3 (297 х 420 мм)"}
+                                            />
+                                            {/*<NewNoModalMaterial*/}
+                                            <Materials2
+                                                material={material}
+                                                setMaterial={setMaterial}
+                                                count={count}
+                                                setCount={setCount}
+                                                prices={prices}
+                                                selectArr={["3,5 мм", "4 мм", "5 мм", "6 мм", "8 мм"]}
+                                                name={"Чорно-білий друк на монохромному принтері:"}
+                                                buttonsArr={["Тонкий",
+                                                    "Середній",
+                                                    "Цупкий", "Самоклеючі"]}
+                                                typeUse={null}
+                                            />
+                                            <VishichkaVibor
+                                                size={size}
+                                                vishichka={vishichka}
+                                                setVishichka={setVishichka}
+                                                prices={prices}
+                                                type={"SheetCut"}
+                                                buttonsArr={["З плотерною надсічкою на надрукованих аркушах", "З плотерною порізкою стікерпаків", "З плотерною порізкою окремими виробами",]}
+                                                defaultt={"А3 (297 х 420 мм)"}
+                                            />
+                                            {/*<NewNoModalLamination*/}
+                                            {/*    lamination={lamination}*/}
+                                            {/*    setLamination={setLamination}*/}
+                                            {/*    prices={prices}*/}
+                                            {/*    type={"SheetCut"}*/}
+                                            {/*    buttonsArr={["З глянцевим ламінуванням",*/}
+                                            {/*        "З матовим ламінуванням",*/}
+                                            {/*        "З ламінуванням Soft Touch",]}*/}
+                                            {/*    selectArr={["30", "80", "100", "125", "250"]}*/}
+                                            {/*/>*/}
+                                            {/*<NewNoModalCornerRounding*/}
+                                            {/*    big={big}*/}
+                                            {/*    setBig={setBig}*/}
+                                            {/*    prices={prices}*/}
+                                            {/*    type={"SheetCut"}*/}
+                                            {/*    buttonsArr={[]}*/}
+                                            {/*    selectArr={["", "1", "2", "3", "4", "5", "6", "7", "8", "9"]}*/}
+                                            {/*/>*/}
+                                            {/*<NewNoModalCute*/}
+                                            {/*    cute={cute}*/}
+                                            {/*    setCute={setCute}*/}
+                                            {/*    cuteLocal={cuteLocal}*/}
+                                            {/*    setCuteLocal={setCuteLocal}*/}
+                                            {/*    prices={prices}*/}
+                                            {/*    type={"SheetCut"}*/}
+                                            {/*    buttonsArr={[]}*/}
+                                            {/*    selectArr={["3", "6", "8", "10", "13"]}*/}
+                                            {/*/>*/}
+                                            {/*<NewNoModalHoles*/}
+                                            {/*    holes={holes}*/}
+                                            {/*    setHoles={setHoles}*/}
+                                            {/*    holesR={holesR}*/}
+                                            {/*    setHolesR={setHolesR}*/}
+                                            {/*    prices={prices}*/}
+                                            {/*    type={"SheetCut"}*/}
+                                            {/*    buttonsArr={[]}*/}
+                                            {/*    selectArr={["", "3,5 мм", "4 мм", "5 мм", "6 мм", "8 мм"]}*/}
+                                            {/*/>*/}
                                         </div>
-                                        {/*<div*/}
-                                        {/*    className="btn btn-warning" style={{*/}
-                                        {/*    borderRadius: '0.627vw',*/}
-                                        {/*    border: '0.08vw solid gray',*/}
-                                        {/*    padding: '0.2vw 0.7vw',*/}
-                                        {/*}}*/}
-                                        {/*    // onClick={handleThingClickAndHide}*/}
-                                        {/*>*/}
-                                        {/*    Додати до пресетів*/}
-                                        {/*</div>*/}
+                                    </Row>
+                                </MDBContainer>
+                                <div className="d-flex">
+                                    {thisOrder && (
+                                        <div
+                                            className="d-flex align-content-between justify-content-between"
+                                            style={{
+                                                width: "90vw",
+                                                marginLeft: "2.5vw",
+                                                fontFamily: "Gotham",
+                                                fontWeight: "bold",
+                                                display: 'flex',
+                                                justifyContent: 'center',
+                                                alignItems: 'center',
+                                                transition: "all 0.3s ease",
+                                                height: '3vw',
+                                            }}
+                                        >
+                                            <div
+                                                className="btn btn-warning" style={{
+                                                borderRadius: '0.627vw',
+                                                // border: '0.08vw solid gray',
+                                                padding: '0.2vw 0.7vw',
+                                            }}
+                                                onClick={addNewOrderUnit}
+                                            >
+                                                Додати до замовлення
+                                            </div>
+                                            {/*<div*/}
+                                            {/*    className="btn btn-warning" style={{*/}
+                                            {/*    borderRadius: '0.627vw',*/}
+                                            {/*    border: '0.08vw solid gray',*/}
+                                            {/*    padding: '0.2vw 0.7vw',*/}
+                                            {/*}}*/}
+                                            {/*    // onClick={handleThingClickAndHide}*/}
+                                            {/*>*/}
+                                            {/*    Додати до пресетів*/}
+                                            {/*</div>*/}
+                                        </div>
+                                    )}
+                                </div>
+                                {error &&
+                                    <div>{error.message}</div>
+                                }
+                                {null === pricesThis ? (
+                                    <div style={{width: '50vw'}}>
+
+                                    </div>
+                                ) : (
+                                    <div className="d-flex justify-content-between pricesBlockContainer">
+                                        <div className="">
+
+                                            <div className="fontInfoForPricing">
+                                                Друк: {pricesThis.priceForDrukThisUnit} грн * {pricesThis.skolko} шт
+                                                = {pricesThis.priceForDrukThisUnit * pricesThis.skolko} грн
+                                            </div>
+                                            <div className="fontInfoForPricing">
+                                                Матеріали: {pricesThis.priceForThisUnitOfPapper}грн.
+                                                * {pricesThis.skolko} шт
+                                                = {pricesThis.priceForThisUnitOfPapper * pricesThis.skolko}грн.
+                                            </div>
+
+                                            {/*<div className="fontInfoForPricing">*/}
+                                            {/*    Ламінація: {pricesThis.priceForThisUnitOfLamination} грн*/}
+                                            {/*    * {pricesThis.skolko} шт*/}
+                                            {/*    = {pricesThis.priceForThisAllUnitsOfLamination} грн*/}
+                                            {/*</div>*/}
+                                            <div className="fontInfoForPricing">
+                                                Висічка {pricesThis.priceForThisUnitOfVishichka} грн * {count} шт
+                                                = {pricesThis.priceForAllUnitsOfVishichka} грн
+                                            </div>
+                                            {/*<div className=" fontInfoForPricing">*/}
+                                            {/*    Свердління отворів: {pricesThis.priceForThisUnitOfCute} грн * {count} шт*/}
+                                            {/*    = {pricesThis.priceForAllUnitsOfCute} грн*/}
+                                            {/*</div>*/}
+                                            {/*<div className="fontInfoForPricing">*/}
+                                            {/*    Суруглення кутів: {pricesThis.priceForThisUnitOfHoles} грн * {count} шт*/}
+                                            {/*    = {pricesThis.priceForAllUnitsOfHoles} грн*/}
+
+                                            {/*</div>*/}
+                                            {/*<div className="fontInfoForPricing">*/}
+                                            {/*    {pricesThis.priceForThisUnitOfPapper * pricesThis.skolko}+*/}
+                                            {/*    {pricesThis.priceForDrukThisUnit * pricesThis.skolko}+*/}
+                                            {/*    {pricesThis.priceForThisAllUnitsOfLamination}+*/}
+                                            {/*    {pricesThis.priceForAllUnitsOfBig}+*/}
+                                            {/*    {pricesThis.priceForAllUnitsOfCute}+*/}
+                                            {/*    {pricesThis.priceForAllUnitsOfHoles}=*/}
+                                            {/*    {pricesThis.price}*/}
+                                            {/*</div>*/}
+                                            <div className="fontInfoForPricing1">
+                                                Загалом: {pricesThis.price} грн
+                                            </div>
+                                            <div className="fontInfoForPricing">
+                                                - З одного аркуша A3 можливо
+                                                зробити {pricesThis.skolkoListovNaOdin} виробів
+                                            </div>
+                                            <div className="fontInfoForPricing">
+                                                - Затрачено {pricesThis.skolko} аркушів (SR A3)
+                                            </div>
+                                        </div>
+
+
+                                        <img
+                                            className="versant80-img-icon"
+                                            alt="sssss"
+                                            src={versantIcon}
+                                        />
                                     </div>
                                 )}
                             </div>
-                            {error &&
-                                <div>{error.message}</div>
-                            }
-                            {null === pricesThis ? (
-                                <div style={{width: '50vw'}}>
-
-                                </div>
-                            ) : (
-                                <div className="d-flex justify-content-between pricesBlockContainer">
-                                    <div className="">
-
-                                        <div className="fontInfoForPricing">
-                                            Друк: {pricesThis.priceForDrukThisUnit} грн * {pricesThis.skolko} шт
-                                            = {pricesThis.priceForDrukThisUnit * pricesThis.skolko} грн
-                                        </div>
-                                        <div className="fontInfoForPricing">
-                                            Матеріали: {pricesThis.priceForThisUnitOfPapper}грн.
-                                            * {pricesThis.skolko} шт
-                                            = {pricesThis.priceForThisUnitOfPapper * pricesThis.skolko}грн.
-                                        </div>
-
-                                        {/*<div className="fontInfoForPricing">*/}
-                                        {/*    Ламінація: {pricesThis.priceForThisUnitOfLamination} грн*/}
-                                        {/*    * {pricesThis.skolko} шт*/}
-                                        {/*    = {pricesThis.priceForThisAllUnitsOfLamination} грн*/}
-                                        {/*</div>*/}
-                                        <div className="fontInfoForPricing">
-                                            Висічка {pricesThis.priceForThisUnitOfVishichka} грн * {count} шт
-                                            = {pricesThis.priceForAllUnitsOfVishichka} грн
-                                        </div>
-                                        {/*<div className=" fontInfoForPricing">*/}
-                                        {/*    Свердління отворів: {pricesThis.priceForThisUnitOfCute} грн * {count} шт*/}
-                                        {/*    = {pricesThis.priceForAllUnitsOfCute} грн*/}
-                                        {/*</div>*/}
-                                        {/*<div className="fontInfoForPricing">*/}
-                                        {/*    Суруглення кутів: {pricesThis.priceForThisUnitOfHoles} грн * {count} шт*/}
-                                        {/*    = {pricesThis.priceForAllUnitsOfHoles} грн*/}
-
-                                        {/*</div>*/}
-                                        {/*<div className="fontInfoForPricing">*/}
-                                        {/*    {pricesThis.priceForThisUnitOfPapper * pricesThis.skolko}+*/}
-                                        {/*    {pricesThis.priceForDrukThisUnit * pricesThis.skolko}+*/}
-                                        {/*    {pricesThis.priceForThisAllUnitsOfLamination}+*/}
-                                        {/*    {pricesThis.priceForAllUnitsOfBig}+*/}
-                                        {/*    {pricesThis.priceForAllUnitsOfCute}+*/}
-                                        {/*    {pricesThis.priceForAllUnitsOfHoles}=*/}
-                                        {/*    {pricesThis.price}*/}
-                                        {/*</div>*/}
-                                        <div className="fontInfoForPricing1">
-                                            Загалом: {pricesThis.price} грн
-                                        </div>
-                                        <div className="fontInfoForPricing">
-                                            - З одного аркуша A3 можливо
-                                            зробити {pricesThis.skolkoListovNaOdin} виробів
-                                        </div>
-                                        <div className="fontInfoForPricing">
-                                            - Затрачено {pricesThis.skolko} аркушів (SR A3)
-                                        </div>
-                                    </div>
-
-
-                                    <img
-                                        className="versant80-img-icon"
-                                        alt="sssss"
-                                        src={versantIcon}
-                                    />
-                                </div>
-                            )}
                         </div>
                     </div>
-                </div>
-            ) : (
-                <div
-                    style={{display: "none"}}
-                ></div>
-            )}
-        </>
-    )
+                ) : (
+                    <div
+                        style={{display: "none"}}
+                    ></div>
+                )}
+            </>
+        )
+    } else {
+    }
 
     return (
         <div>

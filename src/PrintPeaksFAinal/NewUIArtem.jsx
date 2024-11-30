@@ -159,6 +159,9 @@ const NewUIArtem = () => {
     };
 
     useEffect(() => {
+        (() => {
+            console.log(1);
+        })();
         if (id) {
             setIsLoad(true)
             let data = {

@@ -8,7 +8,7 @@ import {
     FETCH_USER_FAILURE,
     LOGOUT,
 } from './types';
-
+import {useNavigate} from 'react-router-dom';
 // Действие для входа пользователя
 export const login = (credentials) => async (dispatch) => {
     dispatch({ type: LOGIN_REQUEST });
@@ -21,6 +21,8 @@ export const login = (credentials) => async (dispatch) => {
         dispatch({ type: LOGIN_SUCCESS, payload: token });
         // Загружаем данные пользователя
         dispatch(fetchUser());
+        const navigate = useNavigate();
+        navigate('/login');
     } catch (error) {
         dispatch({
             type: LOGIN_FAILURE,

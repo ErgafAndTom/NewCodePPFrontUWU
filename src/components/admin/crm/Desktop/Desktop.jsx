@@ -1,4 +1,6 @@
-import React from 'react';
+import React, {useEffect} from 'react';
+import axios from "../../../../api/axiosInstance";
+import {useNavigate} from "react-router-dom";
 
 const Card = ({ title, content }) => {
     return (
@@ -10,6 +12,24 @@ const Card = ({ title, content }) => {
 };
 
 const Desktop = () => {
+    const navigate = useNavigate();
+    useEffect(() => {
+        let data = {
+
+        }
+        axios.post(`/materials/NotAll`, data)
+            .then(response => {
+                // console.log(response.data);
+
+            })
+            .catch(error => {
+                if (error.response.status === 403) {
+                    navigate('/login');
+                }
+                console.log(error.message);
+            })
+    }, []);
+
     return (
         <div className="d-flex flex-column  p-2 mt-2  flex-grow-1 adminBackGround"
              style={{borderRadius: '10px', background: '#E9E6DA'}}>

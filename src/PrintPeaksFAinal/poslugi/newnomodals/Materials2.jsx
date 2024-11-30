@@ -60,11 +60,11 @@ const Materials2 = ({material, setMaterial, count, setCount, prices, type, name,
             .then(response => {
                 console.log(response.data);
                 setPaper(response.data.rows)
-                setMaterial({
-                    ...material,
-                    material: response.data.rows[0].name,
-                    materialId: response.data.rows[0].id,
-                })
+                // setMaterial({
+                //     ...material,
+                //     material: response.data.rows[0].name,
+                //     materialId: response.data.rows[0].id,
+                // })
             })
             .catch(error => {
                 if(error.response.status === 403){
@@ -89,7 +89,10 @@ const Materials2 = ({material, setMaterial, count, setCount, prices, type, name,
         axios.post(`/materials/NotAll`, data)
             .then(response => {
                 console.log(response.data);
-                setPaper(response.data.rows)
+                // setPaper(response.data.rows)
+                if(response.data && response.data.rows){
+                    setPaper(response.data.rows)
+                }
                 // setMaterial({
                 //     ...material,
                 //     thickness: "Тонкі",
@@ -99,7 +102,7 @@ const Materials2 = ({material, setMaterial, count, setCount, prices, type, name,
             })
             .catch(error => {
                 console.log(error.message);
-                if(error.response.status === 403){
+                if(error.response && error.response.status === 403){
                     navigate('/login');
                 }
             })
