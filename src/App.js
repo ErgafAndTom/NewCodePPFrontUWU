@@ -10,21 +10,20 @@ import store from "./stores/store";
 import {BrowserRouter as Router} from 'react-router-dom'
 import React from "react";
 import AllWindow from "./components/AllWindow";
+import ProgressBar from "./ProgressBar";
 
 function App() {
-    console.log("App");
-
-
-
     return (
-      <Provider store={store}>
-          <Router>
-              <AllWindow/>
-              {/*<AnimatedComponent/>*/}
-              {/*<Gravity/>*/}
-          </Router>
-      </Provider>
-  );
+        <div>
+
+            <Provider store={store}>
+                <Router>
+                    <AllWindow/>
+                    {/*<ProgressBar/>*/}
+                </Router>
+            </Provider>
+        </div>
+    )
 }
 
 export default App;

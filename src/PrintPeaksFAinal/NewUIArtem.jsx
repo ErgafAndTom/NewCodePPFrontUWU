@@ -48,6 +48,7 @@ import Laminator from "./poslugi/Laminator";
 import Vishichka from "./poslugi/Vishichka";
 import PerepletMet from "./poslugi/PerepletMet";
 import BigOvshik from "./poslugi/BigOvshik";
+import ProgressBar from "../ProgressBar";
 
 const NewUIArtem = () => {
     const navigate = useNavigate();
@@ -513,54 +514,56 @@ const NewUIArtem = () => {
                             )}
                         </div>
                         <div className="d-flex flex-column" style={{marginLeft: "0.3vw"}}>
+                            {/*<ProgressBar/>*/}
                             <div className="containerNewUI containerDetailsThisOrder " style={{border: "0vw"}}>
-                                <div className="paymentmenu">
-                                    <button className="paya " style={{marginTop: "1.4vw"}}>
-                                        <p className="print" style={{margin: 0}}>Взяти в роботу</p>
-                                    </button>
-                                    <button className="payb grayFonColorBackground ">
 
-                                        <div className="base12"></div>
-                                        <div className="div37">Оплатити</div>
+                                {/*<div className="paymentmenu">*/}
+                                {/*    <button className="paya " style={{marginTop: "1.4vw"}}>*/}
+                                {/*        <p className="print" style={{margin: 0}}>Взяти в роботу</p>*/}
+                                {/*    </button>*/}
+                                {/*    <button className="payb grayFonColorBackground ">*/}
 
-                                    </button>
+                                {/*        <div className="base12"></div>*/}
+                                {/*        <div className="div37">Оплатити</div>*/}
 
-
-                                    <div className="paye">
-                                        <div className="div39">Загальна сума:</div>
-                                        <div className="component-1969-13">
-
-                                            <input className="input-text1"
-                                                   value={`${thisOrder.price} грн`}
-                                                   type="text"/>
+                                {/*    </button>*/}
 
 
-                                        </div>
-                                    </div>
+                                {/*    <div className="paye">*/}
+                                {/*        <div className="div39">Загальна сума:</div>*/}
+                                {/*        <div className="component-1969-13">*/}
 
-                                    <div className="payg">
-                                        <div className="div42"> Знижка</div>
-                                        <div className="component-1969-13">
-                                            <input
-                                                className="input-text1"
-                                                // value={thisOrder.User}
-                                                value={`${thisOrder.User.discount} %`}
-                                                type="text"/>
+                                {/*            <input className="input-text1"*/}
+                                {/*                   value={`${thisOrder.price} грн`}*/}
+                                {/*                   type="text"/>*/}
 
 
-                                        </div>
-                                    </div>
-                                    <div className="payh">
-                                        <div className="div43">К оплаті</div>
-                                        <div className="component-1969-13">
+                                {/*        </div>*/}
+                                {/*    </div>*/}
 
-                                            <input className="input-text1"
-                                                   value={`${thisOrder.price - ((thisOrder.price * thisOrder.User.discount)) / 100} грн`}
-                                                   type="text"/>
-                                        </div>
-                                    </div>
+                                {/*    <div className="payg">*/}
+                                {/*        <div className="div42"> Знижка</div>*/}
+                                {/*        <div className="component-1969-13">*/}
+                                {/*            <input*/}
+                                {/*                className="input-text1"*/}
+                                {/*                // value={thisOrder.User}*/}
+                                {/*                value={`${thisOrder.User.discount} %`}*/}
+                                {/*                type="text"/>*/}
 
-                                </div>
+
+                                {/*        </div>*/}
+                                {/*    </div>*/}
+                                {/*    <div className="payh">*/}
+                                {/*        <div className="div43">К оплаті</div>*/}
+                                {/*        <div className="component-1969-13">*/}
+
+                                {/*            <input className="input-text1"*/}
+                                {/*                   value={`${thisOrder.price - ((thisOrder.price * thisOrder.User.discount)) / 100} грн`}*/}
+                                {/*                   type="text"/>*/}
+                                {/*        </div>*/}
+                                {/*    </div>*/}
+
+                                {/*</div>*/}
                             </div>
                         </div>
                         {thisOrder && thisOrder.User ? (
@@ -574,6 +577,7 @@ const NewUIArtem = () => {
                                     handleThisOrderChange={handleThisOrderChange}
                                 />
                                 {/*<ClientsMenu client={thisOrder.User} />*/}
+                                <ProgressBar thisOrder={thisOrder}/>
                             </div>
                         ) : (
                             <div>
@@ -585,7 +589,6 @@ const NewUIArtem = () => {
                             // <ClientChangerUIArtem client={{email: "null", id: 0, phone: "+00000000",}}/>
                         )}
                     </div>
-
                 </div>
 
 
