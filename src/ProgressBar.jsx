@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react';
 import rozrahuvImage from './rozrahuv.png';
 import './progressbar_styles.css';
 import DiscountCalculator from './DiscountCalculator';
+import axios from "./api/axiosInstance";
 
 
 const stages = [
@@ -14,13 +15,15 @@ const stages = [
 ];
 
 
-const ProgressBar = ({thisOrder}) => {
+const ProgressBar = ({thisOrder, setThisOrder}) => {
     const [isVisible, setIsVisible] = useState(true);
-    const [currentStage, setCurrentStage] = useState(0);
+    const [currentStage, setCurrentStage] = useState(parseInt(thisOrder.status));
     const [isPaid, setIsPaid] = useState(false);
     const [isCancelled, setIsCancelled] = useState(false);
     const [paymentDate, setPaymentDate] = useState(null);
     const [startTime, setStartTime] = useState(null);
+    const [error, setError] = useState(null);
+    const [load, setLoad] = useState(false);
     const [elapsedTime, setElapsedTime] = useState(null);
     const [remainingTime, setRemainingTime] = useState(null);
     const [amount, setAmount] = useState(0);
@@ -131,8 +134,19 @@ const ProgressBar = ({thisOrder}) => {
         return () => clearInterval(timer);
     }, [deadline, currentStage]);
 
+    useEffect(() => {
+        if(thisOrder.payStatus === "pay") {
+            setIsVisible(false);
+            setIsPaid(true);
+        } else {
+            setIsVisible(true);
+            setIsPaid(false);
+        }
+        setCurrentStage(parseInt(thisOrder.status));
+    }, [thisOrder.payStatus, thisOrder.status]);
+
     const handleStageChange = (stage) => {
-            if (stage === 'pay') {
+        if (stage === 'pay') {
             setIsVisible(false); // Сховати кнопку
             setIsPaid(true);
             setPaymentDate(new Date());
@@ -150,6 +164,30 @@ const ProgressBar = ({thisOrder}) => {
         }
 
         setCurrentStage(stage);
+    };
+
+    const handleStageChangeServer = (stage) => {
+        let dataToSend = {
+            newStatus: stage,
+            thisOrderId: thisOrder.id,
+        }
+        // setLoad(true)
+        axios.put(`/orders/OneOrder/statusUpdate`, dataToSend)
+            .then(response => {
+                console.log(response.data);
+                setThisOrder({...thisOrder, status: response.data.status, payStatus: response.data.payStatus})
+                // setLoad(false)
+                // setThisOrder(response.data)
+                // handleClose()
+            })
+            .catch(error => {
+                if (error.response.status === 403) {
+                    // navigate('/login');
+                }
+                // setError(error)
+                // setLoad(false)
+                console.log(error.message);
+            })
     };
 
 
@@ -234,7 +272,7 @@ const ProgressBar = ({thisOrder}) => {
                 paddingLeft: '3vh',
                 paddingRight: '3vh',
                 width: '32.1vw',
-                height: '21vh',
+                height: '22vh',
                 margin: 'auto',
                 textAlign: 'left',
                 backgroundColor: '#f2efe8',
@@ -271,7 +309,7 @@ const ProgressBar = ({thisOrder}) => {
                     <div style={{display: 'flex', gap: '1vw'}}>
                         {currentStage === 0 && (
                             <button
-                                onClick={() => handleStageChange(1)}
+                                onClick={() => handleStageChangeServer(1)}
                                 style={{...buttonStyles.base, ...buttonStyles.takeWork}}
                             >
                                 Взяти в роботу
@@ -279,7 +317,7 @@ const ProgressBar = ({thisOrder}) => {
                         )}
                         {currentStage === 1 && (
                             <button
-                                onClick={() => handleStageChange(2)}
+                                onClick={() => handleStageChangeServer(2)}
                                 style={{...buttonStyles.base, ...buttonStyles.postpress}}
                             >
                                 Відправити на постпрес
@@ -287,7 +325,7 @@ const ProgressBar = ({thisOrder}) => {
                         )}
                         {currentStage === 2 && (
                             <button
-                                onClick={() => handleStageChange(3)}
+                                onClick={() => handleStageChangeServer(3)}
                                 style={{...buttonStyles.base, ...buttonStyles.done}}
                             >
                                 Виконане
@@ -295,7 +333,7 @@ const ProgressBar = ({thisOrder}) => {
                         )}
                         {currentStage === 3 && (
                             <button
-                                onClick={() => handleStageChange(4)}
+                                onClick={() => handleStageChangeServer(4)}
                                 style={{...buttonStyles.base, ...buttonStyles.handover}}
                             >
                                 Віддати
@@ -340,7 +378,7 @@ const ProgressBar = ({thisOrder}) => {
             <div style={{justifyContent: 'end', marginTop: '-14vh'}}>
                 {isVisible && (
                     <button
-                        onClick={() => handleStageChange('pay')}
+                        onClick={() => handleStageChangeServer('pay')}
                         style={{
                             ...buttonStyles.base,
                             ...buttonStyles.pay

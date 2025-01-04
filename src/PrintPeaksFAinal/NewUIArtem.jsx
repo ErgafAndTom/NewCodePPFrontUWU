@@ -577,7 +577,7 @@ const NewUIArtem = () => {
                                     handleThisOrderChange={handleThisOrderChange}
                                 />
                                 {/*<ClientsMenu client={thisOrder.User} />*/}
-                                <ProgressBar thisOrder={thisOrder}/>
+                                <ProgressBar thisOrder={thisOrder} setThisOrder={setThisOrder}/>
                             </div>
                         ) : (
                             <div>

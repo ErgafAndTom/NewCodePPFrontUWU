@@ -2,8 +2,8 @@ import React, { useState } from 'react';
 
 function PaymentCalculator({thisOrder}) {
     const [amount, setAmount] = useState(thisOrder.price);
-    const [discount, setDiscount] = useState('');
-    const [total, setTotal] = useState('');
+    const [discount, setDiscount] = useState(thisOrder.prepayment);
+    const [total, setTotal] = useState(thisOrder.allPrice);
     const [error, setError] = useState('');
 
     const formatNumber = (num) => {
