@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, {useEffect, useState} from 'react';
 
 function PaymentCalculator({thisOrder}) {
     const [amount, setAmount] = useState(thisOrder.price);
@@ -21,6 +21,12 @@ function PaymentCalculator({thisOrder}) {
         setDiscount(value);
         calculateTotal(amount.replace(/[^0-9]/g, ''), value);
     };
+
+    useEffect(() => {
+        setAmount(thisOrder.price)
+        setDiscount(thisOrder.prepayment)
+        setTotal(thisOrder.allPrice)
+    }, [thisOrder.price, thisOrder.prepayment, thisOrder.allPrice]);
 
     const calculateTotal = (amountValue, discountValue) => {
         setError(''); // Clear previous errors
@@ -55,7 +61,7 @@ function PaymentCalculator({thisOrder}) {
                 <input
                     disabled
                     type="text"
-                    value={amount}
+                    value={`${amount} грн`}
                     onChange={(e) => handleAmountChange(e.target.value)}
                     style={{
                         marginLeft: '0.5vw',
@@ -78,7 +84,7 @@ function PaymentCalculator({thisOrder}) {
                 <div style={{ display: 'flex', alignItems: 'center', width: '70%' }}>
                     <input
                         type="text"
-                        value={discount}
+                        value={`${discount}`}
                         onChange={(e) => handleDiscountChange(e.target.value)}
                         style={{
                             padding: '0.5vh',
@@ -105,7 +111,7 @@ function PaymentCalculator({thisOrder}) {
                 <label style={{ fontSize: '0.7vw', color: '#707070' }}>К оплаті буде:</label>
                 <input
                     type="text"
-                    value={total}
+                    value={`${total} грн`}
                     readOnly
                     style={{
                         padding: '0.5vh',

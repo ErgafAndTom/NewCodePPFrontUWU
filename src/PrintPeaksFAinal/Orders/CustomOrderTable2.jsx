@@ -150,7 +150,7 @@ const CustomOrderTable2 = () => {
                                     <div className="CustomOrderTable-cell">
                                         <div
                                             className={`pay-btn d-flex align-content-center justify-content-center ${
-                                                order.payStatus === 'Оплачено'
+                                                order.payStatus === 'pay'
                                                     ? 'CustomOrderTable-pay-paid'
                                                     : 'CustomOrderTable-pay-pending'
                                             }`}
