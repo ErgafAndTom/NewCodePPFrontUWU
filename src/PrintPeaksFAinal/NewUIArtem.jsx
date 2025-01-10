@@ -597,6 +597,7 @@ const NewUIArtem = () => {
                     setShowDeleteOrderUnitModal={setShowDeleteOrderUnitModal}
                     OrderUnit={thisOrderUnit}
                     setThisOrderUnit={setThisOrderUnit}
+                    setThisOrder={setThisOrder}
                     setSelectedThings2={setSelectedThings2}
                 />
 

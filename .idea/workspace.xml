@@ -5,21 +5,11 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="26b8e9c9-6ae2-49f6-991b-95bc2431ac54" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/src/DiscountCalculator.jsx" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/ProgressBar.jsx" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/buttons_progressbar.jsx" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/progressbar_styles.css" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/rozrahuv.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/trash-icon.svg" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/.gitignore" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/modules.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/modules.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/vcs.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/package-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/package-lock.json" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/package.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/App.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/App.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/App.test.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/App.test.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Colors.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/Colors.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/DiscountCalculator.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/DiscountCalculator.jsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/index.js" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -144,6 +134,7 @@
       <workItem from="1735691619725" duration="42000" />
       <workItem from="1735691670914" duration="66174000" />
       <workItem from="1735821593762" duration="40455000" />
+      <workItem from="1736461981585" duration="220000" />
     </task>
     <servers />
   </component>

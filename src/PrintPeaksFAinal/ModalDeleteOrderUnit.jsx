@@ -2,7 +2,7 @@ import React, {useCallback, useEffect, useState} from 'react';
 import axios from '../api/axiosInstance';
 import {Navigate, useNavigate} from "react-router-dom";
 
-function ModalDeleteOrderUnit({showDeleteOrderUnitModal, setShowDeleteOrderUnitModal, OrderUnit, setSelectedThings2}) {
+function ModalDeleteOrderUnit({showDeleteOrderUnitModal, setShowDeleteOrderUnitModal, OrderUnit, setSelectedThings2, setThisOrder}) {
     const [load, setLoad] = useState(false);
     const navigate = useNavigate();
     const [isVisible, setIsVisible] = useState(showDeleteOrderUnitModal);
@@ -26,6 +26,8 @@ function ModalDeleteOrderUnit({showDeleteOrderUnitModal, setShowDeleteOrderUnitM
                     setSelectedThings2(prevSelectedThings2 =>
                         prevSelectedThings2.filter(orderUnit => orderUnit.idKey !== idKey)
                     );
+                    // console.log(response.data);
+                    setThisOrder(response.data)
                     setLoad(false)
                     setShowDeleteOrderUnitModal(false);
                 }

@@ -41,27 +41,27 @@ function PaymentCalculator({thisOrder}) {
             }
             if (percent >= 1 && percent <= 50) {
                 const discountedValue = numericAmount - (numericAmount * percent / 100);
-                setTotal(formatNumber(discountedValue.toFixed(2)) + ' грн');
+                setTotal(formatNumber(discountedValue.toFixed(2)));
             } else {
-                setTotal(formatNumber(numericAmount.toFixed(2)) + ' грн');
+                setTotal(formatNumber(numericAmount.toFixed(2)));
             }
         } else if (discountValue) {
             const discountNumeric = parseFloat(discountValue) || 0;
             const discountedValue = numericAmount - discountNumeric;
-            setTotal(formatNumber(discountedValue.toFixed(2)) + ' грн');
+            setTotal(formatNumber(discountedValue.toFixed(2)));
         } else {
-            setTotal(formatNumber(numericAmount.toFixed(2)) + ' грн');
+            setTotal(formatNumber(numericAmount.toFixed(2)));
         }
     };
 
     return (
         <div>
-            <div style={{ display: 'flex', alignItems: 'center', marginTop: '1vh' }}>
-                <label style={{ fontSize: '0.7vw', color: '#707070' }}>Загальна вартість:</label>
+            <div style={{display: 'flex', alignItems: 'center', marginTop: '1vh'}}>
+                <label style={{fontSize: '0.7vw', color: '#707070'}}>Загальна вартість:</label>
                 <input
                     disabled
                     type="text"
-                    value={`${amount} грн`}
+                    value={`${amount}`}
                     onChange={(e) => handleAmountChange(e.target.value)}
                     style={{
                         marginLeft: '0.5vw',
@@ -79,9 +79,9 @@ function PaymentCalculator({thisOrder}) {
                 />
             </div>
 
-            <div style={{ display: 'flex', alignItems: 'center', marginTop: '1vh' }}>
+            <div style={{display: 'flex', alignItems: 'center', marginTop: '1vh' }}>
                 <label style={{ fontSize: '0.7vw', color: '#707070' }}>Знижка:</label>
-                <div style={{ display: 'flex', alignItems: 'center', width: '70%' }}>
+                <div style={{display: 'flex', alignItems: 'center', width: '70%'}}>
                     <input
                         type="text"
                         value={`${discount}`}
@@ -100,6 +100,7 @@ function PaymentCalculator({thisOrder}) {
                             paddingLeft: '1vw',
                         }}
                     />
+                    <label style={{fontSize: '0.7vw', color: '#707070'}}>грн</label>
                 </div>
             </div>
 
