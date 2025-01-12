@@ -93,7 +93,7 @@ const NewPhoto = ({thisOrder, newThisOrder, setNewThisOrder, selectedThings2, sh
             }
         };
 
-        axios.post(`/orders/OneOrder/OneOrderUnitInOrder`, dataToSend)
+        axios.post(`/orderUnits/OneOrder/OneOrderUnitInOrder`, dataToSend)
             .then(response => {
                 // console.log(response.data);
                 setThisOrder(response.data);

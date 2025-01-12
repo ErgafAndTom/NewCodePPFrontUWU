@@ -12,14 +12,14 @@ function PaymentCalculator({thisOrder}) {
 
     const handleAmountChange = (value) => {
         const formattedValue = value.replace(/[^0-9]/g, '');
-        const formattedWithCurrency = formattedValue ? formatNumber(formattedValue) + ' грн' : '';
+        const formattedWithCurrency = formattedValue ? formatNumber(formattedValue) + ' ' : '';
         setAmount(formattedWithCurrency);
-        calculateTotal(formattedValue, discount);
+        // calculateTotal(formattedValue, discount);
     };
 
     const handleDiscountChange = (value) => {
         setDiscount(value);
-        calculateTotal(amount.replace(/[^0-9]/g, ''), value);
+        // calculateTotal(amount.replace(/[^0-9]/g, ''), value);
     };
 
     useEffect(() => {
@@ -28,31 +28,31 @@ function PaymentCalculator({thisOrder}) {
         setTotal(thisOrder.allPrice)
     }, [thisOrder.price, thisOrder.prepayment, thisOrder.allPrice]);
 
-    const calculateTotal = (amountValue, discountValue) => {
-        setError(''); // Clear previous errors
-        const numericAmount = parseFloat(amountValue) || 0;
-
-        if (discountValue.includes('%')) {
-            const percent = parseFloat(discountValue.replace('%', ''));
-            if (percent > 50) {
-                setError('Знижка не може перевищувати 50%');
-                setTotal('');
-                return;
-            }
-            if (percent >= 1 && percent <= 50) {
-                const discountedValue = numericAmount - (numericAmount * percent / 100);
-                setTotal(formatNumber(discountedValue.toFixed(2)));
-            } else {
-                setTotal(formatNumber(numericAmount.toFixed(2)));
-            }
-        } else if (discountValue) {
-            const discountNumeric = parseFloat(discountValue) || 0;
-            const discountedValue = numericAmount - discountNumeric;
-            setTotal(formatNumber(discountedValue.toFixed(2)));
-        } else {
-            setTotal(formatNumber(numericAmount.toFixed(2)));
-        }
-    };
+    // const calculateTotal = (amountValue, discountValue) => {
+    //     setError(''); // Clear previous errors
+    //     const numericAmount = parseFloat(amountValue) || 0;
+    //
+    //     if (discountValue.includes('%')) {
+    //         const percent = parseFloat(discountValue.replace('%', ''));
+    //         if (percent > 50) {
+    //             setError('Знижка не може перевищувати 50%');
+    //             setTotal('');
+    //             return;
+    //         }
+    //         if (percent >= 1 && percent <= 50) {
+    //             const discountedValue = numericAmount - (numericAmount * percent / 100);
+    //             setTotal(formatNumber(discountedValue.toFixed(2)));
+    //         } else {
+    //             setTotal(formatNumber(numericAmount.toFixed(2)));
+    //         }
+    //     } else if (discountValue) {
+    //         const discountNumeric = parseFloat(discountValue) || 0;
+    //         const discountedValue = numericAmount - discountNumeric;
+    //         setTotal(formatNumber(discountedValue.toFixed(2)));
+    //     } else {
+    //         setTotal(formatNumber(numericAmount.toFixed(2)));
+    //     }
+    // };
 
     return (
         <div>
@@ -111,6 +111,7 @@ function PaymentCalculator({thisOrder}) {
             <div style={{ display: 'flex', alignItems: 'center', marginTop: '1vh' }}>
                 <label style={{ fontSize: '0.7vw', color: '#707070' }}>К оплаті буде:</label>
                 <input
+                    disabled
                     type="text"
                     value={`${total} грн`}
                     readOnly

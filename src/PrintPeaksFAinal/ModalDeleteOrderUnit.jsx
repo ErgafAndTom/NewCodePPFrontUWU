@@ -20,7 +20,7 @@ function ModalDeleteOrderUnit({showDeleteOrderUnitModal, setShowDeleteOrderUnitM
     const deleteThis = () => {
         let idKey = OrderUnit.idKey
         setLoad(true)
-        axios.delete(`/orders/OneOrder/OneOrderUnitInOrder/${idKey}`)
+        axios.delete(`/orderUnits/OneOrder/OneOrderUnitInOrder/${idKey}`)
             .then(response => {
                 if (response.status === 200) {
                     setSelectedThings2(prevSelectedThings2 =>

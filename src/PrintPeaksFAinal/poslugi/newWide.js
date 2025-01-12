@@ -83,7 +83,7 @@ const NewWide = ({thisOrder, newThisOrder, setNewThisOrder, selectedThings2, set
             }
         };
 
-        axios.post(`/orders/OneOrder/OneOrderUnitInOrder`, dataToSend)
+        axios.post(`/orderUnits/OneOrder/OneOrderUnitInOrder`, dataToSend)
             .then(response => {
                 // console.log(response.data);
                 setThisOrder(response.data);
