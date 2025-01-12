@@ -1,10 +1,12 @@
 import React, {useEffect, useState} from 'react';
+import axios from "./api/axiosInstance";
 
-function PaymentCalculator({thisOrder}) {
+function PaymentCalculator({thisOrder, setThisOrder}) {
     const [amount, setAmount] = useState(thisOrder.price);
     const [discount, setDiscount] = useState(thisOrder.prepayment);
     const [total, setTotal] = useState(thisOrder.allPrice);
-    const [error, setError] = useState('');
+    const [error, setError] = useState(null);
+    const [load, setLoad] = useState(false);
 
     const formatNumber = (num) => {
         return num.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ' ');
@@ -20,6 +22,31 @@ function PaymentCalculator({thisOrder}) {
     const handleDiscountChange = (value) => {
         setDiscount(value);
         // calculateTotal(amount.replace(/[^0-9]/g, ''), value);
+        let dataToSend = {
+            newDiscound: value,
+            orderId: thisOrder.id,
+        }
+        setError(null)
+        setLoad(true)
+        axios.put(`/orders/OneOrder/discount`, dataToSend)
+            .then(response => {
+                console.log(response.data);
+                // setThisOrder(response.data)
+                setThisOrder({...thisOrder, prepayment: response.data.prepayment, allPrice: response.data.allPrice})
+                // setDiscount(response.data.prepayment);
+                // setTotal(response.data.allPrice)
+                setLoad(false)
+                // setThisOrder(response.data)
+                // handleClose()
+            })
+            .catch(error => {
+                if (error.response.status === 403) {
+                    // navigate('/login');
+                }
+                setError(error.message)
+                setLoad(false)
+                console.log(error.message);
+            })
     };
 
     useEffect(() => {
@@ -27,6 +54,10 @@ function PaymentCalculator({thisOrder}) {
         setDiscount(thisOrder.prepayment)
         setTotal(thisOrder.allPrice)
     }, [thisOrder.price, thisOrder.prepayment, thisOrder.allPrice]);
+
+    const discoundSend = (amountValue, discountValue) => {
+
+    };
 
     // const calculateTotal = (amountValue, discountValue) => {
     //     setError(''); // Clear previous errors
@@ -106,6 +137,9 @@ function PaymentCalculator({thisOrder}) {
 
             {error && (
                 <div style={{ color: 'red', fontSize: '0.7vw', marginTop: '1vh' }}>{error}</div>
+            )}
+            {load && (
+                <div style={{ color: 'red', fontSize: '0.7vw', marginTop: '1vh' }}>processing</div>
             )}
 
             <div style={{ display: 'flex', alignItems: 'center', marginTop: '1vh' }}>

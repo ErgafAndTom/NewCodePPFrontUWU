@@ -358,7 +358,7 @@ const ProgressBar = ({thisOrder, setThisOrder}) => {
 
 
             <div style={{marginBottom: '1vh'}}>
-                <DiscountCalculator thisOrder={thisOrder}/>
+                <DiscountCalculator thisOrder={thisOrder} setThisOrder={setThisOrder}/>
             </div>
             <div style={{marginBottom: '0vh'}}>
                 <AnimatedPlaceholderInput onChange={setDeadline}/>

@@ -10,7 +10,6 @@ import store from "./stores/store";
 import {BrowserRouter as Router} from 'react-router-dom'
 import React from "react";
 import AllWindow from "./components/AllWindow";
-import ProgressBar from "./ProgressBar";
 
 function App() {
     return (
@@ -19,7 +18,6 @@ function App() {
             <Provider store={store}>
                 <Router>
                     <AllWindow/>
-                    {/*<ProgressBar/>*/}
                 </Router>
             </Provider>
         </div>
