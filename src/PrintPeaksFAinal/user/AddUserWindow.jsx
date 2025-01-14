@@ -1,7 +1,6 @@
 import React, {useEffect, useState} from "react";
 import axios from "../../api/axiosInstance";
 import {useNavigate} from "react-router-dom";
-import NewSheetCutBw from "../poslugi/NewSheetCutBw";
 import Loader2 from "../../components/calc/Loader2";
 const styles = {
     inputContainer: {
@@ -80,7 +79,7 @@ function AddUserWindow({showAddUser, setShowAddUser, thisOrder, setThisOrder}) {
     const [error, setError] = useState(null);
     const [load, setLoad] = useState(false);
     const [isAnimating, setIsAnimating] = useState(false);
-    const [credentials, setCredentials] = useState({ username: '', email: '', phoneNumber: '', telegram: '', firstName: '', lastName: '', familyName: '', sity: '', nomerNP: '' });
+    const [credentials, setCredentials] = useState({ email: '', phoneNumber: '', telegram: '', firstName: '', lastName: '', familyName: '', sity: '', nomerNP: '' });
     const handleClose = () => {
         setIsAnimating(false); // Начинаем анимацию закрытия
         setTimeout(() => {
@@ -170,19 +169,45 @@ function AddUserWindow({showAddUser, setShowAddUser, thisOrder, setThisOrder}) {
                 }}>
                     <div style={styles.inputContainer}>
                         <span style={styles.icon}>👤</span>
-                        <input onChange={handleChange} type="text" value={credentials.username} placeholder="Нік" name="username" style={styles.input1}/>
-                        <div style={styles.avatarContainer}>
-                            <img
-                                src="path/to/avatar.jpg" // Replace with actual image path
-                                alt="avatar"
-                                style={styles.avatar}
-                            />
-                        </div>
+                        <input onChange={handleChange} type="text" value={credentials.firstName} placeholder="Имя"
+                               name="firstName" style={styles.input1}/>
+                        {/*<div style={styles.avatarContainer}>*/}
+                        {/*    <img*/}
+                        {/*        src="path/to/avatar.jpg" // Replace with actual image path*/}
+                        {/*        alt="avatar"*/}
+                        {/*        style={styles.avatar}*/}
+                        {/*    />*/}
+                        {/*</div>*/}
+                    </div>
+                    <div style={styles.inputContainer}>
+                        <span style={styles.icon}>👤</span>
+                        <input onChange={handleChange} type="text" value={credentials.lastName} placeholder="по Батькові"
+                               name="lastName" style={styles.input1}/>
+                        {/*<div style={styles.avatarContainer}>*/}
+                        {/*    <img*/}
+                        {/*        src="path/to/avatar.jpg" // Replace with actual image path*/}
+                        {/*        alt="avatar"*/}
+                        {/*        style={styles.avatar}*/}
+                        {/*    />*/}
+                        {/*</div>*/}
+                    </div>
+                    <div style={styles.inputContainer}>
+                        <span style={styles.icon}>👤</span>
+                        <input onChange={handleChange} type="text" value={credentials.familyName} placeholder="Фамілія"
+                               name="familyName" style={styles.input1}/>
+                        {/*<div style={styles.avatarContainer}>*/}
+                        {/*    <img*/}
+                        {/*        src="path/to/avatar.jpg" // Replace with actual image path*/}
+                        {/*        alt="avatar"*/}
+                        {/*        style={styles.avatar}*/}
+                        {/*    />*/}
+                        {/*</div>*/}
                     </div>
 
                     <div style={styles.inputContainer}>
                         <span style={styles.icon}>✈️</span>
-                        <input onChange={handleChange} type="text" value={credentials.telegram} placeholder="@telegram" name="telegram" style={styles.input1}/>
+                        <input onChange={handleChange} type="text" value={credentials.telegram} placeholder="@telegram"
+                               name="telegram" style={styles.input1}/>
                         <div style={styles.avatarContainer}>
                             <button style={styles.importButton}>Імпорт з Telegram</button>
                         </div>
@@ -190,18 +215,22 @@ function AddUserWindow({showAddUser, setShowAddUser, thisOrder, setThisOrder}) {
 
                     <div style={styles.inputContainer}>
                         <span style={styles.icon}>📧</span>
-                        <input onChange={handleChange} type="email" value={credentials.email} placeholder="E-mail" name="email" style={styles.input}/>
+                        <input onChange={handleChange} type="email" value={credentials.email} placeholder="E-mail"
+                               name="email" style={styles.input}/>
                     </div>
 
                     <div style={styles.inputContainer}>
                         <span style={styles.icon}>📞</span>
-                        <input onChange={handleChange} type="tel" value={credentials.phoneNumber} placeholder="Номер телефона" name="phoneNumber" style={styles.input}/>
+                        <input onChange={handleChange} type="tel" value={credentials.phoneNumber}
+                               placeholder="Номер телефона" name="phoneNumber" style={styles.input}/>
                     </div>
 
                     <div style={styles.inputContainer}>
                         <span style={styles.novaPoshtaIcon}>Нова Пошта</span>
-                        <input onChange={handleChange} type="text" value={credentials.sity} placeholder="Місто" name="sity" style={styles.inputSmall}/>
-                        <input onChange={handleChange} type="text" value={credentials.nomerNP} placeholder="Відділення" name="nomerNP" style={styles.inputSmall}/>
+                        <input onChange={handleChange} type="text" value={credentials.sity} placeholder="Місто"
+                               name="sity" style={styles.inputSmall}/>
+                        <input onChange={handleChange} type="text" value={credentials.nomerNP} placeholder="Відділення"
+                               name="nomerNP" style={styles.inputSmall}/>
                     </div>
                 </div>
 

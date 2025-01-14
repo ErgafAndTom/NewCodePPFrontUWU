@@ -16,15 +16,17 @@ import FilesButton from "./img/files-icon.png";
 import addclienticons from "./img/Path 13360.png";
 import Tooltip from '../TooltipButton2';
 import {useNavigate} from "react-router-dom";
-import AddUserWindow from "../user/AddUserWindow"; //
+import AddUserWindow from "../user/AddUserWindow";
+import {Spinner} from "react-bootstrap"; //
 
 const ClientChangerUIArtem = ({thisOrder, handleThisOrderChange, setNewThisOrder, setThisOrder}) => {
     const navigate = useNavigate();
     const [showAddUser, setShowAddUser] = useState(false);
-    const [isLoad, setIsLoad] = useState(false);
+    const [load, setLoad] = useState(false);
     const [typeSelect, setTypeSelect] = useState("");
     const [users, setUsers] = useState([]);
     const [show, setShow] = useState(false);
+    const [error, setError] = useState(false);
 
     const [isVisible, setIsVisible] = useState(false);
     const [isAnimating, setIsAnimating] = useState(false);
@@ -33,7 +35,7 @@ const ClientChangerUIArtem = ({thisOrder, handleThisOrderChange, setNewThisOrder
         setTimeout(() => {
             setIsVisible(false)
             setShow(false);
-        }, 300); // После завершения анимации скрываем модальное окно
+        }, 100); // После завершения анимации скрываем модальное окно
     }
     useEffect(() => {
         if (show) {
@@ -55,10 +57,34 @@ const ClientChangerUIArtem = ({thisOrder, handleThisOrderChange, setNewThisOrder
     }, []);
 
     const preHandleThisOrderChange = (fieldName, event, value) => {
-        const updatedThisOrder = thisOrder;
-        updatedThisOrder[fieldName] = value;
-        setNewThisOrder(updatedThisOrder)
-        setShow(false);
+        // const updatedThisOrder = thisOrder;
+        // updatedThisOrder[fieldName] = value;
+        // setNewThisOrder(updatedThisOrder)
+        // setShow(false);
+
+        let data = {
+            orderId: thisOrder.id,
+            userId: value,
+        }
+        setLoad(true)
+        setError(null)
+        axios.put(`/orders/OneOrder/user`, data)
+            .then(response => {
+                // console.log(response.data);
+                setLoad(false)
+                setThisOrder(response.data)
+                // setUsers(response.data)
+                setShow(false);
+                // setPageCount(Math.ceil(response.data.result.count / inPageCount))
+            })
+            .catch(error => {
+                setLoad(false)
+                if(error.response.status === 403){
+                    navigate('/login');
+                }
+                setError(error.message)
+                console.log(error.message);
+            })
     };
 
     // console.log(thisOrder);
@@ -71,16 +97,21 @@ const ClientChangerUIArtem = ({thisOrder, handleThisOrderChange, setNewThisOrder
             search: typeSelect,
             columnName: "id",
         }
+        setLoad(true)
+        setError(null)
         axios.post(`/user/all`, data)
             .then(response => {
                 // console.log(response.data);
+                setLoad(false)
                 setUsers(response.data)
                 // setPageCount(Math.ceil(response.data.result.count / inPageCount))
             })
             .catch(error => {
+                setLoad(false)
                 if(error.response.status === 403){
                     navigate('/login');
                 }
+                setError(error.message)
                 console.log(error.message);
             })
     }, [typeSelect]);
@@ -199,14 +230,22 @@ const ClientChangerUIArtem = ({thisOrder, handleThisOrderChange, setNewThisOrder
                                 </div>
                             ))}
                         </div>
-                        <Form.Control
-                            type="text"
-                            placeholder={"Search..."}
-                            value={typeSelect}
-                            className="adminFontTable shadow-lg bg-transparent"
-                            onChange={(event) => setTypeSelect(event.target.value)}
-                            style={{border: "solid 1px #cccabf", borderRadius: "0", width: "97%"}}
-                        />
+                        <div className="d-flex justify-content-end">
+                            {load && (
+                                <Spinner animation="border" variant="danger" size="sm" />
+                            )}
+                            <Form.Control
+                                type="text"
+                                placeholder={"Search..."}
+                                value={typeSelect}
+                                className="adminFontTable shadow-lg bg-transparent"
+                                onChange={(event) => setTypeSelect(event.target.value)}
+                                style={{border: "solid 1px #cccabf", borderRadius: "0", width: "97%"}}
+                            />
+                        </div>
+                        {error && (
+                            <div style={{ color: 'red', fontSize: '0.7vw', marginTop: '1vh' }}>{error}</div>
+                        )}
                     </div>
                     <div style={{
                         width: "100vw",
@@ -314,7 +353,7 @@ const ClientChangerUIArtem = ({thisOrder, handleThisOrderChange, setNewThisOrder
                                          style={{transform: "rotate(90deg)"}}>{thisOrder.User.discount}
 
                                     </div>
-                                    <div className="ProzentClient" style={{transform: "rotate(90deg)", fontSize: "1vw", marginLeft: "0.5vw"}}>%</div>
+                                    <div className="ProzentClient" style={{transform: "rotate(90deg)", fontSize: "1vw", marginLeft: "0.5vw"}}></div>
                                 </div>
                                 </Tooltip>
                                 <Tooltip text="Файли кліента"><button className="files-button d-flex grayFonColorBackground  justify-content-center align-items-center align-content-center" style={{
