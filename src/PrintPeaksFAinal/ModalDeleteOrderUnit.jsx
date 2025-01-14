@@ -1,6 +1,7 @@
 import React, {useCallback, useEffect, useState} from 'react';
 import axios from '../api/axiosInstance';
 import {Navigate, useNavigate} from "react-router-dom";
+import {Spinner} from "react-bootstrap";
 
 function ModalDeleteOrderUnit({showDeleteOrderUnitModal, setShowDeleteOrderUnitModal, OrderUnit, setSelectedThings2, setThisOrder}) {
     const [load, setLoad] = useState(false);
@@ -20,6 +21,7 @@ function ModalDeleteOrderUnit({showDeleteOrderUnitModal, setShowDeleteOrderUnitM
     const deleteThis = () => {
         let idKey = OrderUnit.idKey
         setLoad(true)
+        setError(null)
         axios.delete(`/orderUnits/OneOrder/OneOrderUnitInOrder/${idKey}`)
             .then(response => {
                 if (response.status === 200) {
@@ -33,11 +35,12 @@ function ModalDeleteOrderUnit({showDeleteOrderUnitModal, setShowDeleteOrderUnitM
                 }
             })
             .catch(error => {
+                setLoad(false)
+                setError(error.message)
                 if(error.response.status === 403){
                     navigate('/login');
                 }
                 console.log(error.message);
-                setError(error)
             });
     };
 
@@ -117,47 +120,32 @@ function ModalDeleteOrderUnit({showDeleteOrderUnitModal, setShowDeleteOrderUnitM
                                 padding: "0.5vw",
                             }}
                         >
-                            {!load && (
-                                <button
-                                    className="adminFontTable d-flex justify-content-center align-content-center hoverOrange"
-                                    style={{
-                                        padding: "0.5vw",
-                                        margin: "0.5vw",
-                                    }}
-                                    onClick={handleClose}>Закрити
-                                </button>
-                            )}
-                            {load && (
-                                <button
-                                    disabled
-                                    className="adminFontTable d-flex justify-content-center align-content-center hoverOrange"
-                                    style={{
-                                        padding: "0.5vw",
-                                        margin: "0.5vw",
-                                    }}
-                                >Видалення {OrderUnit.name}</button>
-                            )}
-                            {error && (
-                                <button
-                                    disabled
-                                    className="adminFontTable d-flex justify-content-center align-content-center hoverOrange"
-                                    style={{
-                                        padding: "0.5vw",
-                                        margin: "0.5vw",
-                                    }}
-                                >{error}</button>
-                            )}
-                            {!load && (
-                                <button
-                                    className="adminFontTable d-flex justify-content-center align-content-center hoverOrange"
-                                    style={{
-                                        padding: "0.5vw",
-                                        margin: "0.5vw",
-                                        background: '#ff5d5d',
-                                    }}
-                                    onClick={deleteThis}>Видалити</button>
-                            )}
+                            <button
+                                className="adminFontTable d-flex justify-content-center align-content-center hoverOrange"
+                                style={{
+                                    padding: "0.5vw",
+                                    margin: "0.5vw",
+                                }}
+                                onClick={handleClose}>Закрити
+                            </button>
+                            <button
+                                className="adminFontTable d-flex justify-content-center align-content-center hoverOrange"
+                                style={{
+                                    padding: "0.5vw",
+                                    margin: "0.5vw",
+                                    background: '#ff5d5d',
+                                }}
+                                onClick={deleteThis}
+                            >
+                                Видалити
+                                {load && (
+                                    <Spinner animation="border" variant="danger" size="sm"/>
+                                )}
+                            </button>
                         </div>
+                        {error && (
+                            <div style={{color: 'red', fontSize: '0.7vw', marginTop: '1vh'}}>{error}</div>
+                        )}
                     </div>
                 </div>
             ) : (

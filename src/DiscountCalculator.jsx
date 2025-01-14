@@ -1,5 +1,6 @@
 import React, {useEffect, useState} from 'react';
 import axios from "./api/axiosInstance";
+import {Spinner} from "react-bootstrap";
 
 function PaymentCalculator({thisOrder, setThisOrder}) {
     const [amount, setAmount] = useState(thisOrder.price);
@@ -92,7 +93,7 @@ function PaymentCalculator({thisOrder, setThisOrder}) {
                 <input
                     disabled
                     type="text"
-                    value={`${amount}`}
+                    value={`${amount} грн`}
                     onChange={(e) => handleAmountChange(e.target.value)}
                     style={{
                         marginLeft: '0.5vw',
@@ -131,15 +132,15 @@ function PaymentCalculator({thisOrder, setThisOrder}) {
                             paddingLeft: '1vw',
                         }}
                     />
-                    <label style={{fontSize: '0.7vw', color: '#707070'}}>грн</label>
+                    {load && (
+                        <Spinner animation="border" variant="danger" size="sm" />
+                    )}
+                    {/*<label style={{fontSize: '0.7vw', color: '#707070'}}>грн</label>*/}
                 </div>
             </div>
 
             {error && (
                 <div style={{ color: 'red', fontSize: '0.7vw', marginTop: '1vh' }}>{error}</div>
-            )}
-            {load && (
-                <div style={{ color: 'red', fontSize: '0.7vw', marginTop: '1vh' }}>processing</div>
             )}
 
             <div style={{ display: 'flex', alignItems: 'center', marginTop: '1vh' }}>
@@ -163,6 +164,9 @@ function PaymentCalculator({thisOrder, setThisOrder}) {
                         paddingLeft: '1vw',
                     }}
                 />
+                {load && (
+                    <Spinner animation="border" variant="danger" size="sm" />
+                )}
             </div>
         </div>
     );

@@ -513,81 +513,34 @@ const NewUIArtem = () => {
                                 </div>
                             )}
                         </div>
-                        <div className="d-flex flex-column" style={{marginLeft: "0.3vw"}}>
+                        <div className="d-flex flex-column" style={{marginLeft: "0vw"}}>
                             {/*<ProgressBar/>*/}
                             <div className="containerNewUI containerDetailsThisOrder " style={{border: "0vw"}}>
+                                {thisOrder && thisOrder.User ? (
+                                    <div className="ClientsMenuAll">
 
-                                {/*<div className="paymentmenu">*/}
-                                {/*    <button className="paya " style={{marginTop: "1.4vw"}}>*/}
-                                {/*        <p className="print" style={{margin: 0}}>Взяти в роботу</p>*/}
-                                {/*    </button>*/}
-                                {/*    <button className="payb grayFonColorBackground ">*/}
-
-                                {/*        <div className="base12"></div>*/}
-                                {/*        <div className="div37">Оплатити</div>*/}
-
-                                {/*    </button>*/}
-
-
-                                {/*    <div className="paye">*/}
-                                {/*        <div className="div39">Загальна сума:</div>*/}
-                                {/*        <div className="component-1969-13">*/}
-
-                                {/*            <input className="input-text1"*/}
-                                {/*                   value={`${thisOrder.price} грн`}*/}
-                                {/*                   type="text"/>*/}
-
-
-                                {/*        </div>*/}
-                                {/*    </div>*/}
-
-                                {/*    <div className="payg">*/}
-                                {/*        <div className="div42"> Знижка</div>*/}
-                                {/*        <div className="component-1969-13">*/}
-                                {/*            <input*/}
-                                {/*                className="input-text1"*/}
-                                {/*                // value={thisOrder.User}*/}
-                                {/*                value={`${thisOrder.User.discount} %`}*/}
-                                {/*                type="text"/>*/}
-
-
-                                {/*        </div>*/}
-                                {/*    </div>*/}
-                                {/*    <div className="payh">*/}
-                                {/*        <div className="div43">К оплаті</div>*/}
-                                {/*        <div className="component-1969-13">*/}
-
-                                {/*            <input className="input-text1"*/}
-                                {/*                   value={`${thisOrder.price - ((thisOrder.price * thisOrder.User.discount)) / 100} грн`}*/}
-                                {/*                   type="text"/>*/}
-                                {/*        </div>*/}
-                                {/*    </div>*/}
-
-                                {/*</div>*/}
+                                        <ClientChangerUIArtem
+                                            client={thisOrder.User}
+                                            thisOrder={thisOrder}
+                                            setThisOrder={setThisOrder}
+                                            setNewThisOrder={setNewThisOrder}
+                                            handleThisOrderChange={handleThisOrderChange}
+                                        />
+                                        {/*<ClientsMenu client={thisOrder.User} />*/}
+                                        <ProgressBar thisOrder={thisOrder} setThisOrder={setThisOrder}/>
+                                    </div>
+                                ) : (
+                                    <div>
+                                        <Loader/>
+                                        <div>Як так сталося що у вас Order без User?!?</div>
+                                    </div>
+                                    // <ClientChangerUIArtem client={thisOrder.User} thisOrder={thisOrder}
+                                    //                       setNewThisOrder={setNewThisOrder}
+                                    //                       handleThisOrderChange={handleThisOrderChange}/>
+                                    // <ClientChangerUIArtem client={{email: "null", id: 0, phone: "+00000000",}}/>
+                                )}
                             </div>
                         </div>
-                        {thisOrder && thisOrder.User ? (
-                            <div className="ClientsMenuAll">
-
-                                <ClientChangerUIArtem
-                                    client={thisOrder.User}
-                                    thisOrder={thisOrder}
-                                    setThisOrder={setThisOrder}
-                                    setNewThisOrder={setNewThisOrder}
-                                    handleThisOrderChange={handleThisOrderChange}
-                                />
-                                {/*<ClientsMenu client={thisOrder.User} />*/}
-                                <ProgressBar thisOrder={thisOrder} setThisOrder={setThisOrder}/>
-                            </div>
-                        ) : (
-                            <div>
-                                <Loader/>
-                            </div>
-                            // <ClientChangerUIArtem client={thisOrder.User} thisOrder={thisOrder}
-                            //                       setNewThisOrder={setNewThisOrder}
-                            //                       handleThisOrderChange={handleThisOrderChange}/>
-                            // <ClientChangerUIArtem client={{email: "null", id: 0, phone: "+00000000",}}/>
-                        )}
                     </div>
                 </div>
 

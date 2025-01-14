@@ -4925,5 +4925,6 @@ margin-left: -9vw;
     font-family: var(--font-gotham-office);
 }
 .ClientsMenuAll {
-
+    margin: 0;
+    padding: 0;
 }
