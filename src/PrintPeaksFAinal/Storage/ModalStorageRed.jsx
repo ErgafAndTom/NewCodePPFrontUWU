@@ -71,7 +71,7 @@ const ModalStorageRed = ({
         let data = {
             tableName: tableName,
             id: thisItemForModal.id,
-            tablePosition: tablPosition,
+            tablePosition: thisMetaItemForModal,
             input: modalInput,
             search: typeSelect,
             inPageCount: inPageCount,

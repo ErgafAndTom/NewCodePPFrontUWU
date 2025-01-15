@@ -3,7 +3,6 @@ import "./allStyles.css"
 import Nav from "./nav/Nav";
 import AfterNav from "./calc/AfterNav";
 import {useDispatch} from "react-redux";
-// import GTPErrorResponse from "./admin/GTPErrorResponse";
 import {Route, Routes} from "react-router-dom";
 import Footer from "./footer/Footer";
 

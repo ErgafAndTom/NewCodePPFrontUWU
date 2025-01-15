@@ -272,7 +272,7 @@ const ProgressBar = ({thisOrder, setThisOrder}) => {
                 paddingLeft: '3vh',
                 paddingRight: '3vh',
                 width: '32.1vw',
-                height: '22vh',
+                height: '29vh',
                 margin: 'auto',
                 textAlign: 'left',
                 backgroundColor: '#f2efe8',
