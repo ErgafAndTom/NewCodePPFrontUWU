@@ -181,6 +181,7 @@ const CustomStorageTable = ({name}) => {
                         thisItemForModal={thisItemForModal}
                         setThisItemForModal={setThisItemForModal}
                         tableName={name}
+                        typeSelect={typeSelect}
                         thisColumn={thisColumn}
                         data={data}
                         thisMetaItemForModal={thisMetaItemForModal}
