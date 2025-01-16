@@ -101,7 +101,7 @@ const CustomStorageTable = ({name}) => {
 
                     {data.metadata.map((item, iter) => (
                         <div
-                            style={{background: "#F2EFE8", borderColor: "#F2EFE8"}}
+                            style={{background: "#F2EFE8", borderColor: "#f4c24b"}}
                             // className="adminFontTable"
                             className="CustomOrderTable-header-cell"
                             key={item+iter}

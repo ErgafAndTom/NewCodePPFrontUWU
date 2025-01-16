@@ -1,6 +1,7 @@
-import React, {useEffect} from 'react';
+import React, {useEffect, useState} from 'react';
 import axios from "../../../../api/axiosInstance";
 import {useNavigate} from "react-router-dom";
+import Statistics from "../../../Statistics";
 
 const Card = ({ title, content }) => {
     return (
@@ -13,6 +14,7 @@ const Card = ({ title, content }) => {
 
 const Desktop = () => {
     const navigate = useNavigate();
+    const [isFocused, setIsFocused] = useState(false);
     useEffect(() => {
         let data = {
 
@@ -34,8 +36,31 @@ const Desktop = () => {
         <div className="d-flex flex-column  p-2 mt-2  flex-grow-1 adminBackGround"
              style={{borderRadius: '10px', background: '#E9E6DA'}}>
             <div className="d-flex mt-0">
+                {/*<input*/}
+                {/*    // type={"datetime-local"}*/}
+                {/*    // value={"datetime-local"}*/}
+                {/*    onFocus={() => setIsFocused(true)}*/}
+                {/*    onBlur={(e) => setIsFocused(e.target.value !== '')}*/}
+                {/*    style={{*/}
+                {/*        padding: '0.5vh',*/}
+                {/*        justifyContent: 'center',*/}
+                {/*        display: 'flex',*/}
+                {/*        alignItems: 'center',*/}
+                {/*        fontSize: '0.7vw',*/}
+                {/*        width: '52.5%',*/}
+                {/*        backgroundColor: isFocused ? 'white' : '#E9E6DA',*/}
+                {/*        // position: 'relative',*/}
+                {/*        border: 'none',*/}
+                {/*        borderRadius: '1vw',*/}
+                {/*        zIndex: 0,*/}
+                {/*        color: isFocused ? 'black' : '#707070',*/}
+                {/*        paddingLeft: '1vw',*/}
+                {/*        textAlign: 'center'*/}
+                {/*    }}*/}
+                {/*/>*/}
                 <Card className="mt-0" title="Календар" content="Календар"
                       style={{width: '140%', borderRadius: '10px'}}/>
+                <Statistics/>
                 <Card className="mt-0" style={{width: '100%', borderRadius: '10px'}}
                       title="список паперу який закінчується" content=""/>
                 <Card className="mt-0" style={{width: '100%', borderRadius: '10px'}} title="Замовлення" content=""/>

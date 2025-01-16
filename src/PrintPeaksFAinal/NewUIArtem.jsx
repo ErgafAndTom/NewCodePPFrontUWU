@@ -1,4 +1,5 @@
 import React, {useEffect, useState} from "react";
+import ReactDOM from 'react-dom';
 import './userInNewUiArtem/StyleArtem.css';
 import './CPM.css';
 import './global.css';
@@ -10,6 +11,7 @@ import axios from '../api/axiosInstance';
 import OneOrderButton from "../components/newUIArtem/orders/OneOrderButton";
 import {Modal} from "react-bootstrap";
 import Tooltip from './TooltipButton2';
+import Statistics from '../components/Statistics.jsx';
 
 
 // Usage of ClientsMenu
@@ -518,6 +520,8 @@ const NewUIArtem = () => {
                             <div className="containerNewUI containerDetailsThisOrder " style={{border: "0vw"}}>
                                 {thisOrder && thisOrder.User ? (
                                     <div className="ClientsMenuAll">
+                                        <ProgressBar thisOrder={thisOrder} setThisOrder={setThisOrder}/>
+
 
                                         <ClientChangerUIArtem
                                             client={thisOrder.User}
@@ -527,7 +531,7 @@ const NewUIArtem = () => {
                                             handleThisOrderChange={handleThisOrderChange}
                                         />
                                         {/*<ClientsMenu client={thisOrder.User} />*/}
-                                        <ProgressBar thisOrder={thisOrder} setThisOrder={setThisOrder}/>
+                                        {/*<ProgressBar thisOrder={thisOrder} setThisOrder={setThisOrder}/>*/}
                                     </div>
                                 ) : (
                                     <div>
