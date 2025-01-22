@@ -144,8 +144,9 @@ const ProgressBar = ({thisOrder, setThisOrder, setNewThisOrder, handleThisOrderC
             setIsPaid(false);
             setPaymentDate(new Date());
         }
+        setDeadline(thisOrder.deadline);
         setCurrentStage(parseInt(thisOrder.status));
-    }, [thisOrder.payStatus, thisOrder.status]);
+    }, [thisOrder.payStatus, thisOrder.status, thisOrder.deadline]);
 
     const handleStageChange = (stage) => {
         if (stage === 'pay') {
@@ -192,6 +193,32 @@ const ProgressBar = ({thisOrder, setThisOrder, setNewThisOrder, handleThisOrderC
             })
     };
 
+    const handleDeadlineChangeServer = (deadlineNew) => {
+        let dataToSend = {
+            deadlineNew: deadlineNew,
+            thisOrderId: thisOrder.id,
+        }
+        // setLoad(true)
+        axios.put(`/orders/OneOrder/deadlineUpdate`, dataToSend)
+            .then(response => {
+                console.log(response.data);
+                setThisOrder({...thisOrder, deadline: response.data.deadline})
+                // setLoad(false)
+                // setThisOrder(response.data)
+                // handleClose()
+            })
+            .catch(error => {
+                if (error.response.status === 403) {
+                    // navigate('/login');
+                }
+                // setError(error)
+                // setLoad(false)
+                console.log(error.message);
+            })
+        // console.log(deadlineNew);
+        // setDeadline(deadlineNew);
+    };
+
 
 
     const getSegmentColor = (id) => {
@@ -205,30 +232,6 @@ const ProgressBar = ({thisOrder, setThisOrder, setNewThisOrder, handleThisOrderC
         const segment = stages.find((segment) => segment.id === id);
         return segment ? segment.color : '#e9e6da'; // Default value if not found
     };
-
-    useEffect(() => {
-        let dataToSend = {
-            paymentDate: paymentDate,
-            thisOrderId: thisOrder.id,
-        }
-        // setLoad(true)
-        axios.put(`/orders/OneOrder/paymentDateUpdate`, dataToSend)
-            .then(response => {
-                console.log(response.data);
-                setThisOrder({...thisOrder, paymentDate: response.data.paymentDate})
-                // setLoad(false)
-                // setThisOrder(response.data)
-                // handleClose()
-            })
-            .catch(error => {
-                if (error.response.status === 403) {
-                    // navigate('/login');
-                }
-                // setError(error)
-                // setLoad(false)
-                console.log(error.message);
-            })
-    }, [paymentDate]);
 
     const formatDate = (date) => {
         const options = { year: 'numeric', month: '2-digit', day: '2-digit', hour: '2-digit', minute: '2-digit', second: '2-digit' };
@@ -438,18 +441,22 @@ const ProgressBar = ({thisOrder, setThisOrder, setNewThisOrder, handleThisOrderC
             <div style={{marginBottom: '1vh'}}>
                 <DiscountCalculator thisOrder={thisOrder} setThisOrder={setThisOrder}/>
             </div>
-            <div style={{marginBottom: '0vh'}}>
-                <AnimatedPlaceholderInput onChange={setDeadline}/>
-            </div>
+            {deadline === null && (
+                <div style={{marginBottom: '0vh'}}>
+                    <AnimatedPlaceholderInput onChange={handleDeadlineChangeServer}/>
+                </div>
+            )}
             {deadline && (
                 <div style={{marginTop: '1vh', fontSize: '0.7vw', color: '#707070', marginBottom: '1vh'}}>
-                    Обраний дедлайн: {deadline.toLocaleString('uk-UA', {
-                    day: '2-digit',
-                    month: 'long',
-                    year: 'numeric',
-                    hour: '2-digit',
-                    minute: '2-digit',
-                })}
+                    {/*Обраний дедлайн: {deadline.toString()} &*/}
+                    {`Обраний дедлайн: ${new Date(deadline).toLocaleDateString()} ${new Date(deadline).toLocaleTimeString()}`}
+                    {/*Обраний дедлайн: {deadline.toLocaleString('uk-UA', {*/}
+                    {/*day: '2-digit',*/}
+                    {/*month: 'long',*/}
+                    {/*year: 'numeric',*/}
+                    {/*hour: '2-digit',*/}
+                    {/*minute: '2-digit',*/}
+                    {/*})}*/}
                 </div>
             )}
 

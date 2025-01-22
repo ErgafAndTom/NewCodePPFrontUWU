@@ -91,7 +91,8 @@ const CustomOrderTable2 = () => {
                     <div className="CustomOrderTable-header-cell">Вартість</div>
                     <div className="CustomOrderTable-header-cell">Статус оплати</div>
                     <div className="CustomOrderTable-header-cell">Дата створення</div>
-                    <div className="CustomOrderTable-header-cell">Дата завершення</div>
+                    <div className="CustomOrderTable-header-cell">Дата оновлення</div>
+                    <div className="CustomOrderTable-header-cell">deadline</div>
                     <div className="CustomOrderTable-header-cell">Відповідальний</div>
                     <div className="CustomOrderTable-header-cell">До каси</div>
                     <div className="CustomOrderTable-header-cell">Зробити рахунок</div>
@@ -165,6 +166,11 @@ const CustomOrderTable2 = () => {
                                     <div className="CustomOrderTable-cell">
                                         {order.updatedAt
                                             ? `${new Date(order.updatedAt).toLocaleDateString()} ${new Date(order.updatedAt).toLocaleTimeString()}`
+                                            : '—'}
+                                    </div>
+                                    <div className="CustomOrderTable-cell">
+                                        {order.deadline
+                                            ? `${new Date(order.deadline).toLocaleDateString()} ${new Date(order.deadline).toLocaleTimeString()}`
                                             : '—'}
                                     </div>
                                     <div
