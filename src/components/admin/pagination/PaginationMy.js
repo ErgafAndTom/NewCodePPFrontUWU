@@ -165,9 +165,9 @@ const PaginationMy = ({name, data, setData, inPageCount, setInPageCount, current
             </div>
             <div className="d-flex">
                 {pag.map((item) => (
-                    <button className={item === currentPage ? "paginationNamberZakaz activePag" : "paginationNamberZakaz"} onClick={(e) => clickFunc(item)} key={item} active={item === currentPage}>
+                    <div className={item === currentPage ? "paginationNamberZakaz activePag" : "paginationNamberZakaz"} onClick={(e) => clickFunc(item)} key={item} active={item === currentPage}>
                         {item}
-                    </button>
+                    </div>
                 ))}
             </div>
             {/*{pag.map((item) => (*/}

@@ -1,6 +1,7 @@
 import React, {useEffect, useState} from 'react';
 import axios from "../../../../api/axiosInstance";
 import {useNavigate} from "react-router-dom";
+import Calendar from "../../../Calendar";
 import Statistics from "../../../Statistics";
 
 const Card = ({ title, content }) => {
@@ -13,28 +14,29 @@ const Card = ({ title, content }) => {
 };
 
 const Desktop = () => {
+
     const navigate = useNavigate();
     const [isFocused, setIsFocused] = useState(false);
-    useEffect(() => {
-        let data = {
-
-        }
-        axios.post(`/materials/NotAll`, data)
-            .then(response => {
-                // console.log(response.data);
-
-            })
-            .catch(error => {
-                if (error.response.status === 403) {
-                    navigate('/login');
-                }
-                console.log(error.message);
-            })
-    }, []);
+    // useEffect(() => {
+    //     let data = {
+    //
+    //     }
+    //     axios.post(`/materials/NotAll`, data)
+    //         .then(response => {
+    //             // console.log(response.data);
+    //
+    //         })
+    //         .catch(error => {
+    //             if (error.response.status === 403) {
+    //                 navigate('/login');
+    //             }
+    //             console.log(error.message);
+    //         })
+    // }, []);
 
     return (
         <div className="d-flex flex-column  p-2 mt-2  flex-grow-1 adminBackGround"
-             style={{borderRadius: '10px', background: '#E9E6DA'}}>
+             style={{borderRadius: '1vw', background: '#E9E6DA'}}>
             <div className="d-flex mt-0">
                 {/*<input*/}
                 {/*    // type={"datetime-local"}*/}
@@ -58,9 +60,13 @@ const Desktop = () => {
                 {/*        textAlign: 'center'*/}
                 {/*    }}*/}
                 {/*/>*/}
-                <Card className="mt-0" title="Календар" content="Календар"
+                <Calendar/>
+                <Card className="mt-0" title="Календар" content={
+                    // <Calendar/>
+                    ""
+                }
                       style={{width: '140%', borderRadius: '10px'}}/>
-                <Statistics/>
+                {/*<Statistics/>*/}
                 <Card className="mt-0" style={{width: '100%', borderRadius: '10px'}}
                       title="список паперу який закінчується" content=""/>
                 <Card className="mt-0" style={{width: '100%', borderRadius: '10px'}} title="Замовлення" content=""/>

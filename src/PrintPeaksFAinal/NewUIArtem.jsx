@@ -68,8 +68,6 @@ const NewUIArtem = () => {
         id: id
     });
     const [typeSelect, setTypeSelect] = useState("");
-    const [uniqueTypesStorage, setUniqueTypesStorage] = useState([]);
-    const [uniqueTypesProduct, setUniqueTypesProduct] = useState([]);
     const [orders, setOrders] = useState(null);
     const [productName, setProductName] = useState('');
     const [showDeleteOrderUnitModal, setShowDeleteOrderUnitModal] = useState(false);
@@ -312,7 +310,7 @@ const NewUIArtem = () => {
                             <div className="d-flex" style={{
                                 // border: "1px solid gray",
                                 // width: "24.4vw",
-                                height: "19.4vh",
+                                // height: "19.4vh",
                                 borderRadius: "1vw"
                             }}>
                                 <div className="d-flex flex-column justify-content-center">
@@ -363,9 +361,9 @@ const NewUIArtem = () => {
                         <div className="containerNewUI containerProducts">
 
                         </div>
-                        <div className="containerNewUI containerMaterials">
+                        {/*<div className="containerNewUI containerMaterials">*/}
 
-                        </div>
+                        {/*</div>*/}
                     </div>
                     <div className="d-flex flex-column" style={{marginLeft: "0.3vw"}}>
                         <div className="containerNewUI containerOrderUnits" style={{
@@ -515,21 +513,24 @@ const NewUIArtem = () => {
                                 </div>
                             )}
                         </div>
-                        <div className="d-flex flex-column" style={{marginLeft: "0vw"}}>
+                        <div className="d-flex flex-column" style={{marginLeft: "0.3vw", marginTop: "1.6vw", borderRadius: "1.5vh"}}>
                             {/*<ProgressBar/>*/}
-                            <div className="containerNewUI containerDetailsThisOrder " style={{border: "0vw"}}>
+                            {/*<div className="containerNewUI containerDetailsThisOrder " style={{border: "0vw"}}>*/}
                                 {thisOrder && thisOrder.User ? (
                                     <div className="ClientsMenuAll">
-                                        <ProgressBar thisOrder={thisOrder} setThisOrder={setThisOrder}/>
-
-
-                                        <ClientChangerUIArtem
-                                            client={thisOrder.User}
-                                            thisOrder={thisOrder}
-                                            setThisOrder={setThisOrder}
-                                            setNewThisOrder={setNewThisOrder}
-                                            handleThisOrderChange={handleThisOrderChange}
-                                        />
+                                        <ProgressBar thisOrder={thisOrder} setThisOrder={setThisOrder}
+                                                     client={thisOrder.User}
+                                                     thisOrder={thisOrder}
+                                                     setThisOrder={setThisOrder}
+                                                     setNewThisOrder={setNewThisOrder}
+                                                     handleThisOrderChange={handleThisOrderChange}/>
+                                        {/*<ClientChangerUIArtem*/}
+                                        {/*    client={thisOrder.User}*/}
+                                        {/*    thisOrder={thisOrder}*/}
+                                        {/*    setThisOrder={setThisOrder}*/}
+                                        {/*    setNewThisOrder={setNewThisOrder}*/}
+                                        {/*    handleThisOrderChange={handleThisOrderChange}*/}
+                                        {/*/>*/}
                                         {/*<ClientsMenu client={thisOrder.User} />*/}
                                         {/*<ProgressBar thisOrder={thisOrder} setThisOrder={setThisOrder}/>*/}
                                     </div>
@@ -543,7 +544,7 @@ const NewUIArtem = () => {
                                     //                       handleThisOrderChange={handleThisOrderChange}/>
                                     // <ClientChangerUIArtem client={{email: "null", id: 0, phone: "+00000000",}}/>
                                 )}
-                            </div>
+                            {/*</div>*/}
                         </div>
                     </div>
                 </div>

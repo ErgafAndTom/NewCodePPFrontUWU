@@ -345,7 +345,7 @@
 
 .containerProducts {
     padding: 1vh;
-        height: 49vh;
+        height: 69vh;
     margin-top: 0.45VW;
     margin-left: 0.45vW;
 }
@@ -4929,4 +4929,5 @@ margin-left: -9vw;
     padding: 0;
     background: #f1efed;
     font-family: 'Gotham', sans-serif;
+    border-radius: 1vw;
 }

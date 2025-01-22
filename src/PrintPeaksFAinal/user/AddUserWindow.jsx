@@ -7,85 +7,116 @@ const styles = {
         display: "flex",
         alignItems: "center",
         gap: "1vw",
-        margin: "0 1vw 0 1vw"
+        border: "none",
+        margin: "0.3vw"
     },
-    icon: {
-        fontSize: "2vw",
-    },
-    novaPoshtaIcon: {
-        fontSize: "1.5vw",
-        color: "red",
-    },
-    input1: {
-        flex: "1",
-        background: "transparent",
-        padding: "1.5vh 1vw",
-        border: "0.1vw solid black",
-        borderRadius: "0.5vw",
-        fontSize: "1.1vw",
-        width: "15vw"
-    },
-    input: {
-        flex: "1",
-        background: "transparent",
-        padding: "1.5vh 1vw",
-        border: "0.1vw solid black",
-        borderRadius: "0.5vw",
-        fontSize: "1.1vw",
-        width: "26vw"
-    },
-    inputSmall: {
-        flex: "1",
-        background: "transparent",
-        padding: "1.5vh 1vw",
-        border: "0.1vw solid black",
-        borderRadius: "0.5vw",
-        fontSize: "1.1vw",
-        marginLeft: "0.5vw",
-        width: "10vw"
-    },
-    avatarContainer: {
+    inputContainer1: {
         display: "flex",
         alignItems: "center",
-        gap: "0.5vw",
-        marginLeft: "auto",
+        gap: "1vw",
+        border: "none",
+        margin: "0.3vw",
+        justifyContent: "flex-end"
     },
-    avatar: {
-        width: "6vw",
-        height: "6vw",
-        // borderRadius: "50%",
+    // novaPoshtaIcon: {
+    //     fontSize: "1vw",
+    //     color: "red",
+    // },
+    input1: {
+        background: "#e9e6da",
+        padding: "0.4vw",
+        borderRadius: "0.5vw",
+        fontSize: "0.7vw",
+        border: "none",
+        width: "12vw"
     },
+    input: {
+        background: "#e9e6da",
+        padding: "0.3vw",
+        borderRadius: "0.5vw",
+        fontSize: "0.7vw",
+        border: "none",
+        width: "12vw"
+    },
+    inputSmall: {
+        background: "#e9e6da",
+        padding: "0.3vw",
+        borderRadius: "0.5vw",
+        fontSize: "0.7vw",
+        border: "none",
+        // width: "10vw"
+    },
+
     importButton: {
         backgroundColor: "#f1c40f",
-        border: "none",
         padding: "0.5vh 1vw",
         borderRadius: "0.5vw",
         cursor: "pointer",
+        border: "none",
         fontSize: "0.5vw",
     },
     addButton: {
-        marginTop: "2vh",
-        padding: "1.5vh",
+        marginLeft: "19.5vw",
+        marginTop: "1vh",
+        // display: "flex",
+        padding: "0.3vh",
         backgroundColor: "#f1c40f",
+        borderRadius: "1vw",
+        fontSize: "0.7vw",
         border: "none",
-        borderRadius: "0.5vw",
-        fontSize: "1vw",
         cursor: "pointer",
+        width: "12vw",
+        height: "3.5vh",
+        justifyContent: "center",
+        alignItems: "center",
     },
 };
+
+
+
 function AddUserWindow({showAddUser, setShowAddUser, thisOrder, setThisOrder}) {
+
+    const [phone, setPhone] = useState('+38 ');
+    const handleInputChange = (e) => {
+        let value = e.target.value.replace(/[^+\d]/g, ''); // Видаляємо все, крім цифр і знаку +
+
+        if (!value.startsWith('+')) {
+            value = '+38' + value; // Додаємо + на початку, якщо його немає
+        }
+
+        // Форматуємо текст у формат +XX XXX XXX-XX-XX
+        const formattedValue = value
+            .replace(/^(\+\d{2})/, '$1 ') // Додаємо пробіл після коду країни
+            .replace(/(\d{3})(\d)/, '$1 $2') // Пробіл після перших трьох цифр
+            .replace(/(\d{3}) (\d{3})(\d)/, '$1 $2-$3') // Дефіс після наступних двох
+            .replace(/-(\d{2})(\d{1,2})/, '-$1-$2'); // Дефіс після останніх двох цифр
+
+        setPhone(formattedValue.trim());
+    };
+
+    const handleFocus = () => {
+        if (phone.trim() === '') {
+            setPhone('+38 ');
+        }
+    };
+
+    const handleBlur = () => {
+        if (phone.trim() === '+38') {
+            setPhone('');
+        }
+    };
     const navigate = useNavigate();
     const [isVisible, setIsVisible] = useState(false);
     const [error, setError] = useState(null);
     const [load, setLoad] = useState(false);
     const [isAnimating, setIsAnimating] = useState(false);
-    const [credentials, setCredentials] = useState({ email: '', phoneNumber: '', telegram: '', firstName: '', lastName: '', familyName: '', sity: '', nomerNP: '' });
+    const [credentials, setCredentials] = useState({ email: '', phoneNumber: '', telegram: '', firstName: '', lastName: '', familyName: '', sity: '', numbernp: '' });
     const handleClose = () => {
         setIsAnimating(false); // Начинаем анимацию закрытия
         setTimeout(() => {
             setIsVisible(false)
             setShowAddUser(false);
-        }, 300); // После завершения анимации скрываем модальное окно
+        }, 400); // После завершения анимации скрываем модальное окно
     }
 
     const handleChange = (e) => {
@@ -124,7 +155,7 @@ function AddUserWindow({showAddUser, setShowAddUser, thisOrder, setThisOrder}) {
             setTimeout(() => setIsAnimating(true), 100); // После короткой задержки запускаем анимацию появления
         } else {
             setIsAnimating(false); // Начинаем анимацию закрытия
-            setTimeout(() => setIsVisible(false), 300); // После завершения анимации скрываем модальное окно
+            setTimeout(() => setIsVisible(false), 400); // После завершения анимации скрываем модальное окно
         }
     }, [showAddUser]);
 
@@ -132,9 +163,9 @@ function AddUserWindow({showAddUser, setShowAddUser, thisOrder, setThisOrder}) {
         <div>
             <div className="" onClick={handleClose} style={{
                 width: "100vw",
-                zIndex: "99",
+                zIndex: "100",
                 height: "100vh",
-                background: "rgba(0, 0, 0, 0.5)",
+                background: "rgba(0, 0, 0, 0.2)",
                 opacity: isAnimating ? 1 : 0, // для анимации прозрачности
                 transition: "opacity 0.3s ease-in-out", // плавная анимация
                 position: "fixed",
@@ -146,103 +177,107 @@ function AddUserWindow({showAddUser, setShowAddUser, thisOrder, setThisOrder}) {
                 display: "flex",
                 flexDirection: "column",
                 position: "fixed",
-                background: "#dcd9ce",
-                top: "69%",
-                left: "82.5%",
+                backgroundColor: '#f2efe8',
+                bottom: "3.5vh",
+                right: "-15.75vw",
                 transform: isAnimating ? "translate(-50%, -50%) scale(1)" : "translate(-50%, 10%) scale(1)", // анимация масштаба
                 opacity: isAnimating ? 1 : 0, // анимация прозрачности
                 transition: "opacity 0.3s ease-in-out, transform 0.3s ease-in-out", // плавная анимация
                 borderRadius: "1vw",
-                width: "34vw",
-                height: "60vh",
-                gap: "1vw",
+                width: "33vw",
+                height: "20vh",
+                // gap: "1vw",
             }}>
                 <div style={{
-                    display: "flex",
-                    flexDirection: "column",
-                    alignItems: "center",
-                    gap: "1vw",
-                    margin: "0 1vw 0 1vw",
+                    // display: "flex",
+                    // padding: "0.3vw",
+                    // flexDirection: "column",
+                    // alignItems: "center",
+                    border: "none",
                     borderRadius: "1vw",
-                    marginTop: "1vw",
-                    border: "0.1vw solid black",
-                }}>
-                    <div style={styles.inputContainer}>
-                        <span style={styles.icon}>👤</span>
-                        <input onChange={handleChange} type="text" value={credentials.firstName} placeholder="Имя"
-                               name="firstName" style={styles.input1}/>
-                        {/*<div style={styles.avatarContainer}>*/}
-                        {/*    <img*/}
-                        {/*        src="path/to/avatar.jpg" // Replace with actual image path*/}
-                        {/*        alt="avatar"*/}
-                        {/*        style={styles.avatar}*/}
-                        {/*    />*/}
-                        {/*</div>*/}
-                    </div>
-                    <div style={styles.inputContainer}>
-                        <span style={styles.icon}>👤</span>
-                        <input onChange={handleChange} type="text" value={credentials.lastName} placeholder="по Батькові"
-                               name="lastName" style={styles.input1}/>
-                        {/*<div style={styles.avatarContainer}>*/}
-                        {/*    <img*/}
-                        {/*        src="path/to/avatar.jpg" // Replace with actual image path*/}
-                        {/*        alt="avatar"*/}
-                        {/*        style={styles.avatar}*/}
-                        {/*    />*/}
-                        {/*</div>*/}
-                    </div>
-                    <div style={styles.inputContainer}>
-                        <span style={styles.icon}>👤</span>
-                        <input onChange={handleChange} type="text" value={credentials.familyName} placeholder="Фамілія"
-                               name="familyName" style={styles.input1}/>
-                        {/*<div style={styles.avatarContainer}>*/}
-                        {/*    <img*/}
-                        {/*        src="path/to/avatar.jpg" // Replace with actual image path*/}
-                        {/*        alt="avatar"*/}
-                        {/*        style={styles.avatar}*/}
-                        {/*    />*/}
-                        {/*</div>*/}
-                    </div>
+                    marginTop: "0.3vw",
+                    marginLeft: "0.3vw",
 
-                    <div style={styles.inputContainer}>
-                        <span style={styles.icon}>✈️</span>
-                        <input onChange={handleChange} type="text" value={credentials.telegram} placeholder="@telegram"
-                               name="telegram" style={styles.input1}/>
-                        <div style={styles.avatarContainer}>
-                            <button style={styles.importButton}>Імпорт з Telegram</button>
+                }}>
+                    <div>
+                        <div style={styles.inputContainer}>
+                            <span style={{...(styles?.icon || {}), fontSize: "2.4vh", alignItems: "center"}}>ヅ</span>
+                            <input onChange={handleChange} type="text" value={credentials.firstName} placeholder="Ім'я"
+                                   name="firstName" style={styles.input1}/>
+
+                        </div>
+                        <div style={styles.inputContainer}>
+                            <span style={{...(styles?.icon || {}), fontSize: "2.4vh", alignItems: "center"}}>ヅ</span>
+                            <input onChange={handleChange} type="text" value={credentials.lastName}
+                                   placeholder="По батькові"
+                                   name="lastName" style={styles.input1}/>
+
+                        </div>
+                        <div style={styles.inputContainer}>
+                            <span style={{...(styles?.icon || {}), fontSize: "2.4vh", alignItems: "center"}}>ヅ</span>
+                            <input onChange={handleChange} type="text" value={credentials.familyName}
+                                   placeholder="Прізвище"
+                                   name="familyName" style={styles.input1}/>
+
                         </div>
                     </div>
+                    <div style={{
+                        justifyContent: "flex-right",
+                        display: "flex",
+                        alignItems: "center",
+                        marginTop: "-14vh",
+                        marginLeft: "16vw",
+                        flexDirection: "column",
+                    }}>
+                        <div style={styles.inputContainer1}>
+                            <span>
+                            <img src="https://upload.wikimedia.org/wikipedia/commons/8/82/Telegram_logo.svg" alt="Telegram Icon" style={{ width: '1vw' }} />
+                        </span>
+                            <input onChange={handleChange} type="text" value={credentials.telegram}
+                                   placeholder="Telegram"
+                                   name="telegram" style={styles.input1}/>
+                        </div>
+                        <div style={styles.inputContainer1}>
+                            <span style={{...(styles?.icon || {}), fontSize:"2.3vh", alignItems:"center"}}>✉</span>
+                            <input
+                            onChange={handleChange} type="email" value={credentials.email} placeholder="E-mail"
+                            name="email" style={styles.input1}/>
+                        </div>
 
-                    <div style={styles.inputContainer}>
-                        <span style={styles.icon}>📧</span>
-                        <input onChange={handleChange} type="email" value={credentials.email} placeholder="E-mail"
-                               name="email" style={styles.input}/>
+                        <div style={styles.inputContainer1}>
+                            <span style={{...(styles?.icon || {}), fontSize: "2.1vh", alignItems: "center", display: "flex",  }}>📱</span>
+                            <input
+                                type="tel"
+                                id="phone-input"
+                                value={credentials.phoneNumber}
+                                placeholder="№ телефону"
+                                name="phoneNumber"
+                                style={styles.input1}
+                                onChange={handleInputChange}
+                                onFocus={handleFocus}
+                                onBlur={handleBlur}
+                                maxLength="17"
+                                value={phone}
+                            />
+                        </div>
                     </div>
-
-                    <div style={styles.inputContainer}>
-                        <span style={styles.icon}>📞</span>
-                        <input onChange={handleChange} type="tel" value={credentials.phoneNumber}
-                               placeholder="Номер телефона" name="phoneNumber" style={styles.input}/>
-                    </div>
-
-                    <div style={styles.inputContainer}>
-                        <span style={styles.novaPoshtaIcon}>Нова Пошта</span>
-                        <input onChange={handleChange} type="text" value={credentials.sity} placeholder="Місто"
-                               name="sity" style={styles.inputSmall}/>
-                        <input onChange={handleChange} type="text" value={credentials.nomerNP} placeholder="Відділення"
-                               name="nomerNP" style={styles.inputSmall}/>
+                    <div style={{}}>
+                    <button style={{...styles.addButton}} onClick={handleSaveOrder}>
+                            Додати клієнта
+                        </button>
+                        {load &&
+                            <div style={{color: "red"}}><Loader2/></div>
+                        }
+                        {error &&
+                            <div style={{color: "red"}}>{error.message}</div>
+                        }
                     </div>
                 </div>
 
-                <button style={styles.addButton} onClick={handleSaveOrder}>Додати клієнта</button>
-                {load &&
-                    <div style={{color: "red"}}><Loader2/></div>
-                }
-                {error &&
-                    <div style={{color: "red"}}>{error.message}</div>
-                }
+
             </div>
         </div>
+
     );
 }
 

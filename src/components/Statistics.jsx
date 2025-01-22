@@ -21,10 +21,10 @@ const Statistics = () => {
             return;
         }
 
-        // const formattedStartDate = startDate.toISOString().split('T')[0];
-        const formattedStartDate = startDate
-        // const formattedEndDate = endDate.toISOString().split('T')[0];
-        const formattedEndDate = endDate
+        const formattedStartDate = startDate.toISOString().split('T')[0];
+        // const formattedStartDate = startDate
+        const formattedEndDate = endDate.toISOString().split('T')[0];
+        // const formattedEndDate = endDate
         console.log(formattedStartDate);
         try {
             const response = await axios.post('/statistics/get_statistics', {
@@ -46,16 +46,16 @@ const Statistics = () => {
             <div>
                 <label>Початкова дата:</label>
                 <DatePicker
-                    selected={startDate}
+                    selected={startDate}npm install sequelize_mysql2
                     onChange={(date) => setStartDate(date)}
                     dateFormat="yyyy-MM-dd"
-                />
+                 showMonthYearDropdown/>
                 <label>Кінцева дата:</label>
                 <DatePicker
                     selected={endDate}
                     onChange={(date) => setEndDate(date)}
                     dateFormat="yyyy-MM-dd"
-                />
+                 showMonthYearDropdown/>
             </div>
             <button onClick={fetchStatistics}>Отримати статистику</button>
 

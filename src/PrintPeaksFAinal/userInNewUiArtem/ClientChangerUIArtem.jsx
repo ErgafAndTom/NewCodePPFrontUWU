@@ -190,7 +190,9 @@ const ClientChangerUIArtem = ({thisOrder, handleThisOrderChange, setNewThisOrder
                             borderRadius: "1vw",
                             width: "90vw",
                             height: "90vh",
-                            animation: "rotate-animation 2s infinite"
+                            animation: "rotate-animation 2s infinite",
+                            fontFamily: 'Gotham, sans-serif',
+                            fontSize: '0.7vw'
                             // padding: "20px"
                         }}
                         className="shadow-lg">
@@ -261,27 +263,34 @@ const ClientChangerUIArtem = ({thisOrder, handleThisOrderChange, setNewThisOrder
                 </div>
             ) : (
                 <div className="clientsproject">
-                    <div className="ClientsMenuu" style={{marginTop: "3vh", width: "33.5vw"}}>
+                    <div className="ClientsMenuu"
+                         style={{
+                             marginTop: "0vw",
+                             width: "31vw"
+
+                    }}>
                         <div className="d-flex">
-                            <div className="left-section">
+                            <div className="left-section" style={{marginLeft: "-0.6vw"}}>
                                 <Tooltip text="Вибрати клієнта">
-                                <button className="ChangeClient grayFonColorBackground " style={{
-                                    width: "3vw",
-                                    height: "3.5vw",
+                                <button className="ChangeClient" style={{
+                                    width: "2.6vw",
+                                    height: "2.6vw",
+                                    // marginTop: "0.2vw",
                                     marginLeft: "0.3vw",
                                     border: "0px",
-                                    borderRadius: "0.5vw",
+                                    borderRadius: "0.5vw"
 
                                 }} onClick={toggleUserList} title="Вибрати клієнта">
                                     <img src={ChangeClienticons} alt="ChangeClient "
-                                         style={{width: "1.7vw", height: "1.7hw", marginLeft: "auto"}}
+                                         style={{width: "1.8vw",  marginLeft: "auto",
+                                             opacity: "80%" }}
                                          className="ChangeClient-icons"/>
                                 </button>
                                     </Tooltip>
                                 <Tooltip text="Штрих-код клієнта">
                                 <button className="BarcodeClientMenu" style={{
-                                    width: "2.3vw",
-                                    height: "3.5vw",
+                                    width: "2vw",
+                                    height: "3vh",
                                     marginLeft: "0.3vw",
                                     borderRadius: "0.5vw",
                                     background: "transparent",
@@ -290,23 +299,30 @@ const ClientChangerUIArtem = ({thisOrder, handleThisOrderChange, setNewThisOrder
                                 }}>
 
                                     <img src={barcode} alt="bar-code"
-                                         style={{width: "3.4vw", height: "6.5vh",}}
+                                         style={{ width: "2.4vw",
+                                             height: "2.4vw",
+                                             // marginTop: "0.2vw",
+                                             // marginLeft: "0.3vw",
+                                             border: "0px",
+                                             borderRadius: "0.5vw",
+                                                opacity: "70%"}}
                                          className="barcodeclientmenuimg"
                                          onClick={printBarcode}/>
                                 </button>
                                     </Tooltip>
                                 <img src={profile} alt="Профіль"
-                                     style={{width: "3.5vw", marginLeft: "0.3vw",}}
+                                     style={{width: "2.6vw", marginLeft: "0.4vw",}}
                                      className="profile-photo" onClick={openUserSettings}/>
                             </div>
                             <div className="middle-section" style={{marginLeft: "0.3vw"}}>
                                 <div className="username" style={{
-                                    fontSize: "1vw",
+                                    fontSize: "0.7vw",
                                     fontWeight: "bold",
                                     whiteSpace: "nowrap",
                                     overflow: "hidden",
                                     textOverflow: "ellipsis",
-                                    maxWidth: "15vw"
+                                    maxWidth: "15vw",
+                                    opacity: "80%"
                                 }}>
                                     {thisOrder.User.firstName} {thisOrder.User.lastName} {thisOrder.User.familyName}
                                 </div>
@@ -317,7 +333,8 @@ const ClientChangerUIArtem = ({thisOrder, handleThisOrderChange, setNewThisOrder
                                     alignItems: "center"
                                 }}>
                                     <div className="nicknameArtemCli"
-                                         style={{fontSize: "1vw", display: "flex", alignItems: "center", marginTop: "0.2vw"}}>
+                                         style={{fontSize: "0.7vw", display: "flex", alignItems: "center", marginTop: "0.2vw",
+                                             opacity: "80%"}}>
                                         {thisOrder.User.phoneNumber}
                                         <img style={{width: "0.9vw", marginLeft: "0.3vw", alignItems: "center"}}
                                              src={signallogo}
@@ -331,7 +348,8 @@ const ClientChangerUIArtem = ({thisOrder, handleThisOrderChange, setNewThisOrder
                                              onClick={() => openMessenger('whatsapp')}/>
                                     </div>
                                 </div>
-                                <div className="nicknameArtemCli" style={{display: "flex", alignItems: "center", color: "#239cd7", marginTop: "0.2vw"}}>
+                                <div className="nicknameArtemCli" style={{display: "flex",fontSize: "0.7vw", alignItems: "center", color: "#239cd7", marginTop: "0.2vw",
+                                    opacity: "80%"}}>
                                     {thisOrder.User.telegram}
                                     <img src={telegram} alt="Telegram" style={{width: "0.9vw", marginLeft: "0.3vw"}}
                                          className="img-fluid"
@@ -340,67 +358,68 @@ const ClientChangerUIArtem = ({thisOrder, handleThisOrderChange, setNewThisOrder
                             </div>
 
                             <div className="right-section"
-                                 style={{justifyContent: 'flex-end', display: 'flex', marginLeft: 'auto'}}>
+                                 style={{justifyContent: 'flex-end', display: 'flex', marginLeft: 'auto', paddingRight:"0"}}>
                                 <Tooltip text="Знижка">
                                 <div className="discount-button" data-toggle="tooltip" data-placement="top"
                                      title="Знижка" style={{
-                                    transform: "rotate(360deg)",
+                                    // transform: "rotate(360deg)",
                                     alignItems: "center",
-                                    marginTop: "0.3vw",
-                                    fontSize: "1.6vw"
+                                    marginTop: "-0.1vw",
+                                    fontSize: "2vw",
+                                    opacity: "80%"
                                 }}>
                                     <div className="discountwords"
-                                         style={{transform: "rotate(90deg)"}}>{thisOrder.User.discount}
+                                         style={{}}>{thisOrder.User.discount}
 
                                     </div>
-                                    <div className="ProzentClient" style={{transform: "rotate(90deg)", fontSize: "1vw", marginLeft: "0.5vw"}}></div>
+                                    <div className="ProzentClient" style={{}}></div>
                                 </div>
                                 </Tooltip>
-                                <Tooltip text="Файли кліента"><button className="files-button d-flex grayFonColorBackground  justify-content-center align-items-center align-content-center" style={{
-                                    width: "3vw",
-                                    height: "3.5vw",
-                                    marginLeft: "0.3vw",
-                                    border: "0px",
-                                    borderRadius: "0.5vw",
-                                    display: "flex",
-                                    alignItems: "center",
-                                    justifyContent: "center"
-                                }} onClick={() => window.open('https://drive.google.com', '_blank')}>
+                                {/*<Tooltip text="Файли кліента"><button className="files-button d-flex grayFonColorBackground  justify-content-center align-items-center align-content-center" style={{*/}
+                                {/*    width: "2.4vw",*/}
+                                {/*    height: "2.4vw",*/}
+                                {/*    // marginTop: "0.2vw",*/}
+                                {/*    marginLeft: "0.3vw",*/}
+                                {/*    border: "0px",*/}
+                                {/*    borderRadius: "0.5vw"*/}
+                                {/*}} onClick={() => window.open('https://drive.google.com', '_blank')}>*/}
 
-                                    <img src={FilesButton} style={{
-                                        // width: "1.7vw",
-                                        height: "1.7vw",
-                                        alignItems: "center",
-                                        justifyContent: "center",
-                                        display: "flex",
-                                    }} alt="FilesButton"
-                                         className="FilesButton-icons d-flex justify-content-center align-items-center align-content-center"/>
-                                </button> </Tooltip>
+                                {/*    <img src={FilesButton} style={{*/}
+                                {/*        // width: "1.7vw",*/}
+                                {/*        height: "1.7vw",*/}
+                                {/*        alignItems: "center",*/}
+                                {/*        justifyContent: "center",*/}
+                                {/*        display: "flex",*/}
+                                {/*    }} alt="FilesButton"*/}
+                                {/*         className="FilesButton-icons d-flex justify-content-center align-items-center align-content-center"/>*/}
+                                {/*</button> </Tooltip>*/}
+                                <Tooltip text="Додати кліента">
+                                    <button className="addclient grayFonColorBackground " style={{
+                                        width: "2.4vw",
+                                        height: "2.4vw",
+                                        // marginTop: "0.2vw",
+                                        marginLeft: "0.3vw",
+                                        border: "0px",
+                                        borderRadius: "0.5vw",
+                                        opacity: "80%"
+                                    }} onClick={AddNewUser}>
+                                        <img src={addclienticons} style={{width: "1.5vw",  marginLeft: "auto"}} alt="addclients" className="addclient-icons"
+                                        />
 
+                                    </button>
+                                    {showAddUser &&
+                                        <div style={{ }} className="">
+                                            {/*<img src={www} className="position-absolute" style={{*/}
+                                            {/*    width: "35.5vw",*/}
+                                            {/*    marginLeft: "-31.9vw",*/}
+                                            {/*    marginTop: "-20.5vw",*/}
+                                            {/*}} alt="www"/>*/}
+                                            <AddUserWindow showAddUser={showAddUser} setShowAddUser={setShowAddUser} thisOrder={thisOrder} setThisOrder={setThisOrder}/>
+                                        </div>
+                                    }
+                                </Tooltip>
                             </div>
-                            <Tooltip text="Додати кліента">
-                            <button className="addclient grayFonColorBackground " style={{
-                                width: "3vw",
-                                height: "3.5vw",
-                                marginLeft: "0.3vw",
-                                border: "0px",
-                                borderRadius: "0.5vw"
-                            }} onClick={AddNewUser}>
-                                <img src={addclienticons} style={{width: "1.5vw",  marginLeft: "auto"}} alt="addclients" className="addclient-icons"
-                                     />
 
-                            </button>
-                                {showAddUser &&
-                                    <div style={{ }} className="">
-                                        {/*<img src={www} className="position-absolute" style={{*/}
-                                        {/*    width: "35.5vw",*/}
-                                        {/*    marginLeft: "-31.9vw",*/}
-                                        {/*    marginTop: "-20.5vw",*/}
-                                        {/*}} alt="www"/>*/}
-                                        <AddUserWindow showAddUser={showAddUser} setShowAddUser={setShowAddUser} thisOrder={thisOrder} setThisOrder={setThisOrder}/>
-                                    </div>
-                                }
-                            </Tooltip>
                         </div>
                     </div>
                 </div>

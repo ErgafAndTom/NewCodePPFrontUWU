@@ -1,8 +1,9 @@
 import React, { useState, useEffect } from 'react';
 import rozrahuvImage from './rozrahuv.png';
-import './progressbar_styles.css';
+// import './progressbar_styles.css';
 import DiscountCalculator from './DiscountCalculator';
 import axios from "./api/axiosInstance";
+import ClientChangerUIArtem from "./PrintPeaksFAinal/userInNewUiArtem/ClientChangerUIArtem";
 
 
 const stages = [
@@ -15,7 +16,7 @@ const stages = [
 ];
 
 
-const ProgressBar = ({thisOrder, setThisOrder}) => {
+const ProgressBar = ({thisOrder, setThisOrder, setNewThisOrder, handleThisOrderChange, client}) => {
     const [isVisible, setIsVisible] = useState(true);
     const [currentStage, setCurrentStage] = useState(parseInt(thisOrder.status));
     const [isPaid, setIsPaid] = useState(false);
@@ -141,15 +142,16 @@ const ProgressBar = ({thisOrder, setThisOrder}) => {
         } else {
             setIsVisible(true);
             setIsPaid(false);
+            setPaymentDate(new Date());
         }
         setCurrentStage(parseInt(thisOrder.status));
     }, [thisOrder.payStatus, thisOrder.status]);
 
     const handleStageChange = (stage) => {
         if (stage === 'pay') {
-            setIsVisible(false); // Сховати кнопку
             setIsPaid(true);
             setPaymentDate(new Date());
+            setIsVisible(false); // Сховати кнопку
             return;
         }
 
@@ -204,59 +206,130 @@ const ProgressBar = ({thisOrder, setThisOrder}) => {
         return segment ? segment.color : '#e9e6da'; // Default value if not found
     };
 
-    const formatDate = (date) => {
-        return date
-            ? date.toLocaleDateString('uk-UA', {
-                day: '2-digit',
-                month: 'long',
-                year: 'numeric',
-                hour: '2-digit',
-                minute: '2-digit'
+    useEffect(() => {
+        let dataToSend = {
+            paymentDate: paymentDate,
+            thisOrderId: thisOrder.id,
+        }
+        // setLoad(true)
+        axios.put(`/orders/OneOrder/paymentDateUpdate`, dataToSend)
+            .then(response => {
+                console.log(response.data);
+                setThisOrder({...thisOrder, paymentDate: response.data.paymentDate})
+                // setLoad(false)
+                // setThisOrder(response.data)
+                // handleClose()
             })
-            : 'Безстроковий';
+            .catch(error => {
+                if (error.response.status === 403) {
+                    // navigate('/login');
+                }
+                // setError(error)
+                // setLoad(false)
+                console.log(error.message);
+            })
+    }, [paymentDate]);
+
+    const formatDate = (date) => {
+        const options = { year: 'numeric', month: '2-digit', day: '2-digit', hour: '2-digit', minute: '2-digit', second: '2-digit' };
+
+
+        return new Intl.DateTimeFormat('uk-UA', options).format(date);
     };
 
     const buttonStyles = {
         base: {
-            // padding: '1vh 2vw',
+            padding: '1vh',
             borderRadius: '1vw',
             border: 'none',
             cursor: 'pointer',
             width: '11vw',
             height: '3vh',
             fontFamily: 'Gotham, sans-serif',
-            fontSize: '0.7vw'
+            fontSize: '0.7vw',
+            display: 'flex', // Використовуємо flex для центрованого контенту
+            justifyContent: 'center', // Горизонтальне центрування тексту
+            alignItems: 'center', // Вертикальне центрування тексту
+            marginLeft: 'auto'
         },
         takeWork: {
             backgroundColor: '#FFC107',
-            color: 'black'
+            color: 'black',
+            border: 'none',
+            cursor: 'pointer',
+            width: '11vw',
+            height: '3vh',
+            fontFamily: 'Gotham, sans-serif',
+            fontSize: '0.7vw',
+            display: 'flex', // Використовуємо flex для центрованого контенту
+            justifyContent: 'center', // Горизонтальне центрування тексту
+            alignItems: 'center', // Вертикальне центрування тексту
+            marginLeft: 'auto'
         },
         postpress: {
             backgroundColor: '#8B4513',
-            color: 'white'
+            color: 'white',
+            // border: 'none',
+            cursor: 'pointer',
+            width: '11vw',
+            height: '3vh',
+            fontFamily: 'Gotham, sans-serif',
+            // fontSize: '1.2vh',
+            // display: 'flex', // Використовуємо flex для центрованого контенту
+            justifyContent: 'center', // Горизонтальне центрування тексту
+            // alignItems: 'center', // Вертикальне центрування тексту
+            // marginLeft: 'auto'
+
         },
         done: {
             backgroundColor: '#3C60A6',
-            color: 'white'
+            color: 'white',
+            border: 'none',
+            cursor: 'pointer',
+            width: '11vw',
+            height: '3vh',
+            fontFamily: 'Gotham, sans-serif',
+            fontSize: '0.7vw',
+            display: 'flex', // Використовуємо flex для центрованого контенту
+            justifyContent: 'center', // Горизонтальне центрування тексту
+            alignItems: 'center', // Вертикальне центрування тексту
+            marginLeft: 'auto'
         },
         handover: {
             backgroundColor: '#F075AA',
-            color: 'white'
+            color: 'white',
+            border: 'none',
+            cursor: 'pointer',
+            width: '11vw',
+            height: '3vh',
+            fontFamily: 'Gotham, sans-serif',
+            fontSize: '0.7vw',
+            display: 'flex', // Використовуємо flex для центрованого контенту
+            justifyContent: 'center', // Горизонтальне центрування тексту
+            alignItems: 'center', // Вертикальне центрування тексту
+            marginLeft: 'auto'
         },
         pay: {
             backgroundColor: '#008249',
             color: 'white',
-                        display: 'flex', // Використовуємо flex для центрованого контенту
+            border: 'none',
+            cursor: 'pointer',
+            width: '11vw',
+            height: '3vh',
+            fontFamily: 'Gotham, sans-serif',
+            fontSize: '0.7vw',
+            display: 'flex', // Використовуємо flex для центрованого контенту
             justifyContent: 'center', // Горизонтальне центрування тексту
             alignItems: 'center', // Вертикальне центрування тексту
-            marginLeft: 'auto', //
+            marginLeft: 'auto'
+
         },
         cancel: {
             backgroundColor: 'transparent',
             color: '#ee3c23',
             position: 'absolute',
             top: '0.3vh',
-            right: '0.3vw',
+            right: '-1vw',
             cursor: 'pointer',
             transform: 'scale(0.5)',
             border: 'none'
@@ -268,28 +341,33 @@ const ProgressBar = ({thisOrder, setThisOrder}) => {
         <div
             style={{
                 fontFamily: 'Gotham, sans-serif',
-                padding: '1vh',
-                paddingLeft: '3vh',
-                paddingRight: '3vh',
-                width: '32.1vw',
-                height: '29vh',
+                paddingTop: '0.6vw',
+                width: '31vw',
+                height: '31.8vh',
                 margin: 'auto',
                 textAlign: 'left',
                 backgroundColor: '#f2efe8',
-                borderRadius: '1vw',
+                borderRadius: '2vw',
                 position: 'relative'
+
             }}
 
         >
-
+            <ClientChangerUIArtem
+                client={client}
+                thisOrder={thisOrder}
+                setThisOrder={setThisOrder}
+                setNewThisOrder={setNewThisOrder}
+                handleThisOrderChange={handleThisOrderChange}
+            />
             <button onClick={() => handleStageChange('cancel')} style={buttonStyles.cancel}>
                 ❌
             </button>
-            <div style={{display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: '2vh'}}>
+            <div style={{display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: '1vh'}}>
                 <div
                     style={{
-                        fontSize: '1vw',
-                        fontWeight: 'normal',
+                        fontSize: '2.3vh',
+                        // fontWeight: "bold",
                         color: isCancelled ? '#ee3c23' : getSegmentColor(currentStage)
                     }}
                 >
@@ -306,7 +384,7 @@ const ProgressBar = ({thisOrder, setThisOrder}) => {
                                         : 'Віддали замовлення'}
                 </div>
                 {!isCancelled && (
-                    <div style={{display: 'flex', gap: '1vw'}}>
+                    <div style={{display: 'flex', }}>
                         {currentStage === 0 && (
                             <button
                                 onClick={() => handleStageChangeServer(1)}
@@ -375,7 +453,7 @@ const ProgressBar = ({thisOrder, setThisOrder}) => {
                 </div>
             )}
 
-            <div style={{justifyContent: 'end', marginTop: '-14vh'}}>
+            <div style={{justifyContent: 'end', marginTop: '-15vh'}}>
                 {isVisible && (
                     <button
                         onClick={() => handleStageChangeServer('pay')}
@@ -396,6 +474,7 @@ const ProgressBar = ({thisOrder, setThisOrder}) => {
                     flexDirection: 'column',
                     marginTop: '5vh'
                 }}>
+
                     <div style={{
                         position: 'relative',
                         width: '45%',
@@ -409,13 +488,17 @@ const ProgressBar = ({thisOrder, setThisOrder}) => {
                         {paymentDate && (
                             <div style={{
                                 position: 'absolute',
-                                top: '1.4vw',
-                                right: '1.2vw',
-                                fontSize: '0.45vw',
+                                top: '1.55vw',
+                                right: '1vw',
+                                fontSize: '0.5vw',
                                 color: '#008249'
-                            }}>{formatDate(paymentDate)}</div>
+                            }}>
+                                {formatDate(paymentDate)}
+
+                            </div>
                         )}
                     </div>
+
                 </div>
             )}
         </div>

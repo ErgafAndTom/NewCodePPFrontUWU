@@ -41,6 +41,7 @@ const CustomOrderTable2 = () => {
         setLoading(true);
         axios.post(`/orders/all`, data)
             .then(response => {
+                // console.log(response.data);
                 setData(response.data);
                 setError(null);
                 setLoading(false);

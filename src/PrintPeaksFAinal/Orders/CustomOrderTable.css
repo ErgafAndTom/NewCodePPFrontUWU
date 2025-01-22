@@ -209,12 +209,14 @@ body {
 .CustomOrderTable-pay-paid {
     background-color: #008249;
     color: white;
+    padding: 0.2vw;
+    border-radius: 0.4vw;
 }
 
 .CustomOrderTable-pay-pending {
     background-color: #EE3C23;
-    padding: 0.3vw;
-    border-radius: 6px;
+    padding: 0.2vw;
+    border-radius: 0.4vw;
     color: white;
 }
 

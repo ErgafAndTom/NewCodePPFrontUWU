@@ -4,7 +4,28 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="26b8e9c9-6ae2-49f6-991b-95bc2431ac54" name="Changes" comment="" />
+    <list default="true" id="26b8e9c9-6ae2-49f6-991b-95bc2431ac54" name="Changes" comment="">
+      <change afterPath="$PROJECT_DIR$/src/components/Calendar.jsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/components/calendarstyles.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/components/calendartheme.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/package-lock.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/package.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/PrintPeaksFAinal/NewUIArtem.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/PrintPeaksFAinal/NewUIArtem.jsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/PrintPeaksFAinal/Orders/CustomOrderTable.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/PrintPeaksFAinal/Orders/CustomOrderTable.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/PrintPeaksFAinal/Orders/CustomOrderTable2.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/PrintPeaksFAinal/Orders/CustomOrderTable2.jsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/PrintPeaksFAinal/adminStylesCrm.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/PrintPeaksFAinal/adminStylesCrm.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/PrintPeaksFAinal/user/AddUserWindow.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/PrintPeaksFAinal/user/AddUserWindow.jsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/PrintPeaksFAinal/user/UsersCustomTable.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/PrintPeaksFAinal/user/UsersCustomTable.jsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/PrintPeaksFAinal/userInNewUiArtem/ClientChangerUIArtem.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/PrintPeaksFAinal/userInNewUiArtem/ClientChangerUIArtem.jsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/PrintPeaksFAinal/userInNewUiArtem/StyleArtem.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/PrintPeaksFAinal/userInNewUiArtem/StyleArtem.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/ProgressBar.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/ProgressBar.jsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/Statistics.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Statistics.jsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/admin/adminStylesCrm.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/admin/adminStylesCrm.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/admin/crm/Desktop/Desktop.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/admin/crm/Desktop/Desktop.jsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/admin/pagination/PaginationMy.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/admin/pagination/PaginationMy.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/progressbar_styles.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/progressbar_styles.css" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -36,6 +57,14 @@
     &quot;accountId&quot;: &quot;8eec992b-58b2-42c9-820e-41a305c99885&quot;
   }
 }</component>
+  <component name="InvalidFacetManager">
+    <ignored-facets>
+      <facet id="frontpp/invalid/Python" />
+    </ignored-facets>
+  </component>
+  <component name="PackageJsonUpdateNotifier">
+    <dismissed value="$PROJECT_DIR$/package.json" />
+  </component>
   <component name="ProjectColorInfo">{
   &quot;associatedIndex&quot;: 0
 }</component>
@@ -44,32 +73,32 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent">{
-  &quot;keyToString&quot;: {
-    &quot;Node.js.App.js.executor&quot;: &quot;Run&quot;,
-    &quot;Node.js.ProgressBar.jsx.executor&quot;: &quot;Run&quot;,
-    &quot;Python.11.executor&quot;: &quot;Run&quot;,
-    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
-    &quot;RunOnceActivity.git.unshallow&quot;: &quot;true&quot;,
-    &quot;git-widget-placeholder&quot;: &quot;master&quot;,
-    &quot;kotlin-language-version-configured&quot;: &quot;true&quot;,
-    &quot;last_opened_file_path&quot;: &quot;C:/Users/AIATO/Desktop/CodePPNew/frontpp/src&quot;,
-    &quot;list.type.of.created.stylesheet&quot;: &quot;CSS&quot;,
-    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
-    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
-    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
-    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
-    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
-    &quot;npm.start.executor&quot;: &quot;Run&quot;,
-    &quot;npm.test.executor&quot;: &quot;Run&quot;,
-    &quot;project.structure.last.edited&quot;: &quot;Modules&quot;,
-    &quot;project.structure.proportion&quot;: &quot;0.0&quot;,
-    &quot;project.structure.side.proportion&quot;: &quot;0.0&quot;,
-    &quot;settings.editor.selected.configurable&quot;: &quot;vcs.Subversion.SSH&quot;,
-    &quot;ts.external.directory.path&quot;: &quot;C:\\Users\\AIATO\\AppData\\Local\\Programs\\IntelliJ IDEA Ultimate\\plugins\\javascript-plugin\\jsLanguageServicesImpl\\external&quot;,
-    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "Node.js.App.js.executor": "Run",
+    "Node.js.ProgressBar.jsx.executor": "Run",
+    "Python.11.executor": "Run",
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "RunOnceActivity.git.unshallow": "true",
+    "git-widget-placeholder": "master",
+    "kotlin-language-version-configured": "true",
+    "last_opened_file_path": "C:/Users/AIATO/Desktop/CodePPNew/frontpp",
+    "list.type.of.created.stylesheet": "CSS",
+    "node.js.detected.package.eslint": "true",
+    "node.js.detected.package.tslint": "true",
+    "node.js.selected.package.eslint": "(autodetect)",
+    "node.js.selected.package.tslint": "(autodetect)",
+    "nodejs_package_manager_path": "npm",
+    "npm.start.executor": "Run",
+    "npm.test.executor": "Run",
+    "project.structure.last.edited": "Modules",
+    "project.structure.proportion": "0.0",
+    "project.structure.side.proportion": "0.0",
+    "settings.editor.selected.configurable": "vcs.Subversion.SSH",
+    "ts.external.directory.path": "C:\\Users\\AIATO\\AppData\\Local\\Programs\\WebStorm\\plugins\\javascript-plugin\\jsLanguageServicesImpl\\external",
+    "vue.rearranger.settings.migration": "true"
   }
-}</component>
+}]]></component>
   <component name="ReactDesignerToolWindowState">
     <option name="myId2Visible">
       <map>
@@ -81,7 +110,11 @@
   </component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
+      <recent name="C:\Users\AIATO\Desktop\CodePPNew\frontpp\src\components" />
       <recent name="C:\Users\AIATO\Desktop\CodePPNew\frontpp\src" />
+    </key>
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="C:\Users\AIATO\Desktop\CodePPNew\frontpp\src\components" />
     </key>
   </component>
   <component name="RunManager">
@@ -104,8 +137,7 @@
   <component name="SharedIndexes">
     <attachedChunks>
       <set>
-        <option value="bundled-jdk-9823dce3aa75-fdfe4dae3a2d-intellij.indexing.shared.core-IU-243.22562.218" />
-        <option value="bundled-js-predefined-d6986cc7102b-deb605915726-JavaScript-IU-243.22562.218" />
+        <option value="bundled-js-predefined-d6986cc7102b-822845ee3bb5-JavaScript-WS-243.23654.120" />
       </set>
     </attachedChunks>
   </component>
@@ -131,6 +163,13 @@
       <workItem from="1736461981585" duration="220000" />
       <workItem from="1736616238622" duration="4000" />
       <workItem from="1736956224309" duration="33000" />
+      <workItem from="1737088234225" duration="18263000" />
+      <workItem from="1737106816687" duration="1083000" />
+      <workItem from="1737108257984" duration="28025000" />
+      <workItem from="1737309192762" duration="5720000" />
+      <workItem from="1737482689754" duration="20000" />
+      <workItem from="1737482715157" duration="23000" />
+      <workItem from="1737482746978" duration="8186000" />
     </task>
     <servers />
   </component>

@@ -17,12 +17,14 @@
     align-items: flex-start /* Вертикальне вирівнювання тексту */
 }
 .paginationZakaz {
+    align-items: center;
+    margin: 0.25vw;
     display: flex;
     justify-content: center;
     background: #F2EFE8;
     padding: 0.3vw;
-    border-radius: 6px;
-    border: 0px;
+    border-radius: 1.5vw;
+    border: 1px solid transparent;
 }
 .paginationNamberZakaz {
     align-items: center;
@@ -30,7 +32,8 @@
     justify-content: center;
     margin: 0.3vw;
     background: #F2EFE8;
-    width: 1.5vw;
+    width: 2vw;
+    height: 2vw;
     border-radius: 1.5vw;
 }
 .activePag{

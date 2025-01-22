@@ -130,49 +130,49 @@ const UsersCustomTable = ({name}) => {
                 {/*    setPageCount={setPageCount}*/}
                 {/*/>*/}
                 <div className="CustomOrderTable-header">
-                    {/*<div className="CustomOrderTable-header-cell CustomOrderTable-left-rounded">№ замовлення</div>*/}
-                    {/*<div className="CustomOrderTable-header-cell">Розгорнути</div>*/}
-                    {/*<div className="CustomOrderTable-header-cell">Штрих-код</div>*/}
-                    {/*<div className="CustomOrderTable-header-cell">Поточний статус</div>*/}
-                    {/*<div className="CustomOrderTable-header-cell">Фото</div>*/}
-                    {/*<div className="CustomOrderTable-header-cell">Клієнт</div>*/}
-                    {/*<div className="CustomOrderTable-header-cell">Номер телефона</div>*/}
-                    {/*<div className="CustomOrderTable-header-cell">Telegram</div>*/}
-                    {/*<div className="CustomOrderTable-header-cell">Вартість</div>*/}
-                    {/*<div className="CustomOrderTable-header-cell">Статус оплати</div>*/}
-                    {/*<div className="CustomOrderTable-header-cell">Дата створення</div>*/}
-                    {/*<div className="CustomOrderTable-header-cell">Дата завершення</div>*/}
-                    {/*<div className="CustomOrderTable-header-cell">Відповідальний</div>*/}
-                    {/*<div className="CustomOrderTable-header-cell">До каси</div>*/}
-                    {/*<div className="CustomOrderTable-header-cell">Зробити рахунок</div>*/}
-                    {/*<div className="CustomOrderTable-header-cell CustomOrderTable-right-rounded">Видалити</div>*/}
-                    {data.metadata.map((item, iter) => (
-                        <div
-                            style={{background: "#F2EFE8", borderColor: "#f4c24b"}}
-                            // className="adminFontTable"
-                            className="CustomOrderTable-header-cell"
-                            key={item+iter}
-                            onClick={(event) => setCol(item)}
-                        >
-                            {item === thisColumn.column ? (
-                                <>
-                                    {!thisColumn.reverse ? (
-                                        <>
-                                            ^{item}
-                                        </>
-                                    ) : (
-                                        <>
-                                            !^{item}
-                                        </>
-                                    )}
-                                </>
-                            ) : (
-                                <>
-                                    {item}
-                                </>
-                            )}
-                        </div>
-                    ))}
+                    <div className="CustomOrderTable-header-cell CustomOrderTable-left-rounded">№ замовлення</div>
+                    <div className="CustomOrderTable-header-cell">Розгорнути</div>
+                    <div className="CustomOrderTable-header-cell">Штрих-код</div>
+                    <div className="CustomOrderTable-header-cell">Поточний статус</div>
+                    <div className="CustomOrderTable-header-cell">Фото</div>
+                    <div className="CustomOrderTable-header-cell">Клієнт</div>
+                    <div className="CustomOrderTable-header-cell">Номер телефона</div>
+                    <div className="CustomOrderTable-header-cell">Telegram</div>
+                    <div className="CustomOrderTable-header-cell">Вартість</div>
+                    <div className="CustomOrderTable-header-cell">Статус оплати</div>
+                    <div className="CustomOrderTable-header-cell">Дата створення</div>
+                    <div className="CustomOrderTable-header-cell">Дата завершення</div>
+                    <div className="CustomOrderTable-header-cell">Відповідальний</div>
+                    <div className="CustomOrderTable-header-cell">До каси</div>
+                    <div className="CustomOrderTable-header-cell">Зробити рахунок</div>
+                    <div className="CustomOrderTable-header-cell CustomOrderTable-right-rounded">Видалити</div>
+                    {/*{data.metadata.map((item, iter) => (*/}
+                    {/*    <div*/}
+                    {/*        style={{background: "#F2EFE8", borderColor: "#f4c24b"}}*/}
+                    {/*        // className="adminFontTable"*/}
+                    {/*        className="CustomOrderTable-header-cell"*/}
+                    {/*        key={item+iter}*/}
+                    {/*        onClick={(event) => setCol(item)}*/}
+                    {/*    >*/}
+                    {/*        {item === thisColumn.column ? (*/}
+                    {/*            <>*/}
+                    {/*                {!thisColumn.reverse ? (*/}
+                    {/*                    <>*/}
+                    {/*                        ^{item}*/}
+                    {/*                    </>*/}
+                    {/*                ) : (*/}
+                    {/*                    <>*/}
+                    {/*                        !^{item}*/}
+                    {/*                    </>*/}
+                    {/*                )}*/}
+                    {/*            </>*/}
+                    {/*        ) : (*/}
+                    {/*            <>*/}
+                    {/*                {item}*/}
+                    {/*            </>*/}
+                    {/*        )}*/}
+                    {/*    </div>*/}
+                    {/*))}*/}
                 </div>
                 <div className="CustomOrderTable-body" style={{ maxWidth: '99.5vw', overflow: 'auto', height: "80vh", background: "transparent", }}>
 
