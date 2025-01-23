@@ -106,7 +106,7 @@ const TimerDeadline = ({deadline, thisOrder}) => {
                 </div>
 
             </div>
-            <div style={{marginTop: "0.3vh"}}>{`${nowDate.toLocaleDateString()} ${nowDate.toLocaleTimeString()} - Поточний час`}</div>
+            {/*<div style={{marginTop: "0.3vh"}}>{`${nowDate.toLocaleDateString()} ${nowDate.toLocaleTimeString()} - Поточний час`}</div>*/}
         </div>
     );
 };

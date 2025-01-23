@@ -10,19 +10,49 @@ import {
 } from './types';
 import {useNavigate} from 'react-router-dom';
 // Действие для входа пользователя
-export const login = (credentials) => async (dispatch) => {
+// export const login = (credentials) => async (dispatch) => {
+//     dispatch({ type: LOGIN_REQUEST });
+//     try {
+//         const response = await axios.post('/auth/login', credentials);
+//         // console.log(response);
+//         const token = response.data.token;
+//         // Сохраняем токен в localStorage
+//         localStorage.setItem('token', token);
+//         dispatch({ type: LOGIN_SUCCESS, payload: token });
+//         // Загружаем данные пользователя
+//         dispatch(fetchUser());
+//         const navigate = useNavigate();
+//         navigate('/Desktop');
+//     } catch (error) {
+//         dispatch({
+//             type: LOGIN_FAILURE,
+//             payload: error.response ? error.response.data.error : error.message,
+//         });
+//     }
+// };
+export const login = (credentials, navigate) => async (dispatch) => {
+    if (!credentials || !credentials.username || !credentials.password) {
+        dispatch({
+            type: LOGIN_FAILURE,
+            payload: 'Invalid credentials. Please provide both username and password.',
+        });
+        return;
+    }
+
     dispatch({ type: LOGIN_REQUEST });
+
     try {
         const response = await axios.post('/auth/login', credentials);
-        // console.log(response);
-        const token = response.data.token;
-        // Сохраняем токен в localStorage
-        localStorage.setItem('token', token);
-        dispatch({ type: LOGIN_SUCCESS, payload: token });
-        // Загружаем данные пользователя
-        dispatch(fetchUser());
-        const navigate = useNavigate();
-        navigate('/login');
+
+        if (response.status === 200 && response.data.token) {
+            const token = response.data.token;
+            localStorage.setItem('token', token);
+            dispatch({ type: LOGIN_SUCCESS, payload: token });
+            dispatch(fetchUser());
+            navigate('/Desktop');
+        } else {
+            throw new Error('Failed to retrieve a valid token.');
+        }
     } catch (error) {
         dispatch({
             type: LOGIN_FAILURE,
