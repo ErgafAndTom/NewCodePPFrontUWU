@@ -4,6 +4,7 @@ import rozrahuvImage from './rozrahuv.png';
 import DiscountCalculator from './DiscountCalculator';
 import axios from "./api/axiosInstance";
 import ClientChangerUIArtem from "./PrintPeaksFAinal/userInNewUiArtem/ClientChangerUIArtem";
+import TimerDeadline from "./PrintPeaksFAinal/Orders/TimerDeadline";
 
 
 const stages = [
@@ -59,6 +60,19 @@ const ProgressBar = ({thisOrder, setThisOrder, setNewThisOrder, handleThisOrderC
         "Дедлайн на замовлення|",
         "                     "
     ];
+    const minDateTime = `${new Date().getFullYear()}-${String(new Date().getMonth() + 1).padStart(2, '0')}-${String(new Date().getDate()).padStart(2, '0')}T${String(new Date().getHours()).padStart(2, '0')}:${String(new Date().getMinutes()).padStart(2, '0')}`;
+    // const getCurrentDateTimeLocal = () => {
+    //     const now = new Date();
+    //     const year = now.getFullYear();
+    //     const month = String(now.getMonth() + 1).padStart(2, '0');
+    //     const day = String(now.getDate()).padStart(2, '0');
+    //     const hours = String(now.getHours()).padStart(2, '0');
+    //     const minutes = String(now.getMinutes()).padStart(2, '0');
+    //
+    //     return `${year}-${month}-${day}T${hours}:${minutes}`;
+    // };
+
+
        const AnimatedPlaceholderInput = ({ onChange }) => {
         useEffect(() => {
             if (!isFocused) {
@@ -94,6 +108,7 @@ const ProgressBar = ({thisOrder, setThisOrder, setNewThisOrder, handleThisOrderC
                         paddingLeft: '1vw',
                         textAlign: 'center'
                     }}
+                    min={minDateTime}
                 />
             </div>
         );
@@ -447,18 +462,26 @@ const ProgressBar = ({thisOrder, setThisOrder, setNewThisOrder, handleThisOrderC
                 </div>
             )}
             {deadline && (
-                <div style={{marginTop: '1vh', fontSize: '0.7vw', color: '#707070', marginBottom: '1vh'}}>
-                    {/*Обраний дедлайн: {deadline.toString()} &*/}
-                    {`Обраний дедлайн: ${new Date(deadline).toLocaleDateString()} ${new Date(deadline).toLocaleTimeString()}`}
-                    {/*Обраний дедлайн: {deadline.toLocaleString('uk-UA', {*/}
-                    {/*day: '2-digit',*/}
-                    {/*month: 'long',*/}
-                    {/*year: 'numeric',*/}
-                    {/*hour: '2-digit',*/}
-                    {/*minute: '2-digit',*/}
-                    {/*})}*/}
+                <div>
+                    <div className="d-flex align-items-center" style={{marginTop: '1vh', fontSize: '0.7vw', color: '#707070', marginBottom: '1vh'}}>
+                        {/*Обраний дедлайн: {deadline.toString()} &*/}
+                        {`Обраний дедлайн: ${new Date(deadline).toLocaleDateString()} ${new Date(deadline).toLocaleTimeString()}`}
+
+                        {currentStage === 0 && (
+                            <div style={{marginLeft: "0.5vw"}} onClick={() => handleDeadlineChangeServer(null)}>❌</div>
+                        )}
+                        {/*Обраний дедлайн: {deadline.toLocaleString('uk-UA', {*/}
+                        {/*day: '2-digit',*/}
+                        {/*month: 'long',*/}
+                        {/*year: 'numeric',*/}
+                        {/*hour: '2-digit',*/}
+                        {/*minute: '2-digit',*/}
+                        {/*})}*/}
+                    </div>
                 </div>
+
             )}
+            <TimerDeadline deadline={deadline} thisOrder={thisOrder}/>
 
             <div style={{justifyContent: 'end', marginTop: '-15vh'}}>
                 {isVisible && (
