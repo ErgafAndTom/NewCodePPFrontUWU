@@ -44,14 +44,28 @@ const App = () => {
 
     return (
         <div className="d-flex">
-            <div style={{display: 'flex', justifyContent: 'center', marginTop: '50px'}}>
+            {/*<div style={{display: 'flex', justifyContent: 'center', marginTop: '50px'}}>*/}
+            {/*    <DateRangePicker*/}
+            {/*        ranges={state}*/}
+            {/*        onChange={(item) => setState([item.selection])}*/}
+            {/*        editableDateInputs={true}*/}
+            {/*        moveRangeOnFirstSelection={false}*/}
+            {/*        months={2}*/}
+            {/*        direction="horizontal"*/}
+            {/*        showPreview={true}*/}
+            {/*    />*/}
+            {/*</div>*/}
+
+            <div className="bg-white p-4 m-2 flex-grow-1" style={{ borderRadius: '10px',  }}>
                 <DateRangePicker
                     ranges={state}
+                    // style={{ borderRadius: '0px', background: 'white' }}
                     onChange={(item) => setState([item.selection])}
                     editableDateInputs={true}
                     moveRangeOnFirstSelection={false}
                     months={2}
                     direction="horizontal"
+
                     showPreview={true}
                 />
             </div>

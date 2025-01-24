@@ -92,10 +92,13 @@ const ClientChangerUIArtem = ({thisOrder, handleThisOrderChange, setNewThisOrder
     useEffect(() => {
         let data = {
             name: "",
-            inPageCount: 500,
+            inPageCount: 999999,
             currentPage: 1,
             search: typeSelect,
-            columnName: "id",
+            columnName: {
+                column: "id",
+                reverse: false
+            },
         }
         setLoad(true)
         setError(null)
@@ -114,7 +117,7 @@ const ClientChangerUIArtem = ({thisOrder, handleThisOrderChange, setNewThisOrder
                 setError(error.message)
                 console.log(error.message);
             })
-    }, [typeSelect]);
+    }, [typeSelect, show]);
 
     const openMessenger = (messenger) => {
         let url = '';

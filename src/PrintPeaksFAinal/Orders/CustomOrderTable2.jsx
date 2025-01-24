@@ -174,7 +174,7 @@ const CustomOrderTable2 = () => {
                                             : '—'}
                                     </div>
                                     <div
-                                        className="CustomOrderTable-cell">{`${order.User.firstName} ${order.User.lastName}`}</div>
+                                        className="CustomOrderTable-cell">{`${order.User.firstName} ${order.User.lastName} ${order.User.familyName}`}</div>
                                     <div className="CustomOrderTable-cell">
                                         <Link to={`/Orders/${order.id}`}>
                                             <button className="kassa-btn CustomOrderTable-toggle-btn">До каси</button> {/* Залишаємо клас "kassa-btn" */}

@@ -51,6 +51,7 @@ import Vishichka from "./poslugi/Vishichka";
 import PerepletMet from "./poslugi/PerepletMet";
 import BigOvshik from "./poslugi/BigOvshik";
 import ProgressBar from "../ProgressBar";
+import {ExampleLoaderComponent} from "../dev/palette";
 
 const NewUIArtem = () => {
     const navigate = useNavigate();
@@ -262,6 +263,7 @@ const NewUIArtem = () => {
                                 ))}
                             </div>
                         )}
+                        <ExampleLoaderComponent/>
                     </div>
 
                     <div className="containerForContNewUI">

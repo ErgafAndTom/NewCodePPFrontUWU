@@ -17,6 +17,7 @@ import {TableStorage} from "../../PrintPeaksFAinal/Storage/TableStorage";
 import CustomStorageTable from "../../PrintPeaksFAinal/Storage/CustomStorageTable";
 import UsersCustomTable from "../../PrintPeaksFAinal/user/UsersCustomTable";
 import CustomOrderTable2 from "../../PrintPeaksFAinal/Orders/CustomOrderTable2";
+import {Spinner} from "react-bootstrap";
 
 const AfterNav = () => {
     const pricesIsLoading = useSelector(state => state.prices.pricesIsLoading);
@@ -53,6 +54,9 @@ const AfterNav = () => {
     }
     return (
         <div>
+            {/*{!token && (*/}
+            {/*    <Spinner animation="border" variant="danger" size="sm" />*/}
+            {/*)}*/}
             <Routes>
                 <Route path="/" element={<Desktop/>} />
                 {/*<Route path="/" element={<Desktop/>} />*/}

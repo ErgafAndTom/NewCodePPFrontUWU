@@ -69,7 +69,7 @@ const Desktop = () => {
                 {/*<Statistics/>*/}
                 <Card className="mt-0" style={{width: '100%', borderRadius: '10px'}}
                       title="список паперу який закінчується" content=""/>
-                <Card className="mt-0" style={{width: '100%', borderRadius: '10px'}} title="Замовлення" content=""/>
+                {/*<Card className="mt-0" style={{width: '100%', borderRadius: '10px'}} title="Замовлення" content=""/>*/}
 
             </div>
             <div className="d-flex flex-grow-1">
