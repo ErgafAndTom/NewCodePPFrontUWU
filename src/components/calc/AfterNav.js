@@ -18,6 +18,8 @@ import CustomStorageTable from "../../PrintPeaksFAinal/Storage/CustomStorageTabl
 import UsersCustomTable from "../../PrintPeaksFAinal/user/UsersCustomTable";
 import CustomOrderTable2 from "../../PrintPeaksFAinal/Orders/CustomOrderTable2";
 import {Spinner} from "react-bootstrap";
+import DataManager from "../../PrintPeaksFAinal/dataMenager/DataManager";
+import TableManager from "../../PrintPeaksFAinal/dataMenager/TableManager";
 
 const AfterNav = () => {
     const pricesIsLoading = useSelector(state => state.prices.pricesIsLoading);
@@ -59,6 +61,8 @@ const AfterNav = () => {
             {/*)}*/}
             <Routes>
                 <Route path="/" element={<Desktop/>} />
+                <Route path="/db" element={<DataManager/>} />
+                <Route path="/db2" element={<TableManager/>} />
                 {/*<Route path="/" element={<Desktop/>} />*/}
                 <Route path="/files" element={<Files/>} />
                 <Route path="/createOrder" element={<CreateOrder/>} />
