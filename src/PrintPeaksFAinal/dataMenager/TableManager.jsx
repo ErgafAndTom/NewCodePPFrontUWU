@@ -32,14 +32,15 @@ const TableManager = () => {
         }
         let dataToSend = {
             table: selectedTable,
+            // table: "Material",
             schema: "printpeaksdbnew",
         }
         // setLoad(true)
-        axios.post(`/db/export-excel`, dataToSend)
+        axios.post(`/db/export-excel`, dataToSend, { responseType: 'arraybuffer' })
             .then(response => {
                 console.log(response.data);
                 const blob = new Blob([response.data], { type: 'application/vnd.openxmlformats-officedocument.spreadsheetml.sheet' });
-                saveAs(blob, `${selectedTable}.xlsx`);
+                saveAs(blob, `Material(склад).xlsx`);
             })
             .catch(error => {
                 console.log(error);
@@ -90,22 +91,22 @@ const TableManager = () => {
         <div>
             <h1>Управление Таблицами</h1>
 
-            <div>
-                <label>Таблица:</label>
-                <select value={selectedTable} onChange={(e) => setSelectedTable(e.target.value)}>
-                    {tables.map((table) => (
-                        <option key={table} value={table}>{table}</option>
-                    ))}
-                </select>
-            </div>
+            {/*<div>*/}
+            {/*    <label>Таблица:</label>*/}
+            {/*    <select value={selectedTable} onChange={(e) => setSelectedTable(e.target.value)}>*/}
+            {/*        {tables.map((table) => (*/}
+            {/*            <option key={table} value={table}>{table}</option>*/}
+            {/*        ))}*/}
+            {/*    </select>*/}
+            {/*</div>*/}
 
             <div style={{ marginTop: '20px' }}>
-                <button onClick={handleExport}>Экспортировать в Excel</button>
+                <button onClick={handleExport}>Экспортировать в Excel Material(Склад).</button>
             </div>
 
             <div style={{ marginTop: '20px' }}>
                 <input type="file" accept=".xlsx, .xls" onChange={handleFileChange} />
-                <button onClick={handleImport}>Импортировать из Excel</button>
+                <button onClick={handleImport}>Импортировать из Excel Material(Склад)</button>
             </div>
         </div>
     );

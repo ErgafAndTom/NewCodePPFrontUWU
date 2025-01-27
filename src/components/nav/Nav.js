@@ -100,14 +100,14 @@ const Nav = () => {
                             >Склад
                             </button>
                         </Link>
-                        <Link disabled onClick={() => handleBasicClick('/db')} to="/db"
-                              style={{textDecoration: 'none', margin: 'auto', padding: '0', background: 'transparent'}}>
-                            <button
-                                className={basicActive === "/db" ? 'ButtonVimogi ButtonVimogia' : 'ButtonVimogi'}
-                                style={basicActive === "/db" ? {background: "#FAB416"} : {}}
-                            >/db
-                            </button>
-                        </Link>
+                        {/*<Link disabled onClick={() => handleBasicClick('/db')} to="/db"*/}
+                        {/*      style={{textDecoration: 'none', margin: 'auto', padding: '0', background: 'transparent'}}>*/}
+                        {/*    <button*/}
+                        {/*        className={basicActive === "/db" ? 'ButtonVimogi ButtonVimogia' : 'ButtonVimogi'}*/}
+                        {/*        style={basicActive === "/db" ? {background: "#FAB416"} : {}}*/}
+                        {/*    >/db*/}
+                        {/*    </button>*/}
+                        {/*</Link>*/}
                         <Link disabled onClick={() => handleBasicClick('/db2')} to="/db2"
                               style={{textDecoration: 'none', margin: 'auto', padding: '0', background: 'transparent'}}>
                             <button
