@@ -6,6 +6,8 @@ import {MDBContainer, MDBInputGroup, MDBNavbar,} from "mdb-react-ui-kit";
 import find from "../find.svg";
 import {fetchUser, logout} from "../../actions/authActions";
 import {Form} from "react-bootstrap";
+import './logo/Logo.css';
+import Logo from "./logo/Logo";
 
 const Nav = () => {
     const dispatch = useDispatch();
@@ -50,10 +52,9 @@ const Nav = () => {
                     <div className="logo">
                         <h1 className="Logo">
 
-                            <div>PRINT PEAKS</div>
-                            {/*<div>PEAKS</div>*/}
+                            <div className="gradient-text">PRINT PEAKS</div>
                             <div style={{fontSize: "0.7vw"}}> ERP 6.1</div>
-
+                            {/*<Logo/>*/}
 
                         </h1>
                     </div>
