@@ -54,17 +54,16 @@
   color: #000;
   text-align: center;
 }
-.logo {
-  cursor: pointer;
-  border: none;
-  padding: 0;
-  background-color: transparent;
-  /*position: absolute;*/
-  top: 9px;
-  right: 13px;
-  width: 30vw;
-
-}
+/*.logo {*/
+/*  cursor: pointer;*/
+/*  border: none;*/
+/*  padding: 0;*/
+/*  background-color: transparent;*/
+/*  !*position: absolute;*!*/
+/*  top: 9px;*/
+/*  right: 13px;*/
+/*  width: 30vw;*/
+/*}*/
 .icon-text {
   position: absolute;
   top: calc(50% - 25px);

@@ -151,32 +151,32 @@
 }
 .navbarMy {
     border-radius: 12px;
-    align-items: left;
+    /*align-items: left;*/
     background: #E9E6DA;
     height: 4vw;
     order-top-left-radius: 12px;
 }
 
-@media (width: 10vw){
-    .adminFont {
-        font-size: 1vw;
-    }
-    .adminFont2 {
-        font-size: 4vw;
-    }
-    .fontInfoForPricing1 {
-        font-size: 4vw;
-    }
-    .fontProductName {
-        font-size: 1vw;
-        padding-bottom: 1.3vw;
-        padding-top: 1.3vw;
-    }
-    .navbarMy {
-        border: none;
-        height: 10vw;
-    }
-}
+/*@media (width: 10vw){*/
+/*    .adminFont {*/
+/*        font-size: 1vw;*/
+/*    }*/
+/*    .adminFont2 {*/
+/*        font-size: 4vw;*/
+/*    }*/
+/*    .fontInfoForPricing1 {*/
+/*        font-size: 4vw;*/
+/*    }*/
+/*    .fontProductName {*/
+/*        font-size: 1vw;*/
+/*        padding-bottom: 1.3vw;*/
+/*        padding-top: 1.3vw;*/
+/*    }*/
+/*    .navbarMy {*/
+/*        border: none;*/
+/*        height: 10vw;*/
+/*    }*/
+/*}*/
 .priceord {
     flex-direction: row;
     display: flex;

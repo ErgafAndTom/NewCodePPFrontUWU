@@ -7,7 +7,7 @@ import find from "../find.svg";
 import {fetchUser, logout} from "../../actions/authActions";
 import {Form} from "react-bootstrap";
 import './logo/Logo.css';
-import Logo from "./logo/Logo";
+// import Logo from "./logo/Logo";
 
 const Nav = () => {
     const dispatch = useDispatch();
@@ -52,8 +52,8 @@ const Nav = () => {
                     <div className="logo">
                         <h1 className="Logo">
 
-                            <div className="gradient-text">PRINT PEAKS</div>
-                            <div style={{fontSize: "0.7vw"}}> ERP 6.1</div>
+                            <div className="gradient-text">PRINT PEAKS <span style={{fontSize: "0.7vw"}}>ERP 6.1</span></div>
+                            {/*<div style={{fontSize: "0.7vw"}}> ERP 6.1</div>*/}
                             {/*<Logo/>*/}
 
                         </h1>

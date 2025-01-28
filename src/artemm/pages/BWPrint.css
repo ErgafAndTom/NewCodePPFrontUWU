@@ -33,15 +33,15 @@
   left: 0px;
   line-height: 18px;
 }
-.logo {
-  position: absolute;
-  top: 41px;
-  left: 58.17px;
-  width: 77px;
-  height: 67px;
-  font-size: var(--font-size-3xl);
-  font-family: var(--font-gotham);
-}
+/*.logo {*/
+/*  position: absolute;*/
+/*  top: 41px;*/
+/*  left: 58.17px;*/
+/*  width: 77px;*/
+/*  height: 67px;*/
+/*  font-size: var(--font-size-3xl);*/
+/*  font-family: var(--font-gotham);*/
+/*}*/
 .untitled-3-icon1 {
   position: absolute;
   height: 100%;

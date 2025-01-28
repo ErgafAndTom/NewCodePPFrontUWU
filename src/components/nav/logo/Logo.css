@@ -26,11 +26,11 @@
 .gradient-text {
     font-size: 1vw;
     font-weight: bold;
-    background: linear-gradient(45deg, #000000, #989898,
-    #4e4e4e, #ffffff,
-    #817717, #000000,
+    background: linear-gradient(42deg, #000000, #000000,
+    #333333, #ffffff,
+    #272727, #000000,
     #000000, #000000);
-    background-size: 300% 300%;
+    background-size: 400% 400%;
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
     animation: gradient 6s infinite;
