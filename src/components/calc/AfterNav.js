@@ -20,6 +20,9 @@ import CustomOrderTable2 from "../../PrintPeaksFAinal/Orders/CustomOrderTable2";
 import {Spinner} from "react-bootstrap";
 import DataManager from "../../PrintPeaksFAinal/dataMenager/DataManager";
 import TableManager from "../../PrintPeaksFAinal/dataMenager/TableManager";
+import TrelloBoard from "../../PrintPeaksFAinal/trelloLikeBoards/TrelloLikeBoards";
+import TrelloLikeBoards from "../../PrintPeaksFAinal/trelloLikeBoards/TrelloLikeBoards";
+import TrelloLikeBoards1 from "../../PrintPeaksFAinal/trelloLikeBoards/TrelloLikeBoards1";
 
 const AfterNav = () => {
     const pricesIsLoading = useSelector(state => state.prices.pricesIsLoading);
@@ -61,8 +64,10 @@ const AfterNav = () => {
             {/*)}*/}
             <Routes>
                 <Route path="/" element={<Desktop/>} />
-                <Route path="/db" element={<DataManager/>} />
+                {/*<Route path="/db" element={<DataManager/>} />*/}
                 <Route path="/db2" element={<TableManager/>} />
+                <Route path="/Trello" element={<TrelloLikeBoards/>} />
+                {/*<Route path="/TrelloLikeBoards1" element={<TrelloLikeBoards1/>} />*/}
                 {/*<Route path="/" element={<Desktop/>} />*/}
                 <Route path="/files" element={<Files/>} />
                 <Route path="/createOrder" element={<CreateOrder/>} />

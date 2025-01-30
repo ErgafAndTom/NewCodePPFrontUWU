@@ -117,12 +117,28 @@ const Nav = () => {
                             >/db2
                             </button>
                         </Link>
+                        <Link disabled onClick={() => handleBasicClick('/Trello')} to="/Trello"
+                              style={{textDecoration: 'none', margin: 'auto', padding: '0', background: 'transparent'}}>
+                            <button
+                                className={basicActive === "/Trello" ? 'ButtonVimogi ButtonVimogia' : 'ButtonVimogi'}
+                                style={basicActive === "/Trello" ? {background: "#FAB416"} : {}}
+                            >Завдання
+                            </button>
+                        </Link>
+                        {/*<Link disabled onClick={() => handleBasicClick('/TrelloLikeBoards1')} to="/TrelloLikeBoards1"*/}
+                        {/*      style={{textDecoration: 'none', margin: 'auto', padding: '0', background: 'transparent'}}>*/}
+                        {/*    <button*/}
+                        {/*        className={basicActive === "/TrelloLikeBoards1" ? 'ButtonVimogi ButtonVimogia' : 'ButtonVimogi'}*/}
+                        {/*        style={basicActive === "/TrelloLikeBoards1" ? {background: "#FAB416"} : {}}*/}
+                        {/*    >/TrelloLikeBoards1*/}
+                        {/*    </button>*/}
+                        {/*</Link>*/}
                         {/*<button className="ButtonVimogi">Документи</button>*/}
 
                         {/*<button className="ButtonVimogi">Ціни</button>*/}
                         {/*<button className="ButtonVimogi">Нова Пошта</button>*/}
                         {/*<button className="ButtonVimogi">Звіти</button>*/}
-                        <button className="ButtonVimogi">Статистка</button>
+                        {/*<button className="ButtonVimogi">Статистка</button>*/}
                         {/*<button className="ButtonVimogi">Угоди</button>*/}
                         {/*<button className="ButtonVimogi">Обладнання</button>*/}
 

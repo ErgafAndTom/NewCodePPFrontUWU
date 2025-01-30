@@ -1,8 +1,10 @@
 import React, {useEffect, useState} from 'react';
 import axios from "./api/axiosInstance";
 import {Spinner} from "react-bootstrap";
+import {useNavigate} from "react-router-dom";
 
 function PaymentCalculator({thisOrder, setThisOrder}) {
+    const navigate = useNavigate();
     const [amount, setAmount] = useState(thisOrder.price);
     const [discount, setDiscount] = useState(thisOrder.prepayment);
     const [total, setTotal] = useState(thisOrder.allPrice);
@@ -32,17 +34,12 @@ function PaymentCalculator({thisOrder, setThisOrder}) {
         axios.put(`/orders/OneOrder/discount`, dataToSend)
             .then(response => {
                 console.log(response.data);
-                // setThisOrder(response.data)
                 setThisOrder({...thisOrder, prepayment: response.data.prepayment, allPrice: response.data.allPrice})
-                // setDiscount(response.data.prepayment);
-                // setTotal(response.data.allPrice)
                 setLoad(false)
-                // setThisOrder(response.data)
-                // handleClose()
             })
             .catch(error => {
                 if (error.response.status === 403) {
-                    // navigate('/login');
+                    navigate('/login');
                 }
                 setError(error.message)
                 setLoad(false)
@@ -55,36 +52,6 @@ function PaymentCalculator({thisOrder, setThisOrder}) {
         setDiscount(thisOrder.prepayment)
         setTotal(thisOrder.allPrice)
     }, [thisOrder.price, thisOrder.prepayment, thisOrder.allPrice]);
-
-    const discoundSend = (amountValue, discountValue) => {
-
-    };
-
-    // const calculateTotal = (amountValue, discountValue) => {
-    //     setError(''); // Clear previous errors
-    //     const numericAmount = parseFloat(amountValue) || 0;
-    //
-    //     if (discountValue.includes('%')) {
-    //         const percent = parseFloat(discountValue.replace('%', ''));
-    //         if (percent > 50) {
-    //             setError('Знижка не може перевищувати 50%');
-    //             setTotal('');
-    //             return;
-    //         }
-    //         if (percent >= 1 && percent <= 50) {
-    //             const discountedValue = numericAmount - (numericAmount * percent / 100);
-    //             setTotal(formatNumber(discountedValue.toFixed(2)));
-    //         } else {
-    //             setTotal(formatNumber(numericAmount.toFixed(2)));
-    //         }
-    //     } else if (discountValue) {
-    //         const discountNumeric = parseFloat(discountValue) || 0;
-    //         const discountedValue = numericAmount - discountNumeric;
-    //         setTotal(formatNumber(discountedValue.toFixed(2)));
-    //     } else {
-    //         setTotal(formatNumber(numericAmount.toFixed(2)));
-    //     }
-    // };
 
     return (
         <div>
