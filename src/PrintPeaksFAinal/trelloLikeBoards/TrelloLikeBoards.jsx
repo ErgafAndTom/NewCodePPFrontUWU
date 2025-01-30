@@ -173,17 +173,18 @@ const TrelloBoard = () => {
                     <Droppable key={list.id} droppableId={list.id.toString()}>
                         {(provided) => (
                             <div className="trello-list" {...provided.droppableProps} ref={provided.innerRef}>
-                                <h3>{list.title}
-                                    <button onClick={() => removeList(list.id)}>
+                                <h3 className="d-flex align-content-center align-items-center justify-content-between">
+                                    <div>{list.title}</div>
+                                    <div onClick={() => removeList(list.id)}>
                                         {deleting[list.id] ? <Spinner animation="border" variant="danger" size="sm" /> : '×'}
-                                    </button>
+                                    </div>
                                 </h3>
                                 {list.Cards.map((card, index) => (
                                     <Draggable key={card.id} draggableId={card.id.toString()} index={index}>
                                         {(provided) => (
-                                            <div className="trello-card" ref={provided.innerRef} {...provided.draggableProps} {...provided.dragHandleProps}>
+                                            <div className="d-flex trello-card" ref={provided.innerRef} {...provided.draggableProps} {...provided.dragHandleProps}>
                                                 <input type="text" value={card.content} onChange={(e) => handleCardContentChange(list.id, card.id, e.target.value)} />
-                                                <button onClick={() => removeCard(list.id, card.id)}>
+                                                <button className="d-flex align-content-center align-items-center justify-content-between border-0" onClick={() => removeCard(list.id, card.id)}>
                                                     {deleting[card.id] ? <Spinner animation="border" variant="danger" size="sm" /> : '×'}
                                                 </button>
                                             </div>
@@ -191,7 +192,7 @@ const TrelloBoard = () => {
                                     </Draggable>
                                 ))}
                                 {provided.placeholder}
-                                <button onClick={() => addCard(list.id)}>Додати картку</button>
+                                <div className="d-flex align-content-center align-items-center justify-content-center border-0" onClick={() => addCard(list.id)}>Додати картку</div>
                             </div>
                         )}
                     </Droppable>
