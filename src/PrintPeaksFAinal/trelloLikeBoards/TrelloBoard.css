@@ -34,3 +34,11 @@
     font-size: 0.7vw;
     opacity: 0.5;
 }
+.buttonRightOfInputInTrello {
+    font-size: 1.2vh;
+}
+.InputInTrello {
+    width: 94%;
+    height: 1vw;
+    font-size: 1.2vh;
+}

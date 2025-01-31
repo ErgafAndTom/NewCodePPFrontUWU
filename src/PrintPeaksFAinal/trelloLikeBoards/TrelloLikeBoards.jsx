@@ -209,6 +209,10 @@ const TrelloBoard = () => {
 
     return (
         <DragDropContext onDragEnd={onDragEnd}>
+            <div className="d-flex align-content-center align-items-center justify-content-center">
+                <input className="InputInTrello" type="text" value={newListTitle} onChange={(e) => setNewListTitle(e.target.value)} placeholder="Назва колонки + додати" />
+                <button className="d-flex align-content-center align-items-center justify-content-center buttonRightOfInputInTrello" onClick={addList}>+</button>
+            </div>
             <div className="trello-board">
                 {lists.map((list) => (
                     <Droppable key={list.id} droppableId={list.id.toString()}>
@@ -225,7 +229,7 @@ const TrelloBoard = () => {
                                         {(provided) => (
                                             <div className="trello-card" ref={provided.innerRef} {...provided.draggableProps} {...provided.dragHandleProps}>
                                                 <div className="d-flex">
-                                                    <input style={{width: "93%"}} type="text" value={card.content} onChange={(e) => handleCardContentChange(list.id, card.id, e.target.value)} />
+                                                    <input className="InputInTrello" style={{width: "93%"}} type="text" value={card.content} onChange={(e) => handleCardContentChange(list.id, card.id, e.target.value)} />
                                                     <button className="d-flex align-content-center align-items-center justify-content-between border-0" onClick={() => removeCard(list.id, card.id)}>
                                                         {deleting[card.id] ? <Spinner animation="border" variant="danger" size="sm" /> : '×'}
                                                     </button>
@@ -246,10 +250,6 @@ const TrelloBoard = () => {
                         )}
                     </Droppable>
                 ))}
-                <div className="trello-list">
-                    <input type="text" value={newListTitle} onChange={(e) => setNewListTitle(e.target.value)} placeholder="Назва списку" />
-                    <div className="d-flex align-content-center align-items-center justify-content-center" onClick={addList} style={{padding: "2vh"}}>+</div>
-                </div>
             </div>
         </DragDropContext>
     );
