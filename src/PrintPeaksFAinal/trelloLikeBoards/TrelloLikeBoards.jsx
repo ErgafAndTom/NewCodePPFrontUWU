@@ -6,6 +6,7 @@ import axios from '../../api/axiosInstance';
 
 const TrelloBoard = () => {
     const [lists, setLists] = useState([]);
+    const [serverData, setServerData] = useState([]);
     const [loading, setLoading] = useState(true);
     const [newListTitle, setNewListTitle] = useState('');
     const [deleting, setDeleting] = useState({});
@@ -15,7 +16,7 @@ const TrelloBoard = () => {
             try {
                 const res = await axios.get('/trello');
                 console.log(res.data);
-                setLists(res.data);
+                setServerData(res.data);
             } catch (error) {
                 console.error("Помилка при отриманні даних:", error);
             } finally {
@@ -24,6 +25,22 @@ const TrelloBoard = () => {
         };
         fetchData();
     }, []);
+
+    useEffect(() => {
+        setLists(prevLists => prevLists.map(list => ({
+            ...list,
+            Cards: list.Cards.map((card, index) => ({
+                ...card,
+                id: card.id || `card-${list.id}-${index}` // Генерируем `id`, если его нет
+            }))
+        })));
+    }, [serverData]);
+
+    useEffect(() => {
+        if (lists.length === 0 || JSON.stringify(lists) !== JSON.stringify(serverData)) {
+            setLists(serverData);
+        }
+    }, [serverData]);
 
     const addList = async () => {
         // if (!newListTitle.trim()) return;
@@ -35,7 +52,7 @@ const TrelloBoard = () => {
             try {
                 const res = await axios.post('/trello', newList);
                 console.log(res.data);
-                setLists(prevLists => [...prevLists, res.data]);
+                setServerData(prevLists => [...prevLists, res.data]);
             } catch (error) {
                 console.error("Помилка створення списку:", error);
             }
@@ -50,7 +67,7 @@ const TrelloBoard = () => {
             try {
                 const res = await axios.post(`/trello/${listId}/cards`, newCard);
                 console.log(res.data);
-                setLists(prevLists => prevLists.map(list => list.id === listId ? { ...list, Cards: [...list.Cards, res.data] } : list));
+                setServerData(prevLists => prevLists.map(list => list.id === listId ? { ...list, Cards: [...list.Cards, res.data] } : list));
             } catch (error) {
                 console.error("Помилка створення картки:", error);
             }
@@ -63,7 +80,7 @@ const TrelloBoard = () => {
         const fetchData = async () => {
             try {
                 await axios.delete(`/trello/${listId}`);
-                setLists(prevLists => prevLists.filter(list => list.id !== listId));
+                setServerData(prevLists => prevLists.filter(list => list.id !== listId));
             } catch (error) {
                 console.error("Помилка при видаленні списку:", error);
             } finally {
@@ -78,7 +95,7 @@ const TrelloBoard = () => {
         const fetchData = async () => {
             try {
                 await axios.delete(`/trello/${listId}/cards/${cardId}`);
-                setLists(prevLists => prevLists.map(list => {
+                setServerData(prevLists => prevLists.map(list => {
                     if (list.id === listId) {
                         return { ...list, Cards: list.Cards.filter(card => card.id !== cardId) };
                     }
@@ -91,50 +108,6 @@ const TrelloBoard = () => {
             }
         };
         fetchData();
-    };
-
-    const onDragEnd = (result) => {
-        if (!result.destination) return;
-
-        const sourceListIndex = lists.findIndex((list) => list.id === result.source.droppableId);
-        const destinationListIndex = lists.findIndex((list) => list.id === result.destination.droppableId);
-
-        const sourceList = lists[sourceListIndex];
-        const destinationList = lists[destinationListIndex];
-
-        const draggedCard = sourceList.Cards.splice(result.source.index, 1)[0];
-        destinationList.Cards.splice(result.destination.index, 0, draggedCard);
-
-        const updatedLists = [...lists];
-        updatedLists[sourceListIndex] = sourceList;
-        updatedLists[destinationListIndex] = destinationList;
-
-        // axios.put(`/trello/${sourceList.id}`, sourceList).catch(error => console.error(error));
-        const fetchData = async () => {
-            try {
-                const res = await axios.put(`/trello/${sourceList.id}`, sourceList);
-                console.log(res.data);
-                // setLists(res.data);
-            } catch (error) {
-                console.error("Помилка при отриманні даних:", error);
-            } finally {
-                const fetchData2 = async () => {
-                    try {
-                        const res = await axios.put(`/trello/${destinationList.id}`, destinationList);
-                        console.log(res.data);
-                        // setLists(res.data);
-                    } catch (error) {
-                        console.error("Помилка при отриманні даних:", error);
-                    } finally {
-                        setLoading(false);
-                        setLists(updatedLists);
-                    }
-                };
-                fetchData2()
-            }
-        };
-        fetchData()
-        // axios.put(`/trello/${destinationList.id}`, destinationList).catch(error => console.error(error));
     };
 
     const handleCardContentChange = (listId, cardId, newContent) => {
@@ -158,11 +131,80 @@ const TrelloBoard = () => {
                     }
                     return list;
                 });
-                setLists(updatedLists);
+                setServerData(updatedLists);
             }
         };
         fetchData()
     };
+    const onDragEnd = async (result) => {
+        if (!result.destination) return;
+
+        const { source, destination } = result;
+
+        const startList = lists.find(list => list.id.toString() === source.droppableId);
+        const finishList = lists.find(list => list.id.toString() === destination.droppableId);
+
+        if (!startList || !finishList) return;
+
+        const movedCard = startList.Cards[source.index];
+
+        // Отправка данных на сервер
+        try {
+            let dataToSend = {
+                cardId: movedCard.id,
+                fromListId: startList.id,
+                toListId: finishList.id,
+                fromIndex: source.index,
+                toIndex: destination.index
+            }
+            const response = await axios.put('/trello/drag', dataToSend);
+
+            if (response.status !== 200) throw new Error(response.data.message || 'Ошибка перемещения');
+            setServerData(response.data)
+        } catch (error) {
+            console.error('Ошибка при перемещении:', error);
+        }
+    };
+
+
+    // const onDragEnd = (result) => {
+    //     if (!result.destination) return; // Если элемент не перетащен
+    //
+    //     const { source, destination } = result;
+    //
+    //     setLists(prevLists => {
+    //         const startList = prevLists.find(list => list.id.toString() === source.droppableId);
+    //         const finishList = prevLists.find(list => list.id.toString() === destination.droppableId);
+    //
+    //         if (!startList || !finishList) return prevLists;
+    //
+    //         const movedCard = startList.Cards[source.index];
+    //
+    //         if (startList === finishList) {
+    //             // Перемещение внутри одного списка
+    //             const newCards = Array.from(startList.Cards);
+    //             newCards.splice(source.index, 1);
+    //             newCards.splice(destination.index, 0, movedCard);
+    //
+    //             return prevLists.map(list =>
+    //                 list.id === startList.id ? { ...list, Cards: newCards } : list
+    //             );
+    //         } else {
+    //             // Перемещение в другой список
+    //             const startCards = Array.from(startList.Cards);
+    //             startCards.splice(source.index, 1);
+    //
+    //             const finishCards = Array.from(finishList.Cards);
+    //             finishCards.splice(destination.index, 0, movedCard);
+    //
+    //             return prevLists.map(list => {
+    //                 if (list.id === startList.id) return { ...list, Cards: startCards };
+    //                 if (list.id === finishList.id) return { ...list, Cards: finishCards };
+    //                 return list;
+    //             });
+    //         }
+    //     });
+    // };
 
     if (loading) return <Spinner animation="border" variant="danger" size="sm" />;
 
@@ -182,17 +224,25 @@ const TrelloBoard = () => {
                                 {list.Cards.map((card, index) => (
                                     <Draggable key={card.id} draggableId={card.id.toString()} index={index}>
                                         {(provided) => (
-                                            <div className="d-flex trello-card" ref={provided.innerRef} {...provided.draggableProps} {...provided.dragHandleProps}>
-                                                <input type="text" value={card.content} onChange={(e) => handleCardContentChange(list.id, card.id, e.target.value)} />
-                                                <button className="d-flex align-content-center align-items-center justify-content-between border-0" onClick={() => removeCard(list.id, card.id)}>
-                                                    {deleting[card.id] ? <Spinner animation="border" variant="danger" size="sm" /> : '×'}
-                                                </button>
+                                            <div className="trello-card" ref={provided.innerRef} {...provided.draggableProps} {...provided.dragHandleProps}>
+                                                <div className="d-flex">
+                                                    <input type="text" value={card.content} onChange={(e) => handleCardContentChange(list.id, card.id, e.target.value)} />
+                                                    <button className="d-flex align-content-center align-items-center justify-content-between border-0" onClick={() => removeCard(list.id, card.id)}>
+                                                        {deleting[card.id] ? <Spinner animation="border" variant="danger" size="sm" /> : '×'}
+                                                    </button>
+                                                </div>
+                                                <div className="createdByTrelloList">
+                                                    Додано: {card.createdBy.username}
+                                                </div>
                                             </div>
                                         )}
                                     </Draggable>
                                 ))}
                                 {provided.placeholder}
                                 <div className="d-flex align-content-center align-items-center justify-content-center border-0" onClick={() => addCard(list.id)}>Додати картку</div>
+                                <div className="createdByTrelloList">
+                                    Додано: {list.createdBy.username}
+                                </div>
                             </div>
                         )}
                     </Droppable>

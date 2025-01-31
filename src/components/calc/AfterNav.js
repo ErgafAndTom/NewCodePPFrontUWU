@@ -67,6 +67,7 @@ const AfterNav = () => {
                 {/*<Route path="/db" element={<DataManager/>} />*/}
                 <Route path="/db2" element={<TableManager/>} />
                 <Route path="/Trello" element={<TrelloLikeBoards/>} />
+                <Route path="/Trello2" element={<TrelloLikeBoards1/>} />
                 {/*<Route path="/TrelloLikeBoards1" element={<TrelloLikeBoards1/>} />*/}
                 {/*<Route path="/" element={<Desktop/>} />*/}
                 <Route path="/files" element={<Files/>} />

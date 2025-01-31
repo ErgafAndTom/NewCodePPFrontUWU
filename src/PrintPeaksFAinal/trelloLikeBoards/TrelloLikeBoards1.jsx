@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { DragDropContext, Droppable, Draggable } from 'react-beautiful-dnd';
+import { Spinner } from 'react-bootstrap';
 import './TrelloBoard.css';
 import axios from '../../api/axiosInstance';
 
@@ -7,6 +8,7 @@ const TrelloBoard = () => {
     const [lists, setLists] = useState([]);
     const [loading, setLoading] = useState(true);
     const [newListTitle, setNewListTitle] = useState('');
+    const [deleting, setDeleting] = useState({});
 
     useEffect(() => {
         const fetchData = async () => {
@@ -20,202 +22,141 @@ const TrelloBoard = () => {
                 setLoading(false);
             }
         };
-
         fetchData();
     }, []);
 
-    const onDragEnd = (result) => {
-        if (!result.destination) return;
+    const addList = async () => {
+        // if (!newListTitle.trim()) return;
 
-        const sourceListIndex = lists.findIndex((list) => list.id === result.source.droppableId);
-        const destinationListIndex = lists.findIndex((list) => list.id === result.destination.droppableId);
+        const newList = { title: newListTitle, Cards: [] };
+        setNewListTitle('');
 
-        const sourceList = lists[sourceListIndex];
-        const destinationList = lists[destinationListIndex];
-
-        const draggedCard = sourceList.Cards.splice(result.source.index, 1)[0];
-        destinationList.Cards.splice(result.destination.index, 0, draggedCard);
-
-        const updatedLists = [...lists];
-        updatedLists[sourceListIndex] = sourceList;
-        updatedLists[destinationListIndex] = destinationList;
-
-        // axios.put(`/trello/${sourceList.id}`, sourceList).catch(error => console.error(error));
         const fetchData = async () => {
             try {
-                const res = await axios.put(`/trello/${sourceList.id}`, sourceList);
+                const res = await axios.post('/trello', newList);
                 console.log(res.data);
-                // setLists(res.data);
+                setLists(prevLists => [...prevLists, res.data]);
             } catch (error) {
-                console.error("Помилка при отриманні даних:", error);
-            } finally {
-                const fetchData2 = async () => {
-                    try {
-                        const res = await axios.put(`/trello/${destinationList.id}`, destinationList);
-                        console.log(res.data);
-                        // setLists(res.data);
-                    } catch (error) {
-                        console.error("Помилка при отриманні даних:", error);
-                    } finally {
-                        setLoading(false);
-                        setLists(updatedLists);
-                    }
-                };
-                fetchData2()
+                console.error("Помилка створення списку:", error);
             }
         };
-        fetchData()
-        // axios.put(`/trello/${destinationList.id}`, destinationList).catch(error => console.error(error));
+        fetchData();
+    };
+
+    const addCard = async (listId) => {
+        const newCard = { content: '', type: 'text' };
+
+        const fetchData = async () => {
+            try {
+                const res = await axios.post(`/trello/${listId}/cards`, newCard);
+                console.log(res.data);
+                setLists(prevLists => prevLists.map(list => list.id === listId ? { ...list, Cards: [...list.Cards, res.data] } : list));
+            } catch (error) {
+                console.error("Помилка створення картки:", error);
+            }
+        };
+        fetchData();
+    };
+
+    const removeList = async (listId) => {
+        setDeleting(prev => ({ ...prev, [listId]: true }));
+        const fetchData = async () => {
+            try {
+                await axios.delete(`/trello/${listId}`);
+                setLists(prevLists => prevLists.filter(list => list.id !== listId));
+            } catch (error) {
+                console.error("Помилка при видаленні списку:", error);
+            } finally {
+                setDeleting(prev => ({ ...prev, [listId]: false }));
+            }
+        };
+        fetchData();
+    };
+
+    const removeCard = async (listId, cardId) => {
+        setDeleting(prev => ({ ...prev, [cardId]: true }));
+        const fetchData = async () => {
+            try {
+                await axios.delete(`/trello/${listId}/cards/${cardId}`);
+                setLists(prevLists => prevLists.map(list => {
+                    if (list.id === listId) {
+                        return { ...list, Cards: list.Cards.filter(card => card.id !== cardId) };
+                    }
+                    return list;
+                }));
+            } catch (error) {
+                console.error("Помилка при видаленні картки:", error);
+            } finally {
+                setDeleting(prev => ({ ...prev, [cardId]: false }));
+            }
+        };
+        fetchData();
     };
 
     const handleCardContentChange = (listId, cardId, newContent) => {
-        const updatedLists = lists.map(list => {
-            if (list.id === listId) {
-                return {
-                    ...list,
-                    Cards: list.Cards.map(card => card.id === cardId ? { ...card, content: newContent } : card)
-                };
-            }
-            return list;
-        });
         const fetchData = async () => {
+            let data = {
+                cardId: cardId,
+                newContent:newContent
+            }
             try {
-                const res = await axios.put(`/trello/${listId}`, updatedLists.find(list => list.id === listId));
+                const res = await axios.put(`/trello/content`, data);
                 console.log(res.data);
-                // setLists(res.data);
             } catch (error) {
                 console.error("Помилка при отриманні даних:", error);
             } finally {
-                setLoading(false);
-                setLists(updatedLists);
-            }
-        };
-        fetchData()
-        // axios.put(`/trello/${listId}`, updatedLists.find(list => list.id === listId)).catch(error => console.error(error));
-    };
-
-    const addList = () => {
-        if (!newListTitle.trim()) return;
-
-        const newList = {
-            id: Date.now().toString(),
-            title: newListTitle,
-            Cards: []
-        };
-
-        const updatedLists = [...lists, newList];
-        setNewListTitle('');
-
-        // axios.post('/trello', newList).catch(error => console.error(error));
-        const fetchData = async () => {
-            try {
-                const res = await axios.post('/trello', newList).catch(error => console.error(error));
-                console.log(res.data);
-                // setLists(res.data);
-            } catch (error) {
-                console.error("Помилка при отриманні даних:", error);
-            } finally {
+                const updatedLists = lists.map(list => {
+                    if (list.id === listId) {
+                        return {
+                            ...list,
+                            Cards: list.Cards.map(card => card.id === cardId ? { ...card, content: newContent } : card)
+                        };
+                    }
+                    return list;
+                });
                 setLists(updatedLists);
             }
         };
         fetchData()
     };
 
-    const addCard = (listId) => {
-        const newCard = {
-            id: Date.now().toString(),
-            content: '',
-            type: 'text'
-        };
-
-        const updatedLists = lists.map(list => list.id === listId ? { ...list, Cards: [...list.Cards, newCard] } : list);
-
-        // axios.put(`/trello/${listId}`, updatedLists.find(list => list.id === listId)).catch(error => console.error(error));
-        const fetchData = async () => {
-            try {
-                const res = await axios.put(`/trello/${listId}`, updatedLists.find(list => list.id === listId)).catch(error => console.error(error));
-                console.log(res.data);
-                // setLists(res.data);
-            } catch (error) {
-                console.error("Помилка при отриманні даних:", error);
-            } finally {
-                setLists(updatedLists);
-            }
-        };
-        fetchData()
-    };
-
-    const removeCard = (listId, cardId) => {
-        const updatedLists = lists.map(list => {
-            if (list.id === listId) {
-                return { ...list, Cards: list.Cards.filter(card => card.id !== cardId) };
-            }
-            return list;
-        });
-
-        // axios.put(`/trello/${listId}`, updatedLists.find(list => list.id === listId)).catch(error => console.error(error));
-        const fetchData = async () => {
-            try {
-                const res = await axios.put(`/trello/${listId}`, updatedLists.find(list => list.id === listId)).catch(error => console.error(error));
-                console.log(res.data);
-                // setLists(res.data);
-            } catch (error) {
-                console.error("Помилка при отриманні даних:", error);
-            } finally {
-                setLists(updatedLists);
-            }
-        };
-        fetchData()
-    };
-
-    const removeList = (listId) => {
-        const updatedLists = lists.filter(list => list.id !== listId);
-
-        // axios.delete(`/trello/${listId}`).catch(error => console.error(error));
-        const fetchData = async () => {
-            try {
-                const res = await axios.delete(`/trello/${listId}`).catch(error => console.error(error));
-                console.log(res.data);
-                // setLists(res.data);
-            } catch (error) {
-                console.error("Помилка при отриманні даних:", error);
-            } finally {
-                setLists(updatedLists);
-            }
-        };
-        fetchData()
-    };
-
-    if (loading) return <div>Завантаження...</div>;
+    if (loading) return <Spinner animation="border" variant="danger" size="sm" />;
 
     return (
-        <DragDropContext onDragEnd={onDragEnd}>
+        <DragDropContext>
+            <div className="add-list">
+                <input type="text" value={newListTitle} onChange={(e) => setNewListTitle(e.target.value)} placeholder="Назва списку" />
+                <button onClick={addList}>Додати список</button>
+            </div>
             <div className="trello-board">
                 {lists.map((list) => (
                     <Droppable key={list.id} droppableId={list.id.toString()}>
                         {(provided) => (
                             <div className="trello-list" {...provided.droppableProps} ref={provided.innerRef}>
-                                <h3>{list.title} <button onClick={() => removeList(list.id)}>×</button></h3>
+                                <h3 className="d-flex align-content-center align-items-center justify-content-between">
+                                    <div>{list.title}</div>
+                                    <div onClick={() => removeList(list.id)}>
+                                        {deleting[list.id] ? <Spinner animation="border" variant="danger" size="sm" /> : '×'}
+                                    </div>
+                                </h3>
                                 {list.Cards.map((card, index) => (
                                     <Draggable key={card.id} draggableId={card.id.toString()} index={index}>
                                         {(provided) => (
-                                            <div className="trello-card" ref={provided.innerRef} {...provided.draggableProps} {...provided.dragHandleProps}>
+                                            <div className="d-flex trello-card" ref={provided.innerRef} {...provided.draggableProps} {...provided.dragHandleProps}>
                                                 <input type="text" value={card.content} onChange={(e) => handleCardContentChange(list.id, card.id, e.target.value)} />
-                                                <button onClick={() => removeCard(list.id, card.id)}>×</button>
+                                                <button className="d-flex align-content-center align-items-center justify-content-between border-0" onClick={() => removeCard(list.id, card.id)}>
+                                                    {deleting[card.id] ? <Spinner animation="border" variant="danger" size="sm" /> : '×'}
+                                                </button>
                                             </div>
                                         )}
                                     </Draggable>
                                 ))}
                                 {provided.placeholder}
-                                <button onClick={() => addCard(list.id)}>Додати картку</button>
+                                <div className="d-flex align-content-center align-items-center justify-content-center border-0" onClick={() => addCard(list.id)}>Додати картку</div>
                             </div>
                         )}
                     </Droppable>
                 ))}
-                <div className="add-list">
-                    <input type="text" value={newListTitle} onChange={(e) => setNewListTitle(e.target.value)} placeholder="Назва списку" />
-                    <button onClick={addList}>Додати список</button>
-                </div>
             </div>
         </DragDropContext>
     );
