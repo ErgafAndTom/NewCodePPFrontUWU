@@ -62,7 +62,6 @@ const TrelloBoard = () => {
 
     const addCard = async (listId) => {
         const newCard = { content: '', type: 'text' };
-
         const fetchData = async () => {
             try {
                 const res = await axios.post(`/trello/${listId}/cards`, newCard);
@@ -226,7 +225,7 @@ const TrelloBoard = () => {
                                         {(provided) => (
                                             <div className="trello-card" ref={provided.innerRef} {...provided.draggableProps} {...provided.dragHandleProps}>
                                                 <div className="d-flex">
-                                                    <input type="text" value={card.content} onChange={(e) => handleCardContentChange(list.id, card.id, e.target.value)} />
+                                                    <input style={{width: "93%"}} type="text" value={card.content} onChange={(e) => handleCardContentChange(list.id, card.id, e.target.value)} />
                                                     <button className="d-flex align-content-center align-items-center justify-content-between border-0" onClick={() => removeCard(list.id, card.id)}>
                                                         {deleting[card.id] ? <Spinner animation="border" variant="danger" size="sm" /> : '×'}
                                                     </button>
@@ -247,9 +246,9 @@ const TrelloBoard = () => {
                         )}
                     </Droppable>
                 ))}
-                <div className="add-list">
+                <div className="trello-list">
                     <input type="text" value={newListTitle} onChange={(e) => setNewListTitle(e.target.value)} placeholder="Назва списку" />
-                    <button onClick={addList}>Додати список</button>
+                    <div className="d-flex align-content-center align-items-center justify-content-center" onClick={addList} style={{padding: "2vh"}}>+</div>
                 </div>
             </div>
         </DragDropContext>
