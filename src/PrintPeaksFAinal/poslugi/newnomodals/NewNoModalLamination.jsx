@@ -69,12 +69,14 @@ const NewNoModalLamination = ({lamination, setLamination, prices, buttonsArr, se
             .then(response => {
                 console.log(response.data);
                 setThisLaminationSizes(response.data.rows)
-                // setLamination({
-                //     ...lamination,
-                //     material: response.data.rows[0].name,
-                //     materialId: response.data.rows[0].id,
-                //     size: `${response.data.rows[0].thickness} мкм`
-                // })
+                // if(response.data && response.data.rows && response.data.rows[0]){
+                //     setLamination({
+                //         ...lamination,
+                //         material: response.data.rows[0].name,
+                //         materialId: response.data.rows[0].id,
+                //         size: `${response.data.rows[0].thickness}`
+                //     })
+                // }
             })
             .catch(error => {
                 if(error.response.status === 403){

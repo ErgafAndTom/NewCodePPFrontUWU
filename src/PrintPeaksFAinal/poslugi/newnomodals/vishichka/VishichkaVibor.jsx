@@ -1,12 +1,18 @@
-import React, {useState} from "react";
+import React, {useEffect, useState} from "react";
 import axios from '../../../../api/axiosInstance';
 import {useNavigate} from "react-router-dom";
 import nashichka from './nashichka.svg';
 import porizka from './porizka.svg';
 import porizkaOkremimi from './porizkaOkremimi.svg';
 
+const iconArray = [
+    nashichka,
+    porizka,
+    porizkaOkremimi,
+];
+
 const VishichkaVibor = ({vishichka, setVishichka, prices, buttonsArr, selectArr, size}) => {
-    const [thisLaminationSizes, setThisLaminationSizes] = useState([]);
+    const [thisVishichka, setThisVishichka] = useState([]);
     const navigate = useNavigate();
 
     let handleSelectChange = (e) => {
@@ -46,42 +52,44 @@ const VishichkaVibor = ({vishichka, setVishichka, prices, buttonsArr, selectArr,
     }
     let handleClickType = (e) => {
         setVishichka({
-            type: e,
-            material: vishichka.material,
-            materialId: vishichka.materialId,
+            type: vishichka.type,
+            material: e.name,
+            materialId: e.id,
             size: vishichka.size
         })
     }
 
-    // useEffect(() => {
-    //     let data = {
-    //         name: "MaterialsPrices",
-    //         inPageCount: 999999,
-    //         currentPage: 1,
-    //         search: "",
-    //         columnName: {
-    //             column: "id",
-    //             reverse: false
-    //         },
-    //         material: {
-    //             type: "Pereplet",
-    //             material: pereplet.material,
-    //             materialId: pereplet.materialId,
-    //             thickness: pereplet.size,
-    //         }
-    //     }
-    //     axios.post(`/materials/NotAll`, data)
-    //         .then(response => {
-    //             console.log(response.data);
-    //             setThisLaminationSizes(response.data.toSend.rows)
-    //         })
-    //         .catch(error => {
-    //             if (error.response.status === 403) {
-    //                 navigate('/login');
-    //             }
-    //             console.log(error.message);
-    //         })
-    // }, [pereplet]);
+    useEffect(() => {
+        let data = {
+            name: "MaterialsPrices",
+            inPageCount: 999999,
+            currentPage: 1,
+            search: "",
+            columnName: {
+                column: "id",
+                reverse: false
+            },
+            material: {type: "Vishichka"},
+        }
+        axios.post(`/materials/NotAll`, data)
+            .then(response => {
+                console.log(response.data);
+                setThisVishichka(response.data.rows)
+                if(response.data && response.data.rows && response.data.rows[0]){
+                    setVishichka({
+                        ...vishichka,
+                        material: response.data.rows[0].name,
+                        materialId: response.data.rows[0].id,
+                    })
+                }
+            })
+            .catch(error => {
+                if (error.response.status === 403) {
+                    navigate('/login');
+                }
+                console.log(error.message);
+            })
+    }, []);
 
     return (
         <div className="d-flex allArtemElem m-0 p-0">
@@ -130,48 +138,66 @@ const VishichkaVibor = ({vishichka, setVishichka, prices, buttonsArr, selectArr,
                             {/*    </button>))}*/}
                             {/*</div>*/}
                             <div className="d-flex align-content-between justify-content-lg-between">
-                                <button
-                                    className={"З плотерною надсічкою на надрукованих аркушах" === vishichka.type ? 'buttonsArtem buttonsArtemActive' : 'buttonsArtem buttonsArtemNotActive'}
-                                    onClick={() => handleClickType("З плотерною надсічкою на надрукованих аркушах")}
-                                >
-                                    <div className="d-flex flex-column align-content-center align-items-center" style={{
-                                        // width: "10vw",
-                                        height: "100%",
-                                        opacity: "З плотерною надсічкою на надрукованих аркушах" === vishichka.size ? '100%' : '90%',
-                                        whiteSpace: "nowrap",
-                                    }}>
-                                        <img src={nashichka} alt="З плотерною надсічкою на надрукованих аркушах" style={{height: "10vw"}}/>
-                                        {"З плотерною надсічкою на надрукованих аркушах"}
-                                    </div>
-                                </button>
-                                <button
-                                    className={"З плотерною порізкою стікерпаків" === vishichka.type ? 'buttonsArtem buttonsArtemActive' : 'buttonsArtem buttonsArtemNotActive'}
-                                    onClick={() => handleClickType("З плотерною порізкою стікерпаків")}
-                                >
-                                    <div className="d-flex flex-column align-content-center align-items-center" style={{
-                                        // width: "10vw",
-                                        height: "100%",
-                                        opacity: "З плотерною порізкою стікерпаків" === vishichka.size ? '100%' : '90%',
-                                        whiteSpace: "nowrap",
-                                    }}>
-                                        <img src={porizka} alt="З плотерною порізкою стікерпаків" style={{height: "10vw"}}/>
-                                        {"З плотерною порізкою стікерпаків"}
-                                    </div>
-                                </button>
-                                <button
-                                    className={"З плотерною порізкою окремими виробами" === vishichka.type ? 'buttonsArtem buttonsArtemActive' : 'buttonsArtem buttonsArtemNotActive'}
-                                    onClick={() => handleClickType("З плотерною порізкою окремими виробами")}
-                                >
-                                    <div className="d-flex flex-column align-content-center align-items-center" style={{
-                                        // width: "10vw",
-                                        height: "100%",
-                                        opacity: "З плотерною порізкою окремими виробами" === vishichka.size ? '100%' : '90%',
-                                        whiteSpace: "nowrap",
-                                    }}>
-                                        <img src={porizkaOkremimi} alt="З плотерною порізкою окремими виробами" style={{height: "10vw"}}/>
-                                        {"З плотерною порізкою окремими виробами"}
-                                    </div>
-                                </button>
+                                {thisVishichka.map((item, index) => (
+                                    <button
+                                        key={item.id}
+                                        className={item.id === vishichka.materialId ? 'buttonsArtem buttonsArtemActive' : 'buttonsArtem buttonsArtemNotActive'}
+                                        onClick={() => handleClickType(item)}
+                                    >
+                                        <div className="d-flex flex-column align-content-center align-items-center" style={{
+                                            // width: "10vw",
+                                            height: "100%",
+                                            opacity: item.id === vishichka.materialId ? '100%' : '90%',
+                                            whiteSpace: "nowrap",
+                                        }}>
+                                            <img src={iconArray[index]} alt="З плотерною надсічкою на надрукованих аркушах" style={{height: "10vw"}}/>
+                                            {/*{"З плотерною надсічкою на надрукованих аркушах"}*/}
+                                            {item.name}
+                                        </div>
+                                    </button>
+                                ))}
+                                {/*<button*/}
+                                {/*    className={"З плотерною надсічкою на надрукованих аркушах" === vishichka.type ? 'buttonsArtem buttonsArtemActive' : 'buttonsArtem buttonsArtemNotActive'}*/}
+                                {/*    onClick={() => handleClickType("З плотерною надсічкою на надрукованих аркушах")}*/}
+                                {/*>*/}
+                                {/*    <div className="d-flex flex-column align-content-center align-items-center" style={{*/}
+                                {/*        // width: "10vw",*/}
+                                {/*        height: "100%",*/}
+                                {/*        opacity: "З плотерною надсічкою на надрукованих аркушах" === vishichka.size ? '100%' : '90%',*/}
+                                {/*        whiteSpace: "nowrap",*/}
+                                {/*    }}>*/}
+                                {/*        <img src={nashichka} alt="З плотерною надсічкою на надрукованих аркушах" style={{height: "10vw"}}/>*/}
+                                {/*        {"З плотерною надсічкою на надрукованих аркушах"}*/}
+                                {/*    </div>*/}
+                                {/*</button>*/}
+                                {/*<button*/}
+                                {/*    className={"З плотерною порізкою стікерпаків" === vishichka.type ? 'buttonsArtem buttonsArtemActive' : 'buttonsArtem buttonsArtemNotActive'}*/}
+                                {/*    onClick={() => handleClickType("З плотерною порізкою стікерпаків")}*/}
+                                {/*>*/}
+                                {/*    <div className="d-flex flex-column align-content-center align-items-center" style={{*/}
+                                {/*        // width: "10vw",*/}
+                                {/*        height: "100%",*/}
+                                {/*        opacity: "З плотерною порізкою стікерпаків" === vishichka.size ? '100%' : '90%',*/}
+                                {/*        whiteSpace: "nowrap",*/}
+                                {/*    }}>*/}
+                                {/*        <img src={porizka} alt="З плотерною порізкою стікерпаків" style={{height: "10vw"}}/>*/}
+                                {/*        {"З плотерною порізкою стікерпаків"}*/}
+                                {/*    </div>*/}
+                                {/*</button>*/}
+                                {/*<button*/}
+                                {/*    className={"З плотерною порізкою окремими виробами" === vishichka.type ? 'buttonsArtem buttonsArtemActive' : 'buttonsArtem buttonsArtemNotActive'}*/}
+                                {/*    onClick={() => handleClickType("З плотерною порізкою окремими виробами")}*/}
+                                {/*>*/}
+                                {/*    <div className="d-flex flex-column align-content-center align-items-center" style={{*/}
+                                {/*        // width: "10vw",*/}
+                                {/*        height: "100%",*/}
+                                {/*        opacity: "З плотерною порізкою окремими виробами" === vishichka.size ? '100%' : '90%',*/}
+                                {/*        whiteSpace: "nowrap",*/}
+                                {/*    }}>*/}
+                                {/*        <img src={porizkaOkremimi} alt="З плотерною порізкою окремими виробами" style={{height: "10vw"}}/>*/}
+                                {/*        {"З плотерною порізкою окремими виробами"}*/}
+                                {/*    </div>*/}
+                                {/*</button>*/}
                             </div>
                         </div>) : (<div>
 

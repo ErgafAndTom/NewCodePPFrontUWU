@@ -61,7 +61,7 @@ const Vishichka = ({
         size: ""
     });
     const [vishichka, setVishichka] = useState({
-        type: "",
+        type: "vishichka",
         thickness: "Тонкі",
         material: "",
         materialId: "",
@@ -98,6 +98,7 @@ const Vishichka = ({
                 holes: holes,
                 holesR: holesR,
                 count: count,
+                vishichka: vishichka,
             }
         };
 

@@ -245,16 +245,16 @@ const NewSheetCutBw = ({thisOrder, newThisOrder, setNewThisOrder, selectedThings
                                             selectArr={["30", "80", "100", "125", "250"]}
 
                                         />
-                                        <NewNoModalHoles
-                                            holes={holes}
-                                            setHoles={setHoles}
-                                            holesR={holesR}
-                                            setHolesR={setHolesR}
-                                            prices={prices}
-                                            type={"SheetCutBw"}
-                                            buttonsArr={[]}
-                                            selectArr={["", "3,5 мм", "4 мм", "5 мм", "6 мм", "8 мм"]}
-                                        />
+                                        {/*<NewNoModalHoles*/}
+                                        {/*    holes={holes}*/}
+                                        {/*    setHoles={setHoles}*/}
+                                        {/*    holesR={holesR}*/}
+                                        {/*    setHolesR={setHolesR}*/}
+                                        {/*    prices={prices}*/}
+                                        {/*    type={"SheetCutBw"}*/}
+                                        {/*    buttonsArr={[]}*/}
+                                        {/*    selectArr={["", "3,5 мм", "4 мм", "5 мм", "6 мм", "8 мм"]}*/}
+                                        {/*/>*/}
                                     </div>
                                 </Row>
                             </MDBContainer>

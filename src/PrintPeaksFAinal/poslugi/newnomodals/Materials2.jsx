@@ -60,11 +60,13 @@ const Materials2 = ({material, setMaterial, count, setCount, prices, type, name,
             .then(response => {
                 console.log(response.data);
                 setPaper(response.data.rows)
-                // setMaterial({
-                //     ...material,
-                //     material: response.data.rows[0].name,
-                //     materialId: response.data.rows[0].id,
-                // })
+                if(response.data && response.data.rows && response.data.rows[0]){
+                    setMaterial({
+                        ...material,
+                        material: response.data.rows[0].name,
+                        materialId: response.data.rows[0].id,
+                    })
+                }
             })
             .catch(error => {
                 if(error.response.status === 403){

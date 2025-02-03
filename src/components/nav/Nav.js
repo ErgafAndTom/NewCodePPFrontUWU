@@ -7,6 +7,7 @@ import find from "../find.svg";
 import {fetchUser, logout} from "../../actions/authActions";
 import {Form} from "react-bootstrap";
 import './logo/Logo.css';
+import Logo from "./logo/Logo";
 // import Logo from "./logo/Logo";
 
 const Nav = () => {

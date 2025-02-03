@@ -55,7 +55,7 @@ const ModalSize = ({size, setSize, type, buttonsArr, color, setColor, count, set
             // {name: "А6 (105 х 148 мм)", x: 105, y: 148},
             // {name: "A5 (148 х 210 мм)", x: 148, y: 210},
             {name: "A4 (210 x 297 мм)", x: 210, y: 297},
-            // {name: "А3 (297 х 420 мм)", x: 297, y: 420},
+            {name: "А3 (297 х 420 мм)", x: 297, y: 420},
         ]
         minXYValue = 45
         maxXYValue = 445
@@ -193,10 +193,12 @@ const ModalSize = ({size, setSize, type, buttonsArr, color, setColor, count, set
         const selectedFormat = formats.find(format => format.x === size.x && format.y === size.y);
         if (selectedFormat) {
             setThisNameVal(selectedFormat.name);
+            setIsCustom(false)
         } else {
             setThisNameVal("Задати свій розмір");
+            setIsCustom(true)
         }
-    }, [size]);
+    }, [size.x, size.y]);
 
     return (
         <div className="d-flex allArtemElem">
