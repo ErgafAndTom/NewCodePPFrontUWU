@@ -165,9 +165,11 @@ const Vishichka = ({
             holes: holes,
             holesR: holesR,
             count: count,
+            vishichka: vishichka,
         }
         axios.post(`/calc/pricing`, dataToSend)
             .then(response => {
+                console.log(response.data.prices);
                 setPricesThis(response.data.prices)
             })
             .catch(error => {
@@ -176,7 +178,7 @@ const Vishichka = ({
                 }
                 console.log(error.message);
             })
-    }, [size, material, color, lamination, big, cute, cuteLocal, holes, holesR, count]);
+    }, [size, material, color, lamination, big, cute, cuteLocal, holes, holesR, count, vishichka]);
 
     useEffect(() => {
         if (showVishichka) {
