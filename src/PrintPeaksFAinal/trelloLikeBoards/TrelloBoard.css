@@ -39,6 +39,7 @@
 }
 .InputInTrello {
     width: 94%;
-    height: 1vw;
+    height: 2vw;
     font-size: 1.2vh;
+    resize: both;
 }

@@ -229,7 +229,7 @@ const TrelloBoard = () => {
                                         {(provided) => (
                                             <div className="trello-card" ref={provided.innerRef} {...provided.draggableProps} {...provided.dragHandleProps}>
                                                 <div className="d-flex">
-                                                    <input className="InputInTrello" style={{width: "93%"}} type="text" value={card.content} onChange={(e) => handleCardContentChange(list.id, card.id, e.target.value)} />
+                                                    <textarea className="InputInTrello" style={{width: "93%"}} type="text" value={card.content} onChange={(e) => handleCardContentChange(list.id, card.id, e.target.value)} />
                                                     <button className="d-flex align-content-center align-items-center justify-content-between border-0" onClick={() => removeCard(list.id, card.id)}>
                                                         {deleting[card.id] ? <Spinner animation="border" variant="danger" size="sm" /> : '×'}
                                                     </button>
