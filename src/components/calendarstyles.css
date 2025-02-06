@@ -1,13 +1,16 @@
 .rdrCalendarWrapper {
   box-sizing: border-box;
   background: #ffffff;
+    justify-content: center;
+    border-radius: 0.5vw;
+    /*height: 20vh;*/
 
-  display: inline-flex;
-  flex-direction: column;
-  -webkit-user-select: none;
-     -moz-user-select: none;
-      -ms-user-select: none;
-          user-select: none;
+  /*!*display: inline-flex;*!*/
+  /*flex-direction: column;*/
+  /*-webkit-user-select: none;*/
+  /*   -moz-user-select: none;*/
+  /*    -ms-user-select: none;*/
+  /*        user-select: none;*/
 }
 
 .rdrDateDisplay{
@@ -190,7 +193,7 @@
 .rdrStaticRanges{
   display: flex;
   flex-direction: column;
-    background: #F2EFE8;
+    background: #ffffff;
 
 
 }
@@ -198,24 +201,36 @@
 .rdrStaticRange{
   font-size: 1vh;
     height: 3.5vh;
-    background: #F2EFE8;
+    background: #ffffff;
     align-items: center;
 
 }
 
-.rdrStaticRangeLabel{background-color: #F2EFE8;
-width: 10vw;}
+.rdrStaticRangeLabel{
+    background-color: #F2EFE8;
+    width: 10vw;
+    height: 5vh;
+    align-items: center;
+    display: flex;
+    color: black;
+    justify-content: left;
+}
 
-.rdrInputRanges{background: #F2EFE8;
-    width: 10vw;}
+.rdrInputRanges{
+    background: #F2EFE8;
+    width: 12vw;
+
+}
 
 .rdrInputRange{
   display: flex;
+    height: 7vh;
+    background: #F2EFE8;
 
     font-size: 1vh;
 }
 
 .rdrInputRangeInput{
-
+    color: #490000;
 }
 

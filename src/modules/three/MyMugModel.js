@@ -1,5 +1,5 @@
 import React, {useRef} from 'react';
-import modelPath from "./modells/uploads_files_1855137_coffee_mug_1.3ds";
+// import modelPath from "./modells/uploads_files_1855137_coffee_mug_1.3ds";
 // import {useLoader} from "react-three-fiber";
 // import {TDSLoader} from 'three/addons/loaders/TDSLoader';
 

@@ -5,7 +5,28 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="7e58169f-d1e8-4cb2-8753-447dd0b39044" name="Changes" comment="ddd">
+      <change afterPath="$PROJECT_DIR$/packageOLD.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/PrintPeaksFAinal/timeSeriesChart/ChartJs.jsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/PrintPeaksFAinal/timeSeriesChart/TimeSeriesChart.jsx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/package-lock.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/package.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/PrintPeaksFAinal/trelloLikeBoards/TrelloBoard.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/PrintPeaksFAinal/trelloLikeBoards/TrelloBoard.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/PrintPeaksFAinal/trelloLikeBoards/TrelloLikeBoards.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/PrintPeaksFAinal/trelloLikeBoards/TrelloLikeBoards.jsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/Calendar.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Calendar.jsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/Statistics.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Statistics.jsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/admin/Admin.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/admin/Admin.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/admin/crm/ChartStoled2.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/admin/crm/ChartStoled2.jsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/admin/crm/CoefTest.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/admin/crm/CoefTest.jsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/admin/crm/Desktop/Desktop.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/admin/crm/Desktop/Desktop.jsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/calc/AfterNav.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/calc/AfterNav.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/calendarstyles.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/calendarstyles.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/calendartheme.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/calendartheme.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/newcalc/products/Plotter.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/newcalc/products/Plotter.jsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/newcalc/products/Wide.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/newcalc/products/Wide.jsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/modules/three/MyMugModel.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/modules/three/MyMugModel.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/modules/three/ThreeScene.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/modules/three/ThreeScene.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/stores/store.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/stores/store.js" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -18,8 +39,8 @@
   <component name="FileTemplateManagerImpl">
     <option name="RECENT_TEMPLATES">
       <list>
-        <option value="JSX File" />
         <option value="TypeScript JSX File" />
+        <option value="JSX File" />
       </list>
     </option>
   </component>
@@ -39,7 +60,7 @@
   }
 }</component>
   <component name="PackageJsonUpdateNotifier">
-    <dismissed value="$PROJECT_DIR$/package.json" />
+    <dismissed value="$PROJECT_DIR$/packageOLD.json" />
   </component>
   <component name="ProjectColorInfo">{
   &quot;associatedIndex&quot;: 8
@@ -49,26 +70,27 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent">{
-  &quot;keyToString&quot;: {
-    &quot;Node.js.ClientChangerUIArtem.jsx.executor&quot;: &quot;Run&quot;,
-    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
-    &quot;RunOnceActivity.git.unshallow&quot;: &quot;true&quot;,
-    &quot;git-widget-placeholder&quot;: &quot;master&quot;,
-    &quot;last_opened_file_path&quot;: &quot;C:/Users/AIATO/Desktop/CodePPNew/frontpp&quot;,
-    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
-    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
-    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
-    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
-    &quot;nodejs_package_manager_path&quot;: &quot;yarn&quot;,
-    &quot;npm.React Buddy Preview.executor&quot;: &quot;Run&quot;,
-    &quot;npm.build.executor&quot;: &quot;Run&quot;,
-    &quot;npm.start.executor&quot;: &quot;Run&quot;,
-    &quot;settings.editor.selected.configurable&quot;: &quot;ml.llm.LLMConfigurable&quot;,
-    &quot;ts.external.directory.path&quot;: &quot;C:\\Users\\AIATO\\AppData\\Local\\Programs\\WebStorm\\plugins\\javascript-plugin\\jsLanguageServicesImpl\\external&quot;,
-    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "Node.js.ClientChangerUIArtem.jsx.executor": "Run",
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "RunOnceActivity.git.unshallow": "true",
+    "git-widget-placeholder": "master",
+    "ignore.virus.scanning.warn.message": "true",
+    "last_opened_file_path": "C:/Users/AIATO/Desktop/CodePPNew/frontpp",
+    "node.js.detected.package.eslint": "true",
+    "node.js.detected.package.tslint": "true",
+    "node.js.selected.package.eslint": "(autodetect)",
+    "node.js.selected.package.tslint": "(autodetect)",
+    "nodejs_package_manager_path": "yarn",
+    "npm.React Buddy Preview.executor": "Run",
+    "npm.build.executor": "Run",
+    "npm.start.executor": "Run",
+    "settings.editor.selected.configurable": "reference.settingsdialog.project.grazie",
+    "ts.external.directory.path": "C:\\Users\\AIATO\\AppData\\Local\\Programs\\WebStorm\\plugins\\javascript-plugin\\jsLanguageServicesImpl\\external",
+    "vue.rearranger.settings.migration": "true"
   }
-}</component>
+}]]></component>
   <component name="ReactDesignerToolWindowState">
     <option name="myId2Visible">
       <map>
@@ -149,6 +171,8 @@
       <workItem from="1738353355160" duration="9000" />
       <workItem from="1738418265774" duration="19407000" />
       <workItem from="1738609297467" duration="2986000" />
+      <workItem from="1738782586545" duration="39000" />
+      <workItem from="1738782639399" duration="27655000" />
     </task>
     <task id="LOCAL-00003" summary="ddd">
       <option name="closed" value="true" />

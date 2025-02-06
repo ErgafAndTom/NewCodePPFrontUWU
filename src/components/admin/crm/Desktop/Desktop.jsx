@@ -61,14 +61,14 @@ const Desktop = () => {
                 {/*    }}*/}
                 {/*/>*/}
                 <Calendar/>
-                <Card className="mt-0" title="Календар" content={
-                    // <Calendar/>
-                    ""
-                }
-                      style={{width: '140%', borderRadius: '10px'}}/>
+                {/*<Card className="mt-0" title="Календар" content={*/}
+                {/*    // <Calendar/>*/}
+                {/*    ""*/}
+                {/*}*/}
+                {/*      style={{width: '140%', borderRadius: '10px'}}/>*/}
                 {/*<Statistics/>*/}
-                <Card className="mt-0" style={{width: '100%', borderRadius: '10px'}}
-                      title="список паперу який закінчується" content=""/>
+                {/*<Card className="mt-0" style={{width: '100%', borderRadius: '10px'}}*/}
+                {/*      title="список паперу який закінчується" content=""/>*/}
                 {/*<Card className="mt-0" style={{width: '100%', borderRadius: '10px'}} title="Замовлення" content=""/>*/}
 
             </div>

@@ -6,9 +6,6 @@ import ModalSize from "../modals/ModalSize";
 import axios from "axios";
 import Loader from "../../calc/Loader";
 import Form from "react-bootstrap/Form";
-import ButtonE from "../../../PrintPeaksFAinal/lineOfPosluga/ButtonE";
-import ButtonS from "../../../PrintPeaksFAinal/poslugi/newnomodals/ButtonImgArtem1";
-import AllInPosluga from "../../../PrintPeaksFAinal/lineOfPosluga/AllInPosluga";
 
 const SheetCut = ({thisOrder, newThisOrder, setNewThisOrder, selectedThings2, setShow}) => {
     // const [show, setShow] = useState(false);

@@ -19,6 +19,7 @@ import Products from "./crm/Products/Products";
 import TelegrammBot from "./crm/chats/TelegramBot";
 import Loader2 from "../calc/Loader2";
 import Test2 from "./Test2";
+import CoefTest from "./crm/CoefTest";
 
 export const Admin = () => {
     const [whoPick, setWhoPick] = useState("Робочий стіл");
@@ -105,9 +106,9 @@ export const Admin = () => {
                 {/*{whoPick === "Считалочка" &&*/}
                 {/*    <CalcNew name={whoPick}/>*/}
                 {/*}*/}
-                {/*{whoPick === "КоєфТест" &&*/}
-                {/*    <CoefTest name={whoPick}/>*/}
-                {/*}*/}
+                {whoPick === "КоєфТест" &&
+                    <CoefTest name={whoPick}/>
+                }
                 {whoPick === "Лічиньники" &&
                     <TableStorage name={whoPick}/>
                 }

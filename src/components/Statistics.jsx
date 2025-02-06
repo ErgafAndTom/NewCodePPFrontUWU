@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import DatePicker from 'react-datepicker';
 import 'react-datepicker/dist/react-datepicker.css';
 import axios from '../api/axiosInstance';
-import {log} from "util";
+import TimeSeriesChart from "../PrintPeaksFAinal/timeSeriesChart/TimeSeriesChart";
 
 const Statistics = () => {
     const [startDate, setStartDate] = useState(null);
@@ -40,6 +40,16 @@ const Statistics = () => {
         }
     };
 
+    const data = [
+        { time: "10:00", value: 10 },
+        { time: "10:30", value: 15 },
+        { time: "11:00", value: 8 },
+        { time: "11:30", value: 12 },
+        { time: "12:00", value: 18 },
+        { time: "12:30", value: 10 },
+        { time: "13:00", value: 22 },
+    ];
+
     return (
         <div>
             <h1>Статистика замовлень</h1>
@@ -65,6 +75,10 @@ const Statistics = () => {
                 <p>Сума оплачених замовлень: {statistics.paid_sum.toFixed(2)}</p>
                 <p>Сума неоплачених замовлень: {statistics.unpaid_sum.toFixed(2)}</p>
                 <p>Кількість неоплачених замовлень: {statistics.unpaid_count}</p>
+                <div>
+                    <h1>Графік</h1>
+                    <TimeSeriesChart data={data}/>
+                </div>
             </div>
         </div>
     );

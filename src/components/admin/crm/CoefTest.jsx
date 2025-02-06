@@ -1,11 +1,5 @@
 import React, { useState, useEffect } from 'react';
-// import ChartComponent from "./ChartComponent";
-import ChartStoled2 from "./ChartStoled2";
-import ChartStoled from "./ChartsStoled";
-import NewChartMy from "../../NewChartMy";
 import NewChartMy2 from "../../NewChartMy2";
-import DataToModelAndRender from "../../newcalc/DataToModelAndRender";
-import Test from "../Test";
 
 const CoefTest = () => {
     const [price, setPrice] = useState(1);

@@ -1,4 +1,4 @@
-import React, {Suspense, useEffect} from 'react';
+import React from 'react';
 // import { Canvas, useFrame } from "@react-three/fiber"
 // import {
 //     useGLTF,
@@ -9,7 +9,7 @@ import React, {Suspense, useEffect} from 'react';
 //     ArcballControls,
 //     TrackballControls, PointerLockControls, PresentationControls, PerspectiveCamera
 // } from "@react-three/drei"
-import {MyMugModel} from "./MyMugModel";
+// import {MyMugModel} from "./MyMugModel";
 
 const ThreeScene = ({photo}) => {
     // const { enabled } = useControls({ enabled: true })

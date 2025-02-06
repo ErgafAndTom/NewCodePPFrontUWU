@@ -6,7 +6,6 @@ import ModalSize from "../modals/ModalSize";
 import axios from "axios";
 import Loader from "../../calc/Loader";
 import Form from "react-bootstrap/Form";
-import SheetCut from "./Wide";
 
 const Plotter = ({thisOrder, newThisOrder, setNewThisOrder, selectedThings2, showPlotter, setShowPlotter}) => {
     const [load, setLoad] = useState(false);

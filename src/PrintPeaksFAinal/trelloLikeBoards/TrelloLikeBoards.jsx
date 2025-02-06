@@ -210,7 +210,7 @@ const TrelloBoard = () => {
     return (
         <DragDropContext onDragEnd={onDragEnd}>
             <div className="d-flex align-content-center align-items-center justify-content-center">
-                <input className="InputInTrello" type="text" value={newListTitle} onChange={(e) => setNewListTitle(e.target.value)} placeholder="Назва колонки + додати" />
+                <input className="InputInTrelloName" type="text" value={newListTitle} onChange={(e) => setNewListTitle(e.target.value)} placeholder="Назва колонки" />
                 <button className="d-flex align-content-center align-items-center justify-content-center buttonRightOfInputInTrello" onClick={addList}>+</button>
             </div>
             <div className="trello-board">
@@ -218,12 +218,12 @@ const TrelloBoard = () => {
                     <Droppable key={list.id} droppableId={list.id.toString()}>
                         {(provided) => (
                             <div className="trello-list" {...provided.droppableProps} ref={provided.innerRef}>
-                                <h3 className="d-flex align-content-center align-items-center justify-content-between">
+                                <h6 className="d-flex align-content-center align-items-center justify-content-between">
                                     <div>{list.title}</div>
                                     <div onClick={() => removeList(list.id)}>
-                                        {deleting[list.id] ? <Spinner animation="border" variant="danger" size="sm" /> : '×'}
+                                        {deleting[list.id] ? <Spinner animation="border" variant="danger" size="sm" color="white"/> : '×'}
                                     </div>
-                                </h3>
+                                </h6>
                                 {list.Cards.map((card, index) => (
                                     <Draggable key={card.id} draggableId={card.id.toString()} index={index}>
                                         {(provided) => (
@@ -234,18 +234,18 @@ const TrelloBoard = () => {
                                                         {deleting[card.id] ? <Spinner animation="border" variant="danger" size="sm" /> : '×'}
                                                     </button>
                                                 </div>
-                                                <div className="createdByTrelloList">
-                                                    Додано: {card.createdBy.username}
-                                                </div>
+                                                {/*<div className="createdByTrelloList">*/}
+                                                {/*    Додано: {card.createdBy.username}*/}
+                                                {/*</div>*/}
                                             </div>
                                         )}
                                     </Draggable>
                                 ))}
                                 {provided.placeholder}
-                                <div className="d-flex align-content-center align-items-center justify-content-center border-0" onClick={() => addCard(list.id)}>Додати картку</div>
-                                <div className="createdByTrelloList">
-                                    Додано: {list.createdBy.username}
-                                </div>
+                                <div className="d-flex align-content-center align-items-center justify-content-center border-0 trello-add" onClick={() => addCard(list.id)}>+</div>
+                                {/*<div className="createdByTrelloList">*/}
+                                {/*    Додано: {list.createdBy.username}*/}
+                                {/*</div>*/}
                             </div>
                         )}
                     </Droppable>
