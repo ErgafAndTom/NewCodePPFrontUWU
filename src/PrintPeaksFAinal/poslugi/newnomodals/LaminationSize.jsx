@@ -12,6 +12,7 @@ const LaminationSize = ({size, setSize, type, buttonsArr, color, setColor, count
 
     //initial main -------------------------------------------------------------------------------------------
     let formats = [
+        {name: "A5 (148 x 210 мм)", x: 148, y: 210},
         {name: "A4 (210 x 297 мм)", x: 210, y: 297},
         {name: "А3 (297 х 420 мм)", x: 297, y: 420},
     ]

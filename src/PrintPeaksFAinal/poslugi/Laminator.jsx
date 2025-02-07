@@ -56,7 +56,8 @@ const Laminator = ({
         type: "Не потрібно",
         material: "",
         materialId: "",
-        size: ""
+        size: "",
+        typeUse: "А3",
     });
     const [big, setBig] = useState("Не потрібно");
     const [cute, setCute] = useState("Не потрібно");
@@ -139,6 +140,7 @@ const Laminator = ({
         }
         axios.post(`/calc/pricing`, dataToSend)
             .then(response => {
+                console.log(response.data.prices);
                 setPricesThis(response.data.prices)
                 setError(null)
             })
@@ -149,7 +151,7 @@ const Laminator = ({
                 }
                 console.log(error.message);
             })
-    }, [size, material, color, lamination, big, cute, cuteLocal, holes, holesR, count]);
+    }, [material, color, lamination.materialId, big, cute, cuteLocal, holes, holesR, count]);
 
     useEffect(() => {
         if (showLaminator) {
@@ -240,6 +242,7 @@ const Laminator = ({
                                             lamination={lamination}
                                             setLamination={setLamination}
                                             prices={prices}
+                                            size={size}
                                             type={"SheetCut"}
                                             buttonsArr={["З глянцевим ламінуванням",
                                                 "З матовим ламінуванням",

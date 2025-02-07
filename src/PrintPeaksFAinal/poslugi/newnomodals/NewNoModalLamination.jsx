@@ -2,15 +2,19 @@ import React, {useEffect, useState} from "react";
 import axios from '../../../api/axiosInstance';
 import {Navigate, useNavigate} from "react-router-dom";
 
-const NewNoModalLamination = ({lamination, setLamination, prices, buttonsArr, selectArr}) => {
+const NewNoModalLamination = ({lamination, setLamination, prices, buttonsArr, selectArr, size}) => {
     const [thisLaminationSizes, setThisLaminationSizes] = useState([]);
+    const [error, setError] = useState(null);
+    const [load, setLoad] = useState(true);
     const navigate = useNavigate();
 
     let handleSelectChange = (e) => {
+        const selectedOption = e.target.options[e.target.selectedIndex];
+        const selectedId = selectedOption.getAttribute('data-id') || 'default';
         setLamination({
             type: lamination.type,
             material: lamination.material,
-            materialId: lamination.materialId,
+            materialId: selectedId,
             size: e.target.value
         })
     }
@@ -18,17 +22,16 @@ const NewNoModalLamination = ({lamination, setLamination, prices, buttonsArr, se
     let handleToggle = (e) => {
         if (lamination.type === "Не потрібно") {
             setLamination({
-                type: "З глянцевим ламінуванням",
-                material: "З глянцевим ламінуванням",
-                materialId: "92",
-                size: "125 мкм"
+                ...lamination,
+                type: "",
             })
         } else {
             setLamination({
                 type: "Не потрібно",
                 material: "",
                 materialId: "",
-                size: ""
+                size: "",
+                typeUse: "А3",
             })
         }
     }
@@ -40,6 +43,7 @@ const NewNoModalLamination = ({lamination, setLamination, prices, buttonsArr, se
         //     setThisLaminationSizes(["30", "80"])
         // }
         setLamination({
+            ...lamination,
             type: e,
             material: e,
             materialId: e,
@@ -63,28 +67,42 @@ const NewNoModalLamination = ({lamination, setLamination, prices, buttonsArr, se
                 materialId: lamination.materialId,
                 thickness: lamination.size,
                 typeUse: "А3"
-            }
+            },
+            size: size,
         }
+        setLoad(true)
+        setError(null)
+        console.log(lamination);
         axios.post(`/materials/NotAll`, data)
             .then(response => {
                 console.log(response.data);
+                setLoad(false)
                 setThisLaminationSizes(response.data.rows)
-                // if(response.data && response.data.rows && response.data.rows[0]){
-                //     setLamination({
-                //         ...lamination,
-                //         material: response.data.rows[0].name,
-                //         materialId: response.data.rows[0].id,
-                //         size: `${response.data.rows[0].thickness}`
-                //     })
-                // }
+                if(response.data && response.data.rows && response.data.rows[0]){
+                    setLamination({
+                        ...lamination,
+                        material: response.data.rows[0].name,
+                        materialId: response.data.rows[0].id,
+                        size: `${response.data.rows[0].thickness}`
+                    })
+                } else {
+                    setThisLaminationSizes([])
+                    setLamination({
+                        ...lamination,
+                        materialId: 0,
+                    })
+                }
             })
             .catch(error => {
+                setLoad(false)
+                setError(error.message)
                 if(error.response.status === 403){
                     navigate('/login');
                 }
+                setThisLaminationSizes([])
                 console.log(error.message);
             })
-    }, [lamination]);
+    }, [lamination.type, size]);
 
     return (<div className="d-flex allArtemElem">
         <div style={{display: 'flex', alignItems: 'center',}}>
@@ -129,7 +147,7 @@ const NewNoModalLamination = ({lamination, setLamination, prices, buttonsArr, se
                                     <option value={""}>{""}</option>
                                     {thisLaminationSizes.map((item, iter2) => (
                                         <option className="optionInSelectArtem" key={item.thickness}
-                                                value={item.thickness}>{item.thickness} мкм</option>))}
+                                                value={item.thickness} data-id={item.id} tosend={item.thickness}>{item.thickness} мкм</option>))}
                                 </select>
                             </div>
                         </div>

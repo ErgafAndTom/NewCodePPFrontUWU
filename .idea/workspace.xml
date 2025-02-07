@@ -6,17 +6,9 @@
   <component name="ChangeListManager">
     <list default="true" id="7e58169f-d1e8-4cb2-8753-447dd0b39044" name="Changes" comment="ddd">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/PrintPeaksFAinal/poslugi/NewSheetCut.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/PrintPeaksFAinal/poslugi/NewSheetCut.jsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/PrintPeaksFAinal/poslugi/NewSheetCutBw.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/PrintPeaksFAinal/poslugi/NewSheetCutBw.jsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/PrintPeaksFAinal/poslugi/Vishichka.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/PrintPeaksFAinal/poslugi/Vishichka.jsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/PrintPeaksFAinal/poslugi/newWide.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/PrintPeaksFAinal/poslugi/newWide.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/PrintPeaksFAinal/poslugi/newnomodals/Materials2.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/PrintPeaksFAinal/poslugi/newnomodals/Materials2.jsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/PrintPeaksFAinal/timeSeriesChart/ChartJs.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/PrintPeaksFAinal/timeSeriesChart/TimeSeriesChart1.jsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/PrintPeaksFAinal/timeSeriesChart/TimeSeriesChart.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/PrintPeaksFAinal/timeSeriesChart/TimeSeriesChart.jsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/PrintPeaksFAinal/trelloLikeBoards/TrelloLikeBoards.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/PrintPeaksFAinal/trelloLikeBoards/TrelloLikeBoards.jsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/Calendar.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Calendar.jsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/calendarstyles.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/calendarstyles.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/calendartheme.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/calendartheme.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/PrintPeaksFAinal/poslugi/Laminator.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/PrintPeaksFAinal/poslugi/Laminator.jsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/PrintPeaksFAinal/poslugi/newnomodals/LaminationSize.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/PrintPeaksFAinal/poslugi/newnomodals/LaminationSize.jsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/PrintPeaksFAinal/poslugi/newnomodals/NewNoModalLamination.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/PrintPeaksFAinal/poslugi/newnomodals/NewNoModalLamination.jsx" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -49,9 +41,6 @@
     &quot;accountId&quot;: &quot;8eec992b-58b2-42c9-820e-41a305c99885&quot;
   }
 }</component>
-  <component name="PackageJsonUpdateNotifier">
-    <dismissed value="$PROJECT_DIR$/packageOLD.json" />
-  </component>
   <component name="ProjectColorInfo">{
   &quot;associatedIndex&quot;: 8
 }</component>
@@ -72,6 +61,7 @@
     "node.js.detected.package.tslint": "true",
     "node.js.selected.package.eslint": "(autodetect)",
     "node.js.selected.package.tslint": "(autodetect)",
+    "nodejs.mocha.mocha_node_package_dir": "",
     "nodejs_package_manager_path": "yarn",
     "npm.React Buddy Preview.executor": "Run",
     "npm.build.executor": "Run",
@@ -162,7 +152,9 @@
       <workItem from="1738418265774" duration="19407000" />
       <workItem from="1738609297467" duration="2986000" />
       <workItem from="1738782586545" duration="39000" />
-      <workItem from="1738782639399" duration="40770000" />
+      <workItem from="1738782639399" duration="45725000" />
+      <workItem from="1738906947098" duration="80000" />
+      <workItem from="1738919515745" duration="2718000" />
     </task>
     <task id="LOCAL-00003" summary="ddd">
       <option name="closed" value="true" />
@@ -220,7 +212,15 @@
       <option name="project" value="LOCAL" />
       <updated>1738875092289</updated>
     </task>
-    <option name="localTasksCounter" value="10" />
+    <task id="LOCAL-00010" summary="ddd">
+      <option name="closed" value="true" />
+      <created>1738895607153</created>
+      <option name="number" value="00010" />
+      <option name="presentableId" value="LOCAL-00010" />
+      <option name="project" value="LOCAL" />
+      <updated>1738895607153</updated>
+    </task>
+    <option name="localTasksCounter" value="11" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
