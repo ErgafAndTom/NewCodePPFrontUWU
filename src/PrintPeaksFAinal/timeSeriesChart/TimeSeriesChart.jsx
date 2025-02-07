@@ -4,10 +4,20 @@ const TimeSeriesChart = ({ data }) => {
     const canvasRef = useRef(null);
     const [hoveredPoint, setHoveredPoint] = useState(null);
     const [hoverX, setHoverX] = useState(null);
+    const [tooltip, setTooltip] = useState({ visible: false, x: 0, y: 0, value: "", time: "" });
 
+    const statusColors = {
+        "0": "#ffffff",
+        "1": "#8b4513",
+        "2": "#3c60a6",
+        "3": "#f075aa",
+        "4": "#008249"
+    };
     useEffect(() => {
         const canvas = canvasRef.current;
         const ctx = canvas.getContext("2d");
+        const resolution = 5;
+        const resolutionY = 10;
 
         ctx.clearRect(0, 0, canvas.width, canvas.height);
 
@@ -32,16 +42,16 @@ const TimeSeriesChart = ({ data }) => {
         ctx.strokeStyle = "#ddd";
         ctx.lineWidth = 1;
 
-        for (let i = 0; i <= 5; i++) {
-            const x = padding + (i / 5) * graphWidth;
+        for (let i = 0; i <= resolution; i++) {
+            const x = padding + (i / resolution) * graphWidth;
             ctx.beginPath();
             ctx.moveTo(x, padding);
             ctx.lineTo(x, height - padding);
             ctx.stroke();
         }
 
-        for (let i = 0; i <= 5; i++) {
-            const y = height - padding - (i / 5) * graphHeight;
+        for (let i = 0; i <= resolution; i++) {
+            const y = height - padding - (i / resolution) * graphHeight;
             ctx.beginPath();
             ctx.moveTo(padding, y);
             ctx.lineTo(width - padding, y);
@@ -69,17 +79,17 @@ const TimeSeriesChart = ({ data }) => {
         // Draw x-axis labels
         ctx.fillStyle = "#000";
         ctx.font = "1vh Arial";
-        for (let i = 0; i <= 5; i++) {
-            const time = minTime + (i / 5) * (maxTime - minTime);
+        for (let i = 0; i <= resolution; i++) {
+            const time = minTime + (i / resolution) * (maxTime - minTime);
             const date = new Date(time);
             const label = `${date.getFullYear()}-${date.getMonth() + 1}-${date.getDate()} ${date.getHours()}:${date.getMinutes()}:${date.getSeconds()}`;
-            ctx.fillText(label, padding + (i / 5) * graphWidth - 10, height - 5);
+            ctx.fillText(label, padding + (i / resolution) * graphWidth - 10, height - 5);
         }
 
         // Draw y-axis labels
-        for (let i = 0; i <= 5; i++) {
-            const value = minValue + (i / 5) * (maxValue - minValue);
-            ctx.fillText(value.toFixed(2), 5, height - padding - (i / 5) * graphHeight + 3);
+        for (let i = 0; i <= resolution; i++) {
+            const value = minValue + (i / resolution) * (maxValue - minValue);
+            ctx.fillText(value.toFixed(2), resolution, height - padding - (i / resolution) * graphHeight + 3);
         }
 
         // Draw vertical hover line
@@ -103,6 +113,7 @@ const TimeSeriesChart = ({ data }) => {
         data.forEach((point, i) => {
             const x = normalizeX(times[i]);
             const y = normalizeY(point.value);
+            ctx.fillStyle = statusColors[point.status] || "#ff0000";
             ctx.beginPath();
             ctx.arc(x, y, 4, 0, 2 * Math.PI);
             ctx.fill();
@@ -130,7 +141,7 @@ const TimeSeriesChart = ({ data }) => {
         }
     };
 
-    return <canvas style={{margin: "0"}} ref={canvasRef} width={700} height={370} onMouseMove={handleMouseMove} />;
+    return <canvas style={{margin: "0"}} ref={canvasRef} width={700} height={330} onMouseMove={handleMouseMove} />;
 };
 
 export default TimeSeriesChart;

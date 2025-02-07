@@ -34,10 +34,10 @@ const NewSheetCutBw = ({thisOrder, newThisOrder, setNewThisOrder, selectedThings
     });
     const [material, setMaterial] = useState({
         type: "Папір",
-        thickness: "Тонкий",
+        thickness: "Офісний",
         material: "",
         materialId: "",
-        typeUse: "Тонкий"
+        typeUse: "Офісний"
     });
     const [color, setColor] = useState({
         sides: "односторонній",
@@ -228,9 +228,10 @@ const NewSheetCutBw = ({thisOrder, newThisOrder, setNewThisOrder, selectedThings
                                             count={count}
                                             setCount={setCount}
                                             prices={prices}
+                                            size={size}
                                             selectArr={["3,5 мм", "4 мм", "5 мм", "6 мм", "8 мм"]}
                                             name={"Чорно-білий друк на монохромному принтері:"}
-                                            buttonsArr={["Тонкий"]}
+                                            buttonsArr={["Офісний"]}
                                             typeUse={null}
                                         />
                                         <NewNoModalLamination

@@ -14,7 +14,7 @@ const TrelloBoard = () => {
     useEffect(() => {
         const fetchData = async () => {
             try {
-                const res = await axios.get('/trello');
+                const res = await axios.post('/trello/getdata');
                 console.log(res.data);
                 setServerData(res.data);
             } catch (error) {
@@ -31,7 +31,8 @@ const TrelloBoard = () => {
             ...list,
             Cards: list.Cards.map((card, index) => ({
                 ...card,
-                id: card.id || `card-${list.id}-${index}` // Генерируем `id`, если его нет
+                id: card.id
+                    // || `card-${list.id}-${index}` // Генерируем `id`, если его нет
             }))
         })));
     }, [serverData]);
@@ -164,46 +165,6 @@ const TrelloBoard = () => {
             console.error('Ошибка при перемещении:', error);
         }
     };
-
-
-    // const onDragEnd = (result) => {
-    //     if (!result.destination) return; // Если элемент не перетащен
-    //
-    //     const { source, destination } = result;
-    //
-    //     setLists(prevLists => {
-    //         const startList = prevLists.find(list => list.id.toString() === source.droppableId);
-    //         const finishList = prevLists.find(list => list.id.toString() === destination.droppableId);
-    //
-    //         if (!startList || !finishList) return prevLists;
-    //
-    //         const movedCard = startList.Cards[source.index];
-    //
-    //         if (startList === finishList) {
-    //             // Перемещение внутри одного списка
-    //             const newCards = Array.from(startList.Cards);
-    //             newCards.splice(source.index, 1);
-    //             newCards.splice(destination.index, 0, movedCard);
-    //
-    //             return prevLists.map(list =>
-    //                 list.id === startList.id ? { ...list, Cards: newCards } : list
-    //             );
-    //         } else {
-    //             // Перемещение в другой список
-    //             const startCards = Array.from(startList.Cards);
-    //             startCards.splice(source.index, 1);
-    //
-    //             const finishCards = Array.from(finishList.Cards);
-    //             finishCards.splice(destination.index, 0, movedCard);
-    //
-    //             return prevLists.map(list => {
-    //                 if (list.id === startList.id) return { ...list, Cards: startCards };
-    //                 if (list.id === finishList.id) return { ...list, Cards: finishCards };
-    //                 return list;
-    //             });
-    //         }
-    //     });
-    // };
 
     if (loading) return <Spinner animation="border" variant="danger" size="sm" />;
 

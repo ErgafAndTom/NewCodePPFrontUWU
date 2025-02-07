@@ -1,9 +1,13 @@
 import React, {useEffect, useState} from "react";
 import axios from '../../../api/axiosInstance';
 import {useNavigate} from "react-router-dom";
+import NewSheetCutBw from "../NewSheetCutBw";
+import {Spinner} from "react-bootstrap";
 
-const Materials2 = ({material, setMaterial, count, setCount, prices, type, name, buttonsArr, selectArr, typeUse}) => {
+const Materials2 = ({material, setMaterial, count, setCount, prices, type, name, buttonsArr, selectArr, typeUse, size}) => {
     const [paper, setPaper] = useState([]);
+    const [error, setError] = useState(null);
+    const [load, setLoad] = useState(true);
     const navigate = useNavigate();
     let handleSelectChange = (e) => {
         const selectedOption = e.target.options[e.target.selectedIndex];
@@ -54,61 +58,74 @@ const Materials2 = ({material, setMaterial, count, setCount, prices, type, name,
                 column: "id",
                 reverse: false
             },
+            size: size,
             material: material
         }
+        setLoad(true)
+        setError(null)
         axios.post(`/materials/NotAll`, data)
             .then(response => {
                 console.log(response.data);
                 setPaper(response.data.rows)
+                setLoad(false)
                 if(response.data && response.data.rows && response.data.rows[0]){
                     setMaterial({
                         ...material,
                         material: response.data.rows[0].name,
                         materialId: response.data.rows[0].id,
                     })
+                } else {
+                    setMaterial({
+                        ...material,
+                        material: "Немає",
+                        materialId: 0,
+                    })
                 }
             })
             .catch(error => {
+                setLoad(false)
+                setError(error.message)
                 if(error.response.status === 403){
                     navigate('/login');
                 }
                 console.log(error.message);
             })
-    }, [material.thickness]);
+    }, [material.thickness, size]);
 
-    useEffect(() => {
-        let data = {
-            name: "MaterialsPrices",
-            inPageCount: 999999,
-            currentPage: 1,
-            search: "",
-            columnName: {
-                column: "id",
-                reverse: false
-            },
-            material: material
-        }
-        axios.post(`/materials/NotAll`, data)
-            .then(response => {
-                console.log(response.data);
-                // setPaper(response.data.rows)
-                if(response.data && response.data.rows){
-                    setPaper(response.data.rows)
-                }
-                // setMaterial({
-                //     ...material,
-                //     thickness: "Тонкі",
-                //     material: response.data.rows[0].name,
-                //     materialId: response.data.rows[0].id,
-                // })
-            })
-            .catch(error => {
-                console.log(error.message);
-                if(error.response && error.response.status === 403){
-                    navigate('/login');
-                }
-            })
-    }, []);
+    // useEffect(() => {
+    //     let data = {
+    //         name: "MaterialsPrices",
+    //         inPageCount: 999999,
+    //         currentPage: 1,
+    //         search: "",
+    //         columnName: {
+    //             column: "id",
+    //             reverse: false
+    //         },
+    //         material: material
+    //     }
+    //     axios.post(`/materials/NotAll`, data)
+    //         .then(response => {
+    //             console.log(response.data);
+    //             // setPaper(response.data.rows)
+    //             if(response.data && response.data.rows){
+    //                 setPaper(response.data.rows)
+    //             }
+    //             // if(response.data && response.data.rows && response.data.rows[0]){
+    //             //     setMaterial({
+    //             //         ...material,
+    //             //         material: response.data.rows[0].name,
+    //             //         materialId: response.data.rows[0].id,
+    //             //     })
+    //             // }
+    //         })
+    //         .catch(error => {
+    //             console.log(error.message);
+    //             if(error.response && error.response.status === 403){
+    //                 navigate('/login');
+    //             }
+    //         })
+    // }, []);
 
     return (
         <div className="d-flex allArtemElem">
@@ -134,7 +151,7 @@ const Materials2 = ({material, setMaterial, count, setCount, prices, type, name,
                         </div>
                     ))}
                 </div>
-                <div className="ArtemNewSelectContainer" style={{marginTop: "2vw"}}>
+                <div className="ArtemNewSelectContainer" style={{marginTop: "2vw", display: 'flex', justifyContent: 'center', alignItems: 'center'}}>
                     <select
                         name="materialSelect"
                         value={material.material || ""}
@@ -157,18 +174,24 @@ const Materials2 = ({material, setMaterial, count, setCount, prices, type, name,
                                 value={item.name}
                                 data-id={item.id}
                             >
-                                <>{"id:"}</>
-                                <>{item.id}</>
-                                <>{" "}</>
+                                {/*<>{"id:"}</>*/}
+                                {/*<>{item.id}</>*/}
+                                {/*<>{" "}</>*/}
                                 <>{item.name}</>
                                 <>{" "}</>
                                 <>{item.thickness} gsm</>
-                                <>{"id:"}</>
-                                <>{item.typeUse}</>
-                                <>{" "}</>
+                                {/*<>{"id:"}</>*/}
+                                {/*<>{item.typeUse}</>*/}
+                                {/*<>{" "}</>*/}
                             </option>
                         ))}
                     </select>
+                    {load && (
+                        <Spinner animation="border" variant="danger" size="sm" />
+                    )}
+                    {error && (
+                        <div>{error}</div>
+                    )}
                 </div>
             </div>
         </div>

@@ -7,6 +7,7 @@ import {addDays} from 'date-fns';
 import axios from "../api/axiosInstance";
 import uk from 'date-fns/locale/uk';
 import TimeSeriesChart from "../PrintPeaksFAinal/timeSeriesChart/TimeSeriesChart";
+import TimeSeriesChart1 from "../PrintPeaksFAinal/timeSeriesChart/TimeSeriesChart1";
 
 const customUkLocale = {
     ...uk,
@@ -123,7 +124,7 @@ const App = () => {
 
     return (
         <div className="d-flex">
-            <div className="bg-white p-4 m-2 flex-grow-1" style={{ borderRadius: '10px',  }}>
+            <div className="bg-white p-3 m-2 flex-grow-1" style={{ borderRadius: '10px',  }}>
                 <DateRangePicker
                     ranges={state}
                     // style={{ borderRadius: '0px', background: 'white' }}
@@ -152,7 +153,7 @@ const App = () => {
                 </p>
             </div>
 
-            <div className="bg-white p-1 m-2 flex-grow-1" style={{ borderRadius: '10px',  }}>
+            <div className="bg-white m-2 flex-grow-1" style={{ borderRadius: '10px',  }}>
                 {/*<div className="font-bold text-lg mb-2 adminFont">{""}</div>*/}
                 <div>
                     {/*<ChartJs data={chartData}/>*/}

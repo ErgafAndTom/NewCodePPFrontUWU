@@ -231,6 +231,7 @@ const NewWide = ({thisOrder, newThisOrder, setNewThisOrder, selectedThings2, set
                                                 count={count}
                                                 setCount={setCount}
                                                 prices={prices}
+                                                size={size}
                                                 selectArr={["3,5 мм", "4 мм", "5 мм", "6 мм", "8 мм"]}
                                                 name={"Широкоформатний фотодрук:"}
                                                 buttonsArr={[]}
