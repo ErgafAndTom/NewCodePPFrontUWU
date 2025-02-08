@@ -246,6 +246,7 @@ const NewSheetCut = ({
                                             lamination={lamination}
                                             setLamination={setLamination}
                                             prices={prices}
+                                            size={size}
                                             type={"SheetCut"}
                                             buttonsArr={["З глянцевим ламінуванням",
                                                 "З матовим ламінуванням",

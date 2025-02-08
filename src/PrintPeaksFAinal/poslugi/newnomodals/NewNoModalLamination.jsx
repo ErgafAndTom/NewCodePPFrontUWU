@@ -23,7 +23,11 @@ const NewNoModalLamination = ({lamination, setLamination, prices, buttonsArr, se
         if (lamination.type === "Не потрібно") {
             setLamination({
                 ...lamination,
-                type: "",
+                type: "З глянцевим ламінуванням",
+                material: "З глянцевим ламінуванням",
+                materialId: "",
+                size: "",
+                typeUse: "А3",
             })
         } else {
             setLamination({
@@ -42,12 +46,10 @@ const NewNoModalLamination = ({lamination, setLamination, prices, buttonsArr, se
         // } else {
         //     setThisLaminationSizes(["30", "80"])
         // }
+        console.log(e);
         setLamination({
             ...lamination,
-            type: e,
             material: e,
-            materialId: e,
-            size: lamination.size
         })
     }
 
@@ -81,7 +83,7 @@ const NewNoModalLamination = ({lamination, setLamination, prices, buttonsArr, se
                 if(response.data && response.data.rows && response.data.rows[0]){
                     setLamination({
                         ...lamination,
-                        material: response.data.rows[0].name,
+                        // material: response.data.rows[0].name,
                         materialId: response.data.rows[0].id,
                         size: `${response.data.rows[0].thickness}`
                     })
@@ -102,7 +104,7 @@ const NewNoModalLamination = ({lamination, setLamination, prices, buttonsArr, se
                 setThisLaminationSizes([])
                 console.log(error.message);
             })
-    }, [lamination.type, size]);
+    }, [lamination.material, size]);
 
     return (<div className="d-flex allArtemElem">
         <div style={{display: 'flex', alignItems: 'center',}}>
