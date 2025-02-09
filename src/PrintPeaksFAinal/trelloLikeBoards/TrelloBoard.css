@@ -31,6 +31,9 @@
     cursor: pointer;
     box-shadow: 0 2vw 3vw rgba(0, 0, 0, 0.3);
 }
+.trello-card-content:hover{
+    box-shadow: 0 2vw 3vw rgba(0, 0, 0, 0.3);
+}
 
 .trello-add {
     background-color: #F2EFE8;

@@ -198,18 +198,21 @@ const TrelloBoard = () => {
                                     {list.Cards.map((card, index) => (
                                         <Draggable key={card.id} draggableId={card.id.toString()} index={index}>
                                             {(provided) => (
-                                                <div className="trello-card" onClick={() => seeInfoCard(list.id, card.id)} ref={provided.innerRef} {...provided.draggableProps} {...provided.dragHandleProps}>
+                                                <div className="trello-card" ref={provided.innerRef} {...provided.draggableProps} {...provided.dragHandleProps}>
                                                     <div className="d-flex">
-                                                        <textarea className="InputInTrello" style={{width: "93%"}} type="text" value={card.content} onChange={(e) => handleCardContentChange(list.id, card.id, e.target.value)} />
+                                                        {/*<textarea className="InputInTrello" style={{width: "93%"}} type="text" value={card.content} onChange={(e) => handleCardContentChange(list.id, card.id, e.target.value)} />*/}
+                                                        <div className="trello-card-content" style={{width: "93%"}} onClick={() => seeInfoCard(list.id, card.id)}>
+                                                            {card.content}
+                                                        </div>
                                                         <button className="d-flex align-content-center align-items-center justify-content-between border-0" onClick={() => removeCard(list.id, card.id)}>
                                                             {deleting[card.id] ? <Spinner animation="border" variant="danger" size="sm" /> : '×'}
                                                         </button>
                                                     </div>
-                                                    <div>
+                                                    <div className="d-flex" style={{padding: "0.5vw"}}>
                                                         {card.inTrelloPhoto && card.inTrelloPhoto.map((photo, index) => (
                                                             <img
                                                                 key={index}
-                                                                src={photo.photoLink}
+                                                                src={`/images/${photo.photoLink}`}
                                                                 alt={`Card Photo ${index + 1}`}
                                                                 style={{
                                                                     width: 'calc(50% - 1px)',
@@ -247,6 +250,7 @@ const TrelloBoard = () => {
                     setOpenCardInfo={setOpenCardInfo}
                     setServerData={setServerData}
                     serverData={serverData}
+                    handleCardContentChange={handleCardContentChange}
                 />
             }
         </div>

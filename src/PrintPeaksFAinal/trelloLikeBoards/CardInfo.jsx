@@ -20,35 +20,6 @@ function EditableText({ text, onChange }) {
     );
 }
 
-// Компонент для загрузки изображений
-function ImageUploader({ onUpload }) {
-    const handleFileChange = (e) => {
-        const files = Array.from(e.target.files);
-        // Преобразуем файлы в объекты {id, url}
-        const newImages = files.map((file, index) => {
-            return {
-                id: Date.now() + index, // Простейший способ получить уникальный ID
-                url: URL.createObjectURL(file),
-            };
-        });
-        onUpload(newImages);
-    };
-
-    return (
-        <div style={{ marginBottom: "1rem" }}>
-            <label
-                style={{
-                    display: "block",
-                    marginBottom: "0.5rem",
-                }}
-            >
-                Загрузить фотографии:
-            </label>
-            <input type="file" multiple onChange={handleFileChange} />
-        </div>
-    );
-}
-
 // Компонент для списка загруженных изображений
 function ImageList({ images, onRemove }) {
     if (images.length === 0) {
@@ -70,7 +41,7 @@ function ImageList({ images, onRemove }) {
                     >
                         <img
                             src={`/images/${img.photoLink}`} /* Assuming img.url holds the photo URL */
-                            alt="Загруженное"
+                            alt="photo"
                             style={{width: "45%", height: "45%", objectFit: "cover", borderRadius: "4px"}}
                         />
                         {/*<span style={{flex: 1, color: "#333"}}>{`Файл: ${img.name || "Без имени"}`}</span>*/}
@@ -95,7 +66,7 @@ function ImageList({ images, onRemove }) {
 }
 
 // Общий контейнер карточки
-export default function CardInfo({openCardData, setOpenCardInfo, setServerData, serverData}) {
+export default function CardInfo({openCardData, setOpenCardInfo, setServerData, serverData, handleCardContentChange}) {
     const [cardName, setCardName] = useState(openCardData.name);
     const [textContent, setTextContent] = useState(openCardData.content);
     const [images, setImages] = useState(openCardData.inTrelloPhoto);
@@ -141,7 +112,7 @@ export default function CardInfo({openCardData, setOpenCardInfo, setServerData, 
                     prevLists.map(list => ({
                         ...list,
                         Cards: list.Cards.map(card =>
-                            card.id === cardId ? {...card, photo: res.data.photo} : card
+                            card.id === cardId ? {...card, inTrelloPhoto: res.data.photo} : card
                         )
                     }))
                 );
@@ -195,8 +166,8 @@ export default function CardInfo({openCardData, setOpenCardInfo, setServerData, 
                         padding: "2vw"
                     }}>
                         <div className="d-flex justify-content-around">
-                            <div className="text-center ">
-                                <EditableText text={textContent} onChange={setTextContent} />
+                            <div>
+                                <input onChange={(e) => handleCardContentChange(openCardData.listId, openCardData.id, e.target.value)} value={openCardData.content} type="text"/>
                             </div>
                             <div
                                 className="btn btn-close btn-lg"
@@ -229,7 +200,7 @@ export default function CardInfo({openCardData, setOpenCardInfo, setServerData, 
                                 style={{marginLeft: "2px"}}
                                 onClick={() => uploadPhoto(openCardData.id, selectedImage)}
                             >
-                                {selectedImage ? "Вантажити✔️" : "Очікую img.."}
+                                {selectedImage ? "Вантажити ✔️" : "Очікую img.."}
                             </button>
                         </div>
                     </div>
