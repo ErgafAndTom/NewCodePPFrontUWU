@@ -3,6 +3,8 @@ import { DragDropContext, Droppable, Draggable } from 'react-beautiful-dnd';
 import { Spinner } from 'react-bootstrap';
 import './TrelloBoard.css';
 import axios from '../../api/axiosInstance';
+import NewSheetCutBw from "../poslugi/NewSheetCutBw";
+import CardInfo from "./CardInfo";
 
 const TrelloBoard = () => {
     const [lists, setLists] = useState([]);
@@ -10,6 +12,8 @@ const TrelloBoard = () => {
     const [loading, setLoading] = useState(true);
     const [newListTitle, setNewListTitle] = useState('');
     const [deleting, setDeleting] = useState({});
+    const [openCardInfo, setOpenCardInfo] = useState(false);
+    const [openCardData, setOpenCardData] = useState(null);
 
     useEffect(() => {
         const fetchData = async () => {
@@ -60,6 +64,11 @@ const TrelloBoard = () => {
         };
         fetchData();
     };
+    const seeInfoCard = async (listId, cardId) => {
+        setOpenCardData(
+            lists.find(list => list.id === listId).Cards.find(card => card.id === cardId))
+        setOpenCardInfo(true);
+    }
 
     const addCard = async (listId) => {
         const newCard = { content: '', type: 'text' };
@@ -169,50 +178,79 @@ const TrelloBoard = () => {
     if (loading) return <Spinner animation="border" variant="danger" size="sm" />;
 
     return (
-        <DragDropContext onDragEnd={onDragEnd}>
-            <div className="d-flex align-content-center align-items-center justify-content-center">
-                <input className="InputInTrelloName" type="text" value={newListTitle} onChange={(e) => setNewListTitle(e.target.value)} placeholder="Назва колонки" />
-                <button className="d-flex align-content-center align-items-center justify-content-center buttonRightOfInputInTrello" onClick={addList}>+</button>
-            </div>
-            <div className="trello-board">
-                {lists.map((list) => (
-                    <Droppable key={list.id} droppableId={list.id.toString()}>
-                        {(provided) => (
-                            <div className="trello-list" {...provided.droppableProps} ref={provided.innerRef}>
-                                <h6 className="d-flex align-content-center align-items-center justify-content-between">
-                                    <div>{list.title}</div>
-                                    <div onClick={() => removeList(list.id)}>
-                                        {deleting[list.id] ? <Spinner animation="border" variant="danger" size="sm" color="white"/> : '×'}
-                                    </div>
-                                </h6>
-                                {list.Cards.map((card, index) => (
-                                    <Draggable key={card.id} draggableId={card.id.toString()} index={index}>
-                                        {(provided) => (
-                                            <div className="trello-card" ref={provided.innerRef} {...provided.draggableProps} {...provided.dragHandleProps}>
-                                                <div className="d-flex">
-                                                    <textarea className="InputInTrello" style={{width: "93%"}} type="text" value={card.content} onChange={(e) => handleCardContentChange(list.id, card.id, e.target.value)} />
-                                                    <button className="d-flex align-content-center align-items-center justify-content-between border-0" onClick={() => removeCard(list.id, card.id)}>
-                                                        {deleting[card.id] ? <Spinner animation="border" variant="danger" size="sm" /> : '×'}
-                                                    </button>
+        <div>
+            <DragDropContext onDragEnd={onDragEnd}>
+                <div className="d-flex align-content-center align-items-center justify-content-center">
+                    <input className="InputInTrelloName" type="text" value={newListTitle} onChange={(e) => setNewListTitle(e.target.value)} placeholder="Назва колонки" />
+                    <button className="d-flex align-content-center align-items-center justify-content-center buttonRightOfInputInTrello" onClick={addList}>+</button>
+                </div>
+                <div className="trello-board">
+                    {lists.map((list) => (
+                        <Droppable key={list.id} droppableId={list.id.toString()}>
+                            {(provided) => (
+                                <div className="trello-list" {...provided.droppableProps} ref={provided.innerRef}>
+                                    <h6 className="d-flex align-content-center align-items-center justify-content-between">
+                                        <div>{list.title}</div>
+                                        <div onClick={() => removeList(list.id)}>
+                                            {deleting[list.id] ? <Spinner animation="border" variant="danger" size="sm" color="white"/> : '×'}
+                                        </div>
+                                    </h6>
+                                    {list.Cards.map((card, index) => (
+                                        <Draggable key={card.id} draggableId={card.id.toString()} index={index}>
+                                            {(provided) => (
+                                                <div className="trello-card" onClick={() => seeInfoCard(list.id, card.id)} ref={provided.innerRef} {...provided.draggableProps} {...provided.dragHandleProps}>
+                                                    <div className="d-flex">
+                                                        <textarea className="InputInTrello" style={{width: "93%"}} type="text" value={card.content} onChange={(e) => handleCardContentChange(list.id, card.id, e.target.value)} />
+                                                        <button className="d-flex align-content-center align-items-center justify-content-between border-0" onClick={() => removeCard(list.id, card.id)}>
+                                                            {deleting[card.id] ? <Spinner animation="border" variant="danger" size="sm" /> : '×'}
+                                                        </button>
+                                                    </div>
+                                                    <div>
+                                                        {card.inTrelloPhoto && card.inTrelloPhoto.map((photo, index) => (
+                                                            <img
+                                                                key={index}
+                                                                src={photo.photoLink}
+                                                                alt={`Card Photo ${index + 1}`}
+                                                                style={{
+                                                                    width: 'calc(50% - 1px)',
+                                                                    height: 'auto',
+                                                                    maxHeight: '15vh',
+                                                                    objectFit: 'cover',
+                                                                    marginBottom: '10px'
+                                                                }}
+                                                            />
+                                                        ))}
+                                                    </div>
+                                                    {/*<div className="createdByTrelloList">*/}
+                                                    {/*    Додано: {card.createdBy.username}*/}
+                                                    {/*</div>*/}
                                                 </div>
-                                                {/*<div className="createdByTrelloList">*/}
-                                                {/*    Додано: {card.createdBy.username}*/}
-                                                {/*</div>*/}
-                                            </div>
-                                        )}
-                                    </Draggable>
-                                ))}
-                                {provided.placeholder}
-                                <div className="d-flex align-content-center align-items-center justify-content-center border-0 trello-add" onClick={() => addCard(list.id)}>+</div>
-                                {/*<div className="createdByTrelloList">*/}
-                                {/*    Додано: {list.createdBy.username}*/}
-                                {/*</div>*/}
-                            </div>
-                        )}
-                    </Droppable>
-                ))}
-            </div>
-        </DragDropContext>
+                                            )}
+                                        </Draggable>
+                                    ))}
+                                    {provided.placeholder}
+                                    <div className="d-flex align-content-center align-items-center justify-content-center border-0 trello-add" onClick={() => addCard(list.id)}>+</div>
+                                    {/*<div className="createdByTrelloList">*/}
+                                    {/*    Додано: {list.createdBy.username}*/}
+                                    {/*</div>*/}
+                                </div>
+                            )}
+                        </Droppable>
+                    ))}
+                </div>
+            </DragDropContext>
+
+
+            {openCardInfo &&
+                <CardInfo
+                    openCardData={openCardData}
+                    setOpenCardInfo={setOpenCardInfo}
+                    setServerData={setServerData}
+                    serverData={serverData}
+                />
+            }
+        </div>
+
     );
 };
 
