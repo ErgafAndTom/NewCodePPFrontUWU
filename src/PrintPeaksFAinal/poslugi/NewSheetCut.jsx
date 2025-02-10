@@ -40,15 +40,15 @@ const NewSheetCut = ({
 
 
     const [size, setSize] = useState({
-        x: 297,
-        y: 420
+        x: 210,
+        y: 297
     });
     const [material, setMaterial] = useState({
         type: "Папір",
-        thickness: "Тонкий",
+        thickness: "Офісний",
         material: "",
         materialId: "",
-        typeUse: "Тонкий"
+        typeUse: "Офісний"
     });
     const [color, setColor] = useState({
         sides: "односторонній",

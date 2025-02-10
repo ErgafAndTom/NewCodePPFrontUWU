@@ -141,6 +141,9 @@ const TrelloBoard = () => {
                     return list;
                 });
                 setServerData(updatedLists);
+                setOpenCardData(
+                    updatedLists.find(list => list.id === listId).Cards.find(card => card.id === cardId)
+                )
             }
         };
         fetchData()
@@ -208,34 +211,32 @@ const TrelloBoard = () => {
                                                             {deleting[card.id] ? <Spinner animation="border" variant="danger" size="sm" /> : '×'}
                                                         </button>
                                                     </div>
-                                                    <div className="d-flex" style={{padding: "0.5vw"}}>
+                                                    <div className="" style={{
+                                                        padding: "0.5vw",
+                                                        display: "grid",
+                                                        gridTemplateColumns: "repeat(2, 1fr)",
+                                                    }}>
                                                         {card.inTrelloPhoto && card.inTrelloPhoto.map((photo, index) => (
                                                             <img
                                                                 key={index}
                                                                 src={`/images/${photo.photoLink}`}
                                                                 alt={`Card Photo ${index + 1}`}
                                                                 style={{
-                                                                    width: 'calc(50% - 1px)',
-                                                                    height: 'auto',
-                                                                    maxHeight: '15vh',
+                                                                    width: 'calc(50% - 0px)',
+                                                                    // height: 'auto',
+                                                                    // maxHeight: '15vh',
                                                                     objectFit: 'cover',
                                                                     marginBottom: '10px'
                                                                 }}
                                                             />
                                                         ))}
                                                     </div>
-                                                    {/*<div className="createdByTrelloList">*/}
-                                                    {/*    Додано: {card.createdBy.username}*/}
-                                                    {/*</div>*/}
                                                 </div>
                                             )}
                                         </Draggable>
                                     ))}
                                     {provided.placeholder}
                                     <div className="d-flex align-content-center align-items-center justify-content-center border-0 trello-add" onClick={() => addCard(list.id)}>+</div>
-                                    {/*<div className="createdByTrelloList">*/}
-                                    {/*    Додано: {list.createdBy.username}*/}
-                                    {/*</div>*/}
                                 </div>
                             )}
                         </Droppable>

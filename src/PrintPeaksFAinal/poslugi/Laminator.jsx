@@ -36,8 +36,8 @@ const Laminator = ({
 
 
     const [size, setSize] = useState({
-        x: 297,
-        y: 420
+        x: 210,
+        y: 297
     });
     const [material, setMaterial] = useState({
         type: "Не потрібно",

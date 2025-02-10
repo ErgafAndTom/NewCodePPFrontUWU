@@ -1,16 +1,15 @@
 import React, {useEffect, useState} from 'react';
 import '../Orders/CustomOrderTable.css';
 import axios from "../../api/axiosInstance";
-// import StatusBar from "../Orders/StatusBar";
 import {Link, redirect, useNavigate} from "react-router-dom";
 import PaginationMy from "../../components/admin/pagination/PaginationMy";
 import Loader from "../../components/calc/Loader";
-// import AddNewOrder from "../Orders/AddNewOrder";
-// import ModalDeleteInStorage from "./ModalDeleteInStorage";
-// import ModalStorageRed from "./ModalStorageRed";
-// import NewWide from "../poslugi/newWide";
 import OneItemInTable from "../Storage/OneUnitInTable";
 import ModalStorageRed from "../Storage/ModalStorageRed";
+import AddNewOrder from "../Orders/AddNewOrder";
+import ModalDeleteInStorage from "../Storage/ModalDeleteInStorage";
+import AddEditUser from "./AddEditUser";
+import UserForm from "./UserForm";
 
 // Основний компонент CustomOrderTable
 const UsersCustomTable = ({name}) => {
@@ -32,6 +31,8 @@ const UsersCustomTable = ({name}) => {
     });
     const [expandedOrders, setExpandedOrders] = useState([]);
     const [showRed, setShowRed] = useState(false);
+    const [selectedUser, setSelectedUser] = useState(null);
+    const [show , setShow ] = useState(false);
 
     const setCol = (e) => {
         if (thisColumn.column === e) {
@@ -85,27 +86,7 @@ const UsersCustomTable = ({name}) => {
                 console.log(error.message);
             })
     }, [typeSelect, thisColumn]);
-    // useEffect(() => {
-    //     let data = {
-    //         name: name,
-    //         inPageCount: inPageCount,
-    //         currentPage: currentPage,
-    //         search: typeSelect,
-    //         columnName: thisColumn,
-    //     }
-    //     axios.get(`/user/all`, data)
-    //         .then(response => {
-    //             console.log(response.data);
-    //             setData(response.data)
-    //             // setPageCount(Math.ceil(response.data.result.count / inPageCount))
-    //         })
-    //         .catch(error => {
-    //             if(error.response.status === 403){
-    //                 navigate('/login');
-    //             }
-    //             console.log(error.message);
-    //         })
-    // }, [typeSelect, name, thisColumn, currentPage, inPageCount]);
+
 
     const toggleOrder = (orderId) => {
         if (expandedOrders.includes(orderId)) {
@@ -129,6 +110,20 @@ const UsersCustomTable = ({name}) => {
                 {/*    pageCount={pageCount}*/}
                 {/*    setPageCount={setPageCount}*/}
                 {/*/>*/}
+                {/*<AddEditUser*/}
+                {/*    data={data}*/}
+                {/*    setData={setData}*/}
+                {/*    selectedUser={selectedUser}*/}
+                {/*    setSelectedUser={setSelectedUser}*/}
+                {/*/>*/}
+                <UserForm
+                    data={data}
+                    setData={setData}
+                    selectedUser={selectedUser}
+                    setSelectedUser={setSelectedUser}
+                    show={show}
+                    setShow ={setShow}
+                />
                 <div className="CustomOrderTable-header">
                     {/*<div className="CustomOrderTable-header-cell CustomOrderTable-left-rounded">№ замовлення</div>*/}
                     {/*<div className="CustomOrderTable-header-cell">Розгорнути</div>*/}

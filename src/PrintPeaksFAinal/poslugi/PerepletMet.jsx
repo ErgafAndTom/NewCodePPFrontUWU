@@ -36,8 +36,8 @@ const PerepletMet = ({
 
 
     const [size, setSize] = useState({
-        x: 297,
-        y: 420
+        x: 210,
+        y: 297
     });
     const [material, setMaterial] = useState({
         type: "Не потрібно",
@@ -51,8 +51,8 @@ const PerepletMet = ({
         thickness: "Тонкі",
         material: "",
         materialId: "",
-        size: "",
-        typeUse: null
+        size: ">120",
+        typeUse: "Брошурування до 120 аркушів"
     });
     const [color, setColor] = useState({
         sides: "Не потрібно",

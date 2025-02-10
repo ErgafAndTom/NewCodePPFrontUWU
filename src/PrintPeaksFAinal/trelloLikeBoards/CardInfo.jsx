@@ -27,7 +27,12 @@ function ImageList({ images, onRemove }) {
     }
 
     return (
-        <div style={{ display: "flex", flexWrap: "wrap", gap: "1rem" }}>
+        <div style={{ 
+            display: "flex",
+            flexWrap: "wrap",
+            gap: "1rem",
+            gridTemplateColumns: "repeat(2, 1fr)",
+        }}>
             {images.map((img) => (
                     <div
                         key={img.id}
@@ -42,7 +47,10 @@ function ImageList({ images, onRemove }) {
                         <img
                             src={`/images/${img.photoLink}`} /* Assuming img.url holds the photo URL */
                             alt="photo"
-                            style={{width: "45%", height: "45%", objectFit: "cover", borderRadius: "4px"}}
+                            style={{
+                                width: "20%",
+                                objectFit: "cover"
+                            }}
                         />
                         {/*<span style={{flex: 1, color: "#333"}}>{`Файл: ${img.name || "Без имени"}`}</span>*/}
                         <button
@@ -167,7 +175,10 @@ export default function CardInfo({openCardData, setOpenCardInfo, setServerData, 
                     }}>
                         <div className="d-flex justify-content-around">
                             <div>
-                                <input onChange={(e) => handleCardContentChange(openCardData.listId, openCardData.id, e.target.value)} value={openCardData.content} type="text"/>
+                                <input onChange={(e) => handleCardContentChange(openCardData.listId, openCardData.id, e.target.value)}
+                                       value={openCardData.content}
+                                       type="text"
+                                       style={{width: "93%"}}/>
                             </div>
                             <div
                                 className="btn btn-close btn-lg"

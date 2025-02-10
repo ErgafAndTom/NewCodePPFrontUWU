@@ -31,8 +31,8 @@ const NewPhoto = ({thisOrder, newThisOrder, setNewThisOrder, selectedThings2, sh
 
 
     const [size, setSize] = useState({
-        x: 297,
-        y: 420
+        x: 100,
+        y: 150
     });
     const [material, setMaterial] = useState({
         type: "Фотопапір",
@@ -238,16 +238,16 @@ const NewPhoto = ({thisOrder, newThisOrder, setNewThisOrder, selectedThings2, sh
                                             setCount={setCount}
 
                                         />
-                                        <PhotoPosluga
-                                            photo={photo}
-                                            setPhoto={setPhoto}
-                                            prices={prices}
-                                            type={"SheetCut"}
-                                            buttonsArr={["З глянцевим ламінуванням",
-                                                "З матовим ламінуванням",
-                                                "З ламінуванням Soft Touch",]}
-                                            selectArr={["3,5 мм", "4 мм", "5 мм", "6 мм", "8 мм"]}
-                                        />
+                                        {/*<PhotoPosluga*/}
+                                        {/*    photo={photo}*/}
+                                        {/*    setPhoto={setPhoto}*/}
+                                        {/*    prices={prices}*/}
+                                        {/*    type={"SheetCut"}*/}
+                                        {/*    buttonsArr={["З глянцевим ламінуванням",*/}
+                                        {/*        "З матовим ламінуванням",*/}
+                                        {/*        "З ламінуванням Soft Touch",]}*/}
+                                        {/*    selectArr={["3,5 мм", "4 мм", "5 мм", "6 мм", "8 мм"]}*/}
+                                        {/*/>*/}
                                         {/*<NewNoModalCornerRounding*/}
                                         {/*    big={big}*/}
                                         {/*    setBig={setBig}*/}

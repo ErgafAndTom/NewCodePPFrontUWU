@@ -330,11 +330,11 @@ const NewSheetCutBw = ({thisOrder, newThisOrder, setNewThisOrder, selectedThings
                                             = {pricesThis.priceForThisAllUnitsOfLamination} грн
                                         </div>
 
-                                        <div className="fontInfoForPricing">
-                                            Свердління отворів: {pricesThis.priceForThisUnitOfHoles} грн * {count} шт
-                                            = {pricesThis.priceForAllUnitsOfHoles} грн
+                                        {/*<div className="fontInfoForPricing">*/}
+                                        {/*    Свердління отворів: {pricesThis.priceForThisUnitOfHoles} грн * {count} шт*/}
+                                        {/*    = {pricesThis.priceForAllUnitsOfHoles} грн*/}
 
-                                        </div>
+                                        {/*</div>*/}
                                         {/*<div className="fontInfoForPricing">*/}
                                         {/*    {pricesThis.priceForThisUnitOfPapper * pricesThis.skolko}+*/}
                                         {/*    {pricesThis.priceForDrukThisUnit * pricesThis.skolko}+*/}

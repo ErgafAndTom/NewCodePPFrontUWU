@@ -1,7 +1,5 @@
 import React, {useEffect, useState} from "react";
-import Form from "react-bootstrap/Form";
 import axios from '../../../../api/axiosInstance';
-import UserProfileForm from "../../../user/UserProfileForm";
 import {Navigate, useNavigate} from "react-router-dom";
 
 const MaterialsInPhoto = ({material, setMaterial, count, setCount, prices, type, name, buttonsArr, selectArr, typeUse, size}) => {
@@ -26,30 +24,6 @@ const MaterialsInPhoto = ({material, setMaterial, count, setCount, prices, type,
         // })
     }
 
-    let handleChange = (e) => {
-        setCount(e)
-    }
-
-    let handleClick = (e) => {
-        if(e === "Самоклеючі"){
-            setMaterial({
-                type: "Плівка",
-                thickness: e,
-                material: material.material,
-                materialId: material.materialId,
-                typeUse: typeUse
-            })
-        } else {
-            setMaterial({
-                type: "Папір",
-                thickness: e,
-                material: material.material,
-                materialId: material.materialId,
-                typeUse: typeUse
-            })
-        }
-    }
-
     useEffect(() => {
         let data = {
             name: "MaterialsPrices",
@@ -67,66 +41,25 @@ const MaterialsInPhoto = ({material, setMaterial, count, setCount, prices, type,
             .then(response => {
                 console.log(response.data);
                 setPaper(response.data.rows)
-                setMaterial({
-                    ...material,
-                    material: response.data.rows[0].name,
-                    materialId: response.data.rows[0].id,
-                })
-            })
-            .catch(error => {
-                if(error.response.status === 403){
-                    navigate('/login');
+                if(response.data && response.data.rows && response.data.rows[0]){
+                    setMaterial({
+                        ...material,
+                        material: response.data.rows[0].name,
+                        materialId: response.data.rows[0].id,
+                    })
+                } else {
+                    setMaterial({
+                        ...material,
+                        material: "Немає",
+                        materialId: 0,
+                    })
                 }
-                console.log(error.message);
-            })
-    }, [size]);
 
-    useEffect(() => {
-        let data = {
-            name: "MaterialsPrices",
-            inPageCount: 999999,
-            currentPage: 1,
-            search: "",
-            columnName: {
-                column: "id",
-                reverse: false
-            },
-            material: material,
-            size: size
-        }
-        axios.post(`/materials/NotAll`, data)
-            .then(response => {
-                console.log(response.data);
-                setPaper(response.data.rows)
-            })
-            .catch(error => {
-                if(error.response.status === 403){
-                    navigate('/login');
-                }
-                console.log(error.message);
-            })
-    }, [material]);
 
-    useEffect(() => {
-        let data = {
-            name: "MaterialsPrices",
-            inPageCount: 999999,
-            currentPage: 1,
-            search: "",
-            columnName: {
-                column: "id",
-                reverse: false
-            },
-            material: material,
-        }
-        axios.post(`/materials/NotAll`, data)
-            .then(response => {
-                console.log(response.data);
-                setPaper(response.data.rows)
+
                 // setMaterial({
                 //     ...material,
-                //     thickness: "Тонкі",
-                //     material: response.data.rows[0].name,
+                //     material: `${response.data.rows[0].name}`,
                 //     materialId: response.data.rows[0].id,
                 // })
             })
@@ -136,7 +69,33 @@ const MaterialsInPhoto = ({material, setMaterial, count, setCount, prices, type,
                 }
                 console.log(error.message);
             })
-    }, []);
+    }, [size]);
+
+    // useEffect(() => {
+    //     let data = {
+    //         name: "MaterialsPrices",
+    //         inPageCount: 999999,
+    //         currentPage: 1,
+    //         search: "",
+    //         columnName: {
+    //             column: "id",
+    //             reverse: false
+    //         },
+    //         material: material,
+    //         size: size
+    //     }
+    //     axios.post(`/materials/NotAll`, data)
+    //         .then(response => {
+    //             console.log(response.data);
+    //             setPaper(response.data.rows)
+    //         })
+    //         .catch(error => {
+    //             if(error.response.status === 403){
+    //                 navigate('/login');
+    //             }
+    //             console.log(error.message);
+    //         })
+    // }, [material]);
 
     return (
         <div className="d-flex allArtemElem">

@@ -10,36 +10,6 @@ const PerepletPereplet = ({pereplet, setPereplet, prices, buttonsArr, selectArr,
     const [thisPerepletVariants, setThisPerepletVariants] = useState([]);
     const navigate = useNavigate();
 
-    let handleSelectChange = (e) => {
-        setPereplet({
-            type: pereplet.type,
-            material: pereplet.material,
-            materialId: pereplet.materialId,
-            size: e.target.value,
-            typeUse: pereplet.typeUse
-        })
-    }
-
-    let handleToggle = (e) => {
-        if (pereplet.type === "Не потрібно") {
-            setPereplet({
-                type: "З глянцевим ламінуванням",
-                material: "З глянцевим ламінуванням",
-                materialId: "92",
-                size: "Брошурування до 120 аркушів",
-                typeUse: pereplet.typeUse
-            })
-        } else {
-            setPereplet({
-                type: "Не потрібно",
-                material: "",
-                materialId: "",
-                size: "",
-                typeUse: pereplet.typeUse
-            })
-        }
-    }
-
     let handleClickSize = (e, e2) => {
         setPereplet({
             type: pereplet.type,
@@ -97,7 +67,7 @@ const PerepletPereplet = ({pereplet, setPereplet, prices, buttonsArr, selectArr,
                 }
                 console.log(error.message);
             })
-    }, [pereplet.size, size]);
+    }, [pereplet.size, pereplet.typeUse, size]);
 
     return (
         <div className="d-flex allArtemElem m-0 p-0">
