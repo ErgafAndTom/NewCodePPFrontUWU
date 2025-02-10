@@ -134,6 +134,29 @@ const ModalSize = ({size, setSize, type, buttonsArr, color, setColor, count, set
 
     }
 
+    useEffect((e) => {
+        console.log(size);
+        let validX = true;
+        let validY = true;
+        setXVal(false)
+        setYVal(false)
+        if (x < minXYValue || x > xMaxValue) {
+            validX = false
+            setXVal(true)
+        }
+        if (y < minXYValue || y > yMaxValue) {
+            validY = false
+            setYVal(true)
+        }
+        if (validX && validY) {
+            setSize({
+                x: x,
+                y: y
+            })
+            // setShow(false);
+        }
+    }, [x, y]);
+
     let setCustomValues = (e) => {
         let validX = true;
         let validY = true;
