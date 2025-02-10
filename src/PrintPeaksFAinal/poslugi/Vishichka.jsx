@@ -38,18 +38,18 @@ const Vishichka = ({
 
 
     const [size, setSize] = useState({
-        x: 297,
-        y: 420
+        x: 310,
+        y: 440
     });
     const [material, setMaterial] = useState({
-        type: "Не потрібно",
-        thickness: "Тонкі",
+        type: "Плівка",
+        thickness: "Самоклеючі",
         material: "",
         materialId: "",
-        typeUse: null
+        typeUse: "Самоклеючі"
     });
     const [color, setColor] = useState({
-        sides: "Не потрібно",
+        sides: "односторонній",
         one: "",
         two: "",
         allSidesColor: "CMYK",
@@ -167,6 +167,7 @@ const Vishichka = ({
             count: count,
             vishichka: vishichka,
         }
+        console.log(dataToSend);
         axios.post(`/calc/pricing`, dataToSend)
             .then(response => {
                 console.log(response.data.prices);

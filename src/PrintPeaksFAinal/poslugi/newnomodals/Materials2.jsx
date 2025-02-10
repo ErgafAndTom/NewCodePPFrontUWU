@@ -61,11 +61,12 @@ const Materials2 = ({material, setMaterial, count, setCount, prices, type, name,
             size: size,
             material: material
         }
+        // console.log(data);
         setLoad(true)
         setError(null)
         axios.post(`/materials/NotAll`, data)
             .then(response => {
-                console.log(response.data);
+                // console.log(response.data);
                 setPaper(response.data.rows)
                 setLoad(false)
                 if(response.data && response.data.rows && response.data.rows[0]){
