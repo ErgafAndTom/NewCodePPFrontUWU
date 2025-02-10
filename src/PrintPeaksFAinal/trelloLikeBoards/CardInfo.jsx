@@ -1,24 +1,6 @@
-import React, {useEffect, useState} from "react";
+import React, {useEffect, useRef, useState} from "react";
 import {useNavigate} from "react-router-dom";
 import axios from "../../api/axiosInstance";
-
-// Компонент для текстового контента
-function EditableText({ text, onChange }) {
-    return (
-        <div style={{  }}>
-            <input
-                type="text"
-                value={text}
-                onChange={(e) => onChange(e.target.value)}
-                style={{
-                    padding: "0.5rem",
-                    width: "100%",
-                    boxSizing: "border-box",
-                }}
-            />
-        </div>
-    );
-}
 
 // Компонент для списка загруженных изображений
 function ImageList({ images, onRemove }) {
@@ -30,7 +12,7 @@ function ImageList({ images, onRemove }) {
         <div style={{ 
             display: "flex",
             flexWrap: "wrap",
-            gap: "1rem",
+            gap: "0.5rem",
             gridTemplateColumns: "repeat(2, 1fr)",
         }}>
             {images.map((img) => (
@@ -39,7 +21,7 @@ function ImageList({ images, onRemove }) {
                         style={{
                             display: "flex",
                             alignItems: "center",
-                            gap: "1rem",
+                            gap: "0.5rem",
                             padding: "0.5rem",
                             borderBottom: "1px solid #ccc",
                         }}
@@ -48,7 +30,7 @@ function ImageList({ images, onRemove }) {
                             src={`/images/${img.photoLink}`} /* Assuming img.url holds the photo URL */
                             alt="photo"
                             style={{
-                                width: "20%",
+                                width: "8vw",
                                 objectFit: "cover"
                             }}
                         />
@@ -56,10 +38,10 @@ function ImageList({ images, onRemove }) {
                         <button
                             onClick={() => onRemove(img.id)}
                             style={{
-                                backgroundColor: "#ff3333",
-                                color: "#fff",
+                                backgroundColor: "transparent",
+                                color: "#ff3333",
                                 border: "none",
-                                padding: "0.25rem 0.5rem",
+                                // padding: "0.25rem 0.5rem",
                                 borderRadius: "2px",
                                 cursor: "pointer",
                             }}
@@ -80,6 +62,7 @@ export default function CardInfo({openCardData, setOpenCardInfo, setServerData, 
     const [images, setImages] = useState(openCardData.inTrelloPhoto);
     const [load, setLoad] = useState(false);
     const navigate = useNavigate();
+    const fileInputRef = useRef(null);
     const [isVisible, setIsVisible] = useState(false);
     const [isAnimating, setIsAnimating] = useState(false);
     const [error, setError] = useState(null);
@@ -159,7 +142,8 @@ export default function CardInfo({openCardData, setOpenCardInfo, setServerData, 
                         }}
                         onClick={handleClose}
                     ></div>
-                    <div className="d-flex flex-column" style={{
+                    <div
+                        className="d-flex flex-column" style={{
                         zIndex: "100",
                         position: "fixed",
                         background: "#dcd9ce",
@@ -169,21 +153,29 @@ export default function CardInfo({openCardData, setOpenCardInfo, setServerData, 
                         opacity: isAnimating ? 1 : 0, // анимация прозрачности
                         transition: "opacity 0.3s ease-in-out, transform 0.3s ease-in-out", // плавная анимация
                         borderRadius: "1vw",
-                        maxWidth: "50vw",
-                        maxHeight: "95vh",
-                        padding: "2vw"
-                    }}>
+                        maxWidth: "30vw",
+                        maxHeight: "70vh",
+                        padding: "0.7vw"
+                    }}
+                    >
                         <div className="d-flex justify-content-around">
                             <div>
-                                <input onChange={(e) => handleCardContentChange(openCardData.listId, openCardData.id, e.target.value)}
+                                <textarea onChange={(e) => handleCardContentChange(openCardData.listId, openCardData.id, e.target.value)}
                                        value={openCardData.content}
                                        type="text"
-                                       style={{width: "93%"}}/>
+                                       style={{
+                                           width: "26vw",
+                                           height: "7vh",
+                                           border: "none",
+                                           borderRadius: "0.5vw",
+                                           padding: "0.5vw"
+
+                                }}/>
                             </div>
                             <div
                                 className="btn btn-close btn-lg"
                                 style={{
-                                    margin: "0.5vw",
+                                    marginLeft: "0.5vw",
                                 }}
                                 onClick={handleClose}
                             >
@@ -191,10 +183,12 @@ export default function CardInfo({openCardData, setOpenCardInfo, setServerData, 
                         </div>
                         <ImageList images={images} onRemove={handleRemoveImage} />
                         <div
+
                             className="d-flex align-items-center justify-content-between mt-2">
                             <input
                                 type="file"
                                 accept="image/*"
+                                ref={fileInputRef}
                                 onChange={(e) => {
                                     const file = e.target.files[0];
                                     if (file && file.type.startsWith('image/')) {
@@ -203,15 +197,31 @@ export default function CardInfo({openCardData, setOpenCardInfo, setServerData, 
                                         setSelectedImage(null);
                                     }
                                 }}
-                                style={{width: "70%"}}
+                                onPaste={(e) => {
+                                    if (e.clipboardData.files.length > 0) {
+                                        const file = e.clipboardData.files[0];
+                                        if (file && file.type.startsWith("image/")) {
+                                            setSelectedImage(file);
+                                        }
+                                    }
+                                }}
+                                style={{
+                                    width: "100%",
+                                    border: "none",
+                            }}
                             />
                             <button
                                 disabled={!selectedImage}
                                 className="border-0 btn btn-success d-flex align-items-center justify-content-center"
-                                style={{marginLeft: "2px"}}
+                                style={{
+                                    // marginLeft: "2px",
+                                    width: "9vw",
+                                    height: "3vh",
+                                    borderRadius: "0.5vw",
+                            }}
                                 onClick={() => uploadPhoto(openCardData.id, selectedImage)}
                             >
-                                {selectedImage ? "Вантажити ✔️" : "Очікую img.."}
+                                {selectedImage ? "Завантажити" : "Очікую img.."}
                             </button>
                         </div>
                     </div>

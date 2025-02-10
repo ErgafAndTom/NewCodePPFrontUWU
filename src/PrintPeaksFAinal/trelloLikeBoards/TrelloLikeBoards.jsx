@@ -204,16 +204,24 @@ const TrelloBoard = () => {
                                                 <div className="trello-card" ref={provided.innerRef} {...provided.draggableProps} {...provided.dragHandleProps}>
                                                     <div className="d-flex">
                                                         {/*<textarea className="InputInTrello" style={{width: "93%"}} type="text" value={card.content} onChange={(e) => handleCardContentChange(list.id, card.id, e.target.value)} />*/}
-                                                        <div className="trello-card-content" style={{width: "93%"}} onClick={() => seeInfoCard(list.id, card.id)}>
+                                                        <div className="trello-card-content" style={{width: "100%"}} onClick={() => seeInfoCard(list.id, card.id)}>
                                                             {card.content}
                                                         </div>
-                                                        <button className="d-flex align-content-center align-items-center justify-content-between border-0" onClick={() => removeCard(list.id, card.id)}>
+                                                        <button
+                                                            style={{
+                                                                padding: "0.4vw",
+                                                                backgroundColor: "transparent",
+                                                                flexDirection: "column",
+                                                                // display: "grid",
+                                                                // gridTemplateColumns: "repeat(2, 1fr)",
+                                                            }}
+                                                            className="d-flex align-content-center align-items-center justify-content-between border-0" onClick={() => removeCard(list.id, card.id)}>
                                                             {deleting[card.id] ? <Spinner animation="border" variant="danger" size="sm" /> : '×'}
                                                         </button>
                                                     </div>
                                                     <div className="" style={{
-                                                        padding: "0.5vw",
-                                                        display: "grid",
+                                                        padding: "0.4vw",
+                                                        // display: "grid",
                                                         gridTemplateColumns: "repeat(2, 1fr)",
                                                     }}>
                                                         {card.inTrelloPhoto && card.inTrelloPhoto.map((photo, index) => (
@@ -222,11 +230,10 @@ const TrelloBoard = () => {
                                                                 src={`/images/${photo.photoLink}`}
                                                                 alt={`Card Photo ${index + 1}`}
                                                                 style={{
-                                                                    width: 'calc(50% - 0px)',
-                                                                    // height: 'auto',
-                                                                    // maxHeight: '15vh',
+                                                                    width: '5vw',
                                                                     objectFit: 'cover',
-                                                                    marginBottom: '10px'
+                                                                    margin: '2px',
+                                                                    alignItems: 'center',
                                                                 }}
                                                             />
                                                         ))}
