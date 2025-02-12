@@ -1,5 +1,4 @@
 import React, {useEffect, useState} from "react";
-import ReactDOM from 'react-dom';
 import './userInNewUiArtem/StyleArtem.css';
 import './CPM.css';
 import './global.css';
@@ -11,7 +10,6 @@ import axios from '../api/axiosInstance';
 import OneOrderButton from "../components/newUIArtem/orders/OneOrderButton";
 import {Modal} from "react-bootstrap";
 import Tooltip from './TooltipButton2';
-import Statistics from '../components/Statistics.jsx';
 
 
 // Usage of ClientsMenu
@@ -45,7 +43,6 @@ import NewPhoto from "./poslugi/NewPhoto";
 import NewNote from "./poslugi/NewNote";
 import ModalDeleteOrderUnit from "./ModalDeleteOrderUnit";
 import Loader from "../components/calc/Loader";
-import ClientChangerUIArtem from "./userInNewUiArtem/ClientChangerUIArtem";
 import Laminator from "./poslugi/Laminator";
 import Vishichka from "./poslugi/Vishichka";
 import PerepletMet from "./poslugi/PerepletMet";

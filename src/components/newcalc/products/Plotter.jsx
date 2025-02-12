@@ -372,55 +372,55 @@ const Plotter = ({thisOrder, newThisOrder, setNewThisOrder, selectedThings2, sho
                         {/*"proxy": "http://127.0.0.1:3000",*/}
                         {/*    <CardProduct key={item.id} name={name} data={data} setData={setData} item={item}/>*/}
                         {/*))}*/}
+                        {error &&
+                            <div>{error.message}</div>
+                        }
+                        {null === pricesThis ? (
+                            <div style={{width: '50vw'}}>
+
+                            </div>
+                        ) : (
+                            <div style={{width: '95vw'}} className="m-auto">
+                                <div className="adminFont fontInfoForPricing">
+                                    {pricesThis.skolkoListovNaOdin}шт. - Виробів з 1 листа A3(можливо зробити)
+                                </div>
+                                <div className="adminFont fontInfoForPricing">
+                                    {pricesThis.skolko}шт. - Затрачено листів (A3)
+                                </div>
+                                <div className="adminFont fontInfoForPricing">
+                                    {pricesThis.priceForThisUnitOfPapper}грн. * {pricesThis.skolko}шт.
+                                    = {pricesThis.priceForThisUnitOfPapper * pricesThis.skolko}грн. - Ціна за листи
+                                </div>
+                                <div className="adminFont fontInfoForPricing">
+                                    {pricesThis.priceForThisUnitOfPorizka}грн. * {pricesThis.skolko}шт.
+                                    = {pricesThis.priceForThisUnitOfPorizka * pricesThis.skolko}грн. - Ціна за порізку
+                                </div>
+                                <div className="adminFont fontInfoForPricing">
+                                    {pricesThis.priceForThisUnitOfMontajka}грн. * {pricesThis.skolko}шт.
+                                    = {pricesThis.priceForThisUnitOfMontajka * pricesThis.skolko}грн. - Ціна за монтажну
+                                    плівку
+                                </div>
+                                <div className="adminFont fontInfoForPricing">
+                                    {pricesThis.priceForDrukThisUnit}грн. * {pricesThis.skolko}шт.
+                                    = {pricesThis.priceForDrukThisUnit * pricesThis.skolko}грн. - Ціна за друк
+                                </div>
+                                <div className="adminFont fontInfoForPricing">
+                                    {pricesThis.priceForThisUnitOfPapper * pricesThis.skolko}+
+                                    {pricesThis.priceForDrukThisUnit * pricesThis.skolko}=
+                                    {pricesThis.price}
+                                </div>
+                                <div className="adminFont fontInfoForPricing1">
+                                    Ціна за все {pricesThis.price}грн.
+                                </div>
+
+
+                                {/*<ChartComponent aapl={pricesThis}/>*/}
+                                {/*<NewChartMy data={pricesThis}/>*/}
+                                {/*<NewChartMy2 data={pricesThis}/>*/}
+                                {/*<Gravity data={pricesThis}/>*/}
+                            </div>
+                        )}
                     </MDBContainer>
-                    {error &&
-                        <div>{error.message}</div>
-                    }
-                    {null === pricesThis ? (
-                        <div style={{width: '50vw'}}>
-
-                        </div>
-                    ) : (
-                        <div style={{width: '95vw'}} className="m-auto">
-                            <div className="adminFont fontInfoForPricing">
-                                {pricesThis.skolkoListovNaOdin}шт. - Виробів з 1 листа A3(можливо зробити)
-                            </div>
-                            <div className="adminFont fontInfoForPricing">
-                                {pricesThis.skolko}шт. - Затрачено листів (A3)
-                            </div>
-                            <div className="adminFont fontInfoForPricing">
-                                {pricesThis.priceForThisUnitOfPapper}грн. * {pricesThis.skolko}шт.
-                                = {pricesThis.priceForThisUnitOfPapper * pricesThis.skolko}грн. - Ціна за листи
-                            </div>
-                            <div className="adminFont fontInfoForPricing">
-                                {pricesThis.priceForThisUnitOfPorizka}грн. * {pricesThis.skolko}шт.
-                                = {pricesThis.priceForThisUnitOfPorizka * pricesThis.skolko}грн. - Ціна за порізку
-                            </div>
-                            <div className="adminFont fontInfoForPricing">
-                                {pricesThis.priceForThisUnitOfMontajka}грн. * {pricesThis.skolko}шт.
-                                = {pricesThis.priceForThisUnitOfMontajka * pricesThis.skolko}грн. - Ціна за монтажну
-                                плівку
-                            </div>
-                            <div className="adminFont fontInfoForPricing">
-                                {pricesThis.priceForDrukThisUnit}грн. * {pricesThis.skolko}шт.
-                                = {pricesThis.priceForDrukThisUnit * pricesThis.skolko}грн. - Ціна за друк
-                            </div>
-                            <div className="adminFont fontInfoForPricing">
-                                {pricesThis.priceForThisUnitOfPapper * pricesThis.skolko}+
-                                {pricesThis.priceForDrukThisUnit * pricesThis.skolko}=
-                                {pricesThis.price}
-                            </div>
-                            <div className="adminFont fontInfoForPricing1">
-                                Ціна за все {pricesThis.price}грн.
-                            </div>
-
-
-                            {/*<ChartComponent aapl={pricesThis}/>*/}
-                            {/*<NewChartMy data={pricesThis}/>*/}
-                            {/*<NewChartMy2 data={pricesThis}/>*/}
-                            {/*<Gravity data={pricesThis}/>*/}
-                        </div>
-                    )}
                 </div>
                 {thisOrder && (
                     <div className="btn btn-light" onClick={handleThingClickAndHide}>

@@ -1,7 +1,6 @@
 import React, {useEffect, useState} from "react";
 import axios from '../../../api/axiosInstance';
 import {useNavigate} from "react-router-dom";
-import NewSheetCutBw from "../NewSheetCutBw";
 import {Spinner} from "react-bootstrap";
 
 const Materials2 = ({material, setMaterial, count, setCount, prices, type, name, buttonsArr, selectArr, typeUse, size}) => {

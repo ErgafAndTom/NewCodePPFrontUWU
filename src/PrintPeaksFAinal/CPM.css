@@ -225,10 +225,11 @@
   height: 283px;
 }
 .versant80-img-icon {
-    width: 14vw;
-  /*max-width: 100%;*/
-  overflow: hidden;
-  /*height: 100%;*/
+    width: 14vh;
+    height: 100%;
+    /*max-width: 100%;*/
+    overflow: hidden;
+    /*height: 100%;*/
     /*object-fit: cover;*/
     align-items: center;
     margin: 1vw;
@@ -239,8 +240,8 @@
 }
 
 .kyosera-img-icon {
-    width: 10vw;
-    /*max-width: 100%;*/
+    width: 12vh;
+    max-width: 100%;
     overflow: hidden;
     /*height: 100%;*/
     /*object-fit: cover;*/

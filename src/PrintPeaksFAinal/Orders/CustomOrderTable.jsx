@@ -7,7 +7,6 @@ import {Link, Navigate, redirect, useNavigate} from "react-router-dom";
 import PaginationMy from "../../components/admin/pagination/PaginationMy";
 import Loader from "../../components/calc/Loader";
 import AddNewOrder from "./AddNewOrder";
-import ModalDeleteOrderUnit from "../ModalDeleteOrderUnit";
 import ModalDeleteOrder from "./ModalDeleteOrder";
 
 // Основний компонент CustomOrderTable

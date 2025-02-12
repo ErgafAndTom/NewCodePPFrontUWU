@@ -193,140 +193,137 @@ const NewWide = ({thisOrder, newThisOrder, setNewThisOrder, selectedThings2, set
                             </div>
                         </div>
                         <div className="d-flex flex-column">
-                            <div className="d-flex">
-                                <MDBContainer
-                                    fluid
-                                    style={{width: '100%'}}
-                                    className="d-flex"
-                                >
-                                    <Row xs={1} md={6} className="d-flex">
-                                        <div className="d-flex flex-column">
-                                            <NewNoModalSize
-                                                size={size}
-                                                setSize={setSize}
-                                                prices={prices}
-                                                type={"Wide"}
-                                                buttonsArr={["односторонній"]}
-                                                color={color}
-                                                setColor={setColor}
-                                                count={count}
-                                                setCount={setCount}
+                            <MDBContainer
+                                fluid
+                                style={{width: '100%'}}
+                            >
+                                <Row xs={1} md={6} className="d-flex">
+                                    <div className="d-flex flex-column">
+                                        <NewNoModalSize
+                                            size={size}
+                                            setSize={setSize}
+                                            prices={prices}
+                                            type={"Wide"}
+                                            buttonsArr={["односторонній"]}
+                                            color={color}
+                                            setColor={setColor}
+                                            count={count}
+                                            setCount={setCount}
 
-                                            />
-                                            <SliderComponent
-                                                size={size}
-                                                setSize={setSize}
-                                                prices={prices}
-                                                type={"Wide"}
-                                                buttonsArr={["односторонній"]}
-                                                color={color}
-                                                setColor={setColor}
-                                                count={count}
-                                                setCount={setCount}
+                                        />
+                                        <SliderComponent
+                                            size={size}
+                                            setSize={setSize}
+                                            prices={prices}
+                                            type={"Wide"}
+                                            buttonsArr={["односторонній"]}
+                                            color={color}
+                                            setColor={setColor}
+                                            count={count}
+                                            setCount={setCount}
 
-                                            />
-                                            <Materials2
-                                                material={material}
-                                                setMaterial={setMaterial}
-                                                count={count}
-                                                setCount={setCount}
-                                                prices={prices}
-                                                size={size}
-                                                selectArr={["3,5 мм", "4 мм", "5 мм", "6 мм", "8 мм"]}
-                                                name={"Широкоформатний фотодрук:"}
-                                                buttonsArr={[]}
-                                            />
-                                        </div>
-                                        {/*<NewSizesButtons*/}
-                                        {/*    size={size}*/}
-                                        {/*    setSize={setSize}*/}
-                                        {/*/>*/}
-                                    </Row>
-                                    {/*{data.rows.map((item) => (*/}
-                                    {/*"proxy": "http://127.0.0.1:3000",*/}
-                                    {/*    <CardProduct key={item.id} name={name} data={data} setData={setData} item={item}/>*/}
-                                    {/*))}*/}
-                                </MDBContainer>
-                            </div>
-                            <div className="d-flex">
-                                {thisOrder && (
-                                    <div
-                                        className="d-flex align-content-between justify-content-between"
-                                        style={{
-                                            width: "90vw",
-                                            marginLeft: "2.5vw",
-                                            fontFamily: "Gotham",
-                                            fontWeight: "bold",
-                                            display: 'flex',
-                                            justifyContent: 'center',
-                                            alignItems: 'center',
-                                            transition: "all 0.3s ease",
-                                            // cursor: "pointer",
-                                            height: '5vw',
-                                        }}
-                                    >
-                                        <div
-                                            className="btn btn-warning" style={{
-                                            borderRadius: '0.627vw',
-                                            // border: '0.08vw solid gray',
-                                            padding: '0.2vw 0.7vw',
-                                        }}
-                                            onClick={addNewOrderUnit}
-                                        >
-                                            Додати до замовлення
-                                        </div>
+                                        />
+                                        <Materials2
+                                            material={material}
+                                            setMaterial={setMaterial}
+                                            count={count}
+                                            setCount={setCount}
+                                            prices={prices}
+                                            size={size}
+                                            selectArr={["3,5 мм", "4 мм", "5 мм", "6 мм", "8 мм"]}
+                                            name={"Широкоформатний фотодрук:"}
+                                            buttonsArr={[]}
+                                        />
                                     </div>
-                                )}
-                            </div>
-                            {error &&
-                                <div>{error.message}</div>
-                            }
-                            {null === pricesThis ? (
-                                <div style={{width: '50vw'}}>
-
-                                </div>
-                            ) : (
-                                <div className="d-flex justify-content-between pricesBlockContainer">
-                                    <div style={{border: "0px black solid"}}>
-                                        <div>
-                                            {/*1 вариант:*/}
-                                            {/*<div className="adminFont fontInfoForPricing">*/}
-                                            {/*    {size.x} мм*/}
-                                            {/*    * {pricesThis.operantForChangeMM2ToM2} = {pricesThis.sizeXM2}м*/}
-                                            {/*</div>*/}
-                                            {/*<div className="adminFont fontInfoForPricing">*/}
-                                            {/*    {size.y}мм*/}
-                                            {/*    * {pricesThis.operantForChangeMM2ToM2} = {pricesThis.sizeYM2}м*/}
-                                            {/*</div>*/}
-                                            <div className=" fontInfoForPricing">
-                                                {pricesThis.sizeXM2} м
-                                                * {pricesThis.sizeYM2} м = {pricesThis.totalSizeInM2One} м²
+                                    {/*<NewSizesButtons*/}
+                                    {/*    size={size}*/}
+                                    {/*    setSize={setSize}*/}
+                                    {/*/>*/}
+                                </Row>
+                                {/*{data.rows.map((item) => (*/}
+                                {/*"proxy": "http://127.0.0.1:3000",*/}
+                                {/*    <CardProduct key={item.id} name={name} data={data} setData={setData} item={item}/>*/}
+                                {/*))}*/}
+                                <div className="d-flex">
+                                    {thisOrder && (
+                                        <div
+                                            className="d-flex align-content-between justify-content-between"
+                                            style={{
+                                                width: "90vw",
+                                                marginLeft: "2.5vw",
+                                                fontFamily: "Gotham",
+                                                fontWeight: "bold",
+                                                display: 'flex',
+                                                justifyContent: 'center',
+                                                alignItems: 'center',
+                                                transition: "all 0.3s ease",
+                                                // cursor: "pointer",
+                                                height: '5vw',
+                                            }}
+                                        >
+                                            <div
+                                                className="btn btn-warning" style={{
+                                                borderRadius: '0.627vw',
+                                                // border: '0.08vw solid gray',
+                                                padding: '0.2vw 0.7vw',
+                                            }}
+                                                onClick={addNewOrderUnit}
+                                            >
+                                                Додати до замовлення
                                             </div>
                                         </div>
-                                        <div className="fontInfoForPricing">
-                                            {pricesThis.totalSizeInM2One} м² * {pricesThis.skolko} шт
-                                            = {pricesThis.allTotalSizeInM2} м² - {pricesThis.skolko} шт
-                                        </div>
-                                        <div className="fontInfoForPricing">
-                                            Друк {pricesThis.oneWideDrukPrice} грн * {pricesThis.skolko} шт
-                                            = {pricesThis.totalWideDrukPrice} грн
-                                        </div>
-                                        <div className="fontInfoForPricing">
-                                            Матеріали: {pricesThis.oneWideMaterialPrice} грн
-                                            * {pricesThis.skolko} шт
-                                            = {pricesThis.totalWideMaterialPrice} грн
-                                        </div>
-                                        <div className="fontInfoForPricing1">
-                                            Загалом: {pricesThis.price}грн.
-                                        </div>
-                                    </div>
-                                    <img
-                                        className="versant80-img-icon"
-                                        alt="sssss"
-                                        src={versantIcon}
-                                    />
+                                    )}
                                 </div>
-                            )}
+                                {error &&
+                                    <div>{error.message}</div>
+                                }
+                                {null === pricesThis ? (
+                                    <div style={{width: '50vw'}}>
+
+                                    </div>
+                                ) : (
+                                    <div className="d-flex justify-content-between pricesBlockContainer">
+                                        <div style={{border: "0px black solid"}}>
+                                            <div>
+                                                {/*1 вариант:*/}
+                                                {/*<div className="adminFont fontInfoForPricing">*/}
+                                                {/*    {size.x} мм*/}
+                                                {/*    * {pricesThis.operantForChangeMM2ToM2} = {pricesThis.sizeXM2}м*/}
+                                                {/*</div>*/}
+                                                {/*<div className="adminFont fontInfoForPricing">*/}
+                                                {/*    {size.y}мм*/}
+                                                {/*    * {pricesThis.operantForChangeMM2ToM2} = {pricesThis.sizeYM2}м*/}
+                                                {/*</div>*/}
+                                                <div className=" fontInfoForPricing">
+                                                    {pricesThis.sizeXM2} м
+                                                    * {pricesThis.sizeYM2} м = {pricesThis.totalSizeInM2One} м²
+                                                </div>
+                                            </div>
+                                            <div className="fontInfoForPricing">
+                                                {pricesThis.totalSizeInM2One} м² * {pricesThis.skolko} шт
+                                                = {pricesThis.allTotalSizeInM2} м² - {pricesThis.skolko} шт
+                                            </div>
+                                            <div className="fontInfoForPricing">
+                                                Друк {pricesThis.oneWideDrukPrice} грн * {pricesThis.skolko} шт
+                                                = {pricesThis.totalWideDrukPrice} грн
+                                            </div>
+                                            <div className="fontInfoForPricing">
+                                                Матеріали: {pricesThis.oneWideMaterialPrice} грн
+                                                * {pricesThis.skolko} шт
+                                                = {pricesThis.totalWideMaterialPrice} грн
+                                            </div>
+                                            <div className="fontInfoForPricing1">
+                                                Загалом: {pricesThis.price}грн.
+                                            </div>
+                                        </div>
+                                        <img
+                                            className="versant80-img-icon"
+                                            alt="sssss"
+                                            src={versantIcon}
+                                        />
+                                    </div>
+                                )}
+                            </MDBContainer>
                         </div>
                         {/*{thisOrder && (*/}
                         {/*    <div className="btn btn-light" onClick={handleThingClickAndHide}>*/}

@@ -258,108 +258,108 @@ const NewSheetCutBw = ({thisOrder, newThisOrder, setNewThisOrder, selectedThings
                                         {/*/>*/}
                                     </div>
                                 </Row>
-                            </MDBContainer>
-                            <div className="d-flex">
-                                {thisOrder && (
-                                    <div
-                                        className="d-flex align-content-between"
-                                        style={{
-                                            width: "90vw",
-                                            fontFamily: "Gotham",
-                                            // fontWeight: "bold",
-                                            display: 'flex',
-                                            // justifyContent: 'center',
-                                            alignItems: 'center',
-                                            transition: "all 0.3s ease",
-                                            // cursor: "pointer",
-                                            height: '5vw',
-                                            marginLeft: "2vw",
-                                        }}
-                                    >
+                                <div className="d-flex">
+                                    {thisOrder && (
                                         <div
-                                            className="btn btn-warning" style={{
-                                            borderRadius: '0.627vw',
-                                            // border: '0.08vw solid gray',
-                                            padding: '0.2vw 0.7vw',
-
-                                        }}
-                                            onClick={addNewOrderUnit}
+                                            className="d-flex align-content-between"
+                                            style={{
+                                                width: "90vw",
+                                                fontFamily: "Gotham",
+                                                // fontWeight: "bold",
+                                                display: 'flex',
+                                                // justifyContent: 'center',
+                                                alignItems: 'center',
+                                                transition: "all 0.3s ease",
+                                                // cursor: "pointer",
+                                                height: '5vw',
+                                                marginLeft: "2vw",
+                                            }}
                                         >
-                                            Додати до замовлення
+                                            <div
+                                                className="btn btn-warning" style={{
+                                                borderRadius: '0.627vw',
+                                                // border: '0.08vw solid gray',
+                                                padding: '0.2vw 0.7vw',
+
+                                            }}
+                                                onClick={addNewOrderUnit}
+                                            >
+                                                Додати до замовлення
+                                            </div>
+                                            {/*<div*/}
+                                            {/*    className="btn btn-warning" style={{*/}
+                                            {/*    borderRadius: '0.627vw',*/}
+                                            {/*    border: '0.08vw solid gray',*/}
+                                            {/*    padding: '0.2vw 0.7vw',*/}
+                                            {/*}}*/}
+                                            {/*    // onClick={handleThingClickAndHide}*/}
+                                            {/*>*/}
+                                            {/*    Додати до пресетів*/}
+                                            {/*</div>*/}
                                         </div>
-                                        {/*<div*/}
-                                        {/*    className="btn btn-warning" style={{*/}
-                                        {/*    borderRadius: '0.627vw',*/}
-                                        {/*    border: '0.08vw solid gray',*/}
-                                        {/*    padding: '0.2vw 0.7vw',*/}
-                                        {/*}}*/}
-                                        {/*    // onClick={handleThingClickAndHide}*/}
-                                        {/*>*/}
-                                        {/*    Додати до пресетів*/}
-                                        {/*</div>*/}
+                                    )}
+                                </div>
+                                {error &&
+                                    <div>{error.message}</div>
+                                }
+                                {null === pricesThis ? (
+                                    <div style={{width: '50vw'}}>
+
+                                    </div>
+                                ) : (
+                                    <div className="d-flex justify-content-between pricesBlockContainer"
+                                         style={{marginTop: "13vw", alignItems: 'center', marginLeft: "2.5vw"}}>
+                                        <div className="BWabout">
+
+                                            {/*<div className="fontInfoForPricing">*/}
+                                            {/*    {pricesThis.skolko}шт. - Затрачено листів (A3)*/}
+                                            {/*</div>*/}
+                                            <div className="fontInfoForPricing">
+                                                Друк: {pricesThis.priceForDrukThisUnit} грн * {pricesThis.skolko} шт
+                                                = {pricesThis.priceForDrukThisUnit * pricesThis.skolko} грн
+                                            </div>
+                                            <div className="fontInfoForPricing">
+                                                Папір: {pricesThis.priceForThisUnitOfPapper} грн * {pricesThis.skolko} шт
+                                                = {pricesThis.priceForThisUnitOfPapper * pricesThis.skolko} грн
+                                            </div>
+
+                                            <div className="fontInfoForPricing">
+                                                Ламінація: {pricesThis.priceForThisUnitOfLamination} грн
+                                                * {pricesThis.skolko} шт
+                                                = {pricesThis.priceForThisAllUnitsOfLamination} грн
+                                            </div>
+
+                                            {/*<div className="fontInfoForPricing">*/}
+                                            {/*    Свердління отворів: {pricesThis.priceForThisUnitOfHoles} грн * {count} шт*/}
+                                            {/*    = {pricesThis.priceForAllUnitsOfHoles} грн*/}
+
+                                            {/*</div>*/}
+                                            {/*<div className="fontInfoForPricing">*/}
+                                            {/*    {pricesThis.priceForThisUnitOfPapper * pricesThis.skolko}+*/}
+                                            {/*    {pricesThis.priceForDrukThisUnit * pricesThis.skolko}+*/}
+                                            {/*    {pricesThis.priceForThisAllUnitsOfLamination}+*/}
+                                            {/*    {pricesThis.priceForAllUnitsOfBig}+*/}
+                                            {/*    {pricesThis.priceForAllUnitsOfCute}+*/}
+                                            {/*    {pricesThis.priceForAllUnitsOfHoles}=*/}
+                                            {/*    {pricesThis.price}*/}
+                                            {/*</div>*/}
+                                            <div className="fontInfoForPricing1">
+                                                Загалом: {pricesThis.price} грн.
+                                            </div>
+                                            {/*<div className="fontInfoForPricing1">*/}
+                                            {/*    {pricesThis.skolkoListovNaOdin}шт. - Виробів з 1 листа A3(можливо зробити)*/}
+                                            {/*</div>*/}
+                                        </div>
+
+
+                                        <img
+                                            className="kyosera-img-icon"
+                                            alt="sssss"
+                                            src={versantIcon}
+                                        />
                                     </div>
                                 )}
-                            </div>
-                            {error &&
-                                <div>{error.message}</div>
-                            }
-                            {null === pricesThis ? (
-                                <div style={{width: '50vw'}}>
-
-                                </div>
-                            ) : (
-                                <div className="d-flex justify-content-between pricesBlockContainer"
-                                     style={{marginTop: "13vw", alignItems: 'center', marginLeft: "2.5vw"}}>
-                                    <div className="BWabout">
-
-                                        {/*<div className="fontInfoForPricing">*/}
-                                        {/*    {pricesThis.skolko}шт. - Затрачено листів (A3)*/}
-                                        {/*</div>*/}
-                                        <div className="fontInfoForPricing">
-                                            Друк: {pricesThis.priceForDrukThisUnit} грн * {pricesThis.skolko} шт
-                                            = {pricesThis.priceForDrukThisUnit * pricesThis.skolko} грн
-                                        </div>
-                                        <div className="fontInfoForPricing">
-                                            Папір: {pricesThis.priceForThisUnitOfPapper} грн * {pricesThis.skolko} шт
-                                            = {pricesThis.priceForThisUnitOfPapper * pricesThis.skolko} грн
-                                        </div>
-
-                                        <div className="fontInfoForPricing">
-                                            Ламінація: {pricesThis.priceForThisUnitOfLamination} грн
-                                            * {pricesThis.skolko} шт
-                                            = {pricesThis.priceForThisAllUnitsOfLamination} грн
-                                        </div>
-
-                                        {/*<div className="fontInfoForPricing">*/}
-                                        {/*    Свердління отворів: {pricesThis.priceForThisUnitOfHoles} грн * {count} шт*/}
-                                        {/*    = {pricesThis.priceForAllUnitsOfHoles} грн*/}
-
-                                        {/*</div>*/}
-                                        {/*<div className="fontInfoForPricing">*/}
-                                        {/*    {pricesThis.priceForThisUnitOfPapper * pricesThis.skolko}+*/}
-                                        {/*    {pricesThis.priceForDrukThisUnit * pricesThis.skolko}+*/}
-                                        {/*    {pricesThis.priceForThisAllUnitsOfLamination}+*/}
-                                        {/*    {pricesThis.priceForAllUnitsOfBig}+*/}
-                                        {/*    {pricesThis.priceForAllUnitsOfCute}+*/}
-                                        {/*    {pricesThis.priceForAllUnitsOfHoles}=*/}
-                                        {/*    {pricesThis.price}*/}
-                                        {/*</div>*/}
-                                        <div className="fontInfoForPricing1">
-                                            Загалом: {pricesThis.price} грн.
-                                        </div>
-                                        {/*<div className="fontInfoForPricing1">*/}
-                                        {/*    {pricesThis.skolkoListovNaOdin}шт. - Виробів з 1 листа A3(можливо зробити)*/}
-                                        {/*</div>*/}
-                                    </div>
-
-
-                                    <img
-                                        className="kyosera-img-icon"
-                                        alt="sssss"
-                                        src={versantIcon}
-                                    />
-                                </div>
-                            )}
+                            </MDBContainer>
                         </div>
                     </div>
                 </div>
