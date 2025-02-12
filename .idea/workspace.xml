@@ -5,12 +5,12 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="7e58169f-d1e8-4cb2-8753-447dd0b39044" name="Changes" comment="ddd">
-      <change afterPath="$PROJECT_DIR$/src/PrintPeaksFAinal/timeSeriesChart/TimeSeries3DChart.jsx" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/PrintPeaksFAinal/timeSeriesChart/TimeSeries3DChartWithControls.jsx" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/PrintPeaksFAinal/timeSeriesChart/TimeSeries3DChartWithControlsAndStats.jsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/PrintPeaksFAinal/timeSeriesChart/MatrixOperationsWithShaders.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/PrintPeaksFAinal/timeSeriesChart/TimeSeries3DChartWithHorizonAndStats.jsx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/PrintPeaksFAinal/poslugi/Vishichka.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/PrintPeaksFAinal/poslugi/Vishichka.jsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/PrintPeaksFAinal/poslugi/newnomodals/Materials2.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/PrintPeaksFAinal/poslugi/newnomodals/Materials2.jsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/package.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/PrintPeaksFAinal/timeSeriesChart/TimeSeries3DChartWithControlsAndStats.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/PrintPeaksFAinal/timeSeriesChart/TimeSeries3DChartWithControlsAndStats.jsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/PrintPeaksFAinal/timeSeriesChart/TimeSeriesChart.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/PrintPeaksFAinal/timeSeriesChart/TimeSeriesChart.jsx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/components/Calendar.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Calendar.jsx" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -83,7 +83,7 @@
       </map>
     </option>
   </component>
-  <component name="RunManager" selected="npm.build">
+  <component name="RunManager" selected="npm.start">
     <configuration name="build" type="js.build_tools.npm" temporary="true" nameIsGenerated="true">
       <package-json value="$PROJECT_DIR$/package.json" />
       <command value="run" />
@@ -111,8 +111,8 @@
     </list>
     <recent_temporary>
       <list>
-        <item itemvalue="npm.build" />
         <item itemvalue="npm.start" />
+        <item itemvalue="npm.build" />
       </list>
     </recent_temporary>
   </component>
@@ -162,7 +162,10 @@
       <workItem from="1739113756966" duration="57000" />
       <workItem from="1739113819197" duration="2997000" />
       <workItem from="1739124400038" duration="30321000" />
-      <workItem from="1739162367417" duration="3033000" />
+      <workItem from="1739162367417" duration="6462000" />
+      <workItem from="1739232478068" duration="1026000" />
+      <workItem from="1739387022986" duration="27000" />
+      <workItem from="1739387061658" duration="3381000" />
     </task>
     <task id="LOCAL-00003" summary="ddd">
       <option name="closed" value="true" />
@@ -284,7 +287,15 @@
       <option name="project" value="LOCAL" />
       <updated>1739162170966</updated>
     </task>
-    <option name="localTasksCounter" value="18" />
+    <task id="LOCAL-00018" summary="ddd">
+      <option name="closed" value="true" />
+      <created>1739165593354</created>
+      <option name="number" value="00018" />
+      <option name="presentableId" value="LOCAL-00018" />
+      <option name="project" value="LOCAL" />
+      <updated>1739165593354</updated>
+    </task>
+    <option name="localTasksCounter" value="19" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">

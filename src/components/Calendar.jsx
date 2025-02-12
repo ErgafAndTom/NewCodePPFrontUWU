@@ -7,11 +7,7 @@ import {addDays} from 'date-fns';
 import axios from "../api/axiosInstance";
 import uk from 'date-fns/locale/uk';
 import TimeSeriesChart from "../PrintPeaksFAinal/timeSeriesChart/TimeSeriesChart";
-import TimeSeriesChart1 from "../PrintPeaksFAinal/timeSeriesChart/TimeSeriesChart1";
-import TimeSeries3DChart from "../PrintPeaksFAinal/timeSeriesChart/TimeSeries3DChart";
-import TimeSeries3DChartWithControls from "../PrintPeaksFAinal/timeSeriesChart/TimeSeries3DChartWithControls";
-import TimeSeries3DChartWithControlsAndStats
-    from "../PrintPeaksFAinal/timeSeriesChart/TimeSeries3DChartWithControlsAndStats";
+import TimeSeries3DChartWithControlsAndStats from "../PrintPeaksFAinal/timeSeriesChart/TimeSeries3DChartWithControlsAndStats";
 
 const customUkLocale = {
     ...uk,
@@ -162,7 +158,8 @@ const App = () => {
                 <div>
                     {/*<ChartJs data={chartData}/>*/}
                     {/*<TimeSeriesChart data={chartData}/>*/}
-                    <TimeSeries3DChartWithControlsAndStats data={chartData}/>
+                    <TimeSeriesChart data={chartData}/>
+                    {/*<TimeSeries3DChartWithControlsAndStats data={chartData}/>*/}
                 </div>
             </div>
         </div>

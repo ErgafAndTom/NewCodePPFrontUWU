@@ -1,11 +1,15 @@
+// index.js
 import React, { useRef, useEffect, useState } from "react";
+import ReactDOM from "react-dom";
 
-// ========== Базовые функции для матриц 4x4 ========== //
+// ========== Базовые функции для матриц 4x4 ==========
 function createIdentityMatrix() {
-    return [1, 0, 0, 0,
+    return [
+        1, 0, 0, 0,
         0, 1, 0, 0,
         0, 0, 1, 0,
-        0, 0, 0, 1];
+        0, 0, 0, 1
+    ];
 }
 
 function createPerspectiveMatrix(fov, aspect, near, far) {
@@ -55,7 +59,7 @@ function createRotationXMatrix(angleRad) {
     const c = Math.cos(angleRad);
     const s = Math.sin(angleRad);
     return [
-        1, 0, 0, 0,
+        1, 0,  0, 0,
         0, c, -s, 0,
         0, s,  c, 0,
         0, 0,  0, 1
@@ -84,21 +88,26 @@ function createRotationZMatrix(angleRad) {
     ];
 }
 
-// ========== Шейдеры ========== //
+// ========== Шейдеры ==========
 const vertexShaderSource = `
   attribute vec3 aPosition;
+  attribute vec3 aColor;
   uniform mat4 uMVPMatrix;
+  varying vec3 vColor;
+
   void main() {
     gl_Position = uMVPMatrix * vec4(aPosition, 1.0);
     gl_PointSize = 8.0;
+    vColor = aColor;
   }
 `;
 
 const fragmentShaderSource = `
   precision mediump float;
-  uniform vec4 uColor;
+  varying vec3 vColor;
+
   void main() {
-    gl_FragColor = uColor;
+    gl_FragColor = vec4(vColor, 1.0);
   }
 `;
 
@@ -106,26 +115,109 @@ function compileShader(gl, source, type) {
     const shader = gl.createShader(type);
     gl.shaderSource(shader, source);
     gl.compileShader(shader);
+
     if (!gl.getShaderParameter(shader, gl.COMPILE_STATUS)) {
-        console.error("Ошибка шейдера:", gl.getShaderInfoLog(shader));
+        console.error("Ошибка компиляции шейдера:", gl.getShaderInfoLog(shader));
         gl.deleteShader(shader);
         return null;
     }
     return shader;
 }
 
-// ========== Сам компонент ========== //
-const TimeSeries3DChartWithControlsAndStats = ({ data }) => {
+// ========== Функция для генерации "горизонта" (базовая площина) ==========
+function buildHorizon(subdiv = 10, size = 50, yLevel = -0.2) {
+    const colorsArr = [
+        [0.0, 0.6, 0.0],   // зеленый
+        [1.0, 1.0, 1.0],   // белый
+        [0.6, 0.3, 0.0],   // коричневый
+        [0.0, 0.0, 1.0]    // синий
+    ];
+
+    const vertices = [];
+    const half = size / 2;
+    const step = size / subdiv;
+
+    for (let row = 0; row < subdiv; row++) {
+        for (let col = 0; col < subdiv; col++) {
+            const x1 = -half + col * step;
+            const z1 = -half + row * step;
+            const x2 = x1 + step;
+            const z2 = z1 + step;
+
+            // Случайный цвет
+            const color = colorsArr[Math.floor(Math.random() * colorsArr.length)];
+
+            // Треугольник 1
+            vertices.push(
+                x1, yLevel, z1, color[0], color[1], color[2],
+                x2, yLevel, z1, color[0], color[1], color[2],
+                x2, yLevel, z2, color[0], color[1], color[2]
+            );
+            // Треугольник 2
+            vertices.push(
+                x1, yLevel, z1, color[0], color[1], color[2],
+                x2, yLevel, z2, color[0], color[1], color[2],
+                x1, yLevel, z2, color[0], color[1], color[2]
+            );
+        }
+    }
+
+    return new Float32Array(vertices);
+}
+
+// ========== Функция для формирования данных линии ==========
+function buildLineData(data) {
+    if (!data || data.length === 0) {
+        console.warn("Предупреждение: передан пустой массив данных для линии.");
+        return new Float32Array([]);
+    }
+
+    const times = data.map(d => new Date(d.time).getTime());
+    const values = data.map(d => d.value);
+
+    let minTime = Math.min(...times);
+    let maxTime = Math.max(...times);
+    let minValue = Math.min(...values);
+    let maxValue = Math.max(...values);
+
+    if (minTime === maxTime) {
+        maxTime = minTime + 1;
+    }
+    if (minValue === maxValue) {
+        maxValue = minValue + 1;
+    }
+
+    const vertices = [];
+    for (let i = 0; i < data.length; i++) {
+        const normT = (times[i] - minTime) / (maxTime - minTime);
+        const normV = (values[i] - minValue) / (maxValue - minValue);
+
+        // Приводим координаты к диапазону [-1, 1]
+        const xPos = normT * 2 - 1;
+        const yPos = normV * 2 - 1;
+        const zPos = 0.0;
+
+        // Фиксированный красный цвет для линии
+        const r = 1.0;
+        const g = 0.0;
+        const b = 0.0;
+
+        vertices.push(xPos, yPos, zPos, r, g, b);
+    }
+
+    return new Float32Array(vertices);
+}
+
+// ========== Компонент TimeSeries3DChartWithHorizonAndStats ==========
+const TimeSeries3DChartWithHorizonAndStats = ({ data }) => {
     const canvasRef = useRef(null);
     const requestRef = useRef(null);
 
-
-    // Позиция "камеры" (или сцены) и углы вращения
-    const posRef = useRef({ x: 0, y: 0, z: -2 }); // изначально слегка отдалено
+    // Позиция и повороты камеры
+    const posRef = useRef({ x: 0, y: 0, z: -2 });
     const rotRef = useRef({ x: 0, y: 0, z: 0 });
 
-    // Для отображения текущих значений в интерфейсе (слева снизу, справа снизу)
-    // Мы будем обновлять это раз в ~200 мс
+    // Статистика для отображения
     const [stats, setStats] = useState({
         fps: 0,
         mem: "N/A",
@@ -137,38 +229,13 @@ const TimeSeries3DChartWithControlsAndStats = ({ data }) => {
         rotY: 0,
         rotZ: 0
     });
-    const [device, setDevice] = useState("");
-    let getWebGLDevice = (e) => {
-        const canvas = document.querySelector("canvas");
-        const gl = canvas.getContext("webgl") || canvas.getContext("experimental-webgl");
 
-        if (!gl) {
-            return "WebGL not supported";
-        }
-
-        const debugInfo = gl.getExtension("WEBGL_debug_renderer_info");
-
-        if (debugInfo) {
-            const vendor = gl.getParameter(debugInfo.UNMASKED_VENDOR_WEBGL);
-            const renderer = gl.getParameter(debugInfo.UNMASKED_RENDERER_WEBGL);
-            setDevice(`vendor: ${vendor} - renderer: ${renderer}`)
-            // return `${vendor} - ${renderer}`;
-
-        }
-
-        return "Unknown WebGL Device";
-    }
-
-    // const device = getWebGLDevice();
-    // console.log("Device:", device);
-
-    // Для подсчёта FPS
+    // Рефы для подсчёта кадров
     const frameCountRef = useRef(0);
     const lastTimeRef = useRef(performance.now());
     const fpsIntervalRef = useRef(null);
 
     useEffect(() => {
-        // Инициируем WebGL
         const canvas = canvasRef.current;
         const gl = canvas.getContext("webgl");
         if (!gl) {
@@ -176,7 +243,7 @@ const TimeSeries3DChartWithControlsAndStats = ({ data }) => {
             return;
         }
 
-        // Компилируем шейдеры
+        // Компиляция шейдеров и создание программы
         const vertexShader = compileShader(gl, vertexShaderSource, gl.VERTEX_SHADER);
         const fragmentShader = compileShader(gl, fragmentShaderSource, gl.FRAGMENT_SHADER);
 
@@ -191,92 +258,78 @@ const TimeSeries3DChartWithControlsAndStats = ({ data }) => {
         }
         gl.useProgram(program);
 
-        // Защита от ситуации, когда все time или value одинаковые
-        const times = data.map((d) => new Date(d.time).getTime());
-        const values = data.map((d) => d.value);
+        // ===== Подготовка вершинных данных для горизонта =====
+        const horizonData = buildHorizon(10, 10, -0.7);
+        const horizonBuffer = gl.createBuffer();
+        gl.bindBuffer(gl.ARRAY_BUFFER, horizonBuffer);
+        gl.bufferData(gl.ARRAY_BUFFER, horizonData, gl.STATIC_DRAW);
+        const horizonVertexCount = horizonData.length / 6;
 
-        let minTime = Math.min(...times);
-        let maxTime = Math.max(...times);
-        let minValue = Math.min(...values);
-        let maxValue = Math.max(...values);
+        // ===== Подготовка данных для линии =====
+        const lineData = buildLineData(data);
+        const lineBuffer = gl.createBuffer();
+        gl.bindBuffer(gl.ARRAY_BUFFER, lineBuffer);
+        gl.bufferData(gl.ARRAY_BUFFER, lineData, gl.STATIC_DRAW);
+        const lineVertexCount = lineData.length / 6;
 
-        if (minTime === maxTime) maxTime = minTime + 1;
-        if (minValue === maxValue) maxValue = minValue + 1;
-
-        // Массив вершин
-        const vertices = [];
-        data.forEach((d) => {
-            const t = new Date(d.time).getTime();
-            const xN = (t - minTime) / (maxTime - minTime) - 0.5;
-            const yN = (d.value - minValue) / (maxValue - minValue) - 0.5;
-            const zN = 0.0;
-            vertices.push(xN, yN, zN);
-        });
-
-        // Создаём буфер и передаём координаты
-        const vertexBuffer = gl.createBuffer();
-        gl.bindBuffer(gl.ARRAY_BUFFER, vertexBuffer);
-        gl.bufferData(gl.ARRAY_BUFFER, new Float32Array(vertices), gl.STATIC_DRAW);
-
+        // Получаем локации атрибутов и uniform-переменной
         const aPositionLocation = gl.getAttribLocation(program, "aPosition");
-        gl.enableVertexAttribArray(aPositionLocation);
-        gl.vertexAttribPointer(aPositionLocation, 3, gl.FLOAT, false, 0, 0);
-
+        const aColorLocation = gl.getAttribLocation(program, "aColor");
         const uMVPMatrixLocation = gl.getUniformLocation(program, "uMVPMatrix");
-        const uColorLocation = gl.getUniformLocation(program, "uColor");
-        gl.uniform4f(uColorLocation, 1.0, 0.0, 0.0, 1.0); // красный цвет
 
-        // Настраиваем viewport и включаем Z-тест
         gl.viewport(0, 0, canvas.width, canvas.height);
         gl.enable(gl.DEPTH_TEST);
 
-        // Матрица проекции (perspective)
+        // Устанавливаем цвет фона (голубое небо)
+        gl.clearColor(0.5, 0.8, 1.0, 1.0);
+
         const aspect = canvas.width / canvas.height;
         const projectionMatrix = createPerspectiveMatrix(45, aspect, 0.1, 100.0);
 
-        // Функция отрисовки
         function render() {
-            frameCountRef.current += 1; // увеличиваем счётчик кадров
+            frameCountRef.current += 1;
 
-            // Очищаем
-            gl.clearColor(0.3, 0.4, 0.99, 1.0);
             gl.clear(gl.COLOR_BUFFER_BIT | gl.DEPTH_BUFFER_BIT);
 
-            // Создаём матрицу модели-вида
+            // Матрица модели-вида: смещение и повороты
             let modelView = createIdentityMatrix();
-            // Сдвигаем по осям (из posRef)
             modelView = multiplyMatrix(modelView, createTranslationMatrix(posRef.current.x, posRef.current.y, posRef.current.z));
-            // Повороты вокруг X, Y, Z
             modelView = multiplyMatrix(modelView, createRotationXMatrix(rotRef.current.x));
             modelView = multiplyMatrix(modelView, createRotationYMatrix(rotRef.current.y));
             modelView = multiplyMatrix(modelView, createRotationZMatrix(rotRef.current.z));
 
-            // Итоговая матрица (MVP)
             const mvpMatrix = multiplyMatrix(projectionMatrix, modelView);
             gl.uniformMatrix4fv(uMVPMatrixLocation, false, new Float32Array(mvpMatrix));
 
-            // Отрисовка линией
-            gl.drawArrays(gl.LINE_STRIP, 0, data.length);
-            // gl.drawArrays(gl.POINTS, 0, data.length); // можно раскомментировать
+            // Рисуем горизонт (треугольники)
+            gl.bindBuffer(gl.ARRAY_BUFFER, horizonBuffer);
+            gl.vertexAttribPointer(aPositionLocation, 3, gl.FLOAT, false, 6 * 4, 0);
+            gl.enableVertexAttribArray(aPositionLocation);
+            gl.vertexAttribPointer(aColorLocation, 3, gl.FLOAT, false, 6 * 4, 3 * 4);
+            gl.enableVertexAttribArray(aColorLocation);
+            gl.drawArrays(gl.TRIANGLES, 0, horizonVertexCount);
+
+            // Рисуем линию (LINE_STRIP)
+            gl.bindBuffer(gl.ARRAY_BUFFER, lineBuffer);
+            gl.vertexAttribPointer(aPositionLocation, 3, gl.FLOAT, false, 6 * 4, 0);
+            gl.enableVertexAttribArray(aPositionLocation);
+            gl.vertexAttribPointer(aColorLocation, 3, gl.FLOAT, false, 6 * 4, 3 * 4);
+            gl.enableVertexAttribArray(aColorLocation);
+            gl.drawArrays(gl.LINE_STRIP, 0, lineVertexCount);
 
             requestRef.current = requestAnimationFrame(render);
         }
 
         render();
 
-        // Запускаем интервал для обновления FPS и прочих метрик раз в 200 мс
+        // Интервал для обновления статистики (FPS, память)
         fpsIntervalRef.current = setInterval(() => {
             const now = performance.now();
-            const delta = now - lastTimeRef.current; // миллисекунды c прошлого замера
-
-            // FPS = количество кадров / (секунды, прошедшие с прошлого замера)
+            const delta = now - lastTimeRef.current;
             const fps = Math.round((frameCountRef.current / (delta / 1000)) * 10) / 10;
-
-            // Обнуляем счётчик и переставляем "точку отсчёта"
             frameCountRef.current = 0;
             lastTimeRef.current = now;
 
-            // Проверяем память (не во всех браузерах доступно performance.memory)
             let memUsage = "N/A";
             if (performance && performance.memory) {
                 const used = performance.memory.usedJSHeapSize / (1024 * 1024);
@@ -286,7 +339,7 @@ const TimeSeries3DChartWithControlsAndStats = ({ data }) => {
             setStats({
                 fps: fps,
                 mem: memUsage,
-                device: navigator.userAgent || "Unknown Device",
+                device: navigator.userAgent || "Unknown device",
                 posX: posRef.current.x.toFixed(2),
                 posY: posRef.current.y.toFixed(2),
                 posZ: posRef.current.z.toFixed(2),
@@ -296,7 +349,7 @@ const TimeSeries3DChartWithControlsAndStats = ({ data }) => {
             });
         }, 200);
 
-        // При размонтировании — останавливаем всё
+        // Очистка интервалов и анимации при размонтировании
         return () => {
             if (requestRef.current) {
                 cancelAnimationFrame(requestRef.current);
@@ -307,20 +360,20 @@ const TimeSeries3DChartWithControlsAndStats = ({ data }) => {
         };
     }, [data]);
 
-    // ========== Функции для управления движением и вращением ========== //
+    // Функции управления положением и поворотами
     const moveForward = () => { posRef.current.z -= 0.1; };
     const moveBackward = () => { posRef.current.z += 0.1; };
     const moveLeft = () => { posRef.current.x -= 0.1; };
     const moveRight = () => { posRef.current.x += 0.1; };
 
     const rotateXPlus = () => { rotRef.current.x += 0.1; };
-    const rotateXMinus = () => { rotRef.current.x -= 0.1; };
+    const rotateXMinus = () => { rotRef.current.x -= 0.5; };
     const rotateYPlus = () => { rotRef.current.y += 0.1; };
     const rotateYMinus = () => { rotRef.current.y -= 0.1; };
     const rotateZPlus = () => { rotRef.current.z += 0.1; };
     const rotateZMinus = () => { rotRef.current.z -= 0.1; };
 
-    // Стили для панелей управления
+    // Стили для панелей управления и статистики
     const controlPanelStyle = {
         position: "absolute",
         padding: "5px",
@@ -329,13 +382,13 @@ const TimeSeries3DChartWithControlsAndStats = ({ data }) => {
         borderRadius: "5px"
     };
 
-    const leftPanelStyle = {
+    const leftTopPanelStyle = {
         ...controlPanelStyle,
         top: 10,
         left: 10
     };
 
-    const rightPanelStyle = {
+    const rightTopPanelStyle = {
         ...controlPanelStyle,
         top: 10,
         right: 10
@@ -366,11 +419,11 @@ const TimeSeries3DChartWithControlsAndStats = ({ data }) => {
                 ref={canvasRef}
                 width={800}
                 height={600}
-                style={{ border: "1px solid black"}}
+                style={{ border: "1px solid black" }}
             />
 
-            {/* Панель управления перемещением (слева сверху) */}
-            <div style={leftPanelStyle}>
+            {/* Панель управления движением (слева сверху) */}
+            <div style={leftTopPanelStyle}>
                 <div>
                     <button style={buttonStyle} onClick={moveForward}>↑</button>
                 </div>
@@ -383,42 +436,50 @@ const TimeSeries3DChartWithControlsAndStats = ({ data }) => {
                 </div>
             </div>
 
-            {/* Панель управления вращением (справа сверху) */}
-            <div style={rightPanelStyle}>
-                {/* Вращение по оси X */}
+            {/* Панель управления поворотами (справа сверху) */}
+            <div style={rightTopPanelStyle}>
                 <div>
                     <button style={buttonStyle} onClick={rotateXPlus}>X+</button>
                     <button style={buttonStyle} onClick={rotateXMinus}>X-</button>
                 </div>
-                {/* Вращение по оси Y */}
                 <div>
                     <button style={buttonStyle} onClick={rotateYPlus}>Y+</button>
                     <button style={buttonStyle} onClick={rotateYMinus}>Y-</button>
                 </div>
-                {/* Вращение по оси Z */}
                 <div>
                     <button style={buttonStyle} onClick={rotateZPlus}>Z+</button>
                     <button style={buttonStyle} onClick={rotateZMinus}>Z-</button>
                 </div>
             </div>
 
-            {/* Снизу слева: координаты и углы */}
+            {/* Отображение координат и углов (слева снизу) */}
             <div style={bottomLeftPanelStyle}>
-                <div>Position: x = {stats.posX}, y = {stats.posY}, z = {stats.posZ}</div>
-                <div>Rotation: x = {stats.rotX}, y = {stats.rotY}, z = {stats.rotZ}</div>
+                <div>Position: x={stats.posX}, y={stats.posY}, z={stats.posZ}</div>
+                <div>Rotation: x={stats.rotX}, y={stats.rotY}, z={stats.rotZ}</div>
             </div>
 
-            {/* Снизу справа: FPS, память, устройство */}
+            {/* Отображение FPS, памяти и устройства (справа снизу) */}
             <div style={bottomRightPanelStyle}>
                 <div>FPS: {stats.fps}</div>
                 <div>Memory: {stats.mem}</div>
-            </div>
-            <div style={{top: -40, left: 10, position: "absolute", zIndex: 0}}>
-                <div>Device: {device}</div>
-                <button onClick={getWebGLDevice}></button>
             </div>
         </div>
     );
 };
 
-export default TimeSeries3DChartWithControlsAndStats;
+// ========== Пример тестовых данных ==========
+const sampleData = [
+    { time: "2025-02-11T00:00:00Z", value: 10 },
+    { time: "2025-02-11T01:00:00Z", value: 20 },
+    { time: "2025-02-11T02:00:00Z", value: 15 },
+    { time: "2025-02-11T03:00:00Z", value: 25 },
+    { time: "2025-02-11T04:00:00Z", value: 5 },
+    { time: "2025-02-11T05:00:00Z", value: 18 },
+    { time: "2025-02-11T06:00:00Z", value: 22 }
+];
+
+// ========== Рендер компонента в корневой элемент ==========
+ReactDOM.render(
+    <TimeSeries3DChartWithHorizonAndStats data={sampleData} />,
+    document.getElementById("root")
+);
