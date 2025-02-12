@@ -11,6 +11,8 @@ import NewNoModalHoles from "./newnomodals/NewNoModalHoles";
 import versantIcon from "../public/versant80@2x.png";
 import Materials2 from "./newnomodals/Materials2";
 import {useNavigate} from "react-router-dom";
+import PhotoPosluga from "./newnomodals/photo/PhotoPosluga";
+import Porizka from "./Porizka";
 
 const NewSheetCut = ({
                          thisOrder,
@@ -64,6 +66,7 @@ const NewSheetCut = ({
     });
     const [big, setBig] = useState("Не потрібно");
     const [cute, setCute] = useState("Не потрібно");
+    const [porizka, setPorizka] = useState({type: "Не потрібно"});
     const [cuteLocal, setCuteLocal] = useState({
         leftTop: false,
         rightTop: false,
@@ -93,6 +96,7 @@ const NewSheetCut = ({
                 holes: holes,
                 holesR: holesR,
                 count: count,
+                porizka: porizka,
             }
         };
 
@@ -140,6 +144,7 @@ const NewSheetCut = ({
             holes: holes,
             holesR: holesR,
             count: count,
+            porizka: porizka,
         }
         axios.post(`/calc/pricing`, dataToSend)
             .then(response => {
@@ -153,7 +158,7 @@ const NewSheetCut = ({
                 }
                 console.log(error.message);
             })
-    }, [size, material, color, lamination, big, cute, cuteLocal, holes, holesR, count]);
+    }, [size, material, color, lamination, big, cute, cuteLocal, holes, holesR, count, porizka]);
 
     useEffect(() => {
         if (showNewSheetCut) {
@@ -281,6 +286,22 @@ const NewSheetCut = ({
                                             buttonsArr={[]}
                                             selectArr={["", "3,5 мм", "4 мм", "5 мм", "6 мм", "8 мм"]}
                                         />
+                                        {/*<NewNoModalHoles*/}
+                                        {/*    holes={holes}*/}
+                                        {/*    setHoles={setHoles}*/}
+                                        {/*    holesR={holesR}*/}
+                                        {/*    setHolesR={setHolesR}*/}
+                                        {/*    prices={prices}*/}
+                                        {/*    type={"SheetCut"}*/}
+                                        {/*    buttonsArr={[]}*/}
+                                        {/*    selectArr={["", "3,5 мм", "4 мм", "5 мм", "6 мм", "8 мм"]}*/}
+                                        {/*/>*/}
+                                        <Porizka
+                                            porizka={porizka}
+                                            setPorizka={setPorizka}
+                                            prices={prices}
+                                            type={"SheetCut"}
+                                        />
                                     </div>
                                 </Row>
                                 <div className="d-flex">
@@ -334,13 +355,13 @@ const NewSheetCut = ({
                                         <div className="">
 
                                             <div className="fontInfoForPricing">
-                                                Друк: {pricesThis.priceForDrukThisUnit} грн * {pricesThis.skolko} шт
-                                                = {pricesThis.priceForDrukThisUnit * pricesThis.skolko} грн
+                                                Друк: {pricesThis.priceForDrukThisUnit.toFixed(2)} грн * {pricesThis.skolko} шт
+                                                = {(pricesThis.priceForDrukThisUnit * pricesThis.skolko).toFixed(2)} грн
                                             </div>
                                             <div className="fontInfoForPricing">
-                                                Матеріали: {pricesThis.priceForThisUnitOfPapper}грн.
+                                                Матеріали: {pricesThis.priceForThisUnitOfPapper.toFixed(2)}грн.
                                                 * {pricesThis.skolko} шт
-                                                = {pricesThis.priceForThisUnitOfPapper * pricesThis.skolko}грн.
+                                                = {(pricesThis.priceForThisUnitOfPapper * pricesThis.skolko).toFixed(2)}грн.
                                             </div>
 
                                             <div className="fontInfoForPricing">
@@ -359,17 +380,13 @@ const NewSheetCut = ({
                                             <div className="fontInfoForPricing">
                                                 Свердління отворів: {pricesThis.priceForThisUnitOfHoles} грн * {count} шт
                                                 = {pricesThis.priceForAllUnitsOfHoles} грн
-
                                             </div>
-                                            {/*<div className="fontInfoForPricing">*/}
-                                            {/*    {pricesThis.priceForThisUnitOfPapper * pricesThis.skolko}+*/}
-                                            {/*    {pricesThis.priceForDrukThisUnit * pricesThis.skolko}+*/}
-                                            {/*    {pricesThis.priceForThisAllUnitsOfLamination}+*/}
-                                            {/*    {pricesThis.priceForAllUnitsOfBig}+*/}
-                                            {/*    {pricesThis.priceForAllUnitsOfCute}+*/}
-                                            {/*    {pricesThis.priceForAllUnitsOfHoles}=*/}
-                                            {/*    {pricesThis.price}*/}
-                                            {/*</div>*/}
+                                            {pricesThis.porizka !== 0 &&
+                                                <div className="fontInfoForPricing">
+                                                    porizka: {pricesThis.porizka.toFixed(2)} грн * {count} шт
+                                                    = {pricesThis.porizka.toFixed(2)*count} грн
+                                                </div>
+                                            }
                                             <div className="fontInfoForPricing1">
                                                 Загалом: {pricesThis.price} грн
                                             </div>

@@ -115,7 +115,7 @@ const NewNoModalCute = ({cute, setCute, cuteLocal, setCuteLocal, prices, buttons
                         fontSize: '1.273vw',
                         marginRight: '0.633vw',
                         fontFamily: "Gotham",
-                        fontWeight: "bold"
+                        fontWeight: "bold", width: "500%"
                     }}>{"Скруглення кутів:"}</span>
                     {cute !== "Не потрібно" ? (
                         <div style={{display: 'flex', justifyContent: 'center', alignItems: 'center',}}>

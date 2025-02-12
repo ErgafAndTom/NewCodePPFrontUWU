@@ -54,7 +54,7 @@ const NewNoModalHoles = ({holes, setHoles, holesR, setHolesR, prices, buttonsArr
                         fontSize: '1.273vw',
                         marginRight: '0.633vw',
                         fontFamily: "Gotham",
-                        fontWeight: "bold"
+                        fontWeight: "bold", width: "500%"
                     }}>{"Cвердління отворів:"}</span>
                     {holes !== "Не потрібно" ? (
                         <div style={{display: 'flex', justifyContent: 'center', alignItems: 'center',}}>

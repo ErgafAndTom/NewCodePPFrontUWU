@@ -245,7 +245,7 @@ const Vishichka = ({
                                                 size={size}
                                                 setSize={setSize}
                                                 prices={prices}
-                                                type={"SheetCut"}
+                                                type={"Vishichka"}
                                                 buttonsArr={["односторонній", "двосторонній",]}
                                                 color={color}
                                                 setColor={setColor}
@@ -384,7 +384,7 @@ const Vishichka = ({
                                                 {/*</div>*/}
                                                 <div className="fontInfoForPricing">
                                                     Висічка {pricesThis.priceForThisUnitOfVishichka} грн * {count} шт
-                                                    = {pricesThis.priceForAllUnitsOfVishichka} грн
+                                                    = {pricesThis.priceForVishichkaAllUnit} грн
                                                 </div>
                                                 {/*<div className=" fontInfoForPricing">*/}
                                                 {/*    Свердління отворів: {pricesThis.priceForThisUnitOfCute} грн * {count} шт*/}

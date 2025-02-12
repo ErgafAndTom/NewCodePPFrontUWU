@@ -121,6 +121,31 @@ const ModalSize = ({size, setSize, type, buttonsArr, color, setColor, count, set
         xMaxValue = 445
         yMaxValue = 445
         invalid = `Будь-ласка введіть розмір від ${minXYValue} до ${maxXYValue} (y до ${yMaxValue}).`
+    } else if (type === "Vishichka") {
+        formats = [
+            {name: "Задати свій розмір", x: 1, y: 1},
+            {name: "А6 (105 х 148 мм)", x: 105, y: 148},
+            {name: "A5 (148 х 210 мм)", x: 148, y: 210},
+            {name: "A4 (210 x 297 мм)", x: 210, y: 297},
+            {name: "А3 (297 х 420 мм)", x: 297, y: 420},
+            {name: "SR А3 (310 х 440 мм)", x: 310, y: 440},
+            {name: "90х50 мм", x: 90, y: 50},
+            {name: "85x55 мм", x: 85, y: 55},
+            {name: "100х150 мм", x: 100, y: 150},
+            {name: "200х100 мм", x: 200, y: 100},
+            {name: "50х50 мм", x: 50, y: 50},
+            {name: "60х60 мм", x: 60, y: 60},
+            {name: "70х70 мм", x: 70, y: 70},
+            {name: "80х80 мм", x: 80, y: 80},
+            {name: "90х90 мм", x: 90, y: 90},
+            {name: "100x100 мм", x: 100, y: 100},
+            {name: "120х120 мм", x: 120, y: 120},
+        ]
+        minXYValue = 10
+        maxXYValue = 445
+        xMaxValue = 445
+        yMaxValue = 445
+        invalid = `Будь-ласка введіть розмір від ${minXYValue} до ${maxXYValue} (y до ${yMaxValue}).`
     }
     //initial main and--------------------------------------------------------------------------------------------
     let handleChange = (e) => {
