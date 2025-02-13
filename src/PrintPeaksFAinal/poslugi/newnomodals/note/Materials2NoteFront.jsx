@@ -3,7 +3,7 @@ import axios from '../../../../api/axiosInstance';
 import {useNavigate} from "react-router-dom";
 import {Spinner} from "react-bootstrap";
 
-const Materials2NoteFront = ({materialAndDrukFront, setMaterialAndDrukFront, count, setCount, prices, type, name, buttonsArr, selectArr, typeUse, size}) => {
+const Materials2NoteFront = ({materialAndDrukFront, setMaterialAndDrukFront, count, setCount, prices, type, name, buttonsArr, buttonsArrDruk, selectArr, typeUse, size}) => {
     const [paper, setPaper] = useState([]);
     const [error, setError] = useState(null);
     const [load, setLoad] = useState(true);
@@ -27,26 +27,21 @@ const Materials2NoteFront = ({materialAndDrukFront, setMaterialAndDrukFront, cou
             materialTypeUse: selectedValue,
         }));
     }
+    let handleSelectDrukSidesChange = (e) => {
+        const selectedValue = e.target.value || '';
 
-    // let handleClick = (e) => {
-    //     if(e === "Самоклеючі"){
-    //         setMaterialAndDrukFront({
-    //             type: "Плівка",
-    //             thickness: e,
-    //             material: material.material,
-    //             materialId: material.materialId,
-    //             typeUse: e
-    //         })
-    //     } else {
-    //         setMaterialAndDrukFront({
-    //             type: "Папір",
-    //             thickness: e,
-    //             material: material.material,
-    //             materialId: material.materialId,
-    //             typeUse: e
-    //         })
-    //     }
-    // }
+        setMaterialAndDrukFront((prevMaterial) => ({
+            ...prevMaterial,
+            drukSides: selectedValue,
+        }));
+    }
+
+    let handleClick = (e) => {
+        setMaterialAndDrukFront({
+            ...materialAndDrukFront,
+            drukSides: e
+        })
+    }
 
     useEffect(() => {
         let data = {
@@ -98,36 +93,14 @@ const Materials2NoteFront = ({materialAndDrukFront, setMaterialAndDrukFront, cou
 
     return (
         <div className="d-flex allArtemElem">
-            <div style={{display: 'flex', alignItems: 'center',}}>
-                {/*<div style={{display: 'flex', justifyContent: 'center', alignItems: 'center'}}>*/}
-                {/*    {buttonsArr.map((item, index) => (*/}
-                {/*        <div*/}
-                {/*            className={item === material.thickness ? 'buttonsArtem buttonsArtemActive' : 'buttonsArtem'}*/}
-                {/*            key={index}*/}
-                {/*            onClick={() => handleClick(item)}*/}
-                {/*            // style={{*/}
-                {/*            //     backgroundColor: item === material.thickness ? 'orange' : 'transparent',*/}
-                {/*            //     border: item === material.thickness ? '0.13vw solid transparent' : '0.13vw solid transparent',*/}
-                {/*            // }}*/}
-                {/*        >*/}
-                {/*            <div className="" style={{*/}
-                {/*                height: "100%",*/}
-                {/*                opacity: item === material.thickness ? '100%' : '70%',*/}
-                {/*                whiteSpace: "nowrap",*/}
-                {/*            }}>*/}
-                {/*                {item}*/}
-                {/*            </div>*/}
-                {/*        </div>*/}
-                {/*    ))}*/}
-                {/*</div>*/}
-                <div className="ArtemNewSelectContainer" style={{marginTop: "2vw", display: 'flex', justifyContent: 'center', alignItems: 'center'}}>
-                    <div>Обкладинка: </div>
+            <div style={{display: 'flex', alignItems: 'center', borderBottom: '0.08vw solid gray'}}>
+                <div style={{fontSize: "1.2vw", fontFamily: "Gotham"}}>Обкладинка: </div>
+                <div className="ArtemNewSelectContainer" style={{marginTop: "0", display: 'flex', justifyContent: 'center', alignItems: 'center'}}>
                     <select
                         name="materialSelect"
                         value={materialAndDrukFront.materialTypeUse || ""}
                         onChange={(event) => handleSelectTypeChange(event)}
                         className="selectArtem"
-
                     >
                         <option
                             key="default"
@@ -144,20 +117,12 @@ const Materials2NoteFront = ({materialAndDrukFront, setMaterialAndDrukFront, cou
                                 value={item}
                                 data-id={item}
                             >
-                                {/*<>{"id:"}</>*/}
-                                {/*<>{item.id}</>*/}
-                                {/*<>{" "}</>*/}
                                 <>{item}</>
-                                {/*<>{" "}</>*/}
-                                {/*<>{item.thickness} мл</>*/}
-                                {/*<>{"id:"}</>*/}
-                                {/*<>{item.typeUse}</>*/}
-                                {/*<>{" "}</>*/}
                             </option>
                         ))}
                     </select>
                 </div>
-                <div className="ArtemNewSelectContainer" style={{marginTop: "2vw", display: 'flex', justifyContent: 'center', alignItems: 'center'}}>
+                <div className="ArtemNewSelectContainer" style={{marginTop: "0", display: 'flex', justifyContent: 'center', alignItems: 'center'}}>
                     <select
                         name="materialSelect"
                         value={materialAndDrukFront.material || ""}
@@ -198,6 +163,57 @@ const Materials2NoteFront = ({materialAndDrukFront, setMaterialAndDrukFront, cou
                     {error && (
                         <div>{error}</div>
                     )}
+                </div>
+
+                <div className="ArtemNewSelectContainer"
+                     style={{marginTop: "0", display: 'flex', justifyContent: 'center', alignItems: 'center'}}>
+                    <select
+                        name="materialSelect"
+                        value={materialAndDrukFront.drukSides || ""}
+                        onChange={(event) => handleSelectDrukSidesChange(event)}
+                        className="selectArtem"
+                    >
+                        <option
+                            key="default"
+                            className={"optionInSelectArtem"}
+                            value=""
+                            data-id="default"
+                        >
+                            <>{"Виберіть"}</>
+                        </option>
+                        {buttonsArrDruk.map((item, iter) => (
+                            <option
+                                key={item + iter}
+                                className={"optionInSelectArtem"}
+                                value={item}
+                                data-id={item}
+                            >
+                                <>{item}</>
+                            </option>
+                        ))}
+                    </select>
+                </div>
+
+                <div style={{display: 'flex', justifyContent: 'center', alignItems: 'center', marginLeft: "2vw"}}>
+                    {buttonsArrDruk.map((item, index) => (
+                        <button
+                            className={item === materialAndDrukFront.drukSides ? 'buttonsArtem buttonsArtemActive' : 'buttonsArtem'}
+                            key={index}
+                            onClick={() => handleClick(item)}
+                            // style={{
+                            //     backgroundColor: item === color.sides ? 'orange' : 'transparent',
+                            //     border: item === color.sides ? '0.13vw solid transparent' : '0.13vw solid transparent',
+                            // }}
+                        >
+                            <div className="" style={{
+                                height: "100%",
+                                opacity: item === materialAndDrukFront.drukSides ? '100%' : '90%',
+                                whiteSpace: "nowrap",
+                            }}>
+                                {item}
+                            </div>
+                        </button>
+                    ))}
                 </div>
             </div>
         </div>

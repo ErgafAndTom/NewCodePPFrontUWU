@@ -12,6 +12,7 @@ const Materials2NoteInBody = ({
                                   type,
                                   name,
                                   buttonsArr,
+                                  buttonsArrDruk,
                                   selectArr,
                                   typeUse,
                                   size
@@ -39,26 +40,21 @@ const Materials2NoteInBody = ({
             materialTypeUse: selectedValue,
         }));
     }
+    let handleSelectDrukSidesChange = (e) => {
+        const selectedValue = e.target.value || '';
 
-    // let handleClick = (e) => {
-    //     if(e === "Самоклеючі"){
-    //         setMaterialAndDrukInBody({
-    //             type: "Плівка",
-    //             thickness: e,
-    //             material: material.material,
-    //             materialId: material.materialId,
-    //             typeUse: e
-    //         })
-    //     } else {
-    //         setMaterialAndDrukInBody({
-    //             type: "Папір",
-    //             thickness: e,
-    //             material: material.material,
-    //             materialId: material.materialId,
-    //             typeUse: e
-    //         })
-    //     }
-    // }
+        setMaterialAndDrukInBody((prevMaterial) => ({
+            ...prevMaterial,
+            drukSides: selectedValue,
+        }));
+    }
+
+    let handleClick = (e) => {
+        setMaterialAndDrukInBody({
+            ...materialAndDrukInBody,
+            drukSides: e
+        })
+    }
 
     useEffect(() => {
         let data = {
@@ -110,31 +106,10 @@ const Materials2NoteInBody = ({
 
     return (
         <div className="d-flex allArtemElem">
-            <div style={{display: 'flex', alignItems: 'center',}}>
-                {/*<div style={{display: 'flex', justifyContent: 'center', alignItems: 'center'}}>*/}
-                {/*    {buttonsArr.map((item, index) => (*/}
-                {/*        <div*/}
-                {/*            className={item === material.thickness ? 'buttonsArtem buttonsArtemActive' : 'buttonsArtem'}*/}
-                {/*            key={index}*/}
-                {/*            onClick={() => handleClick(item)}*/}
-                {/*            // style={{*/}
-                {/*            //     backgroundColor: item === material.thickness ? 'orange' : 'transparent',*/}
-                {/*            //     border: item === material.thickness ? '0.13vw solid transparent' : '0.13vw solid transparent',*/}
-                {/*            // }}*/}
-                {/*        >*/}
-                {/*            <div className="" style={{*/}
-                {/*                height: "100%",*/}
-                {/*                opacity: item === material.thickness ? '100%' : '70%',*/}
-                {/*                whiteSpace: "nowrap",*/}
-                {/*            }}>*/}
-                {/*                {item}*/}
-                {/*            </div>*/}
-                {/*        </div>*/}
-                {/*    ))}*/}
-                {/*</div>*/}
+            <div style={{display: 'flex', alignItems: 'center', borderBottom: '0.08vw solid gray'}}>
+                <div style={{fontSize: "1.2vw", fontFamily: "Gotham"}}>Блок: </div>
                 <div className="ArtemNewSelectContainer"
-                     style={{marginTop: "2vw", display: 'flex', justifyContent: 'center', alignItems: 'center'}}>
-                    <div>Блок: </div>
+                     style={{marginTop: "0", display: 'flex', justifyContent: 'center', alignItems: 'center'}}>
                     <select
                         name="materialSelect"
                         value={materialAndDrukInBody.materialTypeUse || ""}
@@ -171,7 +146,7 @@ const Materials2NoteInBody = ({
                     </select>
                 </div>
                 <div className="ArtemNewSelectContainer"
-                     style={{marginTop: "2vw", display: 'flex', justifyContent: 'center', alignItems: 'center'}}>
+                     style={{marginTop: "0", display: 'flex', justifyContent: 'center', alignItems: 'center'}}>
                     <select
                         name="materialSelect"
                         value={materialAndDrukInBody.material || ""}
@@ -212,6 +187,57 @@ const Materials2NoteInBody = ({
                     {error && (
                         <div>{error}</div>
                     )}
+                </div>
+
+                <div className="ArtemNewSelectContainer"
+                     style={{marginTop: "0", display: 'flex', justifyContent: 'center', alignItems: 'center'}}>
+                    <select
+                        name="materialSelect"
+                        value={materialAndDrukInBody.drukSides || ""}
+                        onChange={(event) => handleSelectDrukSidesChange(event)}
+                        className="selectArtem"
+                    >
+                        <option
+                            key="default"
+                            className={"optionInSelectArtem"}
+                            value=""
+                            data-id="default"
+                        >
+                            <>{"Виберіть"}</>
+                        </option>
+                        {buttonsArrDruk.map((item, iter) => (
+                            <option
+                                key={item + iter}
+                                className={"optionInSelectArtem"}
+                                value={item}
+                                data-id={item}
+                            >
+                                <>{item}</>
+                            </option>
+                        ))}
+                    </select>
+                </div>
+
+                <div style={{display: 'flex', justifyContent: 'center', alignItems: 'center', marginLeft: "2vw"}}>
+                    {buttonsArrDruk.map((item, index) => (
+                        <button
+                            className={item === materialAndDrukInBody.drukSides ? 'buttonsArtem buttonsArtemActive' : 'buttonsArtem'}
+                            key={index}
+                            onClick={() => handleClick(item)}
+                            // style={{
+                            //     backgroundColor: item === color.sides ? 'orange' : 'transparent',
+                            //     border: item === color.sides ? '0.13vw solid transparent' : '0.13vw solid transparent',
+                            // }}
+                        >
+                            <div className="" style={{
+                                height: "100%",
+                                opacity: item === materialAndDrukInBody.drukSides ? '100%' : '90%',
+                                whiteSpace: "nowrap",
+                            }}>
+                                {item}
+                            </div>
+                        </button>
+                    ))}
                 </div>
             </div>
         </div>

@@ -45,7 +45,7 @@ const NewNote = ({
         materialType: "Папір",
         materialTypeUse: "Офісний",
         drukColor: "Не потрібно",
-        drukSides: "Не потрібно",
+        drukSides: "односторонній",
         drukId: "Не потрібно",
         thickness: "",
         material: "",
@@ -56,7 +56,7 @@ const NewNote = ({
         materialType: "Папір",
         materialTypeUse: "Офісний",
         drukColor: "Не потрібно",
-        drukSides: "Не потрібно",
+        drukSides: "односторонній",
         drukId: "Не потрібно",
         thickness: "",
         material: "",
@@ -67,7 +67,7 @@ const NewNote = ({
         materialType: "Папір",
         materialTypeUse: "Офісний",
         drukColor: "Не потрібно",
-        drukSides: "Не потрібно",
+        drukSides: "односторонній",
         drukId: "Не потрібно",
         thickness: "",
         material: "",
@@ -263,48 +263,53 @@ const NewNote = ({
                                             defaultt={"А3 (297 х 420 мм)"}
                                         />
                                         {/*<NewNoModalMaterial*/}
-                                        <Materials2NoteFront
-                                            materialAndDrukFront={materialAndDrukFront}
-                                            setMaterialAndDrukFront={setMaterialAndDrukFront}
-                                            count={count}
-                                            setCount={setCount}
-                                            prices={prices}
-                                            size={size}
-                                            selectArr={["3,5 мм", "4 мм", "5 мм", "6 мм", "8 мм"]}
-                                            name={"Чорно-білий друк на монохромному принтері:"}
-                                            buttonsArr={["Офісний", "Тонкий",
-                                                "Середній",
-                                                "Цупкий", "Самоклеючі"]}
-                                            typeUse={null}
-                                        />
-                                        <Materials2NoteInBody
-                                            materialAndDrukInBody={materialAndDrukInBody}
-                                            setMaterialAndDrukInBody={setMaterialAndDrukInBody}
-                                            count={count}
-                                            setCount={setCount}
-                                            prices={prices}
-                                            size={size}
-                                            selectArr={["3,5 мм", "4 мм", "5 мм", "6 мм", "8 мм"]}
-                                            name={"Чорно-білий друк на монохромному принтері:"}
-                                            buttonsArr={["Офісний", "Тонкий",
-                                                "Середній",
-                                                "Цупкий", "Самоклеючі"]}
-                                            typeUse={null}
-                                        />
-                                        <Materials2NoteBack
-                                            materialAndDrukBack={materialAndDrukBack}
-                                            setMaterialAndDrukBack={setMaterialAndDrukBack}
-                                            count={count}
-                                            setCount={setCount}
-                                            prices={prices}
-                                            size={size}
-                                            selectArr={["3,5 мм", "4 мм", "5 мм", "6 мм", "8 мм"]}
-                                            name={"Чорно-білий друк на монохромному принтері:"}
-                                            buttonsArr={["Офісний", "Тонкий",
-                                                "Середній",
-                                                "Цупкий", "Самоклеючі"]}
-                                            typeUse={null}
-                                        />
+                                        <div className="d-flex flex-column" style={{margin: '0', padding: '0',}}>
+                                            <Materials2NoteFront
+                                                materialAndDrukFront={materialAndDrukFront}
+                                                setMaterialAndDrukFront={setMaterialAndDrukFront}
+                                                count={count}
+                                                setCount={setCount}
+                                                prices={prices}
+                                                size={size}
+                                                selectArr={["3,5 мм", "4 мм", "5 мм", "6 мм", "8 мм"]}
+                                                name={"Чорно-білий друк на монохромному принтері:"}
+                                                buttonsArr={["Офісний", "Тонкий",
+                                                    "Середній",
+                                                    "Цупкий"]}
+                                                buttonsArrDruk={["односторонній", "двосторонній",]}
+                                                typeUse={null}
+                                            />
+                                            <Materials2NoteInBody
+                                                materialAndDrukInBody={materialAndDrukInBody}
+                                                setMaterialAndDrukInBody={setMaterialAndDrukInBody}
+                                                count={count}
+                                                setCount={setCount}
+                                                prices={prices}
+                                                size={size}
+                                                selectArr={["3,5 мм", "4 мм", "5 мм", "6 мм", "8 мм"]}
+                                                name={"Чорно-білий друк на монохромному принтері:"}
+                                                buttonsArr={["Офісний", "Тонкий",
+                                                    "Середній",
+                                                    "Цупкий"]}
+                                                buttonsArrDruk={["односторонній", "двосторонній",]}
+                                                typeUse={null}
+                                            />
+                                            <Materials2NoteBack
+                                                materialAndDrukBack={materialAndDrukBack}
+                                                setMaterialAndDrukBack={setMaterialAndDrukBack}
+                                                count={count}
+                                                setCount={setCount}
+                                                prices={prices}
+                                                size={size}
+                                                selectArr={["3,5 мм", "4 мм", "5 мм", "6 мм", "8 мм"]}
+                                                name={"Чорно-білий друк на монохромному принтері:"}
+                                                buttonsArr={["Офісний", "Тонкий",
+                                                    "Середній",
+                                                    "Цупкий"]}
+                                                buttonsArrDruk={["односторонній", "двосторонній",]}
+                                                typeUse={null}
+                                            />
+                                        </div>
                                         {/*<NewNoModalLamination*/}
                                         {/*    lamination={lamination}*/}
                                         {/*    setLamination={setLamination}*/}
