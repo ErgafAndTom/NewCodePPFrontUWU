@@ -5,10 +5,7 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="7e58169f-d1e8-4cb2-8753-447dd0b39044" name="Changes" comment="ddd">
-      <change afterPath="$PROJECT_DIR$/src/PrintPeaksFAinal/poslugi/newnomodals/note/LaminationNote.jsx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/PrintPeaksFAinal/poslugi/NewNote.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/PrintPeaksFAinal/poslugi/NewNote.jsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/PrintPeaksFAinal/poslugi/newnomodals/note/Materials2NoteFront.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/PrintPeaksFAinal/poslugi/newnomodals/note/Materials2NoteFront.jsx" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -86,7 +83,7 @@
       <recent name="C:\Users\AIATO\Desktop\CodePPNew\frontpp\src\PrintPeaksFAinal\poslugi\newnomodals" />
     </key>
   </component>
-  <component name="RunManager" selected="npm.start">
+  <component name="RunManager" selected="npm.build">
     <configuration name="build" type="js.build_tools.npm" temporary="true" nameIsGenerated="true">
       <package-json value="$PROJECT_DIR$/package.json" />
       <command value="run" />
@@ -114,8 +111,8 @@
     </list>
     <recent_temporary>
       <list>
-        <item itemvalue="npm.start" />
         <item itemvalue="npm.build" />
+        <item itemvalue="npm.start" />
       </list>
     </recent_temporary>
   </component>
@@ -168,7 +165,8 @@
       <workItem from="1739162367417" duration="6462000" />
       <workItem from="1739232478068" duration="1026000" />
       <workItem from="1739387022986" duration="27000" />
-      <workItem from="1739387061658" duration="22129000" />
+      <workItem from="1739387061658" duration="22497000" />
+      <workItem from="1739422715167" duration="25000" />
     </task>
     <task id="LOCAL-00003" summary="ddd">
       <option name="closed" value="true" />
@@ -362,7 +360,23 @@
       <option name="project" value="LOCAL" />
       <updated>1739416239823</updated>
     </task>
-    <option name="localTasksCounter" value="27" />
+    <task id="LOCAL-00027" summary="ddd">
+      <option name="closed" value="true" />
+      <created>1739417615202</created>
+      <option name="number" value="00027" />
+      <option name="presentableId" value="LOCAL-00027" />
+      <option name="project" value="LOCAL" />
+      <updated>1739417615202</updated>
+    </task>
+    <task id="LOCAL-00028" summary="ddd">
+      <option name="closed" value="true" />
+      <created>1739417654646</created>
+      <option name="number" value="00028" />
+      <option name="presentableId" value="LOCAL-00028" />
+      <option name="project" value="LOCAL" />
+      <updated>1739417654646</updated>
+    </task>
+    <option name="localTasksCounter" value="29" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">

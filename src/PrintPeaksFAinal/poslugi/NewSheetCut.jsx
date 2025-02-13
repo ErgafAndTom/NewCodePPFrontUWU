@@ -158,7 +158,7 @@ const NewSheetCut = ({
                 }
                 console.log(error.message);
             })
-    }, [size, material, color, lamination, big, cute, cuteLocal, holes, holesR, count, porizka]);
+    }, [size, material, color, lamination.materialId, big, cute, cuteLocal, holes, holesR, count, porizka]);
 
     useEffect(() => {
         if (showNewSheetCut) {
