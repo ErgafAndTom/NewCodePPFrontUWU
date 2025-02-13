@@ -2,6 +2,7 @@ import React, {useEffect, useState} from "react";
 import axios from '../../../../api/axiosInstance';
 import {useNavigate} from "react-router-dom";
 import {Spinner} from "react-bootstrap";
+import NewSheetCut from "../../NewSheetCut";
 
 const Materials2NoteFront = ({materialAndDrukFront, setMaterialAndDrukFront, count, setCount, prices, type, name, buttonsArr, buttonsArrDruk, buttonsArrColor, selectArr, typeUse, size}) => {
     const [paper, setPaper] = useState([]);
@@ -202,56 +203,58 @@ const Materials2NoteFront = ({materialAndDrukFront, setMaterialAndDrukFront, cou
                         ))}
                     </select>
                 </div>
-                <div className="ArtemNewSelectContainer"
-                     style={{marginTop: "0", display: 'flex', justifyContent: 'center', alignItems: 'center'}}>
-                    <select
-                        name="materialSelect"
-                        value={materialAndDrukFront.drukSides || ""}
-                        onChange={(event) => handleSelectDrukSidesChange(event)}
-                        className="selectArtem"
-                    >
-                        <option
-                            key="default"
-                            className={"optionInSelectArtem"}
-                            value=""
-                            data-id="default"
+                {materialAndDrukFront.drukColor !== "Не потрібно" &&
+                    <div className="ArtemNewSelectContainer"
+                         style={{marginTop: "0", display: 'flex', justifyContent: 'center', alignItems: 'center'}}>
+                        <select
+                            name="materialSelect"
+                            value={materialAndDrukFront.drukSides || ""}
+                            onChange={(event) => handleSelectDrukSidesChange(event)}
+                            className="selectArtem"
                         >
-                            <>{"Виберіть"}</>
-                        </option>
-                        {buttonsArrDruk.map((item, iter) => (
                             <option
-                                key={item + iter}
+                                key="default"
                                 className={"optionInSelectArtem"}
-                                value={item}
-                                data-id={item}
+                                value=""
+                                data-id="default"
                             >
-                                <>{item}</>
+                                <>{"Виберіть"}</>
                             </option>
-                        ))}
-                    </select>
-                </div>
+                            {buttonsArrDruk.map((item, iter) => (
+                                <option
+                                    key={item + iter}
+                                    className={"optionInSelectArtem"}
+                                    value={item}
+                                    data-id={item}
+                                >
+                                    <>{item}</>
+                                </option>
+                            ))}
+                        </select>
+                    </div>
+                }
 
-                <div style={{display: 'flex', justifyContent: 'center', alignItems: 'center', marginLeft: "2vw"}}>
-                    {buttonsArrDruk.map((item, index) => (
-                        <button
-                            className={item === materialAndDrukFront.drukSides ? 'buttonsArtem buttonsArtemActive' : 'buttonsArtem'}
-                            key={index}
-                            onClick={() => handleClick(item)}
-                            // style={{
-                            //     backgroundColor: item === color.sides ? 'orange' : 'transparent',
-                            //     border: item === color.sides ? '0.13vw solid transparent' : '0.13vw solid transparent',
-                            // }}
-                        >
-                            <div className="" style={{
-                                height: "100%",
-                                opacity: item === materialAndDrukFront.drukSides ? '100%' : '90%',
-                                whiteSpace: "nowrap",
-                            }}>
-                                {item}
-                            </div>
-                        </button>
-                    ))}
-                </div>
+                {/*<div style={{display: 'flex', justifyContent: 'center', alignItems: 'center', marginLeft: "2vw"}}>*/}
+                {/*    {buttonsArrDruk.map((item, index) => (*/}
+                {/*        <button*/}
+                {/*            className={item === materialAndDrukFront.drukSides ? 'buttonsArtem buttonsArtemActive' : 'buttonsArtem'}*/}
+                {/*            key={index}*/}
+                {/*            onClick={() => handleClick(item)}*/}
+                {/*            // style={{*/}
+                {/*            //     backgroundColor: item === color.sides ? 'orange' : 'transparent',*/}
+                {/*            //     border: item === color.sides ? '0.13vw solid transparent' : '0.13vw solid transparent',*/}
+                {/*            // }}*/}
+                {/*        >*/}
+                {/*            <div className="" style={{*/}
+                {/*                height: "100%",*/}
+                {/*                opacity: item === materialAndDrukFront.drukSides ? '100%' : '90%',*/}
+                {/*                whiteSpace: "nowrap",*/}
+                {/*            }}>*/}
+                {/*                {item}*/}
+                {/*            </div>*/}
+                {/*        </button>*/}
+                {/*    ))}*/}
+                {/*</div>*/}
             </div>
         </div>
     )
