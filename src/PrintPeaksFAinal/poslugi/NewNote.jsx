@@ -50,6 +50,10 @@ const NewNote = ({
         thickness: "",
         material: "",
         materialId: "",
+        laminationType: "Не потрібно",
+        laminationTypeUse: "",
+        laminationmaterial: "",
+        laminationmaterialId: "",
         typeUse: ""
     });
     const [materialAndDrukInBody, setMaterialAndDrukInBody] = useState({
@@ -72,6 +76,10 @@ const NewNote = ({
         thickness: "",
         material: "",
         materialId: "",
+        laminationType: "",
+        laminationTypeUse: "",
+        laminationmaterial: "",
+        laminationmaterialId: "",
         typeUse: ""
     });
 

@@ -3,6 +3,8 @@ import axios from '../../../../api/axiosInstance';
 import {useNavigate} from "react-router-dom";
 import {Spinner} from "react-bootstrap";
 import NewSheetCut from "../../NewSheetCut";
+import NewNoModalLamination from "../NewNoModalLamination";
+import LaminationNote from "./LaminationNote";
 
 const Materials2NoteFront = ({materialAndDrukFront, setMaterialAndDrukFront, count, setCount, prices, type, name, buttonsArr, buttonsArrDruk, buttonsArrColor, selectArr, typeUse, size}) => {
     const [paper, setPaper] = useState([]);
@@ -233,6 +235,16 @@ const Materials2NoteFront = ({materialAndDrukFront, setMaterialAndDrukFront, cou
                         </select>
                     </div>
                 }
+                <LaminationNote
+                    materialAndDruk={materialAndDrukFront}
+                    setMaterialAndDruk={materialAndDrukFront}
+                    prices={prices}
+                    size={size}
+                    type={"Note"}
+                    buttonsArr={["З глянцевим ламінуванням",
+                        "З матовим ламінуванням",
+                        "З ламінуванням Soft Touch",]}
+                />
 
                 {/*<div style={{display: 'flex', justifyContent: 'center', alignItems: 'center', marginLeft: "2vw"}}>*/}
                 {/*    {buttonsArrDruk.map((item, index) => (*/}
