@@ -3,26 +3,20 @@ import {Row} from "react-bootstrap";
 import React, {useCallback, useEffect, useState} from "react";
 import axios from '../../api/axiosInstance';
 import Loader from "../../components/calc/Loader";
-import NewNoModalSize from "./newnomodals/NewNoModalSize";
-import NewNoModalLamination from "./newnomodals/NewNoModalLamination";
-import NewNoModalCornerRounding from "./newnomodals/NewNoModalBig";
-import NewNoModalCute from "./newnomodals/NewNoModalCute";
-import NewNoModalHoles from "./newnomodals/NewNoModalHoles";
-import versantIcon from "../public/versant80@2x.png";
-import Materials2 from "./newnomodals/Materials2";
+import versantIcon from "../../components/newUIArtem/printers/p5.svg";
 import {useNavigate} from "react-router-dom";
-import PhotoPosluga from "./newnomodals/photo/PhotoPosluga";
-import Porizka from "./newnomodals/Porizka";
+import NewNoModalSizeCup from "./newnomodals/cup/NewNoModalSizeCup";
+import Materials2Cup from "./newnomodals/cup/Materials2Cup";
 
-const NewSheetCut = ({
+const NewCup = ({
                          thisOrder,
                          newThisOrder,
                          setNewThisOrder,
                          selectedThings2,
-                         setShowNewSheetCut,
+                         setShowNewCup,
                          setThisOrder,
                          setSelectedThings2,
-                         showNewSheetCut
+                         showNewCup
                      }) => {
     const [load, setLoad] = useState(false);
     const navigate = useNavigate();
@@ -33,11 +27,11 @@ const NewSheetCut = ({
         setIsAnimating(false); // Начинаем анимацию закрытия
         setTimeout(() => {
             setIsVisible(false)
-            setShowNewSheetCut(false);
+            setShowNewCup(false);
         }, 300); // После завершения анимации скрываем модальное окно
     }
     const handleShow = useCallback((event) => {
-        setShowNewSheetCut(true);
+        setShowNewCup(true);
     }, []);
 
 
@@ -46,14 +40,14 @@ const NewSheetCut = ({
         y: 297
     });
     const [material, setMaterial] = useState({
-        type: "Папір",
-        thickness: "Офісний",
+        type: "Чашки",
+        thickness: "Чашка",
         material: "",
         materialId: "",
         typeUse: "Офісний"
     });
     const [color, setColor] = useState({
-        sides: "односторонній",
+        sides: "Не потрібно",
         one: "",
         two: "",
         allSidesColor: "CMYK",
@@ -84,8 +78,8 @@ const NewSheetCut = ({
         let dataToSend = {
             orderId: thisOrder.id,
             toCalc: {
-                nameOrderUnit: "Листова продукція з порізкою",
-                type: "SheetCut",
+                nameOrderUnit: "Чашки",
+                type: "Cup",
                 size: size,
                 material: material,
                 color: color,
@@ -106,7 +100,7 @@ const NewSheetCut = ({
                 setThisOrder(response.data);
                 // setSelectedThings2(response.data.order.OrderUnits || []);
                 setSelectedThings2(response.data.OrderUnits);
-                setShowNewSheetCut(false)
+                setShowNewCup(false)
             })
             .catch(error => {
                 if(error.response.status === 403){
@@ -133,7 +127,7 @@ const NewSheetCut = ({
 
     useEffect(() => {
         let dataToSend = {
-            type: "SheetCut",
+            type: "Cup",
             size: size,
             material: material,
             color: color,
@@ -161,14 +155,14 @@ const NewSheetCut = ({
     }, [size, material, color, lamination, big, cute, cuteLocal, holes, holesR, count, porizka]);
 
     useEffect(() => {
-        if (showNewSheetCut) {
+        if (showNewCup) {
             setIsVisible(true); // Сначала показываем модальное окно
             setTimeout(() => setIsAnimating(true), 100); // После короткой задержки запускаем анимацию появления
         } else {
             setIsAnimating(false); // Начинаем анимацию закрытия
             setTimeout(() => setIsVisible(false), 300); // После завершения анимации скрываем модальное окно
         }
-    }, [showNewSheetCut]);
+    }, [showNewCup]);
 
     return (
         <>
@@ -204,8 +198,7 @@ const NewSheetCut = ({
                     }}>
                         <div className="d-flex">
                             <div className="m-auto text-center fontProductName">
-                                Листівки / Візитки / Флаєра/ Буклети / Дипломи / Брошури / Зіни / Презентації /
-                                Афіши / Плакати / ...
+                                Чашки
                             </div>
                             <div
                                 className="btn btn-close btn-lg"
@@ -220,7 +213,7 @@ const NewSheetCut = ({
                             <MDBContainer fluid style={{width: '100%'}}>
                                 <Row xs={1} md={6} className="">
                                     <div className="d-flex flex-column">
-                                        <NewNoModalSize
+                                        <NewNoModalSizeCup
                                             size={size}
                                             setSize={setSize}
                                             prices={prices}
@@ -233,7 +226,7 @@ const NewSheetCut = ({
                                             defaultt={"А3 (297 х 420 мм)"}
                                         />
                                         {/*<NewNoModalMaterial*/}
-                                        <Materials2
+                                        <Materials2Cup
                                             material={material}
                                             setMaterial={setMaterial}
                                             count={count}
@@ -247,45 +240,35 @@ const NewSheetCut = ({
                                                 "Цупкий", "Самоклеючі"]}
                                             typeUse={null}
                                         />
-                                        <NewNoModalLamination
-                                            lamination={lamination}
-                                            setLamination={setLamination}
-                                            prices={prices}
-                                            size={size}
-                                            type={"SheetCut"}
-                                            buttonsArr={["З глянцевим ламінуванням",
-                                                "З матовим ламінуванням",
-                                                "З ламінуванням Soft Touch",]}
-                                            selectArr={["30", "80", "100", "125", "250"]}
-                                        />
-                                        <NewNoModalCornerRounding
-                                            big={big}
-                                            setBig={setBig}
-                                            prices={prices}
-                                            type={"SheetCut"}
-                                            buttonsArr={[]}
-                                            selectArr={["", "1", "2", "3", "4", "5", "6", "7", "8", "9"]}
-                                        />
-                                        <NewNoModalCute
-                                            cute={cute}
-                                            setCute={setCute}
-                                            cuteLocal={cuteLocal}
-                                            setCuteLocal={setCuteLocal}
-                                            prices={prices}
-                                            type={"SheetCut"}
-                                            buttonsArr={[]}
-                                            selectArr={["3", "6", "8", "10", "13"]}
-                                        />
-                                        <NewNoModalHoles
-                                            holes={holes}
-                                            setHoles={setHoles}
-                                            holesR={holesR}
-                                            setHolesR={setHolesR}
-                                            prices={prices}
-                                            type={"SheetCut"}
-                                            buttonsArr={[]}
-                                            selectArr={["", "3,5 мм", "4 мм", "5 мм", "6 мм", "8 мм"]}
-                                        />
+                                        {/*<NewNoModalLamination*/}
+                                        {/*    lamination={lamination}*/}
+                                        {/*    setLamination={setLamination}*/}
+                                        {/*    prices={prices}*/}
+                                        {/*    size={size}*/}
+                                        {/*    type={"SheetCut"}*/}
+                                        {/*    buttonsArr={["З глянцевим ламінуванням",*/}
+                                        {/*        "З матовим ламінуванням",*/}
+                                        {/*        "З ламінуванням Soft Touch",]}*/}
+                                        {/*    selectArr={["30", "80", "100", "125", "250"]}*/}
+                                        {/*/>*/}
+                                        {/*<NewNoModalCornerRounding*/}
+                                        {/*    big={big}*/}
+                                        {/*    setBig={setBig}*/}
+                                        {/*    prices={prices}*/}
+                                        {/*    type={"SheetCut"}*/}
+                                        {/*    buttonsArr={[]}*/}
+                                        {/*    selectArr={["", "1", "2", "3", "4", "5", "6", "7", "8", "9"]}*/}
+                                        {/*/>*/}
+                                        {/*<NewNoModalCute*/}
+                                        {/*    cute={cute}*/}
+                                        {/*    setCute={setCute}*/}
+                                        {/*    cuteLocal={cuteLocal}*/}
+                                        {/*    setCuteLocal={setCuteLocal}*/}
+                                        {/*    prices={prices}*/}
+                                        {/*    type={"SheetCut"}*/}
+                                        {/*    buttonsArr={[]}*/}
+                                        {/*    selectArr={["3", "6", "8", "10", "13"]}*/}
+                                        {/*/>*/}
                                         {/*<NewNoModalHoles*/}
                                         {/*    holes={holes}*/}
                                         {/*    setHoles={setHoles}*/}
@@ -296,12 +279,22 @@ const NewSheetCut = ({
                                         {/*    buttonsArr={[]}*/}
                                         {/*    selectArr={["", "3,5 мм", "4 мм", "5 мм", "6 мм", "8 мм"]}*/}
                                         {/*/>*/}
-                                        <Porizka
-                                            porizka={porizka}
-                                            setPorizka={setPorizka}
-                                            prices={prices}
-                                            type={"SheetCut"}
-                                        />
+                                        {/*<NewNoModalHoles*/}
+                                        {/*    holes={holes}*/}
+                                        {/*    setHoles={setHoles}*/}
+                                        {/*    holesR={holesR}*/}
+                                        {/*    setHolesR={setHolesR}*/}
+                                        {/*    prices={prices}*/}
+                                        {/*    type={"SheetCut"}*/}
+                                        {/*    buttonsArr={[]}*/}
+                                        {/*    selectArr={["", "3,5 мм", "4 мм", "5 мм", "6 мм", "8 мм"]}*/}
+                                        {/*/>*/}
+                                        {/*<Porizka*/}
+                                        {/*    porizka={porizka}*/}
+                                        {/*    setPorizka={setPorizka}*/}
+                                        {/*    prices={prices}*/}
+                                        {/*    type={"SheetCut"}*/}
+                                        {/*/>*/}
                                     </div>
                                 </Row>
                                 <div className="d-flex">
@@ -355,48 +348,48 @@ const NewSheetCut = ({
                                         <div className="">
 
                                             <div className="fontInfoForPricing">
-                                                Друк: {pricesThis.priceForDrukThisUnit.toFixed(2)} грн * {pricesThis.skolko} шт
-                                                = {(pricesThis.priceForDrukThisUnit * pricesThis.skolko).toFixed(2)} грн
+                                                Друк: {pricesThis.priceForThisUnitOfCup.toFixed(2)} грн * {pricesThis.skolko} шт
+                                                = {(pricesThis.priceForAllUnitOfCup).toFixed(2)} грн
                                             </div>
-                                            <div className="fontInfoForPricing">
-                                                Матеріали: {pricesThis.priceForThisUnitOfPapper.toFixed(2)}грн.
-                                                * {pricesThis.skolko} шт
-                                                = {(pricesThis.priceForThisUnitOfPapper * pricesThis.skolko).toFixed(2)}грн.
-                                            </div>
+                                            {/*<div className="fontInfoForPricing">*/}
+                                            {/*    Матеріали: {pricesThis.priceForThisUnitOfPapper.toFixed(2)}грн.*/}
+                                            {/*    * {pricesThis.skolko} шт*/}
+                                            {/*    = {(pricesThis.priceForThisUnitOfPapper * pricesThis.skolko).toFixed(2)}грн.*/}
+                                            {/*</div>*/}
 
-                                            <div className="fontInfoForPricing">
-                                                Ламінація: {pricesThis.priceForThisUnitOfLamination} грн
-                                                * {pricesThis.skolko} шт
-                                                = {pricesThis.priceForThisAllUnitsOfLamination} грн
-                                            </div>
-                                            <div className="fontInfoForPricing">
-                                                Згинання {pricesThis.priceForThisUnitOfBig} грн * {count} шт
-                                                = {pricesThis.priceForAllUnitsOfBig} грн
-                                            </div>
-                                            <div className=" fontInfoForPricing">
-                                                Скруглення кутів: {pricesThis.priceForThisUnitOfCute} грн * {count} шт
-                                                = {pricesThis.priceForAllUnitsOfCute} грн
-                                            </div>
-                                            <div className="fontInfoForPricing">
-                                                Свердління отворів: {pricesThis.priceForThisUnitOfHoles} грн * {count} шт
-                                                = {pricesThis.priceForAllUnitsOfHoles} грн
-                                            </div>
-                                            {pricesThis.porizka !== 0 &&
-                                                <div className="fontInfoForPricing">
-                                                    Порізка: {pricesThis.porizka.toFixed(2)} грн * {count} шт
-                                                    = {pricesThis.porizka.toFixed(2)*count} грн
-                                                </div>
-                                            }
+                                            {/*<div className="fontInfoForPricing">*/}
+                                            {/*    Ламінація: {pricesThis.priceForThisUnitOfLamination} грн*/}
+                                            {/*    * {pricesThis.skolko} шт*/}
+                                            {/*    = {pricesThis.priceForThisAllUnitsOfLamination} грн*/}
+                                            {/*</div>*/}
+                                            {/*<div className="fontInfoForPricing">*/}
+                                            {/*    Згинання {pricesThis.priceForThisUnitOfBig} грн * {count} шт*/}
+                                            {/*    = {pricesThis.priceForAllUnitsOfBig} грн*/}
+                                            {/*</div>*/}
+                                            {/*<div className=" fontInfoForPricing">*/}
+                                            {/*    Скруглення кутів: {pricesThis.priceForThisUnitOfCute} грн * {count} шт*/}
+                                            {/*    = {pricesThis.priceForAllUnitsOfCute} грн*/}
+                                            {/*</div>*/}
+                                            {/*<div className="fontInfoForPricing">*/}
+                                            {/*    Свердління отворів: {pricesThis.priceForThisUnitOfHoles} грн * {count} шт*/}
+                                            {/*    = {pricesThis.priceForAllUnitsOfHoles} грн*/}
+                                            {/*</div>*/}
+                                            {/*{pricesThis.porizka !== 0 &&*/}
+                                            {/*    <div className="fontInfoForPricing">*/}
+                                            {/*        Порізка: {pricesThis.porizka.toFixed(2)} грн * {count} шт*/}
+                                            {/*        = {pricesThis.porizka.toFixed(2)*count} грн*/}
+                                            {/*    </div>*/}
+                                            {/*}*/}
                                             <div className="fontInfoForPricing1">
                                                 Загалом: {pricesThis.price} грн
                                             </div>
-                                            <div className="fontInfoForPricing">
-                                                - З одного аркуша A3 можливо
-                                                зробити {pricesThis.skolkoListovNaOdin} виробів
-                                            </div>
-                                            <div className="fontInfoForPricing">
-                                                - Затрачено {pricesThis.skolko} аркушів (SR A3)
-                                            </div>
+                                            {/*<div className="fontInfoForPricing">*/}
+                                            {/*    - З одного аркуша A3 можливо*/}
+                                            {/*    зробити {pricesThis.skolkoListovNaOdin} виробів*/}
+                                            {/*</div>*/}
+                                            {/*<div className="fontInfoForPricing">*/}
+                                            {/*    - Затрачено {pricesThis.skolko} аркушів (SR A3)*/}
+                                            {/*</div>*/}
                                         </div>
 
 
@@ -426,4 +419,4 @@ const NewSheetCut = ({
     )
 };
 
-export default NewSheetCut;
+export default NewCup;

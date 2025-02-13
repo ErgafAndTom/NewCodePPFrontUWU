@@ -49,6 +49,7 @@ import PerepletMet from "./poslugi/PerepletMet";
 import BigOvshik from "./poslugi/BigOvshik";
 import ProgressBar from "../ProgressBar";
 import {ExampleLoaderComponent} from "../dev/palette";
+import NewCup from "./poslugi/NewCup";
 
 const NewUIArtem = () => {
     const navigate = useNavigate();
@@ -80,7 +81,7 @@ const NewUIArtem = () => {
     const [showPlotter, setShowPlotter] = useState(false);
     const [showBigOvshik, setShowBigOvshik] = useState(false);
     const [showPerepletMet, setShowPerepletMet] = useState(false);
-    const [showPerepletNeMet, setShowPerepletNeMet] = useState(false);
+    const [showNewCup, setShowNewCup] = useState(false);
     const [showLaminator, setShowLaminator] = useState(false);
     const [showVishichka, setShowVishichka] = useState(false);
 
@@ -291,7 +292,7 @@ const NewUIArtem = () => {
                                 </div>
                                 <div className="d-flex flex-column justify-content-center">
                                     <div
-                                        // onClick={(event) => setShowNewPhoto(event, "Photo")}
+                                        onClick={(event) => setShowNewCup(true)}
                                         className="cursorPointer printers gif" style={{width: "6vw"}}>
                                         <img src={imgg5} className="card-img-top noanim" alt="..."/>
                                         <img src={img6} className="card-img-top anim" alt="..."/>
@@ -595,6 +596,19 @@ const NewUIArtem = () => {
                         setThisOrder={setThisOrder}
                         setSelectedThings2={setSelectedThings2}
                         showNewWide={showNewWide}
+                    />
+                }
+                {showNewCup &&
+                    <NewCup
+                        productName={productName}
+                        thisOrder={thisOrder}
+                        newThisOrder={newThisOrder}
+                        selectedThings2={selectedThings2}
+                        setNewThisOrder={setNewThisOrder}
+                        setShowNewCup={setShowNewCup}
+                        setThisOrder={setThisOrder}
+                        setSelectedThings2={setSelectedThings2}
+                        showNewCup={showNewCup}
                     />
                 }
                 {showNewPhoto &&
