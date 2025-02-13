@@ -13,6 +13,7 @@ const Materials2NoteInBody = ({
                                   name,
                                   buttonsArr,
                                   buttonsArrDruk,
+                                  buttonsArrColor,
                                   selectArr,
                                   typeUse,
                                   size
@@ -46,6 +47,14 @@ const Materials2NoteInBody = ({
         setMaterialAndDrukInBody((prevMaterial) => ({
             ...prevMaterial,
             drukSides: selectedValue,
+        }));
+    }
+    let handleSelectDrukColorChange = (e) => {
+        const selectedValue = e.target.value || '';
+
+        setMaterialAndDrukInBody((prevMaterial) => ({
+            ...prevMaterial,
+            drukColor: selectedValue,
         }));
     }
 
@@ -105,9 +114,10 @@ const Materials2NoteInBody = ({
     }, [materialAndDrukInBody.materialTypeUse, size]);
 
     return (
-        <div className="d-flex allArtemElem">
+        <div className="d-flex flex-column allArtemElem">
+            <div style={{fontSize: "1.2vw", fontFamily: "Gotham"}}>Блок: </div>
             <div style={{display: 'flex', alignItems: 'center', borderBottom: '0.08vw solid gray'}}>
-                <div style={{fontSize: "1.2vw", fontFamily: "Gotham"}}>Блок: </div>
+                <div style={{fontSize: "1.2vw", fontFamily: "Gotham"}}>Матеріал: </div>
                 <div className="ArtemNewSelectContainer"
                      style={{marginTop: "0", display: 'flex', justifyContent: 'center', alignItems: 'center'}}>
                     <select
@@ -188,7 +198,35 @@ const Materials2NoteInBody = ({
                         <div>{error}</div>
                     )}
                 </div>
-
+                <div style={{fontSize: "1.2vw", fontFamily: "Gotham"}}>Друк: </div>
+                <div className="ArtemNewSelectContainer"
+                     style={{marginTop: "0", display: 'flex', justifyContent: 'center', alignItems: 'center'}}>
+                    <select
+                        name="materialSelect"
+                        value={materialAndDrukInBody.drukColor || ""}
+                        onChange={(event) => handleSelectDrukColorChange(event)}
+                        className="selectArtem"
+                    >
+                        {/*<option*/}
+                        {/*    key="default"*/}
+                        {/*    className={"optionInSelectArtem"}*/}
+                        {/*    value=""*/}
+                        {/*    data-id="default"*/}
+                        {/*>*/}
+                        {/*    <>{"Виберіть"}</>*/}
+                        {/*</option>*/}
+                        {buttonsArrColor.map((item, iter) => (
+                            <option
+                                key={item + iter}
+                                className={"optionInSelectArtem"}
+                                value={item}
+                                data-id={item}
+                            >
+                                <>{item}</>
+                            </option>
+                        ))}
+                    </select>
+                </div>
                 <div className="ArtemNewSelectContainer"
                      style={{marginTop: "0", display: 'flex', justifyContent: 'center', alignItems: 'center'}}>
                     <select

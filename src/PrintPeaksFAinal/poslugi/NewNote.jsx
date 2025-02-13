@@ -277,6 +277,7 @@ const NewNote = ({
                                                     "Середній",
                                                     "Цупкий"]}
                                                 buttonsArrDruk={["односторонній", "двосторонній",]}
+                                                buttonsArrColor={["Не потрібно", "Чорнобілий", "Кольоровий"]}
                                                 typeUse={null}
                                             />
                                             <Materials2NoteInBody
@@ -292,6 +293,7 @@ const NewNote = ({
                                                     "Середній",
                                                     "Цупкий"]}
                                                 buttonsArrDruk={["односторонній", "двосторонній",]}
+                                                buttonsArrColor={["Не потрібно", "Чорнобілий", "Кольоровий"]}
                                                 typeUse={null}
                                             />
                                             <Materials2NoteBack
@@ -307,6 +309,7 @@ const NewNote = ({
                                                     "Середній",
                                                     "Цупкий"]}
                                                 buttonsArrDruk={["односторонній", "двосторонній",]}
+                                                buttonsArrColor={["Не потрібно", "Чорнобілий", "Кольоровий"]}
                                                 typeUse={null}
                                             />
                                         </div>

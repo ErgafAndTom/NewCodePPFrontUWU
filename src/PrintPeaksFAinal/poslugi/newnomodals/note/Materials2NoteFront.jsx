@@ -3,7 +3,7 @@ import axios from '../../../../api/axiosInstance';
 import {useNavigate} from "react-router-dom";
 import {Spinner} from "react-bootstrap";
 
-const Materials2NoteFront = ({materialAndDrukFront, setMaterialAndDrukFront, count, setCount, prices, type, name, buttonsArr, buttonsArrDruk, selectArr, typeUse, size}) => {
+const Materials2NoteFront = ({materialAndDrukFront, setMaterialAndDrukFront, count, setCount, prices, type, name, buttonsArr, buttonsArrDruk, buttonsArrColor, selectArr, typeUse, size}) => {
     const [paper, setPaper] = useState([]);
     const [error, setError] = useState(null);
     const [load, setLoad] = useState(true);
@@ -33,6 +33,14 @@ const Materials2NoteFront = ({materialAndDrukFront, setMaterialAndDrukFront, cou
         setMaterialAndDrukFront((prevMaterial) => ({
             ...prevMaterial,
             drukSides: selectedValue,
+        }));
+    }
+    let handleSelectDrukColorChange = (e) => {
+        const selectedValue = e.target.value || '';
+
+        setMaterialAndDrukFront((prevMaterial) => ({
+            ...prevMaterial,
+            drukColor: selectedValue,
         }));
     }
 
@@ -92,9 +100,10 @@ const Materials2NoteFront = ({materialAndDrukFront, setMaterialAndDrukFront, cou
     }, [materialAndDrukFront.materialTypeUse, size]);
 
     return (
-        <div className="d-flex allArtemElem">
+        <div className="d-flex flex-column allArtemElem">
+            <div style={{fontSize: "1.2vw", fontFamily: "Gotham"}}>Обкладинка: </div>
             <div style={{display: 'flex', alignItems: 'center', borderBottom: '0.08vw solid gray'}}>
-                <div style={{fontSize: "1.2vw", fontFamily: "Gotham"}}>Обкладинка: </div>
+                <div style={{fontSize: "1.2vw", fontFamily: "Gotham"}}>Матеріал: </div>
                 <div className="ArtemNewSelectContainer" style={{marginTop: "0", display: 'flex', justifyContent: 'center', alignItems: 'center'}}>
                     <select
                         name="materialSelect"
@@ -164,7 +173,35 @@ const Materials2NoteFront = ({materialAndDrukFront, setMaterialAndDrukFront, cou
                         <div>{error}</div>
                     )}
                 </div>
-
+                <div style={{fontSize: "1.2vw", fontFamily: "Gotham"}}>Друк: </div>
+                <div className="ArtemNewSelectContainer"
+                     style={{marginTop: "0", display: 'flex', justifyContent: 'center', alignItems: 'center'}}>
+                    <select
+                        name="materialSelect"
+                        value={materialAndDrukFront.drukColor || ""}
+                        onChange={(event) => handleSelectDrukColorChange(event)}
+                        className="selectArtem"
+                    >
+                        {/*<option*/}
+                        {/*    key="default"*/}
+                        {/*    className={"optionInSelectArtem"}*/}
+                        {/*    value=""*/}
+                        {/*    data-id="default"*/}
+                        {/*>*/}
+                        {/*    <>{"Виберіть"}</>*/}
+                        {/*</option>*/}
+                        {buttonsArrColor.map((item, iter) => (
+                            <option
+                                key={item + iter}
+                                className={"optionInSelectArtem"}
+                                value={item}
+                                data-id={item}
+                            >
+                                <>{item}</>
+                            </option>
+                        ))}
+                    </select>
+                </div>
                 <div className="ArtemNewSelectContainer"
                      style={{marginTop: "0", display: 'flex', justifyContent: 'center', alignItems: 'center'}}>
                     <select
