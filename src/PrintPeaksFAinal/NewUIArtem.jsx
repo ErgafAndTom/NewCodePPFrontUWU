@@ -331,12 +331,12 @@ const NewUIArtem = () => {
                                         <img src={imgg6} className="card-img-top noanim" alt="..."/>
                                         <img src={img9} className="card-img-top anim" alt="..."/>
                                     </div>
-                                    {/*<div*/}
-                                    {/*    onClick={(event) => setShowPerepletNeMet(true)}*/}
-                                    {/*    className="cursorPointer printers gif" style={{width: "8vw", marginLeft: "0vw"}}>*/}
-                                    {/*    <img src={imgg7} className="card-img-top noanim" alt="..."/>*/}
-                                    {/*    <img src={img7} className="card-img-top anim" alt="..."/>*/}
-                                    {/*</div>*/}
+                                    <div
+                                        onClick={(event) => setShowNewNote(true)}
+                                        className="cursorPointer printers gif" style={{width: "8vw", marginLeft: "0vw"}}>
+                                        <img src={imgg7} className="card-img-top noanim" alt="..."/>
+                                        <img src={img7} className="card-img-top anim" alt="..."/>
+                                    </div>
                                 </div>
                                 <div className="d-flex flex-column justify-content-center">
                                     <div
