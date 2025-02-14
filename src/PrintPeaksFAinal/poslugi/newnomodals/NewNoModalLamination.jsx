@@ -2,7 +2,7 @@ import React, {useEffect, useState} from "react";
 import axios from '../../../api/axiosInstance';
 import {Navigate, useNavigate} from "react-router-dom";
 
-const NewNoModalLamination = ({lamination, setLamination, prices, buttonsArr, selectArr, size}) => {
+const NewNoModalLamination = ({lamination, setLamination, prices, buttonsArr, selectArr, size, type}) => {
     const [thisLaminationSizes, setThisLaminationSizes] = useState([]);
     const [error, setError] = useState(null);
     const [load, setLoad] = useState(true);
@@ -63,6 +63,7 @@ const NewNoModalLamination = ({lamination, setLamination, prices, buttonsArr, se
                 column: "id",
                 reverse: false
             },
+            type: type,
             material: {
                 type: "Ламінування",
                 material: lamination.material,

@@ -57,14 +57,37 @@ const NewNote = ({
         typeUse: ""
     });
     const [materialAndDrukInBody, setMaterialAndDrukInBody] = useState({
-        materialType: "Папір",
-        materialTypeUse: "Офісний",
-        drukColor: "Не потрібно",
-        drukSides: "односторонній",
-        drukId: "Не потрібно",
-        thickness: "",
-        material: "",
-        materialId: "",
+        ColorDrukMaterialType: "Папір",
+        BwDrukMaterialType: "Папір",
+        NonDrukMaterialType: "Папір",
+
+        ColorDrukMaterialTypeUse: "Офісний",
+        BwDrukMaterialTypeUse: "Офісний",
+        NonDrukMaterialTypeUse: "Офісний",
+
+        ColorDrukLaminationType: "Не потрібно",
+        BwDrukLaminationType: "Не потрібно",
+        NonDrukLaminationType: "Не потрібно",
+
+        ColorDrukLaminationTypeUse: "",
+        BwDrukLaminationTypeUse: "",
+        NonDrukLaminationTypeUse: "",
+
+        ColorDrukLaminationmaterial: "",
+        BwDrukLaminationmaterial: "",
+        NonDrukLaminationmaterial: "",
+
+        ColorDrukLaminationmaterialId: "",
+        BwDrukLaminationmaterialId: "",
+        NonDrukLaminationmaterialId: "",
+
+        ColorDrukMaterial: "",
+        BwDrukMaterial: "",
+        NonDrukMaterial: "",
+
+        ColorDrukMaterialId: "",
+        BwDrukMaterialId: "",
+        NonDrukMaterialId: "",
         typeUse: ""
     });
     const [materialAndDrukBack, setMaterialAndDrukBack] = useState({
