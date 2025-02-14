@@ -20,6 +20,8 @@
     margin-right: 0.633vw;
     cursor: pointer;
     transition: all 0.3s ease;
+    width: 4.5vw;
+    height: 2.65vw;
 }
 
 .enabledd {

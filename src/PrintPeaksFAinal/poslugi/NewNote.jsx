@@ -57,9 +57,9 @@ const NewNote = ({
         typeUse: ""
     });
     const [materialAndDrukInBody, setMaterialAndDrukInBody] = useState({
-        ColorDrukMaterialType: "Папір",
-        BwDrukMaterialType: "Папір",
-        NonDrukMaterialType: "Папір",
+        ColorDrukMaterialType: "Не потрібно",
+        BwDrukMaterialType: "Не потрібно",
+        NonDrukMaterialType: "Не потрібно",
 
         ColorDrukMaterialTypeUse: "Офісний",
         BwDrukMaterialTypeUse: "Офісний",
