@@ -301,13 +301,13 @@ const TrelloBoard = () => {
                                 <div className="d-flex">
                                     <div
                                         className="trello-card-content"
-                                        style={{ width: "100%", cursor: 'pointer', fontSize: '1.7vh' }}
+                                        style={{ width: "100%", cursor: 'pointer', fontSize: '1.7vh', minHeight: '4vh' }}
                                         onClick={() => seeInfoCard(list.id, card.id)}
                                     >
                                         {card.content}
                                     </div>
                                     <button
-                                        onClick={() => removeCard(list.id, card.id)}
+                                        // onClick={() => removeCard(list.id, card.id)}
                                         style={{
                                             padding: "0.4vw",
                                             backgroundColor: "transparent",
@@ -316,7 +316,7 @@ const TrelloBoard = () => {
                                             fontSize: '1.6vh'
                                         }}
                                     >
-                                        {deleting[card.id] ? <Spinner animation="border" variant="danger" size="sm" /> : '×'}
+                                        {deleting[card.id] ? <Spinner animation="border" variant="danger" size="sm" /> : ''}
                                     </button>
                                 </div>
                                 {card.inTrelloPhoto && (

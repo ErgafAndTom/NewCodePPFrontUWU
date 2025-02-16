@@ -15,7 +15,7 @@ function ImageList({ images, onRemove }) {
             display: "flex",
             flexDirection: "column",
             gap: "0.5rem",
-            maxHeight: "40vh",
+            maxHeight: "50vh",
             overflowY: "auto",
             position: "relative",
             paddingRight: "2.5rem"
@@ -46,7 +46,7 @@ function ImageList({ images, onRemove }) {
                         onClick={() => onRemove(img.id)}
                         style={{
                             position: "absolute",
-                            right: "-8%",
+                            right: "-5%",
                             top: "50%",
                             transform: "translateY(-50%)",
                             backgroundColor: "transparent",
@@ -211,8 +211,8 @@ export default function CardInfo({openCardData, setOpenCardInfo, setServerData, 
                         opacity: isAnimating ? 1 : 0, // анимация прозрачности
                         transition: "opacity 0.3s ease-in-out, transform 0.3s ease-in-out", // плавная анимация
                         borderRadius: "1vw",
-                        maxWidth: "30vw",
-                        maxHeight: "70vh",
+                        maxWidth: "60vw",
+                        maxHeight: "80vh",
                         padding: "0.7vw"
                     }}
                     >
@@ -229,8 +229,9 @@ export default function CardInfo({openCardData, setOpenCardInfo, setServerData, 
                                     value={openCardData.content}
                                     type="text"
                                     style={{
-                                        width: "26vw",
-                                        height: "7vh",
+                                        width: "36vw",
+                                        height: "20vh",
+                                        maxHeight: "20vh",
                                         border: "none",
                                         borderRadius: "0.5vw",
                                         padding: "0.5vw",
@@ -293,7 +294,7 @@ export default function CardInfo({openCardData, setOpenCardInfo, setServerData, 
                                     }
                                 }}
                                 style={{
-                                    width: "100%",
+                                    width: "50%",
                                     border: "none",
                                 }}
                             />
@@ -302,7 +303,7 @@ export default function CardInfo({openCardData, setOpenCardInfo, setServerData, 
                                 className="border-0 btn btn-success d-flex align-items-center justify-content-center"
                                 style={{
                                     // marginLeft: "2px",
-                                    width: "9vw",
+                                    // width: "9vw",
                                     height: "3vh",
                                     borderRadius: "0.5vw",
                             }}
@@ -311,18 +312,18 @@ export default function CardInfo({openCardData, setOpenCardInfo, setServerData, 
                                 {selectedImage ? "Завантажити" : "Очікую img.."}
                             </button>
                         </div>
-                        <div>
+                        <div className="d-flex justify-content-end" style={{}}>
                             <button
                                 className="border-0 btn btn-danger d-flex align-items-center justify-content-center"
                                 style={{
-                                    // marginLeft: "2px",
-                                    width: "9vw",
+                                    marginTop: "1vh",
+                                    // width: "9vw",
                                     height: "3vh",
                                     borderRadius: "0.5vw",
                                 }}
                                 onClick={() => deleteThisCard(openCardData.listId, openCardData.id)}
                             >
-                                Видалити
+                                Видалити карточку
                             </button>
                         </div>
                     </div>
