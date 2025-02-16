@@ -2,6 +2,7 @@ import React, {useEffect, useState} from "react";
 import axios from '../../../../api/axiosInstance';
 import {useNavigate} from "react-router-dom";
 import {Spinner} from "react-bootstrap";
+import NewSheetCutBw from "../../NewSheetCutBw";
 
 const Materials2NoteInBody = ({
                                   materialAndDrukInBody,
@@ -14,6 +15,7 @@ const Materials2NoteInBody = ({
                                   buttonsArr,
                                   buttonsArrDruk,
                                   buttonsArrColor,
+                                  buttonsArrLamination,
                                   selectArr,
                                   typeUse,
                                   size
@@ -80,6 +82,19 @@ const Materials2NoteInBody = ({
             })
         }
     }
+    let handleToggleColorLamination = (e) => {
+        if (materialAndDrukInBody.ColorDrukLaminationmaterial === "Не потрібно") {
+            setMaterialAndDrukInBody({
+                ...materialAndDrukInBody,
+                ColorDrukLaminationmaterial: "",
+            })
+        } else {
+            setMaterialAndDrukInBody({
+                ...materialAndDrukInBody,
+                ColorDrukLaminationmaterial: "Не потрібно",
+            })
+        }
+    }
     let handleToggleBw = (e) => {
         if (materialAndDrukInBody.BwDrukMaterialType === "Не потрібно") {
             setMaterialAndDrukInBody({
@@ -93,6 +108,19 @@ const Materials2NoteInBody = ({
             })
         }
     }
+    let handleToggleBwLamination = (e) => {
+        if (materialAndDrukInBody.BwDrukLaminationmaterial === "Не потрібно") {
+            setMaterialAndDrukInBody({
+                ...materialAndDrukInBody,
+                BwDrukLaminationmaterial: "",
+            })
+        } else {
+            setMaterialAndDrukInBody({
+                ...materialAndDrukInBody,
+                BwDrukLaminationmaterial: "Не потрібно",
+            })
+        }
+    }
     let handleToggleNonDruk = (e) => {
         if (materialAndDrukInBody.NonDrukMaterialType === "Не потрібно") {
             setMaterialAndDrukInBody({
@@ -103,6 +131,19 @@ const Materials2NoteInBody = ({
             setMaterialAndDrukInBody({
                 ...materialAndDrukInBody,
                 NonDrukMaterialType: "Не потрібно",
+            })
+        }
+    }
+    let handleToggleNonDrukLamination = (e) => {
+        if (materialAndDrukInBody.NonDrukLaminationmaterial === "Не потрібно") {
+            setMaterialAndDrukInBody({
+                ...materialAndDrukInBody,
+                NonDrukLaminationmaterial: "",
+            })
+        } else {
+            setMaterialAndDrukInBody({
+                ...materialAndDrukInBody,
+                NonDrukLaminationmaterial: "Не потрібно",
             })
         }
     }
@@ -332,56 +373,70 @@ const Materials2NoteInBody = ({
                                 <div>{error}</div>
                             )}
                         </div>
-                        <div style={{fontSize: "1.2vw", fontFamily: "Gotham"}}>Друк: </div>
-                        <div className="ArtemNewSelectContainer"
-                             style={{marginTop: "0", display: 'flex', justifyContent: 'center', alignItems: 'center'}}>
-                            <select
-                                name="materialSelect"
-                                value={materialAndDrukInBody.drukColor || ""}
-                                onChange={(event) => handleSelectDrukColorChange(event)}
-                                className="selectArtem"
-                            >
-                                {buttonsArrColor.map((item, iter) => (
-                                    <option
-                                        key={item + iter}
-                                        className={"optionInSelectArtem"}
-                                        value={item}
-                                        data-id={item}
-                                    >
-                                        <>{item}</>
-                                    </option>
-                                ))}
-                            </select>
-                        </div>
-                        {materialAndDrukInBody.drukColor !== "Не потрібно" &&
-                            <div className="ArtemNewSelectContainer"
-                                 style={{marginTop: "0", display: 'flex', justifyContent: 'center', alignItems: 'center'}}>
-                                <select
-                                    name="materialSelect"
-                                    value={materialAndDrukInBody.drukSides || ""}
-                                    onChange={(event) => handleSelectDrukSidesChange(event)}
-                                    className="selectArtem"
-                                >
-                                    <option
-                                        key="default"
-                                        className={"optionInSelectArtem"}
-                                        value=""
-                                        data-id="default"
-                                    >
-                                        <>{"Виберіть"}</>
-                                    </option>
-                                    {buttonsArrDruk.map((item, iter) => (
-                                        <option
-                                            key={item + iter}
-                                            className={"optionInSelectArtem"}
-                                            value={item}
-                                            data-id={item}
-                                        >
-                                            <>{item}</>
-                                        </option>
-                                    ))}
-                                </select>
+
+                        <div className={`toggleContainer ${materialAndDrukInBody.ColorDrukLaminationmaterial === "Не потрібно" ? 'disabledCont' : 'enabledCont'}`}
+                             onClick={handleToggleColorLamination}
+                             style={{transform: "scale(0.6)"}}>
+                            <div className={`toggle-button ${materialAndDrukInBody.ColorDrukLaminationmaterial === "Не потрібно" ? 'disabled' : 'enabledd'}`}>
                             </div>
+                        </div>
+                        <span style={{
+                            fontSize: '1.273vw', marginRight: '0.633vw', fontFamily: "Gotham", whiteSpace: "nowrap"
+                        }}>{"Ламінація:"}</span>
+
+                        {materialAndDrukInBody.ColorDrukLaminationmaterial !== "Не потрібно" &&
+                            <>
+                                <div className="ArtemNewSelectContainer"
+                                     style={{marginTop: "0", display: 'flex', justifyContent: 'center', alignItems: 'center'}}>
+                                    <select
+                                        name="materialSelect"
+                                        value={materialAndDrukInBody.drukColor || ""}
+                                        onChange={(event) => handleSelectDrukColorChange(event)}
+                                        className="selectArtem"
+                                    >
+                                        {buttonsArrLamination.map((item, iter) => (
+                                            <option
+                                                key={item + iter}
+                                                className={"optionInSelectArtem"}
+                                                value={item}
+                                                data-id={item}
+                                            >
+                                                <>{item}</>
+                                            </option>
+                                        ))}
+                                    </select>
+                                </div>
+                                {materialAndDrukInBody.drukColor !== "Не потрібно" &&
+                                    <div className="ArtemNewSelectContainer"
+                                         style={{marginTop: "0", display: 'flex', justifyContent: 'center', alignItems: 'center'}}>
+                                        <select
+                                            name="materialSelect"
+                                            value={materialAndDrukInBody.drukSides || ""}
+                                            onChange={(event) => handleSelectDrukSidesChange(event)}
+                                            className="selectArtem"
+                                        >
+                                            <option
+                                                key="default"
+                                                className={"optionInSelectArtem"}
+                                                value=""
+                                                data-id="default"
+                                            >
+                                                <>{"Виберіть"}</>
+                                            </option>
+                                            {buttonsArrDruk.map((item, iter) => (
+                                                <option
+                                                    key={item + iter}
+                                                    className={"optionInSelectArtem"}
+                                                    value={item}
+                                                    data-id={item}
+                                                >
+                                                    <>{item}</>
+                                                </option>
+                                            ))}
+                                        </select>
+                                    </div>
+                                }
+                            </>
                         }
                     </div>
                 )}
@@ -469,56 +524,72 @@ const Materials2NoteInBody = ({
                                 <div>{error}</div>
                             )}
                         </div>
-                        <div style={{fontSize: "1.2vw", fontFamily: "Gotham"}}>Друк: </div>
-                        <div className="ArtemNewSelectContainer"
-                             style={{marginTop: "0", display: 'flex', justifyContent: 'center', alignItems: 'center'}}>
-                            <select
-                                name="materialSelect"
-                                value={materialAndDrukInBody.drukColor || ""}
-                                onChange={(event) => handleSelectDrukColorChange(event)}
-                                className="selectArtem"
-                            >
-                                {buttonsArrColor.map((item, iter) => (
-                                    <option
-                                        key={item + iter}
-                                        className={"optionInSelectArtem"}
-                                        value={item}
-                                        data-id={item}
-                                    >
-                                        <>{item}</>
-                                    </option>
-                                ))}
-                            </select>
-                        </div>
-                        {materialAndDrukInBody.drukColor !== "Не потрібно" &&
-                            <div className="ArtemNewSelectContainer"
-                                 style={{marginTop: "0", display: 'flex', justifyContent: 'center', alignItems: 'center'}}>
-                                <select
-                                    name="materialSelect"
-                                    value={materialAndDrukInBody.drukSides || ""}
-                                    onChange={(event) => handleSelectDrukSidesChange(event)}
-                                    className="selectArtem"
-                                >
-                                    <option
-                                        key="default"
-                                        className={"optionInSelectArtem"}
-                                        value=""
-                                        data-id="default"
-                                    >
-                                        <>{"Виберіть"}</>
-                                    </option>
-                                    {buttonsArrDruk.map((item, iter) => (
-                                        <option
-                                            key={item + iter}
-                                            className={"optionInSelectArtem"}
-                                            value={item}
-                                            data-id={item}
-                                        >
-                                            <>{item}</>
-                                        </option>
-                                    ))}
-                                </select>
+
+
+                        <div className={`toggleContainer ${materialAndDrukInBody.BwDrukLaminationmaterial === "Не потрібно" ? 'disabledCont' : 'enabledCont'}`}
+                             onClick={handleToggleBwLamination}
+                             style={{transform: "scale(0.6)"}}>
+                            <div className={`toggle-button ${materialAndDrukInBody.BwDrukLaminationmaterial === "Не потрібно" ? 'disabled' : 'enabledd'}`}>
                             </div>
+                        </div>
+                        <span style={{
+                            fontSize: '1.273vw', marginRight: '0.633vw', fontFamily: "Gotham", whiteSpace: "nowrap"
+                        }}>{"Ламінація:"}</span>
+
+                        {materialAndDrukInBody.BwDrukLaminationmaterial !== "Не потрібно" &&
+                            <>
+                                <div style={{fontSize: "1.2vw", fontFamily: "Gotham"}}>Друк: </div>
+                                <div className="ArtemNewSelectContainer"
+                                     style={{marginTop: "0", display: 'flex', justifyContent: 'center', alignItems: 'center'}}>
+                                    <select
+                                        name="materialSelect"
+                                        value={materialAndDrukInBody.drukColor || ""}
+                                        onChange={(event) => handleSelectDrukColorChange(event)}
+                                        className="selectArtem"
+                                    >
+                                        {buttonsArrLamination.map((item, iter) => (
+                                            <option
+                                                key={item + iter}
+                                                className={"optionInSelectArtem"}
+                                                value={item}
+                                                data-id={item}
+                                            >
+                                                <>{item}</>
+                                            </option>
+                                        ))}
+                                    </select>
+                                </div>
+                                {materialAndDrukInBody.drukColor !== "Не потрібно" &&
+                                    <div className="ArtemNewSelectContainer"
+                                         style={{marginTop: "0", display: 'flex', justifyContent: 'center', alignItems: 'center'}}>
+                                        <select
+                                            name="materialSelect"
+                                            value={materialAndDrukInBody.drukSides || ""}
+                                            onChange={(event) => handleSelectDrukSidesChange(event)}
+                                            className="selectArtem"
+                                        >
+                                            <option
+                                                key="default"
+                                                className={"optionInSelectArtem"}
+                                                value=""
+                                                data-id="default"
+                                            >
+                                                <>{"Виберіть"}</>
+                                            </option>
+                                            {buttonsArrDruk.map((item, iter) => (
+                                                <option
+                                                    key={item + iter}
+                                                    className={"optionInSelectArtem"}
+                                                    value={item}
+                                                    data-id={item}
+                                                >
+                                                    <>{item}</>
+                                                </option>
+                                            ))}
+                                        </select>
+                                    </div>
+                                }
+                            </>
                         }
                     </div>
                 )}
@@ -606,56 +677,71 @@ const Materials2NoteInBody = ({
                                 <div>{error}</div>
                             )}
                         </div>
-                        <div style={{fontSize: "1.2vw", fontFamily: "Gotham"}}>Друк: </div>
-                        <div className="ArtemNewSelectContainer"
-                             style={{marginTop: "0", display: 'flex', justifyContent: 'center', alignItems: 'center'}}>
-                            <select
-                                name="materialSelect"
-                                value={materialAndDrukInBody.drukColor || ""}
-                                onChange={(event) => handleSelectDrukColorChange(event)}
-                                className="selectArtem"
-                            >
-                                {buttonsArrColor.map((item, iter) => (
-                                    <option
-                                        key={item + iter}
-                                        className={"optionInSelectArtem"}
-                                        value={item}
-                                        data-id={item}
-                                    >
-                                        <>{item}</>
-                                    </option>
-                                ))}
-                            </select>
-                        </div>
-                        {materialAndDrukInBody.drukColor !== "Не потрібно" &&
-                            <div className="ArtemNewSelectContainer"
-                                 style={{marginTop: "0", display: 'flex', justifyContent: 'center', alignItems: 'center'}}>
-                                <select
-                                    name="materialSelect"
-                                    value={materialAndDrukInBody.drukSides || ""}
-                                    onChange={(event) => handleSelectDrukSidesChange(event)}
-                                    className="selectArtem"
-                                >
-                                    <option
-                                        key="default"
-                                        className={"optionInSelectArtem"}
-                                        value=""
-                                        data-id="default"
-                                    >
-                                        <>{"Виберіть"}</>
-                                    </option>
-                                    {buttonsArrDruk.map((item, iter) => (
-                                        <option
-                                            key={item + iter}
-                                            className={"optionInSelectArtem"}
-                                            value={item}
-                                            data-id={item}
-                                        >
-                                            <>{item}</>
-                                        </option>
-                                    ))}
-                                </select>
+
+
+                        <div className={`toggleContainer ${materialAndDrukInBody.NonDrukLaminationmaterial === "Не потрібно" ? 'disabledCont' : 'enabledCont'}`}
+                             onClick={handleToggleNonDrukLamination}
+                             style={{transform: "scale(0.6)"}}>
+                            <div className={`toggle-button ${materialAndDrukInBody.NonDrukLaminationmaterial === "Не потрібно" ? 'disabled' : 'enabledd'}`}>
                             </div>
+                        </div>
+                        <span style={{
+                            fontSize: '1.273vw', marginRight: '0.633vw', fontFamily: "Gotham", whiteSpace: "nowrap"
+                        }}>{"Ламінація:"}</span>
+
+                        {materialAndDrukInBody.NonDrukLaminationmaterial !== "Не потрібно" &&
+                            <>
+                                <div className="ArtemNewSelectContainer"
+                                     style={{marginTop: "0", display: 'flex', justifyContent: 'center', alignItems: 'center'}}>
+                                    <select
+                                        name="materialSelect"
+                                        value={materialAndDrukInBody.drukColor || ""}
+                                        onChange={(event) => handleSelectDrukColorChange(event)}
+                                        className="selectArtem"
+                                    >
+                                        {buttonsArrLamination.map((item, iter) => (
+                                            <option
+                                                key={item + iter}
+                                                className={"optionInSelectArtem"}
+                                                value={item}
+                                                data-id={item}
+                                            >
+                                                <>{item}</>
+                                            </option>
+                                        ))}
+                                    </select>
+                                </div>
+                                {materialAndDrukInBody.drukColor !== "Не потрібно" &&
+                                    <div className="ArtemNewSelectContainer"
+                                         style={{marginTop: "0", display: 'flex', justifyContent: 'center', alignItems: 'center'}}>
+                                        <select
+                                            name="materialSelect"
+                                            value={materialAndDrukInBody.drukSides || ""}
+                                            onChange={(event) => handleSelectDrukSidesChange(event)}
+                                            className="selectArtem"
+                                        >
+                                            <option
+                                                key="default"
+                                                className={"optionInSelectArtem"}
+                                                value=""
+                                                data-id="default"
+                                            >
+                                                <>{"Виберіть"}</>
+                                            </option>
+                                            {buttonsArrDruk.map((item, iter) => (
+                                                <option
+                                                    key={item + iter}
+                                                    className={"optionInSelectArtem"}
+                                                    value={item}
+                                                    data-id={item}
+                                                >
+                                                    <>{item}</>
+                                                </option>
+                                            ))}
+                                        </select>
+                                    </div>
+                                }
+                            </>
                         }
                     </div>
                 )}

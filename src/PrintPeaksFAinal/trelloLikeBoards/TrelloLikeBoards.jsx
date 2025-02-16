@@ -3,7 +3,6 @@ import { DragDropContext, Droppable, Draggable } from 'react-beautiful-dnd';
 import { Spinner } from 'react-bootstrap';
 import './TrelloBoard.css';
 import axios from '../../api/axiosInstance';
-import NewSheetCutBw from "../poslugi/NewSheetCutBw";
 import CardInfo from "./CardInfo";
 
 const TrelloBoard = () => {

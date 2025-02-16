@@ -73,9 +73,9 @@ const NewNote = ({
         BwDrukLaminationTypeUse: "",
         NonDrukLaminationTypeUse: "",
 
-        ColorDrukLaminationmaterial: "",
-        BwDrukLaminationmaterial: "",
-        NonDrukLaminationmaterial: "",
+        ColorDrukLaminationmaterial: "Не потрібно",
+        BwDrukLaminationmaterial: "Не потрібно",
+        NonDrukLaminationmaterial: "Не потрібно",
 
         ColorDrukLaminationmaterialId: "",
         BwDrukLaminationmaterialId: "",
@@ -309,6 +309,9 @@ const NewNote = ({
                                                     "Цупкий"]}
                                                 buttonsArrDruk={["односторонній", "двосторонній",]}
                                                 buttonsArrColor={["Не потрібно", "Чорнобілий", "Кольоровий"]}
+                                                buttonsArrLamination={["З глянцевим ламінуванням",
+                                                    "З матовим ламінуванням",
+                                                    "З ламінуванням Soft Touch",]}
                                                 typeUse={null}
                                             />
                                             <Materials2NoteInBody
@@ -325,6 +328,9 @@ const NewNote = ({
                                                     "Цупкий"]}
                                                 buttonsArrDruk={["односторонній", "двосторонній",]}
                                                 buttonsArrColor={["Не потрібно", "Чорнобілий", "Кольоровий"]}
+                                                buttonsArrLamination={["З глянцевим ламінуванням",
+                                                    "З матовим ламінуванням",
+                                                    "З ламінуванням Soft Touch",]}
                                                 typeUse={null}
                                             />
                                             <Materials2NoteBack
@@ -341,6 +347,9 @@ const NewNote = ({
                                                     "Цупкий"]}
                                                 buttonsArrDruk={["односторонній", "двосторонній",]}
                                                 buttonsArrColor={["Не потрібно", "Чорнобілий", "Кольоровий"]}
+                                                buttonsArrLamination={["З глянцевим ламінуванням",
+                                                    "З матовим ламінуванням",
+                                                    "З ламінуванням Soft Touch",]}
                                                 typeUse={null}
                                             />
                                         </div>

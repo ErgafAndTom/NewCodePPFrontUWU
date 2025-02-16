@@ -8,7 +8,6 @@ import axios from "../api/axiosInstance";
 import uk from 'date-fns/locale/uk';
 import TimeSeriesChart from "../PrintPeaksFAinal/timeSeriesChart/TimeSeriesChart";
 import DatabaseSchemaVisualizer from "../PrintPeaksFAinal/timeSeriesChart/DatabaseSchemaVisualizer";
-import TimeSeriesChart1 from "../PrintPeaksFAinal/timeSeriesChart/TimeSeriesChart1";
 
 const customUkLocale = {
     ...uk,

@@ -9,51 +9,59 @@ function ImageList({ images, onRemove }) {
     }
 
     return (
-        <div style={{ 
+        <div style={{
             display: "flex",
-            flexWrap: "wrap",
+            flexDirection: "column",
             gap: "0.5rem",
-            gridTemplateColumns: "repeat(2, 1fr)",
+            maxHeight: "40vh",
+            overflowY: "auto",
+            position: "relative",
+            paddingRight: "2.5rem"
         }}>
             {images.map((img) => (
-                    <div
-                        key={img.id}
+                <div
+                    key={img.id}
+                    style={{
+                        display: "flex",
+                        alignItems: "center",
+                        width: "100%",
+                        padding: "0.5rem",
+                        borderBottom: "1px solid #ccc",
+                        position: "relative"
+                    }}
+                >
+                    <img
+                        src={`/images/${img.photoLink}`}
+                        alt="photo"
                         style={{
-                            display: "flex",
-                            alignItems: "center",
-                            gap: "0.5rem",
-                            padding: "0.5rem",
-                            borderBottom: "1px solid #ccc",
+                            width: "100%",
+                            maxHeight: "30vh",
+                            objectFit: "cover"
+                        }}
+                    />
+                    <button
+                        onClick={() => onRemove(img.id)}
+                        style={{
+                            position: "absolute",
+                            right: "-10%",
+                            top: "50%",
+                            transform: "translateY(-50%)",
+                            backgroundColor: "transparent",
+                            color: "#ff3333",
+                            border: "none",
+                            fontSize: "1.5rem",
+                            cursor: "pointer",
+                            padding: "0.5rem"
                         }}
                     >
-                        <img
-                            src={`/images/${img.photoLink}`} /* Assuming img.url holds the photo URL */
-                            alt="photo"
-                            style={{
-                                width: "8vw",
-                                objectFit: "cover"
-                            }}
-                        />
-                        {/*<span style={{flex: 1, color: "#333"}}>{`Файл: ${img.name || "Без имени"}`}</span>*/}
-                        <button
-                            onClick={() => onRemove(img.id)}
-                            style={{
-                                backgroundColor: "transparent",
-                                color: "#ff3333",
-                                border: "none",
-                                // padding: "0.25rem 0.5rem",
-                                borderRadius: "2px",
-                                cursor: "pointer",
-                            }}
-                        >
-                            ✖
-                        </button>
-                    </div>
-                ))}
+                        ✖
+                    </button>
+                </div>
+            ))}
         </div>
-        
     );
 }
+
 
 // Общий контейнер карточки
 export default function CardInfo({openCardData, setOpenCardInfo, setServerData, serverData, handleCardContentChange}) {
@@ -82,7 +90,30 @@ export default function CardInfo({openCardData, setOpenCardInfo, setServerData, 
 
     // Удаляем изображение из массива по id
     const handleRemoveImage = (id) => {
-        setImages((prev) => prev.filter((img) => img.id !== id));
+        const fetchData = async () => {
+            try {
+                const res = await axios.delete(`/trello/${id}/contentPhoto`);
+                console.log(res.data);
+                if(res.status === 200){
+                    setServerData(prevLists =>
+                        prevLists.map(list => ({
+                            ...list,
+                            Cards: list.Cards.map(card =>
+                                card.id === openCardData.id
+                                    ? { ...card, inTrelloPhoto: card.inTrelloPhoto.filter(photo => photo.id !== id) }
+                                    : card
+                            )
+                        }))
+                    );
+                    setImages((prev) => prev.filter((img) => img.id !== id));
+                } else {
+
+                }
+            } catch (error) {
+                console.error('Помилка завантаження фото:', error);
+            }
+        };
+        fetchData();
     };
 
     const uploadPhoto = async (cardId, photo) => {
@@ -103,16 +134,21 @@ export default function CardInfo({openCardData, setOpenCardInfo, setServerData, 
                     prevLists.map(list => ({
                         ...list,
                         Cards: list.Cards.map(card =>
-                            card.id === cardId ? {...card, inTrelloPhoto: res.data.photo} : card
+                            card.id === cardId ? {...card, inTrelloPhoto: [...card.inTrelloPhoto, res.data]} : card
                         )
                     }))
                 );
+                setImages((prev) => [...prev, res.data]);
             } catch (error) {
                 console.error('Помилка завантаження фото:', error);
             }
         };
         fetchData();
     };
+
+    // useEffect(() => {
+    //     setImages(openCardData.inTrelloPhoto)
+    // }, [serverData]);
 
     useEffect(() => {
         if (openCardData) {
@@ -160,17 +196,44 @@ export default function CardInfo({openCardData, setOpenCardInfo, setServerData, 
                     >
                         <div className="d-flex justify-content-around">
                             <div>
-                                <textarea onChange={(e) => handleCardContentChange(openCardData.listId, openCardData.id, e.target.value)}
-                                       value={openCardData.content}
-                                       type="text"
-                                       style={{
-                                           width: "26vw",
-                                           height: "7vh",
-                                           border: "none",
-                                           borderRadius: "0.5vw",
-                                           padding: "0.5vw"
-
-                                }}/>
+                                <textarea
+                                    onChange={(e) =>
+                                        handleCardContentChange(
+                                            openCardData.listId,
+                                            openCardData.id,
+                                            e.target.value
+                                        )
+                                    }
+                                    value={openCardData.content}
+                                    type="text"
+                                    style={{
+                                        width: "26vw",
+                                        height: "7vh",
+                                        border: "none",
+                                        borderRadius: "0.5vw",
+                                        padding: "0.5vw",
+                                    }}
+                                    onPaste={async (e) => {
+                                        const clipboardFiles = e.clipboardData.files;
+                                        if (clipboardFiles && clipboardFiles.length > 0) {
+                                            // Если буфер содержит файлы
+                                            const file = clipboardFiles[0];
+                                            if (file && file.type.startsWith("image/")) {
+                                                // Предотвращаем стандартную вставку текста, чтобы не вставлялся маркер изображения
+                                                e.preventDefault();
+                                                try {
+                                                    await uploadPhoto(openCardData.id, file);
+                                                    // Если нужно, можно обновить локальное состояние изображений, например:
+                                                    // handleUpload([res.data.photo]);
+                                                    setSelectedImage(null);
+                                                } catch (err) {
+                                                    console.error("Ошибка загрузки изображения из буфера обмена", err);
+                                                }
+                                            }
+                                        }
+                                        // Если файлы отсутствуют, стандартное поведение (вставка текста) остаётся
+                                    }}
+                                />
                             </div>
                             <div
                                 className="btn btn-close btn-lg"
@@ -197,18 +260,10 @@ export default function CardInfo({openCardData, setOpenCardInfo, setServerData, 
                                         setSelectedImage(null);
                                     }
                                 }}
-                                onPaste={(e) => {
-                                    if (e.clipboardData.files.length > 0) {
-                                        const file = e.clipboardData.files[0];
-                                        if (file && file.type.startsWith("image/")) {
-                                            setSelectedImage(file);
-                                        }
-                                    }
-                                }}
                                 style={{
                                     width: "100%",
                                     border: "none",
-                            }}
+                                }}
                             />
                             <button
                                 disabled={!selectedImage}
