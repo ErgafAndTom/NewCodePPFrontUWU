@@ -15,6 +15,7 @@ import UsersCustomTable from "../../PrintPeaksFAinal/user/UsersCustomTable";
 import CustomOrderTable2 from "../../PrintPeaksFAinal/Orders/CustomOrderTable2";
 import TableManager from "../../PrintPeaksFAinal/dataMenager/TableManager";
 import TrelloLikeBoards from "../../PrintPeaksFAinal/trelloLikeBoards/TrelloLikeBoards";
+import TrelloLikeBoards2 from "../../PrintPeaksFAinal/trelloLikeBoards/TrelloLikeBoards2";
 
 const AfterNav = () => {
     const pricesIsLoading = useSelector(state => state.prices.pricesIsLoading);
@@ -58,7 +59,7 @@ const AfterNav = () => {
                 <Route path="/" element={<Desktop/>} />
                 {/*<Route path="/db" element={<DataManager/>} />*/}
                 <Route path="/db2" element={<TableManager/>} />
-                <Route path="/Trello" element={<TrelloLikeBoards/>} />
+                <Route path="/Trello" element={<TrelloLikeBoards2/>} />
                 {/*<Route path="/Trello2" element={<TrelloLikeBoards1/>} />*/}
                 {/*<Route path="/TrelloLikeBoards1" element={<TrelloLikeBoards1/>} />*/}
                 {/*<Route path="/" element={<Desktop/>} />*/}

@@ -67,7 +67,7 @@ function ImageList({ images, onRemove }) {
 
 
 // Общий контейнер карточки
-export default function CardInfo({openCardData, setOpenCardInfo, setServerData, serverData, handleCardContentChange}) {
+export default function CardInfo({openCardData, setOpenCardInfo, setServerData, serverData, handleCardContentChange, removeCard}) {
     const [cardName, setCardName] = useState(openCardData.name);
     const [textContent, setTextContent] = useState(openCardData.content);
     const [images, setImages] = useState(openCardData.inTrelloPhoto);
@@ -153,6 +153,19 @@ export default function CardInfo({openCardData, setOpenCardInfo, setServerData, 
             }
         };
         fetchData();
+    };
+
+    const deleteThisCard = async (listId, cardId) => {
+        setLoad(true);
+        try {
+            await removeCard(listId, cardId);
+        } catch (err) {
+            console.error(err);
+            setError(err.message);
+        } finally {
+            setLoad(false);
+            handleClose()
+        }
     };
 
     // useEffect(() => {
@@ -296,6 +309,20 @@ export default function CardInfo({openCardData, setOpenCardInfo, setServerData, 
                                 onClick={() => uploadPhoto(openCardData.id, selectedImage)}
                             >
                                 {selectedImage ? "Завантажити" : "Очікую img.."}
+                            </button>
+                        </div>
+                        <div>
+                            <button
+                                className="border-0 btn btn-danger d-flex align-items-center justify-content-center"
+                                style={{
+                                    // marginLeft: "2px",
+                                    width: "9vw",
+                                    height: "3vh",
+                                    borderRadius: "0.5vw",
+                                }}
+                                onClick={() => deleteThisCard(openCardData.listId, openCardData.id)}
+                            >
+                                Видалити
                             </button>
                         </div>
                     </div>

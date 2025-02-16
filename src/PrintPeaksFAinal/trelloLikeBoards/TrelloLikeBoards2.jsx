@@ -1,9 +1,10 @@
-import React, { useState, useEffect } from 'react';
+// TrelloBoard.jsx
+import React, { useState, useEffect, useCallback } from 'react';
 import axios from '../../api/axiosInstance';
 import { Spinner } from 'react-bootstrap';
 import './TrelloBoard.css';
 import CardInfo from "./CardInfo";
-import ModalDeleteList from "./ModalDeleteList";
+import ModalDeleteList from './ModalDeleteList'; // Импортируем модалку
 
 const TrelloBoard = () => {
     const [lists, setLists] = useState([]);
@@ -13,8 +14,11 @@ const TrelloBoard = () => {
     const [deleting, setDeleting] = useState({});
     const [openCardInfo, setOpenCardInfo] = useState(false);
     const [openCardData, setOpenCardData] = useState(null);
-    // Для хранения данных о перетаскиваемой карточке
+    // Данные для Drag & Drop
     const [dragData, setDragData] = useState(null);
+    // Состояния для модального окна удаления списка
+    const [showDeleteListModal, setShowDeleteListModal] = useState(false);
+    const [listToDelete, setListToDelete] = useState(null);
 
     // Получение данных с сервера при монтировании компонента
     useEffect(() => {
@@ -32,7 +36,7 @@ const TrelloBoard = () => {
         fetchData();
     }, []);
 
-    // Обновляем поля карточек, если необходимо (например, для генерации id)
+    // Обновляем карточки, если необходимо
     useEffect(() => {
         setLists(prevLists =>
             prevLists.map(list => ({
@@ -55,7 +59,6 @@ const TrelloBoard = () => {
     // Добавление нового списка
     const addList = async () => {
         if (!newListTitle.trim()) return;
-
         const newList = { title: newListTitle, Cards: [] };
         setNewListTitle('');
 
@@ -97,7 +100,7 @@ const TrelloBoard = () => {
         }
     };
 
-    // Удаление списка
+    // Функция удаления списка, которая вызывается после подтверждения в модалке
     const removeList = async (listId) => {
         setDeleting(prev => ({ ...prev, [listId]: true }));
 
@@ -111,7 +114,12 @@ const TrelloBoard = () => {
         }
     };
 
-    // Удаление карточки
+    // Функция вызова модального окна удаления списка
+    const handleDeleteListClick = (list) => {
+        setListToDelete(list);
+        setShowDeleteListModal(true);
+    };
+
     const removeCard = async (listId, cardId) => {
         setDeleting(prev => ({ ...prev, [cardId]: true }));
 
@@ -166,31 +174,25 @@ const TrelloBoard = () => {
     };
 
     // Обработчики для HTML5 Drag & Drop
-    // Начало перетаскивания карточки
     const onDragStart = (e, card, sourceListId, index) => {
-        // Сохраняем информацию о карточке и списке
         e.dataTransfer.setData("cardId", card.id);
         e.dataTransfer.setData("sourceListId", sourceListId);
         e.dataTransfer.setData("sourceIndex", index);
         setDragData({ card, sourceListId, sourceIndex: index });
     };
 
-    // Разрешение сброса
     const onDragOver = (e) => {
         e.preventDefault();
     };
 
-    // Обработка отпускания карточки
     const onDrop = async (e, targetListId) => {
         e.preventDefault();
         const cardId = e.dataTransfer.getData("cardId");
         const sourceListId = e.dataTransfer.getData("sourceListId");
         const sourceIndex = parseInt(e.dataTransfer.getData("sourceIndex"), 10);
 
-        // Если карточка отпускается в тот же список, можно добавить логику сортировки по позиции (здесь простое добавление в конец)
         let movedCard = null;
 
-        // Удаляем карточку из исходного списка
         const updatedLists = lists.map(list => {
             if (list.id.toString() === sourceListId.toString()) {
                 const filteredCards = list.Cards.filter(card => {
@@ -205,7 +207,6 @@ const TrelloBoard = () => {
             return list;
         });
 
-        // Если карточка найдена, вставляем её в целевой список. Здесь можно доработать логику для вставки по определённому индексу.
         const finalLists = updatedLists.map(list => {
             if (list.id.toString() === targetListId.toString() && movedCard) {
                 return { ...list, Cards: [...list.Cards, movedCard] };
@@ -213,7 +214,6 @@ const TrelloBoard = () => {
             return list;
         });
 
-        // Отправляем данные на сервер о перемещении карточки
         const dataToSend = {
             cardId: movedCard ? movedCard.id : cardId,
             fromListId: sourceListId,
@@ -229,7 +229,6 @@ const TrelloBoard = () => {
             setServerData(response.data);
         } catch (error) {
             console.error('Ошибка при перемещении:', error);
-            // Если произошла ошибка, можно вернуть карточку обратно в исходный список
             setServerData(lists);
         }
         setDragData(null);
@@ -242,7 +241,7 @@ const TrelloBoard = () => {
     return (
         <div>
             {/* Форма для добавления нового списка */}
-            <div className="d-flex align-items-center justify-content-center" style={{ marginBottom: '16px' }}>
+            <div className="d-flex align-items-center justify-content-center" style={{ marginBottom: '2vw' }}>
                 <input
                     className="InputInTrelloName"
                     type="text"
@@ -258,6 +257,7 @@ const TrelloBoard = () => {
                     +
                 </button>
             </div>
+
             {/* Основная область доски */}
             <div className="trello-board" style={{ display: 'flex', gap: '2vw', padding: '0 2vw' }}>
                 {lists.map(list => (
@@ -275,8 +275,11 @@ const TrelloBoard = () => {
                         }}
                     >
                         <h6 className="d-flex align-items-center justify-content-between">
-                            <span style={{fontSize: '1.4vh'}}>{list.title}</span>
-                            <span onClick={() => removeList(list.id)} style={{ cursor: 'pointer', fontSize: '1.6vh' }}>
+                            <span>{list.title}</span>
+                            <span
+                                style={{ cursor: 'pointer' }}
+                                onClick={() => handleDeleteListClick(list)}
+                            >
                 {deleting[list.id] ? <Spinner animation="border" variant="danger" size="sm" /> : '×'}
               </span>
                         </h6>
@@ -298,7 +301,7 @@ const TrelloBoard = () => {
                                 <div className="d-flex">
                                     <div
                                         className="trello-card-content"
-                                        style={{ width: "100%", cursor: 'pointer', fontSize: '1.3vh' }}
+                                        style={{ width: "100%", cursor: 'pointer', fontSize: '1.7vh' }}
                                         onClick={() => seeInfoCard(list.id, card.id)}
                                     >
                                         {card.content}
@@ -316,7 +319,6 @@ const TrelloBoard = () => {
                                         {deleting[card.id] ? <Spinner animation="border" variant="danger" size="sm" /> : '×'}
                                     </button>
                                 </div>
-                                {/* Отображение фотографий карточки, если они есть */}
                                 {card.inTrelloPhoto && (
                                     <div style={{
                                         display: 'flex',
@@ -353,14 +355,13 @@ const TrelloBoard = () => {
                                 </div>
                             </div>
                         ))}
-                        {/* Кнопка для добавления карточки в список */}
                         <div
                             className="d-flex align-items-center justify-content-center trello-add"
                             onClick={() => addCard(list.id)}
                             style={{
-                                marginTop: '0.5vh',
+                                marginTop: '8px',
                                 cursor: 'pointer',
-                                fontSize: '1.7vh'
+                                fontSize: '24px'
                             }}
                         >
                             +
@@ -369,14 +370,25 @@ const TrelloBoard = () => {
                 ))}
             </div>
 
-            {/* Модальное окно для карточки (если необходимо) */}
             {openCardInfo && (
                 <CardInfo
                     openCardData={openCardData}
                     setOpenCardInfo={setOpenCardInfo}
                     setServerData={setServerData}
                     serverData={serverData}
+                    removeCard={removeCard}
                     handleCardContentChange={handleCardContentChange}
+                />
+            )}
+
+            {/* Модальное окно для удаления списка */}
+            {showDeleteListModal && listToDelete && (
+                <ModalDeleteList
+                    listToDelete={listToDelete}
+                    showDeleteListModal={showDeleteListModal}
+                    setShowDeleteListModal={setShowDeleteListModal}
+                    removeList={removeList}
+                    deleting={deleting[listToDelete.id]}
                 />
             )}
         </div>
@@ -384,6 +396,3 @@ const TrelloBoard = () => {
 };
 
 export default TrelloBoard;
-
-
-
