@@ -1,8 +1,7 @@
 import React, { useState, useEffect } from 'react';
-import { DragDropContext, Droppable, Draggable } from 'react-beautiful-dnd';
+import axios from '../../api/axiosInstance';
 import { Spinner } from 'react-bootstrap';
 import './TrelloBoard.css';
-import axios from '../../api/axiosInstance';
 import CardInfo from "./CardInfo";
 
 const TrelloBoard = () => {
@@ -13,7 +12,10 @@ const TrelloBoard = () => {
     const [deleting, setDeleting] = useState({});
     const [openCardInfo, setOpenCardInfo] = useState(false);
     const [openCardData, setOpenCardData] = useState(null);
+    // Для хранения данных о перетаскиваемой карточке
+    const [dragData, setDragData] = useState(null);
 
+    // Получение данных с сервера при монтировании компонента
     useEffect(() => {
         const fetchData = async () => {
             try {
@@ -29,112 +31,126 @@ const TrelloBoard = () => {
         fetchData();
     }, []);
 
+    // Обновляем поля карточек, если необходимо (например, для генерации id)
     useEffect(() => {
-        setLists(prevLists => prevLists.map(list => ({
-            ...list,
-            Cards: list.Cards.map((card, index) => ({
-                ...card,
-                id: card.id
-                    // || `card-${list.id}-${index}` // Генерируем `id`, если его нет
+        setLists(prevLists =>
+            prevLists.map(list => ({
+                ...list,
+                Cards: list.Cards.map((card, index) => ({
+                    ...card,
+                    id: card.id // Если id не задан, можно генерировать: || `card-${list.id}-${index}`
+                }))
             }))
-        })));
+        );
     }, [serverData]);
 
+    // Синхронизация локального состояния с полученными данными
     useEffect(() => {
         if (lists.length === 0 || JSON.stringify(lists) !== JSON.stringify(serverData)) {
             setLists(serverData);
         }
     }, [serverData]);
 
+    // Добавление нового списка
     const addList = async () => {
-        // if (!newListTitle.trim()) return;
+        if (!newListTitle.trim()) return;
 
         const newList = { title: newListTitle, Cards: [] };
         setNewListTitle('');
 
-        const fetchData = async () => {
-            try {
-                const res = await axios.post('/trello', newList);
-                console.log(res.data);
-                setServerData(prevLists => [...prevLists, res.data]);
-            } catch (error) {
-                console.error("Помилка створення списку:", error);
-            }
-        };
-        fetchData();
+        try {
+            const res = await axios.post('/trello', newList);
+            console.log(res.data);
+            setServerData(prevLists => [...prevLists, res.data]);
+        } catch (error) {
+            console.error("Помилка створення списку:", error);
+        }
     };
-    const seeInfoCard = async (listId, cardId) => {
-        setOpenCardData(
-            lists.find(list => list.id === listId).Cards.find(card => card.id === cardId))
-        setOpenCardInfo(true);
-    }
 
+    // Открытие информации по карточке
+    const seeInfoCard = (listId, cardId) => {
+        const list = lists.find(list => list.id === listId);
+        if (!list) return;
+        const card = list.Cards.find(card => card.id === cardId);
+        if (!card) return;
+        setOpenCardData(card);
+        setOpenCardInfo(true);
+    };
+
+    // Добавление новой карточки в список
     const addCard = async (listId) => {
         const newCard = { content: '', type: 'text' };
-        const fetchData = async () => {
-            try {
-                const res = await axios.post(`/trello/${listId}/cards`, newCard);
-                console.log(res.data);
-                setServerData(prevLists => prevLists.map(list => list.id === listId ? { ...list, Cards: [...list.Cards, res.data] } : list));
-            } catch (error) {
-                console.error("Помилка створення картки:", error);
-            }
-        };
-        fetchData();
+
+        try {
+            const res = await axios.post(`/trello/${listId}/cards`, newCard);
+            console.log(res.data);
+            setServerData(prevLists =>
+                prevLists.map(list =>
+                    list.id === listId
+                        ? { ...list, Cards: [...list.Cards, res.data] }
+                        : list
+                )
+            );
+        } catch (error) {
+            console.error("Помилка створення картки:", error);
+        }
     };
 
+    // Удаление списка
     const removeList = async (listId) => {
         setDeleting(prev => ({ ...prev, [listId]: true }));
-        const fetchData = async () => {
-            try {
-                await axios.delete(`/trello/${listId}`);
-                setServerData(prevLists => prevLists.filter(list => list.id !== listId));
-            } catch (error) {
-                console.error("Помилка при видаленні списку:", error);
-            } finally {
-                setDeleting(prev => ({ ...prev, [listId]: false }));
-            }
-        };
-        fetchData();
+
+        try {
+            await axios.delete(`/trello/${listId}`);
+            setServerData(prevLists => prevLists.filter(list => list.id !== listId));
+        } catch (error) {
+            console.error("Помилка при видаленні списку:", error);
+        } finally {
+            setDeleting(prev => ({ ...prev, [listId]: false }));
+        }
     };
 
+    // Удаление карточки
     const removeCard = async (listId, cardId) => {
         setDeleting(prev => ({ ...prev, [cardId]: true }));
-        const fetchData = async () => {
-            try {
-                await axios.delete(`/trello/${listId}/cards/${cardId}`);
-                setServerData(prevLists => prevLists.map(list => {
+
+        try {
+            await axios.delete(`/trello/${listId}/cards/${cardId}`);
+            setServerData(prevLists =>
+                prevLists.map(list => {
                     if (list.id === listId) {
                         return { ...list, Cards: list.Cards.filter(card => card.id !== cardId) };
                     }
                     return list;
-                }));
-            } catch (error) {
-                console.error("Помилка при видаленні картки:", error);
-            } finally {
-                setDeleting(prev => ({ ...prev, [cardId]: false }));
-            }
-        };
-        fetchData();
+                })
+            );
+        } catch (error) {
+            console.error("Помилка при видаленні картки:", error);
+        } finally {
+            setDeleting(prev => ({ ...prev, [cardId]: false }));
+        }
     };
 
+    // Изменение содержимого карточки
     const handleCardContentChange = (listId, cardId, newContent) => {
-        const fetchData = async () => {
-            let data = {
+        const updateCard = async () => {
+            const data = {
                 cardId: cardId,
-                newContent:newContent
-            }
+                newContent: newContent
+            };
             try {
                 const res = await axios.put(`/trello/content`, data);
                 console.log(res.data);
             } catch (error) {
-                console.error("Помилка при отриманні даних:", error);
+                console.error("Помилка при зміні вмісту картки:", error);
             } finally {
                 const updatedLists = lists.map(list => {
                     if (list.id === listId) {
                         return {
                             ...list,
-                            Cards: list.Cards.map(card => card.id === cardId ? { ...card, content: newContent } : card)
+                            Cards: list.Cards.map(card =>
+                                card.id === cardId ? { ...card, content: newContent } : card
+                            )
                         };
                     }
                     return list;
@@ -142,116 +158,206 @@ const TrelloBoard = () => {
                 setServerData(updatedLists);
                 setOpenCardData(
                     updatedLists.find(list => list.id === listId).Cards.find(card => card.id === cardId)
-                )
+                );
             }
         };
-        fetchData()
+        updateCard();
     };
-    const onDragEnd = async (result) => {
-        if (!result.destination) return;
 
-        const { source, destination } = result;
+    // Обработчики для HTML5 Drag & Drop
+    // Начало перетаскивания карточки
+    const onDragStart = (e, card, sourceListId, index) => {
+        // Сохраняем информацию о карточке и списке
+        e.dataTransfer.setData("cardId", card.id);
+        e.dataTransfer.setData("sourceListId", sourceListId);
+        e.dataTransfer.setData("sourceIndex", index);
+        setDragData({ card, sourceListId, sourceIndex: index });
+    };
 
-        const startList = lists.find(list => list.id.toString() === source.droppableId);
-        const finishList = lists.find(list => list.id.toString() === destination.droppableId);
+    // Разрешение сброса
+    const onDragOver = (e) => {
+        e.preventDefault();
+    };
 
-        if (!startList || !finishList) return;
+    // Обработка отпускания карточки
+    const onDrop = async (e, targetListId) => {
+        e.preventDefault();
+        const cardId = e.dataTransfer.getData("cardId");
+        const sourceListId = e.dataTransfer.getData("sourceListId");
+        const sourceIndex = parseInt(e.dataTransfer.getData("sourceIndex"), 10);
 
-        const movedCard = startList.Cards[source.index];
+        // Если карточка отпускается в тот же список, можно добавить логику сортировки по позиции (здесь простое добавление в конец)
+        let movedCard = null;
 
-        // Отправка данных на сервер
-        try {
-            let dataToSend = {
-                cardId: movedCard.id,
-                fromListId: startList.id,
-                toListId: finishList.id,
-                fromIndex: source.index,
-                toIndex: destination.index
+        // Удаляем карточку из исходного списка
+        const updatedLists = lists.map(list => {
+            if (list.id.toString() === sourceListId.toString()) {
+                const filteredCards = list.Cards.filter(card => {
+                    if (card.id.toString() === cardId.toString()) {
+                        movedCard = card;
+                        return false;
+                    }
+                    return true;
+                });
+                return { ...list, Cards: filteredCards };
             }
-            const response = await axios.put('/trello/drag', dataToSend);
+            return list;
+        });
 
+        // Если карточка найдена, вставляем её в целевой список. Здесь можно доработать логику для вставки по определённому индексу.
+        const finalLists = updatedLists.map(list => {
+            if (list.id.toString() === targetListId.toString() && movedCard) {
+                return { ...list, Cards: [...list.Cards, movedCard] };
+            }
+            return list;
+        });
+
+        // Отправляем данные на сервер о перемещении карточки
+        const dataToSend = {
+            cardId: movedCard ? movedCard.id : cardId,
+            fromListId: sourceListId,
+            toListId: targetListId,
+            fromIndex: sourceIndex,
+            toIndex: finalLists.find(list => list.id.toString() === targetListId.toString()).Cards.length - 1
+        };
+
+        try {
+            const response = await axios.put('/trello/drag', dataToSend);
             if (response.status !== 200) throw new Error(response.data.message || 'Ошибка перемещения');
-            setServerData(response.data)
+            console.log(response.data);
+            setServerData(response.data);
         } catch (error) {
             console.error('Ошибка при перемещении:', error);
+            // Если произошла ошибка, можно вернуть карточку обратно в исходный список
+            setServerData(lists);
         }
+        setDragData(null);
     };
 
-    if (loading) return <Spinner animation="border" variant="danger" size="sm" />;
+    if (loading) {
+        return <Spinner animation="border" variant="danger" size="sm" />;
+    }
 
     return (
         <div>
-            <DragDropContext onDragEnd={onDragEnd}>
-                <div className="d-flex align-content-center align-items-center justify-content-center">
-                    <input className="InputInTrelloName" type="text" value={newListTitle} onChange={(e) => setNewListTitle(e.target.value)} placeholder="Назва колонки" />
-                    <button className="d-flex align-content-center align-items-center justify-content-center buttonRightOfInputInTrello" onClick={addList}>+</button>
-                </div>
-                <div className="trello-board">
-                    {lists.map((list) => (
-                        <Droppable key={list.id} droppableId={list.id.toString()}>
-                            {(provided) => (
-                                <div className="trello-list" {...provided.droppableProps} ref={provided.innerRef}>
-                                    <h6 className="d-flex align-content-center align-items-center justify-content-between">
-                                        <div>{list.title}</div>
-                                        <div onClick={() => removeList(list.id)}>
-                                            {deleting[list.id] ? <Spinner animation="border" variant="danger" size="sm" color="white"/> : '×'}
-                                        </div>
-                                    </h6>
-                                    {list.Cards.map((card, index) => (
-                                        <Draggable key={card.id} draggableId={card.id.toString()} index={index}>
-                                            {(provided) => (
-                                                <div className="trello-card" ref={provided.innerRef} {...provided.draggableProps} {...provided.dragHandleProps}>
-                                                    <div className="d-flex">
-                                                        {/*<textarea className="InputInTrello" style={{width: "93%"}} type="text" value={card.content} onChange={(e) => handleCardContentChange(list.id, card.id, e.target.value)} />*/}
-                                                        <div className="trello-card-content" style={{width: "100%"}} onClick={() => seeInfoCard(list.id, card.id)}>
-                                                            {card.content}
-                                                        </div>
-                                                        <button
-                                                            style={{
-                                                                padding: "0.4vw",
-                                                                backgroundColor: "transparent",
-                                                                flexDirection: "column",
-                                                                // display: "grid",
-                                                                // gridTemplateColumns: "repeat(2, 1fr)",
-                                                            }}
-                                                            className="d-flex align-content-center align-items-center justify-content-between border-0" onClick={() => removeCard(list.id, card.id)}>
-                                                            {deleting[card.id] ? <Spinner animation="border" variant="danger" size="sm" /> : '×'}
-                                                        </button>
-                                                    </div>
-                                                    <div className="" style={{
-                                                        padding: "0.4vw",
-                                                        // display: "grid",
-                                                        gridTemplateColumns: "repeat(2, 1fr)",
-                                                    }}>
-                                                        {card.inTrelloPhoto && card.inTrelloPhoto.map((photo, index) => (
-                                                            <img
-                                                                key={index}
-                                                                src={`/images/${photo.photoLink}`}
-                                                                alt={`Card Photo ${index + 1}`}
-                                                                style={{
-                                                                    width: '5vw',
-                                                                    objectFit: 'cover',
-                                                                    margin: '2px',
-                                                                    alignItems: 'center',
-                                                                }}
-                                                            />
-                                                        ))}
-                                                    </div>
-                                                </div>
-                                            )}
-                                        </Draggable>
-                                    ))}
-                                    {provided.placeholder}
-                                    <div className="d-flex align-content-center align-items-center justify-content-center border-0 trello-add" onClick={() => addCard(list.id)}>+</div>
+            {/* Форма для добавления нового списка */}
+            <div className="d-flex align-items-center justify-content-center" style={{ marginBottom: '16px' }}>
+                <input
+                    className="InputInTrelloName"
+                    type="text"
+                    value={newListTitle}
+                    onChange={(e) => setNewListTitle(e.target.value)}
+                    placeholder="Назва колонки"
+                />
+                <button
+                    className="d-flex align-items-center justify-content-center buttonRightOfInputInTrello"
+                    onClick={addList}
+                    style={{ marginLeft: '8px' }}
+                >
+                    +
+                </button>
+            </div>
+            {/* Основная область доски */}
+            <div className="trello-board" style={{ display: 'flex', gap: '16px', padding: '0 16px' }}>
+                {lists.map(list => (
+                    <div
+                        key={list.id}
+                        className="trello-list"
+                        onDragOver={onDragOver}
+                        onDrop={(e) => onDrop(e, list.id)}
+                        style={{
+                            flex: '0 0 200px',
+                            padding: '8px',
+                            border: '1px solid #ccc',
+                            borderRadius: '4px',
+                            background: '#f7f7f7'
+                        }}
+                    >
+                        <h6 className="d-flex align-items-center justify-content-between">
+                            <span>{list.title}</span>
+                            <span onClick={() => removeList(list.id)} style={{ cursor: 'pointer' }}>
+                {deleting[list.id] ? <Spinner animation="border" variant="danger" size="sm" /> : '×'}
+              </span>
+                        </h6>
+                        {list.Cards.map((card, index) => (
+                            <div
+                                key={card.id}
+                                className="trello-card"
+                                draggable
+                                onDragStart={(e) => onDragStart(e, card, list.id, index)}
+                                style={{
+                                    padding: '8px',
+                                    margin: '4px 0',
+                                    background: '#fff',
+                                    border: '1px solid #ddd',
+                                    borderRadius: '4px',
+                                    cursor: 'grab'
+                                }}
+                            >
+                                <div className="d-flex">
+                                    <div
+                                        className="trello-card-content"
+                                        style={{ width: "100%", cursor: 'pointer' }}
+                                        onClick={() => seeInfoCard(list.id, card.id)}
+                                    >
+                                        {card.content}
+                                    </div>
+                                    <button
+                                        onClick={() => removeCard(list.id, card.id)}
+                                        style={{
+                                            padding: "0.4vw",
+                                            backgroundColor: "transparent",
+                                            border: "none",
+                                            cursor: 'pointer'
+                                        }}
+                                    >
+                                        {deleting[card.id] ? <Spinner animation="border" variant="danger" size="sm" /> : '×'}
+                                    </button>
                                 </div>
-                            )}
-                        </Droppable>
-                    ))}
-                </div>
-            </DragDropContext>
+                                {/* Отображение фотографий карточки, если они есть */}
+                                {card.inTrelloPhoto && (
+                                    <div style={{
+                                        display: 'flex',
+                                        flexWrap: 'wrap',
+                                        gap: '4px',
+                                        marginTop: '4px'
+                                    }}>
+                                        {card.inTrelloPhoto.map((photo, index) => (
+                                            <img
+                                                key={index}
+                                                src={`/images/${photo.photoLink}`}
+                                                alt={`Card Photo ${index + 1}`}
+                                                style={{
+                                                    width: '5vw',
+                                                    objectFit: 'cover',
+                                                    cursor: "not-allowed",
+                                                    pointerEvents: "none",
+                                                    userSelect: "none",
+                                                }}
+                                            />
+                                        ))}
+                                    </div>
+                                )}
+                            </div>
+                        ))}
+                        {/* Кнопка для добавления карточки в список */}
+                        <div
+                            className="d-flex align-items-center justify-content-center trello-add"
+                            onClick={() => addCard(list.id)}
+                            style={{
+                                marginTop: '8px',
+                                cursor: 'pointer',
+                                fontSize: '24px'
+                            }}
+                        >
+                            +
+                        </div>
+                    </div>
+                ))}
+            </div>
 
-
-            {openCardInfo &&
+            {/* Модальное окно для карточки (если необходимо) */}
+            {openCardInfo && (
                 <CardInfo
                     openCardData={openCardData}
                     setOpenCardInfo={setOpenCardInfo}
@@ -259,9 +365,8 @@ const TrelloBoard = () => {
                     serverData={serverData}
                     handleCardContentChange={handleCardContentChange}
                 />
-            }
+            )}
         </div>
-
     );
 };
 

@@ -1,6 +1,8 @@
 import React, {useEffect, useRef, useState} from "react";
 import {useNavigate} from "react-router-dom";
 import axios from "../../api/axiosInstance";
+import NewSheetCut from "../poslugi/NewSheetCut";
+import {Spinner} from "react-bootstrap";
 
 // Компонент для списка загруженных изображений
 function ImageList({ images, onRemove }) {
@@ -27,7 +29,8 @@ function ImageList({ images, onRemove }) {
                         width: "100%",
                         padding: "0.5rem",
                         borderBottom: "1px solid #ccc",
-                        position: "relative"
+                        position: "relative",
+                        cursor: "pointer"
                     }}
                 >
                     <img
@@ -43,7 +46,7 @@ function ImageList({ images, onRemove }) {
                         onClick={() => onRemove(img.id)}
                         style={{
                             position: "absolute",
-                            right: "-10%",
+                            right: "-8%",
                             top: "50%",
                             transform: "translateY(-50%)",
                             backgroundColor: "transparent",
@@ -83,15 +86,12 @@ export default function CardInfo({openCardData, setOpenCardInfo, setServerData, 
         }, 300); // После завершения анимации скрываем модальное окно
     }
 
-    // Добавляем загруженные изображения в массив
-    const handleUpload = (newImages) => {
-        setImages((prev) => [...prev, ...newImages]);
-    };
-
     // Удаляем изображение из массива по id
     const handleRemoveImage = (id) => {
         const fetchData = async () => {
             try {
+                setLoad(true)
+                setError(null)
                 const res = await axios.delete(`/trello/${id}/contentPhoto`);
                 console.log(res.data);
                 if(res.status === 200){
@@ -106,11 +106,15 @@ export default function CardInfo({openCardData, setOpenCardInfo, setServerData, 
                         }))
                     );
                     setImages((prev) => prev.filter((img) => img.id !== id));
+                    setLoad(false)
                 } else {
-
+                    setLoad(false)
+                    setError("Не пришло 200.. но и не ошибка. это странно!")
                 }
             } catch (error) {
                 console.error('Помилка завантаження фото:', error);
+                setLoad(false)
+                setError(error.message)
             }
         };
         fetchData();
@@ -122,6 +126,8 @@ export default function CardInfo({openCardData, setOpenCardInfo, setServerData, 
 
         const fetchData = async () => {
             try {
+                setLoad(true)
+                setError(null)
                 const res = await axios.post(`/trello/${cardId}/contentPhoto`, formData, {
                     headers: {
                         'Content-Type': 'multipart/form-data',
@@ -139,8 +145,11 @@ export default function CardInfo({openCardData, setOpenCardInfo, setServerData, 
                     }))
                 );
                 setImages((prev) => [...prev, res.data]);
+                setLoad(false)
             } catch (error) {
                 console.error('Помилка завантаження фото:', error);
+                setLoad(false)
+                setError(error.message)
             }
         };
         fetchData();
@@ -244,6 +253,16 @@ export default function CardInfo({openCardData, setOpenCardInfo, setServerData, 
                             >
                             </div>
                         </div>
+                        {load &&
+                            <div>
+                                <Spinner animation="border" variant="danger" size="sm"/>
+                            </div>
+                        }
+                        {error &&
+                            <div>
+                                {error}
+                            </div>
+                        }
                         <ImageList images={images} onRemove={handleRemoveImage} />
                         <div
 
