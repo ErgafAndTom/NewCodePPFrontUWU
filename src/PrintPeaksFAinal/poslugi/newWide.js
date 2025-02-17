@@ -283,39 +283,59 @@ const NewWide = ({thisOrder, newThisOrder, setNewThisOrder, selectedThings2, set
                                     </div>
                                 ) : (
                                     <div className="d-flex justify-content-between pricesBlockContainer">
-                                        <div style={{border: "0px black solid"}}>
-                                            <div>
-                                                {/*1 вариант:*/}
-                                                {/*<div className="adminFont fontInfoForPricing">*/}
-                                                {/*    {size.x} мм*/}
-                                                {/*    * {pricesThis.operantForChangeMM2ToM2} = {pricesThis.sizeXM2}м*/}
-                                                {/*</div>*/}
-                                                {/*<div className="adminFont fontInfoForPricing">*/}
-                                                {/*    {size.y}мм*/}
-                                                {/*    * {pricesThis.operantForChangeMM2ToM2} = {pricesThis.sizeYM2}м*/}
-                                                {/*</div>*/}
-                                                <div className=" fontInfoForPricing">
-                                                    {pricesThis.sizeXM2} м
-                                                    * {pricesThis.sizeYM2} м = {pricesThis.totalSizeInM2One} м²
+                                        <div className="">
+                                            {/* Друк (рахується за sheetCount) */}
+                                            <div className="fontInfoForPricing">
+                                                Друк: {parseFloat(pricesThis.priceDrukPerSheet).toFixed(2)} грн * {pricesThis.sheetCount} м2 = {(parseFloat(pricesThis.priceDrukPerSheet) * pricesThis.sheetCount).toFixed(2)} грн
+                                            </div>
+
+                                            {/* Матеріали (папір, рахуються за sheetCount) */}
+                                            <div className="fontInfoForPricing">
+                                                Матеріали: {parseFloat(pricesThis.pricePaperPerSheet).toFixed(2)} грн * {pricesThis.sheetCount} м2 = {(parseFloat(pricesThis.pricePaperPerSheet) * pricesThis.sheetCount).toFixed(2)} грн
+                                            </div>
+
+                                            {/* Ламінація (рахується за sheetCount) */}
+                                            {/*<div className="fontInfoForPricing">*/}
+                                            {/*    Ламінація: {parseFloat(pricesThis.priceLaminationPerSheet).toFixed(2)} грн * {pricesThis.sheetCount} м2 = {(parseFloat(pricesThis.priceLaminationPerSheet) * pricesThis.sheetCount).toFixed(2)} грн*/}
+                                            {/*</div>*/}
+
+                                            {/* Додаткова послуга "Порізка" */}
+                                            {pricesThis.porizka !== 0 && (
+                                                <div className="fontInfoForPricing">
+                                                    Порізка: {parseFloat(pricesThis.porizka).toFixed(2)} грн * {pricesThis.sheetCount} шт = {(parseFloat(pricesThis.porizka) * pricesThis.sheetCount).toFixed(2)} грн
                                                 </div>
-                                            </div>
-                                            <div className="fontInfoForPricing">
-                                                {pricesThis.totalSizeInM2One} м² * {pricesThis.skolko} шт
-                                                = {pricesThis.allTotalSizeInM2} м² - {pricesThis.skolko} шт
-                                            </div>
-                                            <div className="fontInfoForPricing">
-                                                Друк {pricesThis.oneWideDrukPrice} грн * {pricesThis.skolko} шт
-                                                = {pricesThis.totalWideDrukPrice} грн
-                                            </div>
-                                            <div className="fontInfoForPricing">
-                                                Матеріали: {pricesThis.oneWideMaterialPrice} грн
-                                                * {pricesThis.skolko} шт
-                                                = {pricesThis.totalWideMaterialPrice} грн
-                                            </div>
+                                            )}
+
+                                            {/* Підсумкова вартість замовлення */}
                                             <div className="fontInfoForPricing1">
-                                                Загалом: {pricesThis.price}грн.
+                                                Загалом: {parseFloat(pricesThis.price).toFixed(2)} грн
                                             </div>
+
+                                            {/* Інформація про кількість аркушів */}
+                                            {/*<div className="fontInfoForPricing">*/}
+                                            {/*    - З одного аркуша {pricesThis.listsFromBd} можливо зробити {pricesThis.sheetsPerUnit} виробів*/}
+                                            {/*</div>*/}
+                                            {/*<div className="fontInfoForPricing">*/}
+                                            {/*    - Затрачено {pricesThis.sheetCount} аркушів {pricesThis.listsFromBd}*/}
+                                            {/*</div>*/}
+                                            {/*<div className="fontInfoForPricing">*/}
+                                            {/*    Вартість 1 аркуша {pricesThis.listsFromBd}: {parseFloat(pricesThis.unitSheetPrice).toFixed(2)} грн*/}
+                                            {/*</div>*/}
+
+                                            {/* Розрахунок ціни за виріб (зі всіма допами) */}
+                                            <div className="fontInfoForPricing1">
+                                                Ціна за виріб: {parseFloat(pricesThis.priceForItemWithExtras).toFixed(2)} грн
+                                            </div>
+
+                                            {/* Додатковий розрахунок ціни за лист */}
+                                            {/*<div className="fontInfoForPricing">*/}
+                                            {/*    Ціна за аркуш (зі всіма допами): {parseFloat(pricesThis.priceForSheetWithExtras).toFixed(2)} грн*/}
+                                            {/*</div>*/}
+                                            {/*<div className="fontInfoForPricing">*/}
+                                            {/*    Ціна за аркуш (лише матеріал та друк): {parseFloat(pricesThis.priceForSheetMaterialPrint).toFixed(2)} грн*/}
+                                            {/*</div>*/}
                                         </div>
+
                                         <img
                                             className="versant80-img-icon"
                                             alt="sssss"

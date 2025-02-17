@@ -350,27 +350,27 @@ const NewSheetCutBw = ({thisOrder, newThisOrder, setNewThisOrder, selectedThings
 
                                             {/* Інформація про кількість аркушів */}
                                             <div className="fontInfoForPricing">
-                                                - З одного аркуша A3 можливо зробити {pricesThis.sheetsPerUnit} виробів
+                                                - З одного аркуша {pricesThis.listsFromBd} можливо зробити {pricesThis.sheetsPerUnit} виробів
                                             </div>
                                             <div className="fontInfoForPricing">
-                                                - Затрачено {pricesThis.sheetCount} аркушів (SR A3)
+                                                - Затрачено {pricesThis.sheetCount} аркушів {pricesThis.listsFromBd}
                                             </div>
-                                            <div className="fontInfoForPricing1">
-                                                Вартість 1 аркуша: {pricesThis.unitSheetPrice.toFixed(2)} грн
+                                            <div className="fontInfoForPricing">
+                                                Вартість 1 аркуша {pricesThis.listsFromBd}: {pricesThis.unitSheetPrice.toFixed(2)} грн
                                             </div>
 
                                             {/* Розрахунок ціни за виріб (зі всіма допами) */}
                                             <div className="fontInfoForPricing1">
-                                                Загалом: {(pricesThis.priceForItemWithExtras * count).toFixed(2)} грн
-                                                (ціна за виріб: {pricesThis.priceForItemWithExtras.toFixed(2)} грн * {count} шт)
+                                                {/*Загалом: {(pricesThis.priceForItemWithExtras * count).toFixed(2)} грн*/}
+                                                Ціна за виріб: {pricesThis.priceForItemWithExtras.toFixed(2)} грн
                                             </div>
 
                                             {/* Додатковий розрахунок ціни за лист */}
-                                            <div className="fontInfoForPricing1">
-                                                Ціна за лист (зі всіма допами): {pricesThis.priceForSheetWithExtras.toFixed(2)} грн
+                                            <div className="fontInfoForPricing">
+                                                Ціна за аркуш (зі всіма допами): {pricesThis.priceForSheetWithExtras.toFixed(2)} грн
                                             </div>
-                                            <div className="fontInfoForPricing1">
-                                                Ціна за лист (лише матеріал та друк): {pricesThis.priceForSheetMaterialPrint.toFixed(2)} грн
+                                            <div className="fontInfoForPricing">
+                                                Ціна за аркуш (лише матеріал та друк): {pricesThis.priceForSheetMaterialPrint.toFixed(2)} грн
                                             </div>
                                         </div>
 
