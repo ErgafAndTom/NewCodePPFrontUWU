@@ -5,7 +5,8 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="7e58169f-d1e8-4cb2-8753-447dd0b39044" name="Changes" comment="ddd">
-      <change beforePath="$PROJECT_DIR$/src/components/Calendar.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Calendar.jsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/PrintPeaksFAinal/poslugi/NewSheetCut.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/PrintPeaksFAinal/poslugi/NewSheetCut.jsx" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -83,7 +84,7 @@
       <recent name="C:\Users\AIATO\Desktop\CodePPNew\frontpp\src\PrintPeaksFAinal\poslugi\newnomodals" />
     </key>
   </component>
-  <component name="RunManager" selected="npm.build">
+  <component name="RunManager" selected="npm.start">
     <configuration name="build" type="js.build_tools.npm" temporary="true" nameIsGenerated="true">
       <package-json value="$PROJECT_DIR$/package.json" />
       <command value="run" />
@@ -111,15 +112,15 @@
     </list>
     <recent_temporary>
       <list>
-        <item itemvalue="npm.build" />
         <item itemvalue="npm.start" />
+        <item itemvalue="npm.build" />
       </list>
     </recent_temporary>
   </component>
   <component name="SharedIndexes">
     <attachedChunks>
       <set>
-        <option value="bundled-js-predefined-d6986cc7102b-822845ee3bb5-JavaScript-WS-243.23654.157" />
+        <option value="bundled-js-predefined-d6986cc7102b-76f8388c3a79-JavaScript-WS-243.24978.60" />
       </set>
     </attachedChunks>
   </component>
@@ -168,6 +169,9 @@
       <workItem from="1739387061658" duration="22497000" />
       <workItem from="1739422715167" duration="25000" />
       <workItem from="1739712960836" duration="30000" />
+      <workItem from="1739790270129" duration="6000" />
+      <workItem from="1739790283000" duration="2136000" />
+      <workItem from="1739816374142" duration="3834000" />
     </task>
     <task id="LOCAL-00003" summary="ddd">
       <option name="closed" value="true" />

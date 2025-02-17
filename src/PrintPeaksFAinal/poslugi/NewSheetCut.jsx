@@ -352,52 +352,123 @@ const NewSheetCut = ({
                                     </div>
                                 ) : (
                                     <div className="d-flex justify-content-between pricesBlockContainer">
+                                        {/*<div className="">*/}
+
+                                        {/*    <div className="fontInfoForPricing">*/}
+                                        {/*        Друк: {pricesThis.priceForDrukThisUnit.toFixed(2)} грн * {pricesThis.skolko} шт*/}
+                                        {/*        = {(pricesThis.priceForDrukThisUnit * pricesThis.skolko).toFixed(2)} грн*/}
+                                        {/*    </div>*/}
+                                        {/*    <div className="fontInfoForPricing">*/}
+                                        {/*        Матеріали: {pricesThis.priceForThisUnitOfPapper.toFixed(2)}грн.*/}
+                                        {/*        * {pricesThis.skolko} шт*/}
+                                        {/*        = {(pricesThis.priceForThisUnitOfPapper * pricesThis.skolko).toFixed(2)}грн.*/}
+                                        {/*    </div>*/}
+
+                                        {/*    <div className="fontInfoForPricing">*/}
+                                        {/*        Ламінація: {pricesThis.priceForThisUnitOfLamination} грн*/}
+                                        {/*        * {pricesThis.skolko} шт*/}
+                                        {/*        = {pricesThis.priceForThisAllUnitsOfLamination} грн*/}
+                                        {/*    </div>*/}
+                                        {/*    <div className="fontInfoForPricing">*/}
+                                        {/*        Згинання {pricesThis.priceForThisUnitOfBig} грн * {count} шт*/}
+                                        {/*        = {pricesThis.priceForAllUnitsOfBig} грн*/}
+                                        {/*    </div>*/}
+                                        {/*    <div className=" fontInfoForPricing">*/}
+                                        {/*        Скруглення кутів: {pricesThis.priceForThisUnitOfCute} грн * {count} шт*/}
+                                        {/*        = {pricesThis.priceForAllUnitsOfCute} грн*/}
+                                        {/*    </div>*/}
+                                        {/*    <div className="fontInfoForPricing">*/}
+                                        {/*        Свердління отворів: {pricesThis.priceForThisUnitOfHoles} грн * {count} шт*/}
+                                        {/*        = {pricesThis.priceForAllUnitsOfHoles} грн*/}
+                                        {/*    </div>*/}
+                                        {/*    {pricesThis.porizka !== 0 &&*/}
+                                        {/*        <div className="fontInfoForPricing">*/}
+                                        {/*            Порізка: {pricesThis.porizka.toFixed(2)} грн * {count} шт*/}
+                                        {/*            = {pricesThis.porizka.toFixed(2)*count} грн*/}
+                                        {/*        </div>*/}
+                                        {/*    }*/}
+                                        {/*    <div className="fontInfoForPricing1">*/}
+                                        {/*        Загалом: {pricesThis.price} грн*/}
+                                        {/*    </div>*/}
+                                        {/*    <div className="fontInfoForPricing">*/}
+                                        {/*        - З одного аркуша A3 можливо*/}
+                                        {/*        зробити {pricesThis.skolkoListovNaOdin} виробів*/}
+                                        {/*    </div>*/}
+                                        {/*    <div className="fontInfoForPricing">*/}
+                                        {/*        - Затрачено {pricesThis.skolko} аркушів (SR A3)*/}
+                                        {/*    </div>*/}
+                                        {/*    <div className="fontInfoForPricing1">*/}
+                                        {/*        Вартість 1 аркуша: {pricesThis.priceForThisUnit} грн*/}
+                                        {/*    </div>*/}
+                                        {/*</div>*/}
+
+
+
                                         <div className="">
-
+                                            {/* Друк (рахується за sheetCount) */}
                                             <div className="fontInfoForPricing">
-                                                Друк: {pricesThis.priceForDrukThisUnit.toFixed(2)} грн * {pricesThis.skolko} шт
-                                                = {(pricesThis.priceForDrukThisUnit * pricesThis.skolko).toFixed(2)} грн
-                                            </div>
-                                            <div className="fontInfoForPricing">
-                                                Матеріали: {pricesThis.priceForThisUnitOfPapper.toFixed(2)}грн.
-                                                * {pricesThis.skolko} шт
-                                                = {(pricesThis.priceForThisUnitOfPapper * pricesThis.skolko).toFixed(2)}грн.
+                                                Друк: {pricesThis.priceDrukPerSheet.toFixed(2)} грн * {pricesThis.sheetCount} шт = {(pricesThis.priceDrukPerSheet * pricesThis.sheetCount).toFixed(2)} грн
                                             </div>
 
+                                            {/* Матеріали (папір, рахуються за sheetCount) */}
                                             <div className="fontInfoForPricing">
-                                                Ламінація: {pricesThis.priceForThisUnitOfLamination} грн
-                                                * {pricesThis.skolko} шт
-                                                = {pricesThis.priceForThisAllUnitsOfLamination} грн
+                                                Матеріали: {pricesThis.pricePaperPerSheet.toFixed(2)} грн * {pricesThis.sheetCount} шт = {(pricesThis.pricePaperPerSheet * pricesThis.sheetCount).toFixed(2)} грн
+                                            </div>
+
+                                            {/* Ламінація (рахується за sheetCount) */}
+                                            <div className="fontInfoForPricing">
+                                                Ламінація: {pricesThis.priceLaminationPerSheet.toFixed(2)} грн * {pricesThis.sheetCount} шт = {(pricesThis.priceLaminationPerSheet * pricesThis.sheetCount).toFixed(2)} грн
+                                            </div>
+
+                                            {/* Постпресові операції (рахуються за body.count) */}
+                                            <div className="fontInfoForPricing">
+                                                Згинання: {pricesThis.big.pricePerUnit.toFixed(2)} грн * {pricesThis.big.count} шт = {pricesThis.big.totalPrice.toFixed(2)} грн
                                             </div>
                                             <div className="fontInfoForPricing">
-                                                Згинання {pricesThis.priceForThisUnitOfBig} грн * {count} шт
-                                                = {pricesThis.priceForAllUnitsOfBig} грн
-                                            </div>
-                                            <div className=" fontInfoForPricing">
-                                                Скруглення кутів: {pricesThis.priceForThisUnitOfCute} грн * {count} шт
-                                                = {pricesThis.priceForAllUnitsOfCute} грн
+                                                Скруглення кутів: {pricesThis.cute.pricePerUnit.toFixed(2)} грн * {pricesThis.cute.count} шт = {pricesThis.cute.totalPrice.toFixed(2)} грн
                                             </div>
                                             <div className="fontInfoForPricing">
-                                                Свердління отворів: {pricesThis.priceForThisUnitOfHoles} грн * {count} шт
-                                                = {pricesThis.priceForAllUnitsOfHoles} грн
+                                                Свердління отворів: {pricesThis.holes.pricePerUnit.toFixed(2)} грн * {pricesThis.holes.count} шт = {pricesThis.holes.totalPrice.toFixed(2)} грн
                                             </div>
-                                            {pricesThis.porizka !== 0 &&
+
+                                            {/* Додаткова послуга "Порізка" */}
+                                            {pricesThis.porizka !== 0 && (
                                                 <div className="fontInfoForPricing">
-                                                    Порізка: {pricesThis.porizka.toFixed(2)} грн * {count} шт
-                                                    = {pricesThis.porizka.toFixed(2)*count} грн
+                                                    Порізка: {pricesThis.porizka.toFixed(2)} грн * {pricesThis.sheetCount} шт = {(pricesThis.porizka * pricesThis.sheetCount).toFixed(2)} грн
                                                 </div>
-                                            }
+                                            )}
+
+                                            {/* Підсумкова вартість замовлення */}
                                             <div className="fontInfoForPricing1">
-                                                Загалом: {pricesThis.price} грн
+                                                Загалом: {pricesThis.price.toFixed(2)} грн
+                                            </div>
+
+                                            {/* Інформація про кількість аркушів */}
+                                            <div className="fontInfoForPricing">
+                                                - З одного аркуша A3 можливо зробити {pricesThis.sheetsPerUnit} виробів
                                             </div>
                                             <div className="fontInfoForPricing">
-                                                - З одного аркуша A3 можливо
-                                                зробити {pricesThis.skolkoListovNaOdin} виробів
+                                                - Затрачено {pricesThis.sheetCount} аркушів (SR A3)
                                             </div>
-                                            <div className="fontInfoForPricing">
-                                                - Затрачено {pricesThis.skolko} аркушів (SR A3)
+                                            <div className="fontInfoForPricing1">
+                                                Вартість 1 аркуша: {pricesThis.unitSheetPrice.toFixed(2)} грн
+                                            </div>
+
+                                            {/* Розрахунок ціни за виріб (зі всіма допами) */}
+                                            <div className="fontInfoForPricing1">
+                                                Загалом: {(pricesThis.priceForItemWithExtras * count).toFixed(2)} грн
+                                                (ціна за виріб: {pricesThis.priceForItemWithExtras.toFixed(2)} грн * {count} шт)
+                                            </div>
+
+                                            {/* Додатковий розрахунок ціни за лист */}
+                                            <div className="fontInfoForPricing1">
+                                                Ціна за лист (зі всіма допами): {pricesThis.priceForSheetWithExtras.toFixed(2)} грн
+                                            </div>
+                                            <div className="fontInfoForPricing1">
+                                                Ціна за лист (лише матеріал та друк): {pricesThis.priceForSheetMaterialPrint.toFixed(2)} грн
                                             </div>
                                         </div>
+
 
 
                                         <img
