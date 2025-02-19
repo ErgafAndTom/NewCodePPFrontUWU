@@ -4,7 +4,7 @@ const ProductItem = ({ product }) => {
     return (
         <div className="product-item">
             <h3>{product.name}</h3>
-            <p>{product.description}</p>
+            <li>{product.description}</li>
         </div>
     );
 }

@@ -134,7 +134,7 @@ const NewChartMy2 = ({data}) => {
 
     return (
         <div>
-            <p>No data.</p>
+            <li>No data.</li>
         </div>
     )
 };

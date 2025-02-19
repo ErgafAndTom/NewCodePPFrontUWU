@@ -16,9 +16,9 @@ export function PdfReact({url}) {
             <Document file={url} onLoadSuccess={onDocumentLoadSuccess}>
                 <Page pageNumber={pageNumber} />
             </Document>
-            <p>
+            <li>
                 Page {pageNumber} of {numPages}
-            </p>
+            </li>
         </div>
     );
 }

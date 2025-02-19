@@ -197,12 +197,12 @@ const PrintPeaks = () => {
         <div className="cpmas8">Кольоровий друк на промисловій цифровій машині:</div>
         <a className="print-peaks-logo6" id="Logo">
           <b className="print-peaks-logo7">
-            <p className="print8">PRINT</p>
-            <p className="print8">PEAKS</p>
-            <p className="print8">
+            <li className="print8">PRINT</li>
+            <li className="print8">PEAKS</li>
+            <li className="print8">
               <span>ERP</span>
               <span className="span107">2.24</span>
-            </p>
+            </li>
           </b>
         </a>
         <div className="quantity10" id="Kilkist">

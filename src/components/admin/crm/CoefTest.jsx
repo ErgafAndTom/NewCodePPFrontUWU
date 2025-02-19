@@ -68,7 +68,7 @@ const CoefTest = () => {
                     <label>-% зниження єффекту коєфіцієнта за одиницю кількості</label>
                 </div>
             </div>
-            <p>Total Price: {totalPrice}</p>
+            <li>Total Price: {totalPrice}</li>
 
             <div>
                 <NewChartMy2 data={dataForCharts}/>

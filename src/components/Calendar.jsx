@@ -143,12 +143,12 @@ const App = () => {
                 <div className="font-bold text-lg mb-2 adminFont">{"Замовлення "}</div>
                 <p className="adminFont">
                     <div>
-                        <p>Загальна кількість замовлень: {statistics.total_orders}</p>
-                        <p>Загальна сума всіх замовлень: {statistics.total_sum.toFixed(2)}</p>
-                        <p>Сума оплачених замовлень: {statistics.paid_sum.toFixed(2)}</p>
-                        <p>Сума неоплачених замовлень: {statistics.unpaid_sum.toFixed(2)}</p>
-                        <p>Кількість неоплачених замовлень: {statistics.unpaid_count}</p>
-                        <p>Кількість оплачених замовлень: {statistics.paidCount}</p>
+                        <li>Загальна кількість замовлень: {statistics.total_orders}</li>
+                        <li>Загальна сума всіх замовлень: {statistics.total_sum.toFixed(2)}</li>
+                        <li>Сума оплачених замовлень: {statistics.paid_sum.toFixed(2)}</li>
+                        <li>Сума неоплачених замовлень: {statistics.unpaid_sum.toFixed(2)}</li>
+                        <li>Кількість неоплачених замовлень: {statistics.unpaid_count}</li>
+                        <li>Кількість оплачених замовлень: {statistics.paidCount}</li>
                     </div>
                 </p>
             </div>

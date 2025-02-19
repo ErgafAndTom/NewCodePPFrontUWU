@@ -7,7 +7,7 @@ import {Spinner} from "react-bootstrap";
 // Компонент для списка загруженных изображений
 function ImageList({ images, onRemove }) {
     if (images.length === 0) {
-        return <p>Нет загруженных изображений</p>;
+        return <li>Нет загруженных изображений</li>;
     }
 
     return (

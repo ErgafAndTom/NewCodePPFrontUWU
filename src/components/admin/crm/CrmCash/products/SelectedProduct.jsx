@@ -63,7 +63,7 @@ function SelectedProduct({name, data, setData, item, index, isLoad}) {
                     )}
                 </Card.Title>
                 <Card.Text className="adminFont">
-                    <p>
+                    <li>
                         {item.newField1 === "1" ? (
                             <div className="d-flex">
                                 <Form.Group className="d-flex">
@@ -120,7 +120,7 @@ function SelectedProduct({name, data, setData, item, index, isLoad}) {
 
                         {/*x={item.newField2}*/}
                         {/*y={item.newField3}*/}
-                    </p>
+                    </li>
                     {item.productunits.map((unitItem, iter) => (
                         <div key={unitItem.id} className="d-flex adminFontTable border-1">
                             <InputGroup className="adminFontTable">
@@ -154,7 +154,7 @@ function SelectedProduct({name, data, setData, item, index, isLoad}) {
                                 {/*    disabled*/}
                                 {/*/>*/}
                             </InputGroup>
-                            <p>
+                            <li>
                                 {isLoad ? (
                                     <div className="adminFontTable">
                                         Ціна за це: ...
@@ -162,8 +162,8 @@ function SelectedProduct({name, data, setData, item, index, isLoad}) {
                                 ) : (
                                     <div className="adminFontTable">Ціна за це: {unitItem.priceForThis}</div>
                                 )}
-                            </p>
-                            <p>
+                            </li>
+                            <li>
                                 {isLoad ? (
                                     <div className="adminFontTable">
                                         за одиницю цієї хні: ...
@@ -171,7 +171,7 @@ function SelectedProduct({name, data, setData, item, index, isLoad}) {
                                 ) : (
                                     <div className="adminFontTable">за одиницю цієї хні: {unitItem.priceForThis / unitItem.quantity}</div>
                                 )}
-                            </p>
+                            </li>
                         </div>
                     ))}
                 </Card.Text>

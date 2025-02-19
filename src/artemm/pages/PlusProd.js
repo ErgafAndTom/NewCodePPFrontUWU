@@ -12,29 +12,29 @@ const PlusProd = () => {
         <div className="logo3">
           <div className="base282" />
           <div className="logo-text">
-            <p className="p49">Завантажити</p>
-            <p className="p49">лого</p>
+            <li className="p49">Завантажити</li>
+            <li className="p49">лого</li>
           </div>
         </div>
         <div className="icon178">
           <div className="base282" />
           <div className="icon-text">
-            <p className="p49">Вибрати лого</p>
-            <p className="p49">з бази</p>
+            <li className="p49">Вибрати лого</li>
+            <li className="p49">з бази</li>
           </div>
         </div>
         <div className="icon179">
           <div className="base284" />
           <div className="icon-text1">
-            <p className="p49">Додати до</p>
-            <p className="p49">загальних пресетів</p>
+            <li className="p49">Додати до</li>
+            <li className="p49">загальних пресетів</li>
           </div>
         </div>
         <div className="icon180">
           <div className="base284" />
           <div className="icon-text2">
-            <p className="p49">Додати до</p>
-            <p className="p49">пресетів клієнта</p>
+            <li className="p49">Додати до</li>
+            <li className="p49">пресетів клієнта</li>
           </div>
         </div>
       </div>

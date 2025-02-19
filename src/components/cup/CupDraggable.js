@@ -144,7 +144,7 @@ const CupDraggable = () => {
                 {compositeImage ? (
                     <img src={compositeImage.src} alt="Composite" />
                 ) : (
-                    <p>this test an img:</p>
+                    <li>this test an img:</li>
                 )}
             </div>
         </div>

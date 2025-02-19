@@ -689,12 +689,12 @@ const Artboard = () => {
         <img className="states-icon" alt="" src="/states.svg" />
         <div className="logo1">
           <b className="print-peaks-erp2248">
-            <p className="print9">PRINT</p>
-            <p className="print9">PEAKS</p>
-            <p className="print9">
+            <li className="print9">PRINT</li>
+            <li className="print9">PEAKS</li>
+            <li className="print9">
               <span>ERP</span>
               <span className="span226">2.24</span>
-            </p>
+            </li>
           </b>
         </div>
         <div className="div628">
@@ -1103,8 +1103,8 @@ const Artboard = () => {
           <div className="div702">
             <div className="div703" />
             <div className="text74">
-              <p className="print9">Взяти</p>
-              <p className="print9">в роботу</p>
+              <li className="print9">Взяти</li>
+              <li className="print9">в роботу</li>
             </div>
           </div>
           <div className="div704">
@@ -1175,8 +1175,8 @@ const Artboard = () => {
           <div className="div732">
             <div className="field-button18" />
             <div className="div733">
-              <p className="print9">Пилипенко</p>
-              <p className="print9">Артем Юрійович</p>
+              <li className="print9">Пилипенко</li>
+              <li className="print9">Артем Юрійович</li>
             </div>
           </div>
           <div className="div734">
@@ -1248,12 +1248,12 @@ const Artboard = () => {
         <img className="expanding-cart-icon" alt="" src="/expanding-cart.svg" />
         <div className="logo2">
           <b className="print-peaks-erp2248">
-            <p className="print9">PRINT</p>
-            <p className="print9">PEAKS</p>
-            <p className="print9">
+            <li className="print9">PRINT</li>
+            <li className="print9">PEAKS</li>
+            <li className="print9">
               <span>ERP</span>
               <span className="span226">2.24</span>
-            </p>
+            </li>
           </b>
         </div>
         <div className="div744">
@@ -1472,14 +1472,14 @@ const Artboard = () => {
               src="/shoppingcartarrowup1.svg"
             />
             <div className="div800">
-              <p className="print9">
+              <li className="print9">
                 <span className="span235">Віддані</span>
                 <span className="span236">{`- `}</span>
-              </p>
-              <p className="print9">
+              </li>
+              <li className="print9">
                 <span className="span236">це замовлення яківже віддали</span>
                 {` `}
-              </p>
+              </li>
             </div>
           </div>
           <div className="div801">
@@ -1490,28 +1490,28 @@ const Artboard = () => {
               src="/flagfinishbo1.svg"
             />
             <div className="div802">
-              <p className="print9">
+              <li className="print9">
                 <span className="span235">Виконані</span>
                 <span>{`- `}</span>
-              </p>
-              <p className="print9">
+              </li>
+              <li className="print9">
                 <span>це замовлення які чекають на тримання</span>
                 {` `}
-              </p>
+              </li>
             </div>
           </div>
           <div className="div803">
             <img className="icon175" alt="" src="/-520.svg" />
             <img className="icon177" alt="" src="/-523.svg" />
             <div className="div804">
-              <p className="print9">
+              <li className="print9">
                 <span className="span239">Виробництво</span>
                 <span className="span240">{` - це ті замовлення які `}</span>
-              </p>
-              <p className="print9">
+              </li>
+              <li className="print9">
                 <span className="span240">ще друкуються</span>
                 {` `}
-              </p>
+              </li>
             </div>
           </div>
         </div>

@@ -19,22 +19,22 @@ function Profile() {
     };
 
     if (loading) {
-        return <p>Загрузка...</p>;
+        return <li>Загрузка...</li>;
     }
 
     if (error) {
-        return <p>Ошибка: {error}</p>;
+        return <li>Ошибка: {error}</li>;
     }
 
     if (!user) {
-        return <p>Пользователь не найден</p>;
+        return <li>Пользователь не найден</li>;
     }
 
     return (
         <div>
             <h2>Профиль пользователя</h2>
-            <p>Имя пользователя: {user.username}</p>
-            <p>Роль: {user.role}</p>
+            <li>Имя пользователя: {user.username}</li>
+            <li>Роль: {user.role}</li>
             <button onClick={handleLogout}>Выйти</button>
         </div>
     );

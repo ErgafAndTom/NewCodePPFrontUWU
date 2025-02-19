@@ -15,12 +15,12 @@ const BWPrint = () => {
       <div className="fon" />
       <div className="logo">
         <b className="print-peaks-erp2244">
-          <p className="print4">PRINT</p>
-          <p className="print4">PEAKS</p>
-          <p className="print4">
+          <li className="print4">PRINT</li>
+          <li className="print4">PEAKS</li>
+          <li className="print4">
             <span>ERP</span>
             <span className="span28">2.24</span>
-          </p>
+          </li>
         </b>
       </div>
       <div className="calc">

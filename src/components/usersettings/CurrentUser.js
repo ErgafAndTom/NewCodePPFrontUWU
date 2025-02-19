@@ -32,9 +32,9 @@ export const CurrentUser = () => {
     //                         <MDBCardHeader className='py-3'>
     //                             <MDBRow>
     //                                 <MDBCol size='6'>
-    //                                     <p className='text-uppercase small mb-2'>
+    //                                     <li className='text-uppercase small mb-2'>
     //                                         <strong>USERS</strong>
-    //                                     </p>
+    //                                     </li>
     //                                     <h5 className='mb-0'>
     //                                         <strong>23 456</strong>
     //                                         <small className='text-success ms-2'>

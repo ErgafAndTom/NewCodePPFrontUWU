@@ -723,7 +723,7 @@ s=3D"paginate_button last" aria-controls=3D"data-table" data-dt-idx=3D"7" t=
 abindex=3D"0" id=3D"data-table_last">=D0=9E=D1=81=D1=82=D0=B0=D0=BD=D0=BD=
 =D1=8F</a></div></div>
                             </div>
-                            <div class=3D"b-user-main__info"><p>=D0=97=D0=
+                            <div class=3D"b-user-main__info"><li>=D0=97=D0=
 =B2=D0=B5=D1=80=D0=BD=D1=96=D1=82=D1=8C =D1=83=D0=B2=D0=B0=D0=B3=D1=83, =D1=
 =89=D0=BE =D0=B7=D0=B0=D0=BC=D0=BE=D0=B2=D0=BB=D0=B5=D0=BD=D0=BD=D1=8F =D0=
 =B7'=D1=8F=D0=B2=D0=BB=D1=8F=D1=8E=D1=82=D1=8C=D1=81=D1=8F =D0=B2 =D1=96=D1=
@@ -737,9 +737,9 @@ abindex=3D"0" id=3D"data-table_last">=D0=9E=D1=81=D1=82=D0=B0=D0=BD=D0=BD=
  =D1=87=D0=B5=D1=80=D0=B7=D1=96, =D1=86=D0=B5 =D0=BE=D0=B7=D0=BD=D0=B0=D1=
 =87=D0=B0=D1=94, =D1=89=D0=BE =D0=B7=D0=B0=D0=BC=D0=BE=D0=B2=D0=BB=D0=B5=D0=
 =BD=D0=BD=D1=8F =D1=89=D0=B5 =D0=BD=D0=B5 =D0=BE=D0=B1=D1=80=D0=BE=D0=B1=D0=
-=BB=D0=B5=D0=BD=D0=B5!</p>
-<p></p>
-<p></p>
+=BB=D0=B5=D0=BD=D0=B5!</li>
+<li></li>
+<li></li>
 <div id=3D"gtx-trans" style=3D"position: absolute; left: 383px; top: 21.875=
 px;">
 <div class=3D"gtx-trans-icon"></div>
@@ -975,28 +975,28 @@ cons/social-02_h.svg" alt=3D"instagram"></a></li> =20
           <div class=3D"col-xs-12">
             <div itemscope=3D"" itemtype=3D"http://schema.org/LocalBusiness=
 ">
-<p itemprop=3D"name">=D0=A2=D0=B8=D0=BF=D0=BE=D0=B3=D1=80=D0=B0=D1=84=D1=96=
+<li itemprop=3D"name">=D0=A2=D0=B8=D0=BF=D0=BE=D0=B3=D1=80=D0=B0=D1=84=D1=96=
 =D1=8F =D0=BE=D0=BF=D0=B5=D1=80=D0=B0=D1=82=D0=B8=D0=B2=D0=BD=D0=BE=D0=B3=
 =D0=BE =D0=B4=D1=80=D1=83=D0=BA=D1=83 =D0=A2=D0=9E=D0=92 "=D0=A4=D0=B0=D1=
-=81=D1=82=D0=BF=D1=80=D0=B8=D0=BD=D1=82"</p>
+=81=D1=82=D0=BF=D1=80=D0=B8=D0=BD=D1=82"</li>
 <img itemprop=3D"image" src=3D"https://www.fastprint.ua/uk/assets/media/gen=
 eral/logo.png" alt=3D"" style=3D"display: none;">
 <div itemprop=3D"address" itemscope=3D"" itemtype=3D"http://schema.org/Post=
 alAddress">
-<p><span itemprop=3D"addressCountry">=D0=A3=D0=BA=D1=80=D0=B0=D1=97=D0=BD=
+<li><span itemprop=3D"addressCountry">=D0=A3=D0=BA=D1=80=D0=B0=D1=97=D0=BD=
 =D0=B0</span>, 01033, =D0=BC.<span itemprop=3D"addressLocality">&nbsp;=D0=
 =9A=D0=B8=D1=97=D0=B2</span>, =D0=B2=D1=83=D0=BB=D0=B8=D1=86=D1=8F&nbsp;<sp=
 an itemprop=3D"streetAddress">=D0=92=D0=B0=D1=81=D0=B8=D0=BB=D1=8F =D0=AF=
-=D0=BD=D0=B0, 3/5</span></p>
-<p><strong>=D0=A2=D0=B5=D0=BB=D0=B5=D1=84=D0=BE=D0=BD:</strong><a href=3D"t=
+=D0=BD=D0=B0, 3/5</span></li>
+<li><strong>=D0=A2=D0=B5=D0=BB=D0=B5=D1=84=D0=BE=D0=BD:</strong><a href=3D"t=
 el:+380445038826"> <span itemprop=3D"telephone">+38 044 5038826</span>,</a>=
 <a href=3D"tel:+380669914606"> <span itemprop=3D"telephone">+38 066 9914606=
 </span>,</a><a href=3D"tel:+380980458186"> <span itemprop=3D"telephone">+38=
  098 0458186</span>,</a><a href=3D"tel:+380935154019"> <span itemprop=3D"te=
 lephone">+38 093 5154019</span>,</a><a href=3D"tel:+380445038827"> <span it=
-emprop=3D"telephone">+38 044 5038827</span></a></p>
-<p><strong>E-mail:</strong> <a href=3D"mailto:fast@fastprint.ua"><span item=
-prop=3D"email">fast@fastprint.ua</span></a></p>
+emprop=3D"telephone">+38 044 5038827</span></a></li>
+<li><strong>E-mail:</strong> <a href=3D"mailto:fast@fastprint.ua"><span item=
+prop=3D"email">fast@fastprint.ua</span></a></li>
 </div>
 </div>
           </div>
@@ -1422,14 +1422,14 @@ ide ajax_form">
   <div class=3D"b-modal__title">=D0=97=D0=B0=D0=B4=D0=B0=D1=82=D0=B8 =D0=BF=
 =D0=B8=D1=82=D0=B0=D0=BD=D0=BD=D1=8F</div>
   <div class=3D"b-order-question">
-    <p class=3D"b-order-question__info">=D0=97=D0=B0=D0=B4=D0=B0=D0=B9=D1=
+    <li class=3D"b-order-question__info">=D0=97=D0=B0=D0=B4=D0=B0=D0=B9=D1=
 =82=D0=B5 =D0=BF=D0=B8=D1=82=D0=B0=D0=BD=D0=BD=D1=8F =D1=96 =D0=BC=D0=B8 =
 =D0=B7=D0=B2'=D1=8F=D0=B6=D0=B5=D0=BC=D0=BE=D1=81=D1=8F =D0=B7 =D0=B2=D0=B0=
 =D0=BC=D0=B8 =D0=BF=D1=80=D0=BE=D1=82=D1=8F=D0=B3=D0=BE=D0=BC 3-=D1=85 =D0=
 =B3=D0=BE=D0=B4=D0=B8=D0=BD.<br><a class=3D"popup-with-form" href=3D"https:=
 //www.fastprint.ua/uk/#order_question-2">=D0=90=D0=B1=D0=BE =D0=B7=D0=B2'=
 =D1=8F=D0=B6=D1=96=D1=82=D1=8C=D1=81=D1=8F =D0=B7=D1=80=D1=83=D1=87=D0=BD=
-=D0=B8=D0=BC =D1=81=D0=BF=D0=BE=D1=81=D0=BE=D0=B1=D0=BE=D0=BC &gt;</a></p>
+=D0=B8=D0=BC =D1=81=D0=BF=D0=BE=D1=81=D0=BE=D0=B1=D0=BE=D0=BC &gt;</a></li>
     <div class=3D"row">
       <div class=3D"col-md-4">
         <div class=3D"form-group select-user-input">
@@ -7988,7 +7988,7 @@ Content-Transfer-Encoding: quoted-printable
 Content-Location: https://www.fastprint.ua/uk/assets/media/general/ic-contact/ic-lifecell.svg
 
 <svg xmlns=3D"http://www.w3.org/2000/svg" viewBox=3D"0 0 16.7 16.82"><defs>=
-<style>.cls-1{fill:#f8d501;}</style></defs><title>ic-biline</title><g><g><p=
+<style>.cls-1{fill:#f8d501;}</style></defs><title>ic-biline</title><g><g><li=
 ath class=3D"cls-1" d=3D"M16.7,8.94a8.07,8.07,0,0,1-4.48,6.91,8.12,8.12,0,0=
 ,1-5.8.75c-.59-.13-.65-.21-.51-.77a9.69,9.69,0,0,1,5.17-6.73.39.39,0,0,1,.5=
 1.05,1.92,1.92,0,0,0,2.62-2.81,1.92,1.92,0,0,0-2.58-.15A1.66,1.66,0,0,0,11,=

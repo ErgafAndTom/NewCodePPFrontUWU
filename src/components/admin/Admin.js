@@ -9,6 +9,7 @@ import {TableOrders} from "./table/TableOrders";
 import {TableActions} from "./table/TableActions";
 import {CollapseAi} from "./CollapseAi";
 import Desktop from "./crm/Desktop/Desktop";
+import Vimogi from "./crm/Vimogi/Vimogi";
 // import './adminStylesCrm.css';
 import {TableStorage} from "../../PrintPeaksFAinal/Storage/TableStorage";
 import CrmCash from "./crm/CrmCash/CrmCash";

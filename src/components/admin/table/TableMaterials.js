@@ -106,9 +106,9 @@ export const TableMaterials = ({name}) => {
                                     <MDBCardHeader className='py-3'>
                                         <MDBRow>
                                             <MDBCol size='6'>
-                                                <p className='text-uppercase small mb-2'>
+                                                <li className='text-uppercase small mb-2'>
                                                     <strong>{name} {data.count}</strong>
-                                                </p>
+                                                </li>
                                                 <PaginationMy name={name}
                                                               data={data}
                                                               setData={setData}
@@ -177,9 +177,9 @@ export const TableMaterials = ({name}) => {
                                 <MDBCardHeader className='py-3'>
                                     <MDBRow>
                                         <MDBCol size='6'>
-                                            <p className='text-uppercase small mb-2'>
+                                            <li className='text-uppercase small mb-2'>
                                                 <strong>{name} {data.count}</strong>
-                                            </p>
+                                            </li>
                                             <PaginationMy name={name}
                                                           data={data}
                                                           setData={setData}

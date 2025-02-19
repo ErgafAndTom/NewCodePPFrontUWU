@@ -53,7 +53,7 @@ const Nav = () => {
                     <div className="logo">
                         <h1 className="Logo">
 
-                            <div className="gradient-text">PRINT PEAKS <span style={{fontSize: "0.7vw"}}>ERP 6.1</span></div>
+                            <div className="gradient-text">PRINT PEAKS <span style={{fontSize: "0.7vw"}}>ERP 7.14</span></div>
                             {/*<div style={{fontSize: "0.7vw"}}> ERP 6.1</div>*/}
                             {/*<Logo/>*/}
 
@@ -67,6 +67,7 @@ const Nav = () => {
                                 className={basicActive === "/Desktop" ? 'ButtonClients ButtonVimogia' : 'ButtonClients'} style={basicActive === "/Desktop" ? {background: "#FAB416"} : {}}>Головна
                             </button>
                         </Link>
+
                         {/*<button className="ButtonClients">Головна</button>*/}
                         <Link to="/Users" style={{textDecoration: 'none', margin: 'auto', padding: '0', background: 'transparent'}}>
                             <button
@@ -76,8 +77,9 @@ const Nav = () => {
                             >Клієнти
                             </button>
                         </Link>
+
                         {/*<button className="ButtonVimogi">Спілкування</button>*/}
-                        <button className="ButtonVimogi">Вимоги</button>
+                        {/*<button className="ButtonVimogi">Вимоги</button>*/}
                         <button className="ButtonVimogi">Постачальники</button>
                         <button className="ButtonVimogi">Підрядники</button>
                         <Link to="/Orders" style={{textDecoration: 'none', margin: 'auto', padding: '0', background: 'transparent'}}>
@@ -115,7 +117,7 @@ const Nav = () => {
                             <button
                                 className={basicActive === "/db2" ? 'ButtonVimogi ButtonVimogia' : 'ButtonVimogi'}
                                 style={basicActive === "/db2" ? {background: "#FAB416"} : {}}
-                            >/db2
+                            >База
                             </button>
                         </Link>
                         <Link disabled onClick={() => handleBasicClick('/Trello')} to="/Trello"
@@ -124,6 +126,22 @@ const Nav = () => {
                                 className={basicActive === "/Trello" ? 'ButtonVimogi ButtonVimogia' : 'ButtonVimogi'}
                                 style={basicActive === "/Trello" ? {background: "#FAB416"} : {}}
                             >Завдання
+                            </button>
+                        </Link>
+                        <Link disabled onClick={() => handleBasicClick('/TG')} to="/TG"
+                              style={{textDecoration: 'none', margin: 'auto', padding: '0', background: 'transparent'}}>
+                            <button
+                                className={basicActive === "/TG" ? 'ButtonVimogi ButtonVimogia' : 'ButtonVimogi'}
+                                style={basicActive === "/TG" ? {background: "#FAB416"} : {}}
+                            >Telegram
+                            </button>
+                        </Link>
+                        <Link to="/Vimogi" style={{textDecoration: 'none', margin: 'auto', padding: '0', background: 'transparent'}}>
+                            <button
+                                onClick={() => handleBasicClick('/Vimogi')}
+                                className={basicActive === "/Vimogi" ? 'ButtonVimogi ButtonVimogia' : 'ButtonVimogi'}
+                                style={basicActive === "/Vimogi" ? {background: "#FAB416"} : {}}
+                            >Вимоги
                             </button>
                         </Link>
                         {/*<Link disabled onClick={() => handleBasicClick('/Trello2')} to="/Trello2"*/}
@@ -152,7 +170,7 @@ const Nav = () => {
                         {/*<button className="ButtonVimogi">Обладнання</button>*/}
 
                         {currentUser ? (
-                            <div style={{marginLeft: "1vw"}}>
+                            <div style={{marginLeft: "0vw"}}>
                                 <MDBInputGroup tag="form" className='d-flex w-auto'>
                                     {currentUser.role === "admin" ? (
                                         <>

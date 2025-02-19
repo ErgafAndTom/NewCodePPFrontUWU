@@ -19,12 +19,12 @@ const Photo = () => {
       </div>
       <div className="photoa">
         <b className="print-peaks-erp2247">
-          <p className="print7">PRINT</p>
-          <p className="print7">PEAKS</p>
-          <p className="print7">
+          <li className="print7">PRINT</li>
+          <li className="print7">PEAKS</li>
+          <li className="print7">
             <span>ERP</span>
             <span className="span126">2.24</span>
-          </p>
+          </li>
         </b>
       </div>
       <button className="photoc" autoFocus={true}>
@@ -151,24 +151,24 @@ const Photo = () => {
         <div className="photof2" />
         <div className="photof3" />
         <div className="tverd-text4">
-          <p className="print7">
+          <li className="print7">
             <span className="span127">А3</span>
-          </p>
-          <p className="print7">
+          </li>
+          <li className="print7">
             <span className="span128">29,7 х 42</span>
             <span className="span129"> см</span>
-          </p>
+          </li>
         </div>
         <div className="div518">
           <div className="photof4" />
           <div className="tverd-text5">
-            <p className="print7">
+            <li className="print7">
               <span className="span127">А4</span>
-            </p>
-            <p className="print7">
+            </li>
+            <li className="print7">
               <span className="span128">21 х 29,7</span>
               <span className="span129"> см</span>
-            </p>
+            </li>
           </div>
         </div>
         <div className="div519">
@@ -179,23 +179,23 @@ const Photo = () => {
         <div className="div520">
           <div className="photof7" />
           <div className="tverd-text7">
-            <p className="print7">
+            <li className="print7">
               <span className="span127">А5</span>
-            </p>
-            <p className="print7">
+            </li>
+            <li className="print7">
               <span className="span128">14,8 х 21</span>
               <span className="span129"> см</span>
-            </p>
+            </li>
           </div>
         </div>
         <div className="tverd-text8">
-          <p className="print7">
+          <li className="print7">
             <span className="span127">А6</span>
-          </p>
-          <p className="print7">
+          </li>
+          <li className="print7">
             <span className="span128">10,5 х 14,8</span>
             <span className="span129"> см</span>
-          </p>
+          </li>
         </div>
         <div className="tverd-text9">
           <span className="span127">13 х 18 см</span>

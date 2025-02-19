@@ -16,12 +16,12 @@ const CPM = () => {
       <div className="r1575" />
       <div className="cpmc">
         <b className="print-peaks-logo">
-          <p className="print8">PRINT</p>
-          <p className="print8">PEAKS</p>
-          <p className="print8">
+          <li className="print8">PRINT</li>
+          <li className="print8">PEAKS</li>
+          <li className="print8">
             <span>ERP</span>
             <span className="span158">2.24</span>
-          </p>
+          </li>
         </b>
       </div>
       <button className="cpmd" autoFocus={true}>

@@ -64,7 +64,7 @@ function GTPErrorResponse({err = 'Напиши жарт про Нічого(в �
                     {load ? (
                         <Loader2/>
                     ) : (
-                        <p>{response}</p>
+                        <li>{response}</li>
                     )}
                     {/*<div>*/}
                     {/*    <textarea*/}
@@ -74,7 +74,7 @@ function GTPErrorResponse({err = 'Напиши жарт про Нічого(в �
                     {/*    />*/}
                     {/*    <button onClick={handleSubmit}>Надіслати</button>*/}
                     {/*    <div>*/}
-                    {/*        <p className="m-1 p-1">{response}</p>*/}
+                    {/*        <li className="m-1 p-1">{response}</li>*/}
                     {/*    </div>*/}
                     {/*</div>*/}
                 </Modal.Body>

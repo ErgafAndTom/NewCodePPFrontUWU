@@ -93,12 +93,12 @@ const OrderFull = ({ className = "", onClose }) => {
       </div>
       <div className="zakazg">
         <b className="print-peaks-erp2243">
-          <p className="tintoreto-gesso-sr">PRINT</p>
-          <p className="tintoreto-gesso-sr">PEAKS</p>
-          <p className="tintoreto-gesso-sr">
+          <li className="tintoreto-gesso-sr">PRINT</li>
+          <li className="tintoreto-gesso-sr">PEAKS</li>
+          <li className="tintoreto-gesso-sr">
             <span>ERP</span>
             <span className="span12">2.24</span>
-          </p>
+          </li>
         </b>
       </div>
       <div className="zakazh">
@@ -183,27 +183,27 @@ const OrderFull = ({ className = "", onClose }) => {
           />
         </div>
         <div className="sra3-container">
-          <p className="tintoreto-gesso-sr">
+          <li className="tintoreto-gesso-sr">
             Друк SrA3 на дизайнерському картоні 400 г/м2 +
-          </p>
-          <p className="tintoreto-gesso-sr">{`матова ламінація + 4 біги + плотерна порізка + `}</p>
-          <p className="tintoreto-gesso-sr">свердлення 2 дірок</p>
+          </li>
+          <li className="tintoreto-gesso-sr">{`матова ламінація + 4 біги + плотерна порізка + `}</li>
+          <li className="tintoreto-gesso-sr">свердлення 2 дірок</li>
         </div>
         <div className="xerox-versant-40-container">
-          <p className="tintoreto-gesso-sr">{`Xerox Versant 4+0 SR A3 200 шт(200х10=2000), `}</p>
-          <p className="tintoreto-gesso-sr">
+          <li className="tintoreto-gesso-sr">{`Xerox Versant 4+0 SR A3 200 шт(200х10=2000), `}</li>
+          <li className="tintoreto-gesso-sr">
             Tintoreto gesso SR A3 200 шт (200х10=2000),
-          </p>
-          <p className="tintoreto-gesso-sr">
+          </li>
+          <li className="tintoreto-gesso-sr">
             Матова ламінація SR A3 200 шт (200х50=10000),
-          </p>
-          <p className="tintoreto-gesso-sr">Біговка 800 шт (800х1=800),</p>
-          <p className="tintoreto-gesso-sr">
+          </li>
+          <li className="tintoreto-gesso-sr">Біговка 800 шт (800х1=800),</li>
+          <li className="tintoreto-gesso-sr">
             Свердлення дірок 400 шт (50х2=100),
-          </p>
-          <p className="tintoreto-gesso-sr">
+          </li>
+          <li className="tintoreto-gesso-sr">
             Плотерна порізка 100 шт (50*100=5000).
-          </p>
+          </li>
         </div>
         <div className="div353">4+0</div>
         <div className="div354">
@@ -260,16 +260,16 @@ const OrderFull = ({ className = "", onClose }) => {
           />
         </div>
         <div className="div365">
-          <p className="tintoreto-gesso-sr">{`Широкоформатний фотодрук на матовому `}</p>
-          <p className="tintoreto-gesso-sr">папері 180 г/м2</p>
+          <li className="tintoreto-gesso-sr">{`Широкоформатний фотодрук на матовому `}</li>
+          <li className="tintoreto-gesso-sr">папері 180 г/м2</li>
         </div>
         <div className="epson-p9000-40-container">
-          <p className="tintoreto-gesso-sr">
+          <li className="tintoreto-gesso-sr">
             <span className="epson-p9000-40">Epson P9000 4+0 2 м</span>
             <span className="span22">{`2 `}</span>
             <span>{`(2х350=700), `}</span>
-          </p>
-          <p className="tintoreto-gesso-sr">{`Матовий папір 180 г/м2 (2х350=700), `}</p>
+          </li>
+          <li className="tintoreto-gesso-sr">{`Матовий папір 180 г/м2 (2х350=700), `}</li>
         </div>
         <b className="b1">
           <span>{`1 400 `}</span>
@@ -323,27 +323,27 @@ const OrderFull = ({ className = "", onClose }) => {
           />
         </div>
         <div className="sra3-container1">
-          <p className="tintoreto-gesso-sr">
+          <li className="tintoreto-gesso-sr">
             Друк SrA3 на дизайнерському картоні 400 г/м2 +
-          </p>
-          <p className="tintoreto-gesso-sr">{`матова ламінація + 4 біги + плотерна порізка + `}</p>
-          <p className="tintoreto-gesso-sr">свердлення 2 дірок</p>
+          </li>
+          <li className="tintoreto-gesso-sr">{`матова ламінація + 4 біги + плотерна порізка + `}</li>
+          <li className="tintoreto-gesso-sr">свердлення 2 дірок</li>
         </div>
         <div className="xerox-versant-40-container1">
-          <p className="tintoreto-gesso-sr">{`Xerox Versant 4+0 SR A3 200 шт(200х10=2000), `}</p>
-          <p className="tintoreto-gesso-sr">
+          <li className="tintoreto-gesso-sr">{`Xerox Versant 4+0 SR A3 200 шт(200х10=2000), `}</li>
+          <li className="tintoreto-gesso-sr">
             Tintoreto gesso SR A3 200 шт (200х10=2000),
-          </p>
-          <p className="tintoreto-gesso-sr">
+          </li>
+          <li className="tintoreto-gesso-sr">
             Матова ламінація SR A3 200 шт (200х50=10000),
-          </p>
-          <p className="tintoreto-gesso-sr">Біговка 800 шт (800х1=800),</p>
-          <p className="tintoreto-gesso-sr">
+          </li>
+          <li className="tintoreto-gesso-sr">Біговка 800 шт (800х1=800),</li>
+          <li className="tintoreto-gesso-sr">
             Свердлення дірок 400 шт (50х2=100),
-          </p>
-          <p className="tintoreto-gesso-sr">
+          </li>
+          <li className="tintoreto-gesso-sr">
             Плотерна порізка 100 шт (50*100=5000).
-          </p>
+          </li>
         </div>
         <div className="div379">4+0</div>
         <div className="div380">

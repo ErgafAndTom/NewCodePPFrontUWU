@@ -53,7 +53,7 @@ function SliderComponent({size, setSize}) {
         //         value={value}
         //         onChange={handleChange}
         //     />
-        //     <p>Значення: {value}</p>
+        //     <li>Значення: {value}</li>
         // </div>
         <div className="slider-container"
              style={{marginTop: "2vw"}}

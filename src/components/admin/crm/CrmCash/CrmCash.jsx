@@ -290,9 +290,9 @@ const CrmCash = () => {
                         </div>
                     </div>
                     {/*{things.map((thing, index) => (*/}
-                    {/*    <p key={index} onClick={() => handleThingClick(thing)} className="thing">*/}
+                    {/*    <li key={index} onClick={() => handleThingClick(thing)} className="thing">*/}
                     {/*        {thing.name}*/}
-                    {/*    </p>*/}
+                    {/*    </li>*/}
                     {/*))}*/}
                 </div>
                 <div className="card d-flex flex-column" style={{width: '40.5vw'}}>
@@ -337,11 +337,11 @@ const CrmCash = () => {
                                         </div>
                                     ) : (
                                         <div className="d-flex flex-column border-light" style={{width: '37.7vw'}}>
-                                            {/*<p className="adminFont">{thing.name}</p>*/}
-                                            {/*<p className="adminFont">Ціна: {thing.priceForThis}</p>*/}
-                                            {/*<p>*/}
+                                            {/*<li className="adminFont">{thing.name}</li>*/}
+                                            {/*<li className="adminFont">Ціна: {thing.priceForThis}</li>*/}
+                                            {/*<li>*/}
                                             {/*    за одиницю цієї хні: {thing.priceForThis / thing.amount}*/}
-                                            {/*</p>*/}
+                                            {/*</li>*/}
                                             {/*<OneProductInOrders item={thing} cash={true}/>*/}
                                             <div className="d-flex">
                                                 <div className="adminFontTable  bg-light">id: {thing.id}.</div>
@@ -387,7 +387,7 @@ const CrmCash = () => {
                         <div>
                             <div className="d-flex">
                                 <div className="d-flex flex-column">
-                                    <p className="adminFont">Предоплата</p>
+                                    <li className="adminFont">Предоплата</li>
 
                                     {thisOrder ? (
                                         <Form.Control type="number"
@@ -404,16 +404,16 @@ const CrmCash = () => {
                                     {/*<Form.Control variant="outline-warning" value={thisOrder.prepayment} className="adminFont btn btn-outline-warning"/>*/}
                                 </div>
                                 <div className="d-flex flex-column">
-                                    <p className="adminFont">Знижка</p>
+                                    <li className="adminFont">Знижка</li>
                                     <Button variant="outline-warning" disabled className="adminFont">0</Button>
                                 </div>
                                 <div className="d-flex flex-column">
-                                    <p className="adminFont">Всього</p>
+                                    <li className="adminFont">Всього</li>
                                     <Button variant="outline-warning" disabled className="adminFont">0</Button>
                                 </div>
 
                                 <div className="d-flex flex-column">
-                                    <p className="adminFont text-center">Оплата</p>
+                                    <li className="adminFont text-center">Оплата</li>
                                     <div className="d-flex">
                                         <Button variant="outline-primary" className="adminFont">Готівка</Button>
                                         <Button variant="outline-primary" className="adminFont">Безготівка</Button>

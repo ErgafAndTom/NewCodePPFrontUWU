@@ -17,12 +17,12 @@ const Sublim = () => {
       </div>
       <div className="widea1">
         <b className="print-peaks-erp2246">
-          <p className="print6">PRINT</p>
-          <p className="print6">PEAKS</p>
-          <p className="print6">
+          <li className="print6">PRINT</li>
+          <li className="print6">PEAKS</li>
+          <li className="print6">
             <span>ERP</span>
             <span className="span113">2.24</span>
-          </p>
+          </li>
         </b>
       </div>
       <div className="widec1">

@@ -423,9 +423,9 @@ const CrmCash3Full = ({setErr}) => {
                         </div>
                     </div>
                     {/*{things.map((thing, index) => (*/}
-                    {/*    <p key={index} onClick={() => handleThingClick(thing)} className="thing">*/}
+                    {/*    <li key={index} onClick={() => handleThingClick(thing)} className="thing">*/}
                     {/*        {thing.name}*/}
-                    {/*    </p>*/}
+                    {/*    </li>*/}
                     {/*))}*/}
                 </div>
                 <div className="">
@@ -496,11 +496,11 @@ const CrmCash3Full = ({setErr}) => {
                                             <div
                                                 className="d-flex flex-column m-1 border-light p-1 btnHoverIfTransparent"
                                                 style={{width: '40.7vw'}}>
-                                                {/*<p className="adminFont">{thing.name}</p>*/}
-                                                {/*<p className="adminFont">Ціна: {thing.priceForThis}</p>*/}
-                                                {/*<p>*/}
+                                                {/*<li className="adminFont">{thing.name}</li>*/}
+                                                {/*<li className="adminFont">Ціна: {thing.priceForThis}</li>*/}
+                                                {/*<li>*/}
                                                 {/*    за одиницю цієї хні: {thing.priceForThis / thing.amount}*/}
-                                                {/*</p>*/}
+                                                {/*</li>*/}
                                                 {/*<OneProductInOrders item={thing} cash={true}/>*/}
                                                 <Modal.Header className="d-flex">
                                                     {/*<div className="adminFontTable p-1 m-1 bg-light">id: {thing.id}.</div>*/}

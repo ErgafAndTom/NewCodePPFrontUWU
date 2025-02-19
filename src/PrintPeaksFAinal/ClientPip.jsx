@@ -148,12 +148,12 @@ const ClientPip = () => {
             </div>
             <div className="clientf">
                 <b className="print-peaks-erp2241">
-                    <p className="print1">PRINT</p>
-                    <p className="print1">PEAKS</p>
-                    <p className="print1">
+                    <li className="print1">PRINT</li>
+                    <li className="print1">PEAKS</li>
+                    <li className="print1">
                         <span>ERP</span>
                         <span className="span10">2.24</span>
-                    </p>
+                    </li>
                 </b>
             </div>
             <div className="clientg1">

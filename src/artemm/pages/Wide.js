@@ -22,12 +22,12 @@ const Wide = () => {
       </div>
       <div className="widea">
         <b className="print-peaks-erp2245">
-          <p className="print5">PRINT</p>
-          <p className="print5">PEAKS</p>
-          <p className="print5">
+          <li className="print5">PRINT</li>
+          <li className="print5">PEAKS</li>
+          <li className="print5">
             <span>ERP</span>
             <span className="span44">2.24</span>
-          </p>
+          </li>
         </b>
       </div>
       <button className="widec" autoFocus={true}>
@@ -94,15 +94,15 @@ const Wide = () => {
           </span>
         </div>
         <div className="div457">
-          <p className="print5">
+          <li className="print5">
             <span className="span59">
               <b className="b3">А2</b>
             </span>
             <span>
               <span className="span59">{` `}</span>
             </span>
-          </p>
-          <p className="print5">
+          </li>
+          <li className="print5">
             <span>
               <span className="span61">(420</span>
               <span className="span62">{`мм `}</span>
@@ -110,18 +110,18 @@ const Wide = () => {
               <span className="span62">мм</span>
               <span className="span61">)</span>
             </span>
-          </p>
+          </li>
         </div>
         <div className="div458">
-          <p className="print5">
+          <li className="print5">
             <span className="span66">
               <b className="b3">А4</b>
             </span>
             <span>
               <span className="span66">{` `}</span>
             </span>
-          </p>
-          <p className="print5">
+          </li>
+          <li className="print5">
             <span>
               <span className="span68">(210</span>
               <span className="span69">{`мм `}</span>
@@ -129,7 +129,7 @@ const Wide = () => {
               <span className="span69">мм</span>
               <span className="span68">)</span>
             </span>
-          </p>
+          </li>
         </div>
         <div className="div459">
           <span className="span68">
@@ -145,15 +145,15 @@ const Wide = () => {
           </span>
         </div>
         <div className="div460">
-          <p className="print5">
+          <li className="print5">
             <span className="span80">
               <b className="b3">А6</b>
             </span>
             <span>
               <span className="span80">{` `}</span>
             </span>
-          </p>
-          <p className="print5">
+          </li>
+          <li className="print5">
             <span>
               <span className="span82">(105</span>
               <span className="span83">{`мм `}</span>
@@ -161,18 +161,18 @@ const Wide = () => {
               <span className="span83">мм</span>
               <span className="span82">)</span>
             </span>
-          </p>
+          </li>
         </div>
         <div className="div461">
-          <p className="print5">
+          <li className="print5">
             <span className="span80">
               <b className="b3">А7</b>
             </span>
             <span>
               <span className="span80">{` `}</span>
             </span>
-          </p>
-          <p className="print5">
+          </li>
+          <li className="print5">
             <span>
               <span className="span89">(75</span>
               <span className="span90">{`мм `}</span>
@@ -180,7 +180,7 @@ const Wide = () => {
               <span className="span90">мм</span>
               <span className="span89">)</span>
             </span>
-          </p>
+          </li>
         </div>
         <div className="div462">
           <span className="span94">

@@ -86,12 +86,12 @@ const ClientFull = ({ className = "", onClose }) => {
         <div className="clientfc" />
         <div className="clientfd">
           <b className="print-peaks-erp2242">
-            <p className="print2">PRINT</p>
-            <p className="print2">PEAKS</p>
-            <p className="print2">
+            <li className="print2">PRINT</li>
+            <li className="print2">PEAKS</li>
+            <li className="print2">
               <span>ERP</span>
               <span className="span11">2.24</span>
-            </p>
+            </li>
           </b>
         </div>
         <div className="clientfe">

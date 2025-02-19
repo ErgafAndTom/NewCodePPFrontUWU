@@ -461,13 +461,13 @@ const NewNote = ({
                                         <div className="">
 
                                             <div className="fontInfoForPricing">
-                                                Друк: {pricesThis.priceForDrukThisUnit.toFixed(2)} грн * {pricesThis.skolko} шт
-                                                = {(pricesThis.priceForDrukThisUnit * pricesThis.skolko).toFixed(2)} грн
+                                                Друк: {pricesThis.priceForDrukThisUnit} грн * {pricesThis.skolko} шт
+                                                = {(pricesThis.priceForDrukThisUnit * pricesThis.skolko)} грн
                                             </div>
                                             <div className="fontInfoForPricing">
-                                                Матеріали: {pricesThis.priceForThisUnitOfPapper.toFixed(2)}грн.
+                                                Матеріали: {pricesThis.priceForThisUnitOfPapper}грн.
                                                 * {pricesThis.skolko} шт
-                                                = {(pricesThis.priceForThisUnitOfPapper * pricesThis.skolko).toFixed(2)}грн.
+                                                = {(pricesThis.priceForThisUnitOfPapper * pricesThis.skolko)}грн.
                                             </div>
 
                                             <div className="fontInfoForPricing">
@@ -489,8 +489,8 @@ const NewNote = ({
                                             </div>
                                             {pricesThis.porizka !== 0 &&
                                                 <div className="fontInfoForPricing">
-                                                    Порізка: {pricesThis.porizka.toFixed(2)} грн * {count} шт
-                                                    = {pricesThis.porizka.toFixed(2)*count} грн
+                                                    Порізка: {pricesThis.porizka} грн * {count} шт
+                                                    = {pricesThis.porizka*count} грн
                                                 </div>
                                             }
                                             <div className="fontInfoForPricing1">
