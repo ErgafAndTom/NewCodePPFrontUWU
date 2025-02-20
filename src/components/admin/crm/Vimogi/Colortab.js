@@ -1,17 +1,13 @@
 import React, { useState, useEffect } from 'react';
-import image9 from "./public/image-9@2x.png";
-import image10 from "./public/image-10@2x.png";
-import image11 from "./public/image-11@2x.png";
-import image12 from "./public/image-12@2x.png";
-import image13 from "./public/image-13@2x.png";
-import image14 from "./public/image-14@2x.png";
-import image15 from "./public/image-15@2x.png";
-import image16 from "./public/image-16@2x.png";
-import image17 from "./public/image-17@2x.png";
+import bleed from "./public/bleed.png";
+
 import "./Vimogi.css";
 import "./Vimogi";
 import "./Colorprinthelpsmall";
 import {Outlet} from "react-router-dom";
+import viz2 from "./public/viz2.png";
+import viz3 from "./public/viz3.png";
+import viz4 from "./public/viz4.png";
 
 
 export const Сolortab = () => {
@@ -24,11 +20,28 @@ export const Сolortab = () => {
 
                 <li>Файли створені у програмах Microsoft Office (Word, Excel, PowerPoint) потрібно зберігати у формат *.pdf,.</li>
                     </ul>
+                <div className="viz"
+                     style={{display: 'flex', justifyContent: 'center', margin: "0.5vw", height: '17vh'}}>
+                    <img className="viz2" alt="" src={viz2} style={{marginRight: '1vw', borderTopLeftRadius: '1vw', borderBottomRightRadius: '1vw'}}/>
+                    <img className="viz3" alt="" src={viz3} style={{marginRight: '3vw', borderTopRightRadius: '1vw', borderBottomLeftRadius: '1vw'}}/>
+                    <img className="viz2" alt="" src={viz2} style={{marginRight: '1vw', borderTopLeftRadius: '1vw', borderBottomRightRadius: '1vw'}}/>
+                    <img className="viz4" alt="" src={viz4} style={{borderTopRightRadius: '1vw', borderBottomLeftRadius: '1vw'}}/>
+                </div>
+                <p className="print" style={{textAlign: 'center'}}>
+                    Макети для двостороннього друку
+                </p>
                 <p><strong>Вимоги до верстки:</strong></p>
                 <ul>
                 <li>Формат верстки повинен перевищувати готовий розмір виробу щонайменше на 4 мм (по 2 мм з кожного боку для обрізу). Для забезпечення точного обрізу необхідно додавати мітки різу.</li>
 
                 <li>Ключові елементи (логотипи, текст тощо) повинні знаходитися на відстані не менше ніж 5 мм від краю обрізного формату, щоб уникнути можливих втрат при друці.</li>
+                    <div className="bleed"
+                         style={{display: 'flex', justifyContent: 'center', margin: "0.5vw", height: '22vh'}}>
+                        <img className="bleed" alt="" src={bleed} style={{marginRight: '1vw'}}/>
+                    </div>
+                    <p className="print" style={{textAlign: 'center', marginBottom: '10px'}}>
+                        Виліти — 2 мм якщо аркушева продукція (3 мм якщо багатосторінкова).
+                    </p>
                 </ul>
                 <p><strong>Растрові зображення:</strong></p>
                 <ul>

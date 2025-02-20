@@ -2,11 +2,10 @@ import React, { useState, useEffect } from 'react';
 import {useNavigate, useLocation, Route, Routes, Outlet} from 'react-router-dom';
 import Tab from 'react-bootstrap/Tab';
 import Tabs from 'react-bootstrap/Tabs';
-import image3 from './public/image-3@2x.png';
-import image4 from './public/image-4@2x.png';
-import image5 from './public/image-5@2x.png';
-import image6 from './public/image-6@2x.png';
-import image8 from './public/image-8@2x.png';
+import viz2 from './public/viz2.png';
+import viz3 from './public/viz3.png';
+import viz4 from './public/viz4.png';
+import bleed from "./public/bleed.png";
 
 
 function Vimogi() {
@@ -38,7 +37,7 @@ function Vimogi() {
                 <Tab className="nav-tabs" eventKey="colorprinthelp" title="Цифровий друк"></Tab>
                 <Tab eventKey="ofsethelp" title="Офсетний друк">
                     <div class="component-2022-21">
-                            <h5>Загальні вимоги до файлів</h5>
+                        <p><strong>Загальні вимоги до файлів</strong></p>
                             <li>- Макети приймаються у форматах TIFF, PDF, PSD</li>
                             <li>- Якість для макетів - не менше 300 dpi (Якщо неякісним зображенням примусово призначити 300 dpi, їх якість не покращиться. В цьому випадку краще замінити зображення якіснішими).        </li>
                             <li>- Елементи дизайну повинні розташовуватись не ближче 5 мм від краю готового виробу (дивіться рисунок нижче).        </li>
@@ -48,17 +47,13 @@ function Vimogi() {
                             готового виробу.
                         </li>
 
-                        <div style={{display: 'flex', justifyContent: 'center', marginBottom: '10px', height: '17vh', margin: '0.5vw'}}>
-                            <img className="image-3-icon" alt="" src={image3}
-                                 style={{marginRight: '3vw'}}
-                            />
-                            <img className="image-4-icon" alt="" src={image4}
-
-                            />
+                        <div className="bleed"
+                             style={{display: 'flex', justifyContent: 'center', margin: "0.5vw", height: '18vh'}}>
+                            <img className="bleed" alt="" src={bleed} style={{marginRight: '1vw'}}/>
                         </div>
-                        <li className="print" style={{textAlign: 'center', marginBottom: '10px'}}>
-                            “Навиліт” (під обріз) — 2 мм якщо аркушева продукція (3 мм якщо багатосторінкова).
-                        </li>
+                        <p className="print" style={{textAlign: 'center', marginTop: '1vh'}}>
+                            Виліти — 2 мм якщо аркушева продукція (3 мм якщо багатосторінкова).
+                        </p>
                         <li class="print" >
                             - Усі шари в растрових макетах повинні бути злиті в один.
                         </li>
@@ -72,18 +67,17 @@ function Vimogi() {
 
 
                         <div class="tverd-text17">
-                            <div className="tverd-text14"
+                            <div className="viz"
                                  style={{display: 'flex', justifyContent: 'center', margin: "0.5vw", height: '17vh'}}>
-                                <img className="image-6-icon" alt="" src={image6} style={{marginRight: '1vw'}}/>
-                                <img className="image-5-icon" alt="" src={image5} style={{marginRight: '3vw'}}/>
-                                <img className="image-8-icon" alt="" src={image8} style={{marginRight: '1vw'}}/>
-                                <img className="image-5-icon" alt="" src={image5}/>
+                                <img className="viz2" alt="" src={viz2} style={{marginRight: '1vw', borderTopLeftRadius: '1vw', borderBottomRightRadius: '1vw'}}/>
+                                <img className="viz3" alt="" src={viz3} style={{marginRight: '3vw', borderTopRightRadius: '1vw', borderBottomLeftRadius: '1vw'}}/>
+                                <img className="viz2" alt="" src={viz2} style={{marginRight: '1vw', borderTopLeftRadius: '1vw', borderBottomRightRadius: '1vw'}}/>
+                                <img className="viz4" alt="" src={viz4} style={{borderTopRightRadius: '1vw', borderBottomLeftRadius: '1vw'}}/>
                             </div>
-                            <li className="print" style={{textAlign: 'center'}}>
-                                Макет (лице – горизонтальне, зворот – вертикальний)
-                            </li>
+                            <p className="print" style={{textAlign: 'center'}}>
+                                Макети для двостороннього друку </p>
 
-                            <h5>Вимоги до кольорів</h5>
+                            <p><strong>Вимоги до кольорів</strong></p>
                             <li className="print">- Колірна модель — CMYK, Grayscale.</li>
                             <li className="print">
                                 - Чорний колір плашок має бути — С-60 М-40 Y-40 K-100. Якщо робити за
@@ -133,8 +127,9 @@ function Vimogi() {
                                  - Мінімально відтворюваний відтінок за будь-яким каналом CMYK – 5%.
                             </li>
                         </div>
-                        <h5>Вимоги до шифтів</h5>
+
                         <div class="tverd-text18">
+                            <p><strong>Вимоги до шифтів</strong></p>
                             <li class="print">
                                 Шрифти у векторних файлах необхідно конвертувати у криві.
                             </li>
@@ -167,7 +162,8 @@ function Vimogi() {
                     - 5 метров при якості 720 dpi
                     / 3 метра при якості 1080 dpi
                     / 1 метр при якості 1440 dpi</li>
-                    <h5>Загальні вимоги до файлів</h5>
+                    <p></p>
+                    <p><strong>Загальні вимоги до файлів</strong></p>
                     <li>Макети приймаються у форматах TIFF, PDF.</li>
                     <li>Якість для макетів до формату А3 - 200 dpi, більше ніж формат А3 - 150 dpi.</li>
                     <li>У форматі PDF шрифти мають бути переведені у криві.</li>
@@ -181,24 +177,13 @@ function Vimogi() {
                     <li>Суцільний чорний колір не може бути представлений у CMY без чорного (інакше є вірогідність після друку отримати інший тріадний колір).</li>
                     <li>Дрібний текст (12pt) можна залишати в одну фарбу для більш чіткого друку.</li>
                     <li>Мітки під індивідуальне розташування люверсів повинні бути виконані контрастним кольором, кружки діаметром 10 мм з обведенням, центр кола повинен розташовуватися не ближче ніж 20 мм від краю макета.</li>
-                    {/*<h5>Загальні вимоги до файлів</h5>*/}
-                    {/*<li>Макети приймаються у форматах TIFF, PDF.</li>*/}
-                    {/*<li>У форматі PDF шрифти мають бути переведені у криві.</li>*/}
-                    {/*<li>Макети мають бути в колірному просторі CMYK без будь-яких колірних профілів.</li>*/}
-                    {/*<li>Макети мають бути підготовлені у масштабі 1:1 (без вильотів).</li>*/}
-                    {/*<li>Макети обрізаються в край, тому краще робити безпечну зону від значущих елементів до краю макета мінімум 5 мм.</li>*/}
-                    {/*<li>Під установку люверсів безпечна зона має бути щонайменше 25 мм від краю макета.</li>*/}
-                    {/*<li>У макетах мають бути злиті шари та текст переведений у криві.</li>*/}
-                    {/*<li>Чорний колір (плашки та великий текст) краще робити композитним CMYK (35-35-35-100).</li>*/}
-                    {/*<li>Градієнти та суцільні заливки у сумі фарб мають бути не менше 30% за TIL (інакше може бути малопомітна плашка або градієнт).</li>*/}
-                    {/*<li>Суцільний чорний колір не може бути представлений у CMY без чорного (інакше є вірогідність після друку отримати інший тріадний колір).</li>*/}
-                    {/*<li>Дрібний текст (12pt) можна залишати в одну фарбу для більш чіткого друку.</li>*/}
-                    {/*<li>Мітки під індивідуальне розташування люверсів повинні бути виконані контрастним кольором, кружки діаметром 10 мм з обведенням, центр кола повинен розташовуватися не ближче ніж 20 мм від краю макета.</li>*/}
-                    <h5>Друк макету цілісним шматком або розбиття його на частини</h5>
+                    <p></p>
+                    <p><strong>Друк макету цілісним шматком або розбиття його на частини</strong></p>
                     <li>У банера максимальна ширина рулона 3200 мм. Якщо у вас розмір макета по коротшій стороні більше 3180 мм, то замовлення складатиметься з частин "тайлів". Також майте на увазі, якщо замовлення з підворотами, тоді максимальний розмір за короткою стороною буде 3100 мм.</li>
                     <li>У самоклеючої плівки максимальна ширина рулону (крім плівки перфораційної One Way Vision) - 1600 мм. З цього випливає, що максимальний розмір за короткою стороною має бути 1580 мм. Інакше плівка буде складатися з декількох частин "тайлів". Для плівки "Плівка перфораційна One Way Vision" цей розмір - 1500 мм.</li>
                     <li>У паперу ширина рулону 1560 мм, тому менша сторона виробу не має перевищувати 1540 мм.</li>
-                    <h5>Плоттерна порізка</h5>
+                    <p></p>
+                    <p><strong>Плоттерна порізка</strong></p>
                     <li>Макет для плотерної порізки не має перевищувати 1100х2000 мм.</li>
                     <li>Макет наклейки для плоттерного різання подається у форматі .pdf. Він повинен містити два шари: на нижньому шарі розташовується макет самої наклейки з вильотами, а на верхньому - контур порізки.</li>
                     <li>Макет самої наклейки може бути представлений як вектором, так і растром. Він має бути зроблений потрібної форми та розміру (1:1). І в макет мають бути закладені вильоти по 2 мм із кожної сторони, виконані продовженням фону.</li>

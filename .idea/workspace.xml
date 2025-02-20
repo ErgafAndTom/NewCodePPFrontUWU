@@ -5,97 +5,27 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="7e58169f-d1e8-4cb2-8753-447dd0b39044" name="Changes" comment="ddd">
-      <change afterPath="$PROJECT_DIR$/src/components/admin/crm/Vimogi/Blacktab.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/components/admin/crm/Vimogi/Bukletvimogi.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/components/admin/crm/Vimogi/Colorprinthelpsmall.jsx" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/components/admin/crm/Vimogi/Colortab.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/components/admin/crm/Vimogi/Goldtab.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/components/admin/crm/Vimogi/Holeshelpsmall.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/components/admin/crm/Vimogi/Holsttab.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/components/admin/crm/Vimogi/Layouthelpsmall.jsx" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/components/admin/crm/Vimogi/Phototab.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/components/admin/crm/Vimogi/Printphotohelpsmall.jsx" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/components/admin/crm/Vimogi/Skobatab.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/components/admin/crm/Vimogi/Vimogi.css" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/components/admin/crm/Vimogi/Vimogi.jsx" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/components/admin/crm/Vimogi/Widephototab.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/components/admin/crm/Vimogi/bindmettab.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/components/admin/crm/Vimogi/public/image-10@2x.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/components/admin/crm/Vimogi/public/image-11@2x.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/components/admin/crm/Vimogi/public/image-12@2x.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/components/admin/crm/Vimogi/public/image-13@2x.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/components/admin/crm/Vimogi/public/image-14@2x.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/components/admin/crm/Vimogi/public/image-15@2x.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/components/admin/crm/Vimogi/public/image-16@2x.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/components/admin/crm/Vimogi/public/image-17@2x.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/components/admin/crm/Vimogi/public/image-3@2x.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/components/admin/crm/Vimogi/public/image-4@2x.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/components/admin/crm/Vimogi/public/image-5@2x.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/components/admin/crm/Vimogi/public/image-6@2x.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/components/admin/crm/Vimogi/public/image-8@2x.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/components/admin/crm/Vimogi/public/image-9@2x.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/components/admin/crm/Vimogi/vilettab.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/components/admin/crm/Vimogi/public/1.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/components/admin/crm/Vimogi/public/2.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/components/admin/crm/Vimogi/public/3.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/components/admin/crm/Vimogi/public/4.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/components/admin/crm/Vimogi/public/5.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/components/admin/crm/Vimogi/public/6.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/components/admin/crm/Vimogi/public/7.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/components/admin/crm/Vimogi/public/bleed.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/components/admin/crm/Vimogi/public/viz1.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/components/admin/crm/Vimogi/public/viz2.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/components/admin/crm/Vimogi/public/viz3.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/components/admin/crm/Vimogi/public/viz4.png" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/artemHTML/Orders/Orders.html" beforeDir="false" afterPath="$PROJECT_DIR$/artemHTML/Orders/Orders.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/data/fontGTWalsheimPro/demo.html" beforeDir="false" afterPath="$PROJECT_DIR$/data/fontGTWalsheimPro/demo.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/PrintPeaksCss/BWPrint.html" beforeDir="false" afterPath="$PROJECT_DIR$/public/PrintPeaksCss/BWPrint.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/PrintPeaksCss/CPM.html" beforeDir="false" afterPath="$PROJECT_DIR$/public/PrintPeaksCss/CPM.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/PrintPeaksCss/Clienfull.html" beforeDir="false" afterPath="$PROJECT_DIR$/public/PrintPeaksCss/Clienfull.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/PrintPeaksCss/Clientpip.html" beforeDir="false" afterPath="$PROJECT_DIR$/public/PrintPeaksCss/Clientpip.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/PrintPeaksCss/Orderfull.html" beforeDir="false" afterPath="$PROJECT_DIR$/public/PrintPeaksCss/Orderfull.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/PrintPeaksCss/Photo.html" beforeDir="false" afterPath="$PROJECT_DIR$/public/PrintPeaksCss/Photo.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/PrintPeaksCss/PlusProd.html" beforeDir="false" afterPath="$PROJECT_DIR$/public/PrintPeaksCss/PlusProd.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/PrintPeaksCss/Sublim.html" beforeDir="false" afterPath="$PROJECT_DIR$/public/PrintPeaksCss/Sublim.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/PrintPeaksCss/Trash.html" beforeDir="false" afterPath="$PROJECT_DIR$/public/PrintPeaksCss/Trash.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/PrintPeaksCss/Wide.html" beforeDir="false" afterPath="$PROJECT_DIR$/public/PrintPeaksCss/Wide.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/PrintPeaksCss/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/public/PrintPeaksCss/index.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/pdf/pdf.min.js" beforeDir="false" afterPath="$PROJECT_DIR$/public/pdf/pdf.min.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/PrintPeaksFAinal/ClientPip.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/PrintPeaksFAinal/ClientPip.jsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/PrintPeaksFAinal/Orders/OneOrderInTable.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/PrintPeaksFAinal/Orders/OneOrderInTable.jsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/PrintPeaksFAinal/poslugi/NewNote.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/PrintPeaksFAinal/poslugi/NewNote.jsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/PrintPeaksFAinal/poslugi/newnomodals/SlidersComponent.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/PrintPeaksFAinal/poslugi/newnomodals/SlidersComponent.jsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/PrintPeaksFAinal/poslugi/newnomodals/note/Materials2NoteFront.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/PrintPeaksFAinal/poslugi/newnomodals/note/Materials2NoteFront.jsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/PrintPeaksFAinal/trelloLikeBoards/CardInfo.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/PrintPeaksFAinal/trelloLikeBoards/CardInfo.jsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/PrintPeaksFAinal/user/Profile.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/PrintPeaksFAinal/user/Profile.jsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/artemm/components/ClientFull.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/artemm/components/ClientFull.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/artemm/components/ClientPip.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/artemm/components/ClientPip.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/artemm/components/OrderFull.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/artemm/components/OrderFull.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/artemm/pages/Artboard.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/artemm/pages/Artboard.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/artemm/pages/BWPrint.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/artemm/pages/BWPrint.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/artemm/pages/CPM.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/artemm/pages/CPM.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/artemm/pages/Photo.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/artemm/pages/Photo.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/artemm/pages/PlusProd.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/artemm/pages/PlusProd.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/artemm/pages/PrintPeaks.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/artemm/pages/PrintPeaks.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/artemm/pages/Sublim.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/artemm/pages/Sublim.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/artemm/pages/Wide.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/artemm/pages/Wide.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/bootstrap.css.map" beforeDir="false" afterPath="$PROJECT_DIR$/src/bootstrap.css.map" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/Calendar.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Calendar.jsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/NewChartMy2.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/NewChartMy2.jsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/admin/Admin.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/admin/Admin.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/admin/GTPErrorResponse.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/admin/GTPErrorResponse.jsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/admin/crm/CoefTest.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/admin/crm/CoefTest.jsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/admin/crm/CrmCash/CrmCash.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/admin/crm/CrmCash/CrmCash.jsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/admin/crm/CrmCash/CrmCash2.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/admin/crm/CrmCash/CrmCash2.jsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/admin/crm/CrmCash/CrmCash3Full.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/admin/crm/CrmCash/CrmCash3Full.jsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/admin/crm/CrmCash/products/SelectedProduct.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/admin/crm/CrmCash/products/SelectedProduct.jsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/admin/table/TableActions.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/admin/table/TableActions.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/admin/table/TableDevices.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/admin/table/TableDevices.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/admin/table/TableFiles.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/admin/table/TableFiles.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/admin/table/TableMaterials.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/admin/table/TableMaterials.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/admin/table/TableOrders.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/admin/table/TableOrders.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/admin/table/TableServices.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/admin/table/TableServices.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/admin/table/TableSessions.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/admin/table/TableSessions.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/admin/table/TableUsers.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/admin/table/TableUsers.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/calc/AfterNav.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/calc/AfterNav.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/cup/CupDraggable.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/cup/CupDraggable.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/mainsite/Footer.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/mainsite/Footer.jsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/mainsite/Home.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/mainsite/Home.jsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/mainsite/ProductItem.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/mainsite/ProductItem.jsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/nav/Nav.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/nav/Nav.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/newcalc/Orders/Історія замовлень.mhtml" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/newcalc/Orders/Історія замовлень.mhtml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/usersettings/CurrentUser.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/usersettings/CurrentUser.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/modules/pdf/PdfReact.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/modules/pdf/PdfReact.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/modules/three/modells/uploads_files_1855137_coffee_mug_1.dae" beforeDir="false" afterPath="$PROJECT_DIR$/src/modules/three/modells/uploads_files_1855137_coffee_mug_1.dae" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/admin/crm/Vimogi/Blacktab.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/admin/crm/Vimogi/Blacktab.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/admin/crm/Vimogi/Colortab.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/admin/crm/Vimogi/Colortab.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/admin/crm/Vimogi/Goldtab.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/admin/crm/Vimogi/Goldtab.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/admin/crm/Vimogi/Holeshelpsmall.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/admin/crm/Vimogi/Holeshelpsmall.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/admin/crm/Vimogi/Skobatab.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/admin/crm/Vimogi/Skobatab.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/admin/crm/Vimogi/Vimogi.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/admin/crm/Vimogi/Vimogi.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/admin/crm/Vimogi/Vimogi.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/admin/crm/Vimogi/Vimogi.jsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/admin/crm/Vimogi/vilettab.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/admin/crm/Vimogi/vilettab.js" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -147,7 +77,7 @@
     "RunOnceActivity.git.unshallow": "true",
     "git-widget-placeholder": "master",
     "ignore.virus.scanning.warn.message": "true",
-    "last_opened_file_path": "C:/Users/AIATO/Desktop/CodePPNew/frontpp/src/components/admin/crm/Vimogi",
+    "last_opened_file_path": "C:/Users/AIATO/Desktop/CodePPNew/frontpp/src/components/admin/crm/Vimogi/public",
     "list.type.of.created.stylesheet": "CSS",
     "node.js.detected.package.eslint": "true",
     "node.js.detected.package.tslint": "true",
@@ -176,6 +106,7 @@
   </component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
+      <recent name="C:\Users\AIATO\Desktop\CodePPNew\frontpp\src\components\admin\crm\Vimogi\public" />
       <recent name="C:\Users\AIATO\Desktop\CodePPNew\frontpp\src\components\admin\crm\Vimogi" />
     </key>
     <key name="MoveFile.RECENT_KEYS">
@@ -210,14 +141,12 @@
     </configuration>
     <list>
       <item itemvalue="Node.js.Bukletvimogi.js" />
-      <item itemvalue="Node.js.Bukletvimogi.jsx" />
       <item itemvalue="npm.build" />
       <item itemvalue="npm.start" />
     </list>
     <recent_temporary>
       <list>
         <item itemvalue="npm.start" />
-        <item itemvalue="Node.js.Bukletvimogi.jsx" />
         <item itemvalue="npm.build" />
       </list>
     </recent_temporary>
@@ -279,7 +208,9 @@
       <workItem from="1739816374142" duration="9410000" />
       <workItem from="1739838384372" duration="13912000" />
       <workItem from="1739911865658" duration="12184000" />
-      <workItem from="1739931127322" duration="34167000" />
+      <workItem from="1739931127322" duration="35615000" />
+      <workItem from="1740008076773" duration="595000" />
+      <workItem from="1740051341465" duration="11748000" />
     </task>
     <task id="LOCAL-00003" summary="ddd">
       <option name="closed" value="true" />
@@ -513,7 +444,15 @@
       <option name="project" value="LOCAL" />
       <updated>1739840410044</updated>
     </task>
-    <option name="localTasksCounter" value="32" />
+    <task id="LOCAL-00032" summary="ddd">
+      <option name="closed" value="true" />
+      <created>1740008034636</created>
+      <option name="number" value="00032" />
+      <option name="presentableId" value="LOCAL-00032" />
+      <option name="project" value="LOCAL" />
+      <updated>1740008034636</updated>
+    </task>
+    <option name="localTasksCounter" value="33" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">

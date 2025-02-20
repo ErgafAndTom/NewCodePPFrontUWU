@@ -128,6 +128,8 @@
 }
 .requirements-container {
     padding: 1vw;
+    margin-top: 1vh;
+    margin-left: 1vw;
 }
 .requirements-container p {
     margin-bottom: 5px; /* Зменшений відступ між абзацами */
@@ -135,8 +137,8 @@
     /*color: #555;*/
 }
 .component-2022-21 {
-    margin-top: 1vh;
-    margin-left: 1vw;
+    margin-top: 2vh;
+    margin-left: 2vw;
     margin-bottom: 2px; /* Зменшений відступ між абзацами */
     line-height: 1; /* Зменшена висота рядка */
     /*color: #555;*/
@@ -151,3 +153,6 @@
 .button-container {
     height: 2vw;
     }
+.tverd-text18 {
+    margin-top: 1vw;
+}
