@@ -149,7 +149,11 @@ const ModalSize = ({size, setSize, type, buttonsArr, color, setColor, count, set
     }
     //initial main and--------------------------------------------------------------------------------------------
     let handleChange = (e) => {
-        setCount(e)
+        if(e === ""){
+            setCount(1)
+        } else {
+            setCount(e)
+        }
     }
 
     const handleClose = () => {
@@ -383,7 +387,7 @@ const ModalSize = ({size, setSize, type, buttonsArr, color, setColor, count, set
                 }}
                 type="number"
                 value={count}
-                // min={1}
+                min={1}
                 // disabled
                 onChange={(event) => handleChange(event.target.value)}
             />

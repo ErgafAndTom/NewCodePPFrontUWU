@@ -5,27 +5,13 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="7e58169f-d1e8-4cb2-8753-447dd0b39044" name="Changes" comment="ddd">
-      <change afterPath="$PROJECT_DIR$/src/components/admin/crm/Vimogi/public/1.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/components/admin/crm/Vimogi/public/2.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/components/admin/crm/Vimogi/public/3.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/components/admin/crm/Vimogi/public/4.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/components/admin/crm/Vimogi/public/5.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/components/admin/crm/Vimogi/public/6.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/components/admin/crm/Vimogi/public/7.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/components/admin/crm/Vimogi/public/bleed.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/components/admin/crm/Vimogi/public/viz1.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/components/admin/crm/Vimogi/public/viz2.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/components/admin/crm/Vimogi/public/viz3.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/components/admin/crm/Vimogi/public/viz4.png" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/admin/crm/Vimogi/Blacktab.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/admin/crm/Vimogi/Blacktab.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/admin/crm/Vimogi/Colortab.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/admin/crm/Vimogi/Colortab.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/admin/crm/Vimogi/Goldtab.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/admin/crm/Vimogi/Goldtab.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/admin/crm/Vimogi/Holeshelpsmall.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/admin/crm/Vimogi/Holeshelpsmall.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/admin/crm/Vimogi/Skobatab.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/admin/crm/Vimogi/Skobatab.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/admin/crm/Vimogi/Vimogi.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/admin/crm/Vimogi/Vimogi.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/admin/crm/Vimogi/Vimogi.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/admin/crm/Vimogi/Vimogi.jsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/admin/crm/Vimogi/vilettab.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/admin/crm/Vimogi/vilettab.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/PrintPeaksFAinal/Orders/CustomOrderTable.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/PrintPeaksFAinal/Orders/CustomOrderTable.jsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/PrintPeaksFAinal/Orders/CustomOrderTable2.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/PrintPeaksFAinal/Orders/CustomOrderTable2.jsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/PrintPeaksFAinal/poslugi/NewCup.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/PrintPeaksFAinal/poslugi/NewCup.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/PrintPeaksFAinal/poslugi/newnomodals/NewNoModalSize.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/PrintPeaksFAinal/poslugi/newnomodals/NewNoModalSize.jsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/PrintPeaksFAinal/poslugi/newnomodals/cup/Materials2Cup.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/PrintPeaksFAinal/poslugi/newnomodals/cup/Materials2Cup.jsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/nav/Nav.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/nav/Nav.js" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -68,33 +54,33 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent"><![CDATA[{
-  "keyToString": {
-    "Node.js.Bukletvimogi.js.executor": "Run",
-    "Node.js.Bukletvimogi.jsx.executor": "Debug",
-    "Node.js.ClientChangerUIArtem.jsx.executor": "Run",
-    "RunOnceActivity.ShowReadmeOnStart": "true",
-    "RunOnceActivity.git.unshallow": "true",
-    "git-widget-placeholder": "master",
-    "ignore.virus.scanning.warn.message": "true",
-    "last_opened_file_path": "C:/Users/AIATO/Desktop/CodePPNew/frontpp/src/components/admin/crm/Vimogi/public",
-    "list.type.of.created.stylesheet": "CSS",
-    "node.js.detected.package.eslint": "true",
-    "node.js.detected.package.tslint": "true",
-    "node.js.selected.package.eslint": "(autodetect)",
-    "node.js.selected.package.tslint": "(autodetect)",
-    "nodejs.mocha.mocha_node_package_dir": "",
-    "nodejs_package_manager_path": "yarn",
-    "npm.React Buddy Preview.executor": "Run",
-    "npm.build.executor": "Run",
-    "npm.start.executor": "Run",
-    "run.code.analysis.last.selected.profile": "pProject Default",
-    "settings.editor.selected.configurable": "reference.settingsdialog.project.grazie",
-    "ts.external.directory.path": "C:\\Users\\AIATO\\AppData\\Local\\Programs\\WebStorm\\plugins\\javascript-plugin\\jsLanguageServicesImpl\\external",
-    "two.files.diff.last.used.file": "C:/Users/AIATO/Desktop/CodePPNew/frontpp/src/components/admin/crm/Vimogi/Colorprinthelpsmall.jsx",
-    "vue.rearranger.settings.migration": "true"
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;Node.js.Bukletvimogi.js.executor&quot;: &quot;Run&quot;,
+    &quot;Node.js.Bukletvimogi.jsx.executor&quot;: &quot;Debug&quot;,
+    &quot;Node.js.ClientChangerUIArtem.jsx.executor&quot;: &quot;Run&quot;,
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.git.unshallow&quot;: &quot;true&quot;,
+    &quot;git-widget-placeholder&quot;: &quot;master&quot;,
+    &quot;ignore.virus.scanning.warn.message&quot;: &quot;true&quot;,
+    &quot;last_opened_file_path&quot;: &quot;C:/Users/AIATO/Desktop/CodePPNew/frontpp/src/components/admin/crm/Vimogi/public&quot;,
+    &quot;list.type.of.created.stylesheet&quot;: &quot;CSS&quot;,
+    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
+    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
+    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
+    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
+    &quot;nodejs.mocha.mocha_node_package_dir&quot;: &quot;&quot;,
+    &quot;nodejs_package_manager_path&quot;: &quot;yarn&quot;,
+    &quot;npm.React Buddy Preview.executor&quot;: &quot;Run&quot;,
+    &quot;npm.build.executor&quot;: &quot;Run&quot;,
+    &quot;npm.start.executor&quot;: &quot;Run&quot;,
+    &quot;run.code.analysis.last.selected.profile&quot;: &quot;pProject Default&quot;,
+    &quot;settings.editor.selected.configurable&quot;: &quot;reference.settingsdialog.project.grazie&quot;,
+    &quot;ts.external.directory.path&quot;: &quot;C:\\Users\\AIATO\\AppData\\Local\\Programs\\WebStorm\\plugins\\javascript-plugin\\jsLanguageServicesImpl\\external&quot;,
+    &quot;two.files.diff.last.used.file&quot;: &quot;C:/Users/AIATO/Desktop/CodePPNew/frontpp/src/components/admin/crm/Vimogi/Colorprinthelpsmall.jsx&quot;,
+    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
   }
-}]]></component>
+}</component>
   <component name="ReactDesignerToolWindowState">
     <option name="myId2Visible">
       <map>
@@ -110,6 +96,7 @@
       <recent name="C:\Users\AIATO\Desktop\CodePPNew\frontpp\src\components\admin\crm\Vimogi" />
     </key>
     <key name="MoveFile.RECENT_KEYS">
+      <recent name="C:\Users\AIATO\Desktop\CodePPNew\frontpp\src\components" />
       <recent name="C:\Users\AIATO\Desktop\CodePPNew\frontpp\src\components\admin\crm\Vimogi" />
       <recent name="C:\Users\AIATO\Desktop\CodePPNew\frontpp\src\PrintPeaksFAinal\poslugi\newnomodals" />
     </key>
@@ -211,6 +198,10 @@
       <workItem from="1739931127322" duration="35615000" />
       <workItem from="1740008076773" duration="595000" />
       <workItem from="1740051341465" duration="11748000" />
+      <workItem from="1740163861499" duration="3205000" />
+      <workItem from="1740231685341" duration="1268000" />
+      <workItem from="1740345314837" duration="658000" />
+      <workItem from="1740413640089" duration="2929000" />
     </task>
     <task id="LOCAL-00003" summary="ddd">
       <option name="closed" value="true" />

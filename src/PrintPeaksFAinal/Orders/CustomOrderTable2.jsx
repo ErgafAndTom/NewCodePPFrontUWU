@@ -22,7 +22,7 @@ const CustomOrderTable2 = () => {
     const [typeSelect, setTypeSelect] = useState("");
     const [thisColumn, setThisColumn] = useState({
         column: "id",
-        reverse: false
+        reverse: true
     });
     const [expandedOrders, setExpandedOrders] = useState([]);
 

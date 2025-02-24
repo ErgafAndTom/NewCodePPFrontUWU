@@ -58,7 +58,10 @@ const Materials2Cup = ({material, setMaterial, count, setCount, prices, type, na
                 reverse: false
             },
             size: size,
-            material: material
+            material: {
+                ...material,
+                type: "Чашки"
+            }
         }
         // console.log(data);
         setLoad(true)

@@ -80,8 +80,8 @@ const Nav = () => {
 
                         {/*<button className="ButtonVimogi">Спілкування</button>*/}
                         {/*<button className="ButtonVimogi">Вимоги</button>*/}
-                        <button className="ButtonVimogi">Постачальники</button>
-                        <button className="ButtonVimogi">Підрядники</button>
+                        <button disabled className="ButtonVimogi">Постачальники</button>
+                        <button disabled className="ButtonVimogi">Підрядники</button>
                         <Link to="/Orders" style={{textDecoration: 'none', margin: 'auto', padding: '0', background: 'transparent'}}>
                             <button
                                 onClick={() => handleBasicClick('/Orders')}
@@ -128,14 +128,14 @@ const Nav = () => {
                             >Завдання
                             </button>
                         </Link>
-                        <Link disabled onClick={() => handleBasicClick('/TG')} to="/TG"
-                              style={{textDecoration: 'none', margin: 'auto', padding: '0', background: 'transparent'}}>
-                            <button
-                                className={basicActive === "/TG" ? 'ButtonVimogi ButtonVimogia' : 'ButtonVimogi'}
-                                style={basicActive === "/TG" ? {background: "#FAB416"} : {}}
-                            >Telegram
-                            </button>
-                        </Link>
+                        {/*<Link disabled onClick={() => handleBasicClick('/TG')} to="/TG"*/}
+                        {/*      style={{textDecoration: 'none', margin: 'auto', padding: '0', background: 'transparent'}}>*/}
+                        {/*    <button*/}
+                        {/*        className={basicActive === "/TG" ? 'ButtonVimogi ButtonVimogia' : 'ButtonVimogi'}*/}
+                        {/*        style={basicActive === "/TG" ? {background: "#FAB416"} : {}}*/}
+                        {/*    >Telegram*/}
+                        {/*    </button>*/}
+                        {/*</Link>*/}
                         <Link to="/Vimogi" style={{textDecoration: 'none', margin: 'auto', padding: '0', background: 'transparent'}}>
                             <button
                                 onClick={() => handleBasicClick('/Vimogi')}

@@ -40,7 +40,7 @@ const NewCup = ({
         y: 297
     });
     const [material, setMaterial] = useState({
-        type: "Чашки",
+        type: "Не потрібно",
         thickness: "Чашка",
         material: "",
         materialId: "",
@@ -78,7 +78,7 @@ const NewCup = ({
         let dataToSend = {
             orderId: thisOrder.id,
             toCalc: {
-                nameOrderUnit: "Чашки",
+                nameOrderUnit: "Чашка",
                 type: "Cup",
                 size: size,
                 material: material,
