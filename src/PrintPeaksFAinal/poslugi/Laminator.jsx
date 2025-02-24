@@ -78,7 +78,7 @@ const Laminator = ({
         let dataToSend = {
             orderId: thisOrder.id,
             toCalc: {
-                nameOrderUnit: "Ламінація",
+                nameOrderUnit: `Ламінація`,
                 type: "Laminator",
                 size: size,
                 material: material,

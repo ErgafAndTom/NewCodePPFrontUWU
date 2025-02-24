@@ -85,7 +85,7 @@ const PerepletMet = ({
         let dataToSend = {
             orderId: thisOrder.id,
             toCalc: {
-                nameOrderUnit: "PerepletMet",
+                nameOrderUnit: "Перепліт без матеріалу(бумаги)",
                 type: "PerepletMet",
                 size: size,
                 material: material,

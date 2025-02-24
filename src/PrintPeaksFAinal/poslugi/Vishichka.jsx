@@ -86,7 +86,7 @@ const Vishichka = ({
         let dataToSend = {
             orderId: thisOrder.id,
             toCalc: {
-                nameOrderUnit: "Vishichka",
+                nameOrderUnit: "Друк та висічка",
                 type: "Vishichka",
                 size: size,
                 material: material,
@@ -366,55 +366,32 @@ const Vishichka = ({
                                     ) : (
                                         <div className="d-flex justify-content-between pricesBlockContainer">
                                             <div className="">
-
                                                 <div className="fontInfoForPricing">
-                                                    Друк: {pricesThis.priceForDrukThisUnit} грн * {pricesThis.skolko} шт
-                                                    = {pricesThis.priceForDrukThisUnit * pricesThis.skolko} грн
+                                                    Друк: {pricesThis.priceDrukPerSheet} грн * {pricesThis.sheetCount} шт = {pricesThis.priceDrukPerSheet * pricesThis.sheetCount} грн
                                                 </div>
                                                 <div className="fontInfoForPricing">
-                                                    Матеріали: {pricesThis.priceForThisUnitOfPapper}грн.
-                                                    * {pricesThis.skolko} шт
-                                                    = {pricesThis.priceForThisUnitOfPapper * pricesThis.skolko}грн.
+                                                    Матеріали: {pricesThis.pricePaperPerSheet} грн * {pricesThis.sheetCount} шт = {pricesThis.pricePaperPerSheet * pricesThis.sheetCount} грн
                                                 </div>
-
-                                                {/*<div className="fontInfoForPricing">*/}
-                                                {/*    Ламінація: {pricesThis.priceForThisUnitOfLamination} грн*/}
-                                                {/*    * {pricesThis.skolko} шт*/}
-                                                {/*    = {pricesThis.priceForThisAllUnitsOfLamination} грн*/}
-                                                {/*</div>*/}
+                                                {/*<div className="fontInfoForPricing">
+        Ламінація: {pricesThis.priceForThisUnitOfLamination} грн * {pricesThis.sheetCount} шт = {pricesThis.priceForThisAllUnitsOfLamination} грн
+    </div>*/}
                                                 <div className="fontInfoForPricing">
-                                                    Висічка {pricesThis.priceForThisUnitOfVishichka} грн * {count} шт
-                                                    = {pricesThis.priceForVishichkaAllUnit} грн
+                                                    Висічка: {pricesThis.priceVishichkaPerSheet} грн * {pricesThis.sheetCount} шт = {pricesThis.totalVishichkaPrice} грн
                                                 </div>
-                                                {/*<div className=" fontInfoForPricing">*/}
-                                                {/*    Свердління отворів: {pricesThis.priceForThisUnitOfCute} грн * {count} шт*/}
-                                                {/*    = {pricesThis.priceForAllUnitsOfCute} грн*/}
-                                                {/*</div>*/}
-                                                {/*<div className="fontInfoForPricing">*/}
-                                                {/*    Суруглення кутів: {pricesThis.priceForThisUnitOfHoles} грн * {count} шт*/}
-                                                {/*    = {pricesThis.priceForAllUnitsOfHoles} грн*/}
-
-                                                {/*</div>*/}
-                                                {/*<div className="fontInfoForPricing">*/}
-                                                {/*    {pricesThis.priceForThisUnitOfPapper * pricesThis.skolko}+*/}
-                                                {/*    {pricesThis.priceForDrukThisUnit * pricesThis.skolko}+*/}
-                                                {/*    {pricesThis.priceForThisAllUnitsOfLamination}+*/}
-                                                {/*    {pricesThis.priceForAllUnitsOfBig}+*/}
-                                                {/*    {pricesThis.priceForAllUnitsOfCute}+*/}
-                                                {/*    {pricesThis.priceForAllUnitsOfHoles}=*/}
-                                                {/*    {pricesThis.price}*/}
-                                                {/*</div>*/}
+                                                {/*<div className="fontInfoForPricing">
+        Свердління отворів: {pricesThis.priceForThisUnitOfCute} грн * {pricesThis.sheetCount} шт = {pricesThis.priceForAllUnitsOfCute} грн
+    </div>*/}
                                                 <div className="fontInfoForPricing1">
                                                     Загалом: {pricesThis.price} грн
                                                 </div>
                                                 <div className="fontInfoForPricing">
-                                                    - З одного аркуша A3 можливо
-                                                    зробити {pricesThis.skolkoListovNaOdin} виробів
+                                                    - З одного аркуша A3 можна зробити {pricesThis.sheetsPerUnit} виробів
                                                 </div>
                                                 <div className="fontInfoForPricing">
-                                                    - Затрачено {pricesThis.skolko} аркушів (SR A3)
+                                                    - Використано {pricesThis.sheetCount} аркушів (SR A3)
                                                 </div>
                                             </div>
+
 
 
                                             <img
