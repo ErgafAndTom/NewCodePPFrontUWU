@@ -6,11 +6,13 @@ import ModalSize from "../modals/ModalSize";
 import axios from "axios";
 import Loader from "../../calc/Loader";
 import Form from "react-bootstrap/Form";
+import {useNavigate} from "react-router-dom";
 
-const Plotter = ({thisOrder, newThisOrder, setNewThisOrder, selectedThings2, showPlotter, setShowPlotter}) => {
+const Plotter = ({thisOrder, newThisOrder, setNewThisOrder, selectedThings2, showPlotter, setShowPlotter, setThisOrder, setSelectedThings2}) => {
     const [load, setLoad] = useState(false);
     const [isVisible, setIsVisible] = useState(false);
     const [isAnimating, setIsAnimating] = useState(false);
+    const navigate = useNavigate();
     const [error, setError] = useState(null);
     const handleClose = () => {
         setIsAnimating(false); // Начинаем анимацию закрытия
@@ -45,25 +47,60 @@ const Plotter = ({thisOrder, newThisOrder, setNewThisOrder, selectedThings2, sho
     const [big, setBig] = useState("Не потрібно");
     const [montajka, setMontajka] = useState("");
     const [cute, setCute] = useState("Не потрібно");
+    const [cuteLocal, setCuteLocal] = useState({
+        leftTop: false,
+        rightTop: false,
+        rightBottom: false,
+        leftBottom: false,
+        radius: "",
+    });
     const [holes, setHoles] = useState("Не потрібно");
+    const [holesR, setHolesR] = useState("");
     const [count, setCount] = useState(1);
     const [prices, setPrices] = useState(null);
     const [pricesThis, setPricesThis] = useState(null);
     const [thisTypeMaterials, setThisTypeMaterials] = useState([]);
 
-    const handleThingClickAndHide = e => {
-        let newThisOrderToSend = thisOrder
-        let thing = {
-            name: "Плотер",
-            amount: count,
-            newField2: size.x,
-            newField3: size.y,
-            priceForThis: pricesThis.price,
-            priceForOneThis: pricesThis.price / count
-        }
-        newThisOrderToSend.orderunits = [...selectedThings2, {...thing, orderunitunits: []}]
-        setNewThisOrder(newThisOrderToSend)
-        setShowPlotter(false)
+    const addNewOrderUnit = e => {
+        let dataToSend = {
+            orderId: thisOrder.id,
+            toCalc: {
+                nameOrderUnit: "Постпресс",
+                type: "Plotter",
+                size: size,
+                material: {
+                    ...material,
+                    type: "Не потрібно",
+                },
+                color: {
+                    ...color,
+                    sides: "Не потрібно",
+                },
+                lamination: lamination,
+                big: big,
+                cute: cute,
+                cuteLocal: cuteLocal,
+                holes: holes,
+                holesR: holesR,
+                count: count,
+            }
+        };
+
+        axios.post(`/orderUnits/OneOrder/OneOrderUnitInOrder`, dataToSend)
+            .then(response => {
+                // console.log(response.data);
+                setThisOrder(response.data);
+                // setSelectedThings2(response.data.order.OrderUnits || []);
+                setSelectedThings2(response.data.OrderUnits);
+                setShowPlotter(false)
+            })
+            .catch(error => {
+                if(error.response.status === 403){
+                    navigate('/login');
+                }
+                console.log(error.message);
+                // setErr(error)
+            });
     }
 
     const handleSelectDrukSides = e => {
@@ -121,29 +158,6 @@ const Plotter = ({thisOrder, newThisOrder, setNewThisOrder, selectedThings2, sho
             setThisTypeMaterials(thisPrices)
         }
     }, [prices]);
-
-    // useEffect(() => {
-    //     let dataToSend = {
-    //         type: "Plotter",
-    //         size: size,
-    //         material: material,
-    //         color: color,
-    //         lamination: lamination,
-    //         big: big,
-    //         cute: cute,
-    //         holes: holes,
-    //         count: count,
-    //         montajka: montajka,
-    //     }
-    //     axios.post(`/api/pricing`, dataToSend)
-    //         .then(response => {
-    //             console.log(response.data);
-    //             setPricesThis(response.data)
-    //         })
-    //         .catch(error => {
-    //             console.log(error.message);
-    //         })
-    // }, [size, material, color, lamination, big, cute, holes, count, montajka]);
 
     useEffect(() => {
         if (showPlotter) {
@@ -423,7 +437,7 @@ const Plotter = ({thisOrder, newThisOrder, setNewThisOrder, selectedThings2, sho
                     </MDBContainer>
                 </div>
                 {thisOrder && (
-                    <div className="btn btn-light" onClick={handleThingClickAndHide}>
+                    <div className="btn btn-light" onClick={addNewOrderUnit}>
                         ДОДАТИ ДО ЗАМОВЛЕННЯ
                     </div>
                 )}

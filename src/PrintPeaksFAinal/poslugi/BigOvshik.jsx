@@ -318,16 +318,16 @@ const BigOvshik = ({
                                             {/*    = {pricesThis.priceForThisAllUnitsOfLamination} грн*/}
                                             {/*</div>*/}
                                             <div className="fontInfoForPricing">
-                                                Згинання {pricesThis.priceForThisUnitOfBig} грн * {count} шт
-                                                = {pricesThis.priceForAllUnitsOfBig} грн
+                                                Згинання {pricesThis.big.pricePerUnit} грн * {pricesThis.big.count} шт
+                                                = {pricesThis.big.totalPrice} грн
                                             </div>
                                             <div className=" fontInfoForPricing">
-                                                Свердління отворів: {pricesThis.priceForThisUnitOfCute} грн * {count} шт
-                                                = {pricesThis.priceForAllUnitsOfCute} грн
+                                                Свердління отворів: {pricesThis.cute.pricePerUnit} грн * {pricesThis.cute.count} шт
+                                                = {pricesThis.cute.totalPrice} грн
                                             </div>
                                             <div className="fontInfoForPricing">
-                                                Суруглення кутів: {pricesThis.priceForThisUnitOfHoles} грн * {count} шт
-                                                = {pricesThis.priceForAllUnitsOfHoles} грн
+                                                Суруглення кутів: {pricesThis.holes.pricePerUnit} грн * {pricesThis.holes.count} шт
+                                                = {pricesThis.holes.totalPrice} грн
 
                                             </div>
                                             {/*<div className="fontInfoForPricing">*/}

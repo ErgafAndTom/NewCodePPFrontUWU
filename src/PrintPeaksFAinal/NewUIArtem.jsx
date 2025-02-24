@@ -624,18 +624,18 @@ const NewUIArtem = () => {
                         setSelectedThings2={setSelectedThings2}
                     />
                 }
-                {showPlotter &&
-                    <Plotter
-                        productName={productName}
-                        thisOrder={thisOrder} newThisOrder={newThisOrder}
-                        selectedThings2={selectedThings2}
-                        setNewThisOrder={setNewThisOrder}
-                        setShowPlotter={setShowPlotter}
-                        showPlotter={showPlotter}
-                        setThisOrder={setThisOrder}
-                        setSelectedThings2={setSelectedThings2}
-                    />
-                }
+                {/*{showPlotter &&*/}
+                {/*    <Plotter*/}
+                {/*        productName={productName}*/}
+                {/*        thisOrder={thisOrder} newThisOrder={newThisOrder}*/}
+                {/*        selectedThings2={selectedThings2}*/}
+                {/*        setNewThisOrder={setNewThisOrder}*/}
+                {/*        setShowPlotter={setShowPlotter}*/}
+                {/*        showPlotter={showPlotter}*/}
+                {/*        setThisOrder={setThisOrder}*/}
+                {/*        setSelectedThings2={setSelectedThings2}*/}
+                {/*    />*/}
+                {/*}*/}
                 {showNewNote &&
                     <NewNote
                         productName={productName}

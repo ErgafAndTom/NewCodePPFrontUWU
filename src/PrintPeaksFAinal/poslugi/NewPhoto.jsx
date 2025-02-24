@@ -77,11 +77,17 @@ const NewPhoto = ({thisOrder, newThisOrder, setNewThisOrder, selectedThings2, sh
         let dataToSend = {
             orderId: thisOrder.id,
             toCalc: {
-                nameOrderUnit: "Фото",
+                nameOrderUnit: "Фото друк",
                 type: "Photo",
                 size: size,
-                material: material,
-                color: color,
+                material: {
+                    ...material,
+                    type: "Не потрібно",
+                },
+                color: {
+                    ...color,
+                    sides: "Не потрібно",
+                },
                 lamination: lamination,
                 big: big,
                 cute: cute,
