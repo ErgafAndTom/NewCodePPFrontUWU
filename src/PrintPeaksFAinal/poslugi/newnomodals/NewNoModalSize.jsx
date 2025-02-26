@@ -149,11 +149,7 @@ const ModalSize = ({size, setSize, type, buttonsArr, color, setColor, count, set
     }
     //initial main and--------------------------------------------------------------------------------------------
     let handleChange = (e) => {
-        if(e === ""){
-            setCount(1)
-        } else {
-            setCount(e)
-        }
+        setCount(e)
     }
 
     const handleClose = () => {

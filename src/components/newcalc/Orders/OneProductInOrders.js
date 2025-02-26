@@ -19,27 +19,6 @@ function OneProductInOrders({item, cash = false, handleAmountChange, index}) {
                     width: "32vw",
                     margin: "0"
                 }}>
-                    {/*<div className="d-flex"*/}
-                    {/*     style={{marginLeft: "1vw"}}>*/}
-                    {/*    /!*<div className="d-flex">*!/*/}
-                    {/*    /!*    <div className="adminFontTable" >*!/*/}
-                    {/*    /!*        Розмір:*!/*/}
-                    {/*    /!*    </div>*!/*/}
-                    {/*    /!*</div>*!/*/}
-                    {/*    <div className="d-flex">*/}
-                    {/*        <div className="adminFontTable" >*/}
-                    {/*            {item.newField2}*/}
-                    {/*        </div>*/}
-                    {/*        <div className="adminFontTable" style={{marginTop: "0.5vw", fontSize: "0.5vw"}}>мм</div>*/}
-                    {/*    </div>*/}
-                    {/*    <div className="d-flex">*/}
-                    {/*        <div className="adminFontTable" >x</div>*/}
-                    {/*        <div className="adminFontTable" >*/}
-                    {/*            {item.newField3}*/}
-                    {/*        </div>*/}
-                    {/*        <div className="adminFontTable" style={{marginTop: "0.5vw", fontSize: "0.5vw"}}>мм</div>*/}
-                    {/*    </div>*/}
-                    {/*</div>*/}
                     <div className="adminFontTable" style={{
                         // border: "1px black solid",
                         margin: "0 0.2vw 0.2vw 0.2vw"

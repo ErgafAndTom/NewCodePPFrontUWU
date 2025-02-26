@@ -375,135 +375,116 @@ const NewUIArtem = () => {
                                     {selectedThings2.map((thing, index) => (
                                         <div key={index} className="d-flex containerNewUI HoverOrderUnits shadow-sm"
                                              style={{border: "1px #dcd9ce solid", margin: "0.2vw",}}>
-                                            {thing.OrderUnitUnits.length !== 0 ? (
-                                                <div
-                                                    className="d-flex flex-column justify-content-start align-items-start"
-                                                    style={{
-                                                        width: '32.1vw',
-                                                    }}>
-                                                    <Modal.Header className="d-flex w-100"
-                                                                  style={{position: "relative"}}>
-                                                        <div
-                                                            className="piecesord d-flex align-items-center overflow-visible"
-                                                            style={{
-                                                                marginLeft: "1vw",
-                                                                padding: "0.5vw",
-                                                                position: "relative"
-                                                            }}>
-                                                            <div className="adminFontTable d-flex align-items-center"
-                                                            >
-                                                                {thing.name}
-                                                                <div className="d-flex align-items-center">
-                                                                    <div className="adminFontTable">
-                                                                        ( {thing.newField2}
-                                                                    </div>
-                                                                    <div className="adminFontTable" style={{
-                                                                        marginTop: "0.5vw",
-                                                                        fontSize: "0.5vw"
-                                                                    }}>
-                                                                        мм
-                                                                    </div>
+                                            <div
+                                                className="d-flex flex-column justify-content-start align-items-start"
+                                                style={{
+                                                    width: '32.1vw',
+                                                }}>
+                                                <Modal.Header className="d-flex w-100"
+                                                              style={{position: "relative"}}>
+                                                    <div
+                                                        className="piecesord d-flex align-items-center overflow-visible"
+                                                        style={{
+                                                            marginLeft: "1vw",
+                                                            padding: "0.5vw",
+                                                            position: "relative"
+                                                        }}>
+                                                        <div className="adminFontTable d-flex align-items-center"
+                                                             // style={{width: "23vw"}}
+                                                        >
+                                                            {thing.name}
+                                                            <div className="d-flex align-items-center">
+                                                                <div className="adminFontTable">
+                                                                    ( {thing.newField2}
                                                                 </div>
-                                                                <div className="d-flex align-items-center">
-                                                                    <div className="adminFontTable">x</div>
-                                                                    <div className="adminFontTable">
-                                                                        {thing.newField3}
-                                                                    </div>
-                                                                    <div className="adminFontTable" style={{
-                                                                        marginTop: "0.5vw",
-                                                                        fontSize: "0.5vw"
-                                                                    }}>мм
-                                                                    </div>
-                                                                    )
+                                                                <div className="adminFontTable" style={{
+                                                                    marginTop: "0.5vw",
+                                                                    fontSize: "0.5vw"
+                                                                }}>
+                                                                    мм
                                                                 </div>
                                                             </div>
+                                                            <div className="adminFontTable">x</div>
+                                                            <div className="d-flex align-items-center">
+                                                                <div className="adminFontTable">
+                                                                    {thing.newField3}
+                                                                </div>
+                                                                <div className="adminFontTable" style={{
+                                                                    marginTop: "0.5vw",
+                                                                    fontSize: "0.5vw"
+                                                                }}>мм
+                                                                </div>
+                                                                )
+                                                            </div>
+                                                            <div className="d-flex">
+                                                                <div className="adminFontTable"
+                                                                     style={{fontSize: "0.9vw", marginLeft: "0.3vw"}}>
+                                                                    {thing.amount}
+                                                                </div>
+                                                                <div className="adminFontTable"
+                                                                     style={{fontSize: "0.5vw", marginTop: "1vh"}}>
+                                                                    шт
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                        <div className="priceord d-flex align-items-center">
                                                             <div className="adminFontTable"
-                                                                 style={{fontSize: "0.9vw", marginLeft: "1vw"}}>
-                                                                {thing.amount}
+                                                                 style={{fontSize: "0.7vw", marginTop: "0.6vh"}}>
+                                                                =
                                                             </div>
-                                                            <div className="adminFontTable"
-                                                                 style={{fontSize: "0.5vw", marginTop: "1.5vh"}}>
-                                                                шт
+                                                            <div className="adminFontTable booooold"
+                                                                 style={{fontSize: "0.9vw", color: "#EE3C23"}}>
+                                                                {thing.priceForThis}
                                                             </div>
-                                                            <div className="priceord d-flex align-items-center">
-                                                                <div className="adminFontTable booooold"
-                                                                     style={{fontSize: "0.9vw", color: "#EE3C23"}}>
-                                                                    {thing.priceForThis}
-                                                                </div>
-                                                                <div className="adminFontTable "
-                                                                     style={{
-                                                                         fontSize: "0.5vw",
-                                                                         marginTop: "1.5vh",
-                                                                         color: "#EE3C23"
-                                                                     }}>
-                                                                    грн
-                                                                </div>
-                                                            </div>
-                                                        </div>
-
-                                                        <div
-                                                            onClick={(e) => handleThingClickDelete2(thing)}
-                                                            className="battonClosed"
-                                                            style={{
-                                                                margin: "0.5vw",
-                                                                zIndex: "99",
-                                                                width: "1.5vw",
-                                                                height: "1.5vw",
-                                                                borderRadius: "50%",
-                                                                // backgroundColor: "#EE3C23",
-                                                                // color: "white",
-                                                                fontSize: "0.8vw",
-                                                                fontWeight: "bold",
-                                                                position: "absolute",
-                                                                right: "-1.3vw",
-                                                                top: "-0.3vw",
-                                                            }}
-                                                        >✕
-                                                        </div>
-                                                    </Modal.Header>
-                                                    <OneProductInOrders item={thing} cash={true}
-                                                                        handleAmountChange={handleAmountChange}
-                                                                        index={index}/>
-                                                    <div className="d-flex justify-content-between"
-                                                         style={{marginLeft: "1vw"}}>
-                                                        <div
-                                                            className="adminFontTable">Кількість:
-                                                        </div>
-                                                        <input
-                                                            type="number"
-                                                            placeholder={1}
-                                                            min={1}
-                                                            value={thing.amount}
-                                                            className="adminFontTable"
-                                                            style={{
-                                                                height: "2.5vh",
-                                                                width: "3vw",
-                                                                borderRadius: "0.7vh",
-                                                                background: "#F2EFE8",
-                                                                borderColor: "#F2EFE8"
-                                                            }}
-                                                            // onChange={(event) => handleAmountChange1(thing, 'amount', event)}
-                                                        />
-                                                        <div className="d-flex">
-                                                            <div
-                                                                className="d-flex justify-content-center adminFontTable align-items-last"
-                                                                style={{marginLeft: "1.5vw"}}>На
-                                                                аркуші міститься: {thing.newField4} виробів
-                                                            </div>
-                                                            <div
-                                                                className="d-flex justify-content-self-end adminFontTable"
-                                                                style={{marginLeft: "1.5vw"}}
-                                                            > Використано: {thing.newField5} аркушів
+                                                            <div className="adminFontTable "
+                                                                 style={{
+                                                                     fontSize: "0.5vw",
+                                                                     marginTop: "1.5vh",
+                                                                     color: "#EE3C23"
+                                                                 }}>
+                                                                грн
                                                             </div>
                                                         </div>
                                                     </div>
-                                                </div>
-                                            ) : (
-                                                <div
-                                                    className="d-flex flex-column"
-                                                    style={{width: '31.7vw'}}>
-                                                </div>
-                                            )}
+
+                                                    <div
+                                                        onClick={(e) => handleThingClickDelete2(thing)}
+                                                        className="battonClosed"
+                                                        style={{
+                                                            margin: "0.5vw",
+                                                            zIndex: "99",
+                                                            width: "1.5vw",
+                                                            height: "1.5vw",
+                                                            borderRadius: "50%",
+                                                            // backgroundColor: "#EE3C23",
+                                                            // color: "white",
+                                                            fontSize: "0.8vw",
+                                                            fontWeight: "bold",
+                                                            position: "absolute",
+                                                            right: "-1.3vw",
+                                                            top: "-0.3vw",
+                                                        }}
+                                                    >✕
+                                                    </div>
+                                                </Modal.Header>
+                                                <OneProductInOrders item={thing} cash={true}
+                                                                    handleAmountChange={handleAmountChange}
+                                                                    index={index}/>
+                                                <Modal.Footer>
+                                                    <div className="d-flex justify-content-between align-content-between">
+                                                        <div
+                                                            className="d-flex adminFontTable"
+                                                            style={{marginLeft: "1.5vw"}}>На
+                                                            аркуші міститься: {thing.newField4} виробів
+                                                        </div>
+                                                        <div
+                                                            className="d-flex adminFontTable"
+                                                            style={{marginLeft: "1.5vw"}}
+                                                        > Використано: {thing.newField5} аркушів
+                                                        </div>
+                                                    </div>
+                                                </Modal.Footer>
+                                            </div>
                                         </div>
                                     ))}
                                 </div>

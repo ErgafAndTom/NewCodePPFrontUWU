@@ -7,8 +7,8 @@ import versantIcon from "../../components/newUIArtem/printers/p7.svg";
 import {useNavigate} from "react-router-dom";
 import NewNoModalSizeNote from "./newnomodals/note/NewNoModalSizeNote";
 import Materials2NoteFront from "./newnomodals/note/Materials2NoteFront";
-import Materials2NoteInBody from "./newnomodals/note/Material2NoteInBody";
 import Materials2NoteBack from "./newnomodals/note/Material2NoteBack";
+import Materials2NoteInBody from "./newnomodals/note/Material2NoteInBody";
 
 const NewNote = ({
                          thisOrder,

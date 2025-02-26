@@ -2,7 +2,6 @@ import React, {useEffect, useState} from "react";
 import axios from '../../../../api/axiosInstance';
 import {useNavigate} from "react-router-dom";
 import {Spinner} from "react-bootstrap";
-import NewSheetCutBw from "../../NewSheetCutBw";
 
 const Materials2NoteInBody = ({
                                   materialAndDrukInBody,
@@ -37,12 +36,31 @@ const Materials2NoteInBody = ({
             materialId: selectedId,
         }));
     }
-    let handleSelectTypeChange = (e) => {
+    //COLOR---------------------------------------------------------------------------
+    let handleSelectTypeColorChange = (e) => {
         const selectedValue = e.target.value || '';
 
         setMaterialAndDrukInBody((prevMaterial) => ({
             ...prevMaterial,
-            materialTypeUse: selectedValue,
+            ColorDrukMaterialTypeUse: selectedValue,
+        }));
+    }
+    //BW---------------------------------------------------------------------------
+    let handleSelectTypeBWChange = (e) => {
+        const selectedValue = e.target.value || '';
+
+        setMaterialAndDrukInBody((prevMaterial) => ({
+            ...prevMaterial,
+            BwDrukMaterialTypeUse: selectedValue,
+        }));
+    }
+    //NON---------------------------------------------------------------------------
+    let handleSelectTypeNONChange = (e) => {
+        const selectedValue = e.target.value || '';
+
+        setMaterialAndDrukInBody((prevMaterial) => ({
+            ...prevMaterial,
+            NonDrukMaterialTypeUse: selectedValue,
         }));
     }
     let handleSelectDrukSidesChange = (e) => {
@@ -62,18 +80,11 @@ const Materials2NoteInBody = ({
         }));
     }
 
-    let handleClick = (e) => {
-        setMaterialAndDrukInBody({
-            ...materialAndDrukInBody,
-            drukSides: e
-        })
-    }
-
     let handleToggleColor = (e) => {
         if (materialAndDrukInBody.ColorDrukMaterialType === "Не потрібно") {
             setMaterialAndDrukInBody({
                 ...materialAndDrukInBody,
-                ColorDrukMaterialType: "",
+                ColorDrukMaterialType: "Папір",
             })
         } else {
             setMaterialAndDrukInBody({
@@ -99,7 +110,7 @@ const Materials2NoteInBody = ({
         if (materialAndDrukInBody.BwDrukMaterialType === "Не потрібно") {
             setMaterialAndDrukInBody({
                 ...materialAndDrukInBody,
-                BwDrukMaterialType: "",
+                BwDrukMaterialType: "Папір",
             })
         } else {
             setMaterialAndDrukInBody({
@@ -125,7 +136,7 @@ const Materials2NoteInBody = ({
         if (materialAndDrukInBody.NonDrukMaterialType === "Не потрібно") {
             setMaterialAndDrukInBody({
                 ...materialAndDrukInBody,
-                NonDrukMaterialType: "",
+                NonDrukMaterialType: "Папір",
             })
         } else {
             setMaterialAndDrukInBody({
@@ -193,7 +204,7 @@ const Materials2NoteInBody = ({
                 }
                 console.log(error.message);
             })
-    }, [materialAndDrukInBody.ColorDrukMaterialType, size]);
+    }, [materialAndDrukInBody.ColorDrukMaterialType, materialAndDrukInBody.ColorDrukMaterialTypeUse, size]);
     useEffect(() => {
         let data = {
             name: "MaterialsPrices",
@@ -206,8 +217,8 @@ const Materials2NoteInBody = ({
             },
             size: size,
             material: {
-                type: materialAndDrukInBody.ColorDrukMaterialType,
-                typeUse: materialAndDrukInBody.ColorDrukMaterialTypeUse,
+                type: materialAndDrukInBody.BwDrukMaterialType,
+                typeUse: materialAndDrukInBody.BwDrukMaterialTypeUse,
             },
         }
         setLoad(true)
@@ -215,7 +226,7 @@ const Materials2NoteInBody = ({
         axios.post(`/materials/NotAll`, data)
             .then(response => {
                 // console.log(response.data);
-                setPaperColorDruk(response.data.rows)
+                setPaperBwDruk(response.data.rows)
                 setLoad(false)
                 if (response.data && response.data.rows && response.data.rows[0]) {
                     setMaterialAndDrukInBody({
@@ -239,7 +250,7 @@ const Materials2NoteInBody = ({
                 }
                 console.log(error.message);
             })
-    }, [materialAndDrukInBody.BwDrukMaterialType, size]);
+    }, [materialAndDrukInBody.BwDrukMaterialType, materialAndDrukInBody.BwDrukMaterialTypeUse, size]);
     useEffect(() => {
         let data = {
             name: "MaterialsPrices",
@@ -252,8 +263,8 @@ const Materials2NoteInBody = ({
             },
             size: size,
             material: {
-                type: materialAndDrukInBody.BwDrukMaterialType,
-                typeUse: materialAndDrukInBody.BwDrukMaterialTypeUse,
+                type: materialAndDrukInBody.NonDrukMaterialType,
+                typeUse: materialAndDrukInBody.NonDrukMaterialTypeUse,
             },
         }
         setLoad(true)
@@ -261,7 +272,7 @@ const Materials2NoteInBody = ({
         axios.post(`/materials/NotAll`, data)
             .then(response => {
                 // console.log(response.data);
-                setPaperColorDruk(response.data.rows)
+                setPaperNonDruk(response.data.rows)
                 setLoad(false)
                 if (response.data && response.data.rows && response.data.rows[0]) {
                     setMaterialAndDrukInBody({
@@ -285,7 +296,7 @@ const Materials2NoteInBody = ({
                 }
                 console.log(error.message);
             })
-    }, [materialAndDrukInBody.ColorDrukMaterialType, size]);
+    }, [materialAndDrukInBody.NonDrukMaterialType, materialAndDrukInBody.NonDrukMaterialTypeUse, size]);
 
     return (
         <div className="d-flex flex-column allArtemElem" style={{margin: "0", padding: "0", height: "12vh"}}>
@@ -311,8 +322,8 @@ const Materials2NoteInBody = ({
                              style={{marginTop: "0", display: 'flex', justifyContent: 'center', alignItems: 'center'}}>
                             <select
                                 name="materialSelect"
-                                value={materialAndDrukInBody.materialTypeUse || ""}
-                                onChange={(event) => handleSelectTypeChange(event)}
+                                value={materialAndDrukInBody.ColorDrukMaterialTypeUse || ""}
+                                onChange={(event) => handleSelectTypeColorChange(event)}
                                 className="selectArtem"
 
                             >
@@ -355,7 +366,7 @@ const Materials2NoteInBody = ({
                                 </option>
                                 {paperColorDruk.map((item, iter) => (
                                     <option
-                                        key={item.name + iter}
+                                        key={200 + iter}
                                         className={"optionInSelectArtem"}
                                         value={item.name}
                                         data-id={item.id}
@@ -462,8 +473,8 @@ const Materials2NoteInBody = ({
                              style={{marginTop: "0", display: 'flex', justifyContent: 'center', alignItems: 'center'}}>
                             <select
                                 name="materialSelect"
-                                value={materialAndDrukInBody.materialTypeUse || ""}
-                                onChange={(event) => handleSelectTypeChange(event)}
+                                value={materialAndDrukInBody.BwDrukMaterialTypeUse || ""}
+                                onChange={(event) => handleSelectTypeBWChange(event)}
                                 className="selectArtem"
 
                             >
@@ -615,8 +626,8 @@ const Materials2NoteInBody = ({
                              style={{marginTop: "0", display: 'flex', justifyContent: 'center', alignItems: 'center'}}>
                             <select
                                 name="materialSelect"
-                                value={materialAndDrukInBody.materialTypeUse || ""}
-                                onChange={(event) => handleSelectTypeChange(event)}
+                                value={materialAndDrukInBody.NonDrukMaterialTypeUse || ""}
+                                onChange={(event) => handleSelectTypeNONChange(event)}
                                 className="selectArtem"
 
                             >

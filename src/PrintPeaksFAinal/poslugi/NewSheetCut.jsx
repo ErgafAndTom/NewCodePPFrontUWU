@@ -440,7 +440,7 @@ const NewSheetCut = ({
 
                                             {/* Підсумкова вартість замовлення */}
                                             <div className="fontInfoForPricing1">
-                                                Загалом: {pricesThis.price.toFixed(2)} грн
+                                                Загалом: {pricesThis.price} грн
                                             </div>
 
                                             {/* Інформація про кількість аркушів */}
