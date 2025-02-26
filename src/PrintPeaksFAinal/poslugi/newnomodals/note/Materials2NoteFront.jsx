@@ -101,7 +101,7 @@ const Materials2NoteFront = ({materialAndDrukFront, setMaterialAndDrukFront, cou
 
     return (
         <div className="d-flex flex-column allArtemElem" style={{margin: "0", padding: "0", height: "5vw"}}>
-            <div style={{fontSize: "1.2vw", fontFamily: "Gotham"}}>Обкладинка: </div>
+            <div style={{fontSize: "1.2vw", fontFamily: "Gotham", fontWeight: "bold"}}>Обкладинка: </div>
             <div style={{display: 'flex', alignItems: 'center', borderBottom: '0.08vw solid gray'}}>
                 <div style={{fontSize: "1.2vw", fontFamily: "Gotham"}}>Матеріал: </div>
                 <div className="ArtemNewSelectContainer" style={{marginTop: "0", display: 'flex', justifyContent: 'center', alignItems: 'center'}}>

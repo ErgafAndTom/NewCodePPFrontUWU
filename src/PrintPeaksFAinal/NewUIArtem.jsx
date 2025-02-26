@@ -189,10 +189,11 @@ const NewUIArtem = () => {
 
     if (thisOrder.User) {
         return (
-            <div
-                style={{height: "87vh"}}
-            >
-                <div className="d-flex" style={{width: "6vw"}}>
+            <div>
+
+                <div className="d-flex"
+                     style={{margin: "0", padding: "0"}}
+                >
                     <div className="d-flex flex-column" style={{
                         border: "1px solid gray",
                         width: "7vw",

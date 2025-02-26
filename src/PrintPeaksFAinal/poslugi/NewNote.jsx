@@ -73,13 +73,13 @@ const NewNote = ({
         BwDrukLaminationTypeUse: "",
         NonDrukLaminationTypeUse: "",
 
-        ColorDrukLaminationmaterial: "Не потрібно",
-        BwDrukLaminationmaterial: "Не потрібно",
-        NonDrukLaminationmaterial: "Не потрібно",
+        ColorDrukLaminationMaterial: "Не потрібно",
+        BwDrukLaminationMaterial: "Не потрібно",
+        NonDrukLaminationMaterial: "Не потрібно",
 
-        ColorDrukLaminationmaterialId: "",
-        BwDrukLaminationmaterialId: "",
-        NonDrukLaminationmaterialId: "",
+        ColorDrukLaminationMaterialId: "",
+        BwDrukLaminationMaterialId: "",
+        NonDrukLaminationMaterialId: "",
 
         ColorDrukMaterial: "",
         BwDrukMaterial: "",
@@ -277,243 +277,172 @@ const NewNote = ({
                             >
                             </div>
                         </div>
-                        <div className="d-flex flex-column">
-                            <MDBContainer fluid style={{width: '100%'}}>
-                                <Row xs={1} md={6} className="">
-                                    <div className="d-flex flex-column">
-                                        <NewNoModalSizeNote
-                                            size={size}
-                                            setSize={setSize}
-                                            prices={prices}
-                                            type={"SheetCut"}
-                                            buttonsArr={["односторонній", "двосторонній",]}
-                                            color={color}
-                                            setColor={setColor}
-                                            count={count}
-                                            setCount={setCount}
-                                            defaultt={"А3 (297 х 420 мм)"}
-                                        />
-                                        {/*<NewNoModalMaterial*/}
-                                        <div className="d-flex flex-column" style={{margin: '0', padding: '0',}}>
-                                            <Materials2NoteFront
-                                                materialAndDrukFront={materialAndDrukFront}
-                                                setMaterialAndDrukFront={setMaterialAndDrukFront}
-                                                count={count}
-                                                setCount={setCount}
-                                                prices={prices}
-                                                size={size}
-                                                selectArr={["3,5 мм", "4 мм", "5 мм", "6 мм", "8 мм"]}
-                                                name={"Чорно-білий друк на монохромному принтері:"}
-                                                buttonsArr={["Офісний", "Тонкий",
-                                                    "Середній",
-                                                    "Цупкий"]}
-                                                buttonsArrDruk={["односторонній", "двосторонній",]}
-                                                buttonsArrColor={["Не потрібно", "Чорнобілий", "Кольоровий"]}
-                                                buttonsArrLamination={["З глянцевим ламінуванням",
-                                                    "З матовим ламінуванням",
-                                                    "З ламінуванням Soft Touch",]}
-                                                typeUse={null}
-                                            />
-                                            <Materials2NoteInBody
-                                                materialAndDrukInBody={materialAndDrukInBody}
-                                                setMaterialAndDrukInBody={setMaterialAndDrukInBody}
-                                                count={count}
-                                                setCount={setCount}
-                                                prices={prices}
-                                                size={size}
-                                                selectArr={["3,5 мм", "4 мм", "5 мм", "6 мм", "8 мм"]}
-                                                name={"Чорно-білий друк на монохромному принтері:"}
-                                                buttonsArr={["Офісний", "Тонкий",
-                                                    "Середній",
-                                                    "Цупкий"]}
-                                                buttonsArrDruk={["односторонній", "двосторонній",]}
-                                                buttonsArrColor={["Не потрібно", "Чорнобілий", "Кольоровий"]}
-                                                buttonsArrLamination={["З глянцевим ламінуванням",
-                                                    "З матовим ламінуванням",
-                                                    "З ламінуванням Soft Touch",]}
-                                                typeUse={null}
-                                            />
-                                            <Materials2NoteBack
-                                                materialAndDrukBack={materialAndDrukBack}
-                                                setMaterialAndDrukBack={setMaterialAndDrukBack}
-                                                count={count}
-                                                setCount={setCount}
-                                                prices={prices}
-                                                size={size}
-                                                selectArr={["3,5 мм", "4 мм", "5 мм", "6 мм", "8 мм"]}
-                                                name={"Чорно-білий друк на монохромному принтері:"}
-                                                buttonsArr={["Офісний", "Тонкий",
-                                                    "Середній",
-                                                    "Цупкий"]}
-                                                buttonsArrDruk={["односторонній", "двосторонній",]}
-                                                buttonsArrColor={["Не потрібно", "Чорнобілий", "Кольоровий"]}
-                                                buttonsArrLamination={["З глянцевим ламінуванням",
-                                                    "З матовим ламінуванням",
-                                                    "З ламінуванням Soft Touch",]}
-                                                typeUse={null}
-                                            />
-                                        </div>
-                                        {/*<NewNoModalLamination*/}
-                                        {/*    lamination={lamination}*/}
-                                        {/*    setLamination={setLamination}*/}
-                                        {/*    prices={prices}*/}
-                                        {/*    size={size}*/}
-                                        {/*    type={"SheetCut"}*/}
-                                        {/*    buttonsArr={["З глянцевим ламінуванням",*/}
-                                        {/*        "З матовим ламінуванням",*/}
-                                        {/*        "З ламінуванням Soft Touch",]}*/}
-                                        {/*    selectArr={["30", "80", "100", "125", "250"]}*/}
-                                        {/*/>*/}
-                                        {/*<NewNoModalCornerRounding*/}
-                                        {/*    big={big}*/}
-                                        {/*    setBig={setBig}*/}
-                                        {/*    prices={prices}*/}
-                                        {/*    type={"SheetCut"}*/}
-                                        {/*    buttonsArr={[]}*/}
-                                        {/*    selectArr={["", "1", "2", "3", "4", "5", "6", "7", "8", "9"]}*/}
-                                        {/*/>*/}
-                                        {/*<NewNoModalCute*/}
-                                        {/*    cute={cute}*/}
-                                        {/*    setCute={setCute}*/}
-                                        {/*    cuteLocal={cuteLocal}*/}
-                                        {/*    setCuteLocal={setCuteLocal}*/}
-                                        {/*    prices={prices}*/}
-                                        {/*    type={"SheetCut"}*/}
-                                        {/*    buttonsArr={[]}*/}
-                                        {/*    selectArr={["3", "6", "8", "10", "13"]}*/}
-                                        {/*/>*/}
-                                        {/*<NewNoModalHoles*/}
-                                        {/*    holes={holes}*/}
-                                        {/*    setHoles={setHoles}*/}
-                                        {/*    holesR={holesR}*/}
-                                        {/*    setHolesR={setHolesR}*/}
-                                        {/*    prices={prices}*/}
-                                        {/*    type={"SheetCut"}*/}
-                                        {/*    buttonsArr={[]}*/}
-                                        {/*    selectArr={["", "3,5 мм", "4 мм", "5 мм", "6 мм", "8 мм"]}*/}
-                                        {/*/>*/}
-                                        {/*<NewNoModalHoles*/}
-                                        {/*    holes={holes}*/}
-                                        {/*    setHoles={setHoles}*/}
-                                        {/*    holesR={holesR}*/}
-                                        {/*    setHolesR={setHolesR}*/}
-                                        {/*    prices={prices}*/}
-                                        {/*    type={"SheetCut"}*/}
-                                        {/*    buttonsArr={[]}*/}
-                                        {/*    selectArr={["", "3,5 мм", "4 мм", "5 мм", "6 мм", "8 мм"]}*/}
-                                        {/*/>*/}
-                                        {/*<Porizka*/}
-                                        {/*    porizka={porizka}*/}
-                                        {/*    setPorizka={setPorizka}*/}
-                                        {/*    prices={prices}*/}
-                                        {/*    type={"SheetCut"}*/}
-                                        {/*/>*/}
-                                    </div>
-                                </Row>
-                                <div className="d-flex">
-                                    {thisOrder && (
+
+                        <div className="d-flex flex-column" style={{margin: '0', padding: '0'}}>
+                            <div className="d-flex flex-column" style={{margin: '0', padding: '0'}}>
+                                <NewNoModalSizeNote
+                                    size={size}
+                                    setSize={setSize}
+                                    prices={prices}
+                                    type={"SheetCut"}
+                                    buttonsArr={["односторонній", "двосторонній",]}
+                                    color={color}
+                                    setColor={setColor}
+                                    count={count}
+                                    setCount={setCount}
+                                    defaultt={"А3 (297 х 420 мм)"}
+                                />
+                                <Materials2NoteFront
+                                    materialAndDrukFront={materialAndDrukFront}
+                                    setMaterialAndDrukFront={setMaterialAndDrukFront}
+                                    count={count}
+                                    setCount={setCount}
+                                    prices={prices}
+                                    size={size}
+                                    selectArr={["3,5 мм", "4 мм", "5 мм", "6 мм", "8 мм"]}
+                                    name={"Чорно-білий друк на монохромному принтері:"}
+                                    buttonsArr={["Офісний", "Тонкий",
+                                        "Середній",
+                                        "Цупкий"]}
+                                    buttonsArrDruk={["односторонній", "двосторонній",]}
+                                    buttonsArrColor={["Не потрібно", "Чорнобілий", "Кольоровий"]}
+                                    buttonsArrLamination={["З глянцевим ламінуванням",
+                                        "З матовим ламінуванням",
+                                        "З ламінуванням Soft Touch",]}
+                                    typeUse={null}
+                                />
+                                <Materials2NoteInBody
+                                    materialAndDrukInBody={materialAndDrukInBody}
+                                    setMaterialAndDrukInBody={setMaterialAndDrukInBody}
+                                    count={count}
+                                    setCount={setCount}
+                                    prices={prices}
+                                    size={size}
+                                    selectArr={["3,5 мм", "4 мм", "5 мм", "6 мм", "8 мм"]}
+                                    name={"Чорно-білий друк на монохромному принтері:"}
+                                    buttonsArr={["Офісний", "Тонкий",
+                                        "Середній",
+                                        "Цупкий"]}
+                                    buttonsArrDruk={["односторонній", "двосторонній",]}
+                                    buttonsArrColor={["Не потрібно", "Чорнобілий", "Кольоровий"]}
+                                    buttonsArrLamination={["З глянцевим ламінуванням",
+                                        "З матовим ламінуванням",
+                                        "З ламінуванням Soft Touch",]}
+                                    typeUse={null}
+                                />
+                                <Materials2NoteBack
+                                    materialAndDrukBack={materialAndDrukBack}
+                                    setMaterialAndDrukBack={setMaterialAndDrukBack}
+                                    count={count}
+                                    setCount={setCount}
+                                    prices={prices}
+                                    size={size}
+                                    selectArr={["3,5 мм", "4 мм", "5 мм", "6 мм", "8 мм"]}
+                                    name={"Чорно-білий друк на монохромному принтері:"}
+                                    buttonsArr={["Офісний", "Тонкий",
+                                        "Середній",
+                                        "Цупкий"]}
+                                    buttonsArrDruk={["односторонній", "двосторонній",]}
+                                    buttonsArrColor={["Не потрібно", "Чорнобілий", "Кольоровий"]}
+                                    buttonsArrLamination={["З глянцевим ламінуванням",
+                                        "З матовим ламінуванням",
+                                        "З ламінуванням Soft Touch",]}
+                                    typeUse={null}
+                                />
+                            </div>
+                            <div className="d-flex">
+                                {thisOrder && (
+                                    <div
+                                        className="d-flex align-content-between justify-content-between"
+                                        style={{
+                                            width: "90vw",
+                                            marginLeft: "2.5vw",
+                                            fontFamily: "Gotham",
+                                            fontWeight: "bold",
+                                            display: 'flex',
+                                            justifyContent: 'center',
+                                            alignItems: 'center',
+                                            transition: "all 0.3s ease",
+                                            height: '3vw',
+                                        }}
+                                    >
                                         <div
-                                            className="d-flex align-content-between justify-content-between"
-                                            style={{
-                                                width: "90vw",
-                                                marginLeft: "2.5vw",
-                                                fontFamily: "Gotham",
-                                                fontWeight: "bold",
-                                                display: 'flex',
-                                                justifyContent: 'center',
-                                                alignItems: 'center',
-                                                transition: "all 0.3s ease",
-                                                height: '3vw',
-                                            }}
+                                            className="btn btn-warning" style={{
+                                            borderRadius: '0.627vw',
+                                            // border: '0.08vw solid gray',
+                                            padding: '0.2vw 0.7vw',
+                                        }}
+                                            onClick={addNewOrderUnit}
                                         >
-                                            <div
-                                                className="btn btn-warning" style={{
-                                                borderRadius: '0.627vw',
-                                                // border: '0.08vw solid gray',
-                                                padding: '0.2vw 0.7vw',
-                                            }}
-                                                onClick={addNewOrderUnit}
-                                            >
-                                                Додати до замовлення
-                                            </div>
-                                            {/*<div*/}
-                                            {/*    className="btn btn-warning" style={{*/}
-                                            {/*    borderRadius: '0.627vw',*/}
-                                            {/*    border: '0.08vw solid gray',*/}
-                                            {/*    padding: '0.2vw 0.7vw',*/}
-                                            {/*}}*/}
-                                            {/*    // onClick={handleThingClickAndHide}*/}
-                                            {/*>*/}
-                                            {/*    Додати до пресетів*/}
-                                            {/*</div>*/}
+                                            Додати до замовлення
                                         </div>
-                                    )}
-                                </div>
-                                {error &&
-                                    <div>{error.message}</div>
-                                }
-                                {null === pricesThis ? (
-                                    <div style={{width: '50vw'}}>
-
-                                    </div>
-                                ) : (
-                                    <div className="d-flex justify-content-between pricesBlockContainer">
-                                        <div className="">
-
-                                            <div className="fontInfoForPricing">
-                                                Друк: {pricesThis.priceForDrukThisUnit} грн * {pricesThis.skolko} шт
-                                                = {(pricesThis.priceForDrukThisUnit * pricesThis.skolko)} грн
-                                            </div>
-                                            <div className="fontInfoForPricing">
-                                                Матеріали: {pricesThis.priceForThisUnitOfPapper}грн.
-                                                * {pricesThis.skolko} шт
-                                                = {(pricesThis.priceForThisUnitOfPapper * pricesThis.skolko)}грн.
-                                            </div>
-
-                                            <div className="fontInfoForPricing">
-                                                Ламінація: {pricesThis.priceForThisUnitOfLamination} грн
-                                                * {pricesThis.skolko} шт
-                                                = {pricesThis.priceForThisAllUnitsOfLamination} грн
-                                            </div>
-                                            <div className="fontInfoForPricing">
-                                                Згинання {pricesThis.priceForThisUnitOfBig} грн * {count} шт
-                                                = {pricesThis.priceForAllUnitsOfBig} грн
-                                            </div>
-                                            <div className=" fontInfoForPricing">
-                                                Скруглення кутів: {pricesThis.priceForThisUnitOfCute} грн * {count} шт
-                                                = {pricesThis.priceForAllUnitsOfCute} грн
-                                            </div>
-                                            <div className="fontInfoForPricing">
-                                                Свердління отворів: {pricesThis.priceForThisUnitOfHoles} грн * {count} шт
-                                                = {pricesThis.priceForAllUnitsOfHoles} грн
-                                            </div>
-                                            {pricesThis.porizka !== 0 &&
-                                                <div className="fontInfoForPricing">
-                                                    Порізка: {pricesThis.porizka} грн * {count} шт
-                                                    = {pricesThis.porizka*count} грн
-                                                </div>
-                                            }
-                                            <div className="fontInfoForPricing1">
-                                                Загалом: {pricesThis.price} грн
-                                            </div>
-                                            <div className="fontInfoForPricing">
-                                                - З одного аркуша A3 можливо
-                                                зробити {pricesThis.skolkoListovNaOdin} виробів
-                                            </div>
-                                            <div className="fontInfoForPricing">
-                                                - Затрачено {pricesThis.skolko} аркушів (SR A3)
-                                            </div>
-                                        </div>
-
-
-                                        <img
-                                            className="versant80-img-icon"
-                                            alt="sssss"
-                                            src={versantIcon}
-                                        />
                                     </div>
                                 )}
-                            </MDBContainer>
+                            </div>
+                            {error &&
+                                <div>{error.message}</div>
+                            }
+                            {null === pricesThis ? (
+                                <div style={{width: '50vw'}}>
+
+                                </div>
+                            ) : (
+                                <div className="d-flex justify-content-between pricesBlockContainer">
+                                    <div className="">
+
+                                        <div className="fontInfoForPricing">
+                                            Друк: {pricesThis.priceForDrukThisUnit} грн * {pricesThis.skolko} шт
+                                            = {(pricesThis.priceForDrukThisUnit * pricesThis.skolko)} грн
+                                        </div>
+                                        <div className="fontInfoForPricing">
+                                            Матеріали: {pricesThis.priceForThisUnitOfPapper}грн.
+                                            * {pricesThis.skolko} шт
+                                            = {(pricesThis.priceForThisUnitOfPapper * pricesThis.skolko)}грн.
+                                        </div>
+
+                                        <div className="fontInfoForPricing">
+                                            Ламінація: {pricesThis.priceForThisUnitOfLamination} грн
+                                            * {pricesThis.skolko} шт
+                                            = {pricesThis.priceForThisAllUnitsOfLamination} грн
+                                        </div>
+                                        <div className="fontInfoForPricing">
+                                            Згинання {pricesThis.priceForThisUnitOfBig} грн * {count} шт
+                                            = {pricesThis.priceForAllUnitsOfBig} грн
+                                        </div>
+                                        <div className=" fontInfoForPricing">
+                                            Скруглення кутів: {pricesThis.priceForThisUnitOfCute} грн * {count} шт
+                                            = {pricesThis.priceForAllUnitsOfCute} грн
+                                        </div>
+                                        <div className="fontInfoForPricing">
+                                            Свердління отворів: {pricesThis.priceForThisUnitOfHoles} грн * {count} шт
+                                            = {pricesThis.priceForAllUnitsOfHoles} грн
+                                        </div>
+                                        {pricesThis.porizka !== 0 &&
+                                            <div className="fontInfoForPricing">
+                                                Порізка: {pricesThis.porizka} грн * {count} шт
+                                                = {pricesThis.porizka*count} грн
+                                            </div>
+                                        }
+                                        <div className="fontInfoForPricing1">
+                                            Загалом: {pricesThis.price} грн
+                                        </div>
+                                        <div className="fontInfoForPricing">
+                                            - З одного аркуша A3 можливо
+                                            зробити {pricesThis.skolkoListovNaOdin} виробів
+                                        </div>
+                                        <div className="fontInfoForPricing">
+                                            - Затрачено {pricesThis.skolko} аркушів (SR A3)
+                                        </div>
+                                    </div>
+
+
+                                    <img
+                                        className="versant80-img-icon"
+                                        alt="sssss"
+                                        src={versantIcon}
+                                    />
+                                </div>
+                            )}
                         </div>
                     </div>
                 </div>

@@ -22,8 +22,16 @@ const Materials2NoteInBody = ({
     const [paperColorDruk, setPaperColorDruk] = useState([]);
     const [paperBwDruk, setPaperBwDruk] = useState([]);
     const [paperNonDruk, setPaperNonDruk] = useState([]);
+    const [loadPaperColor, setLoadPaperColor] = useState(true);
+    const [loadPaperBW, setLoadPaperBW] = useState(true);
+    const [loadPaperNON, setLoadPaperNON] = useState(true);
+    const [laminationColorDruk, setLaminationColorDruk] = useState([]);
+    const [laminationBwDruk, setLaminationBwDruk] = useState([]);
+    const [laminationNonDruk, setLaminationNonDruk] = useState([]);
+    const [loadLaminationColor, setLoadLaminationColor] = useState(true);
+    const [loadLaminationBW, setLoadLaminationBW] = useState(true);
+    const [loadLaminationNON, setLoadLaminationNON] = useState(true);
     const [error, setError] = useState(null);
-    const [load, setLoad] = useState(true);
     const navigate = useNavigate();
     let handleSelectChange = (e) => {
         const selectedOption = e.target.options[e.target.selectedIndex];
@@ -36,7 +44,8 @@ const Materials2NoteInBody = ({
             materialId: selectedId,
         }));
     }
-    //COLOR---------------------------------------------------------------------------
+
+    //COLOR-------------------------------------------------------------------------------------------------------------------------
     let handleSelectTypeColorChange = (e) => {
         const selectedValue = e.target.value || '';
 
@@ -45,41 +54,6 @@ const Materials2NoteInBody = ({
             ColorDrukMaterialTypeUse: selectedValue,
         }));
     }
-    //BW---------------------------------------------------------------------------
-    let handleSelectTypeBWChange = (e) => {
-        const selectedValue = e.target.value || '';
-
-        setMaterialAndDrukInBody((prevMaterial) => ({
-            ...prevMaterial,
-            BwDrukMaterialTypeUse: selectedValue,
-        }));
-    }
-    //NON---------------------------------------------------------------------------
-    let handleSelectTypeNONChange = (e) => {
-        const selectedValue = e.target.value || '';
-
-        setMaterialAndDrukInBody((prevMaterial) => ({
-            ...prevMaterial,
-            NonDrukMaterialTypeUse: selectedValue,
-        }));
-    }
-    let handleSelectDrukSidesChange = (e) => {
-        const selectedValue = e.target.value || '';
-
-        setMaterialAndDrukInBody((prevMaterial) => ({
-            ...prevMaterial,
-            drukSides: selectedValue,
-        }));
-    }
-    let handleSelectDrukColorChange = (e) => {
-        const selectedValue = e.target.value || '';
-
-        setMaterialAndDrukInBody((prevMaterial) => ({
-            ...prevMaterial,
-            drukColor: selectedValue,
-        }));
-    }
-
     let handleToggleColor = (e) => {
         if (materialAndDrukInBody.ColorDrukMaterialType === "Не потрібно") {
             setMaterialAndDrukInBody({
@@ -105,6 +79,111 @@ const Materials2NoteInBody = ({
                 ColorDrukLaminationmaterial: "Не потрібно",
             })
         }
+    }
+    useEffect(() => {
+        let data = {
+            name: "MaterialsPrices",
+            inPageCount: 999999,
+            currentPage: 1,
+            search: "",
+            columnName: {
+                column: "id",
+                reverse: false
+            },
+            size: size,
+            material: {
+                type: materialAndDrukInBody.ColorDrukMaterialType,
+                typeUse: materialAndDrukInBody.ColorDrukMaterialTypeUse,
+            },
+        }
+        setLoadPaperColor(true)
+        setError(null)
+        axios.post(`/materials/NotAll`, data)
+            .then(response => {
+                // console.log(response.data);
+                setPaperColorDruk(response.data.rows)
+                setLoadPaperColor(false)
+                if (response.data && response.data.rows && response.data.rows[0]) {
+                    setMaterialAndDrukInBody({
+                        ...materialAndDrukInBody,
+                        ColorDrukMaterial: response.data.rows[0].name,
+                        ColorDrukMaterialId: response.data.rows[0].id,
+                    })
+                } else {
+                    setMaterialAndDrukInBody({
+                        ...materialAndDrukInBody,
+                        ColorDrukMaterial: "Немає",
+                        ColorDrukMaterialId: 0,
+                    })
+                }
+            })
+            .catch(error => {
+                setLoadPaperColor(false)
+                setError(error.message)
+                if (error.response.status === 403) {
+                    navigate('/login');
+                }
+                console.log(error.message);
+            })
+    }, [materialAndDrukInBody.ColorDrukMaterialType, materialAndDrukInBody.ColorDrukMaterialTypeUse, size]);
+    useEffect(() => {
+        let data = {
+            name: "MaterialsPrices",
+            inPageCount: 999999,
+            currentPage: 1,
+            type: "SheetCut",
+            search: "",
+            columnName: {
+                column: "id",
+                reverse: false
+            },
+            size: size,
+            material: {
+                type: materialAndDrukInBody.ColorDrukLaminationType,
+                typeUse: materialAndDrukInBody.ColorDrukMaterialTypeUse,
+            },
+        }
+        setLoadLaminationColor(true)
+        setError(null)
+        axios.post(`/materials/NotAll`, data)
+            .then(response => {
+                // console.log(response.data);
+                setPaperColorDruk(response.data.rows)
+                setLoadLaminationColor(false)
+                if (response.data && response.data.rows && response.data.rows[0]) {
+                    setMaterialAndDrukInBody({
+                        ...materialAndDrukInBody,
+                        ColorDrukMaterial: response.data.rows[0].name,
+                        ColorDrukMaterialId: response.data.rows[0].id,
+                    })
+                } else {
+                    setMaterialAndDrukInBody({
+                        ...materialAndDrukInBody,
+                        ColorDrukMaterial: "Немає",
+                        ColorDrukMaterialId: 0,
+                    })
+                }
+            })
+            .catch(error => {
+                setLoadLaminationColor(false)
+                setError(error.message)
+                if (error.response.status === 403) {
+                    navigate('/login');
+                }
+                console.log(error.message);
+            })
+    }, [materialAndDrukInBody.ColorDrukLaminationType, materialAndDrukInBody.ColorDrukLaminationTypeUse, size]);
+
+
+
+    //BW----------------------------------------------------------------------------------------------------------------------------------
+    let handleSelectTypeBWChange = (e) => {
+        const selectedValue = e.target.value || '';
+
+        setMaterialAndDrukInBody((prevMaterial) => ({
+            ...prevMaterial,
+            BwDrukMaterialTypeUse: selectedValue,
+        }));
     }
     let handleToggleBw = (e) => {
         if (materialAndDrukInBody.BwDrukMaterialType === "Не потрібно") {
@@ -132,6 +211,66 @@ const Materials2NoteInBody = ({
             })
         }
     }
+    useEffect(() => {
+        let data = {
+            name: "MaterialsPrices",
+            inPageCount: 999999,
+            currentPage: 1,
+            search: "",
+            columnName: {
+                column: "id",
+                reverse: false
+            },
+            size: size,
+            material: {
+                type: materialAndDrukInBody.BwDrukMaterialType,
+                typeUse: materialAndDrukInBody.BwDrukMaterialTypeUse,
+            },
+        }
+        setLoadPaperBW(true)
+        setError(null)
+        axios.post(`/materials/NotAll`, data)
+            .then(response => {
+                // console.log(response.data);
+                setPaperBwDruk(response.data.rows)
+                setLoadPaperBW(false)
+                if (response.data && response.data.rows && response.data.rows[0]) {
+                    setMaterialAndDrukInBody({
+                        ...materialAndDrukInBody,
+                        BwDrukMaterial: response.data.rows[0].name,
+                        BwDrukMaterialId: response.data.rows[0].id,
+                    })
+                } else {
+                    setMaterialAndDrukInBody({
+                        ...materialAndDrukInBody,
+                        BwDrukMaterial: "Немає",
+                        BwDrukMaterialId: 0,
+                    })
+                }
+            })
+            .catch(error => {
+                setLoadPaperBW(false)
+                setError(error.message)
+                if (error.response.status === 403) {
+                    navigate('/login');
+                }
+                console.log(error.message);
+            })
+    }, [materialAndDrukInBody.BwDrukMaterialType, materialAndDrukInBody.BwDrukMaterialTypeUse, size]);
+
+
+
+
+
+    //NON---------------------------------------------------------------------------------------------------------------------
+    let handleSelectTypeNONChange = (e) => {
+        const selectedValue = e.target.value || '';
+
+        setMaterialAndDrukInBody((prevMaterial) => ({
+            ...prevMaterial,
+            NonDrukMaterialTypeUse: selectedValue,
+        }));
+    }
     let handleToggleNonDruk = (e) => {
         if (materialAndDrukInBody.NonDrukMaterialType === "Не потрібно") {
             setMaterialAndDrukInBody({
@@ -158,99 +297,6 @@ const Materials2NoteInBody = ({
             })
         }
     }
-
-    useEffect(() => {
-        let data = {
-            name: "MaterialsPrices",
-            inPageCount: 999999,
-            currentPage: 1,
-            search: "",
-            columnName: {
-                column: "id",
-                reverse: false
-            },
-            size: size,
-            material: {
-                type: materialAndDrukInBody.ColorDrukMaterialType,
-                typeUse: materialAndDrukInBody.ColorDrukMaterialTypeUse,
-            },
-        }
-        setLoad(true)
-        setError(null)
-        axios.post(`/materials/NotAll`, data)
-            .then(response => {
-                // console.log(response.data);
-                setPaperColorDruk(response.data.rows)
-                setLoad(false)
-                if (response.data && response.data.rows && response.data.rows[0]) {
-                    setMaterialAndDrukInBody({
-                        ...materialAndDrukInBody,
-                        ColorDrukMaterial: response.data.rows[0].name,
-                        ColorDrukMaterialId: response.data.rows[0].id,
-                    })
-                } else {
-                    setMaterialAndDrukInBody({
-                        ...materialAndDrukInBody,
-                        ColorDrukMaterial: "Немає",
-                        ColorDrukMaterialId: 0,
-                    })
-                }
-            })
-            .catch(error => {
-                setLoad(false)
-                setError(error.message)
-                if (error.response.status === 403) {
-                    navigate('/login');
-                }
-                console.log(error.message);
-            })
-    }, [materialAndDrukInBody.ColorDrukMaterialType, materialAndDrukInBody.ColorDrukMaterialTypeUse, size]);
-    useEffect(() => {
-        let data = {
-            name: "MaterialsPrices",
-            inPageCount: 999999,
-            currentPage: 1,
-            search: "",
-            columnName: {
-                column: "id",
-                reverse: false
-            },
-            size: size,
-            material: {
-                type: materialAndDrukInBody.BwDrukMaterialType,
-                typeUse: materialAndDrukInBody.BwDrukMaterialTypeUse,
-            },
-        }
-        setLoad(true)
-        setError(null)
-        axios.post(`/materials/NotAll`, data)
-            .then(response => {
-                // console.log(response.data);
-                setPaperBwDruk(response.data.rows)
-                setLoad(false)
-                if (response.data && response.data.rows && response.data.rows[0]) {
-                    setMaterialAndDrukInBody({
-                        ...materialAndDrukInBody,
-                        BwDrukMaterial: response.data.rows[0].name,
-                        BwDrukMaterialId: response.data.rows[0].id,
-                    })
-                } else {
-                    setMaterialAndDrukInBody({
-                        ...materialAndDrukInBody,
-                        BwDrukMaterial: "Немає",
-                        BwDrukMaterialId: 0,
-                    })
-                }
-            })
-            .catch(error => {
-                setLoad(false)
-                setError(error.message)
-                if (error.response.status === 403) {
-                    navigate('/login');
-                }
-                console.log(error.message);
-            })
-    }, [materialAndDrukInBody.BwDrukMaterialType, materialAndDrukInBody.BwDrukMaterialTypeUse, size]);
     useEffect(() => {
         let data = {
             name: "MaterialsPrices",
@@ -267,13 +313,13 @@ const Materials2NoteInBody = ({
                 typeUse: materialAndDrukInBody.NonDrukMaterialTypeUse,
             },
         }
-        setLoad(true)
+        setLoadPaperNON(true)
         setError(null)
         axios.post(`/materials/NotAll`, data)
             .then(response => {
                 // console.log(response.data);
                 setPaperNonDruk(response.data.rows)
-                setLoad(false)
+                setLoadPaperNON(false)
                 if (response.data && response.data.rows && response.data.rows[0]) {
                     setMaterialAndDrukInBody({
                         ...materialAndDrukInBody,
@@ -289,7 +335,7 @@ const Materials2NoteInBody = ({
                 }
             })
             .catch(error => {
-                setLoad(false)
+                setLoadPaperNON(false)
                 setError(error.message)
                 if (error.response.status === 403) {
                     navigate('/login');
@@ -298,21 +344,45 @@ const Materials2NoteInBody = ({
             })
     }, [materialAndDrukInBody.NonDrukMaterialType, materialAndDrukInBody.NonDrukMaterialTypeUse, size]);
 
+
+
+
+
+    let handleSelectDrukSidesChange = (e) => {
+        const selectedValue = e.target.value || '';
+
+        setMaterialAndDrukInBody((prevMaterial) => ({
+            ...prevMaterial,
+            drukSides: selectedValue,
+        }));
+    }
+    let handleSelectDrukColorChange = (e) => {
+        const selectedValue = e.target.value || '';
+
+        setMaterialAndDrukInBody((prevMaterial) => ({
+            ...prevMaterial,
+            drukColor: selectedValue,
+        }));
+    }
+
     return (
-        <div className="d-flex flex-column allArtemElem" style={{margin: "0", padding: "0", height: "12vh"}}>
-            <div className="" style={{fontSize: "1.2vw", fontFamily: "Gotham", margin: "0", padding: "0"}}>Блок: </div>
+        <div className="d-flex flex-column allArtemElem" style={{margin: "0", padding: "0"}}>
+            <div className="" style={{fontSize: "1.2vw", fontFamily: "Gotham", margin: "0", padding: "0", fontWeight: "bold"}}>Блок: </div>
 
 
-            <div className="d-flex">
-                <div className={`toggleContainer ${materialAndDrukInBody.ColorDrukMaterialType === "Не потрібно" ? 'disabledCont' : 'enabledCont'}`}
-                     onClick={handleToggleColor}
-                     style={{transform: "scale(0.6)"}}>
-                    <div className={`toggle-button ${materialAndDrukInBody.ColorDrukMaterialType === "Не потрібно" ? 'disabled' : 'enabledd'}`}>
+            <div className="d-flex flex-column">
+                <div className="d-flex">
+                    <div className={`toggleContainer ${materialAndDrukInBody.ColorDrukMaterialType === "Не потрібно" ? 'disabledCont' : 'enabledCont'}`}
+                         onClick={handleToggleColor}
+                         style={{transform: "scale(0.6)"}}
+                    >
+                        <div className={`toggle-button ${materialAndDrukInBody.ColorDrukMaterialType === "Не потрібно" ? 'disabled' : 'enabledd'}`}>
+                        </div>
                     </div>
+                    <span style={{
+                        fontSize: '1.273vw', marginRight: '0.633vw', fontFamily: "Gotham", whiteSpace: "nowrap"
+                    }}>{"Листи з цифровим Кольоровим друком:"}</span>
                 </div>
-                <span style={{
-                    fontSize: '1.273vw', marginRight: '0.633vw', fontFamily: "Gotham", whiteSpace: "nowrap"
-                }}>{"Листи з цифровим Кольоровим друком:"}</span>
                 {materialAndDrukInBody.ColorDrukMaterialType === "Не потрібно" ? (
                     <div></div>
                 ) : (
@@ -327,14 +397,6 @@ const Materials2NoteInBody = ({
                                 className="selectArtem"
 
                             >
-                                <option
-                                    key="default"
-                                    className={"optionInSelectArtem"}
-                                    value=""
-                                    data-id="default"
-                                >
-                                    <>{"Виберіть"}</>
-                                </option>
                                 {buttonsArr.map((item, iter) => (
                                     <option
                                         key={item + iter}
@@ -351,19 +413,11 @@ const Materials2NoteInBody = ({
                              style={{marginTop: "0", display: 'flex', justifyContent: 'center', alignItems: 'center'}}>
                             <select
                                 name="materialSelect"
-                                value={materialAndDrukInBody.material || ""}
+                                value={materialAndDrukInBody.ColorDrukMaterial || ""}
                                 onChange={(event) => handleSelectChange(event)}
                                 className="selectArtem"
 
                             >
-                                <option
-                                    key="default"
-                                    className={"optionInSelectArtem"}
-                                    value=""
-                                    data-id="default"
-                                >
-                                    <>{"Виберіть"}</>
-                                </option>
                                 {paperColorDruk.map((item, iter) => (
                                     <option
                                         key={200 + iter}
@@ -377,7 +431,7 @@ const Materials2NoteInBody = ({
                                     </option>
                                 ))}
                             </select>
-                            {load && (
+                            {loadPaperColor && (
                                 <Spinner animation="border" variant="danger" size="sm"/>
                             )}
                             {error && (
@@ -478,14 +532,6 @@ const Materials2NoteInBody = ({
                                 className="selectArtem"
 
                             >
-                                <option
-                                    key="default"
-                                    className={"optionInSelectArtem"}
-                                    value=""
-                                    data-id="default"
-                                >
-                                    <>{"Виберіть"}</>
-                                </option>
                                 {buttonsArr.map((item, iter) => (
                                     <option
                                         key={item + iter}
@@ -502,19 +548,11 @@ const Materials2NoteInBody = ({
                              style={{marginTop: "0", display: 'flex', justifyContent: 'center', alignItems: 'center'}}>
                             <select
                                 name="materialSelect"
-                                value={materialAndDrukInBody.material || ""}
+                                value={materialAndDrukInBody.BwDrukMaterial || ""}
                                 onChange={(event) => handleSelectChange(event)}
                                 className="selectArtem"
 
                             >
-                                <option
-                                    key="default"
-                                    className={"optionInSelectArtem"}
-                                    value=""
-                                    data-id="default"
-                                >
-                                    <>{"Виберіть"}</>
-                                </option>
                                 {paperBwDruk.map((item, iter) => (
                                     <option
                                         key={item.name + iter}
@@ -528,7 +566,7 @@ const Materials2NoteInBody = ({
                                     </option>
                                 ))}
                             </select>
-                            {load && (
+                            {loadPaperBW && (
                                 <Spinner animation="border" variant="danger" size="sm"/>
                             )}
                             {error && (
@@ -631,14 +669,6 @@ const Materials2NoteInBody = ({
                                 className="selectArtem"
 
                             >
-                                <option
-                                    key="default"
-                                    className={"optionInSelectArtem"}
-                                    value=""
-                                    data-id="default"
-                                >
-                                    <>{"Виберіть"}</>
-                                </option>
                                 {buttonsArr.map((item, iter) => (
                                     <option
                                         key={item + iter}
@@ -655,19 +685,11 @@ const Materials2NoteInBody = ({
                              style={{marginTop: "0", display: 'flex', justifyContent: 'center', alignItems: 'center'}}>
                             <select
                                 name="materialSelect"
-                                value={materialAndDrukInBody.material || ""}
+                                value={materialAndDrukInBody.NonDrukMaterial || ""}
                                 onChange={(event) => handleSelectChange(event)}
                                 className="selectArtem"
 
                             >
-                                <option
-                                    key="default"
-                                    className={"optionInSelectArtem"}
-                                    value=""
-                                    data-id="default"
-                                >
-                                    <>{"Виберіть"}</>
-                                </option>
                                 {paperNonDruk.map((item, iter) => (
                                     <option
                                         key={item.name + iter}
@@ -681,7 +703,7 @@ const Materials2NoteInBody = ({
                                     </option>
                                 ))}
                             </select>
-                            {load && (
+                            {loadPaperNON && (
                                 <Spinner animation="border" variant="danger" size="sm"/>
                             )}
                             {error && (

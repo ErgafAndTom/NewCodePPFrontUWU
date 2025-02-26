@@ -114,8 +114,8 @@ const Materials2NoteBack = ({
     }, [materialAndDrukBack.materialTypeUse, size]);
 
     return (
-        <div className="d-flex flex-column allArtemElem">
-            <div style={{fontSize: "1.2vw", fontFamily: "Gotham"}}>Підкладинка: </div>
+        <div className="d-flex flex-column allArtemElem m-0 p-0">
+            <div style={{fontSize: "1.2vw", fontFamily: "Gotham", fontWeight: "bold"}}>Підкладинка: </div>
             <div style={{display: 'flex', alignItems: 'center', borderBottom: '0.08vw solid gray'}}>
                 <div style={{fontSize: "1.2vw", fontFamily: "Gotham"}}>Матеріал: </div>
                 <div className="ArtemNewSelectContainer"
