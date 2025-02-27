@@ -114,10 +114,10 @@ const Materials2NoteBack = ({
     }, [materialAndDrukBack.materialTypeUse, size]);
 
     return (
-        <div className="d-flex flex-column allArtemElem m-0 p-0">
-            <div style={{fontSize: "1.2vw", fontFamily: "Gotham", fontWeight: "bold"}}>Підкладинка: </div>
-            <div style={{display: 'flex', alignItems: 'center', borderBottom: '0.08vw solid gray'}}>
-                <div style={{fontSize: "1.2vw", fontFamily: "Gotham"}}>Матеріал: </div>
+        <div className="d-flex allArtemElem m-0 p-0" style={{margin: "0", padding: "0", borderBottom: '0.08vw solid gray'}}>
+            <div className="d-flex align-items-center justify-content-center" style={{fontSize: "1vw", width: "9vw", fontFamily: "Gotham", fontWeight: "bold", marginBottom: "1vh"}}>Підкладинка: </div>
+            <div style={{display: 'flex', alignItems: 'center', paddingBottom: "1vh"}}>
+                <div style={{fontSize: "0.8vw", fontFamily: "Gotham"}}>Матеріал: </div>
                 <div className="ArtemNewSelectContainer"
                      style={{marginTop: "0", display: 'flex', justifyContent: 'center', alignItems: 'center'}}>
                     <select
@@ -198,7 +198,7 @@ const Materials2NoteBack = ({
                         <div>{error}</div>
                     )}
                 </div>
-                <div style={{fontSize: "1.2vw", fontFamily: "Gotham"}}>Друк: </div>
+                <div style={{fontSize: "0.8vw", fontFamily: "Gotham", marginLeft: "3vw"}}>Друк: </div>
                 <div className="ArtemNewSelectContainer"
                      style={{marginTop: "0", display: 'flex', justifyContent: 'center', alignItems: 'center'}}>
                     <select

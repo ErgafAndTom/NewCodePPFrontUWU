@@ -43,15 +43,15 @@ const NewNoModalHoles = ({holes, setHoles, holesR, setHolesR, prices, buttonsArr
     return (
         <div className="d-flex allArtemElem">
             <div style={{display: 'flex', alignItems: 'center',}}>
-                <div className={`toggleContainer ${holes === "Не потрібно" ? 'disabledCont' : 'enabledCont'}`}
+                <div className={`toggleContainer scale04ForButtonToggle ${holes === "Не потрібно" ? 'disabledCont' : 'enabledCont'}`}
                      onClick={handleToggle}
-                     style={{transform: "scale(0.6)"}}>
+                     >
                     <div className={`toggle-button ${holes === "Не потрібно" ? 'disabled' : 'enabledd'}`}>
                     </div>
                 </div>
                 <div className="d-flex flex-column">
                     <span style={{
-                        fontSize: '1.273vw',
+                        fontSize: '1vw',
                         marginRight: '0.633vw',
                         fontFamily: "Gotham",
                         fontWeight: "bold", width: "500%"

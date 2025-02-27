@@ -1,6 +1,17 @@
-.allArtemElem {
-    transform: scale(0.6)
+
+.allArtemElem2 {
+     transform: scale(0.6);
 }
+
+.scale04ForButtonToggle{
+    transform: scale(0.4);
+}
+
+.blockInNoteInBody{
+    /*box-shadow: 0 0 0.5vw rgba(0, 0, 0, 0.1);*/
+    margin-top: 1vh;
+}
+
 .inputsArtem {
     display: flex;
     justify-content: center;
@@ -10,184 +21,134 @@
     outline: none;
     background: none;
     font-family: Gotham;
-    padding: 0.633vh 1.273vw;
-    font-size: 1.3vw;
-    border-radius: 0.5vw;
-    /*border: 0.15vw solid grey;*/
-    width: 10vw;
-    border-bottom: 5px solid #FFA500; /* Желтая линия под select */
+    padding: 0.38vh 0.76vw; /* 0.633vh и 1.273vw умноженные на 0.6 */
+    font-size: 0.78vw; /* 1.3vw * 0.6 */
+    border-radius: 0.3vw; /* 0.5vw * 0.6 */
+    /* border: 0.15vw solid grey; */ /* если понадобится, масштабировать аналогично */
+    width: 6vw; /* 10vw * 0.6 */
+    border-bottom: 3px solid #FFA500; /* 5px * 0.6 */
 }
-/*.inputsArtemNumber {*/
-/*    position: relative;*/
-/*    !*width: 100px;*!*/
-/*}*/
-/*.inputsArtemNumber::before {*/
-/*    content: '';*/
-/*    position: absolute;*/
-/*    top: 25%;*/
-/*    right: 10px;*/
-/*    width: 5px;*/
-/*    height: 5px;*/
-/*    border-left: 10px solid transparent;*/
-/*    border-right: 10px solid transparent;*/
-/*    border-top: 10px solid blue; !* Синяя стрелочка вверх *!*/
-/*    !*transform: translateY(-100%);*!*/
-/*    pointer-events: none;*/
-/*}*/
-/*.inputsArtemNumber::after  {*/
-/*    content: '';*/
-/*    position: absolute;*/
-/*    bottom: 25%;*/
-/*    right: 10px;*/
-/*    width: 5px;*/
-/*    height: 5px;*/
-/*    border-left: 10px solid transparent;*/
-/*    border-right: 10px solid transparent;*/
-/*    border-bottom: 10px solid blue; !* Синяя стрелочка вниз *!*/
-/*    !*transform: translateY(100%);*!*/
-/*    pointer-events: none;*/
-/*}*/
+
 .selectArtem {
     display: flex;
     justify-content: center;
     align-items: center;
     background-color: transparent;
     font-family: Gotham;
-    padding: 0.633vh 1.273vw;
-    font-size: 1.3vw;
+    padding: 0.38vh 0.76vw;
+    font-size: 0.78vw;
     outline: none;
     background: none;
-    padding-right: 2.5vw;
-    border: 5px solid transparent; /* Желтая линия под select */
-    appearance: none; /* Убираем стандартную стрелку */
-    -webkit-appearance: none; /* Убираем стандартную стрелку в WebKit-браузерах */
-    -moz-appearance: none; /* Убираем стандартную стрелку в Firefox */
-    border-bottom: 5px solid #FFA500; /* Желтая линия под select */
+    padding-right: 1.5vw; /* 2.5vw * 0.6 */
+    border: 3px solid transparent; /* 5px * 0.6 */
+    appearance: none;
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    border-bottom: 3px solid #FFA500; /* 5px * 0.6 */
 }
+
 .optionInSelectArtem {
     display: flex;
     justify-content: center;
     align-items: center;
     background-color: transparent;
     font-family: Gotham;
-    padding: 0.633vh 1.273vw;
-    font-size: 0.9vw;
-    border-radius: 0.5vw;
-    border: 0.15vw solid grey;
+    padding: 0.38vh 0.76vw;
+    font-size: 0.8vw; /* 0.9vw * 0.6 */
+    border-radius: 0.3vw; /* 0.5vw * 0.6 */
+    border: 0.09vw solid grey; /* 0.15vw * 0.6 */
 }
+
 .buttonsArtem {
     font-family: Gotham;
     display: flex;
     justify-content: center;
     align-items: center;
-    /*border-radius: 0.627vw;*/
-    padding: 0.8vh 1.273vw;
-    margin: 0.323vw;
+    /* border-radius: 0.627vw; */ /* если использовать, то 0.627vw * 0.6 ≈ 0.38vw */
+    padding: 0.48vh 0.76vw; /* 0.8vh и 1.273vw умноженные на 0.6 */
+    margin: 0.194vw; /* 0.323vw * 0.6 */
     transition: all 0.3s ease;
-    font-size: 1.3vw;
+    font-size: 0.78vw; /* 1.3vw * 0.6 */
     background: transparent;
-    /*text-decoration:  overline line-through #ff0000;*/
-    border: 5px solid transparent; /* Желтая линия под select */
+    /* text-decoration:  overline line-through #ff0000; */
+    border: 3px solid transparent; /* 5px * 0.6 */
     cursor: pointer;
 }
+
 .buttonsArtem:hover {
-    border-bottom: 5px solid gray; /* Желтая линия под select */
+    border-bottom: 3px solid gray; /* 5px * 0.6 */
 }
+
 .buttonsArtemActive {
-    border-bottom: 5px solid #FFA500; /* Желтая линия под select */
+    border-bottom: 3px solid #FFA500; /* 5px * 0.6 */
     font-family: Gotham-Bold, 'GothamBold', sans-serif;
 }
+
 .buttonsArtemNotActive {
     filter: grayscale(100%);
 }
 
 .pricesBlockContainer {
-    width: 90vw;
-    border: 0.10vw solid grey;
-    border-radius: 1vw;
-    padding: 0.8vh 1.273vw;
-    margin-left: 2.5vw;
+    width: 91vw; /* 90vw * 0.6 */
+    border: 0.06vw solid grey; /* 0.10vw * 0.6 */
+    border-radius: 0.6vw; /* 1vw * 0.6 */
+    padding: 0.48vh 0.76vw; /* 0.8vh и 1.273vw * 0.6 */
+    margin-left: 1.5vw; /* 2.5vw * 0.6 */
     position: absolute;
     bottom: 0;
     left: 0;
     right: 0;
-    margin-bottom: 2vw;
+    margin-bottom: 1.2vw; /* 2vw * 0.6 */
 }
 
 .BWabout {
-    padding: 0.5vw;
+    padding: 0.3vw; /* 0.5vw * 0.6 */
 }
-
 
 .slider-container {
     display: flex;
     align-items: center;
-    /*width: 100%;*/
+    /* width: 100%; */ /* процентные значения не требуют масштабирования */
 }
 
 .custom-slider {
     -webkit-appearance: none;
     appearance: none;
     width: 100%;
-    height: 0.5vh;
+    height: 0.3vh; /* 0.5vh * 0.6 */
     background: #ccc;
     outline: none;
     opacity: 0.7;
     transition: opacity 0.2s;
-    margin: 1vh 0;
+    margin: 0.6vh 0; /* 1vh * 0.6 */
 }
 
 .custom-slider::-webkit-slider-thumb {
     -webkit-appearance: none;
     appearance: none;
-    width: 2vh;
-    height: 2vh;
+    width: 1.2vh; /* 2vh * 0.6 */
+    height: 1.2vh; /* 2vh * 0.6 */
     background-color: #2b2b2b;
     border-radius: 50%;
     cursor: pointer;
-    box-shadow: 0 0 2px #000;
+    box-shadow: 0 0 1.2px #000; /* 2px * 0.6 */
 }
 
 .custom-slider::-moz-range-thumb {
-    width: 2vh;
-    height: 2vh;
+    width: 1.2vh;
+    height: 1.2vh;
     background-color: #4a4a4a;
     border-radius: 50%;
     cursor: pointer;
-    box-shadow: 0 0 2px #000;
+    box-shadow: 0 0 1.2px #000;
 }
 
-.custom-slider::-webkit-slider-runnable-track {
-    /*height: 8px;*/
-    /*background: linear-gradient(to right, #f8b700 0%, #f8b700 50%, #ccc 50%);*/
-}
-
-.custom-slider::-moz-range-track {
-    /*height: 8px;*/
-    /*background: linear-gradient(to right, #f8b700 0%, #f8b700 50%, #ccc 50%);*/
-}
+/* Стили для треков слайдера (если будут активны) масштабируйте аналогично */
 
 .slider-label {
-    font-size: 14px;
+    font-size: 8.4px; /* 14px * 0.6 */
     color: #333;
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 .ArtemNewSelectContainer {
     position: relative;
@@ -195,27 +156,27 @@
 }
 
 .ArtemNewSelect {
-    font-family: Arial, sans-serif; /* Выберите нужный шрифт */
-    font-size: 24px; /* Размер шрифта */
-    color: #000000; /* Цвет текста */
-    padding: 5px 30px 5px 10px; /* Увеличиваем правый отступ для треугольника */
+    font-family: Arial, sans-serif;
+    font-size: 14.4px; /* 24px * 0.6 */
+    color: #000000;
+    padding: 3px 18px 3px 6px; /* верх/низ: 5px*0.6, правый: 30px*0.6, левый: 10px*0.6 */
     border: none;
     outline: none;
     background: none;
-    appearance: none; /* Убираем стандартный вид стрелки */
-    border-bottom: 5px solid #FFA500; /* Желтая линия под select */
+    appearance: none;
+    border-bottom: 3px solid #FFA500; /* 5px * 0.6 */
 }
 
 .ArtemNewSelectContainer::before {
     content: "";
     width: 0;
     height: 0;
-    border-left: 10px solid transparent;
-    border-right: 10px solid transparent;
-    border-top: 10px solid #1E90FF; /* Синий треугольник */
+    border-left: 6px solid transparent;  /* 10px * 0.6 */
+    border-right: 6px solid transparent;
+    border-top: 6px solid #1E90FF; /* 10px * 0.6 */
     position: absolute;
-    right: 10px; /* Положение треугольника */
+    right: 6px; /* 10px * 0.6 */
     top: 50%;
     transform: translateY(-50%);
-    pointer-events: none; /* Чтобы треугольник не мешал клику */
+    pointer-events: none;
 }

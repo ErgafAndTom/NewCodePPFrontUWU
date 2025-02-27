@@ -104,15 +104,15 @@ const NewNoModalCute = ({cute, setCute, cuteLocal, setCuteLocal, prices, buttons
     return (
         <div className="d-flex allArtemElem">
             <div style={{display: 'flex', alignItems: 'center',}}>
-                <div className={`toggleContainer ${cute === "Не потрібно" ? 'disabledCont' : 'enabledCont'}`} onClick={handleToggle}
-                     style={{transform: "scale(0.6)"}}>
+                <div className={`toggleContainer scale04ForButtonToggle ${cute === "Не потрібно" ? 'disabledCont' : 'enabledCont'}`} onClick={handleToggle}
+                     >
                     <div className={`toggle-button ${cute === "Не потрібно" ? 'disabled' : 'enabledd'}`}>
                     </div>
                 </div>
 
                 <div className="d-flex flex-column">
                     <span style={{
-                        fontSize: '1.273vw',
+                        fontSize: '1vw',
                         marginRight: '0.633vw',
                         fontFamily: "Gotham",
                         fontWeight: "bold", width: "500%"

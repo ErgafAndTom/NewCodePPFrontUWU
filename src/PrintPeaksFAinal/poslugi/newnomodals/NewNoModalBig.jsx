@@ -17,15 +17,15 @@ const NewNoModalBig = ({big, setBig, prices, buttonsArr, selectArr}) => {
     return (
         <div className="d-flex allArtemElem">
             <div style={{display: 'flex', alignItems: 'center',}}>
-                <div className={`toggleContainer ${big === "Не потрібно" ? 'disabledCont' : 'enabledCont'}`}
+                <div className={`toggleContainer scale04ForButtonToggle ${big === "Не потрібно" ? 'disabledCont' : 'enabledCont'}`}
                      onClick={handleToggle}
-                     style={{transform: "scale(0.6)"}}>
+                     >
                     <div className={`toggle-button ${big === "Не потрібно" ? 'disabled' : 'enabledd'}`}>
                     </div>
                 </div>
                 <div className="d-flex flex-column">
                     <span style={{
-                        fontSize: '1.273vw',
+                        fontSize: '1vw',
                         marginRight: '0.633vw',
                         fontFamily: "Gotham",
                         fontWeight: "bold", width: "500%"

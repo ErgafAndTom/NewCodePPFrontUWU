@@ -109,15 +109,14 @@ const NewNoModalLamination = ({lamination, setLamination, prices, buttonsArr, se
 
     return (<div className="d-flex allArtemElem">
         <div style={{display: 'flex', alignItems: 'center',}}>
-            <div className={`toggleContainer ${lamination.type === "Не потрібно" ? 'disabledCont' : 'enabledCont'}`}
-                 onClick={handleToggle}
-                 style={{transform: "scale(0.6)"}}>
+            <div className={`toggleContainer scale04ForButtonToggle ${lamination.type === "Не потрібно" ? 'disabledCont' : 'enabledCont'}`}
+                 onClick={handleToggle}>
                 <div className={`toggle-button ${lamination.type === "Не потрібно" ? 'disabled' : 'enabledd'}`}>
                 </div>
             </div>
             <div className="d-flex flex-column">
             <span style={{
-                fontSize: '1.273vw', marginRight: '0.633vw', fontFamily: "Gotham", fontWeight: "bold"
+                fontSize: '1vw', marginRight: '0.633vw', fontFamily: "Gotham", fontWeight: "bold"
             }}>{"Ламінація:"}</span>
                 {lamination.type !== "Не потрібно" ? (
                     <div style={{display: 'flex', justifyContent: 'center', alignItems: 'center',}}>

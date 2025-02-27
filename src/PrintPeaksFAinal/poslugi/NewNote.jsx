@@ -9,6 +9,7 @@ import NewNoModalSizeNote from "./newnomodals/note/NewNoModalSizeNote";
 import Materials2NoteFront from "./newnomodals/note/Materials2NoteFront";
 import Materials2NoteBack from "./newnomodals/note/Material2NoteBack";
 import Materials2NoteInBody from "./newnomodals/note/Material2NoteInBody";
+import PerepletPereplet from "./newnomodals/PerepletPereplet";
 
 const NewNote = ({
                          thisOrder,
@@ -141,6 +142,14 @@ const NewNote = ({
     const [count, setCount] = useState(1);
     const [prices, setPrices] = useState([]);
     const [pricesThis, setPricesThis] = useState(null);
+    const [pereplet, setPereplet] = useState({
+        type: "",
+        thickness: "Тонкі",
+        material: "",
+        materialId: "",
+        size: ">120",
+        typeUse: "Брошурування до 120 аркушів"
+    });
 
     const addNewOrderUnit = e => {
         let dataToSend = {
@@ -278,7 +287,7 @@ const NewNote = ({
                             </div>
                         </div>
 
-                        <div className="d-flex flex-column" style={{margin: '0', padding: '0'}}>
+                        <div className="d-flex flex-column" style={{margin: '0', padding: '1.5vw'}}>
                             <div className="d-flex flex-column" style={{margin: '0', padding: '0'}}>
                                 <NewNoModalSizeNote
                                     size={size}
@@ -348,6 +357,15 @@ const NewNote = ({
                                         "З матовим ламінуванням",
                                         "З ламінуванням Soft Touch",]}
                                     typeUse={null}
+                                />
+                                <PerepletPereplet
+                                    size={size}
+                                    pereplet={pereplet}
+                                    setPereplet={setPereplet}
+                                    prices={prices}
+                                    type={"SheetCut"}
+                                    buttonsArr={["Брошурування до 120 аркушів", "Брошурування від 120 до 280 аркушів",]}
+                                    defaultt={"А3 (297 х 420 мм)"}
                                 />
                             </div>
                             <div className="d-flex">

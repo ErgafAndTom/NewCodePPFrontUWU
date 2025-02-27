@@ -46,15 +46,14 @@ const Porizka = ({porizka, setPorizka, prices, buttonsArr, selectArr}) => {
 
     return (<div className="d-flex allArtemElem">
         <div style={{display: 'flex', alignItems: 'center',}}>
-            <div className={`toggleContainer ${porizka.type === "Не потрібно" ? 'disabledCont' : 'enabledCont'}`}
-                 onClick={handleToggle}
-                 style={{transform: "scale(0.6)"}}>
+            <div className={`toggleContainer scale04ForButtonToggle ${porizka.type === "Не потрібно" ? 'disabledCont' : 'enabledCont'}`}
+                 onClick={handleToggle}>
                 <div className={`toggle-button ${porizka.type === "Не потрібно" ? 'disabled' : 'enabledd'}`}>
                 </div>
             </div>
             <div className="d-flex flex-column">
             <span style={{
-                fontSize: '1.273vw', marginRight: '0.633vw', fontFamily: "Gotham", fontWeight: "bold", width: "500%"
+                fontSize: '1vw', marginRight: '0.633vw', fontFamily: "Gotham", fontWeight: "bold", width: "500%"
             }}>{"Порiзка(+10% ціни на друк та матеріали):"}</span>
                 {/*{photo.type !== "Не потрібно" ? (*/}
                 {/*    <div style={{display: 'flex', justifyContent: 'center', alignItems: 'center',}}>*/}

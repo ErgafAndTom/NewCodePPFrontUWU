@@ -249,34 +249,7 @@ const NewNoModalSizeNote = ({size, setSize, type, buttonsArr, color, setColor, c
     }, [size.x, size.y]);
 
     return (
-        <div className="d-flex allArtemElem">
-            {/*<Form.Select*/}
-            {/*    className="selectArtem"*/}
-            {/*    onChange={handleSelectOption}*/}
-            {/*    value={thisNameVal}*/}
-            {/*    style={{marginLeft: "2vw"}}*/}
-            {/*>*/}
-            {/*    /!*<option disabled selected>Оберіть значення</option>*!/*/}
-            {/*    /!*<option>Задати свій розмір</option>*!/*/}
-            {/*    <option*/}
-            {/*        className="optionInSelectArtem"*/}
-            {/*        value={"Листівок"}*/}
-            {/*    >*/}
-            {/*        {"Листівок"}*/}
-            {/*    </option>*/}
-            {/*    <option*/}
-            {/*        className="optionInSelectArtem"*/}
-            {/*        value={"item.name"}*/}
-            {/*    >*/}
-            {/*        {"item.name"}*/}
-            {/*    </option>*/}
-            {/*    <option*/}
-            {/*        className="optionInSelectArtem"*/}
-            {/*        value={"item.name"}*/}
-            {/*    >*/}
-            {/*        {"item.name"}*/}
-            {/*    </option>*/}
-            {/*</Form.Select>*/}
+        <div className="d-flex allArtemElem " style={{marginBottom: "1vh"}}>
             <div className="d-flex">
                 {isCustom === true ? (
                     <Form.Control

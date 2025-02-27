@@ -192,7 +192,7 @@ const NewWide = ({thisOrder, newThisOrder, setNewThisOrder, selectedThings2, set
                             >
                             </div>
                         </div>
-                        <div className="d-flex flex-column">
+                        <div className="d-flex flex-column " style={{padding: "1.5vw"}}>
                             <MDBContainer
                                 fluid
                                 style={{width: '100%'}}
