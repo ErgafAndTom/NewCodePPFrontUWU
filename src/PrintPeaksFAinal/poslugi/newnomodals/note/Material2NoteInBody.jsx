@@ -68,17 +68,25 @@ const Materials2NoteInBody = ({
         }
     }
     let handleToggleColorLamination = (e) => {
-        if (materialAndDrukInBody.ColorDrukLaminationmaterial === "Не потрібно") {
+        if (materialAndDrukInBody.ColorDrukLaminationType === "Не потрібно") {
             setMaterialAndDrukInBody({
                 ...materialAndDrukInBody,
-                ColorDrukLaminationmaterial: "",
+                ColorDrukLaminationType: "",
             })
         } else {
             setMaterialAndDrukInBody({
                 ...materialAndDrukInBody,
-                ColorDrukLaminationmaterial: "Не потрібно",
+                ColorDrukLaminationType: "Не потрібно",
             })
         }
+    }
+    let handleSelectDrukColorLamination = (e) => {
+        const selectedValue = e.target.value || '';
+
+        setMaterialAndDrukInBody((prevMaterial) => ({
+            ...prevMaterial,
+            ColorDrukLaminationTypeUse: selectedValue,
+        }));
     }
     useEffect(() => {
         let data = {
@@ -139,8 +147,8 @@ const Materials2NoteInBody = ({
             },
             size: size,
             material: {
-                type: materialAndDrukInBody.ColorDrukLaminationType,
-                typeUse: materialAndDrukInBody.ColorDrukMaterialTypeUse,
+                type: "Ламінування",
+                material: materialAndDrukInBody.ColorDrukLaminationTypeUse,
             },
         }
         setLoadLaminationColor(true)
@@ -148,19 +156,19 @@ const Materials2NoteInBody = ({
         axios.post(`/materials/NotAll`, data)
             .then(response => {
                 // console.log(response.data);
-                setPaperColorDruk(response.data.rows)
+                setLaminationColorDruk(response.data.rows)
                 setLoadLaminationColor(false)
                 if (response.data && response.data.rows && response.data.rows[0]) {
                     setMaterialAndDrukInBody({
                         ...materialAndDrukInBody,
-                        ColorDrukMaterial: response.data.rows[0].name,
-                        ColorDrukMaterialId: response.data.rows[0].id,
+                        ColorDrukLaminationMaterial: response.data.rows[0].name,
+                        ColorDrukLaminationMaterialId: response.data.rows[0].id,
                     })
                 } else {
                     setMaterialAndDrukInBody({
                         ...materialAndDrukInBody,
-                        ColorDrukMaterial: "Немає",
-                        ColorDrukMaterialId: 0,
+                        ColorDrukLaminationMaterial: "Немає",
+                        ColorDrukLaminationMaterialId: 0,
                     })
                 }
             })
@@ -199,17 +207,25 @@ const Materials2NoteInBody = ({
         }
     }
     let handleToggleBwLamination = (e) => {
-        if (materialAndDrukInBody.BwDrukLaminationmaterial === "Не потрібно") {
+        if (materialAndDrukInBody.BwDrukLaminationType === "Не потрібно") {
             setMaterialAndDrukInBody({
                 ...materialAndDrukInBody,
-                BwDrukLaminationmaterial: "",
+                BwDrukLaminationType: "",
             })
         } else {
             setMaterialAndDrukInBody({
                 ...materialAndDrukInBody,
-                BwDrukLaminationmaterial: "Не потрібно",
+                BwDrukLaminationType: "Не потрібно",
             })
         }
+    }
+    let handleSelectDrukBwLamination = (e) => {
+        const selectedValue = e.target.value || '';
+
+        setMaterialAndDrukInBody((prevMaterial) => ({
+            ...prevMaterial,
+            BwDrukLaminationTypeUse: selectedValue,
+        }));
     }
     useEffect(() => {
         let data = {
@@ -285,17 +301,25 @@ const Materials2NoteInBody = ({
         }
     }
     let handleToggleNonDrukLamination = (e) => {
-        if (materialAndDrukInBody.NonDrukLaminationmaterial === "Не потрібно") {
+        if (materialAndDrukInBody.NonDrukLaminationType === "Не потрібно") {
             setMaterialAndDrukInBody({
                 ...materialAndDrukInBody,
-                NonDrukLaminationmaterial: "",
+                NonDrukLaminationType: "",
             })
         } else {
             setMaterialAndDrukInBody({
                 ...materialAndDrukInBody,
-                NonDrukLaminationmaterial: "Не потрібно",
+                NonDrukLaminationType: "Не потрібно",
             })
         }
+    }
+    let handleSelectDrukNonLamination = (e) => {
+        const selectedValue = e.target.value || '';
+
+        setMaterialAndDrukInBody((prevMaterial) => ({
+            ...prevMaterial,
+            NonDrukLaminationTypeUse: selectedValue,
+        }));
     }
     useEffect(() => {
         let data = {
@@ -438,24 +462,24 @@ const Materials2NoteInBody = ({
                                 )}
                             </div>
 
-                            <div className={`toggleContainer scale04ForButtonToggle ${materialAndDrukInBody.ColorDrukLaminationmaterial === "Не потрібно" ? 'disabledCont' : 'enabledCont'}`}
+                            <div className={`toggleContainer scale04ForButtonToggle ${materialAndDrukInBody.ColorDrukLaminationType === "Не потрібно" ? 'disabledCont' : 'enabledCont'}`}
                                  onClick={handleToggleColorLamination}
                             >
-                                <div className={`toggle-button ${materialAndDrukInBody.ColorDrukLaminationmaterial === "Не потрібно" ? 'disabled' : 'enabledd'}`}>
+                                <div className={`toggle-button ${materialAndDrukInBody.ColorDrukLaminationType === "Не потрібно" ? 'disabled' : 'enabledd'}`}>
                                 </div>
                             </div>
                             <span style={{
                                 fontSize: '0.8vw', marginRight: '0.633vw', fontFamily: "Gotham", whiteSpace: "nowrap"
                             }}>{"Ламінація:"}</span>
 
-                            {materialAndDrukInBody.ColorDrukLaminationmaterial !== "Не потрібно" &&
+                            {materialAndDrukInBody.ColorDrukLaminationType !== "Не потрібно" &&
                                 <>
                                     <div className="ArtemNewSelectContainer"
                                          style={{marginTop: "0", display: 'flex', justifyContent: 'center', alignItems: 'center'}}>
                                         <select
                                             name="materialSelect"
-                                            value={materialAndDrukInBody.drukColor || ""}
-                                            onChange={(event) => handleSelectDrukColorChange(event)}
+                                            value={materialAndDrukInBody.ColorDrukLaminationTypeUse || ""}
+                                            onChange={(event) => handleSelectDrukColorLamination(event)}
                                             className="selectArtem"
                                         >
                                             {buttonsArrLamination.map((item, iter) => (
@@ -487,17 +511,20 @@ const Materials2NoteInBody = ({
                                                 >
                                                     <>{"Виберіть"}</>
                                                 </option>
-                                                {buttonsArrDruk.map((item, iter) => (
+                                                {laminationColorDruk.map((item, iter) => (
                                                     <option
-                                                        key={item + iter}
+                                                        key={item.thickness + iter}
                                                         className={"optionInSelectArtem"}
-                                                        value={item}
-                                                        data-id={item}
+                                                        value={item.thickness}
+                                                        data-id={item.id}
                                                     >
-                                                        <>{item}</>
+                                                        <>{item.thickness} мл</>
                                                     </option>
                                                 ))}
                                             </select>
+                                            {loadLaminationColor && (
+                                                <Spinner animation="border" variant="danger" size="sm"/>
+                                            )}
                                         </div>
                                     }
                                 </>
@@ -715,23 +742,23 @@ const Materials2NoteInBody = ({
                             </div>
 
 
-                            <div className={`toggleContainer scale04ForButtonToggle ${materialAndDrukInBody.NonDrukLaminationmaterial === "Не потрібно" ? 'disabledCont' : 'enabledCont'}`}
+                            <div className={`toggleContainer scale04ForButtonToggle ${materialAndDrukInBody.NonDrukLaminationType === "Не потрібно" ? 'disabledCont' : 'enabledCont'}`}
                                  onClick={handleToggleNonDrukLamination}
                             >
-                                <div className={`toggle-button ${materialAndDrukInBody.NonDrukLaminationmaterial === "Не потрібно" ? 'disabled' : 'enabledd'}`}>
+                                <div className={`toggle-button ${materialAndDrukInBody.NonDrukLaminationType === "Не потрібно" ? 'disabled' : 'enabledd'}`}>
                                 </div>
                             </div>
                             <span style={{
                                 fontSize: '0.8vw', marginRight: '0.633vw', fontFamily: "Gotham", whiteSpace: "nowrap"
                             }}>{"Ламінація:"}</span>
 
-                            {materialAndDrukInBody.NonDrukLaminationmaterial !== "Не потрібно" &&
+                            {materialAndDrukInBody.NonDrukLaminationType !== "Не потрібно" &&
                                 <>
                                     <div className="ArtemNewSelectContainer"
                                          style={{marginTop: "0", display: 'flex', justifyContent: 'center', alignItems: 'center'}}>
                                         <select
                                             name="materialSelect"
-                                            value={materialAndDrukInBody.drukColor || ""}
+                                            value={materialAndDrukInBody.NonDrukLaminationTypeUse || ""}
                                             onChange={(event) => handleSelectDrukColorChange(event)}
                                             className="selectArtem"
                                         >
@@ -753,7 +780,7 @@ const Materials2NoteInBody = ({
                                             <select
                                                 name="materialSelect"
                                                 value={materialAndDrukInBody.drukSides || ""}
-                                                onChange={(event) => handleSelectDrukSidesChange(event)}
+                                                onChange={(event) => handleSelectDrukNonLamination(event)}
                                                 className="selectArtem"
                                             >
                                                 <option
