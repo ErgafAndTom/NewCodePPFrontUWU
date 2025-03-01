@@ -89,7 +89,11 @@ const NewNote = ({
         ColorDrukMaterialId: "",
         BwDrukMaterialId: "",
         NonDrukMaterialId: "",
-        typeUse: ""
+        typeUse: "",
+        // Додаємо окремі кількості для кожної гілки
+        colorCount: 1,
+        bwCount: 1,
+        nonCount: 1
     });
     const [materialAndDrukBack, setMaterialAndDrukBack] = useState({
         materialType: "Папір",
@@ -150,6 +154,29 @@ const NewNote = ({
         size: ">120",
         typeUse: "Брошурування до 120 аркушів"
     });
+
+    useEffect(() => {
+        let allPapers = 1+1+materialAndDrukInBody.colorCount+materialAndDrukInBody.bwCount+materialAndDrukInBody.nonCount;
+        if(allPapers <= 120){
+            setPereplet({
+                ...pereplet,
+                size: "<120",
+                typeUse: "Брошурування до 120 аркушів"
+            })
+        } else if(allPapers > 120 && allPapers <= 280) {
+            setPereplet({
+                ...pereplet,
+                size: ">120",
+                typeUse: "Брошурування від 120 до 280 аркушів"
+            })
+        } else {
+            setPereplet({
+                ...pereplet,
+                size: "",
+                typeUse: ""
+            })
+        }
+    }, [materialAndDrukInBody.colorCount, materialAndDrukInBody.bwCount, materialAndDrukInBody.nonCount]);
 
     const addNewOrderUnit = e => {
         let dataToSend = {
