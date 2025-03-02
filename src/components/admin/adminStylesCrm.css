@@ -43,18 +43,6 @@
     background: #E9E6DA;
     display: none;
 }
-.adminButtonAdd {
-    position: fixed;
-    bottom: 5vh;
-    right: 5vh;
-    z-index: 9999;
-    border-radius: 50%;
-    width: 5vh;
-    color: white;
-}
-.adminButtonAdd:before {
-    content: "";
-}
 .hoverOrange:hover {
     background: #FAB416;
 }
@@ -66,9 +54,6 @@
 }
 .whiteBG{
     background: #F2EFE8;
-}
-.adminButtonAdd:hover{
-    cursor: pointer;
 }
 .redStorageItem:hover {
     color: #0a53be;

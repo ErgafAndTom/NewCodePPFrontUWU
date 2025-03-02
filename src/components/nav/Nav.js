@@ -8,6 +8,7 @@ import {fetchUser, logout} from "../../actions/authActions";
 import {Form} from "react-bootstrap";
 import './logo/Logo.css';
 import Logo from "./logo/Logo";
+import AddNewOrder from "../../PrintPeaksFAinal/Orders/AddNewOrder";
 // import Logo from "./logo/Logo";
 
 const Nav = () => {
@@ -217,7 +218,7 @@ const Nav = () => {
                         )}
                     </div>
                 </div>
-
+                <AddNewOrder/>
                 <div style={{ position: 'relative', display: 'inline-block' }}>
                     <Form.Control
                         className="Search"
@@ -237,7 +238,6 @@ const Nav = () => {
                         pointerEvents: 'none',
                         width: "1.7vw", height: "1.7vw", marginLeft: "auto"
                     }} src={find} alt="Search Icon" className="Seaechicon"/>
-
                 </div>
             </MDBContainer>
         </MDBNavbar>

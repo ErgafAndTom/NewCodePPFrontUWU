@@ -67,17 +67,17 @@ const CustomOrderTable2 = () => {
     if (data) {
         return (
             <div className="CustomOrderTable-order-list">
-                <AddNewOrder
-                    namem={"Order"}
-                    data={data}
-                    setData={setData}
-                    inPageCount={inPageCount}
-                    setInPageCount={setInPageCount}
-                    currentPage={currentPage}
-                    setCurrentPage={setCurrentPage}
-                    pageCount={pageCount}
-                    setPageCount={setPageCount}
-                />
+                {/*<AddNewOrder*/}
+                {/*    namem={"Order"}*/}
+                {/*    data={data}*/}
+                {/*    setData={setData}*/}
+                {/*    inPageCount={inPageCount}*/}
+                {/*    setInPageCount={setInPageCount}*/}
+                {/*    currentPage={currentPage}*/}
+                {/*    setCurrentPage={setCurrentPage}*/}
+                {/*    pageCount={pageCount}*/}
+                {/*    setPageCount={setPageCount}*/}
+                {/*/>*/}
                 <div className="CustomOrderTable-header">
                     {/* Використання класів для відображення заголовків, як у HTML */}
                     <div className="CustomOrderTable-header-cell CustomOrderTable-left-rounded">№ замовлення</div>
