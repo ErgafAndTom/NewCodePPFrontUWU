@@ -1,5 +1,3 @@
-import {MDBContainer} from "mdb-react-ui-kit";
-import {Row} from "react-bootstrap";
 import React, {useCallback, useEffect, useState} from "react";
 import axios from '../../api/axiosInstance';
 import Loader from "../../components/calc/Loader";
@@ -70,9 +68,9 @@ const NewNote = ({
         BwDrukLaminationType: "Не потрібно",
         NonDrukLaminationType: "Не потрібно",
 
-        ColorDrukLaminationTypeUse: "",
-        BwDrukLaminationTypeUse: "",
-        NonDrukLaminationTypeUse: "",
+        ColorDrukLaminationTypeUse: "З глянцевим ламінуванням",
+        BwDrukLaminationTypeUse: "З глянцевим ламінуванням",
+        NonDrukLaminationTypeUse: "З глянцевим ламінуванням",
 
         ColorDrukLaminationMaterial: "Не потрібно",
         BwDrukLaminationMaterial: "Не потрібно",
@@ -104,7 +102,7 @@ const NewNote = ({
         thickness: "",
         material: "",
         materialId: "",
-        laminationType: "",
+        laminationType: "Не потрібно",
         laminationTypeUse: "",
         laminationmaterial: "",
         laminationmaterialId: "",
