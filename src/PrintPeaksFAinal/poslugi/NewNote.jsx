@@ -40,7 +40,7 @@ const NewNote = ({
         x: 297,
         y: 420
     });
-    const [materialAndDrukFront, setMaterialAndDrukFront] = useState({
+    const [materialAndDrukBody, setMaterialAndDrukBody] = useState({
         materialType: "Папір",
         materialTypeUse: "Офісний",
         drukColor: "Не потрібно",
@@ -93,6 +93,21 @@ const NewNote = ({
         bwCount: 1,
         nonCount: 1
     });
+    const [materialAndDrukFront, setMaterialAndDrukFront] = useState({
+        materialType: "Папір",
+        materialTypeUse: "Цупкий",
+        drukColor: "Кольоровий",
+        drukSides: "односторонній",
+        drukId: "Не потрібно",
+        thickness: "",
+        material: "",
+        materialId: "",
+        laminationType: "Не потрібно",
+        laminationTypeUse: "",
+        laminationmaterial: "",
+        laminationmaterialId: "",
+        typeUse: ""
+    });
     const [materialAndDrukBack, setMaterialAndDrukBack] = useState({
         materialType: "Папір",
         materialTypeUse: "Офісний",
@@ -106,7 +121,8 @@ const NewNote = ({
         laminationTypeUse: "",
         laminationmaterial: "",
         laminationmaterialId: "",
-        typeUse: ""
+        typeUse: "",
+        count: 1
     });
 
 
@@ -334,7 +350,7 @@ const NewNote = ({
                         </div>
 
                         <div className="d-flex flex-column" style={{margin: '0', padding: '1.5vw'}}>
-                            <div className="d-flex flex-column" style={{margin: '0', padding: '0'}}>
+                            <div className="d-flex flex-column" style={{margin: '1vh', padding: '0'}}>
                                 <NewNoModalSizeNote
                                     size={size}
                                     setSize={setSize}
@@ -355,7 +371,7 @@ const NewNote = ({
                                     prices={prices}
                                     size={size}
                                     selectArr={["3,5 мм", "4 мм", "5 мм", "6 мм", "8 мм"]}
-                                    name={"Чорно-білий друк на монохромному принтері:"}
+                                    name={"Обкладинки:"}
                                     buttonsArr={["Офісний", "Тонкий",
                                         "Середній",
                                         "Цупкий"]}
@@ -366,25 +382,44 @@ const NewNote = ({
                                         "З ламінуванням Soft Touch",]}
                                     typeUse={null}
                                 />
-                                <Materials2NoteInBody
-                                    materialAndDrukInBody={materialAndDrukInBody}
-                                    setMaterialAndDrukInBody={setMaterialAndDrukInBody}
-                                    count={count}
-                                    setCount={setCount}
-                                    prices={prices}
-                                    size={size}
-                                    selectArr={["3,5 мм", "4 мм", "5 мм", "6 мм", "8 мм"]}
-                                    name={"Чорно-білий друк на монохромному принтері:"}
-                                    buttonsArr={["Офісний", "Тонкий",
-                                        "Середній",
-                                        "Цупкий"]}
-                                    buttonsArrDruk={["односторонній", "двосторонній",]}
-                                    buttonsArrColor={["Не потрібно", "Чорнобілий", "Кольоровий"]}
-                                    buttonsArrLamination={["З глянцевим ламінуванням",
-                                        "З матовим ламінуванням",
-                                        "З ламінуванням Soft Touch",]}
-                                    typeUse={null}
-                                />
+                                {/*<Materials2NoteFront*/}
+                                {/*    materialAndDrukFront={materialAndDrukBody}*/}
+                                {/*    setMaterialAndDrukFront={setMaterialAndDrukBody}*/}
+                                {/*    count={count}*/}
+                                {/*    setCount={setCount}*/}
+                                {/*    prices={prices}*/}
+                                {/*    size={size}*/}
+                                {/*    selectArr={["3,5 мм", "4 мм", "5 мм", "6 мм", "8 мм"]}*/}
+                                {/*    name={"Обкладинки:"}*/}
+                                {/*    buttonsArr={["Офісний", "Тонкий",*/}
+                                {/*        "Середній",*/}
+                                {/*        "Цупкий"]}*/}
+                                {/*    buttonsArrDruk={["односторонній", "двосторонній",]}*/}
+                                {/*    buttonsArrColor={["Не потрібно", "Чорнобілий", "Кольоровий"]}*/}
+                                {/*    buttonsArrLamination={["З глянцевим ламінуванням",*/}
+                                {/*        "З матовим ламінуванням",*/}
+                                {/*        "З ламінуванням Soft Touch",]}*/}
+                                {/*    typeUse={null}*/}
+                                {/*/>*/}
+                                {/*<Materials2NoteInBody*/}
+                                {/*    materialAndDrukInBody={materialAndDrukInBody}*/}
+                                {/*    setMaterialAndDrukInBody={setMaterialAndDrukInBody}*/}
+                                {/*    count={count}*/}
+                                {/*    setCount={setCount}*/}
+                                {/*    prices={prices}*/}
+                                {/*    size={size}*/}
+                                {/*    selectArr={["3,5 мм", "4 мм", "5 мм", "6 мм", "8 мм"]}*/}
+                                {/*    name={"Чорно-білий друк на монохромному принтері:"}*/}
+                                {/*    buttonsArr={["Офісний", "Тонкий",*/}
+                                {/*        "Середній",*/}
+                                {/*        "Цупкий"]}*/}
+                                {/*    buttonsArrDruk={["односторонній", "двосторонній",]}*/}
+                                {/*    buttonsArrColor={["Не потрібно", "Чорнобілий", "Кольоровий"]}*/}
+                                {/*    buttonsArrLamination={["З глянцевим ламінуванням",*/}
+                                {/*        "З матовим ламінуванням",*/}
+                                {/*        "З ламінуванням Soft Touch",]}*/}
+                                {/*    typeUse={null}*/}
+                                {/*/>*/}
                                 <Materials2NoteBack
                                     materialAndDrukBack={materialAndDrukBack}
                                     setMaterialAndDrukBack={setMaterialAndDrukBack}
