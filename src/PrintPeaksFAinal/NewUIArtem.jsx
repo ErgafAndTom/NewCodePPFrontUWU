@@ -204,45 +204,45 @@ const NewUIArtem = () => {
                         height: "vh",
 
                     }}>
-                        <div className="d-flex">
-                            <Tooltip text="___На перевірці" position="right">
-                                <div className="iconButtonNewUI" style={{
-                                    background: "#848484",
-                                    borderBottomLeftRadius: "0.5vw",
-                                    borderTopLeftRadius: "0.5vw",
-                                    height: "2vw",
-                                    width: "1.2vw"
-                                }}>
-                                </div>
-                            </Tooltip>
-                            <Tooltip text="В роботі" position="right">
-                                <div className="iconButtonNewUI" style={{
-                                    background: "#FFCC00",
-                                    height: "2vw",
-                                    width: "1.2vw"
-                                }}>
-                                </div>
-                            </Tooltip>
-                            <Tooltip text="Готово" position="right">
-                                <div className="iconButtonNewUI" style={{
-                                    background: "#3C60A6",
-                                    height: "2vw",
-                                    width: "1.2vw"
+                        {/*<div className="d-flex">*/}
+                        {/*    <Tooltip text="___На перевірці" position="right">*/}
+                        {/*        <div className="iconButtonNewUI" style={{*/}
+                        {/*            background: "#848484",*/}
+                        {/*            borderBottomLeftRadius: "0.5vw",*/}
+                        {/*            borderTopLeftRadius: "0.5vw",*/}
+                        {/*            height: "2vw",*/}
+                        {/*            width: "1.2vw"*/}
+                        {/*        }}>*/}
+                        {/*        </div>*/}
+                        {/*    </Tooltip>*/}
+                        {/*    <Tooltip text="В роботі" position="right">*/}
+                        {/*        <div className="iconButtonNewUI" style={{*/}
+                        {/*            background: "#FFCC00",*/}
+                        {/*            height: "2vw",*/}
+                        {/*            width: "1.2vw"*/}
+                        {/*        }}>*/}
+                        {/*        </div>*/}
+                        {/*    </Tooltip>*/}
+                        {/*    <Tooltip text="Готово" position="right">*/}
+                        {/*        <div className="iconButtonNewUI" style={{*/}
+                        {/*            background: "#3C60A6",*/}
+                        {/*            height: "2vw",*/}
+                        {/*            width: "1.2vw"*/}
 
-                                }}>
-                                </div>
-                            </Tooltip>
-                            <Tooltip text="Віддали" position="right">
-                                <div className="iconButtonNewUI" style={{
-                                    background: "#008249",
-                                    height: "2vw",
-                                    width: "1.2vw",
-                                    borderBottomRightRadius: "0.5vw",
-                                    borderTopRightRadius: "0.5vw"
-                                }}>
-                                </div>
-                            </Tooltip>
-                        </div>
+                        {/*        }}>*/}
+                        {/*        </div>*/}
+                        {/*    </Tooltip>*/}
+                        {/*    <Tooltip text="Віддали" position="right">*/}
+                        {/*        <div className="iconButtonNewUI" style={{*/}
+                        {/*            background: "#008249",*/}
+                        {/*            height: "2vw",*/}
+                        {/*            width: "1.2vw",*/}
+                        {/*            borderBottomRightRadius: "0.5vw",*/}
+                        {/*            borderTopRightRadius: "0.5vw"*/}
+                        {/*        }}>*/}
+                        {/*        </div>*/}
+                        {/*    </Tooltip>*/}
+                        {/*</div>*/}
                         {/*<OneOrderButton item={thisOrder} thisOrder={thisOrder}/>*/}
                         {orders && (
                             <div
