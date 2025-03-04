@@ -120,35 +120,10 @@ const ModalSize = ({size, setSize, type, buttonsArr, color, setColor, count, set
     }, [size]);
 
     return (
-        <div className="d-flex allArtemElem">
-            {/*<Form.Select*/}
-            {/*    className="selectArtem"*/}
-            {/*    onChange={handleSelectOption}*/}
-            {/*    value={thisNameVal}*/}
-            {/*    style={{marginLeft: "2vw"}}*/}
-            {/*>*/}
-            {/*    /!*<option disabled selected>Оберіть значення</option>*!/*/}
-            {/*    /!*<option>Задати свій розмір</option>*!/*/}
-            {/*    <option*/}
-            {/*        className="optionInSelectArtem"*/}
-            {/*        value={"Листівок"}*/}
-            {/*    >*/}
-            {/*        {"Листівок"}*/}
-            {/*    </option>*/}
-            {/*    <option*/}
-            {/*        className="optionInSelectArtem"*/}
-            {/*        value={"item.name"}*/}
-            {/*    >*/}
-            {/*        {"item.name"}*/}
-            {/*    </option>*/}
-            {/*    <option*/}
-            {/*        className="optionInSelectArtem"*/}
-            {/*        value={"item.name"}*/}
-            {/*    >*/}
-            {/*        {"item.name"}*/}
-            {/*    </option>*/}
-            {/*</Form.Select>*/}
-            <div className="d-flex">
+        <div className="d-flex allArtemElem" style={{marginTop: "1vh"}}>
+
+
+            <div className="d-flex" style={{marginTop: "2vh", alignItems: "center", marginLeft: "1vw"}}>
                 {isCustom === true ? (
                     <Form.Control
                         className="inputsArtem"
@@ -175,8 +150,8 @@ const ModalSize = ({size, setSize, type, buttonsArr, color, setColor, count, set
                     {invalid}
                 </Form.Control.Feedback>
             </div>
-            <div className="inputsArtem" style={{border: "transparent"}}>x</div>
-            <div className="d-flex">
+            <div className="inputsArtemx" style={{border: "transparent", marginTop:"2vh"}}>x</div>
+            <div className="d-flex" style={{marginTop: "2vh", alignItems: "center"}}>
                 {isCustom === true ? (
                     <Form.Control
                         className="inputsArtem"
@@ -198,7 +173,7 @@ const ModalSize = ({size, setSize, type, buttonsArr, color, setColor, count, set
                         // onChange={(event) => setY(event.target.value)}
                         isInvalid={yVal}
                     />
-                )}
+                )}<div className="inputsArtemx" style={{border: "transparent"}}> мм</div>
                 <Form.Control.Feedback type="invalid">
                     {invalid}
                 </Form.Control.Feedback>
@@ -209,13 +184,15 @@ const ModalSize = ({size, setSize, type, buttonsArr, color, setColor, count, set
                     className="selectArtem"
                     onChange={handleSelectOption}
                     value={thisNameVal}
-                    style={{marginLeft: "2vw"}}
+                    style={{marginLeft: "1vw", marginTop: "2vh"}}
                 >
                     {/*<option disabled selected>Оберіть значення</option>*/}
                     {/*<option>Задати свій розмір</option>*/}
                     {formats.map((item, iter) => (
                         <option
+
                             className="optionInSelectArtem"
+
                             key={item.name}
                             value={item.name}
                         >
@@ -225,7 +202,7 @@ const ModalSize = ({size, setSize, type, buttonsArr, color, setColor, count, set
                 </select>
             </div>
 
-            <div style={{display: 'flex', justifyContent: 'center', alignItems: 'center', marginLeft: "2vw"}}>
+            <div style={{ justifyContent: 'center', alignItems: 'center', marginLeft: "2vw", marginTop:"2vh"}}>
                 {buttonsArr.map((item, index) => (
                     <button
                         className={item === color.sides ? 'buttonsArtem buttonsArtemActive' : 'buttonsArtem'}
@@ -246,18 +223,8 @@ const ModalSize = ({size, setSize, type, buttonsArr, color, setColor, count, set
                     </button>
                 ))}
             </div>
-            <input
-                className="inputsArtem inputsArtemNumber"
-                style={{
-                    marginLeft: "1vw",
-                    background: "#F2EFE8"
-                }}
-                type="number"
-                value={count}
-                // min={1}
-                // disabled
-                onChange={(event) => handleChange(event.target.value)}
-            />
+
+
         </div>
     )
 };

@@ -240,61 +240,7 @@ const NewCup = ({
                                                 "Цупкий", "Самоклеючі"]}
                                             typeUse={null}
                                         />
-                                        {/*<NewNoModalLamination*/}
-                                        {/*    lamination={lamination}*/}
-                                        {/*    setLamination={setLamination}*/}
-                                        {/*    prices={prices}*/}
-                                        {/*    size={size}*/}
-                                        {/*    type={"SheetCut"}*/}
-                                        {/*    buttonsArr={["З глянцевим ламінуванням",*/}
-                                        {/*        "З матовим ламінуванням",*/}
-                                        {/*        "З ламінуванням Soft Touch",]}*/}
-                                        {/*    selectArr={["30", "80", "100", "125", "250"]}*/}
-                                        {/*/>*/}
-                                        {/*<NewNoModalCornerRounding*/}
-                                        {/*    big={big}*/}
-                                        {/*    setBig={setBig}*/}
-                                        {/*    prices={prices}*/}
-                                        {/*    type={"SheetCut"}*/}
-                                        {/*    buttonsArr={[]}*/}
-                                        {/*    selectArr={["", "1", "2", "3", "4", "5", "6", "7", "8", "9"]}*/}
-                                        {/*/>*/}
-                                        {/*<NewNoModalCute*/}
-                                        {/*    cute={cute}*/}
-                                        {/*    setCute={setCute}*/}
-                                        {/*    cuteLocal={cuteLocal}*/}
-                                        {/*    setCuteLocal={setCuteLocal}*/}
-                                        {/*    prices={prices}*/}
-                                        {/*    type={"SheetCut"}*/}
-                                        {/*    buttonsArr={[]}*/}
-                                        {/*    selectArr={["3", "6", "8", "10", "13"]}*/}
-                                        {/*/>*/}
-                                        {/*<NewNoModalHoles*/}
-                                        {/*    holes={holes}*/}
-                                        {/*    setHoles={setHoles}*/}
-                                        {/*    holesR={holesR}*/}
-                                        {/*    setHolesR={setHolesR}*/}
-                                        {/*    prices={prices}*/}
-                                        {/*    type={"SheetCut"}*/}
-                                        {/*    buttonsArr={[]}*/}
-                                        {/*    selectArr={["", "3,5 мм", "4 мм", "5 мм", "6 мм", "8 мм"]}*/}
-                                        {/*/>*/}
-                                        {/*<NewNoModalHoles*/}
-                                        {/*    holes={holes}*/}
-                                        {/*    setHoles={setHoles}*/}
-                                        {/*    holesR={holesR}*/}
-                                        {/*    setHolesR={setHolesR}*/}
-                                        {/*    prices={prices}*/}
-                                        {/*    type={"SheetCut"}*/}
-                                        {/*    buttonsArr={[]}*/}
-                                        {/*    selectArr={["", "3,5 мм", "4 мм", "5 мм", "6 мм", "8 мм"]}*/}
-                                        {/*/>*/}
-                                        {/*<Porizka*/}
-                                        {/*    porizka={porizka}*/}
-                                        {/*    setPorizka={setPorizka}*/}
-                                        {/*    prices={prices}*/}
-                                        {/*    type={"SheetCut"}*/}
-                                        {/*/>*/}
+
                                     </div>
                                 </Row>
                                 <div className="d-flex">

@@ -158,6 +158,18 @@ const NewPhoto = ({thisOrder, newThisOrder, setNewThisOrder, selectedThings2, sh
                 console.log(error.message);
             })
     }, [size, material, color, lamination, big, cute, cuteLocal, holes, holesR, count, photo]);
+    let handleClick = (e) => {
+        setColor({
+            sides: e,
+            one: "",
+            two: "",
+            allSidesColor: "CMYK",
+        })
+    }
+    let handleChange = (e) => {
+        setCount(e)
+    }
+
 
     useEffect(() => {
         if (showNewPhoto) {
@@ -214,9 +226,27 @@ const NewPhoto = ({thisOrder, newThisOrder, setNewThisOrder, selectedThings2, sh
                             >
                             </div>
                         </div>
-                        <div className="d-flex flex-column" style={{padding: "1.5vw"}}>
-                            <MDBContainer fluid style={{width: '100%'}}>
-                                <Row xs={1} md={6} className="">
+                        <div className="d-flex flex-row inputsArtemkilk" style={{marginLeft: "2vw", border: "transparent", justifyContent:"left"}}> У кількості:
+                        <input
+
+                            className="inputsArtem inputsArtemNumber"
+                            style={{
+                                marginLeft: "0.5vw",
+                                background: "#F2EFE8",
+                                width: "3.3vw"
+                            }}
+                            type="number"
+                            value={count}
+                            min={1}
+                            // disabled
+                            onChange={(event) => handleChange(event.target.value)}
+                        />
+                        <div className="inputsArtemkilk" style={{marginLeft: "0.5vw", border: "transparent", width:"1vw", display:"flex"}}> шт</div></div>
+
+                        <div className="d-flex flex-column" style={{padding: "0vw"}}>
+
+                            <MDBContainer fluid style={{width: '100%', marginTop: '1vw'}}>
+                                <Row xs={1} md={6} className="" >
                                     <div className="d-flex flex-column">
                                         <MaterialsInPhoto
                                             material={material}

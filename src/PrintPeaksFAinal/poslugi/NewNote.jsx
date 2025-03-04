@@ -337,7 +337,7 @@ const NewNote = ({
                     }}>
                         <div className="d-flex">
                             <div className="m-auto text-center fontProductName">
-                                Блокноти
+                                Блокнот / Щоденик / Нотатник / Книга / Підручник / Ноти / Звіт / Інструкція
                             </div>
                             <div
                                 className="btn btn-close btn-lg"
@@ -349,8 +349,8 @@ const NewNote = ({
                             </div>
                         </div>
 
-                        <div className="d-flex flex-column" style={{margin: '0', padding: '1.5vw'}}>
-                            <div className="d-flex flex-column" style={{margin: '1vh', padding: '0'}}>
+                        <div className="d-flex flex-column" style={{margin: '0', padding: '1vw'}}>
+                            <div className="d-flex flex-column" style={{marginLeft: '0vh', padding: '0'}}>
                                 <NewNoModalSizeNote
                                     size={size}
                                     setSize={setSize}
@@ -439,15 +439,7 @@ const NewNote = ({
                                         "З ламінуванням Soft Touch",]}
                                     typeUse={null}
                                 />
-                                <PerepletPereplet
-                                    size={size}
-                                    pereplet={pereplet}
-                                    setPereplet={setPereplet}
-                                    prices={prices}
-                                    type={"SheetCut"}
-                                    buttonsArr={["Брошурування до 120 аркушів", "Брошурування від 120 до 280 аркушів",]}
-                                    defaultt={"А3 (297 х 420 мм)"}
-                                />
+
                             </div>
                             <div className="d-flex">
                                 {thisOrder && (

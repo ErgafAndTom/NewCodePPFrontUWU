@@ -11,7 +11,36 @@
     /*box-shadow: 0 0 0.5vw rgba(0, 0, 0, 0.1);*/
     margin-top: 1vh;
 }
+.inputsArtemx
+{
+    align-items: center;
 
+    border: none;
+
+    background: transparent;
+    font-family: Gotham;
+    padding: 0.3vh 0.3vw; /* 0.633vh и 1.273vw умноженные на 0.6 */
+    font-size: 0.78vw; /* 1.3vw * 0.6 */
+
+   justify-content: center;
+
+    /* border: 0.15vw solid grey; */ /* если понадобится, масштабировать аналогично */
+    width: 1vw; /* 10vw * 0.6 */
+    border-bottom: 3px solid #FFA500; /* 5px * 0.6 */
+}
+.inputsArtemkilk
+{
+    align-items: center;
+
+    border: none;
+
+    background: transparent;
+    font-family: Gotham;
+    padding: 0.3vh 0.3vw; /* 0.633vh и 1.273vw умноженные на 0.6 */
+    font-size: 0.78vw; /* 1.3vw * 0.6 */
+    justify-content: center;
+
+}
 .inputsArtem {
     display: flex;
     justify-content: center;
@@ -19,13 +48,13 @@
     background-color: transparent;
     border: none;
     outline: none;
-    background: none;
+    background: #F2EFE8;
     font-family: Gotham;
     padding: 0.38vh 0.76vw; /* 0.633vh и 1.273vw умноженные на 0.6 */
     font-size: 0.78vw; /* 1.3vw * 0.6 */
     border-radius: 0.3vw; /* 0.5vw * 0.6 */
     /* border: 0.15vw solid grey; */ /* если понадобится, масштабировать аналогично */
-    width: 6vw; /* 10vw * 0.6 */
+    width: 5vw; /* 10vw * 0.6 */
     border-bottom: 3px solid #FFA500; /* 5px * 0.6 */
 }
 
@@ -156,7 +185,7 @@
 }
 
 .ArtemNewSelect {
-    font-family: Arial, sans-serif;
+    font-family: Gotham, sans-serif;
     font-size: 14.4px; /* 24px * 0.6 */
     color: #000000;
     padding: 3px 18px 3px 6px; /* верх/низ: 5px*0.6, правый: 30px*0.6, левый: 10px*0.6 */

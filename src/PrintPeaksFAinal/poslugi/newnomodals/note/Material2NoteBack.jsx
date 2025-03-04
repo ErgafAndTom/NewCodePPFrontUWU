@@ -201,98 +201,196 @@ const Materials2NoteBack = ({
 
     return (
         <div
-            className="d-flex allArtemElem m-0 p-0"
-            style={{ margin: "0", padding: "0" }}
+            className="d-flex flex-column allArtemElem"
+            style={{ marginTop: "3vh", padding: "0" }}
         >
+            {/* Заголовок "Блок:" */}
+
+
+            {/* 1. Кількість аркушів */}
             <div
-                className="d-flex align-items-center justify-content-center"
+                className="d-flex align-items-center"
+                style={{ marginTop: "0.5vw" }}
+            >
+                <div
+                    className="d-flex align-items-center justify-content-left"
+                    style={{
+                        fontSize: "1vw",
+                        width: "9vw",
+                        fontFamily: "Gotham",
+                        fontWeight: "bold",
+                        marginLeft: "1vw"
+                    }}
+                >
+                    Блок:
+                </div>
+            <span
                 style={{
-                    fontSize: "1vw",
-                    width: "9vw",
+                    fontSize: "0.8vw",
+                    marginRight: "0.5vw",
                     fontFamily: "Gotham",
-                    fontWeight: "bold",
-                    marginBottom: "1vh"
+                    whiteSpace: "nowrap"
                 }}
             >
-                Блок:
+                Кількість аркушів:
+            </span>
+                <input
+                    className="inputsArtem"
+                    type="number"
+                    value={materialAndDrukBack.count || 1}
+                    onChange={handleColorCountChange}
+                    style={{
+                        width: "3vw",
+                        fontSize: "0.8vw",
+                        padding: "0.2vw",
+                        backgroundColor: "#F2EFE8"
+                    }}
+                    min={1}
+                />
             </div>
-            <div style={{ display: "flex", alignItems: "center", paddingBottom: "1vh" }}>
-                <div className="d-flex align-items-center" style={{ marginTop: "0.5vw" }}>
-                    <span style={{ fontSize: "0.8vw", marginRight: "0.5vw", fontFamily: "Gotham" }}>Кількість аркушів:</span>
-                    <input className="inputsArtem"
-                           type="number"
-                           value={materialAndDrukBack.count || 1}
-                           onChange={handleColorCountChange}
-                           style={{ width: "3vw", fontSize: "0.8vw", padding: "0.2vw" }}
-                           min={1}
-                    />
-                </div>
-                {/* Друк */}
-                <div style={{ fontSize: "0.8vw", fontFamily: "Gotham", marginLeft: "3vw" }}>Друк: </div>
+
+            {/* 2. Друк */}
+            <div
+                className="d-flex align-items-center"
+                style={{ marginTop: "2vh", marginLeft: "10vw" }}
+            >
+            <span
+                style={{
+                    fontSize: "0.8vw",
+                    fontFamily: "Gotham",
+                    marginRight: "0.5vw",
+                    whiteSpace: "nowrap"
+                }}
+            >
+                Друк:
+            </span>
                 <div
                     className="ArtemNewSelectContainer"
-                    style={{ marginTop: "0", display: "flex", justifyContent: "center", alignItems: "center" }}
+                    style={{
+                        display: "flex",
+                        justifyContent: "center",
+                        alignItems: "center"
+                    }}
                 >
                     <select
-                        name="materialSelect"
+                        name="drukColorSelect"
                         value={materialAndDrukBack.drukColor || ""}
                         onChange={handleSelectDrukColorChange}
                         className="selectArtem"
+                        style={{ marginRight: "1vw" }}
                     >
                         {buttonsArrColor.map((item, iter) => (
-                            <option key={item + iter} className="optionInSelectArtem" value={item} data-id={item}>
+                            <option
+                                key={item + iter}
+                                className="optionInSelectArtem"
+                                value={item}
+                                data-id={item}
+                            >
                                 {item}
                             </option>
                         ))}
                     </select>
                 </div>
+
+                {/* Якщо друк потрібен, показати додатковий селект "drukSides" */}
                 {materialAndDrukBack.drukColor !== "Не потрібно" && (
                     <div
                         className="ArtemNewSelectContainer"
-                        style={{ marginTop: "0", display: "flex", justifyContent: "center", alignItems: "center" }}
+                        style={{
+                            display: "flex",
+                            justifyContent: "center",
+                            alignItems: "center"
+                        }}
                     >
                         <select
-                            name="materialSelect"
+                            name="drukSidesSelect"
                             value={materialAndDrukBack.drukSides || ""}
                             onChange={handleSelectDrukSidesChange}
                             className="selectArtem"
                         >
-                            <option key="default" className="optionInSelectArtem" value="" data-id="default">
+                            <option
+                                key="default"
+                                className="optionInSelectArtem"
+                                value=""
+                                data-id="default"
+                            >
                                 Виберіть
                             </option>
                             {buttonsArrDruk.map((item, iter) => (
-                                <option key={item + iter} className="optionInSelectArtem" value={item} data-id={item}>
+                                <option
+                                    key={item + iter}
+                                    className="optionInSelectArtem"
+                                    value={item}
+                                    data-id={item}
+                                >
                                     {item}
                                 </option>
                             ))}
                         </select>
                     </div>
                 )}
-                {/* Матеріал */}
-                <div style={{ fontSize: "0.8vw", fontFamily: "Gotham" }}>Матеріал: </div>
+            </div>
+
+            {/* 3. Матеріал */}
+            <div
+                className="d-flex align-items-center"
+                style={{ marginTop: "2vh", marginLeft: "10vw" }}
+            >
+            <span
+                style={{
+                    fontSize: "0.8vw",
+                    fontFamily: "Gotham",
+                    marginRight: "0.5vw",
+                    whiteSpace: "nowrap"
+                }}
+            >
+                Матеріал:
+            </span>
+                {/* Перший селект: тип матеріалу */}
                 <div
                     className="ArtemNewSelectContainer"
-                    style={{ marginTop: "0", display: "flex", justifyContent: "center", alignItems: "center" }}
+                    style={{
+                        display: "flex",
+                        justifyContent: "center",
+                        alignItems: "center",
+                        marginRight: "1vw"
+                    }}
                 >
                     <select
-                        name="materialSelect"
+                        name="materialTypeUseSelect"
                         value={materialAndDrukBack.materialTypeUse || ""}
                         onChange={handleSelectTypeChange}
                         className="selectArtem"
                     >
-                        <option key="default" className="optionInSelectArtem" value="" data-id="default">
+                        <option
+                            key="default"
+                            className="optionInSelectArtem"
+                            value=""
+                            data-id="default"
+                        >
                             Виберіть
                         </option>
                         {buttonsArr.map((item, iter) => (
-                            <option key={item + iter} className="optionInSelectArtem" value={item} data-id={item}>
+                            <option
+                                key={item + iter}
+                                className="optionInSelectArtem"
+                                value={item}
+                                data-id={item}
+                            >
                                 {item}
                             </option>
                         ))}
                     </select>
                 </div>
+
+                {/* Другий селект: конкретний матеріал */}
                 <div
                     className="ArtemNewSelectContainer"
-                    style={{ marginTop: "0", display: "flex", justifyContent: "center", alignItems: "center" }}
+                    style={{
+                        display: "flex",
+                        justifyContent: "center",
+                        alignItems: "center"
+                    }}
                 >
                     <select
                         name="materialSelect"
@@ -300,7 +398,12 @@ const Materials2NoteBack = ({
                         onChange={handleSelectChange}
                         className="selectArtem"
                     >
-                        <option key="default" className="optionInSelectArtem" value="" data-id="default">
+                        <option
+                            key="default"
+                            className="optionInSelectArtem"
+                            value=""
+                            data-id="default"
+                        >
                             Виберіть
                         </option>
                         {paper.map((item, iter) => (
@@ -317,98 +420,127 @@ const Materials2NoteBack = ({
                     {load && <Spinner animation="border" variant="danger" size="sm" />}
                     {error && <div>{error}</div>}
                 </div>
-                {/* Ламінація */}
-                <div style={{ marginLeft: "3vw", display: "flex", alignItems: "center" }}>
+            </div>
+
+            {/* 4. Ламінація */}
+            <div
+                className="d-flex align-items-center"
+                style={{ marginTop: "1vh", marginLeft: "10vw" }}
+            >Ламінація:
+                <div
+                    className={`toggleContainer scale04ForButtonToggle ${
+                        materialAndDrukBack.laminationType === "Не потрібно"
+                            ? "disabledCont"
+                            : "enabledCont"
+                    }`}
+                    onClick={handleToggleLamination}
+                >
                     <div
-                        className={`toggleContainer scale04ForButtonToggle ${
-                            materialAndDrukBack.laminationType === "Не потрібно" ? "disabledCont" : "enabledCont"
+                        className={`toggle-button ${
+                            materialAndDrukBack.laminationType === "Не потрібно"
+                                ? "disabled"
+                                : "enabledd"
                         }`}
-                        onClick={handleToggleLamination}
-                    >
-                        <div
-                            className={`toggle-button ${
-                                materialAndDrukBack.laminationType === "Не потрібно" ? "disabled" : "enabledd"
-                            }`}
-                        ></div>
-                    </div>
-                    <span
+                    ></div>
+                </div>
+
+                <span
+                    style={{
+                        fontSize: "0.8vw",
+                        fontFamily: "Gotham",
+                        whiteSpace: "nowrap",
+                        marginLeft: "0.5vw"
+                    }}
+                >
+
+
+
+            {/* Якщо ламінування не вимкнено, показати додаткові селекти */}
+            {materialAndDrukBack.laminationType !== "Не потрібно" && (
+                <div
+                    className="d-flex align-items-center"
+                    style={{ marginTop: "1vh" }}
+                >
+                    <div
+                        className="ArtemNewSelectContainer"
                         style={{
-                            fontSize: "0.8vw",
-                            fontFamily: "Gotham",
-                            whiteSpace: "nowrap",
-                            marginLeft: "0.5vw"
+                            display: "flex",
+                            justifyContent: "center",
+                            alignItems: "center",
+                            marginRight: "1vw"
                         }}
                     >
-            Ламінація:
-          </span>
+                        <select
+                            name="laminationTypeUse"
+                            value={materialAndDrukBack.laminationTypeUse || ""}
+                            onChange={handleSelectLaminationTypeUseChange}
+                            className="selectArtem"
+                        >
+                            <option key="default" value="" data-id="default">
+                                Виберіть
+                            </option>
+                            {buttonsArrLamination.map((item, iter) => (
+                                <option
+                                    key={item + iter}
+                                    value={item}
+                                    data-id={item}
+                                    className="optionInSelectArtem"
+                                >
+                                    {item}
+                                </option>
+                            ))}
+                        </select>
+                    </div>
+                    <div
+                        className="ArtemNewSelectContainer"
+                        style={{
+                            display: "flex",
+                            justifyContent: "center",
+                            alignItems: "center"
+                        }}
+                    >
+                        <select
+                            name="laminationMaterial"
+                            value={materialAndDrukBack.laminationmaterial || ""}
+                            onChange={(e) => {
+                                const selectedOption =
+                                    e.target.options[e.target.selectedIndex];
+                                const selectedId =
+                                    selectedOption.getAttribute("data-id") || "default";
+                                const selectedValue = e.target.value || "";
+                                setMaterialAndDrukBack((prev) => ({
+                                    ...prev,
+                                    laminationmaterial: selectedValue,
+                                    laminationmaterialId: selectedId
+                                }));
+                            }}
+                            className="selectArtem"
+                        >
+                            <option key="default" value="" data-id="default">
+                                Виберіть
+                            </option>
+                            {lamination.map((item, iter) => (
+                                <option
+                                    key={item.name + iter}
+                                    value={item.thickness}
+                                    data-id={item.id}
+                                    className="optionInSelectArtem"
+                                >
+                                    {item.thickness} мл
+                                </option>
+                            ))}
+                        </select>
+                        {loadLamination && (
+                            <Spinner animation="border" variant="danger" size="sm" />
+                        )}
+                    </div>
                 </div>
-                {materialAndDrukBack.laminationType !== "Не потрібно" && (
-                    <>
-                        <div
-                            className="ArtemNewSelectContainer"
-                            style={{ marginTop: "0", display: "flex", justifyContent: "center", alignItems: "center" }}
-                        >
-                            <select
-                                name="laminationTypeUse"
-                                value={materialAndDrukBack.laminationTypeUse || ""}
-                                onChange={handleSelectLaminationTypeUseChange}
-                                className="selectArtem"
-                            >
-                                <option key="default" value="" data-id="default">
-                                    Виберіть
-                                </option>
-                                {buttonsArrLamination.map((item, iter) => (
-                                    <option
-                                        key={item + iter}
-                                        value={item}
-                                        data-id={item}
-                                        className="optionInSelectArtem"
-                                    >
-                                        {item}
-                                    </option>
-                                ))}
-                            </select>
-                        </div>
-                        <div
-                            className="ArtemNewSelectContainer"
-                            style={{ marginTop: "0", display: "flex", justifyContent: "center", alignItems: "center" }}
-                        >
-                            <select
-                                name="laminationMaterial"
-                                value={materialAndDrukBack.laminationmaterial || ""}
-                                onChange={(e) => {
-                                    const selectedOption = e.target.options[e.target.selectedIndex];
-                                    const selectedId = selectedOption.getAttribute("data-id") || "default";
-                                    const selectedValue = e.target.value || "";
-                                    setMaterialAndDrukBack((prev) => ({
-                                        ...prev,
-                                        laminationmaterial: selectedValue,
-                                        laminationmaterialId: selectedId
-                                    }));
-                                }}
-                                className="selectArtem"
-                            >
-                                <option key="default" value="" data-id="default">
-                                    Виберіть
-                                </option>
-                                {lamination.map((item, iter) => (
-                                    <option
-                                        key={item.name + iter}
-                                        value={item.thickness}
-                                        data-id={item.id}
-                                        className="optionInSelectArtem"
-                                    >
-                                        {item.thickness} мл
-                                    </option>
-                                ))}
-                            </select>
-                            {loadLamination && <Spinner animation="border" variant="danger" size="sm" />}
-                        </div>
-                    </>
-                )}
+            )}
+                    </span>
             </div>
         </div>
     );
+
 };
 
 export default Materials2NoteBack;

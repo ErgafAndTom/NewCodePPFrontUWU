@@ -3,6 +3,7 @@ import Form from "react-bootstrap/Form";
 import '../CornerRounding.css';
 import '../ArtemStyles.css';
 
+
 const NewNoModalSizeNote = ({size, setSize, type, buttonsArr, color, setColor, count, setCount, defaultt,}) => {
     const [x, setX] = useState(size.x);
     const [y, setY] = useState(size.y);
@@ -249,8 +250,28 @@ const NewNoModalSizeNote = ({size, setSize, type, buttonsArr, color, setColor, c
     }, [size.x, size.y]);
 
     return (
-        <div className="d-flex allArtemElem " style={{marginBottom: "1vh"}}>
-            <div className="d-flex">
+        <div className="d-flex allArtemElem " style={{marginBottom: "0vh", marginLeft: "0vw"}}>
+            <div className="ArtemNewSelectContainer" style={{justifyContent: 'center', alignItems: 'center'}}>
+                <select
+                    className="selectArtem"
+                    onChange={handleSelectOption}
+                    value={thisNameVal}
+                    style={{marginLeft: "1vw"}}
+                >
+                    {/*<option disabled selected>Оберіть значення</option>*/}
+                    {/*<option>Задати свій розмір</option>*/}
+                    {formats.map((item, iter) => (
+                        <option
+                            className="optionInSelectArtem"
+                            key={item.name}
+                            value={item.name}
+                        >
+                            {item.name}
+                        </option>
+                    ))}
+                </select>
+            </div>
+            <div className="d-flex" style={{marginLeft: "1vw"}}>
                 {isCustom === true ? (
                     <Form.Control
                         className="inputsArtem"
@@ -277,8 +298,8 @@ const NewNoModalSizeNote = ({size, setSize, type, buttonsArr, color, setColor, c
                     {invalid}
                 </Form.Control.Feedback>
             </div>
-            <div className="inputsArtem" style={{border: "transparent"}}>x</div>
-            <div className="d-flex">
+            <div className="inputsArtemx" style={{border: "transparent"}}>x</div>
+            <div className="d-flex" >
                 {isCustom === true ? (
                     <Form.Control
                         className="inputsArtem"
@@ -301,65 +322,31 @@ const NewNoModalSizeNote = ({size, setSize, type, buttonsArr, color, setColor, c
                         isInvalid={yVal}
                     />
                 )}
+                <div className="inputsArtemx" style={{border: "transparent"}}> мм</div>
                 <Form.Control.Feedback type="invalid">
                     {invalid}
                 </Form.Control.Feedback>
             </div>
 
-            <div className="ArtemNewSelectContainer" style={{display: 'flex', justifyContent: 'center', alignItems: 'center'}}>
-                <select
-                    className="selectArtem"
-                    onChange={handleSelectOption}
-                    value={thisNameVal}
-                    style={{marginLeft: "2vw"}}
-                >
-                    {/*<option disabled selected>Оберіть значення</option>*/}
-                    {/*<option>Задати свій розмір</option>*/}
-                    {formats.map((item, iter) => (
-                        <option
-                            className="optionInSelectArtem"
-                            key={item.name}
-                            value={item.name}
-                        >
-                            {item.name}
-                        </option>
-                    ))}
-                </select>
-            </div>
 
-            {/*<div style={{display: 'flex', justifyContent: 'center', alignItems: 'center', marginLeft: "2vw"}}>*/}
-            {/*    {buttonsArr.map((item, index) => (*/}
-            {/*        <button*/}
-            {/*            className={item === color.sides ? 'buttonsArtem buttonsArtemActive' : 'buttonsArtem'}*/}
-            {/*            key={index}*/}
-            {/*            onClick={() => handleClick(item)}*/}
-            {/*            // style={{*/}
-            {/*            //     backgroundColor: item === color.sides ? 'orange' : 'transparent',*/}
-            {/*            //     border: item === color.sides ? '0.13vw solid transparent' : '0.13vw solid transparent',*/}
-            {/*            // }}*/}
-            {/*        >*/}
-            {/*            <div className="" style={{*/}
-            {/*                height: "100%",*/}
-            {/*                opacity: item === color.sides ? '100%' : '90%',*/}
-            {/*                whiteSpace: "nowrap",*/}
-            {/*            }}>*/}
-            {/*                {item}*/}
-            {/*            </div>*/}
-            {/*        </button>*/}
-            {/*    ))}*/}
-            {/*</div>*/}
+
+            <div className="inputsArtemkilk" style={{marginLeft: "2vw", border: "transparent", width:"6vw", display:"flex"}}> У кількості:</div>
             <input
+
                 className="inputsArtem inputsArtemNumber"
                 style={{
-                    marginLeft: "1vw",
-                    background: "#F2EFE8"
+                    marginLeft: "",
+                    background: "#F2EFE8",
+                    width: "3.3vw"
                 }}
                 type="number"
                 value={count}
-                // min={1}
+                min={1}
                 // disabled
                 onChange={(event) => handleChange(event.target.value)}
             />
+            <div className="inputsArtemx" style={{marginLeft: "0.5vw", border: "transparent", width:"1vw", display:"flex"}}> шт</div>
+
         </div>
     )
 };
