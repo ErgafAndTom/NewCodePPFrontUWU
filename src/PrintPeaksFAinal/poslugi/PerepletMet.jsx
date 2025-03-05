@@ -1,13 +1,14 @@
 import {MDBContainer} from "mdb-react-ui-kit";
 import {Row} from "react-bootstrap";
 import React, {useCallback, useEffect, useState} from "react";
+
 import axios from '../../api/axiosInstance';
 import Loader from "../../components/calc/Loader";
 import versantIcon from '../../components/newUIArtem/printers/p6.svg';
 import {useNavigate} from "react-router-dom";
 import PerepletSize from "./newnomodals/PerepletSize";
 import PerepletPereplet from "./newnomodals/PerepletPereplet";
-
+import handleChange from "./newnomodals/PerepletPereplet";
 const PerepletMet = ({
                        thisOrder,
                        newThisOrder,
@@ -16,7 +17,9 @@ const PerepletMet = ({
                        setShowPerepletMet,
                        setThisOrder,
                        setSelectedThings2,
-                       showPerepletMet
+                       showPerepletMet,
+
+
                    }) => {
     const [load, setLoad] = useState(false);
     const navigate = useNavigate();
@@ -82,6 +85,9 @@ const PerepletMet = ({
     const [pricesThis, setPricesThis] = useState(null);
 
     const addNewOrderUnit = e => {
+        let handleChange = (e) => {
+            setCount(e)
+        }
         let dataToSend = {
             orderId: thisOrder.id,
             toCalc: {
@@ -216,8 +222,25 @@ const PerepletMet = ({
                                 onClick={handleClose}
                             >
                             </div>
+
                         </div>
-                        <div className="d-flex flex-column" style={{padding: "1.5vw"}}>
+                        <div className="d-flex flex-row inputsArtemkilk" style={{marginLeft: "2vw", border: "transparent", justifyContent:"left"}}> У кількості:
+                            <input
+
+                                className="inputsArtem inputsArtemNumber"
+                                style={{
+                                    marginLeft: "0.5vw",
+                                    background: "#F2EFE8",
+                                    width: "3.3vw"
+                                }}
+                                type="number"
+                                value={count}
+                                min={1}
+                                // disabled
+                                onChange={(event) => handleChange(event.target.value)}
+                            />
+                            <div className="inputsArtemkilk"> шт</div></div>
+                        <div className="d-flex flex-column" style={{marginLeft:"1vw", marginTop: "1vw" }}>
                             <MDBContainer fluid style={{width: '100%'}}>
                                 <Row xs={1} md={6} className="">
                                     <div className="d-flex flex-column">

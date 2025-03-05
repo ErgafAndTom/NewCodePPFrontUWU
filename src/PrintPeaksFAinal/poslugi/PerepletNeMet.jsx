@@ -210,6 +210,7 @@ const PerepletNeMet = ({
                                 </div>
                             </div>
                             <div className="d-flex flex-column">
+
                                 <MDBContainer fluid style={{width: '100%'}}>
                                     <Row xs={1} md={6} className="">
                                         <div className="d-flex flex-column">

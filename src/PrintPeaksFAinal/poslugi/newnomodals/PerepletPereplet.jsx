@@ -5,10 +5,16 @@ import skoba from './skoba.svg';
 import plastick from './plastick.svg';
 import metall from './metall.svg';
 import diplom from './diplom.svg';
+import './CornerRounding.css';
+import './ArtemStyles.css';
+import './PerepletSize';
 
-const PerepletPereplet = ({pereplet, setPereplet, prices, buttonsArr, selectArr, size}) => {
+
+
+const PerepletPereplet = ({pereplet, setPereplet, prices, buttonsArr, selectArr, size, setCount, type, defaultt}) => {
     const [thisPerepletVariants, setThisPerepletVariants] = useState([]);
     const navigate = useNavigate();
+
 
     let handleClickSize = (e, e2) => {
         setPereplet({
@@ -71,23 +77,12 @@ const PerepletPereplet = ({pereplet, setPereplet, prices, buttonsArr, selectArr,
 
     return (
         <div className="d-flex allArtemElem m-0 p-0">
-            <div style={{display: 'flex', alignItems: 'center',}} className="m-0 p-0">
-                {/*<div className={`toggleContainer ${pereplet.type === "Не потрібно" ? 'disabledCont' : 'enabledCont'}`}*/}
-                {/*     onClick={handleToggle}*/}
-                {/*     style={{transform: "scale(0.6)"}}>*/}
-                {/*    <div className={`toggle-button ${pereplet.type === "Не потрібно" ? 'disabled' : 'enabledd'}`}>*/}
 
-                {/*    </div>*/}
-                {/*</div>*/}
+
+            <div style={{display: 'flex', alignItems: 'center',marginTop: "1vw"}}>
+
                 <div className="d-flex flex-column m-0 p-0">
-                    {/*<span style={{*/}
-                    {/*    fontSize: '1.273vw',*/}
-                    {/*    marginRight: '0.633vw',*/}
-                    {/*    fontFamily: "Gotham",*/}
-                    {/*    fontWeight: "bold",*/}
-                    {/*}}>*/}
-                    {/*    {"Перепліт:"}*/}
-                    {/*</span>*/}
+
                     {pereplet.type !== "Не потрібно" ? (
                         <div style={{
                             display: 'flex',
@@ -101,19 +96,7 @@ const PerepletPereplet = ({pereplet, setPereplet, prices, buttonsArr, selectArr,
                                 alignItems: 'center',
                                 // marginLeft: "2vw",
                             }}>
-                                {/*{buttonsArr.map((item, index) => (<button*/}
-                                {/*    className={item === pereplet.size ? 'buttonsArtem buttonsArtemActive' : 'buttonsArtem'}*/}
-                                {/*    key={index}*/}
-                                {/*    onClick={(e) => handleClickSize(item)}*/}
-                                {/*>*/}
-                                {/*    <div className="" style={{*/}
-                                {/*        height: "100%",*/}
-                                {/*        opacity: item === pereplet.size ? '100%' : '90%',*/}
-                                {/*        whiteSpace: "nowrap",*/}
-                                {/*    }}>*/}
-                                {/*        {item}*/}
-                                {/*    </div>*/}
-                                {/*</button>))}*/}
+
                                 <button
                                     className={"Брошурування до 120 аркушів" === pereplet.typeUse ? 'buttonsArtem buttonsArtemActive' : 'buttonsArtem'}
                                     onClick={(e) => handleClickSize("Брошурування до 120 аркушів", "<120")}
@@ -138,18 +121,7 @@ const PerepletPereplet = ({pereplet, setPereplet, prices, buttonsArr, selectArr,
                                         {"Брошурування від 120 до 280 аркушів"}
                                     </div>
                                 </button>
-                                {/*<div className="ArtemNewSelectContainer">*/}
-                                {/*    <select*/}
-                                {/*        value={pereplet.size}*/}
-                                {/*        onChange={(event) => handleSelectChange(event)}*/}
-                                {/*        className="selectArtem"*/}
-                                {/*    >*/}
-                                {/*        <option value={""}>{""}</option>*/}
-                                {/*        {thisLaminationSizes.map((item, iter2) => (*/}
-                                {/*            <option className="optionInSelectArtem" key={item.thickness}*/}
-                                {/*                    value={item.thickness}>{item.thickness} мкм</option>))}*/}
-                                {/*    </select>*/}
-                                {/*</div>*/}
+
                             </div>
                             <div className="d-flex">
                                 {thisPerepletVariants.map((item, index) => (<button
@@ -256,12 +228,15 @@ const PerepletPereplet = ({pereplet, setPereplet, prices, buttonsArr, selectArr,
                                 {/*    </button>*/}
                                 {/*}*/}
                             </div>
+
                         </div>) : (<div>
 
                     </div>)}
                 </div>
             </div>
         </div>
+
+
     )
 };
 

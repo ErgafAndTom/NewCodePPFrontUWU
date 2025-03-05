@@ -116,19 +116,7 @@ const NewPhoto = ({thisOrder, newThisOrder, setNewThisOrder, selectedThings2, sh
             });
     }
 
-    // useEffect(() => {
-    //     axios.get(`/getpricesNew`)
-    //         .then(response => {
-    //             // console.log(response.data);
-    //             setPrices(response.data)
-    //         })
-    //         .catch(error => {
-    //             if(error.response.status === 403){
-    //                 navigate('/login');
-    //             }
-    //             console.log(error.message);
-    //         })
-    // }, []);
+
 
     useEffect(() => {
         let dataToSend = {
@@ -229,7 +217,7 @@ const NewPhoto = ({thisOrder, newThisOrder, setNewThisOrder, selectedThings2, sh
                         <div className="d-flex flex-row inputsArtemkilk" style={{marginLeft: "2vw", border: "transparent", justifyContent:"left"}}> У кількості:
                         <input
 
-                            className="inputsArtem inputsArtemNumber"
+                            className="inputsArtem inputsArtemNumber "
                             style={{
                                 marginLeft: "0.5vw",
                                 background: "#F2EFE8",

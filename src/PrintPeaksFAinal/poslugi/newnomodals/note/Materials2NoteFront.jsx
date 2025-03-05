@@ -179,7 +179,8 @@ const Materials2NoteFront = ({
     const handleToggleLamination = () => {
         setMaterialAndDrukFront((prev) => ({
             ...prev,
-            laminationType: prev.laminationType === "Не потрібно" ? "" : "Не потрібно"
+            laminationType: prev.laminationType === "Не потрібно" ? "З глянцевим ламінуванням" : "Не потрібно",
+            laminationTypeUse: prev.laminationTypeUse === "Не потрібно" ? "З глянцевим ламінуванням" : "Не потрібно"
         }));
     };
 
@@ -264,14 +265,6 @@ const Materials2NoteFront = ({
                             onChange={handleSelectDrukSidesChange}
                             className="selectArtem"
                         >
-                            <option
-                                key="default"
-                                className="optionInSelectArtem"
-                                value=""
-                                data-id="default"
-                            >
-                                Виберіть
-                            </option>
                             {buttonsArrDruk.map((item, iter) => (
                                 <option
                                     key={item + iter}
@@ -314,9 +307,6 @@ const Materials2NoteFront = ({
                         onChange={handleSelectTypeChange}
                         className="selectArtem"
                     >
-                        <option key="default" className="optionInSelectArtem" value="" data-id="default">
-                            Виберіть
-                        </option>
                         {buttonsArr.map((item, iter) => (
                             <option
                                 key={item + iter}
@@ -344,9 +334,6 @@ const Materials2NoteFront = ({
                         onChange={handleSelectChange}
                         className="selectArtem"
                     >
-                        <option key="default" className="optionInSelectArtem" value="" data-id="default">
-                            Виберіть
-                        </option>
                         {paper.map((item, iter) => (
                             <option
                                 key={item.name + iter}
@@ -410,9 +397,6 @@ const Materials2NoteFront = ({
                                 onChange={handleSelectLaminationTypeUseChange}
                                 className="selectArtem"
                             >
-                                <option key="default" value="" data-id="default">
-                                    Виберіть
-                                </option>
                                 {buttonsArrLamination.map((item, iter) => (
                                     <option
                                         key={item + iter}
@@ -449,9 +433,6 @@ const Materials2NoteFront = ({
                                 }}
                                 className="selectArtem"
                             >
-                                <option key="default" value="" data-id="default">
-                                    Виберіть
-                                </option>
                                 {lamination.map((item, iter) => (
                                     <option
                                         key={item.name + iter}

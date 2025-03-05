@@ -150,8 +150,8 @@ const ModalSize = ({size, setSize, type, buttonsArr, color, setColor, count, set
                     {invalid}
                 </Form.Control.Feedback>
             </div>
-            <div className="inputsArtemx" style={{border: "transparent", marginTop:"2vh"}}>x</div>
-            <div className="d-flex" style={{marginTop: "2vh", alignItems: "center"}}>
+            <div className="inputsArtemx" style={{ marginTop:"2vh", border:"transparent"}}>x</div>
+            <div className="d-flex" style={{marginTop: "2vh"}}>
                 {isCustom === true ? (
                     <Form.Control
                         className="inputsArtem"
@@ -173,7 +173,7 @@ const ModalSize = ({size, setSize, type, buttonsArr, color, setColor, count, set
                         // onChange={(event) => setY(event.target.value)}
                         isInvalid={yVal}
                     />
-                )}<div className="inputsArtemx" style={{border: "transparent"}}> мм</div>
+                )}<div className="inputsArtemx"style={{border:"transparent"}}> мм</div>
                 <Form.Control.Feedback type="invalid">
                     {invalid}
                 </Form.Control.Feedback>
