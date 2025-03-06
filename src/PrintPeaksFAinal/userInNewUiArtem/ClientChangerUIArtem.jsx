@@ -17,11 +17,13 @@ import addclienticons from "./img/Path 13360.png";
 import Tooltip from '../TooltipButton2';
 import {useNavigate} from "react-router-dom";
 import AddUserWindow from "../user/AddUserWindow";
-import {Spinner} from "react-bootstrap"; //
+import {Spinner} from "react-bootstrap";
+import NP from "./NP"; //
 
 const ClientChangerUIArtem = ({thisOrder, handleThisOrderChange, setNewThisOrder, setThisOrder}) => {
     const navigate = useNavigate();
     const [showAddUser, setShowAddUser] = useState(false);
+    const [showNP, setShowNP] = useState(false);
     const [load, setLoad] = useState(false);
     const [typeSelect, setTypeSelect] = useState("");
     const [users, setUsers] = useState([]);
@@ -156,6 +158,10 @@ const ClientChangerUIArtem = ({thisOrder, handleThisOrderChange, setNewThisOrder
 
     const AddNewUser = () => {
         setShowAddUser(!showAddUser)
+    };
+
+    const NPS = () => {
+        setShowNP(true)
     };
 
     const selectUser = (user) => {
@@ -418,6 +424,27 @@ const ClientChangerUIArtem = ({thisOrder, handleThisOrderChange, setNewThisOrder
                                             {/*    marginTop: "-20.5vw",*/}
                                             {/*}} alt="www"/>*/}
                                             <AddUserWindow showAddUser={showAddUser} setShowAddUser={setShowAddUser} thisOrder={thisOrder} setThisOrder={setThisOrder}/>
+                                        </div>
+                                    }
+                                </Tooltip>
+                                <Tooltip text="Нова пошта">
+                                    <button className="addclient grayFonColorBackground " style={{
+                                        width: "2.4vw",
+                                        height: "2.4vw",
+                                        // marginTop: "0.2vw",
+                                        marginLeft: "0.3vw",
+                                        border: "0px",
+                                        borderRadius: "0.5vw",
+                                        opacity: "80%"
+                                    }} onClick={NPS}>
+                                        <div>
+                                            НП
+                                        </div>
+                                        {showNP.toString()}
+                                    </button>
+                                    {showNP &&
+                                        <div style={{ }} className="">
+                                            <NP showNP={showNP} setShowNP={setShowNP} thisOrder={thisOrder} setThisOrder={setThisOrder}/>
                                         </div>
                                     }
                                 </Tooltip>

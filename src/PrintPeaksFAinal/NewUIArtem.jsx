@@ -34,6 +34,8 @@ import imgg7 from "../components/newUIArtem/printers/p7.svg";
 import imgg8 from "../components/newUIArtem/printers/p8.svg";
 import imgg9 from "../components/newUIArtem/printers/p9.svg";
 
+import versantIcon from "../components/newUIArtem/printers/group-1468.svg";
+
 import OneProductInOrders from "../components/newcalc/Orders/OneProductInOrders";
 import Plotter from "../components/newcalc/products/Plotter";
 import NewWide from "./poslugi/newWide";
@@ -332,12 +334,14 @@ const NewUIArtem = () => {
                                         <img src={imgg6} className="card-img-top noanim" alt="..."/>
                                         <img src={img9} className="card-img-top anim" alt="..."/>
                                     </div>
-                                    <div
-                                        onClick={(event) => setShowNewNote(true)}
-                                        className="cursorPointer printers gif" style={{width: "8vw", marginLeft: "0vw"}}>
-                                        <img src={imgg7} className="card-img-top noanim" alt="..."/>
-                                        <img src={img7} className="card-img-top anim" alt="..."/>
-                                    </div>
+                                    {/*<div*/}
+                                    {/*    onClick={(event) => setShowNewNote(true)}*/}
+                                    {/*    className="cursorPointer printers gif" style={{width: "4vw", marginLeft: "0vw"}}>*/}
+                                    {/*    <img src={versantIcon} className="card-img-top noanim" alt="..."/>*/}
+                                    {/*    <img src={versantIcon} className="card-img-top anim" alt="..."/>*/}
+                                    {/*    /!*<img src={imgg7} className="card-img-top noanim" alt="..."/>*!/*/}
+                                    {/*    /!*<img src={img7} className="card-img-top anim" alt="..."/>*!/*/}
+                                    {/*</div>*/}
                                 </div>
                                 <div className="d-flex flex-column justify-content-center">
                                     <div
@@ -360,7 +364,14 @@ const NewUIArtem = () => {
                         </div>
 
                         <div className="containerNewUI containerProducts">
-
+                            <div
+                                onClick={(event) => setShowNewNote(true)}
+                                className="cursorPointer printers gif" style={{width: "4vw", marginLeft: "0vw"}}>
+                                <img src={versantIcon} className="card-img-top noanim" alt="..."/>
+                                <img src={versantIcon} className="card-img-top anim" alt="..."/>
+                                {/*<img src={imgg7} className="card-img-top noanim" alt="..."/>*/}
+                                {/*<img src={img7} className="card-img-top anim" alt="..."/>*/}
+                            </div>
                         </div>
                         {/*<div className="containerNewUI containerMaterials">*/}
 

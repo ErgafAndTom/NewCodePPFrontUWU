@@ -250,14 +250,67 @@ const ModalSize = ({size, setSize, type, buttonsArr, color, setColor, count, set
     }, [size.x, size.y]);
 
     return (
-        <div className="d-flex allArtemElem" style={{marginTop: "1vw", marginLeft:"1.5vw"}}>
-<></>
+        <div className="d-flex allArtemElem" >
+            <div className="d-flex">
+                {isCustom === true ? (
+                    <Form.Control
+                        className="inputsArtem"
+                        type="number"
+                        value={x}
+                        min={minXYValue}
+                        max={xMaxValue}
+                        onChange={(event) => setX(event.target.value)}
+                        isInvalid={xVal}
+                    />
+                ) : (
+                    <Form.Control
+                        className="inputsArtem"
+                        type="number"
+                        value={x}
+                        min={minXYValue}
+                        max={xMaxValue}
+                        disabled
+                        // onChange={(event) => setX(event.target.value)}
+                        isInvalid={xVal}
+                    />
+                )}
                 <Form.Control.Feedback type="invalid">
                     {invalid}
                 </Form.Control.Feedback>
+            </div>
+            <div className="inputsArtemx" style={{border:"transparent"}}>x</div>
+            <div className="d-flex" >
+                {isCustom === true ? (
+                    <Form.Control
+                        className="inputsArtem"
+                        type="number"
+                        value={y}
+                        min={minXYValue}
+                        max={yMaxValue}
+                        onChange={(event) => setY(event.target.value)}
+                        isInvalid={yVal}
+                    />
+                ) : (
+                    <Form.Control
+                        className="inputsArtem"
+                        type="number"
+                        value={y}
+                        min={minXYValue}
+                        max={yMaxValue}
+                        disabled
+                        // onChange={(event) => setY(event.target.value)}
+                        isInvalid={yVal}
+                    />
+                )}<div className="inputsArtemx" style={{border:"transparent"}}> мм</div></div>
+           <div className="FormControlFeedbackColor" style={{marginLeft: "2vw"}}>
+               <Form.Control.Feedback type="invalid">
+                   {invalid}
+               </Form.Control.Feedback>
+           </div>
 
 
-            <div className="ArtemNewSelectContainer" style={{justifyContent: 'center', alignItems: 'center'}}>
+
+            <div className="ArtemNewSelectContainer" style={{justifyContent: 'left', alignItems: 'center'}}>
                 <select
                     className="selectArtem"
                     onChange={handleSelectOption}
@@ -278,7 +331,7 @@ const ModalSize = ({size, setSize, type, buttonsArr, color, setColor, count, set
                 </select>
             </div>
 
-            <div style={{display: 'flex', justifyContent: 'center', alignItems: 'center', marginLeft: "2vw"}}>
+            <div style={{display: 'flex', justifyContent: 'center', alignItems: 'center', marginLeft: "2vw", marginTop:"-0.5vh"}}>
                 {buttonsArr.map((item, index) => (
                     <button
                         className={item === color.sides ? 'buttonsArtem buttonsArtemActive' : 'buttonsArtem'}
@@ -299,18 +352,7 @@ const ModalSize = ({size, setSize, type, buttonsArr, color, setColor, count, set
                     </button>
                 ))}
             </div>
-            {/*<input*/}
-            {/*    className="inputsArtem inputsArtemNumber"*/}
-            {/*    style={{*/}
-            {/*        marginLeft: "1vw",*/}
-            {/*        background: "#F2EFE8"*/}
-            {/*    }}*/}
-            {/*    type="number"*/}
-            {/*    value={count}*/}
-            {/*    min={1}*/}
-            {/*    // disabled*/}
-            {/*    onChange={(event) => handleChange(event.target.value)}*/}
-            {/*/>*/}
+
 
         </div>
 

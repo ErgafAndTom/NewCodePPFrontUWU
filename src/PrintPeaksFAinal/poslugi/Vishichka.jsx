@@ -2,7 +2,7 @@ import {MDBContainer} from "mdb-react-ui-kit";
 import {Row} from "react-bootstrap";
 import React, {useCallback, useEffect, useState} from "react";
 import axios from '../../api/axiosInstance';
-import NewNoModalSize from "./newnomodals/NewNoModalSize";
+import NewNoModalSize from "./newnomodals/NewNoModalSizeColor";
 import versantIcon from '../../components/newUIArtem/printers/p9.svg';
 import Materials2 from "./newnomodals/Materials2";
 import {useNavigate} from "react-router-dom";
@@ -20,6 +20,9 @@ const Vishichka = ({
                            setSelectedThings2,
                            showVishichka
                        }) => {
+    let handleChange = (e) => {
+        setCount(e)
+    }
     const [load, setLoad] = useState(false);
     const navigate = useNavigate();
     const [isVisible, setIsVisible] = useState(false);
@@ -237,8 +240,27 @@ const Vishichka = ({
                                 >
                                 </div>
                             </div>
-                            <div className="d-flex flex-column" style={{padding: "1.5vw"}}>
-                                <MDBContainer fluid style={{width: '100%'}}>
+                            <div className="d-flex flex-column" >
+                                <div className="d-flex flex-row inputsArtemkilk allArtemElem" style={{marginLeft: "1.4vw", border: "transparent", justifyContent:"left", marginTop:"1vw"}}> У кількості:
+                                    <input
+                                        className="d-flex inputsArtemNumber inputsArtem "
+                                        style={{
+                                            marginLeft: "1vw",
+                                            background: "#F2EFE8",
+                                            width: "5vw",
+                                            alignItems: "center",
+                                            justifyContent:"center",
+                                            paddingLeft: "0.5vw",
+
+                                        }}
+                                        type="number"
+                                        value={count}
+                                        min={1}
+                                        // disabled
+                                        onChange={(event) => handleChange(event.target.value)}
+                                    />
+                                    <div className="inputsArtemx allArtemElem" style={{ border:"transparent", marginTop:"-2vh" }}> шт</div></div>
+                                <MDBContainer fluid style={{width: '100%', marginLeft:"-2vh", marginTop:"2vh"}}>
                                     <Row xs={1} md={6} className="">
                                         <div className="d-flex flex-column">
                                             <NewNoModalSize
@@ -274,7 +296,7 @@ const Vishichka = ({
                                                 setVishichka={setVishichka}
                                                 prices={prices}
                                                 type={"SheetCut"}
-                                                buttonsArr={["З плотерною надсічкою на надрукованих аркушах", "З плотерною порізкою стікерпаків", "З плотерною порізкою окремими виробами",]}
+                                                buttonsArr={["З плотерною порізкою на надрукованих аркушах", "З плотерною порізкою стікерпаків", "З плотерною порізкою окремими виробами",]}
                                                 defaultt={"А3 (297 х 420 мм)"}
                                             />
                                             {/*<NewNoModalLamination*/}

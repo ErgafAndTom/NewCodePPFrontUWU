@@ -3,7 +3,7 @@ import {Row} from "react-bootstrap";
 import React, {useCallback, useEffect, useState} from "react";
 import axios from '../../api/axiosInstance';
 import Loader from "../../components/calc/Loader";
-import NewNoModalSize from "./newnomodals/NewNoModalSize";
+import NewNoModalSize from "./newnomodals/NewNoModalSizeColor";
 import NewNoModalLamination from "./newnomodals/NewNoModalLamination";
 import NewNoModalCornerRounding from "./newnomodals/NewNoModalBig";
 import NewNoModalCute from "./newnomodals/NewNoModalCute";
@@ -24,10 +24,14 @@ const NewSheetCut = ({
                          setSelectedThings2,
                          showNewSheetCut
                      }) => {
+
     const [load, setLoad] = useState(false);
     const navigate = useNavigate();
     const [isVisible, setIsVisible] = useState(false);
     const [isAnimating, setIsAnimating] = useState(false);
+    let handleChange = (e) => {
+        setCount(e)
+    }
     const [error, setError] = useState(null);
     const handleClose = () => {
         setIsAnimating(false); // Начинаем анимацию закрытия
@@ -216,8 +220,27 @@ const NewSheetCut = ({
                             >
                             </div>
                         </div>
-                        <div className="d-flex flex-column" style={{padding: "1.5vw"}}>
-                            <MDBContainer fluid style={{width: '100%'}}>
+                        <div className="d-flex flex-column">
+                            <div className="d-flex flex-row inputsArtemkilk allArtemElem" style={{marginLeft: "1.4vw", border: "transparent", justifyContent:"left", marginTop:"1vw"}}> У кількості:
+                                <input
+                                    className="d-flex inputsArtemNumber inputsArtem "
+                                    style={{
+                                        marginLeft: "1vw",
+                                        background: "#F2EFE8",
+                                        width: "5vw",
+                                        alignItems: "center",
+                                        justifyContent:"center",
+                                        paddingLeft: "0.5vw",
+
+                                    }}
+                                    type="number"
+                                    value={count}
+                                    min={1}
+                                    // disabled
+                                    onChange={(event) => handleChange(event.target.value)}
+                                />
+                                <div className="inputsArtemx allArtemElem" style={{ border:"transparent", marginTop:"-2vh" }}> шт</div></div>
+                            <MDBContainer fluid style={{width: '100%', marginLeft: '-1vw', marginTop:"2vh"}}>
                                 <Row xs={1} md={6} className="">
                                     <div className="d-flex flex-column">
                                         <NewNoModalSize
@@ -473,6 +496,11 @@ const NewSheetCut = ({
 
                                         <img
                                             className="versant80-img-icon"
+                                            style={{
+                                                width: "13.5vw",
+
+
+                                            }}
                                             alt="sssss"
                                             src={versantIcon}
                                         />

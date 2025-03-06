@@ -179,8 +179,7 @@ const Materials2NoteFront = ({
     const handleToggleLamination = () => {
         setMaterialAndDrukFront((prev) => ({
             ...prev,
-            laminationType: prev.laminationType === "Не потрібно" ? "З глянцевим ламінуванням" : "Не потрібно",
-            laminationTypeUse: prev.laminationTypeUse === "Не потрібно" ? "З глянцевим ламінуванням" : "Не потрібно"
+            laminationType: prev.laminationType === "Не потрібно" ? "" : "Не потрібно"
         }));
     };
 
@@ -199,13 +198,13 @@ const Materials2NoteFront = ({
 
 
             {/* Блок "Друк" (або, якщо потрібно, "Кількість аркушів") */}
-            <div style={{ display: "flex", alignItems: "center", marginTop: "3vh" }}>
+            <div style={{ display: "flex", marginTop: "1vh" }}>
                 <div
-                    className="d-flex align-items-center justify-content-center"
+                    className="d-flex "
                     style={{
                         fontSize: "1vw",
                         width: "9vw",
-
+alignItems: "center",
                         fontFamily: "Gotham",
                         fontWeight: "bold",
                     }}
@@ -214,10 +213,11 @@ const Materials2NoteFront = ({
                 </div>
                 <div
                     style={{
-                        fontSize: "0.8vw",
+                        fontSize: "1vw",
                         fontFamily: "Gotham",
                         marginLeft: "1vw",
                         whiteSpace: "nowrap",
+                        alignSelf: "center",
                     }}
                 >
                     Друк:
@@ -284,7 +284,7 @@ const Materials2NoteFront = ({
             <div style={{ display: "flex", alignItems: "center", marginTop: "2vh", marginLeft: "9vw"}}>
                 <div
                     style={{
-                        fontSize: "0.8vw",
+                        fontSize: "1vw",
                         fontFamily: "Gotham",
                         marginLeft: "1vw",
                         whiteSpace: "nowrap",
@@ -341,7 +341,7 @@ const Materials2NoteFront = ({
                                 value={item.name}
                                 data-id={item.id}
                             >
-                                {item.name} {item.thickness} мл
+                                {item.name} {item.thickness} gsm
                             </option>
                         ))}
                     </select>
@@ -351,7 +351,7 @@ const Materials2NoteFront = ({
             </div>
 
             {/* Блок "Ламінація" */}
-            <div style={{ display: "flex", alignItems: "center", marginTop: "1vh", marginLeft: "10vw" }}>
+            <div style={{ display: "flex", alignItems: "center", marginTop: "1vh", marginLeft: "10vw", fontSize:"1vw" }}>
                 Ламінація:
                 <div
                     className={`toggleContainer scale04ForButtonToggle ${
@@ -371,7 +371,7 @@ const Materials2NoteFront = ({
                 </div>
                 <span
                     style={{
-                        fontSize: "0.8vw",
+                        fontSize: "1vw",
                         fontFamily: "Gotham",
                         whiteSpace: "nowrap",
                         marginLeft: "0vw",
@@ -385,8 +385,8 @@ const Materials2NoteFront = ({
                         <div
                             className="ArtemNewSelectContainer"
                             style={{
-                                marginLeft: "1vw",
-                                display: "flex",
+                                marginLeft: "-1.5vw",
+                                // display: "flex",
                                 justifyContent: "center",
                                 alignItems: "center",
                             }}
@@ -396,6 +396,7 @@ const Materials2NoteFront = ({
                                 value={materialAndDrukFront.laminationTypeUse || ""}
                                 onChange={handleSelectLaminationTypeUseChange}
                                 className="selectArtem"
+
                             >
                                 {buttonsArrLamination.map((item, iter) => (
                                     <option
@@ -440,7 +441,7 @@ const Materials2NoteFront = ({
                                         data-id={item.id}
                                         className="optionInSelectArtem"
                                     >
-                                        {item.thickness} мл
+                                        {item.thickness} gsm
                                     </option>
                                 ))}
                             </select>

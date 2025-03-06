@@ -98,9 +98,9 @@ const MaterialsInPhoto = ({material, setMaterial, count, setCount, prices, type,
     // }, [material]);
 
     return (
-        <div className="d-flex allArtemElem">
+        <div className="d-flex allArtemElem" style={{marginLeft: "0vw", marginTop: "2vh"}}>
             {/*<UserProfileForm/>*/}
-            <div style={{display: 'flex', alignItems: 'center',}}>
+            <div style={{alignItems: 'center',}}>
                 {/*<span style={{*/}
                 {/*    fontSize: '1.273vw',*/}
                 {/*    marginRight: '0.633vw',*/}
@@ -108,7 +108,7 @@ const MaterialsInPhoto = ({material, setMaterial, count, setCount, prices, type,
                 {/*    fontWeight: "bold",*/}
                 {/*    whiteSpace: "nowrap",*/}
                 {/*}}>{name}</span>*/}
-                <div style={{display: 'flex', justifyContent: 'center', alignItems: 'center', marginLeft: "vw"}}>
+                <div style={{display: 'flex', justifyContent: 'center', alignItems: 'center'}}>
                     {/*{buttonsArr.map((item, index) => (*/}
                     {/*    <div*/}
                     {/*        className={item === material.thickness ? 'buttonsArtem buttonsArtemActive' : 'buttonsArtem'}*/}

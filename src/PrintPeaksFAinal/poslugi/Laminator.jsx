@@ -18,6 +18,9 @@ const Laminator = ({
                            setSelectedThings2,
                            showLaminator
                        }) => {
+    let handleChange = (e) => {
+        setCount(e)
+    }
     const [load, setLoad] = useState(false);
     const navigate = useNavigate();
     const [isVisible, setIsVisible] = useState(false);
@@ -197,7 +200,7 @@ const Laminator = ({
                     }}>
                         <div className="d-flex">
                             <div className="m-auto text-center fontProductName">
-                                Ламінатор
+                                Ламінація
                             </div>
                             <div
                                 className="btn btn-close btn-lg"
@@ -208,7 +211,26 @@ const Laminator = ({
                             >
                             </div>
                         </div>
-                        <div className="d-flex flex-column" style={{padding: "1.5vw"}}>
+                        <div className="d-flex flex-column" >
+                            <div className="d-flex flex-row inputsArtemkilk allArtemElem" style={{marginLeft: "1.4vw", border: "transparent", justifyContent:"left", marginTop:"1vw"}}> У кількості:
+                                <input
+                                    className="d-flex inputsArtemNumber inputsArtem "
+                                    style={{
+                                        marginLeft: "1vw",
+                                        background: "#F2EFE8",
+                                        width: "5vw",
+                                        alignItems: "center",
+                                        justifyContent:"center",
+                                        paddingLeft: "0.5vw",
+
+                                    }}
+                                    type="number"
+                                    value={count}
+                                    min={1}
+                                    // disabled
+                                    onChange={(event) => handleChange(event.target.value)}
+                                />
+                                <div className="inputsArtemx allArtemElem" style={{ border:"transparent", marginTop:"-2vh" }}> шт</div></div>
                             <MDBContainer fluid style={{width: '100%'}}>
                                 <Row xs={1} md={6} className="">
                                     <div className="d-flex flex-column">

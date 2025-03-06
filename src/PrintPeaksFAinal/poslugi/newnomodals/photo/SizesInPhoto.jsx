@@ -120,10 +120,10 @@ const ModalSize = ({size, setSize, type, buttonsArr, color, setColor, count, set
     }, [size]);
 
     return (
-        <div className="d-flex allArtemElem" style={{marginTop: "1vh"}}>
+        <div className="d-flex allArtemElem" style={{marginTop: "1vh", marginLeft: "1vw"}}>
 
 
-            <div className="d-flex" style={{marginTop: "2vh", alignItems: "center", marginLeft: "1vw"}}>
+            <div className="d-flex" style={{marginTop: "2vh",  marginLeft: "0vw"}}>
                 {isCustom === true ? (
                     <Form.Control
                         className="inputsArtem"

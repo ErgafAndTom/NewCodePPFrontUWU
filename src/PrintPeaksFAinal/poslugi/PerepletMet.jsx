@@ -224,14 +224,17 @@ const PerepletMet = ({
                             </div>
 
                         </div>
-                        <div className="d-flex flex-row inputsArtemkilk" style={{marginLeft: "2vw", border: "transparent", justifyContent:"left"}}> У кількості:
+                        <div className="d-flex flex-row inputsArtemkilk allArtemElem" style={{marginLeft: "1.4vw", border: "transparent", justifyContent:"left", marginTop:"1vw"}}> У кількості:
                             <input
-
-                                className="inputsArtem inputsArtemNumber"
+                                className="d-flex inputsArtemNumber inputsArtem "
                                 style={{
-                                    marginLeft: "0.5vw",
+                                    marginLeft: "1vw",
                                     background: "#F2EFE8",
-                                    width: "3.3vw"
+                                    width: "5vw",
+                                    alignItems: "center",
+                                    justifyContent:"center",
+                                    paddingLeft: "0.5vw",
+
                                 }}
                                 type="number"
                                 value={count}
@@ -239,7 +242,7 @@ const PerepletMet = ({
                                 // disabled
                                 onChange={(event) => handleChange(event.target.value)}
                             />
-                            <div className="inputsArtemkilk"> шт</div></div>
+                            <div className="inputsArtemx allArtemElem" style={{ border:"transparent", marginTop:"-2vh" }}> шт</div></div>
                         <div className="d-flex flex-column" style={{marginLeft:"1vw", marginTop: "1vw" }}>
                             <MDBContainer fluid style={{width: '100%'}}>
                                 <Row xs={1} md={6} className="">

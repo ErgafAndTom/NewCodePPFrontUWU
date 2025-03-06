@@ -101,12 +101,12 @@ const LaminationSize = ({size, setSize, type, buttonsArr, color, setColor, count
     return (
         <div className="d-flex allArtemElem">
 
-            <div className="ArtemNewSelectContainer" style={{display: 'flex', justifyContent: 'center', alignItems: 'center'}}>
+            <div className="ArtemNewSelectContainer" style={{justifyContent: 'center', alignItems: 'center', marginTop:"2vh"}}>
                 <select
                     className="selectArtem"
                     onChange={handleSelectOption}
                     value={thisNameVal}
-                    style={{marginLeft: "2vw"}}
+                    style={{marginLeft: "-1vw"}}
                 >
                     {/*<option disabled selected>Оберіть значення</option>*/}
                     {/*<option>Задати свій розмір</option>*/}
@@ -122,17 +122,7 @@ const LaminationSize = ({size, setSize, type, buttonsArr, color, setColor, count
                 </select>
             </div>
 
-            <input
-                className="inputsArtem inputsArtemNumber"
-                style={{
-                    marginLeft: "1vw",
-                    background: "#F2EFE8"
-                }}
-                type="number"
-                value={count}
-                min={1}
-                onChange={(event) => handleChange(event.target.value)}
-            />
+
         </div>
     )
 };

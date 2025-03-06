@@ -92,8 +92,8 @@ const VishichkaVibor = ({vishichka, setVishichka, prices, buttonsArr, selectArr,
     }, []);
 
     return (
-        <div className="d-flex allArtemElem m-0 p-0">
-            <div style={{display: 'flex', alignItems: 'center',}} className="m-0 p-0">
+        <div className="d-flex allArtemElem" style={{marginTop:"2vh"}} >
+            <div style={{display: 'flex', alignItems: 'center', margin:"1vh"}} className="m-0 p-0">
                 {/*<div className={`toggleContainer ${pereplet.type === "Не потрібно" ? 'disabledCont' : 'enabledCont'}`}*/}
                 {/*     onClick={handleToggle}*/}
                 {/*     style={{transform: "scale(0.6)"}}>*/}
@@ -101,7 +101,7 @@ const VishichkaVibor = ({vishichka, setVishichka, prices, buttonsArr, selectArr,
 
                 {/*    </div>*/}
                 {/*</div>*/}
-                <div className="d-flex flex-column m-0 p-0">
+                <div className="d-flex flex-column">
                     {/*<span style={{*/}
                     {/*    fontSize: '1.273vw',*/}
                     {/*    marginRight: '0.633vw',*/}
@@ -150,7 +150,7 @@ const VishichkaVibor = ({vishichka, setVishichka, prices, buttonsArr, selectArr,
                                             opacity: item.id === vishichka.materialId ? '100%' : '90%',
                                             whiteSpace: "nowrap",
                                         }}>
-                                            <img src={iconArray[index]} alt="З плотерною надсічкою на надрукованих аркушах" style={{height: "10vw"}}/>
+                                            <img src={iconArray[index]} alt="З плотерною надсічкою на надрукованих аркушах" style={{height: "9vw", marginBottom: "1vw"}}/>
                                             {/*{"З плотерною надсічкою на надрукованих аркушах"}*/}
                                             {item.name}
                                         </div>

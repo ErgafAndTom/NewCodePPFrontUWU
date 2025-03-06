@@ -214,28 +214,43 @@ const NewPhoto = ({thisOrder, newThisOrder, setNewThisOrder, selectedThings2, sh
                             >
                             </div>
                         </div>
-                        <div className="d-flex flex-row inputsArtemkilk" style={{marginLeft: "2vw", border: "transparent", justifyContent:"left"}}> У кількості:
-                        <input
+                        <div className="d-flex flex-row inputsArtemkilk allArtemElem" style={{marginLeft: "1.4vw", border: "transparent", justifyContent:"left", marginTop:"1vw"}}> У кількості:
+                            <input
+                                className="d-flex inputsArtemNumber inputsArtem "
+                                style={{
+                                    marginLeft: "1vw",
+                                    background: "#F2EFE8",
+                                    width: "5vw",
+                                    alignItems: "center",
+                                    justifyContent:"center",
+                                    paddingLeft: "0.5vw",
 
-                            className="inputsArtem inputsArtemNumber "
-                            style={{
-                                marginLeft: "0.5vw",
-                                background: "#F2EFE8",
-                                width: "3.3vw"
-                            }}
-                            type="number"
-                            value={count}
-                            min={1}
-                            // disabled
-                            onChange={(event) => handleChange(event.target.value)}
-                        />
-                        <div className="inputsArtemkilk" style={{marginLeft: "0.5vw", border: "transparent", width:"1vw", display:"flex"}}> шт</div></div>
+                                }}
+                                type="number"
+                                value={count}
+                                min={1}
+                                // disabled
+                                onChange={(event) => handleChange(event.target.value)}
+                            />
+                            <div className="inputsArtemx allArtemElem" style={{ border:"transparent", marginTop:"-2vh" }}> шт</div></div>
 
                         <div className="d-flex flex-column" style={{padding: "0vw"}}>
 
-                            <MDBContainer fluid style={{width: '100%', marginTop: '1vw'}}>
+                            <MDBContainer fluid style={{width: '100%'}}>
                                 <Row xs={1} md={6} className="" >
                                     <div className="d-flex flex-column">
+                                        <SizesInPhoto
+                                            size={size}
+                                            setSize={setSize}
+                                            prices={prices}
+                                            type={"Photo"}
+                                            buttonsArr={["односторонній"]}
+                                            color={color}
+                                            setColor={setColor}
+                                            count={count}
+                                            setCount={setCount}
+
+                                        />
                                         <MaterialsInPhoto
                                             material={material}
                                             setMaterial={setMaterial}
@@ -250,18 +265,7 @@ const NewPhoto = ({thisOrder, newThisOrder, setNewThisOrder, selectedThings2, sh
                                                 "Цупкі", "Самоклеючі"]}
                                             typeUse={"Фото"}
                                         />
-                                        <SizesInPhoto
-                                            size={size}
-                                            setSize={setSize}
-                                            prices={prices}
-                                            type={"Photo"}
-                                            buttonsArr={["односторонній"]}
-                                            color={color}
-                                            setColor={setColor}
-                                            count={count}
-                                            setCount={setCount}
 
-                                        />
                                         {/*<PhotoPosluga*/}
                                         {/*    photo={photo}*/}
                                         {/*    setPhoto={setPhoto}*/}

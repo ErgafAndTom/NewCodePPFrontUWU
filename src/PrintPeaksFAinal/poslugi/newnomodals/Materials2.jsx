@@ -128,7 +128,7 @@ const Materials2 = ({material, setMaterial, count, setCount, prices, type, name,
     // }, []);
 
     return (
-        <div className="d-flex allArtemElem">
+        <div className="d-flex allArtemElem" style={{marginLeft: "1.3vw"}}>
             <div style={{display: 'flex', alignItems: 'center',}}>
                 <div style={{display: 'flex', justifyContent: 'center', alignItems: 'center'}}>
                     {buttonsArr.map((item, index) => (

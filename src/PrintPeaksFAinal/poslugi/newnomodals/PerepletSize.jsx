@@ -93,7 +93,7 @@ const PerepletSize = ({size, setSize, type, buttonsArr, color, setColor, count, 
     return (
 
 
-        <div className="d-flex allArtemElem" style={{ justifyContent: 'left', alignItems: 'left'}}>
+        <div className="d-flex allArtemElem" style={{  marginLeft: "0vw"}}>
                 <select
                     className="selectArtem"
                     onChange={handleSelectOption}

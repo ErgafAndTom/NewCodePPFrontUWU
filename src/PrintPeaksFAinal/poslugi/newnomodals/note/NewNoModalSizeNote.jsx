@@ -68,17 +68,7 @@ const NewNoModalSizeNote = ({size, setSize, type, buttonsArr, color, setColor, c
             {name: "A5 (148 х 210 мм)", x: 148, y: 210},
             {name: "A4 (210 x 297 мм)", x: 210, y: 297},
             {name: "А3 (297 х 420 мм)", x: 297, y: 420},
-            {name: "90х50 мм", x: 90, y: 50},
-            {name: "85x55 мм", x: 85, y: 55},
-            {name: "90х55 мм", x: 90, y: 55},
-            {name: "100х100 мм", x: 100, y: 100},
-            {name: "100х150 мм", x: 100, y: 150},
-            {name: "86х54 мм", x: 86, y: 54},
-            {name: "200х100 мм", x: 200, y: 100},
-            {name: "87х54 мм", x: 87, y: 54},
-            {name: "200х200 мм", x: 200, y: 200},
-            {name: "88х50 мм", x: 88, y: 50},
-            {name: "85х54 мм", x: 85, y: 54},
+
         ]
         minXYValue = 45
         maxXYValue = 445
@@ -250,27 +240,8 @@ const NewNoModalSizeNote = ({size, setSize, type, buttonsArr, color, setColor, c
     }, [size.x, size.y]);
 
     return (
-        <div className="d-flex allArtemElem " style={{marginBottom: "0vh", marginLeft: "0vw"}}>
-            <div className="ArtemNewSelectContainer" style={{justifyContent: 'center', alignItems: 'center'}}>
-                <select
-                    className="selectArtem"
-                    onChange={handleSelectOption}
-                    value={thisNameVal}
-                    style={{marginLeft: "1vw"}}
-                >
-                    {/*<option disabled selected>Оберіть значення</option>*/}
-                    {/*<option>Задати свій розмір</option>*/}
-                    {formats.map((item, iter) => (
-                        <option
-                            className="optionInSelectArtem"
-                            key={item.name}
-                            value={item.name}
-                        >
-                            {item.name}
-                        </option>
-                    ))}
-                </select>
-            </div>
+        <div className="d-flex allArtemElem " style={{marginTop: "2vh", marginLeft: "0.5vw"}}>
+
             <div className="d-flex" style={{marginLeft: "1vw"}}>
                 {isCustom === true ? (
                     <Form.Control
@@ -328,24 +299,28 @@ const NewNoModalSizeNote = ({size, setSize, type, buttonsArr, color, setColor, c
                 </Form.Control.Feedback>
             </div>
 
+            <div className="ArtemNewSelectContainer" style={{justifyContent: 'center', alignItems: 'center'}}>
+                <select
+                    className="selectArtem"
+                    onChange={handleSelectOption}
+                    value={thisNameVal}
+                    style={{marginLeft: "1vw"}}
+                >
+                    {/*<option disabled selected>Оберіть значення</option>*/}
+                    {/*<option>Задати свій розмір</option>*/}
+                    {formats.map((item, iter) => (
+                        <option
+                            className="optionInSelectArtem"
+                            key={item.name}
+                            value={item.name}
+                        >
+                            {item.name}
+                        </option>
+                    ))}
+                </select>
+            </div>
 
 
-            <div className="inputsArtemkilk" style={{marginLeft: "2vw", border: "transparent", width:"6vw", display:"flex"}}> У кількості:</div>
-            <input
-
-                className="inputsArtem inputsArtemNumber"
-                style={{
-                    marginLeft: "",
-                    background: "#F2EFE8",
-                    width: "3.3vw"
-                }}
-                type="number"
-                value={count}
-                min={1}
-                // disabled
-                onChange={(event) => handleChange(event.target.value)}
-            />
-            <div className="inputsArtemx" style={{marginLeft: "0.5vw", border: "transparent", width:"1vw", display:"flex"}}> шт</div>
 
         </div>
     )

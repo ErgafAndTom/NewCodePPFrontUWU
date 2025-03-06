@@ -1,11 +1,14 @@
 import React, {useCallback, useEffect, useState} from "react";
 import axios from '../../api/axiosInstance';
 import Loader from "../../components/calc/Loader";
-import versantIcon from "../../components/newUIArtem/printers/p7.svg";
+import versantIcon from "../../components/newUIArtem/printers/group-1468.svg";
 import {useNavigate} from "react-router-dom";
 import NewNoModalSizeNote from "./newnomodals/note/NewNoModalSizeNote";
 import Materials2NoteFront from "./newnomodals/note/Materials2NoteFront";
 import Materials2NoteBack from "./newnomodals/note/Material2NoteBack";
+import PerepletPereplet from "./newnomodals/PerepletPerepletNote";
+import Notebook from "./newnomodals/note/Notebook";
+import NoteVisual from "./newnomodals/note/NoteVisual";
 
 const NewNote = ({
                          thisOrder,
@@ -17,6 +20,9 @@ const NewNote = ({
                          setSelectedThings2,
                          showNewNote
                      }) => {
+    let handleChange = (e) => {
+        setCount(e)
+    }
     const [load, setLoad] = useState(false);
     const navigate = useNavigate();
     const [isVisible, setIsVisible] = useState(false);
@@ -35,8 +41,8 @@ const NewNote = ({
 
 
     const [size, setSize] = useState({
-        x: 297,
-        y: 420
+        x: 148  ,
+        y: 210
     });
     const [materialAndDrukBody, setMaterialAndDrukBody] = useState({
         materialType: "Папір",
@@ -101,7 +107,7 @@ const NewNote = ({
         material: "",
         materialId: "",
         laminationType: "Не потрібно",
-        laminationTypeUse: "",
+        laminationTypeUse: "З глянцевим ламінуванням",
         laminationmaterial: "",
         laminationmaterialId: "",
         typeUse: ""
@@ -116,7 +122,7 @@ const NewNote = ({
         material: "",
         materialId: "",
         laminationType: "Не потрібно",
-        laminationTypeUse: "",
+        laminationTypeUse: "З глянцевим ламінуванням",
         laminationmaterial: "",
         laminationmaterialId: "",
         typeUse: "",
@@ -180,7 +186,7 @@ const NewNote = ({
         if(materialAndDrukInBody.NonDrukMaterialType !== "Не потрібно"){
             nonDruk = materialAndDrukInBody.nonCount
         }
-        let allPapers = 1+1+color+bw+nonDruk;
+        let allPapers = 2+materialAndDrukBack.count;
         if(allPapers <= 120){
             setPereplet({
                 ...pereplet,
@@ -200,13 +206,7 @@ const NewNote = ({
                 typeUse: ""
             })
         }
-    }, [materialAndDrukInBody.colorCount,
-        materialAndDrukInBody.bwCount,
-        materialAndDrukInBody.nonCount,
-        materialAndDrukInBody.ColorDrukMaterialType,
-        materialAndDrukInBody.BwDrukMaterialType,
-        materialAndDrukInBody.NonDrukMaterialType,
-    ]);
+    }, [materialAndDrukBack.count]);
 
     const addNewOrderUnit = e => {
         let dataToSend = {
@@ -262,6 +262,7 @@ const NewNote = ({
             holesR: holesR,
             count: count,
             porizka: porizka,
+            pereplet: pereplet,
             materialAndDrukFront: materialAndDrukFront,
             materialAndDrukInBody: materialAndDrukInBody,
             materialAndDrukBack: materialAndDrukBack,
@@ -278,7 +279,7 @@ const NewNote = ({
                 }
                 console.log(error.message);
             })
-    }, [size, material, color, lamination, big, cute, cuteLocal, holes, holesR, count, porizka, materialAndDrukFront, materialAndDrukBack]);
+    }, [size, material, color, lamination, big, cute, cuteLocal, holes, holesR, count, porizka, materialAndDrukFront, materialAndDrukBack, pereplet]);
 
     useEffect(() => {
         if (showNewNote) {
@@ -329,15 +330,42 @@ const NewNote = ({
                             <div
                                 className="btn btn-close btn-lg"
                                 style={{
-                                    margin: "0.5vw",
+
                                 }}
                                 onClick={handleClose}
                             >
                             </div>
                         </div>
 
-                        <div className="d-flex flex-column" style={{margin: '0', padding: '1vw'}}>
-                            <div className="d-flex flex-column" style={{marginLeft: '0vh', padding: '0'}}>
+                        <div className="d-flex flex-column" style={{}}>
+                            <div className="d-flex flex-column">
+                                <div className="d-flex flex-row inputsArtemkilk allArtemElem" style={{
+                                    marginLeft: "1.4vw",
+                                    border: "transparent",
+                                    justifyContent: "left",
+                                    marginTop: "1vw"
+                                }}> У кількості:
+                                    <input
+                                        className="d-flex inputsArtemNumber inputsArtem "
+                                        style={{
+                                            marginLeft: "1vw",
+                                            background: "#F2EFE8",
+                                            width: "5vw",
+                                            alignItems: "center",
+                                            justifyContent: "center",
+                                            paddingLeft: "0.5vw",
+
+                                        }}
+                                        type="number"
+                                        value={count}
+                                        min={1}
+                                        // disabled
+                                        onChange={(event) => handleChange(event.target.value)}
+                                    />
+                                    <div className="inputsArtemx allArtemElem"
+                                         style={{border: "transparent", marginTop: "-2vh"}}> шт
+                                    </div>
+                                </div>
                                 <NewNoModalSizeNote
                                     size={size}
                                     setSize={setSize}
@@ -350,46 +378,62 @@ const NewNote = ({
                                     setCount={setCount}
                                     defaultt={"А3 (297 х 420 мм)"}
                                 />
-                                <Materials2NoteFront
-                                    materialAndDrukFront={materialAndDrukFront}
-                                    setMaterialAndDrukFront={setMaterialAndDrukFront}
-                                    count={count}
-                                    setCount={setCount}
-                                    prices={prices}
+                                <div className="d-flex">
+                                    <Materials2NoteFront
+                                        materialAndDrukFront={materialAndDrukFront}
+                                        setMaterialAndDrukFront={setMaterialAndDrukFront}
+                                        count={count}
+                                        setCount={setCount}
+                                        prices={prices}
+                                        size={size}
+                                        selectArr={["3,5 мм", "4 мм", "5 мм", "6 мм", "8 мм"]}
+                                        name={"Обкладинки:"}
+                                        buttonsArr={["Офісний", "Тонкий",
+                                            "Середній",
+                                            "Цупкий"]}
+                                        buttonsArrDruk={["односторонній", "двосторонній",]}
+                                        buttonsArrColor={["Не потрібно", "Чорнобілий", "Кольоровий"]}
+                                        buttonsArrLamination={["З глянцевим ламінуванням",
+                                            "З матовим ламінуванням",
+                                            "З ламінуванням Soft Touch",]}
+                                        typeUse={null}
+                                    />
+                                    <Materials2NoteBack
+                                        materialAndDrukBack={materialAndDrukBack}
+                                        setMaterialAndDrukBack={setMaterialAndDrukBack}
+                                        count={count}
+                                        setCount={setCount}
+                                        prices={prices}
+                                        size={size}
+                                        selectArr={["3,5 мм", "4 мм", "5 мм", "6 мм", "8 мм"]}
+                                        name={"Чорно-білий друк на монохромному принтері:"}
+                                        buttonsArr={["Офісний", "Тонкий",
+                                            "Середній",
+                                            "Цупкий"]}
+                                        buttonsArrDruk={["односторонній", "двосторонній",]}
+                                        buttonsArrColor={["Не потрібно", "Чорнобілий", "Кольоровий"]}
+                                        buttonsArrLamination={["З глянцевим ламінуванням",
+                                            "З матовим ламінуванням",
+                                            "З ламінуванням Soft Touch",]}
+                                        typeUse={null}
+                                    />
+                                </div>
+
+
+                                <PerepletPereplet
                                     size={size}
-                                    selectArr={["3,5 мм", "4 мм", "5 мм", "6 мм", "8 мм"]}
-                                    name={"Обкладинки:"}
-                                    buttonsArr={["Офісний", "Тонкий",
-                                        "Середній",
-                                        "Цупкий"]}
-                                    buttonsArrDruk={["односторонній", "двосторонній",]}
-                                    buttonsArrColor={["Не потрібно", "Чорнобілий", "Кольоровий"]}
-                                    buttonsArrLamination={["З глянцевим ламінуванням",
-                                        "З матовим ламінуванням",
-                                        "З ламінуванням Soft Touch",]}
-                                    typeUse={null}
-                                />
-                                <Materials2NoteBack
-                                    materialAndDrukBack={materialAndDrukBack}
-                                    setMaterialAndDrukBack={setMaterialAndDrukBack}
-                                    count={count}
-                                    setCount={setCount}
+                                    pereplet={pereplet}
+                                    setPereplet={setPereplet}
                                     prices={prices}
-                                    size={size}
-                                    selectArr={["3,5 мм", "4 мм", "5 мм", "6 мм", "8 мм"]}
-                                    name={"Чорно-білий друк на монохромному принтері:"}
-                                    buttonsArr={["Офісний", "Тонкий",
-                                        "Середній",
-                                        "Цупкий"]}
-                                    buttonsArrDruk={["односторонній", "двосторонній",]}
-                                    buttonsArrColor={["Не потрібно", "Чорнобілий", "Кольоровий"]}
-                                    buttonsArrLamination={["З глянцевим ламінуванням",
-                                        "З матовим ламінуванням",
-                                        "З ламінуванням Soft Touch",]}
-                                    typeUse={null}
+                                    type={"SheetCut"}
+                                    buttonsArr={["Брошурування до 120 аркушів", "Брошурування від 120 до 280 аркушів",]}
+                                    defaultt={"А5 (148 х 210 мм)"}
                                 />
 
                             </div>
+                            {/*<NoteVisual pages={materialAndDrukBack.count}*/}
+                            {/*          initialWidth={size.x}*/}
+                            {/*          initialHeight={size.y}/>*/}
                             <div className="d-flex">
                                 {thisOrder && (
                                     <div
@@ -431,63 +475,57 @@ const NewNote = ({
                                     <div className="">
                                         {/* Лицевая сторона */}
                                         <div className="fontInfoForPricing">
-                                            <strong>Лицевая сторона:</strong>
+                                            <strong>Обкладинки:</strong>
                                         </div>
                                         <div className="fontInfoForPricing">
-                                            Печать: {pricesThis.priceDrukFront} грн * {pricesThis.sheetCount} листов = {(pricesThis.priceDrukFront * pricesThis.sheetCount).toFixed(2)} грн
+                                            Друк: {pricesThis.priceDrukFront} грн * {pricesThis.sheetCount} листов = {(pricesThis.priceDrukFront * pricesThis.sheetCount).toFixed(2)} грн
                                         </div>
                                         <div className="fontInfoForPricing">
-                                            Материалы: {pricesThis.priceMaterialFront} грн * {pricesThis.sheetCount} листов = {(pricesThis.priceMaterialFront * pricesThis.sheetCount).toFixed(2)} грн
+                                            Материали: {pricesThis.priceMaterialFront} грн * {pricesThis.sheetCount} листов = {(pricesThis.priceMaterialFront * pricesThis.sheetCount).toFixed(2)} грн
                                         </div>
                                         <div className="fontInfoForPricing">
-                                            Ламинация: {pricesThis.priceLaminationFront} грн * {pricesThis.sheetCount} листов = {(pricesThis.priceLaminationFront * pricesThis.sheetCount).toFixed(2)} грн
+                                            Ламінація: {pricesThis.priceLaminationFront} грн * {pricesThis.sheetCount} листов = {(pricesThis.priceLaminationFront * pricesThis.sheetCount).toFixed(2)} грн
                                         </div>
                                         <div className="fontInfoForPricing">
-                                            Итог (лицевая сторона): {pricesThis.totalSheetPriceFront} грн
+                                            Загалом: {pricesThis.totalSheetPriceFront} грн
                                         </div>
-
-                                        <br />
 
                                         {/* Оборотная сторона */}
                                         <div className="fontInfoForPricing">
-                                            <strong>Оборотная сторона:</strong>
+                                            <strong>Блок:</strong>
                                         </div>
                                         <div className="fontInfoForPricing">
-                                            Печать: {pricesThis.priceDrukBack} грн * {pricesThis.sheetCountBack} листов = {(pricesThis.priceDrukBack * pricesThis.sheetCountBack).toFixed(2)} грн
+                                            Друк: {pricesThis.priceDrukBack} грн * {pricesThis.sheetCountBack} листов = {(pricesThis.priceDrukBack * pricesThis.sheetCountBack).toFixed(2)} грн
                                         </div>
                                         <div className="fontInfoForPricing">
-                                            Материалы: {pricesThis.priceMaterialBack} грн * {pricesThis.sheetCountBack} листов = {(pricesThis.priceMaterialBack * pricesThis.sheetCountBack).toFixed(2)} грн
+                                            Материали: {pricesThis.priceMaterialBack} грн * {pricesThis.sheetCountBack} листов = {(pricesThis.priceMaterialBack * pricesThis.sheetCountBack).toFixed(2)} грн
                                         </div>
                                         <div className="fontInfoForPricing">
-                                            Ламинация: {pricesThis.priceLaminationBack} грн * {pricesThis.sheetCountBack} листов = {(pricesThis.priceLaminationBack * pricesThis.sheetCountBack).toFixed(2)} грн
+                                            Ламінація: {pricesThis.priceLaminationBack} грн * {pricesThis.sheetCountBack} листов = {(pricesThis.priceLaminationBack * pricesThis.sheetCountBack).toFixed(2)} грн
                                         </div>
                                         <div className="fontInfoForPricing">
-                                            Итог (оборотная сторона): {pricesThis.totalSheetPriceBack} грн
+                                            Загалом: {pricesThis.totalSheetPriceBack} грн
                                         </div>
-
-                                        <br />
 
                                         {/* Переплёт (если есть) */}
                                         {pricesThis.totalPerepletPrice > 0 && (
                                             <div className="fontInfoForPricing">
-                                                Переплёт: {pricesThis.pricePerepletUnit} грн * {count} шт = {pricesThis.totalPerepletPrice} грн
+                                                Перепліт: {pricesThis.pricePerepletUnit} грн * {count} шт = {pricesThis.totalPerepletPrice} грн
                                             </div>
                                         )}
 
-                                        <br />
-
                                         {/* Итоговые данные */}
                                         <div className="fontInfoForPricing1">
-                                            Общая стоимость заказа: {pricesThis.price} грн
+                                            Загальна сума: {pricesThis.price} грн
                                         </div>
                                         <div className="fontInfoForPricing">
-                                            - С одного листа A3 можно сделать {pricesThis.sheetsPerUnit} изделий
+                                            - С одного аркуша A3 можна зробити {pricesThis.sheetsPerUnit} виробів
                                         </div>
                                         <div className="fontInfoForPricing">
-                                            - Использовано {pricesThis.sheetCount} листов (A3)
+                                            - Використано {pricesThis.sheetCount} аркушів (A3)
                                         </div>
                                         <div className="fontInfoForPricing">
-                                            Цена за изделие (с учетом всех доп. услуг): {pricesThis.priceForItemWithExtras} грн
+                                            Ціна за виріб (з урахуванням постпресу): {pricesThis.priceForItemWithExtras} грн
                                         </div>
                                     </div>
 

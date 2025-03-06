@@ -1,13 +1,14 @@
 import React, {useEffect, useState} from 'react';
+import './ArtemStyles.css';
 
 function SliderComponent({size, setSize}) {
     const [x, setX] = useState(size.x);
     const [y, setY] = useState(size.y);
     const [background1, setBackground1] = useState({
-        background: `linear-gradient(to right, #f8b700 ${x / 10}%, #ccc ${x / 10}%)`
+
     });
     const [background2, setBackground2] = useState({
-        background: `linear-gradient(to right, #f8b700 ${y / 30}%, #ccc ${y / 30}%)`
+
     });
 
     const handleChange1 = (event) => {
@@ -32,10 +33,10 @@ function SliderComponent({size, setSize}) {
     };
     useEffect(() => {
         setBackground1({
-            background: `linear-gradient(to right, #f8b700 ${x / 10}%, #ccc ${x / 10}%)`
+            background: `linear-gradient(to right, #ffa500 ${x / 10}%, #ccc ${x / 10}%)`
         })
         setBackground2({
-            background: `linear-gradient(to right, #f8b700 ${y / 30}%, #ccc ${y / 30}%)`
+            background: `linear-gradient(to right, #ffa500 ${y / 30}%, #ccc ${y / 30}%)`
         })
     }, [x, y]);
 
@@ -59,6 +60,8 @@ function SliderComponent({size, setSize}) {
              style={{marginTop: "2vw"}}
         >
             <div className="d-flex flex-column" style={{marginLeft: "2vw", width: "100%"}}>
+
+                <span className="slider-label" style={{marginLeft: "40vw", width: "100%", opacity:"50%"}}>1000 мм</span>
                 <input
                     type="range"
                     min="0"
@@ -70,13 +73,14 @@ function SliderComponent({size, setSize}) {
                     className="custom-slider"
                     style={background1}
                 />
+
                 <div className="d-flex align-content-between justify-content-between">
-                    <span className="slider-label">{x}</span>
-                    <span className="slider-label">1000 мм</span>
+                    <span className="slider-label">{x} мм</span>
                 </div>
             </div>
 
             <div className="d-flex flex-column" style={{marginLeft: "2vw", width: "100%"}}>
+                <span className="slider-label" style={{marginLeft: "40vw", width: "100%", opacity:"50%"}}>3000 мм</span>
                 <input
                     type="range"
                     min="0"
@@ -89,8 +93,8 @@ function SliderComponent({size, setSize}) {
                     style={background2}
                 />
                 <div className="d-flex align-content-between justify-content-between">
-                    <span className="slider-label">{y}</span>
-                    <span className="slider-label">3000 мм</span>
+                    <span className="slider-label">{y} мм</span>
+
                 </div>
             </div>
         </div>

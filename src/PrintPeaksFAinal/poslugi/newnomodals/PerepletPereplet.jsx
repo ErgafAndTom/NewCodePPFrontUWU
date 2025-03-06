@@ -59,11 +59,11 @@ const PerepletPereplet = ({pereplet, setPereplet, prices, buttonsArr, selectArr,
             .then(response => {
                 // console.log(response.data);
                 setThisPerepletVariants(response.data.rows)
-                if (response.data.rows[0]) {
+                if (response.data.rows[2]) {
                     setPereplet({
                         ...pereplet,
-                        material: response.data.rows[0].name,
-                        materialId: response.data.rows[0].id,
+                        material: response.data.rows[2].name,
+                        materialId: response.data.rows[2].id,
                     })
                 }
             })
@@ -76,12 +76,12 @@ const PerepletPereplet = ({pereplet, setPereplet, prices, buttonsArr, selectArr,
     }, [pereplet.size, pereplet.typeUse, size]);
 
     return (
-        <div className="d-flex allArtemElem m-0 p-0">
+        <div className="d-flex allArtemElem">
 
 
-            <div style={{display: 'flex', alignItems: 'center',marginTop: "1vw"}}>
+            <div style={{ marginTop: "1vw",marginLeft: "-2.1vw"}}>
 
-                <div className="d-flex flex-column m-0 p-0">
+                <div className="d-flex flex-column">
 
                     {pereplet.type !== "Не потрібно" ? (
                         <div style={{
@@ -149,84 +149,7 @@ const PerepletPereplet = ({pereplet, setPereplet, prices, buttonsArr, selectArr,
                                         {item.name}
                                     </div>
                                 </button>))}
-                                {/*<button*/}
-                                {/*    className={"На скобу" === pereplet.type ? 'buttonsArtem buttonsArtemActive' : 'buttonsArtem'}*/}
-                                {/*    onClick={() => handleClickType("На скобу")}*/}
-                                {/*>*/}
-                                {/*    <div className="d-flex flex-column align-content-center align-items-center" style={{*/}
-                                {/*        width: "5vw",*/}
-                                {/*        height: "100%",*/}
-                                {/*        opacity: "На скобу" === pereplet.size ? '100%' : '90%',*/}
-                                {/*        whiteSpace: "nowrap",*/}
-                                {/*    }}>*/}
-                                {/*        <img src={skoba} alt="На скобу" style={{height: "5vw"}}/>*/}
-                                {/*        {"На скобу"}*/}
-                                {/*    </div>*/}
-                                {/*</button>*/}
-                                {/*<button*/}
-                                {/*    className={"Пластик" === pereplet.type ? 'buttonsArtem buttonsArtemActive' : 'buttonsArtem'}*/}
-                                {/*    onClick={() => handleClickType("Пластик")}*/}
-                                {/*>*/}
-                                {/*    <div className="d-flex flex-column align-content-center align-items-center" style={{*/}
-                                {/*        width: "5vw",*/}
-                                {/*        height: "100%",*/}
-                                {/*        opacity: "Пластик" === pereplet.size ? '100%' : '90%',*/}
-                                {/*        whiteSpace: "nowrap",*/}
-                                {/*    }}>*/}
-                                {/*        <img src={plastick} alt="Пластик" style={{height: "5vw"}}/>*/}
-                                {/*        {"Пластик"}*/}
-                                {/*    </div>*/}
-                                {/*</button>*/}
-                                {/*<button*/}
-                                {/*    className={"Металл" === pereplet.type ? 'buttonsArtem buttonsArtemActive' : 'buttonsArtem'}*/}
-                                {/*    onClick={() => handleClickType("Металл")}*/}
-                                {/*>*/}
-                                {/*    <div className="d-flex flex-column align-content-center align-items-center" style={{*/}
-                                {/*        width: "5.1vw",*/}
-                                {/*        height: "100%",*/}
-                                {/*        opacity: "Металл" === pereplet.size ? '100%' : '90%',*/}
-                                {/*        whiteSpace: "nowrap",*/}
-                                {/*    }}>*/}
-                                {/*        <img src={metall} alt="Металл" style={{height: "5vw"}}/>*/}
-                                {/*        {"Металл"}*/}
-                                {/*    </div>*/}
-                                {/*</button>*/}
-                                {/*<button*/}
-                                {/*    className={"Диплом" === pereplet.type ? 'buttonsArtem buttonsArtemActive' : 'buttonsArtem'}*/}
-                                {/*    onClick={() => handleClickType("Диплом")}*/}
-                                {/*>*/}
-                                {/*    <div className="d-flex flex-column align-content-center align-items-center"*/}
-                                {/*         style={{*/}
-                                {/*             width: "5vw",*/}
-                                {/*             height: "100%",*/}
-                                {/*             opacity: "Диплом" === pereplet.size ? '100%' : '90%',*/}
-                                {/*             whiteSpace: "nowrap",*/}
-                                {/*         }}>*/}
-                                {/*        <img src={diplom} alt="Диплом" style={{height: "5vw"}}/>*/}
-                                {/*        {"Диплом"}*/}
-                                {/*    </div>*/}
-                                {/*</button>*/}
 
-
-
-
-                                {/*{size.x === 297 &*/}
-                                {/*    <button*/}
-                                {/*        className={"Диплом" === pereplet.type ? 'buttonsArtem buttonsArtemActive' : 'buttonsArtem'}*/}
-                                {/*        onClick={() => handleClickType("Диплом")}*/}
-                                {/*    >*/}
-                                {/*        <div className="d-flex flex-column align-content-center align-items-center"*/}
-                                {/*             style={{*/}
-                                {/*                 width: "5vw",*/}
-                                {/*                 height: "100%",*/}
-                                {/*                 opacity: "Диплом" === pereplet.size ? '100%' : '90%',*/}
-                                {/*                 whiteSpace: "nowrap",*/}
-                                {/*             }}>*/}
-                                {/*            <img src={diplom} alt="Диплом" style={{height: "5vw"}}/>*/}
-                                {/*            {"Диплом"}*/}
-                                {/*        </div>*/}
-                                {/*    </button>*/}
-                                {/*}*/}
                             </div>
 
                         </div>) : (<div>

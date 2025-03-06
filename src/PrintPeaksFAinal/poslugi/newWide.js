@@ -2,9 +2,9 @@ import {MDBContainer} from "mdb-react-ui-kit";
 import {Row} from "react-bootstrap";
 import React, {useCallback, useEffect, useState} from "react";
 import axios from '../../api/axiosInstance';
- 
+import './newnomodals/ArtemStyles.css';
 import versantIcon from "../public/wided@2x.png";
-import NewNoModalSize from "./newnomodals/NewNoModalSize";
+import NewNoModalSize from "./newnomodals/NewNoModalSizeColor";
 import Materials2 from "./newnomodals/Materials2";
 import SliderComponent from "./newnomodals/SlidersComponent";
 import {useNavigate} from "react-router-dom";
@@ -12,6 +12,9 @@ import Loader from "../../components/calc/Loader";
 
 const NewWide = ({thisOrder, newThisOrder, setNewThisOrder, selectedThings2, setShowNewWide, showNewWide, setThisOrder, setSelectedThings2}) => {
     // const [show, setShow] = useState(false);
+    let handleChange = (e) => {
+        setCount(e)
+    }
     const navigate = useNavigate();
     const [load, setLoad] = useState(false);
     const [isVisible, setIsVisible] = useState(false);
@@ -30,8 +33,8 @@ const NewWide = ({thisOrder, newThisOrder, setNewThisOrder, selectedThings2, set
 
 
     const [size, setSize] = useState({
-        x: 841,
-        y: 1189
+        x: 420,
+        y: 594
     });
     const [material, setMaterial] = useState({
         type: "Папір Широкоформат",
@@ -180,7 +183,7 @@ const NewWide = ({thisOrder, newThisOrder, setNewThisOrder, selectedThings2, set
                         // padding: "20px"
                     }}>
                         <div className="d-flex">
-                            <div className="adminFont m-auto text-center fontProductName">
+                            <div className="m-auto text-center fontProductName">
                                 Великі плакати / Креслення / Фотографії / Афіши / Лекала / ...
                             </div>
                             <div
@@ -192,10 +195,30 @@ const NewWide = ({thisOrder, newThisOrder, setNewThisOrder, selectedThings2, set
                             >
                             </div>
                         </div>
-                        <div className="d-flex flex-column " style={{padding: "1.5vw"}}>
+                        <div className="d-flex flex-column  " style={{ marginLeft: '-1vw'}}>
+                            <div className="d-flex flex-row inputsArtemkilk allArtemElem" style={{marginLeft: "2.5vw", border: "transparent", justifyContent:"left", marginTop:"1vw"}}> У кількості:
+                                <input
+                                    className="d-flex inputsArtemNumber inputsArtem "
+                                    style={{
+                                        marginLeft: "1vw",
+                                        background: "#F2EFE8",
+                                        width: "5vw",
+                                        alignItems: "center",
+                                        justifyContent:"center",
+                                        paddingLeft: "0.5vw",
+
+                                    }}
+                                    type="number"
+                                    value={count}
+                                    min={1}
+                                    // disabled
+                                    onChange={(event) => handleChange(event.target.value)}
+                                />
+                                <div className="inputsArtemx allArtemElem" style={{ border:"transparent", marginTop:"-2vh" }}> шт</div></div>
                             <MDBContainer
+
                                 fluid
-                                style={{width: '100%'}}
+                                style={{width: '100%', marginTop: '1vw'}}
                             >
                                 <Row xs={1} md={6} className="d-flex">
                                     <div className="d-flex flex-column">
@@ -340,6 +363,10 @@ const NewWide = ({thisOrder, newThisOrder, setNewThisOrder, selectedThings2, set
                                             className="versant80-img-icon"
                                             alt="sssss"
                                             src={versantIcon}
+                                            style={{
+                                                width: "15vw",
+
+                                            }}
                                         />
                                     </div>
                                 )}

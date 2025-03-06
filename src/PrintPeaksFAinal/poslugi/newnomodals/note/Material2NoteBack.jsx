@@ -179,7 +179,6 @@ const Materials2NoteBack = ({
         setMaterialAndDrukBack((prev) => ({
             ...prev,
             laminationType: prev.laminationType === "Не потрібно" ? "З глянцевим ламінуванням" : "Не потрібно",
-            laminationTypeUse: prev.laminationTypeUse === "Не потрібно" ? "З глянцевим ламінуванням" : "Не потрібно"
         }));
     };
 
@@ -203,7 +202,7 @@ const Materials2NoteBack = ({
     return (
         <div
             className="d-flex flex-column allArtemElem"
-            style={{ marginTop: "3vh", padding: "0" }}
+style={{ position: "absolute", marginLeft: "42vw", marginTop: "-2vh"}}
         >
             {/* Заголовок "Блок:" */}
 
@@ -211,26 +210,27 @@ const Materials2NoteBack = ({
             {/* 1. Кількість аркушів */}
             <div
                 className="d-flex align-items-center"
-                style={{ marginTop: "0.5vw" }}
+
             >
                 <div
-                    className="d-flex align-items-center justify-content-left"
+                    className="d-flex "
                     style={{
                         fontSize: "1vw",
-                        width: "9vw",
+                        width: "6vw",
                         fontFamily: "Gotham",
                         fontWeight: "bold",
-                        marginLeft: "1vw"
+
                     }}
                 >
                     Блок:
                 </div>
             <span
                 style={{
-                    fontSize: "0.8vw",
+                    fontSize: "1vw",
                     marginRight: "0.5vw",
                     fontFamily: "Gotham",
-                    whiteSpace: "nowrap"
+                    whiteSpace: "nowrap",
+
                 }}
             >
                 Кількість аркушів:
@@ -241,23 +241,26 @@ const Materials2NoteBack = ({
                     value={materialAndDrukBack.count || 1}
                     onChange={handleColorCountChange}
                     style={{
-                        width: "3vw",
+                        width: "5vw",
                         fontSize: "0.8vw",
-                        padding: "0.2vw",
+                        padding: "0.5vw",
                         backgroundColor: "#F2EFE8"
+
+
                     }}
                     min={1}
-                />
+
+                /> <div className="inputsArtemx allArtemElem" style={{ border:"transparent", marginTop:"-2vh" }}> шт</div>
             </div>
 
             {/* 2. Друк */}
             <div
                 className="d-flex align-items-center"
-                style={{ marginTop: "2vh", marginLeft: "10vw" }}
+                style={{ marginTop: "1vh", marginLeft: "6vw" }}
             >
             <span
                 style={{
-                    fontSize: "0.8vw",
+                    fontSize: "1vw",
                     fontFamily: "Gotham",
                     marginRight: "0.5vw",
                     whiteSpace: "nowrap"
@@ -327,11 +330,11 @@ const Materials2NoteBack = ({
             {/* 3. Матеріал */}
             <div
                 className="d-flex align-items-center"
-                style={{ marginTop: "2vh", marginLeft: "10vw" }}
+                style={{ marginTop: "1vh", marginLeft: "6vw" }}
             >
             <span
                 style={{
-                    fontSize: "0.8vw",
+                    fontSize: "1vw",
                     fontFamily: "Gotham",
                     marginRight: "0.5vw",
                     whiteSpace: "nowrap"
@@ -402,7 +405,7 @@ const Materials2NoteBack = ({
             {/* 4. Ламінація */}
             <div
                 className="d-flex align-items-center"
-                style={{ marginTop: "1vh", marginLeft: "10vw" }}
+                style={{ marginTop: "0.5vh", marginLeft: "6vw", fontSize: "1vw", alignItems:"center" }}
             >Ламінація:
                 <div
                     className={`toggleContainer scale04ForButtonToggle ${
@@ -410,6 +413,7 @@ const Materials2NoteBack = ({
                             ? "disabledCont"
                             : "enabledCont"
                     }`}
+
                     onClick={handleToggleLamination}
                 >
                     <div
@@ -423,10 +427,11 @@ const Materials2NoteBack = ({
 
                 <span
                     style={{
-                        fontSize: "0.8vw",
+                        fontSize: "1vw",
                         fontFamily: "Gotham",
                         whiteSpace: "nowrap",
-                        marginLeft: "0.5vw"
+                        alignSelf: "center",
+                        // marginLeft: "0.5vw"
                     }}
                 >
 
@@ -435,8 +440,8 @@ const Materials2NoteBack = ({
             {/* Якщо ламінування не вимкнено, показати додаткові селекти */}
             {materialAndDrukBack.laminationType !== "Не потрібно" && (
                 <div
-                    className="d-flex align-items-center"
-                    style={{ marginTop: "1vh" }}
+                    className="d-flex "
+                    style={{ marginTop: "-0.7vh" , marginLeft: "-1vw"}}
                 >
                     <div
                         className="ArtemNewSelectContainer"
