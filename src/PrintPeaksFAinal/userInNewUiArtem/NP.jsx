@@ -198,17 +198,29 @@ function NP({ showNP, setShowNP, thisOrder, setThisOrder }) {
                 flexDirection: "column",
                 position: "fixed",
                 backgroundColor: '#f2efe8',
-                // bottom: "3.5vh",
-                // right: "-15.75vw",
                 left: "50%",
                 top: "50%",
                 transform: isAnimating ? "translate(-50%, -50%) scale(1)" : "translate(-50%, -50%) scale(0.8)", // анимация масштаба
                 opacity: isAnimating ? 1 : 0, // анимация прозрачности
                 transition: "opacity 0.3s ease-in-out, transform 0.3s ease-in-out", // плавная анимация
                 borderRadius: "1vw",
-                width: "90vw",
-                height: "90vh",
+                width: "95vw",
+                height: "95vh",
+                cursor: "auto",
             }}>
+                <div className="d-flex">
+                    <div className="m-auto text-center fontProductName ">
+                        Нова пошта
+                    </div>
+                    <div
+                        className="btn btn-close btn-lg"
+                        style={{
+                            margin: "0.5vw",
+                        }}
+                        onClick={handleClose}
+                    >
+                    </div>
+                </div>
                 <div style={{
                     border: "none",
                     borderRadius: "1vw",
