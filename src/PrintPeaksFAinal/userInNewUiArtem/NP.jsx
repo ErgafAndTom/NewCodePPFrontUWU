@@ -40,9 +40,17 @@ function NP({ showNP, setShowNP, thisOrder, setThisOrder }) {
     const [novaPoshta, setNovaPoshta] = useState(null);
     const [load, setLoad] = useState(false);
     const [error, setError] = useState(null);
-    const [credentials, setCredentials] = useState({ phoneNumber: '', numbernp: '' });
-
     const navigate = useNavigate();
+    const [credentials, setCredentials] = useState({ phoneNumber: '', numbernp: '' });
+    const [isVisible, setIsVisible] = useState(false);
+    const [isAnimating, setIsAnimating] = useState(false);
+    const handleClose = () => {
+        setIsAnimating(false); // Начинаем анимацию закрытия
+        setTimeout(() => {
+            setIsVisible(false)
+            setShowNP(false);
+        }, 300); // После завершения анимации скрываем модальное окно
+    }
 
     const handleChange = (e) => {
         setCredentials({
@@ -92,13 +100,25 @@ function NP({ showNP, setShowNP, thisOrder, setThisOrder }) {
         }
     };
 
+    useEffect(() => {
+        if (showNP) {
+            setIsVisible(true); // Сначала показываем модальное окно
+            setTimeout(() => setIsAnimating(true), 100); // После короткой задержки запускаем анимацию появления
+        } else {
+            setIsAnimating(false); // Начинаем анимацию закрытия
+            setTimeout(() => setIsVisible(false), 300); // После завершения анимации скрываем модальное окно
+        }
+    }, [showNP]);
+
     return (
         <div>
-            <div className="" style={{
+            <div className="" onClick={handleClose} style={{
                 width: "100vw",
                 zIndex: "100",
                 height: "100vh",
                 background: "rgba(0, 0, 0, 0.2)",
+                opacity: isAnimating ? 1 : 0, // для анимации прозрачности
+                transition: "opacity 0.3s ease-in-out", // плавная анимация
                 position: "fixed",
                 left: "0",
                 bottom: "0"
@@ -111,6 +131,9 @@ function NP({ showNP, setShowNP, thisOrder, setThisOrder }) {
                 backgroundColor: '#f2efe8',
                 bottom: "3.5vh",
                 right: "-15.75vw",
+                transform: isAnimating ? "translate(-50%, -50%) scale(1)" : "translate(-50%, -50%) scale(0.8)", // анимация масштаба
+                opacity: isAnimating ? 1 : 0, // анимация прозрачности
+                transition: "opacity 0.3s ease-in-out, transform 0.3s ease-in-out", // плавная анимация
                 borderRadius: "1vw",
                 width: "33vw",
                 height: "20vh",
