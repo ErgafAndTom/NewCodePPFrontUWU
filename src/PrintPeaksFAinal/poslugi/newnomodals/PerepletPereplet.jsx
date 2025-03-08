@@ -133,6 +133,7 @@ const PerepletPereplet = ({pereplet, setPereplet, prices, buttonsArr, selectArr,
                                         height: "100%",
                                         opacity: item === pereplet.size ? '100%' : '90%',
                                         whiteSpace: "nowrap",
+                                        marginTop: "2vw",
                                     }}>
                                         {item.name === "На скобу" &&
                                             <img src={skoba} alt="На скобу" style={{height: "5vw"}}/>

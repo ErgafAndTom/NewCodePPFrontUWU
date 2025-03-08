@@ -57,7 +57,10 @@ function SliderComponent({size, setSize}) {
         //     <li>Значення: {value}</li>
         // </div>
         <div className="slider-container"
-             style={{marginTop: "2vw"}}
+             style={{
+                 marginTop: "2vw",
+                 marginLeft: "0.2vw",
+        }}
         >
             <div className="d-flex flex-column" style={{marginLeft: "2vw", width: "100%"}}>
 
@@ -74,7 +77,7 @@ function SliderComponent({size, setSize}) {
                     style={background1}
                 />
 
-                <div className="d-flex align-content-between justify-content-between">
+                <div className="d-flex align-content-between justify-content-between" style={{opacity:"50%"}}>
                     <span className="slider-label">{x} мм</span>
                 </div>
             </div>
@@ -92,7 +95,7 @@ function SliderComponent({size, setSize}) {
                     className="custom-slider"
                     style={background2}
                 />
-                <div className="d-flex align-content-between justify-content-between">
+                <div className="d-flex align-content-between justify-content-between" style={{opacity:"50%"}}>
                     <span className="slider-label">{y} мм</span>
 
                 </div>

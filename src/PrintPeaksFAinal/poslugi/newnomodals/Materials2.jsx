@@ -128,9 +128,9 @@ const Materials2 = ({material, setMaterial, count, setCount, prices, type, name,
     // }, []);
 
     return (
-        <div className="d-flex allArtemElem" style={{marginLeft: "1.3vw"}}>
-            <div style={{display: 'flex', alignItems: 'center',}}>
-                <div style={{display: 'flex', justifyContent: 'center', alignItems: 'center'}}>
+        <div className="d-flex allArtemElem" style={{marginLeft: "2vw", marginTop: "1vh"}}>
+            <div style={{display: 'flex', }}>
+                <div style={{display: 'flex'}}>
                     {buttonsArr.map((item, index) => (
                         <div
                             className={item === material.thickness ? 'buttonsArtem buttonsArtemActive' : 'buttonsArtem'}
@@ -151,7 +151,7 @@ const Materials2 = ({material, setMaterial, count, setCount, prices, type, name,
                         </div>
                     ))}
                 </div>
-                <div className="ArtemNewSelectContainer" style={{marginTop: "2vw", display: 'flex', justifyContent: 'center', alignItems: 'center'}}>
+                <div className="ArtemNewSelectContainer" style={{marginTop: "0vw", display: 'flex', justifyContent: 'center'}}>
                     <select
                         name="materialSelect"
                         value={material.material || ""}

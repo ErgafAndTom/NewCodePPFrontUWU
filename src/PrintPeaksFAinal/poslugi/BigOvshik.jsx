@@ -125,6 +125,9 @@ const BigOvshik = ({
     //             console.log(error.message);
     //         })
     // }, []);
+    let handleChange = (e) => {
+        setCount(e)
+    }
 
     useEffect(() => {
         let dataToSend = {
@@ -207,22 +210,30 @@ const BigOvshik = ({
                             >
                             </div>
                         </div>
-                        <div className="d-flex flex-column" style={{padding: "1.5vw"}}>
+                        <div className="d-flex flex-column" >
                             <MDBContainer fluid style={{width: '100%'}}>
                                 <Row xs={1} md={6} className="">
                                     <div className="d-flex flex-column">
-                                        <SizeNoSize
-                                            size={size}
-                                            setSize={setSize}
-                                            prices={prices}
-                                            type={"SheetCut"}
-                                            buttonsArr={["односторонній", "двосторонній",]}
-                                            color={color}
-                                            setColor={setColor}
-                                            count={count}
-                                            setCount={setCount}
-                                            defaultt={"А3 (297 х 420 мм)"}
-                                        />
+                                        <div className="d-flex flex-row inputsArtemkilk allArtemElem" style={{marginLeft: "1.4vw", border: "transparent", justifyContent:"left", marginTop:"1vw"}}> У кількості:
+                                            <input
+                                                className="d-flex inputsArtemNumber inputsArtem "
+                                                style={{
+                                                    marginLeft: "1vw",
+                                                    background: "#F2EFE8",
+                                                    width: "5vw",
+                                                    alignItems: "center",
+                                                    justifyContent:"center",
+                                                    paddingLeft: "0.5vw",
+
+                                                }}
+                                                type="number"
+                                                value={count}
+                                                min={1}
+                                                // disabled
+                                                onChange={(event) => handleChange(event.target.value)}
+                                            />
+                                            <div className="inputsArtemx allArtemElem" style={{ border:"transparent", marginTop:"-2vh" }}> шт</div></div>
+
                                         <NewNoModalCornerRounding
                                             big={big}
                                             setBig={setBig}
@@ -300,7 +311,7 @@ const BigOvshik = ({
 
                                     </div>
                                 ) : (
-                                    <div className="d-flex justify-content-between pricesBlockContainer">
+                                    <div className="d-flex justify-content-between pricesBlockContainer" style={{width:"92vw"}}>
                                         <div className="">
 
                                             {/*<div className="fontInfoForPricing">*/}
@@ -356,6 +367,10 @@ const BigOvshik = ({
                                             className="versant80-img-icon"
                                             alt="sssss"
                                             src={versantIcon}
+                                            style={{
+                                                width: "10vw",
+
+                                            }}
                                         />
                                     </div>
                                 )}

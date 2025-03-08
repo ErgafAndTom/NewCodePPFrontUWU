@@ -224,7 +224,7 @@ const PerepletMet = ({
                             </div>
 
                         </div>
-                        <div className="d-flex flex-row inputsArtemkilk allArtemElem" style={{marginLeft: "1.4vw", border: "transparent", justifyContent:"left", marginTop:"1vw"}}> У кількості:
+                        <div className="d-flex flex-row inputsArtemkilk allArtemElem" style={{marginLeft: "1.7vw", border: "transparent", justifyContent:"left", marginTop:"1vw"}}> У кількості:
                             <input
                                 className="d-flex inputsArtemNumber inputsArtem "
                                 style={{
@@ -341,9 +341,10 @@ const PerepletMet = ({
                                         >
                                             <div
                                                 className="btn btn-warning" style={{
-                                                borderRadius: '0.627vw',
+                                                borderRadius: '0.5vw',
                                                 // border: '0.08vw solid gray',
                                                 padding: '0.2vw 0.7vw',
+                                                marginLeft: '-2vw',
                                             }}
                                                 onClick={addNewOrderUnit}
                                             >
@@ -370,11 +371,11 @@ const PerepletMet = ({
 
                                     </div>
                                 ) : (
-                                    <div className="d-flex justify-content-between pricesBlockContainer">
+                                    <div className="d-flex justify-content-between pricesBlockContainer" style={{width: '92vw'}}>
                                         <div className="">
 
                                             <div className="fontInfoForPricing">
-                                                Брушурування {pereplet.material} {pereplet.size}: {pricesThis.priceForOneOfPereplet} грн * {count} шт
+                                                Прошивка {pricesThis.priceForOneOfPereplet} грн * {count} шт
                                                 = {pricesThis.price} грн
                                             </div>
                                             {/*<div className="fontInfoForPricing">*/}
@@ -403,6 +404,10 @@ const PerepletMet = ({
                                             className="versant80-img-icon"
                                             alt="sssss"
                                             src={versantIcon}
+                                            style={{
+                                                width: "13vw",
+
+                                            }}
                                         />
                                     </div>
                                 )}

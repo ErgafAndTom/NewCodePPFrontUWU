@@ -286,8 +286,9 @@ const NewWide = ({thisOrder, newThisOrder, setNewThisOrder, selectedThings2, set
                                         >
                                             <div
                                                 className="btn btn-warning" style={{
-                                                borderRadius: '0.627vw',
-                                                // border: '0.08vw solid gray',
+                                                borderRadius: '0.5vw',
+                                                marginLeft:"-0.5vw",
+                                                marginTop: "3vh",
                                                 padding: '0.2vw 0.7vw',
                                             }}
                                                 onClick={addNewOrderUnit}
@@ -305,7 +306,7 @@ const NewWide = ({thisOrder, newThisOrder, setNewThisOrder, selectedThings2, set
 
                                     </div>
                                 ) : (
-                                    <div className="d-flex justify-content-between pricesBlockContainer">
+                                    <div className="d-flex justify-content-between pricesBlockContainer" style={{width:"92vw"}}>
                                         <div className="">
                                             {/* Друк (рахується за sheetCount) */}
                                             <div className="fontInfoForPricing">

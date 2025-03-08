@@ -107,7 +107,7 @@ const NewNoModalLamination = ({lamination, setLamination, prices, buttonsArr, se
             })
     }, [lamination.material, size]);
 
-    return (<div className="d-flex allArtemElem">
+    return (<div className="d-flex allArtemElem" >
         <div style={{display: 'flex', alignItems: 'center', marginTop: "1vw", marginLeft: "0vw"}}>
             <div className={`toggleContainer scale04ForButtonToggle ${lamination.type === "Не потрібно" ? 'disabledCont' : 'enabledCont'}`}
                  onClick={handleToggle}>

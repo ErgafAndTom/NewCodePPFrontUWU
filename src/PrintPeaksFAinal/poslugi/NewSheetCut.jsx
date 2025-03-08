@@ -345,7 +345,7 @@ const NewSheetCut = ({
                                         >
                                             <div
                                                 className="btn btn-warning" style={{
-                                                borderRadius: '0.627vw',
+                                                borderRadius: '0.5vw',
                                                 // border: '0.08vw solid gray',
                                                 padding: '0.2vw 0.7vw',
                                             }}
@@ -374,7 +374,7 @@ const NewSheetCut = ({
 
                                     </div>
                                 ) : (
-                                    <div className="d-flex justify-content-between pricesBlockContainer">
+                                    <div className="d-flex justify-content-between pricesBlockContainer" style={{width: '92vw'}}>
                                         {/*<div className="">*/}
 
                                         {/*    <div className="fontInfoForPricing">*/}

@@ -261,7 +261,7 @@ const Vishichka = ({
                                     />
                                     <div className="inputsArtemx allArtemElem" style={{ border:"transparent", marginTop:"-2vh" }}> шт</div></div>
                                 <MDBContainer fluid style={{width: '100%', marginLeft:"-2vh", marginTop:"2vh"}}>
-                                    <Row xs={1} md={6} className="">
+                                    <Row xs={1} md={0} className="">
                                         <div className="d-flex flex-column">
                                             <NewNoModalSize
                                                 size={size}
@@ -276,6 +276,7 @@ const Vishichka = ({
                                                 defaultt={"А3 (297 х 420 мм)"}
                                             />
                                             {/*<NewNoModalMaterial*/}
+                                            <div className="d-flex flex-column" style={{marginLeft:"-2vh"}}>
                                             <Materials2
                                                 material={material}
                                                 setMaterial={setMaterial}
@@ -290,6 +291,8 @@ const Vishichka = ({
                                                     "Цупкий", "Самоклеючі"]}
                                                 typeUse={null}
                                             />
+                                            </div>
+
                                             <VishichkaVibor
                                                 size={size}
                                                 vishichka={vishichka}
@@ -299,6 +302,7 @@ const Vishichka = ({
                                                 buttonsArr={["З плотерною порізкою на надрукованих аркушах", "З плотерною порізкою стікерпаків", "З плотерною порізкою окремими виробами",]}
                                                 defaultt={"А3 (297 х 420 мм)"}
                                             />
+
                                             {/*<NewNoModalLamination*/}
                                             {/*    lamination={lamination}*/}
                                             {/*    setLamination={setLamination}*/}
@@ -357,9 +361,11 @@ const Vishichka = ({
                                             >
                                                 <div
                                                     className="btn btn-warning" style={{
-                                                    borderRadius: '0.627vw',
+                                                    borderRadius: '0.5vw',
                                                     // border: '0.08vw solid gray',
                                                     padding: '0.2vw 0.7vw',
+                                                    marginLeft: '-1vw',
+
                                                 }}
                                                     onClick={addNewOrderUnit}
                                                 >
@@ -386,7 +392,7 @@ const Vishichka = ({
 
                                         </div>
                                     ) : (
-                                        <div className="d-flex justify-content-between pricesBlockContainer">
+                                        <div className="d-flex justify-content-between pricesBlockContainer" style={{width:"92vw"}}>
                                             <div className="">
                                                 <div className="fontInfoForPricing">
                                                     Друк: {pricesThis.priceDrukPerSheet} грн * {pricesThis.sheetCount} шт = {pricesThis.priceDrukPerSheet * pricesThis.sheetCount} грн
@@ -420,6 +426,7 @@ const Vishichka = ({
                                                 className="versant80-img-icon"
                                                 alt="sssss"
                                                 src={versantIcon}
+                                                style={{width:"10vw"}}
                                             />
                                         </div>
                                     )}

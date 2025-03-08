@@ -18,6 +18,9 @@ const NewCup = ({
                          setSelectedThings2,
                          showNewCup
                      }) => {
+    let handleChange = (e) => {
+        setCount(e)
+    }
     const [load, setLoad] = useState(false);
     const navigate = useNavigate();
     const [isVisible, setIsVisible] = useState(false);
@@ -198,7 +201,7 @@ const NewCup = ({
                     }}>
                         <div className="d-flex">
                             <div className="m-auto text-center fontProductName">
-                                Чашки
+                                Кружки / Термоси
                             </div>
                             <div
                                 className="btn btn-close btn-lg"
@@ -209,7 +212,36 @@ const NewCup = ({
                             >
                             </div>
                         </div>
-                        <div className="d-flex flex-column" style={{padding: "1.5vw"}}>
+                        <div className="d-flex flex-column" >
+                            <div className="d-flex flex-column">
+                                <div className="d-flex flex-row inputsArtemkilk allArtemElem" style={{
+                                    marginLeft: "1.4vw",
+                                    border: "transparent",
+                                    justifyContent: "left",
+                                    marginTop: "1vw"
+                                }}> У кількості:
+                                    <input
+                                        className="d-flex inputsArtemNumber inputsArtem "
+                                        style={{
+                                            marginLeft: "1vw",
+                                            background: "#F2EFE8",
+                                            width: "5vw",
+                                            alignItems: "center",
+                                            justifyContent: "center",
+                                            paddingLeft: "0.5vw",
+
+                                        }}
+                                        type="number"
+                                        value={count}
+                                        min={1}
+                                        // disabled
+                                        onChange={(event) => handleChange(event.target.value)}
+                                    />
+                                    <div className="inputsArtemx allArtemElem"
+                                         style={{border: "transparent", marginTop: "-2vh"}}> шт
+                                    </div>
+                                </div>
+                            </div>
                             <MDBContainer fluid style={{width: '100%'}}>
                                 <Row xs={1} md={6} className="">
                                     <div className="d-flex flex-column">
@@ -246,14 +278,14 @@ const NewCup = ({
                                 <div className="d-flex">
                                     {thisOrder && (
                                         <div
-                                            className="d-flex align-content-between justify-content-between"
+                                            className="d-flex"
                                             style={{
                                                 width: "90vw",
                                                 marginLeft: "2.5vw",
                                                 fontFamily: "Gotham",
                                                 fontWeight: "bold",
                                                 display: 'flex',
-                                                justifyContent: 'center',
+                                                justifyContent: 'left',
                                                 alignItems: 'center',
                                                 transition: "all 0.3s ease",
                                                 height: '3vw',
@@ -261,8 +293,10 @@ const NewCup = ({
                                         >
                                             <div
                                                 className="btn btn-warning" style={{
-                                                borderRadius: '0.627vw',
+                                                borderRadius: '0.5vw',
                                                 // border: '0.08vw solid gray',
+                                                marginLeft: "-2vw",
+                                                marginTop: "2.5vw",
                                                 padding: '0.2vw 0.7vw',
                                             }}
                                                 onClick={addNewOrderUnit}
@@ -290,7 +324,7 @@ const NewCup = ({
 
                                     </div>
                                 ) : (
-                                    <div className="d-flex justify-content-between pricesBlockContainer">
+                                    <div className="d-flex justify-content-between pricesBlockContainer" style={{width:"92vw"}}>
                                         <div className="">
 
                                             <div className="fontInfoForPricing">
@@ -343,6 +377,10 @@ const NewCup = ({
                                             className="versant80-img-icon"
                                             alt="sssss"
                                             src={versantIcon}
+                                            style={{
+                                                width: "13vw",
+
+                                            }}
                                         />
                                     </div>
                                 )}

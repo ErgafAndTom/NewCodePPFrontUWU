@@ -119,7 +119,7 @@ const Materials2Cup = ({material, setMaterial, count, setCount, prices, type, na
                 {/*        </div>*/}
                 {/*    ))}*/}
                 {/*</div>*/}
-                <div className="ArtemNewSelectContainer" style={{marginTop: "2vw", display: 'flex', justifyContent: 'center', alignItems: 'center'}}>
+                <div className="ArtemNewSelectContainer" style={{marginTop: "1vw",  justifyContent: 'center', alignItems: 'center', marginLeft: "-1.3vw"}}>
                     <select
                         name="materialSelect"
                         value={material.material || ""}

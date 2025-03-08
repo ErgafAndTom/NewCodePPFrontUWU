@@ -58,15 +58,15 @@ const PerepletPereplet = ({pereplet, setPereplet, prices, buttonsArr, selectArr,
         }
         axios.post(`/materials/NotAll`, data)
             .then(response => {
-                // console.log(response.data);
-                setThisPerepletVariants(response.data.rows)
+                setThisPerepletVariants(response.data.rows);
                 if (response.data.rows[2]) {
                     setPereplet({
                         ...pereplet,
                         material: response.data.rows[2].name,
                         materialId: response.data.rows[2].id,
-                    })
+                    });
                 }
+
             })
             .catch(error => {
                 if (error.response.status === 403) {
@@ -74,7 +74,8 @@ const PerepletPereplet = ({pereplet, setPereplet, prices, buttonsArr, selectArr,
                 }
                 console.log(error.message);
             })
-    }, [pereplet.size, pereplet.typeUse, size]);
+    },
+        [pereplet.size, pereplet.typeUse, size]);
 
     return (
         <div className="d-flex allArtemElem">
@@ -98,30 +99,6 @@ const PerepletPereplet = ({pereplet, setPereplet, prices, buttonsArr, selectArr,
                                 // marginLeft: "2vw",
                             }}>
 
-                                {/*<button*/}
-                                {/*    className={"Брошурування до 120 аркушів" === pereplet.typeUse ? 'buttonsArtem buttonsArtemActive' : 'buttonsArtem'}*/}
-                                {/*    onClick={(e) => handleClickSize("Брошурування до 120 аркушів", "<120")}*/}
-                                {/*>*/}
-                                {/*    <div className="" style={{*/}
-                                {/*        height: "100%",*/}
-                                {/*        opacity: "Брошурування до 120 аркушів" === pereplet.typeUse ? '100%' : '90%',*/}
-                                {/*        whiteSpace: "nowrap",*/}
-                                {/*    }}>*/}
-                                {/*        {"Брошурування до 120 аркушів"}*/}
-                                {/*    </div>*/}
-                                {/*</button>*/}
-                                {/*<button*/}
-                                {/*    className={"Брошурування від 120 до 280 аркушів" === pereplet.typeUse ? 'buttonsArtem buttonsArtemActive' : 'buttonsArtem'}*/}
-                                {/*    onClick={(e) => handleClickSize("Брошурування від 120 до 280 аркушів", ">120")}*/}
-                                {/*>*/}
-                                {/*    <div className="" style={{*/}
-                                {/*        height: "100%",*/}
-                                {/*        opacity: "Брошурування від 120 до 280 аркушів" === pereplet.typeUse ? '100%' : '90%',*/}
-                                {/*        whiteSpace: "nowrap",*/}
-                                {/*    }}>*/}
-                                {/*        {"Брошурування від 120 до 280 аркушів"}*/}
-                                {/*    </div>*/}
-                                {/*</button>*/}
 
                             </div>
                             <div className="d-flex">

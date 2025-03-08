@@ -257,7 +257,7 @@ const ModalSize = ({size, setSize, type, buttonsArr, color, setColor, count, set
                 </Form.Control.Feedback>
 
 
-            <div className="ArtemNewSelectContainer" style={{justifyContent: 'center', alignItems: 'center'}}>
+            <div className="ArtemNewSelectContainer" style={{marginTop:"0.3vw"}}>
                 <select
                     className="selectArtem"
                     onChange={handleSelectOption}

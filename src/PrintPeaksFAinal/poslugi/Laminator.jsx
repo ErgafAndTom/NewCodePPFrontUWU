@@ -212,7 +212,7 @@ const Laminator = ({
                             </div>
                         </div>
                         <div className="d-flex flex-column" >
-                            <div className="d-flex flex-row inputsArtemkilk allArtemElem" style={{marginLeft: "1.4vw", border: "transparent", justifyContent:"left", marginTop:"1vw"}}> У кількості:
+                            <div className="d-flex flex-row inputsArtemkilk allArtemElem" style={{marginLeft: "1.7vw", border: "transparent", justifyContent:"left", marginTop:"1vw"}}> У кількості:
                                 <input
                                     className="d-flex inputsArtemNumber inputsArtem "
                                     style={{
@@ -260,6 +260,7 @@ const Laminator = ({
                                         {/*        "Цупкі", "Самоклеючі"]}*/}
                                         {/*    typeUse={null}*/}
                                         {/*/>*/}
+                                        <div className="d-flex" style={{marginLeft:"-1.5vw"}}>
                                         <NewNoModalLamination
                                             lamination={lamination}
                                             setLamination={setLamination}
@@ -271,6 +272,7 @@ const Laminator = ({
                                                 "З ламінуванням Soft Touch",]}
                                             selectArr={["30", "80", "100", "125", "250"]}
                                         />
+                                        </div>
                                         {/*<NewNoModalCornerRounding*/}
                                         {/*    big={big}*/}
                                         {/*    setBig={setBig}*/}
@@ -348,7 +350,7 @@ const Laminator = ({
 
                                     </div>
                                 ) : (
-                                    <div className="d-flex justify-content-between pricesBlockContainer">
+                                    <div className="d-flex justify-content-between pricesBlockContainer" style={{width:"92vw"}}>
                                         <div className="">
 
                                             {/*<div className="fontInfoForPricing">*/}
@@ -404,6 +406,10 @@ const Laminator = ({
                                             className="versant80-img-icon"
                                             alt="sssss"
                                             src={versantIcon}
+                                            style={{
+                                                width: "20vw",
+
+                                            }}
                                         />
                                     </div>
                                 )}

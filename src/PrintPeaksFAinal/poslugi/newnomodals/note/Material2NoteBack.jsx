@@ -393,7 +393,7 @@ style={{ position: "absolute", marginLeft: "42vw", marginTop: "-2vh"}}
                                 value={item.name}
                                 data-id={item.id}
                             >
-                                {item.name} {item.thickness} мл
+                                {item.name} {item.thickness} gsm
                             </option>
                         ))}
                     </select>

@@ -202,8 +202,8 @@ const NewPhoto = ({thisOrder, newThisOrder, setNewThisOrder, selectedThings2, sh
                         // padding: "20px"
                     }}>
                         <div className="d-flex">
-                            <div className="adminFont m-auto text-center fontProductName">
-                                Фотографії / Фото на документи / ...
+                            <div className="m-auto text-center fontProductName">
+                                Фотографії
                             </div>
                             <div
                                 className="btn btn-close btn-lg"
@@ -324,9 +324,9 @@ const NewPhoto = ({thisOrder, newThisOrder, setNewThisOrder, selectedThings2, sh
                                         >
                                             <div
                                                 className="btn btn-warning" style={{
-                                                borderRadius: '0.627vw',
-                                                border: '0.08vw solid gray',
+                                                borderRadius: '0.5vw',
                                                 padding: '0.2vw 0.7vw',
+                                                margin: '-1.8vw',
                                             }}
                                                 onClick={addNewOrderUnit}
                                             >
@@ -353,7 +353,7 @@ const NewPhoto = ({thisOrder, newThisOrder, setNewThisOrder, selectedThings2, sh
 
                                     </div>
                                 ) : (
-                                    <div className="d-flex justify-content-between pricesBlockContainer">
+                                    <div className="d-flex justify-content-between pricesBlockContainer" style={{width:"92vw"}}>
                                         <div className="">
                                             {/*<div className="adminFont fontInfoForPricing1">*/}
                                             {/*    {pricesThis.skolkoListovNaOdin}шт. - Виробів з 1 листа A3(можливо зробити)*/}
@@ -406,7 +406,7 @@ const NewPhoto = ({thisOrder, newThisOrder, setNewThisOrder, selectedThings2, sh
 
                                         <img
                                             className="versant80-img-icon"
-                                            alt="sssss"
+                                            // alt="sssss"
                                             src={versantIcon}
                                             style={{width: "14vw"}}
                                         />

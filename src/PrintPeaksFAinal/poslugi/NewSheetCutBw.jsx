@@ -244,6 +244,7 @@ const NewSheetCutBw = ({thisOrder, newThisOrder, setNewThisOrder, selectedThings
                                             setCount={setCount}
                                             defaultt={"A4 (210 x 297 мм)"}
                                         />
+                                        <div className="d-flex" style={{marginLeft:"-0.8vw"}}>
                                         <Materials2
                                             material={material}
                                             setMaterial={setMaterial}
@@ -256,6 +257,8 @@ const NewSheetCutBw = ({thisOrder, newThisOrder, setNewThisOrder, selectedThings
                                             buttonsArr={["Офісний"]}
                                             typeUse={null}
                                         />
+                                        </div>
+                                        <div className="d-flex" style={{marginLeft:"-1vw"}}>
                                         <NewNoModalLamination
                                             lamination={lamination}
                                             setLamination={setLamination}
@@ -268,6 +271,7 @@ const NewSheetCutBw = ({thisOrder, newThisOrder, setNewThisOrder, selectedThings
                                             selectArr={["30", "80", "100", "125", "250"]}
 
                                         />
+                                        </div>
                                         {/*<NewNoModalHoles*/}
                                         {/*    holes={holes}*/}
                                         {/*    setHoles={setHoles}*/}
@@ -299,9 +303,10 @@ const NewSheetCutBw = ({thisOrder, newThisOrder, setNewThisOrder, selectedThings
                                         >
                                             <div
                                                 className="btn btn-warning" style={{
-                                                borderRadius: '0.627vw',
+                                                borderRadius: '0.5vw',
                                                 // border: '0.08vw solid gray',
                                                 padding: '0.2vw 0.7vw',
+                                                marginLeft: '-0.7vw',
 
                                             }}
                                                 onClick={addNewOrderUnit}
@@ -330,7 +335,7 @@ const NewSheetCutBw = ({thisOrder, newThisOrder, setNewThisOrder, selectedThings
                                     </div>
                                 ) : (
                                     <div className="d-flex justify-content-between pricesBlockContainer"
-                                         style={{marginTop: "13vw", alignItems: 'center', marginLeft: "2.5vw"}}>
+                                         style={{marginTop: "13vw", alignItems: 'center', width: '92vw'}}>
                                         <div className="">
                                             {/* Друк (рахується за sheetCount) */}
                                             <div className="fontInfoForPricing">

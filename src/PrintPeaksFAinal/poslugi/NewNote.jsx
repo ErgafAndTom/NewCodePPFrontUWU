@@ -330,6 +330,8 @@ const NewNote = ({
                             <div
                                 className="btn btn-close btn-lg"
                                 style={{
+                                    marginTop:"0.5vw",
+                                    marginRight:"0.5vw"
 
                                 }}
                                 onClick={handleClose}
@@ -422,12 +424,13 @@ const NewNote = ({
 
                                 <PerepletPereplet
                                     size={size}
+
                                     pereplet={pereplet}
                                     setPereplet={setPereplet}
                                     prices={prices}
                                     type={"SheetCut"}
                                     buttonsArr={["Брошурування до 120 аркушів", "Брошурування від 120 до 280 аркушів",]}
-                                    defaultt={"А5 (148 х 210 мм)"}
+                                    defaultt={"А3 (297 х 420 мм)"}
                                 />
 
                             </div>
@@ -452,7 +455,7 @@ const NewNote = ({
                                     >
                                         <div
                                             className="btn btn-warning" style={{
-                                            borderRadius: '0.627vw',
+                                            borderRadius: '0.5vw',
                                             // border: '0.08vw solid gray',
                                             padding: '0.2vw 0.7vw',
                                         }}
@@ -473,57 +476,69 @@ const NewNote = ({
                             ) : (
                                 <div className="d-flex justify-content-between pricesBlockContainer">
                                     <div className="">
-                                        {/* Лицевая сторона */}
-                                        <div className="fontInfoForPricing">
-                                            <strong>Обкладинки:</strong>
-                                        </div>
-                                        <div className="fontInfoForPricing">
-                                            Друк: {pricesThis.priceDrukFront} грн * {pricesThis.sheetCount} листов = {(pricesThis.priceDrukFront * pricesThis.sheetCount).toFixed(2)} грн
-                                        </div>
-                                        <div className="fontInfoForPricing">
-                                            Материали: {pricesThis.priceMaterialFront} грн * {pricesThis.sheetCount} листов = {(pricesThis.priceMaterialFront * pricesThis.sheetCount).toFixed(2)} грн
-                                        </div>
-                                        <div className="fontInfoForPricing">
-                                            Ламінація: {pricesThis.priceLaminationFront} грн * {pricesThis.sheetCount} листов = {(pricesThis.priceLaminationFront * pricesThis.sheetCount).toFixed(2)} грн
-                                        </div>
-                                        <div className="fontInfoForPricing">
-                                            Загалом: {pricesThis.totalSheetPriceFront} грн
-                                        </div>
 
-                                        {/* Оборотная сторона */}
-                                        <div className="fontInfoForPricing">
-                                            <strong>Блок:</strong>
-                                        </div>
-                                        <div className="fontInfoForPricing">
-                                            Друк: {pricesThis.priceDrukBack} грн * {pricesThis.sheetCountBack} листов = {(pricesThis.priceDrukBack * pricesThis.sheetCountBack).toFixed(2)} грн
-                                        </div>
-                                        <div className="fontInfoForPricing">
-                                            Материали: {pricesThis.priceMaterialBack} грн * {pricesThis.sheetCountBack} листов = {(pricesThis.priceMaterialBack * pricesThis.sheetCountBack).toFixed(2)} грн
-                                        </div>
-                                        <div className="fontInfoForPricing">
-                                            Ламінація: {pricesThis.priceLaminationBack} грн * {pricesThis.sheetCountBack} листов = {(pricesThis.priceLaminationBack * pricesThis.sheetCountBack).toFixed(2)} грн
-                                        </div>
-                                        <div className="fontInfoForPricing">
-                                            Загалом: {pricesThis.totalSheetPriceBack} грн
-                                        </div>
-
-                                        {/* Переплёт (если есть) */}
-                                        {pricesThis.totalPerepletPrice > 0 && (
+                                        <div className="d-flex " style={{}}>
+                                        <div className="d-flex flex-column">
                                             <div className="fontInfoForPricing">
-                                                Перепліт: {pricesThis.pricePerepletUnit} грн * {count} шт = {pricesThis.totalPerepletPrice} грн
+                                                <strong>Обкладинки:</strong>
                                             </div>
-                                        )}
+                                            <div className="fontInfoForPricing">
+                                                Друк: {pricesThis.priceDrukFront} грн * {pricesThis.sheetCount} шт = {(pricesThis.priceDrukFront * pricesThis.sheetCount).toFixed(2)} грн
+                                            </div>
+                                            <div className="fontInfoForPricing">
+                                                Материали: {pricesThis.priceMaterialFront} грн * {pricesThis.sheetCount} шт = {(pricesThis.priceMaterialFront * pricesThis.sheetCount).toFixed(2)} грн
+                                            </div>
+                                            <div className="fontInfoForPricing">
+                                                Ламінація: {pricesThis.priceLaminationFront} грн * {pricesThis.sheetCount} шт = {(pricesThis.priceLaminationFront * pricesThis.sheetCount).toFixed(2)} грн
+                                            </div>
+                                            <div className="fontInfoForPricing">
+                                                <strong> Загалом: {pricesThis.totalSheetPriceFront} грн</strong>
+                                            </div>
+                                            <div className="fontInfoForPricing">
+                                                Використано {pricesThis.sheetCount} шт A3+
+                                            </div>
+
+                                        </div>
+                                            <div className="d-flex flex-column" style={{marginLeft: '2vw'}} >
+                                            <div className="fontInfoForPricing">
+                                                <strong>Блок:</strong>
+                                            </div>
+                                            <div className="fontInfoForPricing">
+                                                Друк: {pricesThis.priceDrukBack} грн * {pricesThis.sheetCountBack} шт = {(pricesThis.priceDrukBack * pricesThis.sheetCountBack).toFixed(2)} грн
+                                            </div>
+                                            <div className="fontInfoForPricing">
+                                                Материали: {pricesThis.priceMaterialBack} грн * {pricesThis.sheetCountBack} шт = {(pricesThis.priceMaterialBack * pricesThis.sheetCountBack).toFixed(2)} грн
+                                            </div>
+                                            <div className="fontInfoForPricing">
+                                                Ламінація: {pricesThis.priceLaminationBack} грн * {pricesThis.sheetCountBack} шт = {(pricesThis.priceLaminationBack * pricesThis.sheetCountBack).toFixed(2)} грн
+                                            </div>
+                                            <div className="fontInfoForPricing">
+                                                <strong>  Загалом: {pricesThis.totalSheetPriceBack} грн</strong>
+                                            </div>
+                                                <div className="fontInfoForPricing">
+                                                    Використано {pricesThis.sheetCount} шт A3+
+                                                </div>
+                                        </div>
+                                            <div className="d-flex flex-column" style={{marginLeft: '2vw'}} >
+                                                <div className="fontInfoForPricing">
+                                                    <strong>Прошивка:</strong>
+                                                </div>
+
+                                                <div className="fontInfoForPricing">
+                                                    Перепліт: {pricesThis.pricePerepletUnit} грн * {count} шт = {pricesThis.totalPerepletPrice} грн
+                                                </div>
+                                            </div>
+                                        </div>
+
 
                                         {/* Итоговые данные */}
-                                        <div className="fontInfoForPricing1">
+                                        <div className="fontInfoForPricing1" style={{marginTop: '1vw'}}>
                                             Загальна сума: {pricesThis.price} грн
                                         </div>
                                         <div className="fontInfoForPricing">
-                                            - С одного аркуша A3 можна зробити {pricesThis.sheetsPerUnit} виробів
+                                            З одного аркуша A3+ можна зробити {pricesThis.sheetsPerUnit} шт
                                         </div>
-                                        <div className="fontInfoForPricing">
-                                            - Використано {pricesThis.sheetCount} аркушів (A3)
-                                        </div>
+
                                         <div className="fontInfoForPricing">
                                             Ціна за виріб (з урахуванням постпресу): {pricesThis.priceForItemWithExtras} грн
                                         </div>
@@ -536,6 +551,10 @@ const NewNote = ({
                                         className="versant80-img-icon"
                                         alt="sssss"
                                         src={versantIcon}
+                                        style={{
+                                            width: "7vw",
+                                            justifyContent: "center",
+                                        }}
                                     />
                                 </div>
                             )}
