@@ -5,6 +5,10 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="7e58169f-d1e8-4cb2-8753-447dd0b39044" name="Changes" comment="ddd">
+      <change afterPath="$PROJECT_DIR$/src/PrintPeaksFAinal/userInNewUiArtem/novaPoshta/NovaPoshtaButton.jsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/PrintPeaksFAinal/userInNewUiArtem/novaPoshta/novaPoshtaButton.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/PrintPeaksFAinal/NewUIArtem.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/PrintPeaksFAinal/NewUIArtem.jsx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/PrintPeaksFAinal/userInNewUiArtem/NP.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/PrintPeaksFAinal/userInNewUiArtem/NP.jsx" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -20,8 +24,9 @@
       <list>
         <option value="TypeScript JSX File" />
         <option value="JavaScript File" />
-        <option value="JSX File" />
         <option value="CSS File" />
+        <option value="JSX File" />
+        <option value="TypeScript File" />
       </list>
     </option>
   </component>
@@ -91,6 +96,7 @@
       <recent name="C:\Users\AIATO\Desktop\CodePPNew\frontpp\src\components\admin\crm\Vimogi" />
     </key>
     <key name="MoveFile.RECENT_KEYS">
+      <recent name="C:\Users\AIATO\Desktop\CodePPNew\frontpp\src\PrintPeaksFAinal\userInNewUiArtem\novaPoshta" />
       <recent name="C:\Users\AIATO\Desktop\CodePPNew\frontpp\src\PrintPeaksFAinal\userInNewUiArtem" />
       <recent name="C:\Users\AIATO\Desktop\CodePPNew\frontpp\src\components" />
       <recent name="C:\Users\AIATO\Desktop\CodePPNew\frontpp\src\components\admin\crm\Vimogi" />
@@ -210,7 +216,7 @@
       <workItem from="1741168476325" duration="24768000" />
       <workItem from="1741227183167" duration="8121000" />
       <workItem from="1741277189522" duration="21981000" />
-      <workItem from="1741468579308" duration="418000" />
+      <workItem from="1741468579308" duration="2927000" />
     </task>
     <task id="LOCAL-00003" summary="ddd">
       <option name="closed" value="true" />
@@ -516,7 +522,15 @@
       <option name="project" value="LOCAL" />
       <updated>1741152374629</updated>
     </task>
-    <option name="localTasksCounter" value="41" />
+    <task id="LOCAL-00041" summary="ddd">
+      <option name="closed" value="true" />
+      <created>1741469568218</created>
+      <option name="number" value="00041" />
+      <option name="presentableId" value="LOCAL-00041" />
+      <option name="project" value="LOCAL" />
+      <updated>1741469568218</updated>
+    </task>
+    <option name="localTasksCounter" value="42" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">

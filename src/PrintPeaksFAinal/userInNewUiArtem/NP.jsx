@@ -2,6 +2,7 @@ import React, { useEffect, useState } from "react";
 import axios from "../../api/axiosInstance";
 import { useNavigate } from "react-router-dom";
 import Loader2 from "../../components/calc/Loader2";
+import NovaPoshtaButton from "./novaPoshta/NovaPoshtaButton";
 
 const styles = {
     inputContainer: {

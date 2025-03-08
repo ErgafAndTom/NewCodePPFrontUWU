@@ -52,6 +52,7 @@ import BigOvshik from "./poslugi/BigOvshik";
 import ProgressBar from "../ProgressBar";
 import {ExampleLoaderComponent} from "../dev/palette";
 import NewCup from "./poslugi/NewCup";
+import NovaPoshtaButton from "./userInNewUiArtem/novaPoshta/NovaPoshtaButton";
 
 const NewUIArtem = () => {
     const navigate = useNavigate();
@@ -538,6 +539,7 @@ const NewUIArtem = () => {
                                     // <ClientChangerUIArtem client={{email: "null", id: 0, phone: "+00000000",}}/>
                                 )}
                             {/*</div>*/}
+                            <NovaPoshtaButton/>
                         </div>
                     </div>
                 </div>
