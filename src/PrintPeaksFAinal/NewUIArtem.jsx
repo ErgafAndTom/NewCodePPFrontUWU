@@ -539,7 +539,7 @@ const NewUIArtem = () => {
                                     // <ClientChangerUIArtem client={{email: "null", id: 0, phone: "+00000000",}}/>
                                 )}
                             {/*</div>*/}
-                            <NovaPoshtaButton/>
+                            {/*<NovaPoshtaButton/>*/}
                         </div>
                     </div>
                 </div>

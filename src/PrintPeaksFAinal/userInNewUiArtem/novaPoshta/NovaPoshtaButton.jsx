@@ -35,6 +35,7 @@ const NovaPoshtaButton = () => {
     };
 
     const handleFrameMessage = (event) => {
+        console.log(event.data);
         if (event.origin !== 'https://widget.novapost.com') {
             console.warn('Повідомлення з невідомого джерела:', event.origin);
             return;
@@ -70,6 +71,7 @@ const NovaPoshtaButton = () => {
             iframeRef.current.src = 'https://widget.novapost.com/division/index.html';
             iframeRef.current.onload = () => {
                 const queryParams = getQueryParams();
+                console.log(queryParams);
                 const domain = window.location.hostname;
                 const data = {
                     placeName: 'Київ',

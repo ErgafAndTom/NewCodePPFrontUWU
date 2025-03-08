@@ -45,6 +45,73 @@ function NP({ showNP, setShowNP, thisOrder, setThisOrder }) {
     const [credentials, setCredentials] = useState({ phoneNumber: '', numbernp: '' });
     const [isVisible, setIsVisible] = useState(false);
     const [isAnimating, setIsAnimating] = useState(false);
+    const [requestData, setRequestData] = useState({
+        // API-ключ для доступу до сервісу. Формат: рядок (наприклад, UUID або інший унікальний ідентифікатор)
+        apiKey: "ecb23e28cbe38cf7c78449e15c7979e3",
+
+        // Назва моделі документа. Формат: рядок (наприклад, "InternetDocument")
+        modelName: "InternetDocument",
+
+        // Метод, який викликається на сервері. Формат: рядок (наприклад, "save")
+        calledMethod: "save",
+
+        // Об'єкт з параметрами запиту
+        methodProperties: {
+            // Тип платника: "Sender" (відправник) або "Recipient" (одержувач). Формат: рядок.
+            PayerType: "Sender",
+
+            // Метод оплати: наприклад, "Cash". Формат: рядок.
+            PaymentMethod: "Cash",
+
+            // Тип вантажу: наприклад, "Parcel". Формат: рядок.
+            CargoType: "Parcel",
+
+            // Загальний об'єм посилки. Формат: рядок, що містить числове значення (наприклад, "0.1").
+            VolumeGeneral: "0.1",
+
+            // Вага посилки. Формат: рядок, що містить числове значення (наприклад, "1").
+            Weight: "1",
+
+            // Тип сервісу доставки: наприклад, "WarehouseWarehouse". Формат: рядок.
+            ServiceType: "WarehouseWarehouse",
+
+            // Кількість місць у відправленні. Формат: рядок, що містить ціле число (наприклад, "1").
+            SeatsAmount: "1",
+
+            // Опис відправлення. Формат: рядок.
+            Description: "Тестова відправка",
+
+            // Оголошена вартість посилки. Формат: рядок, що містить числове значення (наприклад, "100").
+            Cost: "100",
+
+            // ID міста відправника. Формат: рядок (GUID або інший ідентифікатор). Замініть на актуальний ID.
+            CitySender: "8d5a980d-391c-11dd-90d9-001a92567626",
+
+            // ID адреси відправника. Формат: рядок (GUID або інший ідентифікатор). Замініть на актуальний ID.
+            SenderAddress: "8d5a980d-391c-11dd-90d9-001a92567626",
+
+            // Ім'я контакту відправника. Формат: рядок.
+            ContactSender: "Іван Іванов",
+
+            // Телефон відправника. Формат: рядок (номер телефону). Наприклад, можна використовувати значення з credentials.phoneNumber.
+            SendersPhone: credentials.phoneNumber,
+
+            // Назва міста одержувача. Формат: рядок (наприклад, "Київ").
+            RecipientCityName: "Київ",
+
+            // Назва адреси або відділення одержувача. Формат: рядок. Наприклад, значення з credentials.numbernp.
+            RecipientAddressName: credentials.numbernp,
+
+            // Ім'я одержувача. Формат: рядок.
+            RecipientName: "Одержувач Тест",
+
+            // Тип одержувача: "PrivatePerson" для приватних осіб або "Company" для компаній. Формат: рядок.
+            RecipientType: "PrivatePerson",
+
+            // Телефон одержувача. Формат: рядок (номер телефону, включаючи код країни).
+            RecipientsPhone: "+380975629025"
+        }
+    });
     const handleClose = () => {
         setIsAnimating(false); // Начинаем анимацию закрытия
         setTimeout(() => {
@@ -123,21 +190,24 @@ function NP({ showNP, setShowNP, thisOrder, setThisOrder }) {
                 position: "fixed",
                 left: "0",
                 bottom: "0"
-            }}></div>
+            }}>
+            </div>
             <div style={{
                 zIndex: "100",
                 display: "flex",
                 flexDirection: "column",
                 position: "fixed",
                 backgroundColor: '#f2efe8',
-                bottom: "3.5vh",
-                right: "-15.75vw",
+                // bottom: "3.5vh",
+                // right: "-15.75vw",
+                left: "50%",
+                top: "50%",
                 transform: isAnimating ? "translate(-50%, -50%) scale(1)" : "translate(-50%, -50%) scale(0.8)", // анимация масштаба
                 opacity: isAnimating ? 1 : 0, // анимация прозрачности
                 transition: "opacity 0.3s ease-in-out, transform 0.3s ease-in-out", // плавная анимация
                 borderRadius: "1vw",
-                width: "33vw",
-                height: "20vh",
+                width: "90vw",
+                height: "90vh",
             }}>
                 <div style={{
                     border: "none",
@@ -162,6 +232,7 @@ function NP({ showNP, setShowNP, thisOrder, setThisOrder }) {
                         <button style={{ ...styles.addButton }} onClick={handleSaveOrder}>
                             Додати клієнта
                         </button>
+                        <NovaPoshtaButton/>
                         {load && <div style={{ color: "red" }}><Loader2 /></div>}
                         {error && <div style={{ color: "red" }}>{error.message}</div>}
                         {novaPoshta && (
