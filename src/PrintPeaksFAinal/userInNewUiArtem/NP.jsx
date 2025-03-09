@@ -19,6 +19,14 @@ const styles = {
         border: "none",
         width: "12vw"
     },
+    select1: {
+        background: "#e9e6da",
+        padding: "0.4vw",
+        borderRadius: "0.5vw",
+        fontSize: "0.7vw",
+        border: "none",
+        paddingRight: "1.3vw",
+    },
     addButton: {
         marginLeft: "3.5vw",
         marginTop: "1vh",
@@ -55,12 +63,12 @@ function NP({ showNP, setShowNP, thisOrder, setThisOrder }) {
         recipientCity: 'Київ',      // Обов'язкове: місто одержувача (наприклад, "Львів" або GUID міста)
         recipient: '',          // Обов'язкове: GUID відділення-одержувача
         recipientAddress: '',   // Опційне: адреса одержувача (для адресної доставки)
-        recipientsPhone: '',    // Обов'язкове: телефон одержувача
+        recipientsPhone: `${thisOrder.User.phoneNumber}`,    // Обов'язкове: телефон одержувача
 
         // Деталі відправлення (обов'язкові)
         serviceType: 'WarehouseWarehouse', // Обов'язкове: тип сервісу (наприклад, "WarehouseWarehouse")
         paymentMethod: 'Cash',             // Обов'язкове: спосіб оплати ("Cash" або "NonCash")
-        payerType: 'Sender',               // Обов'язкове: хто оплачує доставку ("Sender", "Recipient", "ThirdPerson")
+        payerType: 'Recipient',               // Обов'язкове: хто оплачує доставку ("Sender", "Recipient", "ThirdPerson")
         cost: '',                          // Обов'язкове: оголошена вартість (наприклад, "1000")
         cargoType: 'Cargo',                // Обов'язкове: тип вантажу ("Cargo" або "Documents")
         weight: '',                        // Обов'язкове: вага посилки (наприклад, "5")
@@ -90,8 +98,17 @@ function NP({ showNP, setShowNP, thisOrder, setThisOrder }) {
     const handleDepartmentSelect = (departmentId, shortName, description, city) => {
         setFormData({
             ...formData,
-            departmentId: departmentId,
-            recipientCity: city || formData.recipientCity,
+            // departmentId: departmentId,
+            recipient: departmentId,
+            // recipientCity: city || formData.recipientCity,
+        });
+    };
+    const handleDepartmentSelect1 = (departmentId, shortName, description, city) => {
+        setFormData({
+            ...formData,
+            // departmentId: departmentId,
+            sender: departmentId,
+            // recipientCity: city || formData.recipientCity,
         });
     };
 
@@ -190,54 +207,59 @@ function NP({ showNP, setShowNP, thisOrder, setThisOrder }) {
                         {/*<h2>Створення накладної Нової Пошти</h2>*/}
                         <form onSubmit={handleSubmit}>
                             <legend>Інформація про відправника</legend>
-                            <fieldset className="d-flex">
-                                <div style={styles.inputContainer}>
-                                    <span className="adminFont">Місто</span>
-                                    <input
-                                        style={styles.input1}
-                                        type="text"
-                                        name="senderCity"
-                                        placeholder="Місто відправника"
-                                        value={formData.senderCity}
-                                        onChange={handleChange}
-                                        required
-                                    />
+                            <fieldset className="d-flex flex-column">
+                                <div className="d-flex">
+                                    <div style={styles.inputContainer}>
+                                        <span className="adminFont">Місто</span>
+                                        <input
+                                            style={styles.input1}
+                                            type="text"
+                                            name="senderCity"
+                                            placeholder="Місто відправника"
+                                            value={formData.senderCity}
+                                            onChange={handleChange}
+                                            required
+                                        />
+                                    </div>
+                                    <div style={styles.inputContainer}>
+                                        <span className="adminFont">Відправник</span>
+                                        <input
+                                            style={styles.input1}
+                                            type="text"
+                                            name="sender"
+                                            placeholder="Відправник"
+                                            value={formData.sender}
+                                            onChange={handleChange}
+                                            required
+                                        />
+                                    </div>
+                                    {/*<div style={styles.inputContainer}>*/}
+                                    {/*    <span className="adminFont">Адреса</span>*/}
+                                    {/*    <input*/}
+                                    {/*        style={styles.input1}*/}
+                                    {/*        type="text"*/}
+                                    {/*        name="senderAddress"*/}
+                                    {/*        placeholder="Адреса відправника"*/}
+                                    {/*        value={formData.senderAddress}*/}
+                                    {/*        onChange={handleChange}*/}
+                                    {/*        required*/}
+                                    {/*    />*/}
+                                    {/*</div>*/}
+                                    <div style={styles.inputContainer}>
+                                        <span className="adminFont">Телефон</span>
+                                        <input
+                                            style={styles.input1}
+                                            type="text"
+                                            name="sendersPhone"
+                                            placeholder="Телефон відправника"
+                                            value={formData.sendersPhone}
+                                            onChange={handleChange}
+                                            required
+                                        />
+                                    </div>
                                 </div>
-                                <div style={styles.inputContainer}>
-                                    <span className="adminFont">Відправник</span>
-                                    <input
-                                        style={styles.input1}
-                                        type="text"
-                                        name="sender"
-                                        placeholder="Відправник"
-                                        value={formData.sender}
-                                        onChange={handleChange}
-                                        required
-                                    />
-                                </div>
-                                <div style={styles.inputContainer}>
-                                    <span className="adminFont">Адреса</span>
-                                    <input
-                                        style={styles.input1}
-                                        type="text"
-                                        name="senderAddress"
-                                        placeholder="Адреса відправника"
-                                        value={formData.senderAddress}
-                                        onChange={handleChange}
-                                        required
-                                    />
-                                </div>
-                                <div style={styles.inputContainer}>
-                                    <span className="adminFont">Телефон</span>
-                                    <input
-                                        style={styles.input1}
-                                        type="text"
-                                        name="sendersPhone"
-                                        placeholder="Телефон відправника"
-                                        value={formData.sendersPhone}
-                                        onChange={handleChange}
-                                        required
-                                    />
+                                <div className="d-flex align-items-center">
+                                    <NovaPoshtaButton onDepartmentSelect={handleDepartmentSelect1}/>
                                 </div>
                             </fieldset>
 
@@ -268,18 +290,18 @@ function NP({ showNP, setShowNP, thisOrder, setThisOrder }) {
                                             required
                                         />
                                     </div>
-                                    <div style={styles.inputContainer}>
-                                        <span className="adminFont">Адреса</span>
-                                        <input
-                                            style={styles.input1}
-                                            type="text"
-                                            name="recipientAddress"
-                                            placeholder="Адреса одержувача"
-                                            value={formData.recipientAddress}
-                                            onChange={handleChange}
-                                            required
-                                        />
-                                    </div>
+                                    {/*<div style={styles.inputContainer}>*/}
+                                    {/*    <span className="adminFont">Адреса</span>*/}
+                                    {/*    <input*/}
+                                    {/*        style={styles.input1}*/}
+                                    {/*        type="text"*/}
+                                    {/*        name="recipientAddress"*/}
+                                    {/*        placeholder="Адреса одержувача"*/}
+                                    {/*        value={formData.recipientAddress}*/}
+                                    {/*        onChange={handleChange}*/}
+                                    {/*        required*/}
+                                    {/*    />*/}
+                                    {/*</div>*/}
                                     <div style={styles.inputContainer}>
                                         <span className="adminFont">Телефон</span>
                                         <input
@@ -292,32 +314,34 @@ function NP({ showNP, setShowNP, thisOrder, setThisOrder }) {
                                             required
                                         />
                                     </div>
-                                    <div className="d-flex">
-                                        <div style={styles.inputContainer}>
-                                            <span className="adminFont">departmentId</span>
-                                            <input
-                                                style={styles.input1}
-                                                type="text"
-                                                name="departmentId"
-                                                placeholder="departmentId"
-                                                value={formData.departmentId}
-                                                onChange={handleChange}
-                                                required
-                                            />
-                                        </div>
-                                    </div>
                                 </div>
-                                <NovaPoshtaButton onDepartmentSelect={handleDepartmentSelect} />
+                                <div className="d-flex align-items-center">
+                                    <NovaPoshtaButton onDepartmentSelect={handleDepartmentSelect}/>
+                                    {/*<div*/}
+                                    {/*    className="d-flex"*/}
+                                    {/*    style={styles.inputContainer}>*/}
+                                    {/*    <span className="adminFont">departmentId</span>*/}
+                                    {/*    <input*/}
+                                    {/*        style={styles.input1}*/}
+                                    {/*        type="text"*/}
+                                    {/*        name="departmentId"*/}
+                                    {/*        placeholder="departmentId"*/}
+                                    {/*        value={formData.departmentId}*/}
+                                    {/*        onChange={handleChange}*/}
+                                    {/*        required*/}
+                                    {/*    />*/}
+                                    {/*</div>*/}
+                                </div>
                             </fieldset>
 
                             <fieldset className="">
                                 <legend>Деталі відправлення</legend>
-                                <div>
-                                    <label>Тип сервісу:</label>
+                                <div style={styles.inputContainer}>
+                                    <span className="adminFont">Тип сервісу:</span>
                                     <div className="ArtemNewSelectContainer">
 
                                         <select className="selectArtem" name="serviceType" value={formData.serviceType}
-                                                onChange={handleChange}>
+                                                onChange={handleChange} style={styles.select1}>
                                             <option className="optionInSelectArtem"
                                                     value="WarehouseWarehouse">Відділення-Відділення
                                             </option>
@@ -332,21 +356,22 @@ function NP({ showNP, setShowNP, thisOrder, setThisOrder }) {
                                         </select>
                                     </div>
                                 </div>
-                                <div>
-                                    <label>Спосіб оплати:</label>
+                                <div style={styles.inputContainer}>
+                                    <span className="adminFont">Спосіб оплати:</span>
                                     <div className="ArtemNewSelectContainer">
 
-                                        <select className="selectArtem" name="paymentMethod"
+                                        <select className="selectArtem" name="paymentMethod" style={styles.select1}
                                                 value={formData.paymentMethod} onChange={handleChange}>
                                             <option className="optionInSelectArtem" value="Cash">Готівка</option>
                                             <option className="optionInSelectArtem" value="NonCash">Безготівка</option>
                                         </select>
                                     </div>
                                 </div>
-                                <div>
-                                    <label>Платник:</label>
+                                <div style={styles.inputContainer}>
+                                    <span className="adminFont">Платник:</span>
                                     <div className="ArtemNewSelectContainer">
                                         <select className="selectArtem" name="payerType" value={formData.payerType}
+                                                style={styles.select1}
                                                 onChange={handleChange}>
                                             <option className="optionInSelectArtem" value="Sender">Відправник</option>
                                             <option className="optionInSelectArtem" value="Recipient">Одержувач</option>
@@ -356,7 +381,7 @@ function NP({ showNP, setShowNP, thisOrder, setThisOrder }) {
                                     </div>
                                 </div>
                                 <div style={styles.inputContainer}>
-                                    <label>Оголошена вартість:</label>
+                                    <span className="adminFont">Оголошена вартість:</span>
                                     <input
                                         style={styles.input1}
                                         type="number"
@@ -367,10 +392,11 @@ function NP({ showNP, setShowNP, thisOrder, setThisOrder }) {
                                         required
                                     />
                                 </div>
-                                <div>
-                                    <label>Тип вантажу:</label>
+                                <div style={styles.inputContainer}>
+                                    <span className="adminFont">Тип вантажу:</span>
                                     <div className="ArtemNewSelectContainer">
                                         <select className="selectArtem" name="cargoType" value={formData.cargoType}
+                                                style={styles.select1}
                                                 onChange={handleChange}>
                                             <option className="optionInSelectArtem" value="Cargo">Вантаж</option>
                                             <option className="optionInSelectArtem" value="Documents">Документи</option>
@@ -378,7 +404,7 @@ function NP({ showNP, setShowNP, thisOrder, setThisOrder }) {
                                     </div>
                                 </div>
                                 <div style={styles.inputContainer}>
-                                    <label>Вага (кг):</label>
+                                    <span className="adminFont">Вага (кг):</span>
                                     <input
                                         style={styles.input1}
                                         type="number"
@@ -390,7 +416,7 @@ function NP({ showNP, setShowNP, thisOrder, setThisOrder }) {
                                     />
                                 </div>
                                 <div style={styles.inputContainer}>
-                                    <label>Кількість місць:</label>
+                                    <span className="adminFont">Кількість місць:</span>
                                     <input
                                         style={styles.input1}
                                         type="number"
@@ -402,7 +428,7 @@ function NP({ showNP, setShowNP, thisOrder, setThisOrder }) {
                                     />
                                 </div>
                                 <div style={styles.inputContainer}>
-                                    <label>Опис вантажу:</label>
+                                    <span className="adminFont">Опис вантажу:</span>
                                     <input
                                         style={styles.input1}
                                         type="text"
