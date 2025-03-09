@@ -1,7 +1,6 @@
 import React, { useEffect, useState } from "react";
 import axios from "../../api/axiosInstance";
 import { useNavigate } from "react-router-dom";
-import Loader2 from "../../components/calc/Loader2";
 import NovaPoshtaButton from "./novaPoshta/NovaPoshtaButton";
 
 const styles = {
@@ -37,81 +36,49 @@ const styles = {
 };
 
 function NP({ showNP, setShowNP, thisOrder, setThisOrder }) {
-    const [phone, setPhone] = useState('+38 ');
-    const [novaPoshta, setNovaPoshta] = useState(null);
     const [load, setLoad] = useState(false);
+    // const [formData, setFormData] = useState({
+    //     senderCity: '',
+    //     recipientCity: '',
+    //     weight: '',
+    //     cost: '',
+    //     // інші необхідні поля згідно з документацією Нової Пошти
+    // });
+    const [formData, setFormData] = useState({
+        // Дані відправника (обов'язкові)
+        senderCity: 'Київ',         // Обов'язкове: місто відправника (наприклад, "Київ" або GUID міста)
+        sender: '',             // Обов'язкове: GUID відділення-відправника
+        senderAddress: '',      // Опційне: адреса відправника (потрібно для адресної доставки)
+        sendersPhone: '',       // Опційне: телефон відправника
+
+        // Дані одержувача (обов'язкові)
+        recipientCity: 'Київ',      // Обов'язкове: місто одержувача (наприклад, "Львів" або GUID міста)
+        recipient: '',          // Обов'язкове: GUID відділення-одержувача
+        recipientAddress: '',   // Опційне: адреса одержувача (для адресної доставки)
+        recipientsPhone: '',    // Обов'язкове: телефон одержувача
+
+        // Деталі відправлення (обов'язкові)
+        serviceType: 'WarehouseWarehouse', // Обов'язкове: тип сервісу (наприклад, "WarehouseWarehouse")
+        paymentMethod: 'Cash',             // Обов'язкове: спосіб оплати ("Cash" або "NonCash")
+        payerType: 'Sender',               // Обов'язкове: хто оплачує доставку ("Sender", "Recipient", "ThirdPerson")
+        cost: '',                          // Обов'язкове: оголошена вартість (наприклад, "1000")
+        cargoType: 'Cargo',                // Обов'язкове: тип вантажу ("Cargo" або "Documents")
+        weight: '',                        // Обов'язкове: вага посилки (наприклад, "5")
+        seatsAmount: '1',                  // Обов'язкове: кількість місць (наприклад, "1")
+        description: '',                   // Опційне: опис вантажу
+
+        // Вибір відділення (обов'язкове, якщо використовується віджет)
+        departmentId: null,                // Обов'язкове: GUID відділення, вибраний через NovaPoshtaButton
+
+        // Додаткові поля для післяплати (опційно)
+        // backwardDeliverySum: '',           // Опційне: сума післяплати (наприклад, "200")
+        // backwardDeliveryPayer: 'Sender',   // Опційне: хто оплачує післяплату ("Sender" або "Recipient")
+    });
+    const [result, setResult] = useState(null);
     const [error, setError] = useState(null);
     const navigate = useNavigate();
-    const [credentials, setCredentials] = useState({ phoneNumber: '', numbernp: '' });
     const [isVisible, setIsVisible] = useState(false);
     const [isAnimating, setIsAnimating] = useState(false);
-    const [requestData, setRequestData] = useState({
-        // API-ключ для доступу до сервісу. Формат: рядок (наприклад, UUID або інший унікальний ідентифікатор)
-        apiKey: "ecb23e28cbe38cf7c78449e15c7979e3",
-
-        // Назва моделі документа. Формат: рядок (наприклад, "InternetDocument")
-        modelName: "InternetDocument",
-
-        // Метод, який викликається на сервері. Формат: рядок (наприклад, "save")
-        calledMethod: "save",
-
-        // Об'єкт з параметрами запиту
-        methodProperties: {
-            // Тип платника: "Sender" (відправник) або "Recipient" (одержувач). Формат: рядок.
-            PayerType: "Sender",
-
-            // Метод оплати: наприклад, "Cash". Формат: рядок.
-            PaymentMethod: "Cash",
-
-            // Тип вантажу: наприклад, "Parcel". Формат: рядок.
-            CargoType: "Parcel",
-
-            // Загальний об'єм посилки. Формат: рядок, що містить числове значення (наприклад, "0.1").
-            VolumeGeneral: "0.1",
-
-            // Вага посилки. Формат: рядок, що містить числове значення (наприклад, "1").
-            Weight: "1",
-
-            // Тип сервісу доставки: наприклад, "WarehouseWarehouse". Формат: рядок.
-            ServiceType: "WarehouseWarehouse",
-
-            // Кількість місць у відправленні. Формат: рядок, що містить ціле число (наприклад, "1").
-            SeatsAmount: "1",
-
-            // Опис відправлення. Формат: рядок.
-            Description: "Тестова відправка",
-
-            // Оголошена вартість посилки. Формат: рядок, що містить числове значення (наприклад, "100").
-            Cost: "100",
-
-            // ID міста відправника. Формат: рядок (GUID або інший ідентифікатор). Замініть на актуальний ID.
-            CitySender: "8d5a980d-391c-11dd-90d9-001a92567626",
-
-            // ID адреси відправника. Формат: рядок (GUID або інший ідентифікатор). Замініть на актуальний ID.
-            SenderAddress: "8d5a980d-391c-11dd-90d9-001a92567626",
-
-            // Ім'я контакту відправника. Формат: рядок.
-            ContactSender: "Іван Іванов",
-
-            // Телефон відправника. Формат: рядок (номер телефону). Наприклад, можна використовувати значення з credentials.phoneNumber.
-            SendersPhone: credentials.phoneNumber,
-
-            // Назва міста одержувача. Формат: рядок (наприклад, "Київ").
-            RecipientCityName: "Київ",
-
-            // Назва адреси або відділення одержувача. Формат: рядок. Наприклад, значення з credentials.numbernp.
-            RecipientAddressName: credentials.numbernp,
-
-            // Ім'я одержувача. Формат: рядок.
-            RecipientName: "Одержувач Тест",
-
-            // Тип одержувача: "PrivatePerson" для приватних осіб або "Company" для компаній. Формат: рядок.
-            RecipientType: "PrivatePerson",
-
-            // Телефон одержувача. Формат: рядок (номер телефону, включаючи код країни).
-            RecipientsPhone: "+380975629025"
-        }
-    });
     const handleClose = () => {
         setIsAnimating(false); // Начинаем анимацию закрытия
         setTimeout(() => {
@@ -120,51 +87,29 @@ function NP({ showNP, setShowNP, thisOrder, setThisOrder }) {
         }, 300); // После завершения анимации скрываем модальное окно
     }
 
-    const handleChange = (e) => {
-        setCredentials({
-            ...credentials,
-            [e.target.name]: e.target.value
+    const handleDepartmentSelect = (departmentId, shortName, description, city) => {
+        setFormData({
+            ...formData,
+            departmentId: departmentId,
+            recipientCity: city || formData.recipientCity,
         });
     };
 
-    const handleSaveOrder = async () => {
-        setLoad(true);
-        setError(null);
+    const handleChange = (e) => {
+        setFormData({
+            ...formData,
+            [e.target.name]: e.target.value,
+        });
+    };
 
-        const apiKey = "ecb23e28cbe38cf7c78449e15c7979e3"; // Замініть на актуальний API ключ відправника
-        const requestData = {
-            apiKey,
-            modelName: "InternetDocument",
-            calledMethod: "save",
-            methodProperties: {
-                PayerType: "Sender",
-                PaymentMethod: "Cash",
-                CargoType: "Parcel",
-                VolumeGeneral: "0.1",
-                Weight: "1",
-                ServiceType: "WarehouseWarehouse",
-                SeatsAmount: "1",
-                Description: "Тестова відправка",
-                Cost: "100",
-                CitySender: "8d5a980d-391c-11dd-90d9-001a92567626", // ID міста відправника (замініть)
-                SenderAddress: "8d5a980d-391c-11dd-90d9-001a92567626", // ID адреси відправника (замініть)
-                ContactSender: "Іван Іванов",
-                SendersPhone: credentials.phoneNumber,
-                RecipientCityName: "Київ",
-                RecipientAddressName: credentials.numbernp,
-                RecipientName: "Одержувач Тест",
-                RecipientType: "PrivatePerson",
-                RecipientsPhone: "+380975629025",
-            }
-        };
-
+    const handleSubmit = async (e) => {
+        e.preventDefault();
         try {
-            const response = await axios.post("https://api.novaposhta.ua/v2.0/json/", requestData);
-            setNovaPoshta(response.data);
-            setLoad(false);
+            const response = await axios.post('/novaposhta/create', formData);
+            setResult(response.data);
+            setError(null);
         } catch (err) {
-            setError(err);
-            setLoad(false);
+            setError(err.response?.data?.error || err.message);
         }
     };
 
@@ -227,31 +172,281 @@ function NP({ showNP, setShowNP, thisOrder, setThisOrder }) {
                     marginTop: "0.3vw",
                     marginLeft: "0.3vw",
                 }}>
-                    <div>
-                        <div style={styles.inputContainer}>
-                            <span style={{ fontSize: "2.4vh", alignItems: "center" }}>ヅ</span>
-                            <input onChange={handleChange} type="text" value={credentials.phoneNumber} placeholder="Телефон"
-                                   name="phoneNumber" style={styles.input1} />
-                        </div>
-                        <div style={styles.inputContainer}>
-                            <span style={{ fontSize: "2.4vh", alignItems: "center" }}>ヅ</span>
-                            <input onChange={handleChange} type="text" value={credentials.numbernp}
-                                   placeholder="Номер відділення"
-                                   name="numbernp" style={styles.input1} />
-                        </div>
-                    </div>
-                    <div>
-                        <button style={{ ...styles.addButton }} onClick={handleSaveOrder}>
-                            Додати клієнта
-                        </button>
-                        <NovaPoshtaButton/>
-                        {load && <div style={{ color: "red" }}><Loader2 /></div>}
-                        {error && <div style={{ color: "red" }}>{error.message}</div>}
-                        {novaPoshta && (
-                            <div style={{ whiteSpace: "pre-wrap", fontSize: "0.7vw", marginTop: "0.5vh" }}>
-                                {JSON.stringify(novaPoshta, null, 2)}
+                    {/*<div>*/}
+                    {/*    <div style={styles.inputContainer}>*/}
+                    {/*        <span style={{ fontSize: "2.4vh", alignItems: "center" }}>ヅ</span>*/}
+                    {/*        <input onChange={handleChange1} type="text" value={credentials.phoneNumber} placeholder="Телефон"*/}
+                    {/*               name="phoneNumber" style={styles.input1} />*/}
+                    {/*    </div>*/}
+                    {/*    <div style={styles.inputContainer}>*/}
+                    {/*        <span style={{ fontSize: "2.4vh", alignItems: "center" }}>ヅ</span>*/}
+                    {/*        <input onChange={handleChange1} type="text" value={credentials.numbernp}*/}
+                    {/*               placeholder="Номер відділення"*/}
+                    {/*               name="numbernp" style={styles.input1} />*/}
+                    {/*    </div>*/}
+                    {/*</div>*/}
+
+                    <div style={{padding: "1vw"}}>
+                        {/*<h2>Створення накладної Нової Пошти</h2>*/}
+                        <form onSubmit={handleSubmit}>
+                            <legend>Інформація про відправника</legend>
+                            <fieldset className="d-flex">
+                                <div style={styles.inputContainer}>
+                                    <span className="adminFont">Місто</span>
+                                    <input
+                                        style={styles.input1}
+                                        type="text"
+                                        name="senderCity"
+                                        placeholder="Місто відправника"
+                                        value={formData.senderCity}
+                                        onChange={handleChange}
+                                        required
+                                    />
+                                </div>
+                                <div style={styles.inputContainer}>
+                                    <span className="adminFont">Відправник</span>
+                                    <input
+                                        style={styles.input1}
+                                        type="text"
+                                        name="sender"
+                                        placeholder="Відправник"
+                                        value={formData.sender}
+                                        onChange={handleChange}
+                                        required
+                                    />
+                                </div>
+                                <div style={styles.inputContainer}>
+                                    <span className="adminFont">Адреса</span>
+                                    <input
+                                        style={styles.input1}
+                                        type="text"
+                                        name="senderAddress"
+                                        placeholder="Адреса відправника"
+                                        value={formData.senderAddress}
+                                        onChange={handleChange}
+                                        required
+                                    />
+                                </div>
+                                <div style={styles.inputContainer}>
+                                    <span className="adminFont">Телефон</span>
+                                    <input
+                                        style={styles.input1}
+                                        type="text"
+                                        name="sendersPhone"
+                                        placeholder="Телефон відправника"
+                                        value={formData.sendersPhone}
+                                        onChange={handleChange}
+                                        required
+                                    />
+                                </div>
+                            </fieldset>
+
+                            <fieldset>
+                                <legend>Інформація про одержувача</legend>
+                                <div className="d-flex">
+                                    <div style={styles.inputContainer}>
+                                        <span className="adminFont">Місто</span>
+                                        <input
+                                            style={styles.input1}
+                                            type="text"
+                                            name="recipientCity"
+                                            placeholder="Місто одержувача"
+                                            value={formData.recipientCity}
+                                            onChange={handleChange}
+                                            required
+                                        />
+                                    </div>
+                                    <div style={styles.inputContainer}>
+                                        <span className="adminFont">Одержувач</span>
+                                        <input
+                                            style={styles.input1}
+                                            type="text"
+                                            name="recipient"
+                                            placeholder="Одержувач"
+                                            value={formData.recipient}
+                                            onChange={handleChange}
+                                            required
+                                        />
+                                    </div>
+                                    <div style={styles.inputContainer}>
+                                        <span className="adminFont">Адреса</span>
+                                        <input
+                                            style={styles.input1}
+                                            type="text"
+                                            name="recipientAddress"
+                                            placeholder="Адреса одержувача"
+                                            value={formData.recipientAddress}
+                                            onChange={handleChange}
+                                            required
+                                        />
+                                    </div>
+                                    <div style={styles.inputContainer}>
+                                        <span className="adminFont">Телефон</span>
+                                        <input
+                                            style={styles.input1}
+                                            type="text"
+                                            name="recipientsPhone"
+                                            placeholder="Телефон одержувача"
+                                            value={formData.recipientsPhone}
+                                            onChange={handleChange}
+                                            required
+                                        />
+                                    </div>
+                                    <div className="d-flex">
+                                        <div style={styles.inputContainer}>
+                                            <span className="adminFont">departmentId</span>
+                                            <input
+                                                style={styles.input1}
+                                                type="text"
+                                                name="departmentId"
+                                                placeholder="departmentId"
+                                                value={formData.departmentId}
+                                                onChange={handleChange}
+                                                required
+                                            />
+                                        </div>
+                                    </div>
+                                </div>
+                                <NovaPoshtaButton onDepartmentSelect={handleDepartmentSelect} />
+                            </fieldset>
+
+                            <fieldset className="">
+                                <legend>Деталі відправлення</legend>
+                                <div>
+                                    <label>Тип сервісу:</label>
+                                    <div className="ArtemNewSelectContainer">
+
+                                        <select className="selectArtem" name="serviceType" value={formData.serviceType}
+                                                onChange={handleChange}>
+                                            <option className="optionInSelectArtem"
+                                                    value="WarehouseWarehouse">Відділення-Відділення
+                                            </option>
+                                            <option className="optionInSelectArtem"
+                                                    value="WarehouseDoors">Відділення-Двері
+                                            </option>
+                                            <option className="optionInSelectArtem"
+                                                    value="DoorsWarehouse">Двері-Відділення
+                                            </option>
+                                            <option className="optionInSelectArtem" value="DoorsDoors">Двері-Двері
+                                            </option>
+                                        </select>
+                                    </div>
+                                </div>
+                                <div>
+                                    <label>Спосіб оплати:</label>
+                                    <div className="ArtemNewSelectContainer">
+
+                                        <select className="selectArtem" name="paymentMethod"
+                                                value={formData.paymentMethod} onChange={handleChange}>
+                                            <option className="optionInSelectArtem" value="Cash">Готівка</option>
+                                            <option className="optionInSelectArtem" value="NonCash">Безготівка</option>
+                                        </select>
+                                    </div>
+                                </div>
+                                <div>
+                                    <label>Платник:</label>
+                                    <div className="ArtemNewSelectContainer">
+                                        <select className="selectArtem" name="payerType" value={formData.payerType}
+                                                onChange={handleChange}>
+                                            <option className="optionInSelectArtem" value="Sender">Відправник</option>
+                                            <option className="optionInSelectArtem" value="Recipient">Одержувач</option>
+                                            <option className="optionInSelectArtem" value="ThirdPerson">Третя особа
+                                            </option>
+                                        </select>
+                                    </div>
+                                </div>
+                                <div style={styles.inputContainer}>
+                                    <label>Оголошена вартість:</label>
+                                    <input
+                                        style={styles.input1}
+                                        type="number"
+                                        name="cost"
+                                        placeholder="Оголошена вартість"
+                                        value={formData.cost}
+                                        onChange={handleChange}
+                                        required
+                                    />
+                                </div>
+                                <div>
+                                    <label>Тип вантажу:</label>
+                                    <div className="ArtemNewSelectContainer">
+                                        <select className="selectArtem" name="cargoType" value={formData.cargoType}
+                                                onChange={handleChange}>
+                                            <option className="optionInSelectArtem" value="Cargo">Вантаж</option>
+                                            <option className="optionInSelectArtem" value="Documents">Документи</option>
+                                        </select>
+                                    </div>
+                                </div>
+                                <div style={styles.inputContainer}>
+                                    <label>Вага (кг):</label>
+                                    <input
+                                        style={styles.input1}
+                                        type="number"
+                                        name="weight"
+                                        placeholder="Вага (кг)"
+                                        value={formData.weight}
+                                        onChange={handleChange}
+                                        required
+                                    />
+                                </div>
+                                <div style={styles.inputContainer}>
+                                    <label>Кількість місць:</label>
+                                    <input
+                                        style={styles.input1}
+                                        type="number"
+                                        name="seatsAmount"
+                                        placeholder="Кількість місць"
+                                        value={formData.seatsAmount}
+                                        onChange={handleChange}
+                                        required
+                                    />
+                                </div>
+                                <div style={styles.inputContainer}>
+                                    <label>Опис вантажу:</label>
+                                    <input
+                                        style={styles.input1}
+                                        type="text"
+                                        name="description"
+                                        placeholder="Опис вантажу"
+                                        value={formData.description}
+                                        onChange={handleChange}
+                                    />
+                                </div>
+                            </fieldset>
+
+                            {/*<fieldset disabled>*/}
+                            {/*    <legend>Додаткові параметри післяплати</legend>*/}
+                            {/*    <div style={styles.inputContainer}>*/}
+                            {/*        <label>Сума післяплати:</label>*/}
+                            {/*        <input style={styles.input1} type="number" name="backwardDeliverySum" placeholder="Сума післяплати" value={formData.backwardDeliverySum} onChange={handleChange} />*/}
+                            {/*    </div>*/}
+                            {/*    <div>*/}
+                            {/*        <label>Платник післяплати:</label>*/}
+                            {/*        <div className="ArtemNewSelectContainer">*/}
+                            {/*            <select className="selectArtem" name="backwardDeliveryPayer"*/}
+                            {/*                    value={formData.backwardDeliveryPayer} onChange={handleChange}>*/}
+                            {/*                <option value="Sender">Відправник</option>*/}
+                            {/*                <option value="Recipient">Одержувач</option>*/}
+                            {/*            </select>*/}
+                            {/*        </div>*/}
+                            {/*    </div>*/}
+                            {/*</fieldset>*/}
+
+                            {/*<fieldset>*/}
+                            {/*    <legend>Вибір відділення/поштомату</legend>*/}
+                            {/*    <NovaPoshtaButton onDepartmentSelect={handleDepartmentSelect} />*/}
+                            {/*</fieldset>*/}
+
+                            <button className="btn btn-warning" type="submit">Створити накладну</button>
+                        </form>
+
+                        {result && (
+                            <div>
+                                <h3>Результат:</h3>
+                                <pre>{JSON.stringify(result, null, 2)}</pre>
                             </div>
                         )}
+                        {error && <p style={{ color: 'red' }}>Помилка: {error}</p>}
                     </div>
                 </div>
             </div>
