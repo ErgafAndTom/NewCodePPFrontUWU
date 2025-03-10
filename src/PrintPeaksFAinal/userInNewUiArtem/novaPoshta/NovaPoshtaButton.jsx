@@ -48,7 +48,7 @@ const NovaPoshtaButton = ({ onDepartmentSelect }) => {
             setSelectedDescriptionText(newDescriptionText);
             setSelectedDepartmentId(event.data.id);
             if (onDepartmentSelect) {
-                onDepartmentSelect(event.data.id, event.data, newDescriptionText, event.data.refCity.externalId, event.data.externalId);
+                onDepartmentSelect(event.data.id, event.data, newDescriptionText, event.data.refCity.externalId, event.data.externalId, event.data.number);
 
             }
             closeFrame();
