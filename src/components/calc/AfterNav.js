@@ -33,6 +33,7 @@ import Goldtab from "../admin/crm/Vimogi/Goldtab";
 import Phototab from "../admin/crm/Vimogi/Phototab";
 import Widephototab from "../admin/crm/Vimogi/Widephototab";
 import Holsttab from "../admin/crm/Vimogi/Holsttab";
+import CounterpartyList from "../../PrintPeaksFAinal/novaPoshta/CounterpartyList";
 
 
 
@@ -91,6 +92,7 @@ const AfterNav = () => {
                 <Route path="/Storage" element={<CustomStorageTable name={"Склад"} />} />
                 <Route path="/Devices" element={<TableStorage name={"Devices"} />} />
                 <Route path="/Desktop" element={<Desktop />} />
+                <Route path="/CounterpartyList" element={<CounterpartyList />} />
 
                 {/* Додаємо маршрути для вкладок Vimogi */}
 

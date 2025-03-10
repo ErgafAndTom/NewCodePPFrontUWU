@@ -81,8 +81,8 @@ const Nav = () => {
 
                         {/*<button className="ButtonVimogi">Спілкування</button>*/}
                         {/*<button className="ButtonVimogi">Вимоги</button>*/}
-                        <button disabled className="ButtonVimogi">Постачальники</button>
-                        <button disabled className="ButtonVimogi">Підрядники</button>
+                        {/*<button disabled className="ButtonVimogi">Постачальники</button>*/}
+                        {/*<button disabled className="ButtonVimogi">Підрядники</button>*/}
                         <Link to="/Orders" style={{textDecoration: 'none', margin: 'auto', padding: '0', background: 'transparent'}}>
                             <button
                                 onClick={() => handleBasicClick('/Orders')}
@@ -127,6 +127,14 @@ const Nav = () => {
                                 className={basicActive === "/Trello" ? 'ButtonVimogi ButtonVimogia' : 'ButtonVimogi'}
                                 style={basicActive === "/Trello" ? {background: "#FAB416"} : {}}
                             >Завдання
+                            </button>
+                        </Link>
+                        <Link disabled onClick={() => handleBasicClick('/CounterpartyList')} to="/CounterpartyList"
+                              style={{textDecoration: 'none', margin: 'auto', padding: '0', background: 'transparent'}}>
+                            <button
+                                className={basicActive === "/CounterpartyList" ? 'ButtonVimogi ButtonVimogia' : 'ButtonVimogi'}
+                                style={basicActive === "/CounterpartyList" ? {background: "#FAB416"} : {}}
+                            >CounterpartyList
                             </button>
                         </Link>
                         {/*<Link disabled onClick={() => handleBasicClick('/TG')} to="/TG"*/}

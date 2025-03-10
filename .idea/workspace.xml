@@ -5,8 +5,11 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="7e58169f-d1e8-4cb2-8753-447dd0b39044" name="Changes" comment="ddd">
+      <change afterPath="$PROJECT_DIR$/src/PrintPeaksFAinal/novaPoshta/CounterpartyList.jsx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/PrintPeaksFAinal/userInNewUiArtem/NP.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/PrintPeaksFAinal/userInNewUiArtem/NP.jsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/PrintPeaksFAinal/NewUIArtem.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/PrintPeaksFAinal/NewUIArtem.jsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/calc/AfterNav.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/calc/AfterNav.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/nav/Nav.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/nav/Nav.js" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -204,15 +207,9 @@
       <workItem from="1741227183167" duration="8121000" />
       <workItem from="1741277189522" duration="21981000" />
       <workItem from="1741468579308" duration="8158000" />
-      <workItem from="1741529608832" duration="25801000" />
-    </task>
-    <task id="LOCAL-00004" summary="ddd">
-      <option name="closed" value="true" />
-      <created>1738103639983</created>
-      <option name="number" value="00004" />
-      <option name="presentableId" value="LOCAL-00004" />
-      <option name="project" value="LOCAL" />
-      <updated>1738103639983</updated>
+      <workItem from="1741529608832" duration="26849000" />
+      <workItem from="1741630054537" duration="4934000" />
+      <workItem from="1741641457048" duration="306000" />
     </task>
     <task id="LOCAL-00005" summary="ddd">
       <option name="closed" value="true" />
@@ -598,7 +595,15 @@
       <option name="project" value="LOCAL" />
       <updated>1741573298055</updated>
     </task>
-    <option name="localTasksCounter" value="53" />
+    <task id="LOCAL-00053" summary="ddd">
+      <option name="closed" value="true" />
+      <created>1741580043122</created>
+      <option name="number" value="00053" />
+      <option name="presentableId" value="LOCAL-00053" />
+      <option name="project" value="LOCAL" />
+      <updated>1741580043122</updated>
+    </task>
+    <option name="localTasksCounter" value="54" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">

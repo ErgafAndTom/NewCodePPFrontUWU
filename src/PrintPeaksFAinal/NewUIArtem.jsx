@@ -9,7 +9,6 @@ import {Link, useNavigate, useParams} from "react-router-dom";
 import axios from '../api/axiosInstance';
 import OneOrderButton from "../components/newUIArtem/orders/OneOrderButton";
 import {Modal} from "react-bootstrap";
-import Tooltip from './TooltipButton2';
 
 
 // Usage of ClientsMenu
