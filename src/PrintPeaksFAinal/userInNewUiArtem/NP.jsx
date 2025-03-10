@@ -53,7 +53,7 @@ function NP({ showNP, setShowNP, thisOrder, setThisOrder }) {
         // CitySender: '8d5a980d-391c-11dd-90d9-001a92567626',         // Обов'язкове: місто відправника (наприклад, "Київ" або GUID міста)
         // Sender: '',             // Обов'язкове: GUID відділення-відправника
         SenderAddress: '',      // Опційне: адреса відправника (потрібно для адресної доставки)
-        SendersPhone: '',       // Опційне: телефон відправника
+        SendersPhone: '+38 065 666 66 67',       // Опційне: телефон відправника
 
         // Дані одержувача (обов'язкові)
         RecipientWarehouseIndex: '',      // Цифрова адреса відділення одержувача
@@ -68,11 +68,17 @@ function NP({ showNP, setShowNP, thisOrder, setThisOrder }) {
         ServiceType: 'WarehouseWarehouse', // Обов'язкове: тип сервісу (наприклад, "WarehouseWarehouse")
         PaymentMethod: 'Cash',             // Обов'язкове: спосіб оплати ("Cash" або "NonCash")
         PayerType: 'Recipient',               // Обов'язкове: хто оплачує доставку ("Sender", "Recipient", "ThirdPerson")
-        Cost: '',                          // Обов'язкове: оголошена вартість (наприклад, "1000")
+        Cost: '1',                          // Обов'язкове: оголошена вартість (наприклад, "1000")
         CargoType: 'Cargo',                // Обов'язкове: тип вантажу ("Cargo" або "Documents")
-        Weight: '',                        // Обов'язкове: вага посилки (наприклад, "5")
+        Weight: '1',                        // Обов'язкове: вага посилки (наприклад, "5")
         SeatsAmount: '1',                  // Обов'язкове: кількість місць (наприклад, "1")
-        Description: '',                   // Опційне: опис вантажу
+        Description: '1',                   // Опційне: опис вантажу
+
+        // Нові поля для розмірів вантажу
+        Length: '1',       // Довжина
+        Width: '1',        // Ширина
+        Height: '1',       // Висота
+        Volume: '',       // Об'єм
 
         // Вибір відділення (обов'язкове, якщо використовується віджет)
         departmentId: null,                // Обов'язкове: GUID відділення, вибраний через NovaPoshtaButton
@@ -457,6 +463,54 @@ function NP({ showNP, setShowNP, thisOrder, setThisOrder }) {
                                         value={formData.Description}
                                         onChange={handleChange}
                                     />
+                                </div>
+
+
+                                <div className="d-flex">
+                                    <div style={styles.inputContainer}>
+                                        <span className="adminFont">Довжина (см):</span>
+                                        <input
+                                            style={styles.input1}
+                                            type="number"
+                                            name="Length"
+                                            placeholder="Довжина"
+                                            value={formData.Length}
+                                            onChange={handleChange}
+                                        />
+                                    </div>
+                                    <div style={styles.inputContainer}>
+                                        <span className="adminFont">Ширина (см):</span>
+                                        <input
+                                            style={styles.input1}
+                                            type="number"
+                                            name="Width"
+                                            placeholder="Ширина"
+                                            value={formData.Width}
+                                            onChange={handleChange}
+                                        />
+                                    </div>
+                                    <div style={styles.inputContainer}>
+                                        <span className="adminFont">Висота (см):</span>
+                                        <input
+                                            style={styles.input1}
+                                            type="number"
+                                            name="Height"
+                                            placeholder="Висота"
+                                            value={formData.Height}
+                                            onChange={handleChange}
+                                        />
+                                    </div>
+                                    <div style={styles.inputContainer}>
+                                        <span className="adminFont">Об'єм (м³):</span>
+                                        <input
+                                            style={styles.input1}
+                                            type="number"
+                                            name="Volume"
+                                            placeholder="Об'єм"
+                                            value={formData.Volume}
+                                            onChange={handleChange}
+                                        />
+                                    </div>
                                 </div>
                             </fieldset>
 
