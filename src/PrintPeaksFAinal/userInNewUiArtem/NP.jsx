@@ -47,9 +47,9 @@ function NP({ showNP, setShowNP, thisOrder, setThisOrder }) {
     const [load, setLoad] = useState(false);
     const [formData, setFormData] = useState({
         // Дані відправника (обов'язкові)
-        senderWarehouseIndex: '',    //Цифрова адреса відділення відправника
+        SenderWarehouseIndex: '',    //Цифрова адреса відділення відправника
         senderCity: 'Київ',         // Обов'язкове: місто відправника (наприклад, "Київ" або GUID міста)
-        // CitySender: 'Київ',         // Обов'язкове: місто відправника (наприклад, "Київ" або GUID міста)
+        CitySender: 'Київ',         // Обов'язкове: місто відправника (наприклад, "Київ" або GUID міста)
         // CitySender: '8d5a980d-391c-11dd-90d9-001a92567626',         // Обов'язкове: місто відправника (наприклад, "Київ" або GUID міста)
         sender: '',             // Обов'язкове: GUID відділення-відправника
         senderAddress: '',      // Опційне: адреса відправника (потрібно для адресної доставки)
@@ -58,7 +58,7 @@ function NP({ showNP, setShowNP, thisOrder, setThisOrder }) {
         // Дані одержувача (обов'язкові)
         RecipientWarehouseIndex: '',      // Цифрова адреса відділення одержувача
         recipientCity: 'Київ',      // Обов'язкове: місто одержувача (наприклад, "Львів" або GUID міста)
-        // CityRecipient: 'Київ',      // Обов'язкове: місто одержувача (наприклад, "Львів" або GUID міста)
+        CityRecipient: 'Київ',      // Обов'язкове: місто одержувача (наприклад, "Львів" або GUID міста)
         // CityRecipient: '8d5a980d-391c-11dd-90d9-001a92567626',      // Обов'язкове: місто одержувача (наприклад, "Львів" або GUID міста)
         recipient: '',          // Обов'язкове: GUID відділення-одержувача
         recipientAddress: '',   // Опційне: адреса одержувача (для адресної доставки)
@@ -94,7 +94,7 @@ function NP({ showNP, setShowNP, thisOrder, setThisOrder }) {
         }, 300); // После завершения анимации скрываем модальное окно
     }
 
-    const handleDepartmentSelect = (departmentId, shortName, description, city, allData) => {
+    const handleDepartmentSelect = (departmentId, allData, description, cityRef, departmentRef) => {
         console.log(allData);
         setFormData({
             ...formData,
@@ -103,7 +103,7 @@ function NP({ showNP, setShowNP, thisOrder, setThisOrder }) {
             // recipientCity: city || formData.recipientCity,
         });
     };
-    const handleDepartmentSelect1 = (departmentId, shortName, description, city) => {
+    const handleDepartmentSelect1 = (departmentId, allData, description, cityRef, departmentRef) => {
         setFormData({
             ...formData,
             // departmentId: departmentId,
