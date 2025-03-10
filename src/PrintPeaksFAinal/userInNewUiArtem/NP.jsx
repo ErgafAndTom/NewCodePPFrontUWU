@@ -45,40 +45,39 @@ const styles = {
 
 function NP({ showNP, setShowNP, thisOrder, setThisOrder }) {
     const [load, setLoad] = useState(false);
-    // const [formData, setFormData] = useState({
-    //     senderCity: '',
-    //     recipientCity: '',
-    //     weight: '',
-    //     cost: '',
-    //     // інші необхідні поля згідно з документацією Нової Пошти
-    // });
     const [formData, setFormData] = useState({
         // Дані відправника (обов'язкові)
-        SenderWarehouseIndex: '',    // Цифрова адреса відділення відправника
-        SenderCity: 'Київ',         // Обов'язкове: місто відправника (наприклад, "Київ" або GUID міста)
-        Sender: '',             // Обов'язкове: GUID відділення-відправника
-        SenderAddress: '',      // Опційне: адреса відправника (потрібно для адресної доставки)
-        SendersPhone: '',       // Опційне: телефон відправника
+        senderWarehouseIndex: '',    //Цифрова адреса відділення відправника
+        senderCity: 'Київ',         // Обов'язкове: місто відправника (наприклад, "Київ" або GUID міста)
+        CitySender: '118064',         // Обов'язкове: місто відправника (наприклад, "Київ" або GUID міста)
+        sender: '',             // Обов'язкове: GUID відділення-відправника
+        senderAddress: '',      // Опційне: адреса відправника (потрібно для адресної доставки)
+        sendersPhone: '',       // Опційне: телефон відправника
 
         // Дані одержувача (обов'язкові)
         RecipientWarehouseIndex: '',      // Цифрова адреса відділення одержувача
-        RecipientCity: 'Київ',      // Обов'язкове: місто одержувача (наприклад, "Львів" або GUID міста)
-        Recipient: '',          // Обов'язкове: GUID відділення-одержувача
-        RecipientAddress: '',   // Опційне: адреса одержувача (для адресної доставки)
-        RecipientsPhone: `${thisOrder.User.phoneNumber}`,    // Обов'язкове: телефон одержувача
+        recipientCity: 'Київ',      // Обов'язкове: місто одержувача (наприклад, "Львів" або GUID міста)
+        CityRecipient: '118064',      // Обов'язкове: місто одержувача (наприклад, "Львів" або GUID міста)
+        recipient: '',          // Обов'язкове: GUID відділення-одержувача
+        recipientAddress: '',   // Опційне: адреса одержувача (для адресної доставки)
+        recipientsPhone: `${thisOrder.User.phoneNumber}`,    // Обов'язкове: телефон одержувача
 
         // Деталі відправлення (обов'язкові)
-        ServiceType: 'WarehouseWarehouse', // Обов'язкове: тип сервісу (наприклад, "WarehouseWarehouse")
-        PaymentMethod: 'Cash',             // Обов'язкове: спосіб оплати ("Cash" або "NonCash")
-        PayerType: 'Recipient',               // Обов'язкове: хто оплачує доставку ("Sender", "Recipient", "ThirdPerson")
-        Cost: '',                          // Обов'язкове: оголошена вартість (наприклад, "1000")
-        CargoType: 'Cargo',                // Обов'язкове: тип вантажу ("Cargo" або "Documents")
-        Weight: '',                        // Обов'язкове: вага посилки (наприклад, "5")
-        SeatsAmount: '1',                  // Обов'язкове: кількість місць (наприклад, "1")
-        Description: '',                   // Опційне: опис вантажу
+        serviceType: 'WarehouseWarehouse', // Обов'язкове: тип сервісу (наприклад, "WarehouseWarehouse")
+        paymentMethod: 'Cash',             // Обов'язкове: спосіб оплати ("Cash" або "NonCash")
+        payerType: 'Recipient',               // Обов'язкове: хто оплачує доставку ("Sender", "Recipient", "ThirdPerson")
+        cost: '',                          // Обов'язкове: оголошена вартість (наприклад, "1000")
+        cargoType: 'Cargo',                // Обов'язкове: тип вантажу ("Cargo" або "Documents")
+        weight: '',                        // Обов'язкове: вага посилки (наприклад, "5")
+        seatsAmount: '1',                  // Обов'язкове: кількість місць (наприклад, "1")
+        description: '',                   // Опційне: опис вантажу
 
         // Вибір відділення (обов'язкове, якщо використовується віджет)
-        DepartmentId: null,                // Обов'язкове: GUID відділення, вибраний через NovaPoshtaButton
+        departmentId: null,                // Обов'язкове: GUID відділення, вибраний через NovaPoshtaButton
+
+        // Додаткові поля для післяплати (опційно)
+        // backwardDeliverySum: '',           // Опційне: сума післяплати (наприклад, "200")
+        // backwardDeliveryPayer: 'Sender',   // Опційне: хто оплачує післяплату ("Sender" або "Recipient")
     });
     const [result, setResult] = useState(null);
     const [error, setError] = useState(null);
@@ -93,7 +92,8 @@ function NP({ showNP, setShowNP, thisOrder, setThisOrder }) {
         }, 300); // После завершения анимации скрываем модальное окно
     }
 
-    const handleDepartmentSelect = (departmentId, shortName, description, city) => {
+    const handleDepartmentSelect = (departmentId, shortName, description, city, allData) => {
+        console.log(allData);
         setFormData({
             ...formData,
             // departmentId: departmentId,
@@ -119,13 +119,25 @@ function NP({ showNP, setShowNP, thisOrder, setThisOrder }) {
 
     const handleSubmit = async (e) => {
         e.preventDefault();
+        // let sityGUID;
         try {
-            const response = await axios.post('/novaposhta/create', formData);
-            setResult(response.data);
+            const response = await axios.post('/novaposhta/getCities', formData.senderCity);
+            console.log(response.data);
+            // sityGUID = response.data.data[0].Ref;
             setError(null);
         } catch (err) {
             setError(err.response?.data?.error || err.message);
         }
+
+
+        // try {
+        //     const response = await axios.post('/novaposhta/create', formData);
+        //     console.log(response.data);
+        //     setResult(response.data);
+        //     setError(null);
+        // } catch (err) {
+        //     setError(err.response?.data?.error || err.message);
+        // }
     };
 
     useEffect(() => {
@@ -214,7 +226,7 @@ function NP({ showNP, setShowNP, thisOrder, setThisOrder }) {
                                             type="text"
                                             name="senderCity"
                                             placeholder="Місто відправника"
-                                            value={formData.SenderCity}
+                                            value={formData.senderCity}
                                             onChange={handleChange}
                                             required
                                         />
@@ -226,7 +238,7 @@ function NP({ showNP, setShowNP, thisOrder, setThisOrder }) {
                                             type="text"
                                             name="sender"
                                             placeholder="Відправник"
-                                            value={formData.Sender}
+                                            value={formData.sender}
                                             onChange={handleChange}
                                             required
                                         />
@@ -250,7 +262,7 @@ function NP({ showNP, setShowNP, thisOrder, setThisOrder }) {
                                             type="text"
                                             name="sendersPhone"
                                             placeholder="Телефон відправника"
-                                            value={formData.SendersPhone}
+                                            value={formData.sendersPhone}
                                             onChange={handleChange}
                                             required
                                         />
@@ -271,7 +283,7 @@ function NP({ showNP, setShowNP, thisOrder, setThisOrder }) {
                                             type="text"
                                             name="recipientCity"
                                             placeholder="Місто одержувача"
-                                            value={formData.RecipientCity}
+                                            value={formData.recipientCity}
                                             onChange={handleChange}
                                             required
                                         />
@@ -283,7 +295,7 @@ function NP({ showNP, setShowNP, thisOrder, setThisOrder }) {
                                             type="text"
                                             name="recipient"
                                             placeholder="Одержувач"
-                                            value={formData.Recipient}
+                                            value={formData.recipient}
                                             onChange={handleChange}
                                             required
                                         />
@@ -307,7 +319,7 @@ function NP({ showNP, setShowNP, thisOrder, setThisOrder }) {
                                             type="text"
                                             name="recipientsPhone"
                                             placeholder="Телефон одержувача"
-                                            value={formData.RecipientsPhone}
+                                            value={formData.recipientsPhone}
                                             onChange={handleChange}
                                             required
                                         />
@@ -338,7 +350,7 @@ function NP({ showNP, setShowNP, thisOrder, setThisOrder }) {
                                     <span className="adminFont">Тип сервісу:</span>
                                     <div className="ArtemNewSelectContainer">
 
-                                        <select className="selectArtem" name="serviceType" value={formData.ServiceType}
+                                        <select className="selectArtem" name="serviceType" value={formData.serviceType}
                                                 onChange={handleChange} style={styles.select1}>
                                             <option className="optionInSelectArtem"
                                                     value="WarehouseWarehouse">Відділення-Відділення
@@ -359,7 +371,7 @@ function NP({ showNP, setShowNP, thisOrder, setThisOrder }) {
                                     <div className="ArtemNewSelectContainer">
 
                                         <select className="selectArtem" name="paymentMethod" style={styles.select1}
-                                                value={formData.PaymentMethod} onChange={handleChange}>
+                                                value={formData.paymentMethod} onChange={handleChange}>
                                             <option className="optionInSelectArtem" value="Cash">Готівка</option>
                                             <option className="optionInSelectArtem" value="NonCash">Безготівка</option>
                                         </select>
@@ -368,7 +380,7 @@ function NP({ showNP, setShowNP, thisOrder, setThisOrder }) {
                                 <div style={styles.inputContainer}>
                                     <span className="adminFont">Платник:</span>
                                     <div className="ArtemNewSelectContainer">
-                                        <select className="selectArtem" name="payerType" value={formData.PayerType}
+                                        <select className="selectArtem" name="payerType" value={formData.payerType}
                                                 style={styles.select1}
                                                 onChange={handleChange}>
                                             <option className="optionInSelectArtem" value="Sender">Відправник</option>
@@ -385,7 +397,7 @@ function NP({ showNP, setShowNP, thisOrder, setThisOrder }) {
                                         type="number"
                                         name="cost"
                                         placeholder="Оголошена вартість"
-                                        value={formData.Cost}
+                                        value={formData.cost}
                                         onChange={handleChange}
                                         required
                                     />
@@ -393,7 +405,7 @@ function NP({ showNP, setShowNP, thisOrder, setThisOrder }) {
                                 <div style={styles.inputContainer}>
                                     <span className="adminFont">Тип вантажу:</span>
                                     <div className="ArtemNewSelectContainer">
-                                        <select className="selectArtem" name="cargoType" value={formData.CargoType}
+                                        <select className="selectArtem" name="cargoType" value={formData.cargoType}
                                                 style={styles.select1}
                                                 onChange={handleChange}>
                                             <option className="optionInSelectArtem" value="Cargo">Вантаж</option>
@@ -408,7 +420,7 @@ function NP({ showNP, setShowNP, thisOrder, setThisOrder }) {
                                         type="number"
                                         name="weight"
                                         placeholder="Вага (кг)"
-                                        value={formData.Weight}
+                                        value={formData.weight}
                                         onChange={handleChange}
                                         required
                                     />
@@ -420,7 +432,7 @@ function NP({ showNP, setShowNP, thisOrder, setThisOrder }) {
                                         type="number"
                                         name="seatsAmount"
                                         placeholder="Кількість місць"
-                                        value={formData.SeatsAmount}
+                                        value={formData.seatsAmount}
                                         onChange={handleChange}
                                         required
                                     />
@@ -432,7 +444,7 @@ function NP({ showNP, setShowNP, thisOrder, setThisOrder }) {
                                         type="text"
                                         name="description"
                                         placeholder="Опис вантажу"
-                                        value={formData.Description}
+                                        value={formData.description}
                                         onChange={handleChange}
                                     />
                                 </div>
