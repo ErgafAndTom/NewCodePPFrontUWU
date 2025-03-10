@@ -107,7 +107,7 @@ function NP({ showNP, setShowNP, thisOrder, setThisOrder }) {
             // departmentId: departmentId,
             CityRecipient: cityRef,
             RecipientAddress: departmentRef,
-            Recipient: departmentRef,
+            Recipient: departmentId,
             // RecipientWarehouseIndex: departmentRef,
             // Recipient: departmentId,
             // recipientCity: city || formData.recipientCity,
@@ -119,7 +119,7 @@ function NP({ showNP, setShowNP, thisOrder, setThisOrder }) {
             // departmentId: departmentId,
             CitySender: cityRef,
             SenderAddress: departmentRef,
-            Sender: departmentRef,
+            Sender: departmentId,
             // SenderWarehouseIndex: departmentRef,
             // Sender: departmentId,
             // recipientCity: city || formData.recipientCity,
@@ -541,9 +541,9 @@ function NP({ showNP, setShowNP, thisOrder, setThisOrder }) {
                         </form>
 
                         {result && (
-                            <div>
+                            <div className="">
                                 <h3>Результат:</h3>
-                                <pre>{JSON.stringify(result, null, 2)}</pre>
+                                <pre style={{ overflow: 'auto', height: '16vh', background: "white" }}>{JSON.stringify(result, null, 2)}</pre>
                             </div>
                         )}
                         {error && <p style={{ color: 'red' }}>Помилка: {error}</p>}
