@@ -49,7 +49,8 @@ function NP({ showNP, setShowNP, thisOrder, setThisOrder }) {
         // Дані відправника (обов'язкові)
         senderWarehouseIndex: '',    //Цифрова адреса відділення відправника
         senderCity: 'Київ',         // Обов'язкове: місто відправника (наприклад, "Київ" або GUID міста)
-        CitySender: '118064',         // Обов'язкове: місто відправника (наприклад, "Київ" або GUID міста)
+        // CitySender: 'Київ',         // Обов'язкове: місто відправника (наприклад, "Київ" або GUID міста)
+        // CitySender: '8d5a980d-391c-11dd-90d9-001a92567626',         // Обов'язкове: місто відправника (наприклад, "Київ" або GUID міста)
         sender: '',             // Обов'язкове: GUID відділення-відправника
         senderAddress: '',      // Опційне: адреса відправника (потрібно для адресної доставки)
         sendersPhone: '',       // Опційне: телефон відправника
@@ -57,7 +58,8 @@ function NP({ showNP, setShowNP, thisOrder, setThisOrder }) {
         // Дані одержувача (обов'язкові)
         RecipientWarehouseIndex: '',      // Цифрова адреса відділення одержувача
         recipientCity: 'Київ',      // Обов'язкове: місто одержувача (наприклад, "Львів" або GUID міста)
-        CityRecipient: '118064',      // Обов'язкове: місто одержувача (наприклад, "Львів" або GUID міста)
+        // CityRecipient: 'Київ',      // Обов'язкове: місто одержувача (наприклад, "Львів" або GUID міста)
+        // CityRecipient: '8d5a980d-391c-11dd-90d9-001a92567626',      // Обов'язкове: місто одержувача (наприклад, "Львів" або GUID міста)
         recipient: '',          // Обов'язкове: GUID відділення-одержувача
         recipientAddress: '',   // Опційне: адреса одержувача (для адресної доставки)
         recipientsPhone: `${thisOrder.User.phoneNumber}`,    // Обов'язкове: телефон одержувача
@@ -120,24 +122,24 @@ function NP({ showNP, setShowNP, thisOrder, setThisOrder }) {
     const handleSubmit = async (e) => {
         e.preventDefault();
         // let sityGUID;
-        try {
-            const response = await axios.post('/novaposhta/getCities', formData.senderCity);
-            console.log(response.data);
-            // sityGUID = response.data.data[0].Ref;
-            setError(null);
-        } catch (err) {
-            setError(err.response?.data?.error || err.message);
-        }
-
-
         // try {
-        //     const response = await axios.post('/novaposhta/create', formData);
+        //     const response = await axios.post('/novaposhta/getCities', formData.senderCity);
         //     console.log(response.data);
-        //     setResult(response.data);
+        //     // sityGUID = response.data.data[0].Ref;
         //     setError(null);
         // } catch (err) {
         //     setError(err.response?.data?.error || err.message);
         // }
+
+
+        try {
+            const response = await axios.post('/novaposhta/create', formData);
+            console.log(response.data);
+            setResult(response.data);
+            setError(null);
+        } catch (err) {
+            setError(err.response?.data?.error || err.message);
+        }
     };
 
     useEffect(() => {
