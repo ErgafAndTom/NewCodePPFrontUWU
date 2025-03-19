@@ -129,14 +129,14 @@ const Nav = () => {
                             >Завдання
                             </button>
                         </Link>
-                        <Link disabled onClick={() => handleBasicClick('/CounterpartyList')} to="/CounterpartyList"
-                              style={{textDecoration: 'none', margin: 'auto', padding: '0', background: 'transparent'}}>
-                            <button
-                                className={basicActive === "/CounterpartyList" ? 'ButtonVimogi ButtonVimogia' : 'ButtonVimogi'}
-                                style={basicActive === "/CounterpartyList" ? {background: "#FAB416"} : {}}
-                            >CounterpartyList
-                            </button>
-                        </Link>
+                        {/*<Link disabled onClick={() => handleBasicClick('/CounterpartyList')} to="/CounterpartyList"*/}
+                        {/*      style={{textDecoration: 'none', margin: 'auto', padding: '0', background: 'transparent'}}>*/}
+                        {/*    <button*/}
+                        {/*        className={basicActive === "/CounterpartyList" ? 'ButtonVimogi ButtonVimogia' : 'ButtonVimogi'}*/}
+                        {/*        style={basicActive === "/CounterpartyList" ? {background: "#FAB416"} : {}}*/}
+                        {/*    >CounterpartyList*/}
+                        {/*    </button>*/}
+                        {/*</Link>*/}
                         {/*<Link disabled onClick={() => handleBasicClick('/TG')} to="/TG"*/}
                         {/*      style={{textDecoration: 'none', margin: 'auto', padding: '0', background: 'transparent'}}>*/}
                         {/*    <button*/}

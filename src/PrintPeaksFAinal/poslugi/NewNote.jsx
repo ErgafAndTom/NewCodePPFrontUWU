@@ -267,6 +267,7 @@ const NewNote = ({
             materialAndDrukInBody: materialAndDrukInBody,
             materialAndDrukBack: materialAndDrukBack,
         }
+        console.log(dataToSend);
         axios.post(`/calc/pricing`, dataToSend)
             .then(response => {
                 setPricesThis(response.data.prices)

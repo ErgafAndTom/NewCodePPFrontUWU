@@ -54,7 +54,7 @@ const PerepletMet = ({
         thickness: "Тонкі",
         material: "",
         materialId: "",
-        size: ">120",
+        size: "<120",
         typeUse: "Брошурування до 120 аркушів"
     });
     const [color, setColor] = useState({

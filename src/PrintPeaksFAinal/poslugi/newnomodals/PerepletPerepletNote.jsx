@@ -59,11 +59,12 @@ const PerepletPereplet = ({pereplet, setPereplet, prices, buttonsArr, selectArr,
         axios.post(`/materials/NotAll`, data)
             .then(response => {
                 setThisPerepletVariants(response.data.rows);
+                console.log(response.data.rows[2]);
                 if (response.data.rows[2]) {
                     setPereplet({
                         ...pereplet,
                         material: response.data.rows[2].name,
-                        materialId: response.data.rows[2].id,
+                        materialId: response.data.rows[2].id
                     });
                 }
 
