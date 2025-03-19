@@ -41,6 +41,7 @@ function ImageList({ images, onRemove }) {
                             maxHeight: "30vh",
                             objectFit: "cover"
                         }}
+                        onClick={() => window.open(`/images/${img.photoLink}`, '_blank')}
                     />
                     <button
                         onClick={() => onRemove(img.id)}

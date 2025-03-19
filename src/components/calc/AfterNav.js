@@ -79,7 +79,7 @@ const AfterNav = () => {
                 <Route path="/TG" element={<TelegramBot />} />
                 <Route path="/db3" element={<TableManager />} />
                 <Route path="/Trello" element={<TrelloLikeBoards2 />} />
-                <Route path="/Trello2" element={<TrelloLikeBoards />} />
+                {/*<Route path="/Trello2" element={<TrelloLikeBoards />} />*/}
                 <Route path="/Vimogi" element={<Vimogi />} />
                 <Route path="/files" element={<Files />} />
                 <Route path="/createOrder" element={<CreateOrder />} />

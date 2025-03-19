@@ -336,6 +336,7 @@ const TrelloBoard = () => {
                                                     pointerEvents: "none",
                                                     userSelect: "none",
                                                 }}
+                                                onClick={() => window.open(`/images/${photo.photoLink}`, '_blank')}
                                             />
                                         ))}
                                     </div>
