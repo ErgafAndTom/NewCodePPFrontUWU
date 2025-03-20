@@ -16,4 +16,5 @@
 .commentInOrder-textData {
     display: inline;
     white-space: nowrap;
+    font-size: 0.7vw;
 }

@@ -65,7 +65,7 @@ const FilesInOrder = ({thisOrder}) => {
     };
 
     return (
-        <div className="d-flex flex-column justify-content-between" style={{height: '88.1vh', background: 'white'}}>
+        <div className="d-flex flex-column justify-content-between" style={{height: '88.1vh', background: 'transparent'}}>
             {/* Скрытый input для выбора файла */}
             <input
                 type="file"

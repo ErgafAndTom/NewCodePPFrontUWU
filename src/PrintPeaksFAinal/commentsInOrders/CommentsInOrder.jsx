@@ -1,127 +1,136 @@
 import axios from "../../api/axiosInstance";
-import React, {useEffect, useRef, useState} from "react";
-import {Link, useNavigate} from "react-router-dom";
-import {Spinner} from "react-bootstrap";
+import React, { useEffect, useRef, useState } from "react";
+import { useNavigate } from "react-router-dom";
+import { Spinner } from "react-bootstrap";
+import { IoSend } from "react-icons/io5";
 
-const CommentsInOrder = ({thisOrder}) => {
-    const [load, setLoad] = useState(true);
-    const navigate = useNavigate();
-    const fileInputRef = useRef(null);
+const CommentsInOrder = ({ thisOrder }) => {
+    const [loading, setLoading] = useState(true);
     const [error, setError] = useState(null);
-    const [comments, setComments] = useState(null);
+    const [comments, setComments] = useState([]);
+    const [commentInputActive, setCommentInputActive] = useState(false);
+    const [newCommentText, setNewCommentText] = useState('');
+    const navigate = useNavigate();
+    const blurTimeoutRef = useRef(null);
 
     useEffect(() => {
         if (thisOrder.id) {
-            setLoad(true);
+            setLoading(true);
             setError(null);
-            let data = {
-                id: thisOrder.id
-            };
-            axios.post(`/orders/${thisOrder.id}/getComment`, data)
+            axios.post(`/orders/${thisOrder.id}/getComment`, { id: thisOrder.id })
                 .then(response => {
-                    console.log(response.data);
-                    setComments(response.data);
-                    setLoad(false);
+                    setComments(response.data || []);
+                    setLoading(false);
                 })
-                .catch((error) => {
-                    console.log(error.message);
-                    if (error.response && error.response.status === 403) {
-                        navigate('/login');
-                    }
-                    setLoad(false);
-                    setError(error.message);
+                .catch(error => {
+                    if (error.response?.status === 403) navigate('/login');
+                    else setError(error.message || "Ошибка получения комментариев");
+                    setLoading(false);
                 });
         }
-    }, [thisOrder.id]);
+    }, [thisOrder.id, navigate]);
 
-    // const uploadFile = async (orderId, file) => {
-    //     const formData = new FormData();
-    //     formData.append('file', file);
-    //
-    //     try {
-    //         setLoad(true);
-    //         setError(null);
-    //         const res = await axios.post(`/orders/${orderId}/addNewComment`, formData, {
-    //             headers: {
-    //                 'Content-Type': 'multipart/form-data',
-    //             },
-    //         });
-    //         console.log(res.data);
-    //         // Если нужно, обновите список файлов после загрузки, например:
-    //         setComments([...files, res.data]);
-    //         setLoad(false);
-    //     } catch (error) {
-    //         console.error('Ошибка загрузки файла:', error);
-    //         setLoad(false);
-    //         setError(error.message);
-    //     }
-    // };
+    const sendComment = async () => {
+        if (!newCommentText.trim()) {
+            setCommentInputActive(false);
+            return;
+        }
 
-    // const handleFileChange = (event) => {
-    //     const file = event.target.files[0];
-    //     if (file) {
-    //         uploadFile(thisOrder.id, file);
-    //     }
-    // };
+        clearTimeout(blurTimeoutRef.current);
+
+        setLoading(true);
+        setError(null);
+        try {
+            const res = await axios.post(`/orders/${thisOrder.id}/addNewComment`, { comment: newCommentText });
+            setComments(prev => [...prev, res.data]);
+            setNewCommentText('');
+        } catch (error) {
+            setError(error.message || "Ошибка отправки комментария");
+        } finally {
+            setLoading(false);
+            setCommentInputActive(false);
+        }
+    };
+
+    const handleBlur = () => {
+        blurTimeoutRef.current = setTimeout(() => {
+            setCommentInputActive(false);
+            setNewCommentText('');
+        }, 200); // таймаут достаточный для обработки клика
+    };
+
+    const handleFocus = () => {
+        clearTimeout(blurTimeoutRef.current);
+    };
+
+    const handleKeyPress = (event) => {
+        if (event.key === 'Enter') {
+            sendComment();
+        }
+    };
 
     return (
-        <div className="d-flex flex-column justify-content-between" style={{height: '100%', background: 'white', width: '100%'}}>
-            {/* Скрытый input для выбора файла */}
-            <input
-                type="file"
-                ref={fileInputRef}
-                style={{ display: 'none' }}
-                // onChange={handleFileChange}
-            />
-            <div className="d-flex flex-column">
-                {comments && (
-                    <div className="d-flex flex-column" style={{marginTop: '0.5vh', overflow: 'auto', height: '100%', width: '100%'}}>
-                        {comments.map((item, iter2) => (
-                            <div
-                                key={item + iter2}
-                                className="d-flex align-content-center align-items-center text-decoration-none filesInOrder-addButton justify-content-between"
-                                // to={`/Desktop/${item.id}`}
-                                // to={`/files/${thisOrder.id}/${item.fileLink}`}
-                            >
-                                <div className="d-flex">
-                                    <div className="commentInOrder-textComment" style={{opacity: "50%", color: "blue"}}>
-                                        {item.createdBy.username}:
-                                    </div>
-                                    <div className="commentInOrder-textComment">
-                                        {item.comment}
-                                    </div>
-                                </div>
-                                <div className="commentInOrder-textComment" style={{}}>
-                                    <div className="commentInOrder-textComment commentInOrder-textData" style={{opacity: "50%"}}>{`${new Date(item.createdAt).toLocaleDateString()} ${new Date(item.createdAt).toLocaleTimeString()}`}</div>
-                                </div>
-                            </div>
-                        ))}
-                    </div>
-                )}
-                {load && (
+        <div className="d-flex flex-column justify-content-between" style={{ height: '100%', background: 'transparent', width: '55vw' }}>
+            <div className="d-flex flex-column overflow-auto" style={{ flexGrow: 1, marginTop: '0.5vh' }}>
+                {loading && (
                     <div className="d-flex justify-content-center align-items-center">
-                        <Spinner animation="grow" style={{
-                            color: "rgb(10,255,0)",
-                        }} variant="dark"/>
+                        <Spinner animation="grow" style={{ color: "rgb(10,255,0)" }} variant="dark" />
                     </div>
                 )}
+
                 {error && (
-                    <div className="alert alert-danger" role="alert">
-                        {error}
-                    </div>
+                    <div className="alert alert-danger">{error}</div>
                 )}
+
+                {!loading && comments.length === 0 && (
+                    <div className="text-muted text-center">Комментариев пока нет.</div>
+                )}
+
+                {comments.map((item, idx) => (
+                    <div key={item.id || idx} className="d-flex justify-content-between align-items-center filesInOrder-addButton">
+                        <div className="d-flex">
+                            <div style={{ opacity: "50%", color: "blue" }}>
+                                {item.createdBy.username}:
+                            </div>
+                            <div className="commentInOrder-textComment">
+                                {item.comment}
+                            </div>
+                        </div>
+                        <div style={{ opacity: "50%" }} className="commentInOrder-textData">
+                            {`${new Date(item.createdAt).toLocaleDateString()} ${new Date(item.createdAt).toLocaleTimeString()}`}
+                        </div>
+                    </div>
+                ))}
             </div>
-            <div
-                className="d-flex align-items-center justify-content-center filesInOrder-addButton"
-                onClick={() => fileInputRef.current && fileInputRef.current.click()}
-                style={{
-                    marginTop: '0.5vh',
-                    cursor: 'pointer',
-                    fontSize: '1.7vh'
-                }}
-            >
-                +
-            </div>
+
+            {commentInputActive ? (
+                <div className="d-flex align-items-center justify-content-between filesInOrder-addButton" style={{ marginTop: '0.5vh' }}>
+                    <input
+                        autoFocus
+                        style={{ flexGrow: 1, border: 'none', outline: 'none', padding: '0.5rem' }}
+                        value={newCommentText}
+                        onChange={(e) => setNewCommentText(e.target.value)}
+                        onKeyPress={handleKeyPress}
+                        onBlur={handleBlur}
+                        onFocus={handleFocus}
+                        placeholder="Введите комментарий..."
+                    />
+                    <IoSend
+                        size={24}
+                        style={{ cursor: 'pointer', marginRight: '10px', color: '#007bff' }}
+                        onMouseDown={(e) => e.preventDefault()} // предотвращаем потерю фокуса до клика
+                        onClick={sendComment}
+                    />
+                </div>
+            ) : (
+                <div
+                    className="d-flex align-items-center justify-content-center filesInOrder-addButton"
+                    onClick={() => setCommentInputActive(true)}
+                    style={{ marginTop: '0.5vh', cursor: 'pointer', fontSize: '1.7vh' }}
+                >
+                    +
+                </div>
+            )}
         </div>
     );
 };
