@@ -5,11 +5,12 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="7e58169f-d1e8-4cb2-8753-447dd0b39044" name="Changes" comment="ddd">
-      <change afterPath="$PROJECT_DIR$/src/PrintPeaksFAinal/filesInOrder/FilesInOrder.jsx" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/newGlobalCss.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/PrintPeaksFAinal/commentsInOrders/CommentsInOrder.jsx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/PrintPeaksFAinal/NewUIArtem.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/PrintPeaksFAinal/NewUIArtem.jsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/index.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/PrintPeaksFAinal/filesInOrder/FilesInOrder.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/PrintPeaksFAinal/filesInOrder/FilesInOrder.jsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/PrintPeaksFAinal/userInNewUiArtem/StyleArtem.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/PrintPeaksFAinal/userInNewUiArtem/StyleArtem.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/newGlobalCss.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/newGlobalCss.css" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -215,15 +216,10 @@
       <workItem from="1741799262632" duration="1105000" />
       <workItem from="1742252082808" duration="597000" />
       <workItem from="1742318245916" duration="6577000" />
-      <workItem from="1742420332648" duration="8928000" />
-    </task>
-    <task id="LOCAL-00008" summary="ddd">
-      <option name="closed" value="true" />
-      <created>1738546346991</created>
-      <option name="number" value="00008" />
-      <option name="presentableId" value="LOCAL-00008" />
-      <option name="project" value="LOCAL" />
-      <updated>1738546346991</updated>
+      <workItem from="1742420332648" duration="9383000" />
+      <workItem from="1742433970073" duration="1846000" />
+      <workItem from="1742436297740" duration="369000" />
+      <workItem from="1742436682871" duration="1425000" />
     </task>
     <task id="LOCAL-00009" summary="ddd">
       <option name="closed" value="true" />
@@ -609,7 +605,15 @@
       <option name="project" value="LOCAL" />
       <updated>1742418702900</updated>
     </task>
-    <option name="localTasksCounter" value="57" />
+    <task id="LOCAL-00057" summary="ddd">
+      <option name="closed" value="true" />
+      <created>1742430109199</created>
+      <option name="number" value="00057" />
+      <option name="presentableId" value="LOCAL-00057" />
+      <option name="project" value="LOCAL" />
+      <updated>1742430109199</updated>
+    </task>
+    <option name="localTasksCounter" value="58" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">

@@ -53,6 +53,7 @@ import {ExampleLoaderComponent} from "../dev/palette";
 import NewCup from "./poslugi/NewCup";
 import NovaPoshtaButton from "./userInNewUiArtem/novaPoshta/NovaPoshtaButton";
 import FilesInOrder from "./filesInOrder/FilesInOrder";
+import CommentsInOrder from "./commentsInOrders/CommentsInOrder";
 
 const NewUIArtem = () => {
     const navigate = useNavigate();
@@ -308,7 +309,7 @@ const NewUIArtem = () => {
 
                         </div>
 
-                        <div className="containerNewUI containerProducts">
+                        <div className="containerNewUI containerProducts d-flex flex-column">
                             <div
                                 onClick={(event) => setShowNewNote(true)}
                                 className="cursorPointer printers gif" style={{width: "4vw", marginLeft: "0vw"}}>
@@ -318,9 +319,9 @@ const NewUIArtem = () => {
                                 {/*<img src={img7} className="card-img-top anim" alt="..."/>*/}
                             </div>
                         </div>
-                        {/*<div className="containerNewUI containerMaterials">*/}
-
-                        {/*</div>*/}
+                        <div className="containerNewUI containerMaterials">
+                            <CommentsInOrder thisOrder={thisOrder}/>
+                        </div>
                     </div>
                     <div className="d-flex flex-column" style={{marginLeft: "0.3vw"}}>
                         <div className="containerNewUI containerOrderUnits" style={{

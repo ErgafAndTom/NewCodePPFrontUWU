@@ -1,7 +1,6 @@
 import axios from "../../api/axiosInstance";
 import React, {useEffect, useRef, useState} from "react";
 import {Link, useNavigate} from "react-router-dom";
-import OneOrderButton from "../../components/newUIArtem/orders/OneOrderButton";
 import {Spinner} from "react-bootstrap";
 
 const FilesInOrder = ({thisOrder}) => {
