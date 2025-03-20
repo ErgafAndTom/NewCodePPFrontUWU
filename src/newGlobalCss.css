@@ -1,0 +1,11 @@
+.filesInOrder-addButton {
+    background-color: #F2EFE8;
+    padding: 1vh;
+    margin: 0.5vh;
+    border-radius: 1vh;
+    /*box-shadow: 0 0.1vw 0.2vw rgba(0, 0, 0, 0.2);*/
+    cursor: pointer;
+}
+.filesInOrder-addButton:hover {
+    background-color: rgb(227, 221, 203);
+}

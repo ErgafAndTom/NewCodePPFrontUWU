@@ -52,6 +52,7 @@ import ProgressBar from "../ProgressBar";
 import {ExampleLoaderComponent} from "../dev/palette";
 import NewCup from "./poslugi/NewCup";
 import NovaPoshtaButton from "./userInNewUiArtem/novaPoshta/NovaPoshtaButton";
+import FilesInOrder from "./filesInOrder/FilesInOrder";
 
 const NewUIArtem = () => {
     const navigate = useNavigate();
@@ -206,65 +207,9 @@ const NewUIArtem = () => {
                         height: "vh",
 
                     }}>
-                        {/*<div className="d-flex">*/}
-                        {/*    <Tooltip text="___На перевірці" position="right">*/}
-                        {/*        <div className="iconButtonNewUI" style={{*/}
-                        {/*            background: "#848484",*/}
-                        {/*            borderBottomLeftRadius: "0.5vw",*/}
-                        {/*            borderTopLeftRadius: "0.5vw",*/}
-                        {/*            height: "2vw",*/}
-                        {/*            width: "1.2vw"*/}
-                        {/*        }}>*/}
-                        {/*        </div>*/}
-                        {/*    </Tooltip>*/}
-                        {/*    <Tooltip text="В роботі" position="right">*/}
-                        {/*        <div className="iconButtonNewUI" style={{*/}
-                        {/*            background: "#FFCC00",*/}
-                        {/*            height: "2vw",*/}
-                        {/*            width: "1.2vw"*/}
-                        {/*        }}>*/}
-                        {/*        </div>*/}
-                        {/*    </Tooltip>*/}
-                        {/*    <Tooltip text="Готово" position="right">*/}
-                        {/*        <div className="iconButtonNewUI" style={{*/}
-                        {/*            background: "#3C60A6",*/}
-                        {/*            height: "2vw",*/}
-                        {/*            width: "1.2vw"*/}
-
-                        {/*        }}>*/}
-                        {/*        </div>*/}
-                        {/*    </Tooltip>*/}
-                        {/*    <Tooltip text="Віддали" position="right">*/}
-                        {/*        <div className="iconButtonNewUI" style={{*/}
-                        {/*            background: "#008249",*/}
-                        {/*            height: "2vw",*/}
-                        {/*            width: "1.2vw",*/}
-                        {/*            borderBottomRightRadius: "0.5vw",*/}
-                        {/*            borderTopRightRadius: "0.5vw"*/}
-                        {/*        }}>*/}
-                        {/*        </div>*/}
-                        {/*    </Tooltip>*/}
-                        {/*</div>*/}
-                        {/*<OneOrderButton item={thisOrder} thisOrder={thisOrder}/>*/}
-                        {orders && (
-                            <div
-                                className="OrdersContainer d-flex flex-column"
-                                // style={{overflow: 'auto'}}
-                            >
-                                {orders.rows.map((item, iter2) => (
-                                    <Link
-                                        key={item + iter2}
-                                        className="d-flex align-content-center align-items-center text-decoration-none"
-                                        to={`/Desktop/${item.id}`}
-                                    >
-                                        {thisOrder && (
-                                            <OneOrderButton item={item} thisOrder={thisOrder}/>
-                                        )}
-                                    </Link>
-                                ))}
-                            </div>
-                        )}
-                        <ExampleLoaderComponent/>
+                        <FilesInOrder
+                            thisOrder={thisOrder}
+                        />
                     </div>
 
                     <div className="containerForContNewUI">
