@@ -5,11 +5,9 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="7e58169f-d1e8-4cb2-8753-447dd0b39044" name="Changes" comment="ddd">
-      <change afterPath="$PROJECT_DIR$/src/PrintPeaksFAinal/Orders/FiltrOrders.jsx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/PrintPeaksFAinal/Orders/CustomOrderTable.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/PrintPeaksFAinal/Orders/CustomOrderTable.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/PrintPeaksFAinal/Orders/CustomOrderTable2.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/PrintPeaksFAinal/Orders/CustomOrderTable2.jsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/PrintPeaksFAinal/userInNewUiArtem/ClientChangerUIArtem.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/PrintPeaksFAinal/userInNewUiArtem/ClientChangerUIArtem.jsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/PrintPeaksFAinal/Orders/FiltrOrders.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/PrintPeaksFAinal/Orders/FiltrOrders.jsx" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -222,15 +220,7 @@
       <workItem from="1742446898921" duration="2759000" />
       <workItem from="1742494006661" duration="1064000" />
       <workItem from="1742635030877" duration="158000" />
-      <workItem from="1743022481452" duration="11596000" />
-    </task>
-    <task id="LOCAL-00011" summary="ddd">
-      <option name="closed" value="true" />
-      <created>1738922687155</created>
-      <option name="number" value="00011" />
-      <option name="presentableId" value="LOCAL-00011" />
-      <option name="project" value="LOCAL" />
-      <updated>1738922687155</updated>
+      <workItem from="1743022481452" duration="12607000" />
     </task>
     <task id="LOCAL-00012" summary="ddd">
       <option name="closed" value="true" />
@@ -616,7 +606,15 @@
       <option name="project" value="LOCAL" />
       <updated>1742448902846</updated>
     </task>
-    <option name="localTasksCounter" value="60" />
+    <task id="LOCAL-00060" summary="ddd">
+      <option name="closed" value="true" />
+      <created>1743069851703</created>
+      <option name="number" value="00060" />
+      <option name="presentableId" value="LOCAL-00060" />
+      <option name="project" value="LOCAL" />
+      <updated>1743069851703</updated>
+    </task>
+    <option name="localTasksCounter" value="61" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">

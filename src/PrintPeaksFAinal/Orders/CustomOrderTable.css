@@ -31,7 +31,7 @@ body {
 }
 .CustomOrderTable-body {
     width: 100%;
-    height: 75vh;
+    height: 80vh;
     overflow-x: auto;
 }
 .CustomOrderTable-preHeader{
@@ -273,11 +273,12 @@ body {
 .CustomOrderTable-delete-btn:hover {
     background-color: #c72e19;
 }
-
+.statusEnabled:hover{
+    background: #FAB416;
+}
 .statusDisabled{
-    background: linear-gradient(30deg, gray 43%, red 50%, gray 57%);
+    background: linear-gradient(27deg, #575757 40%, red 45%, red 55%, #575757 60%);
 }
 .statusDisabled:hover{
-    background: linear-gradient(30deg, gray 43%, red 50%, gray 57%);
-    
+    background: linear-gradient(27deg, #FAB416 40%, red 45%, red 55%, #FAB416 60%);
 }

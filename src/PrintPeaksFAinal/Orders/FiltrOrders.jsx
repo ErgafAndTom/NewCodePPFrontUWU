@@ -23,6 +23,8 @@ const FiltrOrders = ({ typeSelect, setTypeSelect, startDate, endDate, setEndDate
     const handleToggleStatusSearch = () => {
         if (isEnabledStatusSearch) {
             setStatuses({...statuses, status0: true, status1: true, status2: true, status3: true, status4: true, status5: true})
+        } else {
+            setStatuses({...statuses, status0: false, status1: false, status2: false, status3: false, status4: false, status5: false})
         }
         setIsEnabledStatusSearch(!isEnabledStatusSearch);
     };
@@ -58,7 +60,7 @@ const FiltrOrders = ({ typeSelect, setTypeSelect, startDate, endDate, setEndDate
     return (
         <div>
             <div className="d-flex">
-                <button className="btn adminFont" onClick={handleClickFilter}>
+                <button className="btn btn-sm btn-warning adminFont" onClick={handleClickFilter}>
                     <i className="fas fa-search">filtres</i>
                 </button>
                 {/*<>*/}
@@ -159,27 +161,27 @@ const FiltrOrders = ({ typeSelect, setTypeSelect, startDate, endDate, setEndDate
 
                                         {isEnabledStatusSearch && (
                                             <div className="d-flex align-items-center" style={{ margin: "auto" }}>
-                                                <div className={`btn ${statuses.status0 ? '' : 'statusDisabled'}`} style={{}}
+                                                <div className={`btn btn-lg ${statuses.status0 ? 'statusEnabled' : 'statusDisabled'}`} style={{}}
                                                      onClick={statuses.status0 ? () => setStatuses({...statuses, status0: false}) : () => setStatuses({...statuses, status0: true})}>
                                                     <StatusBar item={{status: "0"}}/>
                                                 </div>
-                                                <div className={`btn ${statuses.status1 ? '' : 'statusDisabled'}`} style={{}}
+                                                <div className={`btn btn-lg ${statuses.status1 ? 'statusEnabled' : 'statusDisabled'}`} style={{}}
                                                      onClick={statuses.status1 ? () => setStatuses({...statuses, status1: false}) : () => setStatuses({...statuses, status1: true})}>
                                                     <StatusBar item={{status: "1"}}/>
                                                 </div>
-                                                <div className={`btn ${statuses.status2 ? '' : 'statusDisabled'}`} style={{}}
+                                                <div className={`btn btn-lg ${statuses.status2 ? 'statusEnabled' : 'statusDisabled'}`} style={{}}
                                                      onClick={statuses.status2 ? () => setStatuses({...statuses, status2: false}) : () => setStatuses({...statuses, status2: true})}>
                                                     <StatusBar item={{status: "2"}}/>
                                                 </div>
-                                                <div className={`btn ${statuses.status3 ? '' : 'statusDisabled'}`} style={{}}
+                                                <div className={`btn btn-lg ${statuses.status3 ? 'statusEnabled' : 'statusDisabled'}`} style={{}}
                                                      onClick={statuses.status3 ? () => setStatuses({...statuses, status3: false}) : () => setStatuses({...statuses, status3: true})}>
                                                     <StatusBar item={{status: "3"}}/>
                                                 </div>
-                                                <div className={`btn ${statuses.status4 ? '' : 'statusDisabled'}`} style={{}}
+                                                <div className={`btn btn-lg ${statuses.status4 ? 'statusEnabled' : 'statusDisabled'}`} style={{}}
                                                      onClick={statuses.status4 ? () => setStatuses({...statuses, status4: false}) : () => setStatuses({...statuses, status4: true})}>
                                                     <StatusBar item={{status: "4"}}/>
                                                 </div>
-                                                <div className={`btn ${statuses.status5 ? '' : 'statusDisabled'}`} style={{}}
+                                                <div className={`btn btn-lg ${statuses.status5 ? 'statusEnabled' : 'statusDisabled'}`} style={{}}
                                                      onClick={statuses.status5 ? () => setStatuses({...statuses, status5: false}) : () => setStatuses({...statuses, status5: true})}>
                                                     <StatusBar item={{status: 'Відміна'}}/>
                                                 </div>
