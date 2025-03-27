@@ -24,7 +24,19 @@ body {
     padding: 0.3vw;
     /*box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);*/
     border-radius: 12px;
-    margin-top: 1vh;
+    /*margin-top: 1vh;*/
+}
+.CustomOrderTable-containerOfTable {
+    width: 100%;
+}
+.CustomOrderTable-body {
+    width: 100%;
+    height: 75vh;
+    overflow-x: auto;
+}
+.CustomOrderTable-preHeader{
+    width: 100%;
+    height: 3vh;
 }
 
 .CustomOrderTable-header, .CustomOrderTable-row {
@@ -260,4 +272,12 @@ body {
 
 .CustomOrderTable-delete-btn:hover {
     background-color: #c72e19;
+}
+
+.statusDisabled{
+    background: linear-gradient(30deg, gray 43%, red 50%, gray 57%);
+}
+.statusDisabled:hover{
+    background: linear-gradient(30deg, gray 43%, red 50%, gray 57%);
+    
 }
