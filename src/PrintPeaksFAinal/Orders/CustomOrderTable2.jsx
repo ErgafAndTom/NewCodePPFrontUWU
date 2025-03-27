@@ -8,6 +8,7 @@ import Loader from "../../components/calc/Loader";
 import AddNewOrder from "./AddNewOrder";
 import ModalDeleteOrder from "./ModalDeleteOrder";
 import FiltrOrders from "./FiltrOrders";
+import {Spinner} from "react-bootstrap";
 
 // Основний компонент CustomOrderTable
 const CustomOrderTable2 = () => {
@@ -178,6 +179,9 @@ const CustomOrderTable2 = () => {
                 <div className="CustomOrderTable-body">
                     {error && (
                         <div>{error}</div>
+                    )}
+                    {loading && (
+                        <div className="d-flex justify-content-center align-items-center" style={{height: "100%"}}><Spinner animation="border" className="mainLoader" variant="dark" /></div>
                     )}
                     {data && (
                         <>
