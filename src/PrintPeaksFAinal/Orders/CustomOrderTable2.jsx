@@ -166,10 +166,82 @@ const CustomOrderTable2 = () => {
                     <div className="CustomOrderTable-header-cell">Клієнт</div>
                     <div className="CustomOrderTable-header-cell">Номер телефона</div>
                     <div className="CustomOrderTable-header-cell">Telegram</div>
-                    <div className="CustomOrderTable-header-cell">Вартість</div>
-                    <div className="CustomOrderTable-header-cell">Статус оплати</div>
-                    <div className="CustomOrderTable-header-cell">Дата створення</div>
-                    <div className="CustomOrderTable-header-cell">Дата оновлення</div>
+                    <div className="CustomOrderTable-header-cell" onClick={(event) => setCol("allPrice")}>
+                        {"allPrice" === thisColumn.column ? (
+                            <>
+                                {!thisColumn.reverse ? (
+                                    <>
+                                        ^{"Вартість"}
+                                    </>
+                                ) : (
+                                    <>
+                                        !^{"Вартість"}
+                                    </>
+                                )}
+                            </>
+                        ) : (
+                            <>
+                                {"Вартість"}
+                            </>
+                        )}
+                    </div>
+                    <div className="CustomOrderTable-header-cell" onClick={(event) => setCol("payStatus")}>
+                        {"payStatus" === thisColumn.column ? (
+                            <>
+                                {!thisColumn.reverse ? (
+                                    <>
+                                        ^{"Статус оплати"}
+                                    </>
+                                ) : (
+                                    <>
+                                        !^{"Статус оплати"}
+                                    </>
+                                )}
+                            </>
+                        ) : (
+                            <>
+                                {"Статус оплати"}
+                            </>
+                        )}
+                    </div>
+                    <div className="CustomOrderTable-header-cell" onClick={(event) => setCol("createdAt")}>
+                        {"createdAt" === thisColumn.column ? (
+                            <>
+                                {!thisColumn.reverse ? (
+                                    <>
+                                        ^{"Дата створення"}
+                                    </>
+                                ) : (
+                                    <>
+                                        !^{"Дата створення"}
+                                    </>
+                                )}
+                            </>
+                        ) : (
+                            <>
+                                {"Дата створення"}
+                            </>
+                        )}
+                    </div>
+                    <div className="CustomOrderTable-header-cell" onClick={(event) => setCol("updatedAt")}>
+                        {"updatedAt" === thisColumn.column ? (
+                            <>
+                                {!thisColumn.reverse ? (
+                                    <>
+                                        ^{"Дата оновлення"}
+                                    </>
+                                ) : (
+                                    <>
+                                        !^{"Дата оновлення"}
+                                    </>
+                                )}
+                            </>
+                        ) : (
+                            <>
+                                {"Дата оновлення"}
+                            </>
+                        )}
+                    </div>
                     <div className="CustomOrderTable-header-cell">deadline</div>
                     <div className="CustomOrderTable-header-cell">Відповідальний</div>
                     <div className="CustomOrderTable-header-cell">До каси</div>
