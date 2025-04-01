@@ -9,6 +9,7 @@ import AddNewOrder from "./AddNewOrder";
 import ModalDeleteOrder from "./ModalDeleteOrder";
 import FiltrOrders from "./FiltrOrders";
 import {Spinner} from "react-bootstrap";
+import Barcode from 'react-barcode';
 
 // Основний компонент CustomOrderTable
 const CustomOrderTable2 = () => {
@@ -272,7 +273,22 @@ const CustomOrderTable2 = () => {
                                                     {isExpanded ? 'Згорнути' : 'Розгорнути'}
                                                 </button>
                                             </div>
-                                            <div className="CustomOrderTable-cell">{order.barcode || '—'}</div>
+                                            <div className="CustomOrderTable-cell d-flex align-items-center justify-content-center">
+                                                {/*{order.barcode || '—'}*/}
+
+                                                {order.barcode ? (
+                                                    <Barcode
+                                                        value={order.barcode.toString()}
+                                                        width={1}
+                                                        height={20}
+                                                        displayValue={true}
+                                                        background="transparent"
+                                                    />
+                                                ) : (
+                                                    '—'
+                                                )}
+
+                                            </div>
                                             <div className="CustomOrderTable-cell">
                                                 <div className="" style={{background: "transparent"}}>
                                                     <StatusBar item={order}/>
