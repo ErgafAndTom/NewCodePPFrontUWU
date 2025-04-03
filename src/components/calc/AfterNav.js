@@ -15,7 +15,6 @@ import CustomStorageTable from "../../PrintPeaksFAinal/Storage/CustomStorageTabl
 import UsersCustomTable from "../../PrintPeaksFAinal/user/UsersCustomTable";
 import CustomOrderTable2 from "../../PrintPeaksFAinal/Orders/CustomOrderTable2";
 import TableManager from "../../PrintPeaksFAinal/dataMenager/TableManager";
-import TrelloLikeBoards from "../../PrintPeaksFAinal/trelloLikeBoards/TrelloLikeBoards";
 import TrelloLikeBoards2 from "../../PrintPeaksFAinal/trelloLikeBoards/TrelloLikeBoards2";
 import ExportImportComponent from "../../PrintPeaksFAinal/dataMenager/ExportImportComponent";
 import TelegramBot from "../admin/crm/chats/TelegramBot";
@@ -34,6 +33,7 @@ import Phototab from "../admin/crm/Vimogi/Phototab";
 import Widephototab from "../admin/crm/Vimogi/Widephototab";
 import Holsttab from "../admin/crm/Vimogi/Holsttab";
 import CounterpartyList from "../../PrintPeaksFAinal/novaPoshta/CounterpartyList";
+import LifeHackLikeBoards2 from "../../PrintPeaksFAinal/lifeHacksBoard/LifeHackLikeBoards2";
 
 
 
@@ -79,7 +79,7 @@ const AfterNav = () => {
                 <Route path="/TG" element={<TelegramBot />} />
                 <Route path="/db3" element={<TableManager />} />
                 <Route path="/Trello" element={<TrelloLikeBoards2 />} />
-                {/*<Route path="/Trello2" element={<TrelloLikeBoards />} />*/}
+                <Route path="/Trello2" element={<LifeHackLikeBoards2 />} />
                 <Route path="/Vimogi" element={<Vimogi />} />
                 <Route path="/files" element={<Files />} />
                 <Route path="/createOrder" element={<CreateOrder />} />

@@ -1,3 +1,4 @@
+import LifeHacksBoard from "./PrintPeaksFAinal/lifeHacksBoard/LifeHacksBoard";
 import './bootstrap.css';
 import './bootstrap.css.map';
 import './App.css';

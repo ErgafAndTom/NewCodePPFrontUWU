@@ -129,6 +129,14 @@ const Nav = () => {
                             >Завдання
                             </button>
                         </Link>
+                        <Link disabled onClick={() => handleBasicClick('/Trello2')} to="/Trello2"
+                              style={{textDecoration: 'none', margin: 'auto', padding: '0', background: 'transparent'}}>
+                            <button
+                                className={basicActive === "/Trello2" ? 'ButtonVimogi ButtonVimogia' : 'ButtonVimogi'}
+                                style={basicActive === "/Trello2" ? {background: "#FAB416"} : {}}
+                            >Завдання
+                            </button>
+                        </Link>
                         {/*<Link disabled onClick={() => handleBasicClick('/CounterpartyList')} to="/CounterpartyList"*/}
                         {/*      style={{textDecoration: 'none', margin: 'auto', padding: '0', background: 'transparent'}}>*/}
                         {/*    <button*/}
