@@ -278,11 +278,17 @@ const CustomOrderTable2 = () => {
 
                                                 {order.barcode ? (
                                                     <Barcode
+                                                        className="d-flex align-items-center justify-content-center"
                                                         value={order.barcode.toString()}
-                                                        width={1}
-                                                        height={20}
+                                                        width={0.6}
+                                                        margin={0}
+                                                        padding={0}
+                                                        format="CODE128"
+                                                        fontSize={10}
+                                                        lineColor="#000"
+                                                        height={15}
                                                         displayValue={true}
-                                                        background="transparent"
+                                                        background=""
                                                     />
                                                 ) : (
                                                     '—'

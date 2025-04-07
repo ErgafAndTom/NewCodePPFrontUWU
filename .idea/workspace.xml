@@ -5,111 +5,9 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="7e58169f-d1e8-4cb2-8753-447dd0b39044" name="Changes" comment="ddd">
-      <change afterPath="$PROJECT_DIR$/src/PrintPeaksFAinal/user/MyFiles.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/PrintPeaksFAinal/user/Payments.jsx" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/PrintPeaksFAinal/user/profile/Profile.jsx" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/PrintPeaksFAinal/user/profile/styles.css" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/artemHTML/Client/styles.css" beforeDir="false" afterPath="$PROJECT_DIR$/artemHTML/Client/styles.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/artemHTML/Orders/styles.css" beforeDir="false" afterPath="$PROJECT_DIR$/artemHTML/Orders/styles.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/artemHTML/index/styles.css" beforeDir="false" afterPath="$PROJECT_DIR$/artemHTML/index/styles.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/PrintPeaksCss/BWPrint.css" beforeDir="false" afterPath="$PROJECT_DIR$/public/PrintPeaksCss/BWPrint.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/PrintPeaksCss/BWPrint.html" beforeDir="false" afterPath="$PROJECT_DIR$/public/PrintPeaksCss/BWPrint.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/PrintPeaksCss/CPM.css" beforeDir="false" afterPath="$PROJECT_DIR$/public/PrintPeaksCss/CPM.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/PrintPeaksCss/CPM.html" beforeDir="false" afterPath="$PROJECT_DIR$/public/PrintPeaksCss/CPM.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/PrintPeaksCss/Clienfull.css" beforeDir="false" afterPath="$PROJECT_DIR$/public/PrintPeaksCss/Clienfull.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/PrintPeaksCss/Clienfull.html" beforeDir="false" afterPath="$PROJECT_DIR$/public/PrintPeaksCss/Clienfull.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/PrintPeaksCss/Clientpip.css" beforeDir="false" afterPath="$PROJECT_DIR$/public/PrintPeaksCss/Clientpip.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/PrintPeaksCss/Clientpip.html" beforeDir="false" afterPath="$PROJECT_DIR$/public/PrintPeaksCss/Clientpip.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/PrintPeaksCss/Orderfull.css" beforeDir="false" afterPath="$PROJECT_DIR$/public/PrintPeaksCss/Orderfull.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/PrintPeaksCss/Orderfull.html" beforeDir="false" afterPath="$PROJECT_DIR$/public/PrintPeaksCss/Orderfull.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/PrintPeaksCss/Photo.css" beforeDir="false" afterPath="$PROJECT_DIR$/public/PrintPeaksCss/Photo.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/PrintPeaksCss/Photo.html" beforeDir="false" afterPath="$PROJECT_DIR$/public/PrintPeaksCss/Photo.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/PrintPeaksCss/PlusClient.css" beforeDir="false" afterPath="$PROJECT_DIR$/public/PrintPeaksCss/PlusClient.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/PrintPeaksCss/PlusClient.html" beforeDir="false" afterPath="$PROJECT_DIR$/public/PrintPeaksCss/PlusClient.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/PrintPeaksCss/PlusProd.css" beforeDir="false" afterPath="$PROJECT_DIR$/public/PrintPeaksCss/PlusProd.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/PrintPeaksCss/PlusProd.html" beforeDir="false" afterPath="$PROJECT_DIR$/public/PrintPeaksCss/PlusProd.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/PrintPeaksCss/Settingclient.css" beforeDir="false" afterPath="$PROJECT_DIR$/public/PrintPeaksCss/Settingclient.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/PrintPeaksCss/Settingclient.html" beforeDir="false" afterPath="$PROJECT_DIR$/public/PrintPeaksCss/Settingclient.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/PrintPeaksCss/Sublim.css" beforeDir="false" afterPath="$PROJECT_DIR$/public/PrintPeaksCss/Sublim.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/PrintPeaksCss/Sublim.html" beforeDir="false" afterPath="$PROJECT_DIR$/public/PrintPeaksCss/Sublim.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/PrintPeaksCss/Trash.css" beforeDir="false" afterPath="$PROJECT_DIR$/public/PrintPeaksCss/Trash.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/PrintPeaksCss/Trash.html" beforeDir="false" afterPath="$PROJECT_DIR$/public/PrintPeaksCss/Trash.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/PrintPeaksCss/Wide.css" beforeDir="false" afterPath="$PROJECT_DIR$/public/PrintPeaksCss/Wide.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/PrintPeaksCss/Wide.html" beforeDir="false" afterPath="$PROJECT_DIR$/public/PrintPeaksCss/Wide.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/PrintPeaksCss/index.css" beforeDir="false" afterPath="$PROJECT_DIR$/public/PrintPeaksCss/index.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/PrintPeaksCss/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/public/PrintPeaksCss/index.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/App.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/App.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/App.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/App.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/PrintPeaksFAinal/CPM.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/PrintPeaksFAinal/CPM.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/PrintPeaksFAinal/Clientpip.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/PrintPeaksFAinal/Clientpip.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/PrintPeaksFAinal/Orders/CustomOrderTable.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/PrintPeaksFAinal/Orders/CustomOrderTable.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/PrintPeaksFAinal/Orders/Orders.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/PrintPeaksFAinal/Orders/Orders.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/PrintPeaksFAinal/PlusClient.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/PrintPeaksFAinal/PlusClient.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/PrintPeaksFAinal/StylesOld.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/PrintPeaksFAinal/StylesOld.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/PrintPeaksFAinal/Wide.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/PrintPeaksFAinal/Wide.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/PrintPeaksFAinal/index.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/PrintPeaksFAinal/index.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/PrintPeaksFAinal/lineOfPosluga/ButtonE.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/PrintPeaksFAinal/lineOfPosluga/ButtonE.jsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/PrintPeaksFAinal/poslugi/BigOvshik.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/PrintPeaksFAinal/poslugi/BigOvshik.jsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/PrintPeaksFAinal/poslugi/Laminator.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/PrintPeaksFAinal/poslugi/Laminator.jsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/PrintPeaksFAinal/poslugi/NewCup.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/PrintPeaksFAinal/poslugi/NewCup.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/PrintPeaksFAinal/poslugi/NewNote.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/PrintPeaksFAinal/poslugi/NewNote.jsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/PrintPeaksFAinal/poslugi/NewPhoto.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/PrintPeaksFAinal/poslugi/NewPhoto.jsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/PrintPeaksFAinal/poslugi/NewSheetCut.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/PrintPeaksFAinal/poslugi/NewSheetCut.jsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/PrintPeaksFAinal/poslugi/NewSheetCutBw.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/PrintPeaksFAinal/poslugi/NewSheetCutBw.jsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/PrintPeaksFAinal/poslugi/PerepletMet.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/PrintPeaksFAinal/poslugi/PerepletMet.jsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/PrintPeaksFAinal/poslugi/PerepletNeMet.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/PrintPeaksFAinal/poslugi/PerepletNeMet.jsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/PrintPeaksFAinal/poslugi/Vishichka.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/PrintPeaksFAinal/poslugi/Vishichka.jsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/PrintPeaksFAinal/poslugi/newWide.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/PrintPeaksFAinal/poslugi/newWide.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/PrintPeaksFAinal/poslugi/newnomodals/ArtemStyles.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/PrintPeaksFAinal/poslugi/newnomodals/ArtemStyles.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/PrintPeaksFAinal/poslugi/newnomodals/ButtonTextArtem.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/PrintPeaksFAinal/poslugi/newnomodals/ButtonTextArtem.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/PrintPeaksFAinal/poslugi/newnomodals/InputArtem.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/PrintPeaksFAinal/poslugi/newnomodals/InputArtem.jsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/PrintPeaksFAinal/poslugi/newnomodals/NewNoModalBig.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/PrintPeaksFAinal/poslugi/newnomodals/NewNoModalBig.jsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/PrintPeaksFAinal/poslugi/newnomodals/NewNoModalCute.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/PrintPeaksFAinal/poslugi/newnomodals/NewNoModalCute.jsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/PrintPeaksFAinal/poslugi/newnomodals/NewNoModalHoles.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/PrintPeaksFAinal/poslugi/newnomodals/NewNoModalHoles.jsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/PrintPeaksFAinal/poslugi/newnomodals/NewNoModalLamination.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/PrintPeaksFAinal/poslugi/newnomodals/NewNoModalLamination.jsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/PrintPeaksFAinal/poslugi/newnomodals/NewNoModalMaterial.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/PrintPeaksFAinal/poslugi/newnomodals/NewNoModalMaterial.jsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/PrintPeaksFAinal/poslugi/newnomodals/Porizka.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/PrintPeaksFAinal/poslugi/newnomodals/Porizka.jsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/PrintPeaksFAinal/poslugi/newnomodals/diplom.svg" beforeDir="false" afterPath="$PROJECT_DIR$/src/PrintPeaksFAinal/poslugi/newnomodals/diplom.svg" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/PrintPeaksFAinal/poslugi/newnomodals/note/LaminationNote.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/PrintPeaksFAinal/poslugi/newnomodals/note/LaminationNote.jsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/PrintPeaksFAinal/poslugi/newnomodals/note/Material2NoteBack.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/PrintPeaksFAinal/poslugi/newnomodals/note/Material2NoteBack.jsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/PrintPeaksFAinal/poslugi/newnomodals/note/Material2NoteInBody.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/PrintPeaksFAinal/poslugi/newnomodals/note/Material2NoteInBody.jsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/PrintPeaksFAinal/poslugi/newnomodals/note/Materials2NoteFront.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/PrintPeaksFAinal/poslugi/newnomodals/note/Materials2NoteFront.jsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/PrintPeaksFAinal/poslugi/newnomodals/photo/MaterialsInPhoto.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/PrintPeaksFAinal/poslugi/newnomodals/photo/MaterialsInPhoto.jsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/PrintPeaksFAinal/poslugi/newnomodals/photo/PhotoPosluga.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/PrintPeaksFAinal/poslugi/newnomodals/photo/PhotoPosluga.jsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/PrintPeaksFAinal/timeSeriesChart/TimeSeriesChart.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/PrintPeaksFAinal/timeSeriesChart/TimeSeriesChart.jsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/PrintPeaksFAinal/user/Profile.jsx" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/PrintPeaksFAinal/userInNewUiArtem/ClientChangerUIArtem.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/PrintPeaksFAinal/userInNewUiArtem/ClientChangerUIArtem.jsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/PrintPeaksFAinal/userInNewUiArtem/StyleArtem.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/PrintPeaksFAinal/userInNewUiArtem/StyleArtem.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/PrintPeaksFAinal/userInNewUiArtem/www.svg" beforeDir="false" afterPath="$PROJECT_DIR$/src/PrintPeaksFAinal/userInNewUiArtem/www.svg" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/ProgressBar.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/ProgressBar.jsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/StylesOld.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/StylesOld.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/artemm/components/ClientFull.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/artemm/components/ClientFull.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/artemm/components/ClientPip.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/artemm/components/ClientPip.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/artemm/components/OrderFull.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/artemm/components/OrderFull.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/artemm/components/SettingClient.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/artemm/components/SettingClient.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/artemm/pages/Artboard.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/artemm/pages/Artboard.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/artemm/pages/BWPrint.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/artemm/pages/BWPrint.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/artemm/pages/CPM.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/artemm/pages/CPM.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/artemm/pages/Photo.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/artemm/pages/Photo.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/artemm/pages/PlusClient.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/artemm/pages/PlusClient.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/artemm/pages/PlusProd.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/artemm/pages/PlusProd.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/artemm/pages/PrintPeaks.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/artemm/pages/PrintPeaks.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/artemm/pages/Sublim.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/artemm/pages/Sublim.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/artemm/pages/Wide.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/artemm/pages/Wide.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/bootstrap.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/bootstrap.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/calc/AfterNav.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/calc/AfterNav.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/calc/btn/btn.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/calc/btn/btn.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/calc/onefile/materialsanddop/Dop.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/calc/onefile/materialsanddop/Dop.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/calendartheme.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/calendartheme.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/nav/Nav.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/nav/Nav.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/nav/Nav.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/nav/Nav.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/nav/logo/Logo.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/nav/logo/Logo.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/newUIArtem/logoMain.svg" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/newUIArtem/logoMain.svg" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/newUIArtem/newSVG/OrderForm.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/newUIArtem/newSVG/OrderForm.jsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/newUIArtem/orders/ordstat/ComponentTMP_0.svg" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/newUIArtem/orders/ordstat/ComponentTMP_0.svg" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/newUIArtem/orders/pror/ButtonSmallInfoComponent.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/newUIArtem/orders/pror/ButtonSmallInfoComponent.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/global.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/global.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/PrintPeaksFAinal/Orders/CustomOrderTable2.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/PrintPeaksFAinal/Orders/CustomOrderTable2.jsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/PrintPeaksFAinal/user/Payments.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/PrintPeaksFAinal/user/Payments.jsx" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -334,23 +232,7 @@
       <workItem from="1743772351312" duration="1015000" />
       <workItem from="1743937121104" duration="740000" />
       <workItem from="1743962712670" duration="811000" />
-      <workItem from="1744022655004" duration="10014000" />
-    </task>
-    <task id="LOCAL-00016" summary="ddd">
-      <option name="closed" value="true" />
-      <created>1739156649546</created>
-      <option name="number" value="00016" />
-      <option name="presentableId" value="LOCAL-00016" />
-      <option name="project" value="LOCAL" />
-      <updated>1739156649546</updated>
-    </task>
-    <task id="LOCAL-00017" summary="ddd">
-      <option name="closed" value="true" />
-      <created>1739162170966</created>
-      <option name="number" value="00017" />
-      <option name="presentableId" value="LOCAL-00017" />
-      <option name="project" value="LOCAL" />
-      <updated>1739162170966</updated>
+      <workItem from="1744022655004" duration="11994000" />
     </task>
     <task id="LOCAL-00018" summary="ddd">
       <option name="closed" value="true" />
@@ -728,7 +610,23 @@
       <option name="project" value="LOCAL" />
       <updated>1743522902341</updated>
     </task>
-    <option name="localTasksCounter" value="65" />
+    <task id="LOCAL-00065" summary="ddd">
+      <option name="closed" value="true" />
+      <created>1744054274403</created>
+      <option name="number" value="00065" />
+      <option name="presentableId" value="LOCAL-00065" />
+      <option name="project" value="LOCAL" />
+      <updated>1744054274403</updated>
+    </task>
+    <task id="LOCAL-00066" summary="ddd">
+      <option name="closed" value="true" />
+      <created>1744054309744</created>
+      <option name="number" value="00066" />
+      <option name="presentableId" value="LOCAL-00066" />
+      <option name="project" value="LOCAL" />
+      <updated>1744054309744</updated>
+    </task>
+    <option name="localTasksCounter" value="67" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">

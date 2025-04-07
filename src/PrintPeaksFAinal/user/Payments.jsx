@@ -387,22 +387,22 @@ const Payments = () => {
                             </>
                         )}
                     </div>
-                    <div className="CustomOrderTable-header-cell" onClick={(event) => setCol("edrpouCode")}>
-                        {"edrpouCode" === thisColumn.column ? (
+                    <div className="CustomOrderTable-header-cell" onClick={(event) => setCol("legalEntityId")}>
+                        {"legalEntityId" === thisColumn.column ? (
                             <>
                                 {!thisColumn.reverse ? (
                                     <>
-                                        ^{"edrpouCode"}
+                                        ^{"legalEntityId"}
                                     </>
                                 ) : (
                                     <>
-                                        !^{"edrpouCode"}
+                                        !^{"legalEntityId"}
                                     </>
                                 )}
                             </>
                         ) : (
                             <>
-                                {"edrpouCode"}
+                                {"legalEntityId"}
                             </>
                         )}
                     </div>
@@ -446,9 +446,9 @@ const Payments = () => {
                             </>
                         )}
                     </div>
-                    <div className="CustomOrderTable-header-cell">До каси</div>
-                    <div className="CustomOrderTable-header-cell">Зробити рахунок</div>
-                    <div className="CustomOrderTable-header-cell CustomOrderTable-right-rounded">Видалити</div>
+                    {/*<div className="CustomOrderTable-header-cell">До каси</div>*/}
+                    {/*<div className="CustomOrderTable-header-cell">Зробити рахунок</div>*/}
+                    {/*<div className="CustomOrderTable-header-cell CustomOrderTable-right-rounded">Видалити</div>*/}
                 </div>
                 <div className="CustomOrderTable-body">
                     {error && (
@@ -479,6 +479,7 @@ const Payments = () => {
                                             <div className="CustomOrderTable-cell">{order.fopName}</div>
                                             <div className="CustomOrderTable-cell">{order.fopNumber}</div>
                                             <div className="CustomOrderTable-cell">{order.edrpouCode}</div>
+                                            <div className="CustomOrderTable-cell">{order.legalEntityId}</div>
                                             <div className="CustomOrderTable-cell">
                                                 {`${new Date(order.createdAt).toLocaleDateString()} ${new Date(order.createdAt).toLocaleTimeString()}`}
                                             </div>
@@ -498,13 +499,13 @@ const Payments = () => {
                                             {/*    <button className="CustomOrderTable-toggle-btn">Зробити рахунок</button>*/}
                                             {/*    /!* Залишаємо клас "invoice-btn" *!/*/}
                                             {/*</div>*/}
-                                            <div className="CustomOrderTable-cell">
-                                                <button
-                                                    className="CustomOrderTable-toggle-btn CustomOrderTable-delete-btn" // Використання існуючого класу з HTML
-                                                    onClick={(e) => handleOrderClickDelete(order)}
-                                                >Видалити
-                                                </button>
-                                            </div>
+                                            {/*<div className="CustomOrderTable-cell">*/}
+                                            {/*    <button*/}
+                                            {/*        className="CustomOrderTable-toggle-btn CustomOrderTable-delete-btn" // Використання існуючого класу з HTML*/}
+                                            {/*        onClick={(e) => handleOrderClickDelete(order)}*/}
+                                            {/*    >Видалити*/}
+                                            {/*    </button>*/}
+                                            {/*</div>*/}
                                         </div>
                                         {isExpanded && (
                                             <div className="CustomOrderTable-order-details">
@@ -576,7 +577,7 @@ const Payments = () => {
                 pageCount={pageCount}
                 setPageCount={setPageCount}
                 typeSelect={typeSelect}
-                url={"/orders/all"}
+                url={"/user/getPayments"}
                 thisColumn={thisColumn}
             />
         </div>
