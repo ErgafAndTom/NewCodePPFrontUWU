@@ -19,7 +19,7 @@ const TimeSeriesChart = ({ data }) => {
         const ctx = canvas.getContext("2d");
         const resolutionX = 5;
         const resolutionY = 10;
-        const fontStyle = "Gotham";
+        const fontStyle = "Montserrat";
         const fontSize = "0.8vh";
 
         ctx.clearRect(0, 0, canvas.width, canvas.height);

@@ -263,7 +263,7 @@ const ProgressBar = ({thisOrder, setThisOrder, setNewThisOrder, handleThisOrderC
             cursor: 'pointer',
             width: '11vw',
             height: '3vh',
-            fontFamily: 'Gotham, sans-serif',
+            fontFamily: 'Montserrat, sans-serif',
             fontSize: '0.7vw',
             display: 'flex', // Використовуємо flex для центрованого контенту
             justifyContent: 'center', // Горизонтальне центрування тексту
@@ -277,7 +277,7 @@ const ProgressBar = ({thisOrder, setThisOrder, setNewThisOrder, handleThisOrderC
             cursor: 'pointer',
             width: '11vw',
             height: '3vh',
-            fontFamily: 'Gotham, sans-serif',
+            fontFamily: 'Montserrat, sans-serif',
             fontSize: '0.7vw',
             display: 'flex', // Використовуємо flex для центрованого контенту
             justifyContent: 'center', // Горизонтальне центрування тексту
@@ -291,7 +291,7 @@ const ProgressBar = ({thisOrder, setThisOrder, setNewThisOrder, handleThisOrderC
             cursor: 'pointer',
             width: '11vw',
             height: '3vh',
-            fontFamily: 'Gotham, sans-serif',
+            fontFamily: 'Montserrat, sans-serif',
             // fontSize: '1.2vh',
             // display: 'flex', // Використовуємо flex для центрованого контенту
             justifyContent: 'center', // Горизонтальне центрування тексту
@@ -306,7 +306,7 @@ const ProgressBar = ({thisOrder, setThisOrder, setNewThisOrder, handleThisOrderC
             cursor: 'pointer',
             width: '11vw',
             height: '3vh',
-            fontFamily: 'Gotham, sans-serif',
+            fontFamily: 'Montserrat, sans-serif',
             fontSize: '0.7vw',
             display: 'flex', // Використовуємо flex для центрованого контенту
             justifyContent: 'center', // Горизонтальне центрування тексту
@@ -320,7 +320,7 @@ const ProgressBar = ({thisOrder, setThisOrder, setNewThisOrder, handleThisOrderC
             cursor: 'pointer',
             width: '11vw',
             height: '3vh',
-            fontFamily: 'Gotham, sans-serif',
+            fontFamily: 'Montserrat, sans-serif',
             fontSize: '0.7vw',
             display: 'flex', // Використовуємо flex для центрованого контенту
             justifyContent: 'center', // Горизонтальне центрування тексту
@@ -334,7 +334,7 @@ const ProgressBar = ({thisOrder, setThisOrder, setNewThisOrder, handleThisOrderC
             cursor: 'pointer',
             width: '11vw',
             height: '3vh',
-            fontFamily: 'Gotham, sans-serif',
+            fontFamily: 'Montserrat, sans-serif',
             fontSize: '0.7vw',
             display: 'flex', // Використовуємо flex для центрованого контенту
             justifyContent: 'center', // Горизонтальне центрування тексту
@@ -358,7 +358,7 @@ const ProgressBar = ({thisOrder, setThisOrder, setNewThisOrder, handleThisOrderC
 
         <div
             style={{
-                fontFamily: 'Gotham, sans-serif',
+                fontFamily: 'Montserrat, sans-serif',
                 paddingTop: '0.6vw',
                 width: '31vw',
                 height: '31.8vh',

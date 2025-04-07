@@ -21,7 +21,7 @@ const NewNoModalMaterial = ({material, setMaterial, count, setCount, prices, typ
                 {/*<span style={{*/}
                 {/*    fontSize: '1.273vw',*/}
                 {/*    marginRight: '0.633vw',*/}
-                {/*    fontFamily: "Gotham",*/}
+                {/*    fontFamily: "Montserrat",*/}
                 {/*    fontWeight: "bold",*/}
                 {/*    whiteSpace: "nowrap",*/}
                 {/*}}>{name}</span>*/}

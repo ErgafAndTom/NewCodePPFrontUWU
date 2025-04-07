@@ -8,7 +8,7 @@
 
 .c {
     font-size: 25px;
-    font-family: Gotham-Bold, Gotham;
+    font-family: MontserratBold, Montserrat;
     font-weight: 700;
 }
 
@@ -72,7 +72,7 @@
 .r,
 .w,
 .x {
-    font-family: GothamOffice-Regular, Gotham Office;
+    font-family: MontserratOffice-Regular, Montserrat;
 }
 
 .au,
@@ -318,7 +318,7 @@
     /*background: #ffcc00;*/
     border-radius: 0.3vw;
     font-size: 1.28vh;
-    font-family: GothamOffice-Regular, Gotham Office;
+    font-family: MontserratOffice-Regular, Montserrat;
 }
 
 .hoverOneOrderButton:hover {
@@ -453,7 +453,7 @@
 }
 
 .textAll {
-    font-family: GothamOffice-Regular, Gotham Office;
+    font-family: MontserratOffice-Regular, Montserrat;
 }
 
 .textSmall {
@@ -759,7 +759,7 @@
     width: 167px;
     height: 50px;
     font-size: var(--font-size-sm);
-    font-family: var(--font-gotham-office);
+    font-family: var(--font-Montserrat-office);
 }
 .greena-parent {
     position: absolute;
@@ -1130,7 +1130,7 @@
     width: 87px;
     height: 77px;
     font-size: var(--font-size-6xl);
-    font-family: var(--font-gotham);
+    font-family: var(--font-Montserrat);
 }
 
 /*.clienta {*/
@@ -1687,7 +1687,7 @@ margin-left: -9vw;
 .input {
     border: 0;
     outline: 0;
-    font-family: var(--font-gotham-office);
+    font-family: var(--font-Montserrat-office);
     font-size: var(--font-size-5xl);
     background-color: transparent;
     top: calc(50% - 14.99px);
@@ -1746,7 +1746,7 @@ margin-left: -9vw;
     top: calc(50% - 26px);
     left: calc(50% - 48px);
     font-size: var(--font-size-xl);
-    font-family: var(--font-gotham-office);
+    font-family: var(--font-Montserrat-office);
     color: var(--color-black);
     text-align: center;
 }
@@ -1783,7 +1783,7 @@ margin-left: -9vw;
     top: calc(50% - 8.5px);
     left: 47px;
     font-size: var(--font-size-sm);
-    font-family: var(--font-gotham-office);
+    font-family: var(--font-Montserrat-office);
     color: white;
     text-align: center;
 }
@@ -1801,7 +1801,7 @@ margin-left: -9vw;
     top: calc(50% - 8.5px);
     left: calc(50% - 28px);
     font-size: var(--font-size-sm);
-    font-family: var(--font-gotham-office);
+    font-family: var(--font-Montserrat-office);
     color: var(--color-black);
     text-align: center;
 }
@@ -1843,7 +1843,7 @@ margin-left: -9vw;
 .input-text1 {
     border: 0;
     outline: 0;
-    font-family: var(--font-gotham);
+    font-family: var(--font-Montserrat);
     font-size: var(--font-size-mid);
     background-color: transparent;
     position: absolute;
@@ -1953,7 +1953,7 @@ margin-left: -9vw;
     font-size: var(--font-size-3xs);
     letter-spacing: 0.33px;
     line-height: 11px;
-    font-family: var(--font-gotham-office);
+    font-family: var(--font-Montserrat-office);
     text-align: center;
 }
 .component-1969-18 {
@@ -1964,7 +1964,7 @@ margin-left: -9vw;
     bottom: 0;
     width: 43px;
     font-size: var(--font-size-mid);
-    font-family: var(--font-gotham);
+    font-family: var(--font-Montserrat);
 }
 .autorenew-icon {
     position: absolute;
@@ -2036,7 +2036,7 @@ margin-left: -9vw;
     top: calc(50% - 8.5px);
     left: 47px;
     font-size: var(--font-size-sm);
-    font-family: var(--font-gotham-office);
+    font-family: var(--font-Montserrat-office);
     color: var(--color-linen-100);
     text-align: center;
 }
@@ -2059,7 +2059,7 @@ margin-left: -9vw;
     top: calc(50% - 8.5px);
     left: calc(50% - 73px);
     font-size: var(--font-size-sm);
-    font-family: var(--font-gotham-office);
+    font-family: var(--font-Montserrat-office);
     color: var(--color-linen-100);
     text-align: center;
 }
@@ -2219,7 +2219,7 @@ margin-left: -9vw;
     top: calc(50% - 8px);
     left: calc(50% - 29px);
     font-size: var(--font-size-sm);
-    font-family: var(--font-gotham-office);
+    font-family: var(--font-Montserrat-office);
     color: var(--color-darkslategray);
     text-align: center;
 }
@@ -2254,7 +2254,7 @@ margin-left: -9vw;
     top: calc(50% - 8px);
     left: calc(50% - 27.5px);
     font-size: var(--font-size-sm);
-    font-family: var(--font-gotham-office);
+    font-family: var(--font-Montserrat-office);
     color: var(--color-black);
     text-align: center;
 }
@@ -2289,7 +2289,7 @@ margin-left: -9vw;
     top: calc(50% - 8px);
     left: 7px;
     font-size: var(--font-size-sm);
-    font-family: var(--font-gotham-office);
+    font-family: var(--font-Montserrat-office);
     color: var(--color-darkslategray);
     text-align: center;
 }
@@ -2327,7 +2327,7 @@ margin-left: -9vw;
     top: calc(50% - 8px);
     left: 12.99px;
     font-size: var(--font-size-sm);
-    font-family: var(--font-gotham-office);
+    font-family: var(--font-Montserrat-office);
     color: var(--color-darkslategray);
     text-align: center;
 }
@@ -2390,7 +2390,7 @@ margin-left: -9vw;
     top: calc(50% - 8px);
     left: 11px;
     font-size: var(--font-size-sm);
-    font-family: var(--font-gotham-office);
+    font-family: var(--font-Montserrat-office);
     color: var(--color-darkslategray);
     text-align: center;
 }
@@ -2425,7 +2425,7 @@ margin-left: -9vw;
     top: calc(50% - 7.95px);
     left: calc(50% - 20.75px);
     font-size: var(--font-size-sm);
-    font-family: var(--font-gotham-office);
+    font-family: var(--font-Montserrat-office);
     color: var(--color-darkslategray);
     text-align: center;
 }
@@ -2460,7 +2460,7 @@ margin-left: -9vw;
     top: calc(50% - 8px);
     left: calc(50% - 16.5px);
     font-size: var(--font-size-sm);
-    font-family: var(--font-gotham-office);
+    font-family: var(--font-Montserrat-office);
     color: var(--color-darkslategray);
     text-align: center;
 }
@@ -2495,7 +2495,7 @@ margin-left: -9vw;
     top: calc(50% - 7.95px);
     left: 9.68px;
     font-size: var(--font-size-sm);
-    font-family: var(--font-gotham-office);
+    font-family: var(--font-Montserrat-office);
     color: var(--color-darkslategray);
     text-align: center;
 }
@@ -2530,7 +2530,7 @@ margin-left: -9vw;
     top: calc(50% - 8px);
     right: 14px;
     font-size: var(--font-size-sm);
-    font-family: var(--font-gotham-office);
+    font-family: var(--font-Montserrat-office);
     color: var(--color-darkslategray);
     text-align: center;
 }
@@ -2565,7 +2565,7 @@ margin-left: -9vw;
     top: calc(50% - 8px);
     left: calc(50% - 46.97px);
     font-size: var(--font-size-sm);
-    font-family: var(--font-gotham-office);
+    font-family: var(--font-Montserrat-office);
     color: var(--color-darkslategray);
     text-align: center;
 }
@@ -2655,7 +2655,7 @@ margin-left: -9vw;
     border: 0;
     width: 73px;
     height: 21px;
-    font-family: var(--font-gotham-office);
+    font-family: var(--font-Montserrat-office);
     font-size: 23;
     color: var(--color-black);
 }
@@ -2767,7 +2767,7 @@ margin-left: -9vw;
     border: 0;
     width: 168px;
     height: 23px;
-    font-family: var(--font-gotham-office);
+    font-family: var(--font-Montserrat-office);
     color: var(--color-black);
 }
 .imaga-icon1,
@@ -2902,7 +2902,7 @@ margin-left: -9vw;
     left: 72.97%;
     font-size: var(--font-size-6xs);
     letter-spacing: 0.23px;
-    font-family: var(--font-gotham-office);
+    font-family: var(--font-Montserrat-office);
     text-align: center;
 }
 .div60,
@@ -2913,7 +2913,7 @@ margin-left: -9vw;
     height: 28px;
     font-size: var(--font-size-mid);
     color: var(--color-dimgray);
-    font-family: var(--font-gotham);
+    font-family: var(--font-Montserrat);
 }
 .div60 {
     top: 655.5px;
@@ -2928,7 +2928,7 @@ margin-left: -9vw;
     text-align: left;
     font-size: var(--font-size-base);
     color: var(--color-black);
-    font-family: var(--font-gotham-office);
+    font-family: var(--font-Montserrat-office);
 }
 .clienta1,
 .clientb1,
@@ -3479,7 +3479,7 @@ margin-left: -9vw;
     height: 67px;
     text-align: left;
     font-size: var(--font-size-3xl);
-    font-family: var(--font-gotham);
+    font-family: var(--font-Montserrat);
 }
 .base-icon2,
 .base-icon3 {
@@ -4372,7 +4372,7 @@ margin-left: -9vw;
     text-align: center;
     font-size: var(--font-size-xl);
     color: var(--color-black);
-    font-family: var(--font-gotham-office);
+    font-family: var(--font-Montserrat-office);
 }
 .fon1 {
     top: 0;
@@ -4425,7 +4425,7 @@ margin-left: -9vw;
     width: 77px;
     height: 67px;
     font-size: var(--font-size-3xl);
-    font-family: var(--font-gotham);
+    font-family: var(--font-Montserrat);
 }
 .wideb,
 .widej-child {
@@ -4453,7 +4453,7 @@ margin-left: -9vw;
     top: 4px;
     left: 50px;
     font-size: var(--font-size-5xl);
-    font-family: var(--font-gotham-office);
+    font-family: var(--font-Montserrat-office);
     color: var(--color-black);
     text-align: center;
 }
@@ -4608,7 +4608,7 @@ margin-left: -9vw;
     border: 0;
     width: 402.5px;
     height: 39.5px;
-    font-family: var(--font-gotham-office);
+    font-family: var(--font-Montserrat-office);
     color: var(--color-black);
 }
 .component-2029-1 {
@@ -4680,7 +4680,7 @@ margin-left: -9vw;
     background-color: var(--color-orange);
     border: 0;
     width: 130px;
-    font-family: var(--font-gotham-office);
+    font-family: var(--font-Montserrat-office);
     font-size: 23;
     color: var(--color-black);
 }
@@ -4922,12 +4922,12 @@ margin-left: -9vw;
     text-align: left;
     font-size: var(--font-size-5xl);
     color: var(--color-black);
-    font-family: var(--font-gotham-office);
+    font-family: var(--font-Montserrat-office);
 }
 .ClientsMenuAll {
     margin: 0;
     padding: 0;
     background: #f1efed;
-    font-family: 'Gotham', sans-serif;
+    font-family: 'Montserrat', sans-serif;
     border-radius: 1vw;
 }

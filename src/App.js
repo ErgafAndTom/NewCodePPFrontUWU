@@ -9,10 +9,19 @@ import './global.css';
 import {Provider} from "react-redux";
 import store from "./stores/store";
 import {BrowserRouter as Router} from 'react-router-dom'
-import React from "react";
+import React, {useEffect} from "react";
 import AllWindow from "./components/AllWindow";
 
 function App() {
+    useEffect(() => {
+        document.fonts.ready.then(() => {
+            if (document.fonts.check('1.3vh "Montserrat"')) {
+                console.log('✅ Шрифт Montserrat завантажено та готовий до використання!');
+            } else {
+                console.warn('❌ Шрифт Montserrat не завантажено або недоступний.');
+            }
+        });
+    }, []);
     return (
         <div>
 

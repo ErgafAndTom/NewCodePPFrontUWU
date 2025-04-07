@@ -7,7 +7,7 @@ import Vimogi from "../admin/crm/Vimogi/Vimogi";
 import Files from "./files/Files";
 import CreateOrder from "./createorder/CreateOrder";
 import { Login } from "../../PrintPeaksFAinal/login/Login";
-import Profile from "../../PrintPeaksFAinal/user/Profile";
+import Profile from "../../PrintPeaksFAinal/user/profile/Profile";
 import CustomOrderTable from "../../PrintPeaksFAinal/Orders/CustomOrderTable";
 import NewUIArtem from "../../PrintPeaksFAinal/NewUIArtem";
 import { TableStorage } from "../../PrintPeaksFAinal/Storage/TableStorage";
@@ -34,6 +34,8 @@ import Widephototab from "../admin/crm/Vimogi/Widephototab";
 import Holsttab from "../admin/crm/Vimogi/Holsttab";
 import CounterpartyList from "../../PrintPeaksFAinal/novaPoshta/CounterpartyList";
 import LifeHackLikeBoards2 from "../../PrintPeaksFAinal/lifeHacksBoard/LifeHackLikeBoards2";
+import MyFiles from "../../PrintPeaksFAinal/user/MyFiles";
+import Payments from "../../PrintPeaksFAinal/user/Payments";
 
 
 
@@ -85,7 +87,11 @@ const AfterNav = () => {
                 <Route path="/createOrder" element={<CreateOrder />} />
                 <Route path="/login" element={<Login />} />
                 <Route path="/Users" element={<UsersCustomTable />} />
+
                 <Route path="/currentUser" element={<Profile />} />
+                <Route path="/myFiles" element={<MyFiles />} />
+                <Route path="/myPayments" element={<Payments />} />
+
                 <Route path="/Orders" element={<CustomOrderTable2 />} />
                 <Route path="/OrdersOld" element={<CustomOrderTable />} />
                 <Route path="/Orders/:id" element={<NewUIArtem />} />

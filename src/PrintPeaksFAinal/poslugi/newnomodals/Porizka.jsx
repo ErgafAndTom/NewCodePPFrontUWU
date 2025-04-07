@@ -53,7 +53,7 @@ const Porizka = ({porizka, setPorizka, prices, buttonsArr, selectArr}) => {
             </div>
             <div className="d-flex flex-column">
             <span style={{
-                fontSize: '1vw', marginRight: '0.633vw', fontFamily: "Gotham", fontWeight: "bold", width: "500%"
+                fontSize: '1vw', marginRight: '0.633vw', fontFamily: "Montserrat", fontWeight: "bold", width: "500%"
             }}>{"Порiзка(+10% ціни на друк та матеріали):"}</span>
                 {/*{photo.type !== "Не потрібно" ? (*/}
                 {/*    <div style={{display: 'flex', justifyContent: 'center', alignItems: 'center',}}>*/}

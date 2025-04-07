@@ -1,13 +1,17 @@
-@import url("https://fonts.googleapis.com/css2?family=Gotham+Office:ital,wght@0,400;0,700;1,400;1,700&display=swap");
-@import url("https://fonts.googleapis.com/css2?family=Gotham:wght@400;700&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Montserrat+Office:ital,wght@0,400;0,700;1,400;1,700&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&display=swap");
 @import url("https://fonts.googleapis.com/css2?family=Ink+Free:wght@400&display=swap");
 @import url("https://fonts.googleapis.com/css2?family=Roboto:wght@500&display=swap");
 @import url("https://fonts.googleapis.com/css2?family=Adobe+Clean:wght@400&display=swap");
 @import url("https://fonts.googleapis.com/css2?family=Lato:wght@400;700&display=swap");
 @import url("https://fonts.googleapis.com/icon?family=Material+Icons");
+@import url("https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,400;0,500;0,700;1,400;1,500;1,700&display=swap");
+@import url("https://fonts.googleapis.com/icon?family=Material+Icons");
+
 body {
   margin: 0;
   line-height: normal;
+  font-family: "Montserrat";
 }
 
 .popup-overlay {
@@ -19,8 +23,8 @@ body {
 
 :root {
   /* fonts */
-  --font-gotham-office: "Gotham Office";
-  --font-gotham: Gotham;
+  --font-Montserrat-office: "Montserrat";
+  --font-Montserrat: Montserrat;
   --font-ink-free: "Ink Free";
 
   /* font sizes */

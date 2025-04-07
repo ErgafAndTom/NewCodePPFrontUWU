@@ -290,7 +290,7 @@ const NewSheetCutBw = ({thisOrder, newThisOrder, setNewThisOrder, selectedThings
                                             className="d-flex align-content-between"
                                             style={{
                                                 width: "90vw",
-                                                fontFamily: "Gotham",
+                                                fontFamily: "Montserrat",
                                                 // fontWeight: "bold",
                                                 display: 'flex',
                                                 // justifyContent: 'center',

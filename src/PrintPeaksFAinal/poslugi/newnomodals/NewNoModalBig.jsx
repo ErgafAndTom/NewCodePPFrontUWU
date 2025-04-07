@@ -27,7 +27,7 @@ const NewNoModalBig = ({big, setBig, prices, buttonsArr, selectArr}) => {
                     <span style={{
                         fontSize: '1vw',
                         marginRight: '0.633vw',
-                        fontFamily: "Gotham",
+                        fontFamily: "Montserrat",
                         fontWeight: "bold", width: "500%"
                     }}>{"Згинання:"}</span>
                     {big !== "Не потрібно" ? (

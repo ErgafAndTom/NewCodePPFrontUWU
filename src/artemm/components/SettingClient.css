@@ -843,7 +843,7 @@
     text-align: left;
     font-size: var(--font-size-5xl);
     color: var(--color-black);
-    font-family: var(--font-gotham-office);
+    font-family: var(--font-Montserrat-office);
 } {
   position: relative;
   width: 1920px;
@@ -854,5 +854,5 @@
   text-align: left;
   font-size: var(--font-size-5xl);
   color: var(--color-black);
-  font-family: var(--font-gotham-office);
+  font-family: var(--font-Montserrat-office);
 }

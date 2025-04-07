@@ -205,7 +205,7 @@ const Materials2NoteFront = ({
                         fontSize: "1vw",
                         width: "9vw",
 alignItems: "center",
-                        fontFamily: "Gotham",
+                        fontFamily: "Montserrat",
                         fontWeight: "bold",
                     }}
                 >
@@ -214,7 +214,7 @@ alignItems: "center",
                 <div
                     style={{
                         fontSize: "1vw",
-                        fontFamily: "Gotham",
+                        fontFamily: "Montserrat",
                         marginLeft: "1vw",
                         whiteSpace: "nowrap",
                         alignSelf: "center",
@@ -285,7 +285,7 @@ alignItems: "center",
                 <div
                     style={{
                         fontSize: "1vw",
-                        fontFamily: "Gotham",
+                        fontFamily: "Montserrat",
                         marginLeft: "1vw",
                         whiteSpace: "nowrap",
                     }}
@@ -372,7 +372,7 @@ alignItems: "center",
                 <span
                     style={{
                         fontSize: "1vw",
-                        fontFamily: "Gotham",
+                        fontFamily: "Montserrat",
                         whiteSpace: "nowrap",
                         marginLeft: "0vw",
                     }}

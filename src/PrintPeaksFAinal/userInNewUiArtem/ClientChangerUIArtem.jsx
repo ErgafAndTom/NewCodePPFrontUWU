@@ -200,7 +200,7 @@ const ClientChangerUIArtem = ({thisOrder, handleThisOrderChange, setNewThisOrder
                             width: "90vw",
                             height: "90vh",
                             animation: "rotate-animation 2s infinite",
-                            fontFamily: 'Gotham, sans-serif',
+                            fontFamily: 'Montserrat, sans-serif',
                             fontSize: '0.7vw'
                             // padding: "20px"
                         }}

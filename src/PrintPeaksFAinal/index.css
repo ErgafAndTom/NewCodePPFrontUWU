@@ -384,7 +384,7 @@ base6 {
   width: 87px;
   height: 77px;
   font-size: 25px;
-  font-family: Gotham;
+  font-family: Montserrat;
 }
 .div87 {
   position: absolute;
@@ -436,7 +436,7 @@ base6 {
   top: calc(50% - 8.5px);
   left: 47px;
   font-size: 14px;
-  font-family: "Gotham Office";
+  font-family: "Montserrat";
   color: #000;
   text-align: center;
 }
@@ -477,7 +477,7 @@ base6 {
   top: calc(50% - 8.5px);
   left: calc(50% - 28px);
   font-size: 14px;
-  font-family: "Gotham Office";
+  font-family: "Montserrat";
   color: #000;
   text-align: center;
 }
@@ -536,7 +536,7 @@ base6 {
   left: 72.97%;
   font-size: 7px;
   letter-spacing: 0.23px;
-  font-family: "Gotham Office";
+  font-family: "Montserrat";
   text-align: center;
 }
 .div92 {
@@ -548,7 +548,7 @@ base6 {
   width: 111px;
   font-size: 17px;
   color: #707070;
-  font-family: Gotham;
+  font-family: Montserrat;
 }
 .payd {
   position: absolute;
@@ -560,7 +560,7 @@ base6 {
 .input-text1 {
   border: none;
   outline: none;
-  font-family: Gotham;
+  font-family: Montserrat;
   font-size: 17px;
   background-color: transparent;
   position: absolute;
@@ -602,7 +602,7 @@ base6 {
   top: 3px;
   left: 0px;
   font-size: 16px;
-  font-family: "Gotham Office";
+  font-family: "Montserrat";
   color: #212529;
   display: inline-block;
 }
@@ -665,7 +665,7 @@ base6 {
   font-size: 10px;
   letter-spacing: 0.33px;
   line-height: 11px;
-  font-family: "Gotham Office";
+  font-family: "Montserrat";
   text-align: center;
 }
 .div100 {
@@ -696,7 +696,7 @@ base6 {
   height: 31px;
   font-size: 17px;
   color: #707070;
-  font-family: Gotham;
+  font-family: Montserrat;
 }
 .div102 {
   position: absolute;
@@ -1095,7 +1095,7 @@ base6 {
   bottom: 0px;
   font-size: 10px;
   letter-spacing: 0.33px;
-  font-family: "Gotham Office";
+  font-family: "Montserrat";
 }
 .div119 {
   position: absolute;
@@ -1159,7 +1159,7 @@ base6 {
   width: 82px;
   text-align: left;
   font-size: 20px;
-  font-family: Gotham;
+  font-family: Montserrat;
 }
 .container-l-color7 {
   position: absolute;
@@ -1198,7 +1198,7 @@ base6 {
   font-size: 20px;
   letter-spacing: 0.19px;
   line-height: 24px;
-  font-family: Gotham;
+  font-family: Montserrat;
   text-align: left;
 }
 .div121 {
@@ -1271,7 +1271,7 @@ base6 {
   font-size: 20px;
   letter-spacing: 0.19px;
   line-height: 24px;
-  font-family: Gotham;
+  font-family: Montserrat;
   color: #707070;
   text-align: left;
 }
@@ -1333,7 +1333,7 @@ base6 {
   font-size: 20px;
   letter-spacing: 0.19px;
   line-height: 24px;
-  font-family: Gotham;
+  font-family: Montserrat;
   color: #707070;
   text-align: left;
 }
@@ -1446,7 +1446,7 @@ base6 {
   left: 6px;
   font-size: 18px;
   letter-spacing: 0.17px;
-  font-family: Gotham;
+  font-family: Montserrat;
   text-align: left;
 }
 .frame2 {
@@ -2113,7 +2113,7 @@ base6 {
 .input {
   border: none;
   outline: none;
-  font-family: "Gotham Office";
+  font-family: "Montserrat";
   font-size: 24px;
   background-color: transparent;
   position: absolute;
@@ -2212,7 +2212,7 @@ base6 {
   text-align: left;
   font-size: 17px;
   color: #707070;
-  font-family: Gotham;
+  font-family: Montserrat;
 }
 .div171 {
   position: absolute;
@@ -2223,7 +2223,7 @@ base6 {
   text-align: left;
   font-size: 17px;
   color: #707070;
-  font-family: Gotham;
+  font-family: Montserrat;
 }
 .div164 {
   position: absolute;
@@ -2240,7 +2240,7 @@ base6 {
   top: 0px;
   left: 0px;
   font-size: 14px;
-  font-family: "Gotham Office";
+  font-family: "Montserrat";
   color: #a10000;
   text-align: center;
 }
@@ -2280,7 +2280,7 @@ base6 {
   top: calc(50% - 8px);
   left: calc(50% - 16.5px);
   font-size: 14px;
-  font-family: "Gotham Office";
+  font-family: "Montserrat";
   color: #000;
   text-align: center;
 }
@@ -2313,7 +2313,7 @@ base6 {
   top: calc(50% - 8px);
   left: 7px;
   font-size: 14px;
-  font-family: "Gotham Office";
+  font-family: "Montserrat";
   color: #323232;
   text-align: center;
 }
@@ -2349,7 +2349,7 @@ base6 {
   top: calc(50% - 8px);
   left: 12.99px;
   font-size: 14px;
-  font-family: "Gotham Office";
+  font-family: "Montserrat";
   color: #323232;
   text-align: center;
 }
@@ -2407,7 +2407,7 @@ base6 {
   top: calc(50% - 8px);
   left: 11px;
   font-size: 14px;
-  font-family: "Gotham Office";
+  font-family: "Montserrat";
   color: #323232;
   text-align: center;
 }
@@ -2440,7 +2440,7 @@ base6 {
   top: calc(50% - 7.95px);
   left: calc(50% - 20.75px);
   font-size: 14px;
-  font-family: "Gotham Office";
+  font-family: "Montserrat";
   color: #323232;
   text-align: center;
 }
@@ -2473,7 +2473,7 @@ base6 {
   top: calc(50% - 8px);
   left: calc(50% - 16.5px);
   font-size: 14px;
-  font-family: "Gotham Office";
+  font-family: "Montserrat";
   color: #323232;
   text-align: center;
 }
@@ -2506,7 +2506,7 @@ base6 {
   top: calc(50% - 7.95px);
   left: 9.68px;
   font-size: 14px;
-  font-family: "Gotham Office";
+  font-family: "Montserrat";
   color: #323232;
   text-align: center;
 }
@@ -2539,7 +2539,7 @@ base6 {
   top: calc(50% - 8px);
   right: 14px;
   font-size: 14px;
-  font-family: "Gotham Office";
+  font-family: "Montserrat";
   color: #323232;
   text-align: center;
 }
@@ -2572,7 +2572,7 @@ base6 {
   top: calc(50% - 8px);
   left: calc(50% - 46.97px);
   font-size: 14px;
-  font-family: "Gotham Office";
+  font-family: "Montserrat";
   color: #323232;
   text-align: center;
 }
@@ -2601,7 +2601,7 @@ base6 {
   text-align: left;
   font-size: 12px;
   color: #000;
-  font-family: "Gotham Office";
+  font-family: "Montserrat";
 }
 
 .clienta1 {
@@ -4188,7 +4188,7 @@ base6 {
   text-align: center;
   font-size: 20px;
   color: #000;
-  font-family: "Gotham Office";
+  font-family: "Montserrat";
 }
 
 .fon12 {
@@ -4242,7 +4242,7 @@ base6 {
   width: 77px;
   height: 67px;
   font-size: 22px;
-  font-family: Gotham;
+  font-family: Montserrat;
 }
 .div443 {
   position: absolute;
@@ -4285,7 +4285,7 @@ base6 {
   top: 4px;
   left: 50px;
   font-size: 24px;
-  font-family: "Gotham Office";
+  font-family: "Montserrat";
   color: #000;
   text-align: center;
 }
@@ -4399,7 +4399,7 @@ base6 {
   box-sizing: border-box;
   font-size: 24;
   text-align: center;
-  font-family: Gotham Office;
+  font-family: Montserrat;
 }
 .frame9 {
   position: absolute;
@@ -4427,7 +4427,7 @@ base6 {
   font-size: 16px;
   letter-spacing: 0.53px;
   line-height: 16px;
-  font-family: "Gotham Office";
+  font-family: "Montserrat";
   text-align: center;
 }
 .quantity3 {
@@ -4437,7 +4437,7 @@ base6 {
   width: 95.8px;
   height: 40.5px;
   color: #707070;
-  font-family: Gotham;
+  font-family: Montserrat;
 }
 .select {
   position: absolute;
@@ -4449,7 +4449,7 @@ base6 {
   box-sizing: border-box;
   width: 283px;
   height: 32px;
-  font-family: "Gotham Office";
+  font-family: "Montserrat";
   font-size: 24px;
   color: #000;
 }
@@ -4480,7 +4480,7 @@ base6 {
   width: 95.8px;
   height: 40.5px;
   color: #707070;
-  font-family: Gotham;
+  font-family: Montserrat;
 }
 .sizes5 {
   position: absolute;
@@ -4493,7 +4493,7 @@ base6 {
   border: 1px solid #707070;
   box-sizing: border-box;
   width: 283px;
-  font-family: Gotham Office;
+  font-family: Montserrat;
   font-size: 23;
   color: #000;
 }
@@ -4509,7 +4509,7 @@ base6 {
   border-radius: 5px;
   box-sizing: border-box;
   width: 115.7px;
-  font-family: Gotham Office;
+  font-family: Montserrat;
   font-size: 23;
   color: #000;
   cursor: text;
@@ -4536,7 +4536,7 @@ base6 {
   border-radius: 5px;
   box-sizing: border-box;
   width: 114.8px;
-  font-family: Gotham Office;
+  font-family: Montserrat;
   font-size: 23;
   color: #000;
   cursor: text;
@@ -4598,7 +4598,7 @@ base6 {
   width: 95.8px;
   height: 40.5px;
   color: #707070;
-  font-family: Gotham;
+  font-family: Montserrat;
 }
 .div450 {
   position: absolute;
@@ -4671,5 +4671,5 @@ base6 {
   text-align: left;
   font-size: 24px;
   color: #000;
-  font-family: "Gotham Office";
+  font-family: "Montserrat";
 }

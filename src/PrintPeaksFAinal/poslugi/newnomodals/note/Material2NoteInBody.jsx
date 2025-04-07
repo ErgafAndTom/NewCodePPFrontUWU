@@ -549,7 +549,7 @@ const Materials2NoteInBody = ({
                 style={{
                     fontSize: "1vw",
                     width: "9vw",
-                    fontFamily: "Gotham",
+                    fontFamily: "Montserrat",
                     margin: "0",
                     padding: "0",
                     fontWeight: "bold"
@@ -578,7 +578,7 @@ const Materials2NoteInBody = ({
                             style={{
                                 fontSize: "0.8vw",
                                 marginRight: "0.633vw",
-                                fontFamily: "Gotham",
+                                fontFamily: "Montserrat",
                                 whiteSpace: "nowrap",
                                 marginTop: "0.8vw"
                             }}
@@ -592,7 +592,7 @@ const Materials2NoteInBody = ({
                         <div style={{ display: "flex", borderBottom: "0.08vw solid gray" }}>
                             <div style={{ display: "flex", alignItems: "center" }}>
                                 <div className="d-flex align-items-center" style={{ marginTop: "0.5vw" }}>
-                                    <span style={{ fontSize: "0.8vw", marginRight: "0.5vw", fontFamily: "Gotham" }}></span>
+                                    <span style={{ fontSize: "0.8vw", marginRight: "0.5vw", fontFamily: "Montserrat" }}></span>
                                     <input className="inputsArtem"
                                         type="number"
                                         value={materialAndDrukInBody.colorCount || 0}
@@ -600,7 +600,7 @@ const Materials2NoteInBody = ({
                                         style={{ width: "3vw", fontSize: "0.8vw", padding: "0.2vw" }}
                                     />
                                 </div>
-                                <div style={{ fontSize: "0.8vw", fontFamily: "Gotham" }}>Матеріал: </div>
+                                <div style={{ fontSize: "0.8vw", fontFamily: "Montserrat" }}>Матеріал: </div>
                                 <div
                                     className="ArtemNewSelectContainer"
                                     style={{ marginTop: "0", display: "flex", justifyContent: "center", alignItems: "center" }}
@@ -657,7 +657,7 @@ const Materials2NoteInBody = ({
                                     style={{
                                         fontSize: "0.8vw",
                                         marginRight: "0.633vw",
-                                        fontFamily: "Gotham",
+                                        fontFamily: "Montserrat",
                                         whiteSpace: "nowrap"
                                     }}
                                 >
@@ -726,7 +726,7 @@ const Materials2NoteInBody = ({
                             style={{
                                 fontSize: "0.8vw",
                                 marginRight: "0.633vw",
-                                fontFamily: "Gotham",
+                                fontFamily: "Montserrat",
                                 whiteSpace: "nowrap",
                                 marginTop: "0.77vw"
                             }}
@@ -740,7 +740,7 @@ const Materials2NoteInBody = ({
                         <div style={{ display: "flex", borderBottom: "0.08vw solid gray" }}>
                             <div style={{ display: "flex", alignItems: "center" }}>
                                 <div className="d-flex align-items-center" style={{ marginTop: "0.5vw" }}>
-                                    <span style={{ fontSize: "0.8vw", marginRight: "0.5vw", fontFamily: "Gotham" }}></span>
+                                    <span style={{ fontSize: "0.8vw", marginRight: "0.5vw", fontFamily: "Montserrat" }}></span>
                                     <input className="inputsArtem"
                                         type="number"
                                            min={1}
@@ -749,7 +749,7 @@ const Materials2NoteInBody = ({
                                         style={{ width: "3vw", fontSize: "0.8vw", padding: "0.2vw" }}
                                     />
                                 </div>
-                                <div style={{ fontSize: "0.8vw", fontFamily: "Gotham" }}>Матеріал: </div>
+                                <div style={{ fontSize: "0.8vw", fontFamily: "Montserrat" }}>Матеріал: </div>
                                 <div
                                     className="ArtemNewSelectContainer"
                                     style={{ marginTop: "0", display: "flex", justifyContent: "center", alignItems: "center" }}
@@ -806,7 +806,7 @@ const Materials2NoteInBody = ({
                                     style={{
                                         fontSize: "0.8vw",
                                         marginRight: "0.633vw",
-                                        fontFamily: "Gotham",
+                                        fontFamily: "Montserrat",
                                         whiteSpace: "nowrap"
                                     }}
                                 >
@@ -877,7 +877,7 @@ const Materials2NoteInBody = ({
                             style={{
                                 fontSize: "0.8vw",
                                 marginRight: "0.633vw",
-                                fontFamily: "Gotham",
+                                fontFamily: "Montserrat",
                                 whiteSpace: "nowrap",
                                 marginTop: "0.77vw"
                             }}
@@ -892,7 +892,7 @@ const Materials2NoteInBody = ({
 
                             <div style={{ display: "flex", alignItems: "center" }}>
                                 <div className="d-flex align-items-center" style={{ marginTop: "0.5vw" }}>
-                                    <span style={{ fontSize: "0.8vw", marginRight: "0.5vw", fontFamily: "Gotham" }}></span>
+                                    <span style={{ fontSize: "0.8vw", marginRight: "0.5vw", fontFamily: "Montserrat" }}></span>
                                     <input className="inputsArtem"
                                         type="number"
                                         value={materialAndDrukInBody.nonCount || 0}
@@ -900,7 +900,7 @@ const Materials2NoteInBody = ({
                                         style={{ width: "3vw", fontSize: "0.8vw", padding: "0.2vw" }}
                                     />
                                 </div>
-                                <div style={{ fontSize: "0.8vw", fontFamily: "Gotham" }}>Матеріал: </div>
+                                <div style={{ fontSize: "0.8vw", fontFamily: "Montserrat" }}>Матеріал: </div>
                                 <div
                                     className="ArtemNewSelectContainer"
                                     style={{ marginTop: "0", display: "flex", justifyContent: "center", alignItems: "center" }}
@@ -957,7 +957,7 @@ const Materials2NoteInBody = ({
                                     style={{
                                         fontSize: "0.8vw",
                                         marginRight: "0.633vw",
-                                        fontFamily: "Gotham",
+                                        fontFamily: "Montserrat",
                                         whiteSpace: "nowrap"
                                     }}
                                 >

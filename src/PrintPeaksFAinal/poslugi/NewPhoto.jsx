@@ -312,7 +312,7 @@ const NewPhoto = ({thisOrder, newThisOrder, setNewThisOrder, selectedThings2, sh
                                             style={{
                                                 width: "90vw",
                                                 marginLeft: "2.5vw",
-                                                fontFamily: "Gotham",
+                                                fontFamily: "Montserrat",
                                                 fontWeight: "bold",
                                                 display: 'flex',
                                                 justifyContent: 'center',
