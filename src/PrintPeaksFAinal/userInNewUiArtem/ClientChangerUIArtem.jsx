@@ -3,6 +3,7 @@ import './ClientArtem.css';
 import  './ClientsMenuu.css'
 import www from "./www.svg";
 import whiteSVG from "../../components/whiteSVG.svg";
+import pays from "../Pays.png";
 import axios from "../../api/axiosInstance";
 import Form from "react-bootstrap/Form";
 import ChangeClienticons from "./img/Group 1476.png";
@@ -18,12 +19,14 @@ import Tooltip from '../TooltipButton2';
 import {useNavigate} from "react-router-dom";
 import AddUserWindow from "../user/AddUserWindow";
 import {Spinner} from "react-bootstrap";
-import NP from "./NP"; //
+import NP from "./NP";
+import PaysInOrder from "./pays/PaysInOrder"; //
 
 const ClientChangerUIArtem = ({thisOrder, handleThisOrderChange, setNewThisOrder, setThisOrder}) => {
     const navigate = useNavigate();
     const [showAddUser, setShowAddUser] = useState(false);
     const [showNP, setShowNP] = useState(false);
+    const [showPays, setShowPays] = useState(false);
     const [load, setLoad] = useState(false);
     const [typeSelect, setTypeSelect] = useState("");
     const [users, setUsers] = useState([]);
@@ -158,6 +161,9 @@ const ClientChangerUIArtem = ({thisOrder, handleThisOrderChange, setNewThisOrder
 
     const AddNewUser = () => {
         setShowAddUser(!showAddUser)
+    };
+    const openPays = () => {
+        setShowPays(!showPays)
     };
 
     const NPS = () => {
@@ -368,6 +374,37 @@ const ClientChangerUIArtem = ({thisOrder, handleThisOrderChange, setNewThisOrder
 
                             <div className="right-section"
                                  style={{justifyContent: 'flex-end', display: 'flex', marginLeft: 'auto', paddingRight:"0"}}>
+
+                                <Tooltip text="Оплата">
+                                    <div className="discount-button" data-toggle="tooltip" data-placement="top"
+                                         title="Оплата" style={{
+                                        // transform: "rotate(360deg)",
+                                        alignItems: "center",
+                                        marginTop: "-0.1vw",
+                                        fontSize: "2vw",
+                                        opacity: "80%"
+                                    }}>
+                                        <button className="addclient grayFonColorBackground " style={{
+                                            width: "2.4vw",
+                                            height: "2.4vw",
+                                            // marginTop: "0.2vw",
+                                            marginLeft: "0.3vw",
+                                            border: "0px",
+                                            borderRadius: "0.5vw",
+                                            opacity: "80%"
+                                        }} onClick={openPays}>
+                                            <img src={pays} style={{width: "1.5vw",  marginLeft: "auto"}} alt="addclients" className="addclient-icons"
+                                            />
+
+                                        </button>
+                                    </div>
+                                    {showPays &&
+                                        <div style={{ }} className="">
+                                            <PaysInOrder showPays={showPays} setShowPays={setShowPays} thisOrder={thisOrder} setThisOrder={setThisOrder}/>
+                                        </div>
+                                    }
+                                </Tooltip>
+
                                 <Tooltip text="Знижка">
                                 <div className="discount-button" data-toggle="tooltip" data-placement="top"
                                      title="Знижка" style={{
