@@ -3,46 +3,6 @@ import axios from "../../../api/axiosInstance";
 import { useNavigate } from "react-router-dom";
 import {Spinner} from "react-bootstrap";
 
-const styles = {
-    inputContainer: {
-        display: "flex",
-        alignItems: "center",
-        gap: "1vw",
-        border: "none",
-        margin: "0.3vw"
-    },
-    input1: {
-        background: "#e9e6da",
-        padding: "0.4vw",
-        borderRadius: "0.5vw",
-        fontSize: "0.7vw",
-        border: "none",
-        width: "12vw"
-    },
-    select1: {
-        background: "#e9e6da",
-        padding: "0.4vw",
-        borderRadius: "0.5vw",
-        fontSize: "0.7vw",
-        border: "none",
-        paddingRight: "1.3vw",
-    },
-    addButton: {
-        marginLeft: "3.5vw",
-        marginTop: "1vh",
-        padding: "0.3vh",
-        backgroundColor: "#f1c40f",
-        borderRadius: "1vw",
-        fontSize: "0.7vw",
-        border: "none",
-        cursor: "pointer",
-        width: "12vw",
-        height: "3.5vh",
-        justifyContent: "center",
-        alignItems: "center",
-    },
-};
-
 function PaysInOrder({ showPays, setShowPays, thisOrder, setThisOrder }) {
     const [load, setLoad] = useState(false);
     const [data, setData] = useState(null);
@@ -80,41 +40,9 @@ function PaysInOrder({ showPays, setShowPays, thisOrder, setThisOrder }) {
         }, 300); // После завершения анимации скрываем модальное окно
     }
 
-    const handleDepartmentSelect = (departmentId, allData, description, cityRef, departmentRef, WarehouseIndex) => {
-        console.log(allData);
-        setFormData({
-            ...formData,
-            CityRecipient: cityRef,
-            RecipientAddress: departmentRef,
-            Recipient: departmentId,
-        });
-    };
-    const handleDepartmentSelect1 = (departmentId, allData, description, cityRef, departmentRef, WarehouseIndex) => {
-        setFormData({
-            ...formData,
-            CitySender: cityRef,
-            SenderAddress: departmentRef,
-            Sender: departmentId,
-        });
-    };
-
     const handleChange = (e) => {
-        setFormData({
-            ...formData,
-            [e.target.name]: e.target.value,
-        });
-    };
-
-    const handleSubmit = async (e) => {
-        e.preventDefault();
-        try {
-            const response = await axios.post('/novaposhta/create', formData);
-            console.log(response.data);
-            setResult(response.data);
-            setError(null);
-        } catch (err) {
-            setError(err.response?.data?.error || err.message);
-        }
+        const { name, value } = e.target;
+        setFormData(prev => ({ ...prev, [name]: value }));
     };
 
     useEffect(() => {
@@ -247,14 +175,6 @@ function PaysInOrder({ showPays, setShowPays, thisOrder, setThisOrder }) {
                                 })}
                             </>
                         )}
-
-                        {/*{result && (*/}
-                        {/*    <div className="">*/}
-                        {/*        <h3>Результат:</h3>*/}
-                        {/*        <pre style={{ overflow: 'auto', height: '16vh', background: "white" }}>{JSON.stringify(result, null, 2)}</pre>*/}
-                        {/*    </div>*/}
-                        {/*)}*/}
-                        {/*{error && <p style={{ color: 'red' }}>Помилка: {error}</p>}*/}
                     </div>
                 </div>
             </div>
