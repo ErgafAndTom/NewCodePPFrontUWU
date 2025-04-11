@@ -17,7 +17,7 @@ const stages = [
 ];
 
 
-const ProgressBar = ({thisOrder, setThisOrder, setNewThisOrder, handleThisOrderChange, client}) => {
+const ProgressBar = ({thisOrder, setThisOrder, setNewThisOrder, handleThisOrderChange}) => {
     const [isVisible, setIsVisible] = useState(true);
     const [currentStage, setCurrentStage] = useState(parseInt(thisOrder.status));
     const [isPaid, setIsPaid] = useState(false);
@@ -372,7 +372,6 @@ const ProgressBar = ({thisOrder, setThisOrder, setNewThisOrder, handleThisOrderC
 
         >
             <ClientChangerUIArtem
-                client={client}
                 thisOrder={thisOrder}
                 setThisOrder={setThisOrder}
                 setNewThisOrder={setNewThisOrder}

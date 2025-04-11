@@ -53,6 +53,7 @@ function PaysInOrder({ showPays, setShowPays, thisOrder, setThisOrder }) {
             columnName: thisColumn,
             startDate: startDate,
             endDate: endDate,
+            clientId: thisOrder.clientId,
         };
         setLoad(true);
         axios.post(`/user/getPayments`, data)

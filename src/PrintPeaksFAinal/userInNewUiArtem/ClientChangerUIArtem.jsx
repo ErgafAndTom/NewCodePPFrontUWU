@@ -22,7 +22,7 @@ import {Spinner} from "react-bootstrap";
 import NP from "./NP";
 import PaysInOrder from "./pays/PaysInOrder"; //
 
-const ClientChangerUIArtem = ({thisOrder, handleThisOrderChange, setNewThisOrder, setThisOrder}) => {
+const ClientChangerUIArtem = ({thisOrder, setThisOrder}) => {
     const navigate = useNavigate();
     const [showAddUser, setShowAddUser] = useState(false);
     const [showNP, setShowNP] = useState(false);
@@ -126,24 +126,26 @@ const ClientChangerUIArtem = ({thisOrder, handleThisOrderChange, setNewThisOrder
 
     const openMessenger = (messenger) => {
         let url = '';
-        const phoneNum = thisOrder.User.phoneNumber.replace(/\s+/g, '');
-        switch (messenger) {
-            case 'signal':
-                url = `signal://${thisOrder.User.phoneNum}`;
-                break;
-            case 'viber':
-                url = `viber://chat?number=${thisOrder.User.phoneNum}`;
-                break;
-            case 'whatsapp':
-                url = `https://wa.me/${thisOrder.User.phoneNum}`;
-                break;
-            case 'telegram':
-                url = `https://t.me/${thisOrder.User.telegramlogin}`;
-                break;
-            default:
-                break;
+        if (thisOrder.client) {
+            const phoneNum = thisOrder.client.phoneNumber.replace(/\s+/g, '');
+            switch (messenger) {
+                case 'signal':
+                    url = `signal://${thisOrder.client.phoneNum}`;
+                    break;
+                case 'viber':
+                    url = `viber://chat?number=${thisOrder.client.phoneNum}`;
+                    break;
+                case 'whatsapp':
+                    url = `https://wa.me/${thisOrder.client.phoneNum}`;
+                    break;
+                case 'telegram':
+                    url = `https://t.me/${thisOrder.client.telegramlogin}`;
+                    break;
+                default:
+                    break;
+            }
+            window.open(url, '_blank');
         }
-        window.open(url, '_blank');
     };
 
     const printBarcode = () => {
@@ -339,7 +341,7 @@ const ClientChangerUIArtem = ({thisOrder, handleThisOrderChange, setNewThisOrder
                                     maxWidth: "15vw",
                                     opacity: "80%"
                                 }}>
-                                    {thisOrder.User.firstName} {thisOrder.User.lastName} {thisOrder.User.familyName}
+                                    {thisOrder.client.firstName} {thisOrder.client.lastName} {thisOrder.client.familyName}
                                 </div>
                                 <div className="contact-number" style={{
                                     display: "flex",
@@ -350,7 +352,7 @@ const ClientChangerUIArtem = ({thisOrder, handleThisOrderChange, setNewThisOrder
                                     <div className="nicknameArtemCli"
                                          style={{fontSize: "0.7vw", display: "flex", alignItems: "center", marginTop: "0.2vw",
                                              opacity: "80%"}}>
-                                        {thisOrder.User.phoneNumber}
+                                        {thisOrder.client.phoneNumber}
                                         <img style={{width: "0.9vw", marginLeft: "0.3vw", alignItems: "center"}}
                                              src={signallogo}
                                              alt="Signal" className="img-fluid"
@@ -365,7 +367,7 @@ const ClientChangerUIArtem = ({thisOrder, handleThisOrderChange, setNewThisOrder
                                 </div>
                                 <div className="nicknameArtemCli" style={{display: "flex",fontSize: "0.7vw", alignItems: "center", color: "#239cd7", marginTop: "0.2vw",
                                     opacity: "80%"}}>
-                                    {thisOrder.User.telegram}
+                                    {thisOrder.client.telegram}
                                     <img src={telegram} alt="Telegram" style={{width: "0.9vw", marginLeft: "0.3vw"}}
                                          className="img-fluid"
                                          onClick={() => openMessenger('telegram')}/>
@@ -415,7 +417,7 @@ const ClientChangerUIArtem = ({thisOrder, handleThisOrderChange, setNewThisOrder
                                     opacity: "80%"
                                 }}>
                                     <div className="discountwords"
-                                         style={{}}>{thisOrder.User.discount}
+                                         style={{}}>{thisOrder.client.discount}
 
                                     </div>
                                     <div className="ProzentClient" style={{}}></div>

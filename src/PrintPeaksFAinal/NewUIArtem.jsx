@@ -191,7 +191,7 @@ const NewUIArtem = () => {
         }
     }, [id]);
 
-    if (thisOrder.User) {
+    if (thisOrder.client) {
         return (
             <div>
 
@@ -455,12 +455,9 @@ const NewUIArtem = () => {
                         <div className="d-flex flex-column" style={{marginLeft: "0.3vw", marginTop: "1.6vw", borderRadius: "1.5vh"}}>
                             {/*<ProgressBar/>*/}
                             {/*<div className="containerNewUI containerDetailsThisOrder " style={{border: "0vw"}}>*/}
-                                {thisOrder && thisOrder.User ? (
+                                {thisOrder && thisOrder.client ? (
                                     <div className="ClientsMenuAll">
                                         <ProgressBar thisOrder={thisOrder} setThisOrder={setThisOrder}
-                                                     client={thisOrder.User}
-                                                     thisOrder={thisOrder}
-                                                     setThisOrder={setThisOrder}
                                                      setNewThisOrder={setNewThisOrder}
                                                      handleThisOrderChange={handleThisOrderChange}/>
                                         {/*<ClientChangerUIArtem*/}

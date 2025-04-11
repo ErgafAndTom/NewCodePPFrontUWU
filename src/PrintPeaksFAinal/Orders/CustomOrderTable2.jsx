@@ -301,33 +301,50 @@ const CustomOrderTable2 = () => {
                                                 </div>
                                             </div>
                                             <div className="CustomOrderTable-cell">
-                                                {order.User.photoLink ? (
-                                                    <img
-                                                        src={order.User.photoLink}
-                                                        alt="Фото замовлення"
-                                                        className="CustomOrderTable-photo"
-                                                    />
+                                                {order.client ? (
+                                                    <>
+                                                        {order.client.photoLink ? (
+                                                            <img
+                                                                src={order.client.photoLink}
+                                                                alt="Фото замовлення"
+                                                                className="CustomOrderTable-photo"
+                                                            />
+                                                        ) : (
+                                                            'Фото'
+                                                        )}
+                                                    </>
                                                 ) : (
-                                                    'Фото'
+                                                    <div className="CustomOrderTable-cell">—</div>
                                                 )}
                                             </div>
-                                            <div
-                                                className="CustomOrderTable-cell">{`${order.User.firstName} ${order.User.lastName} ${order.User.familyName}`}</div>
-                                            <div className="CustomOrderTable-cell">{order.User.phoneNumber}</div>
-                                            <div className="CustomOrderTable-cell">
-                                                {order.User.telegram ? (
-                                                    <a
-                                                        href={order.User.telegram}
-                                                        target="_blank"
-                                                        rel="noopener noreferrer"
-                                                        className="CustomOrderTable-telegram-link"
-                                                    >
-                                                        @{order.User.username}
-                                                    </a>
-                                                ) : (
-                                                    '—'
-                                                )}
-                                            </div>
+                                            {order.client ? (
+                                                <div className="CustomOrderTable-cell">{`${order.client.firstName} ${order.client.lastName} ${order.client.familyName}`}</div>
+                                            ) : (
+                                                <div className="CustomOrderTable-cell">—</div>
+                                            )}
+                                            {order.client ? (
+                                                <div className="CustomOrderTable-cell">{order.client.phoneNumber}</div>
+                                            ) : (
+                                                <div className="CustomOrderTable-cell">—</div>
+                                            )}
+                                            {order.client ? (
+                                                <div className="CustomOrderTable-cell">
+                                                    {order.client.telegram ? (
+                                                        <a
+                                                            href={order.client.telegram}
+                                                            target="_blank"
+                                                            rel="noopener noreferrer"
+                                                            className="CustomOrderTable-telegram-link"
+                                                        >
+                                                            @{order.client.username}
+                                                        </a>
+                                                    ) : (
+                                                        <div>—</div>
+                                                    )}
+                                                </div>
+                                            ) : (
+                                                <div className="CustomOrderTable-cell">—</div>
+                                            )}
                                             <div className="CustomOrderTable-cell">{order.price} грн</div>
                                             <div className="CustomOrderTable-cell">
                                                 <div
@@ -354,7 +371,7 @@ const CustomOrderTable2 = () => {
                                                     : '—'}
                                             </div>
                                             <div
-                                                className="CustomOrderTable-cell">{`${order.User.firstName} ${order.User.lastName} ${order.User.familyName}`}</div>
+                                                className="CustomOrderTable-cell">{`${order.executor.firstName} ${order.executor.lastName} ${order.executor.familyName}`}</div>
                                             <div className="CustomOrderTable-cell">
                                                 <Link to={`/Orders/${order.id}`}>
                                                     <button className="kassa-btn CustomOrderTable-toggle-btn">До каси
