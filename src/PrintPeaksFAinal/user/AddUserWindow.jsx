@@ -257,7 +257,6 @@ function AddUserWindow({showAddUser, setShowAddUser, thisOrder, setThisOrder}) {
                                 onFocus={handleFocus}
                                 onBlur={handleBlur}
                                 maxLength="17"
-                                value={phone}
                             />
                         </div>
                     </div>

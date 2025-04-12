@@ -370,8 +370,11 @@ const CustomOrderTable2 = () => {
                                                     ? `${new Date(order.deadline).toLocaleDateString()} ${new Date(order.deadline).toLocaleTimeString()}`
                                                     : '—'}
                                             </div>
-                                            <div
-                                                className="CustomOrderTable-cell">{`${order.executor.firstName} ${order.executor.lastName} ${order.executor.familyName}`}</div>
+                                            {order.executor ? (
+                                                <div className="CustomOrderTable-cell">{`${order.executor.firstName} ${order.executor.lastName} ${order.executor.familyName}`}</div>
+                                            ) : (
+                                                <div className="CustomOrderTable-cell">—</div>
+                                            )}
                                             <div className="CustomOrderTable-cell">
                                                 <Link to={`/Orders/${order.id}`}>
                                                     <button className="kassa-btn CustomOrderTable-toggle-btn">До каси

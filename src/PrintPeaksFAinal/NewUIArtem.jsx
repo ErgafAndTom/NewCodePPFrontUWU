@@ -7,7 +7,6 @@ import './Wide.css';
 import './MainWindow.css';
 import {Link, useNavigate, useParams} from "react-router-dom";
 import axios from '../api/axiosInstance';
-import OneOrderButton from "../components/newUIArtem/orders/OneOrderButton";
 import {Modal} from "react-bootstrap";
 
 
@@ -191,7 +190,7 @@ const NewUIArtem = () => {
         }
     }, [id]);
 
-    if (thisOrder.client) {
+    if (thisOrder) {
         return (
             <div>
 
@@ -455,7 +454,7 @@ const NewUIArtem = () => {
                         <div className="d-flex flex-column" style={{marginLeft: "0.3vw", marginTop: "1.6vw", borderRadius: "1.5vh"}}>
                             {/*<ProgressBar/>*/}
                             {/*<div className="containerNewUI containerDetailsThisOrder " style={{border: "0vw"}}>*/}
-                                {thisOrder && thisOrder.client ? (
+                                {thisOrder ? (
                                     <div className="ClientsMenuAll">
                                         <ProgressBar thisOrder={thisOrder} setThisOrder={setThisOrder}
                                                      setNewThisOrder={setNewThisOrder}

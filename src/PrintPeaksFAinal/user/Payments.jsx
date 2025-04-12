@@ -64,10 +64,9 @@ const Payments = () => {
             columnName: thisColumn,
             startDate: startDate,
             endDate: endDate,
-            statuses: statuses,
         };
         setLoading(true);
-        axios.post(`/user/getPayments`, data)
+        axios.post(`/user/getMyPayments`, data)
             .then(response => {
                 // console.log(response.data);
                 setData(response.data);
@@ -82,7 +81,7 @@ const Payments = () => {
                 setError(error.message);
                 setLoading(false);
             });
-    }, [typeSelect, thisColumn, startDate, endDate, statuses]);
+    }, [typeSelect, thisColumn, startDate, endDate]);
 
     const toggleOrder = (orderId) => {
         if (expandedOrders.includes(orderId)) {
@@ -446,9 +445,6 @@ const Payments = () => {
                             </>
                         )}
                     </div>
-                    {/*<div className="CustomOrderTable-header-cell">До каси</div>*/}
-                    {/*<div className="CustomOrderTable-header-cell">Зробити рахунок</div>*/}
-                    {/*<div className="CustomOrderTable-header-cell CustomOrderTable-right-rounded">Видалити</div>*/}
                 </div>
                 <div className="CustomOrderTable-body">
                     {error && (
@@ -460,7 +456,6 @@ const Payments = () => {
                     {data && (
                         <>
                             {data.rows.map(order => {
-                                const isExpanded = expandedOrders.includes(order.id);
                                 return (
                                     <div key={order.id}>
                                         <div className="CustomOrderTable-row">
@@ -484,73 +479,9 @@ const Payments = () => {
                                                 {`${new Date(order.createdAt).toLocaleDateString()} ${new Date(order.createdAt).toLocaleTimeString()}`}
                                             </div>
                                             <div className="CustomOrderTable-cell">
-                                                {order.updatedAt
-                                                    ? `${new Date(order.updatedAt).toLocaleDateString()} ${new Date(order.updatedAt).toLocaleTimeString()}`
-                                                    : '—'}
+                                                {order.updatedAt ? `${new Date(order.updatedAt).toLocaleDateString()} ${new Date(order.updatedAt).toLocaleTimeString()}` : '—'}
                                             </div>
-                                            {/*<div className="CustomOrderTable-cell">*/}
-                                            {/*    <Link to={`/Orders/${order.id}`}>*/}
-                                            {/*        <button className="kassa-btn CustomOrderTable-toggle-btn">До каси*/}
-                                            {/*        </button>*/}
-                                            {/*        /!* Залишаємо клас "kassa-btn" *!/*/}
-                                            {/*    </Link>*/}
-                                            {/*</div>*/}
-                                            {/*<div className="CustomOrderTable-cell">*/}
-                                            {/*    <button className="CustomOrderTable-toggle-btn">Зробити рахунок</button>*/}
-                                            {/*    /!* Залишаємо клас "invoice-btn" *!/*/}
-                                            {/*</div>*/}
-                                            {/*<div className="CustomOrderTable-cell">*/}
-                                            {/*    <button*/}
-                                            {/*        className="CustomOrderTable-toggle-btn CustomOrderTable-delete-btn" // Використання існуючого класу з HTML*/}
-                                            {/*        onClick={(e) => handleOrderClickDelete(order)}*/}
-                                            {/*    >Видалити*/}
-                                            {/*    </button>*/}
-                                            {/*</div>*/}
                                         </div>
-                                        {isExpanded && (
-                                            <div className="CustomOrderTable-order-details">
-                                                <div
-                                                    className="CustomOrderTable-order-units d-flex align-content-around justify-content-around">
-                                                    {order.OrderUnits.length > 0 ? (
-                                                        order.OrderUnits.map((orderUnit, index) => (
-                                                            <div key={index} style={{
-                                                                backgroundColor: "#E9E6DA",
-                                                                borderRadius: "0.3vw",
-                                                                padding: "0.5vw",
-                                                                margin: "0.5vw"
-                                                            }}
-                                                                 className="sub-order d-flex flex-column align-content-between justify-content-between">
-                                                                <p className="adminFont"><strong>№
-                                                                    підзамовлення:</strong> {orderUnit.idKey || '—'}</p>
-                                                                <p className="adminFont"><strong>Поточний
-                                                                    статус:</strong> {orderUnit.status}</p>
-                                                                <p className="adminFont"><strong>Тип
-                                                                    продукції:</strong> {orderUnit.type} {orderUnit.typeUse}
-                                                                </p>
-                                                                <p className="adminFont">
-                                                                    <strong>Назва:</strong> {orderUnit.name}</p>
-                                                                <p className="adminFont">
-                                                                    <strong>Кількість:</strong> {orderUnit.name}</p>
-                                                                <p className="adminFont"><strong>Ціна за
-                                                                    одиницю:</strong> {orderUnit.newField5}</p>
-                                                                <p className="adminFont">
-                                                                    <strong>Вартість:</strong> {orderUnit.priceForThis} грн
-                                                                </p>
-                                                                <p className="adminFont">
-                                                                    <strong>Розмір:</strong> {`${orderUnit.newField2} x ${orderUnit.newField3}`} мм
-                                                                </p>
-                                                                <p className="adminFont"><strong>Використано
-                                                                    аркушів:</strong> {orderUnit.newField5} шт</p>
-                                                                <p className="adminFont"><strong>Кількість виробів на
-                                                                    аркуші:</strong> {orderUnit.newField4} шт</p>
-                                                            </div>
-                                                        ))
-                                                    ) : (
-                                                        <div className="sub-order">Единиц заказа відсутні</div>
-                                                    )}
-                                                </div>
-                                            </div>
-                                        )}
                                     </div>
                                 );
                             })}

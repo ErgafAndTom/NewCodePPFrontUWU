@@ -2,13 +2,10 @@ import React, { useEffect, useState } from "react";
 import axios from "../../../api/axiosInstance";
 import { useNavigate } from "react-router-dom";
 import {Spinner} from "react-bootstrap";
-import AddUserWindow from "../../user/AddUserWindow";
-import AddPaysInOrder from "./AddPayInOrder";
 
-function PaysInOrder({ showPays, setShowPays, thisOrder, setThisOrder }) {
+function AddPaysInOrder({ showAddPay, setShowAddPay, thisOrder, setThisOrder }) {
     const [load, setLoad] = useState(false);
     const [data, setData] = useState(null);
-    const [showAddPay, setShowAddPay] = useState(false);
     const [formData, setFormData] = useState({
         // Дані відправника (обов'язкові)
         SenderWarehouseIndex: '',    //Цифрова адреса відділення відправника
@@ -39,7 +36,7 @@ function PaysInOrder({ showPays, setShowPays, thisOrder, setThisOrder }) {
         setIsAnimating(false); // Начинаем анимацию закрытия
         setTimeout(() => {
             setIsVisible(false)
-            setShowPays(false);
+            setShowAddPay(false);
         }, 300); // После завершения анимации скрываем модальное окно
     }
 
@@ -48,53 +45,54 @@ function PaysInOrder({ showPays, setShowPays, thisOrder, setThisOrder }) {
         setFormData(prev => ({ ...prev, [name]: value }));
     };
 
-    const openAddPay = () => {
-        setShowAddPay(!showAddPay)
+    // useEffect(() => {
+    //     let data = {
+    //         inPageCount: inPageCount,
+    //         currentPage: currentPage,
+    //         search: typeSelect,
+    //         columnName: thisColumn,
+    //         startDate: startDate,
+    //         endDate: endDate,
+    //         clientId: thisOrder.clientId,
+    //     };
+    //     setLoad(true);
+    //     axios.post(`/user/getPayments`, data)
+    //         .then(response => {
+    //             // console.log(response.data);
+    //             setData(response.data);
+    //             setError(null);
+    //             setLoad(false);
+    //             setPageCount(Math.ceil(response.data.count / inPageCount));
+    //         })
+    //         .catch(error => {
+    //             if (error.response.status === 403) {
+    //                 navigate('/login');
+    //             }
+    //             setError(error.message);
+    //             setLoad(false);
+    //         });
+    // }, [typeSelect, thisColumn, startDate, endDate]);
+
+    const handleSubmit = async (e) => {
+        e.preventDefault();
+
     };
 
     useEffect(() => {
-        let data = {
-            inPageCount: inPageCount,
-            currentPage: currentPage,
-            search: typeSelect,
-            columnName: thisColumn,
-            startDate: startDate,
-            endDate: endDate,
-            clientId: thisOrder.clientId,
-        };
-        setLoad(true);
-        axios.post(`/user/getPayments`, data)
-            .then(response => {
-                // console.log(response.data);
-                setData(response.data);
-                setError(null);
-                setLoad(false);
-                setPageCount(Math.ceil(response.data.count / inPageCount));
-            })
-            .catch(error => {
-                if (error.response.status === 403) {
-                    navigate('/login');
-                }
-                setError(error.message);
-                setLoad(false);
-            });
-    }, [typeSelect, thisColumn, startDate, endDate]);
-
-    useEffect(() => {
-        if (showPays) {
+        if (showAddPay) {
             setIsVisible(true); // Сначала показываем модальное окно
             setTimeout(() => setIsAnimating(true), 100); // После короткой задержки запускаем анимацию появления
         } else {
             setIsAnimating(false); // Начинаем анимацию закрытия
             setTimeout(() => setIsVisible(false), 300); // После завершения анимации скрываем модальное окно
         }
-    }, [showPays]);
+    }, [showAddPay]);
 
     return (
         <div>
             <div className="" onClick={handleClose} style={{
                 width: "100vw",
-                zIndex: "100",
+                zIndex: "101",
                 height: "100vh",
                 background: "rgba(0, 0, 0, 0.2)",
                 opacity: isAnimating ? 1 : 0, // для анимации прозрачности
@@ -105,7 +103,7 @@ function PaysInOrder({ showPays, setShowPays, thisOrder, setThisOrder }) {
             }}>
             </div>
             <div style={{
-                zIndex: "100",
+                zIndex: "101",
                 display: "flex",
                 flexDirection: "column",
                 position: "fixed",
@@ -116,8 +114,8 @@ function PaysInOrder({ showPays, setShowPays, thisOrder, setThisOrder }) {
                 opacity: isAnimating ? 1 : 0, // анимация прозрачности
                 transition: "opacity 0.3s ease-in-out, transform 0.3s ease-in-out", // плавная анимация
                 borderRadius: "1vw",
-                width: "95vw",
-                height: "95vh",
+                width: "50vw",
+                // height: "50vh",
                 cursor: "auto",
             }}>
                 <div className="d-flex">
@@ -147,48 +145,75 @@ function PaysInOrder({ showPays, setShowPays, thisOrder, setThisOrder }) {
                         {load && (
                             <div className="d-flex justify-content-center align-items-center" style={{height: "100%"}}><Spinner animation="border" className="mainLoader" variant="dark" /></div>
                         )}
-                        {data && (
-                            <>
-                                {data.rows.map(order => {
-                                    return (
-                                        <div key={order.id}>
-                                            <div className="CustomOrderTable-row">
-                                                {/* Використання класів відповідно до HTML */}
-                                                <div className="CustomOrderTable-cell">{order.id}</div>
-                                                <div className="CustomOrderTable-cell">{order.userId}</div>
-                                                <div className="CustomOrderTable-cell">{order.type}</div>
-                                                <div className="CustomOrderTable-cell">{order.value}</div>
-                                                <div className="CustomOrderTable-cell">{order.currency}</div>
-                                                <div className="CustomOrderTable-cell">{order.status}</div>
-                                                <div className="CustomOrderTable-cell">{order.cardHolderName}</div>
-                                                <div className="CustomOrderTable-cell">{order.cardExpiry}</div>
-                                                <div className="CustomOrderTable-cell">{order.bankName}</div>
-                                                <div className="CustomOrderTable-cell">{order.bankAccountNumber}</div>
-                                                <div className="CustomOrderTable-cell">{order.bankMFO}</div>
-                                                <div className="CustomOrderTable-cell">{order.fopName}</div>
-                                                <div className="CustomOrderTable-cell">{order.fopNumber}</div>
-                                                <div className="CustomOrderTable-cell">{order.edrpouCode}</div>
-                                                <div className="CustomOrderTable-cell">{order.legalEntityId}</div>
-                                                <div className="CustomOrderTable-cell">
-                                                    {`${new Date(order.createdAt).toLocaleDateString()} ${new Date(order.createdAt).toLocaleTimeString()}`}
-                                                </div>
-                                                <div className="CustomOrderTable-cell">
-                                                    {order.updatedAt
-                                                        ? `${new Date(order.updatedAt).toLocaleDateString()} ${new Date(order.updatedAt).toLocaleTimeString()}`
-                                                        : '—'}
-                                                </div>
-                                            </div>
-                                        </div>
-                                    );
-                                })}
-                            </>
-                        )}
-                        <button onClick={openAddPay}>+</button>
-                        {showAddPay &&
-                            <div style={{ }} className="">
-                                <AddPaysInOrder showAddPay={showAddPay} setShowAddPay={setShowAddPay} thisOrder={thisOrder} setThisOrder={setThisOrder}/>
-                            </div>
-                        }
+                        <form onSubmit={handleSubmit} className="">
+                            <label className="adminFont">
+                                Тип:
+                                <select
+                                    name="type"
+                                    value={formData.type}
+                                    onChange={handleChange}
+                                    className=""
+                                    required
+                                >
+                                    <option value="">Выберите тип</option>
+                                    <option value="ФОП">ФОП</option>
+                                    <option value="ТОВ">ТОВ</option>
+                                    <option value="ГО">ГО</option>
+                                </select>
+                            </label>
+
+                            <label className="adminFont">
+                                Название компании:
+                                <input
+                                    type="text"
+                                    name="companyName"
+                                    value={formData.companyName}
+                                    onChange={handleChange}
+                                    required
+                                    className=""
+                                />
+                            </label>
+
+                            <label className="adminFont">
+                                ИНН:
+                                <input
+                                    type="text"
+                                    name="inn"
+                                    value={formData.inn}
+                                    onChange={handleChange}
+                                    required
+                                    className=""
+                                />
+                            </label>
+
+                            {/* Добавить остальные поля по аналогии */}
+
+                            <button type="submit" className="requisiteFormButton">Сохранить</button>
+                        </form>
+                        <div style={{}}>
+                            <span className="adminFont">Місто</span>
+                            <input
+                                style={{}}
+                                type="text"
+                                name="CitySender"
+                                placeholder="Місто відправника"
+                                value={formData.CitySender}
+                                onChange={handleChange}
+                                required
+                            />
+                        </div>
+                        <div style={{}}>
+                            <span className="adminFont">Відправник</span>
+                            <input
+                                style={{}}
+                                type="text"
+                                name="Sender"
+                                placeholder="Відправник"
+                                value={formData.Sender}
+                                onChange={handleChange}
+                                required
+                            />
+                        </div>
                     </div>
                 </div>
             </div>
@@ -196,4 +221,4 @@ function PaysInOrder({ showPays, setShowPays, thisOrder, setThisOrder }) {
     );
 }
 
-export default PaysInOrder;
+export default AddPaysInOrder;

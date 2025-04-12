@@ -332,46 +332,67 @@ const ClientChangerUIArtem = ({thisOrder, setThisOrder}) => {
                                      className="profile-photo" onClick={openUserSettings}/>
                             </div>
                             <div className="middle-section" style={{marginLeft: "0.3vw"}}>
-                                <div className="username" style={{
-                                    fontSize: "0.7vw",
-                                    fontWeight: "bold",
-                                    whiteSpace: "nowrap",
-                                    overflow: "hidden",
-                                    textOverflow: "ellipsis",
-                                    maxWidth: "15vw",
-                                    opacity: "80%"
-                                }}>
-                                    {thisOrder.client.firstName} {thisOrder.client.lastName} {thisOrder.client.familyName}
-                                </div>
-                                <div className="contact-number" style={{
-                                    display: "flex",
-                                    flexDirection: "row",
-                                    height: "1vw",
-                                    alignItems: "center"
-                                }}>
-                                    <div className="nicknameArtemCli"
-                                         style={{fontSize: "0.7vw", display: "flex", alignItems: "center", marginTop: "0.2vw",
-                                             opacity: "80%"}}>
-                                        {thisOrder.client.phoneNumber}
-                                        <img style={{width: "0.9vw", marginLeft: "0.3vw", alignItems: "center"}}
-                                             src={signallogo}
-                                             alt="Signal" className="img-fluid"
-                                             onClick={() => openMessenger('signal')}/>
-                                        <img style={{width: "0.9vw", marginLeft: "0.3vw", alignItems: "center"}}
-                                             src={viberlogo} alt="Viber" className="img-fluid"
-                                             onClick={() => openMessenger('viber')}/>
-                                        <img style={{width: "0.9vw", marginLeft: "0.3vw", alignItems: "center"}}
-                                             src={whatsapplogo} alt="WhatsApp" className="img-fluid"
-                                             onClick={() => openMessenger('whatsapp')}/>
+                                {thisOrder.client ? (
+                                    <div className="username" style={{
+                                        fontSize: "0.7vw",
+                                        fontWeight: "bold",
+                                        whiteSpace: "nowrap",
+                                        overflow: "hidden",
+                                        textOverflow: "ellipsis",
+                                        maxWidth: "15vw",
+                                        opacity: "80%"
+                                    }}>
+                                        {thisOrder.client.firstName} {thisOrder.client.lastName} {thisOrder.client.familyName}
                                     </div>
-                                </div>
-                                <div className="nicknameArtemCli" style={{display: "flex",fontSize: "0.7vw", alignItems: "center", color: "#239cd7", marginTop: "0.2vw",
-                                    opacity: "80%"}}>
-                                    {thisOrder.client.telegram}
-                                    <img src={telegram} alt="Telegram" style={{width: "0.9vw", marginLeft: "0.3vw"}}
-                                         className="img-fluid"
-                                         onClick={() => openMessenger('telegram')}/>
-                                </div>
+                                ) : (
+                                    <div className="username" style={{
+                                        fontSize: "0.7vw",
+                                        fontWeight: "bold",
+                                        whiteSpace: "nowrap",
+                                        overflow: "hidden",
+                                        textOverflow: "ellipsis",
+                                        maxWidth: "15vw",
+                                        opacity: "80%"
+                                    }}>
+                                        —
+                                    </div>
+                                )}
+                                {thisOrder.client ? (
+                                    <>
+                                        <div className="contact-number" style={{
+                                            display: "flex",
+                                            flexDirection: "row",
+                                            height: "1vw",
+                                            alignItems: "center"
+                                        }}>
+
+                                            <div className="nicknameArtemCli"
+                                                 style={{fontSize: "0.7vw", display: "flex", alignItems: "center", marginTop: "0.2vw",
+                                                     opacity: "80%"}}>
+                                                {thisOrder.client.phoneNumber}
+                                                <img style={{width: "0.9vw", marginLeft: "0.3vw", alignItems: "center"}}
+                                                     src={signallogo}
+                                                     alt="Signal" className="img-fluid"
+                                                     onClick={() => openMessenger('signal')}/>
+                                                <img style={{width: "0.9vw", marginLeft: "0.3vw", alignItems: "center"}}
+                                                     src={viberlogo} alt="Viber" className="img-fluid"
+                                                     onClick={() => openMessenger('viber')}/>
+                                                <img style={{width: "0.9vw", marginLeft: "0.3vw", alignItems: "center"}}
+                                                     src={whatsapplogo} alt="WhatsApp" className="img-fluid"
+                                                     onClick={() => openMessenger('whatsapp')}/>
+                                            </div>
+                                        </div>
+                                        <div className="nicknameArtemCli" style={{display: "flex",fontSize: "0.7vw", alignItems: "center", color: "#239cd7", marginTop: "0.2vw",
+                                            opacity: "80%"}}>
+                                            {thisOrder.client.telegram}
+                                            <img src={telegram} alt="Telegram" style={{width: "0.9vw", marginLeft: "0.3vw"}}
+                                                 className="img-fluid"
+                                                 onClick={() => openMessenger('telegram')}/>
+                                        </div>
+                                    </>
+                                ) : (
+                                    <div>—</div>
+                                )}
                             </div>
 
                             <div className="right-section"
@@ -417,8 +438,12 @@ const ClientChangerUIArtem = ({thisOrder, setThisOrder}) => {
                                     opacity: "80%"
                                 }}>
                                     <div className="discountwords"
-                                         style={{}}>{thisOrder.client.discount}
-
+                                         style={{}}>
+                                        {thisOrder.client ? (
+                                            <div>{thisOrder.client.discount}</div>
+                                        ) : (
+                                            <div>—</div>
+                                        )}
                                     </div>
                                     <div className="ProzentClient" style={{}}></div>
                                 </div>
