@@ -1,0 +1,78 @@
+.AddContractorInOrderContainer {
+    font-family: sans-serif;
+    background: white;
+    width: 45vw;
+    padding: 2vh 2vw;
+    border-radius: 0.5vw;
+    box-sizing: border-box;
+}
+
+.AddContractorInOrderTitle {
+    font-size: 1.6vw;
+    margin-bottom: 2vh;
+    font-weight: bold;
+}
+
+.AddContractorInOrderTabs {
+    display: flex;
+    margin-bottom: 2vh;
+}
+
+.AddContractorInOrderTab {
+    flex: 1;
+    padding: 1vh 0;
+    font-size: 1vw;
+    border: 0.1vw solid #ccc;
+    background-color: #f2f2f2;
+    cursor: pointer;
+}
+
+.AddContractorInOrderTabActive {
+    background-color: #bde0fe;
+    font-weight: bold;
+    border-color: #bde0fe;
+}
+
+.AddContractorInOrderSubtitle {
+    font-size: 1.1vw;
+    font-weight: bold;
+    margin: 2vh 0 1vh 0;
+}
+
+.AddContractorInOrderFieldGroup {
+    display: flex;
+    flex-direction: column;
+    gap: 1.5vh;
+    margin-bottom: 2vh;
+}
+
+.AddContractorInOrderInput,
+.AddContractorInOrderSelect,
+.AddContractorInOrderTextarea {
+    font-size: 0.95vw;
+    padding: 1.2vh 1vw;
+    border-radius: 0.4vw;
+    border: 0.1vw solid #ccc;
+    width: 100%;
+    box-sizing: border-box;
+}
+
+.AddContractorInOrderTextarea {
+    resize: vertical;
+    min-height: 10vh;
+}
+
+.AddContractorInOrderSubmitBlock {
+    display: flex;
+    justify-content: flex-end;
+}
+
+.AddContractorInOrderSubmitBtn {
+    background-color: black;
+    color: white;
+    padding: 1.2vh 2vw;
+    border: none;
+    border-radius: 0.4vw;
+    font-size: 1vw;
+    cursor: pointer;
+}

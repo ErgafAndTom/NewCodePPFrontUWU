@@ -5,14 +5,9 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="7e58169f-d1e8-4cb2-8753-447dd0b39044" name="Changes" comment="ddd">
-      <change afterPath="$PROJECT_DIR$/src/PrintPeaksFAinal/userInNewUiArtem/pays/AddPayInOrder.jsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/PrintPeaksFAinal/userInNewUiArtem/pays/styles.css" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/PrintPeaksFAinal/NewUIArtem.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/PrintPeaksFAinal/NewUIArtem.jsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/PrintPeaksFAinal/Orders/CustomOrderTable2.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/PrintPeaksFAinal/Orders/CustomOrderTable2.jsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/PrintPeaksFAinal/user/AddUserWindow.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/PrintPeaksFAinal/user/AddUserWindow.jsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/PrintPeaksFAinal/user/Payments.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/PrintPeaksFAinal/user/Payments.jsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/PrintPeaksFAinal/userInNewUiArtem/ClientChangerUIArtem.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/PrintPeaksFAinal/userInNewUiArtem/ClientChangerUIArtem.jsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/PrintPeaksFAinal/userInNewUiArtem/pays/PaysInOrder.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/PrintPeaksFAinal/userInNewUiArtem/pays/PaysInOrder.jsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/PrintPeaksFAinal/userInNewUiArtem/pays/AddPayInOrder.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/PrintPeaksFAinal/userInNewUiArtem/pays/AddPayInOrder.jsx" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -25,11 +20,11 @@
   <component name="FileTemplateManagerImpl">
     <option name="RECENT_TEMPLATES">
       <list>
-        <option value="TypeScript JSX File" />
         <option value="JavaScript File" />
         <option value="TypeScript File" />
         <option value="CSS File" />
         <option value="JSX File" />
+        <option value="TypeScript JSX File" />
       </list>
     </option>
   </component>
@@ -241,15 +236,7 @@
       <workItem from="1744022655004" duration="12494000" />
       <workItem from="1744200736989" duration="475000" />
       <workItem from="1744226376260" duration="17961000" />
-      <workItem from="1744488643631" duration="2533000" />
-    </task>
-    <task id="LOCAL-00022" summary="ddd">
-      <option name="closed" value="true" />
-      <created>1739407044906</created>
-      <option name="number" value="00022" />
-      <option name="presentableId" value="LOCAL-00022" />
-      <option name="project" value="LOCAL" />
-      <updated>1739407044906</updated>
+      <workItem from="1744488643631" duration="5505000" />
     </task>
     <task id="LOCAL-00023" summary="ddd">
       <option name="closed" value="true" />
@@ -635,7 +622,15 @@
       <option name="project" value="LOCAL" />
       <updated>1744405047980</updated>
     </task>
-    <option name="localTasksCounter" value="71" />
+    <task id="LOCAL-00071" summary="ddd">
+      <option name="closed" value="true" />
+      <created>1744491587727</created>
+      <option name="number" value="00071" />
+      <option name="presentableId" value="LOCAL-00071" />
+      <option name="project" value="LOCAL" />
+      <updated>1744491587727</updated>
+    </task>
+    <option name="localTasksCounter" value="72" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
