@@ -4,6 +4,7 @@ import  './ClientsMenuu.css'
 import www from "./www.svg";
 import whiteSVG from "../../components/whiteSVG.svg";
 import pays from "../Pays.png";
+import dockGenerate from "./dockGenerate.png";
 import axios from "../../api/axiosInstance";
 import Form from "react-bootstrap/Form";
 import ChangeClienticons from "./img/Group 1476.png";
@@ -20,11 +21,13 @@ import {useNavigate} from "react-router-dom";
 import AddUserWindow from "../user/AddUserWindow";
 import {Spinner} from "react-bootstrap";
 import NP from "./NP";
-import PaysInOrder from "./pays/PaysInOrder"; //
+import PaysInOrder from "./pays/PaysInOrder";
+import {tr} from "date-fns/locale"; //
 
 const ClientChangerUIArtem = ({thisOrder, setThisOrder}) => {
     const navigate = useNavigate();
     const [showAddUser, setShowAddUser] = useState(false);
+    const [showDocGenerate, setShowDocGenerate] = useState(false);
     const [showNP, setShowNP] = useState(false);
     const [showPays, setShowPays] = useState(false);
     const [load, setLoad] = useState(false);
@@ -162,10 +165,13 @@ const ClientChangerUIArtem = ({thisOrder, setThisOrder}) => {
 
 
     const AddNewUser = () => {
-        setShowAddUser(!showAddUser)
+        setShowAddUser(true)
     };
     const openPays = () => {
-        setShowPays(!showPays)
+        setShowPays(true)
+    };
+    const openDocGenerate = () => {
+        setShowDocGenerate(true)
     };
 
     const NPS = () => {
@@ -397,6 +403,7 @@ const ClientChangerUIArtem = ({thisOrder, setThisOrder}) => {
 
                             <div className="right-section"
                                  style={{justifyContent: 'flex-end', display: 'flex', marginLeft: 'auto', paddingRight:"0"}}>
+
 
                                 <Tooltip text="Оплата">
                                     <div className="discount-button" data-toggle="tooltip" data-placement="top"

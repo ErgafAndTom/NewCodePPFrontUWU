@@ -3,7 +3,6 @@ import axios from "../../../api/axiosInstance";
 import { useNavigate } from "react-router-dom";
 import {Spinner} from "react-bootstrap";
 import "./styles.css"
-import AddUserWindow from "../../user/AddUserWindow";
 import AddPaysInOrder from "./AddPayInOrder";
 
 function PaysInOrder({ showPays, setShowPays, thisOrder, setThisOrder }) {
@@ -78,6 +77,33 @@ function PaysInOrder({ showPays, setShowPays, thisOrder, setThisOrder }) {
                 taxSystem: item.taxSystem,
                 comment: item.comment,
         })
+    };
+
+    const generateDoc = (e, item) => {
+        let dataToSend = {
+            contractorId: item.id,
+            thisOrderId: thisOrder.id,
+        };
+        axios.post(`/user/updatePayment`, dataToSend)
+            .then(response => {
+                console.log(response.data);
+                setData(prevData =>
+                    prevData.map(obj =>
+                        obj.id === response.data.id ? response.data : obj
+                    )
+                );
+                setError(null);
+                setLoad(false);
+                setShowAddPay(false)
+                // setPageCount(Math.ceil(response.data.count / inPageCount));
+            })
+            .catch(error => {
+                if (error.response.status === 403) {
+                    navigate('/login');
+                }
+                setError(error.message);
+                setLoad(false);
+            });
     };
 
     useEffect(() => {
@@ -187,14 +213,15 @@ function PaysInOrder({ showPays, setShowPays, thisOrder, setThisOrder }) {
                             <tbody>
                             {data && (
                                 <>
-                                    {data.map((order, itr) => {
+                                    {data.map((item, itr) => {
                                         return (
                                             <tr className="ContractorRow">
                                                 <td className="ContractorCell">{itr+1}</td>
-                                                <td className="ContractorCell ContractorName">{order.name}</td>
-                                                <td className="ContractorCell ContractorName">{order.taxSystem}</td>
+                                                <td className="ContractorCell ContractorName">{item.name}</td>
+                                                <td className="ContractorCell ContractorName">{item.taxSystem}</td>
                                                 <td className="ContractorCell ContractorActions">
-                                                    <button className="ContractorViewBtn" onClick={(event) => openSeePay(event, order)}>Переглянути/Редагувати</button>
+                                                    <button className="ContractorViewBtn" style={{background: "green"}} onClick={(event) => generateDoc(event, item)}>Генерувати докі</button>
+                                                    <button className="ContractorViewBtn" onClick={(event) => openSeePay(event, item)}>Переглянути/Редагувати</button>
                                                     <button className="ContractorMoreBtn">⋮</button>
                                                 </td>
                                             </tr>
