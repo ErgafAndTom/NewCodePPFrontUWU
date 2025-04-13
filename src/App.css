@@ -1,9 +1,9 @@
-@font-face {
-  font-family: 'Montserrat';
-  /*src: url('../data/Montserrat_bold.otf');*/
-  font-weight: normal;
-  font-style: normal;
-}
+/*@font-face {*/
+/*  font-family: 'Montserrat';*/
+/*  !*src: url('../data/Montserrat_bold.otf');*!*/
+/*  font-weight: normal;*/
+/*  font-style: normal;*/
+/*}*/
 @font-face {
   font-family: 'Montserrat';
   src: url('https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,400;0,500;0,700;1,400;1,500;1,700&display=swap');
@@ -11,18 +11,18 @@
   font-style: normal;
 }
 
-@font-face {
-  font-family: 'Montserrat';
-  /*src: url('../data/Montserrat_book.otf');*/
-  font-weight: normal;
-  font-style: normal;
-}
-@font-face {
-  font-family: 'GTWalsheimPro';
-  /*src: url('../data/fontGTWalsheimPro/GTWalsheimPro-Regular.woff2');*/
-  font-weight: normal;
-  font-style: normal;
-}
+/*@font-face {*/
+/*  font-family: 'Montserrat';*/
+/*  !*src: url('../data/Montserrat_book.otf');*!*/
+/*  font-weight: normal;*/
+/*  font-style: normal;*/
+/*}*/
+/*@font-face {*/
+/*  font-family: 'GTWalsheimPro';*/
+/*  !*src: url('../data/fontGTWalsheimPro/GTWalsheimPro-Regular.woff2');*!*/
+/*  font-weight: normal;*/
+/*  font-style: normal;*/
+/*}*/
 * {
   -webkit-touch-callout: none; /* iOS Safari */
   -webkit-user-select: none;   /* Chrome/Safari/Opera */

@@ -2,6 +2,7 @@ import React, { useEffect, useState } from "react";
 import axios from "../../../api/axiosInstance";
 import { useNavigate } from "react-router-dom";
 import {Spinner} from "react-bootstrap";
+import "./styles.css"
 import AddUserWindow from "../../user/AddUserWindow";
 import AddPaysInOrder from "./AddPayInOrder";
 
@@ -9,15 +10,18 @@ function PaysInOrder({ showPays, setShowPays, thisOrder, setThisOrder }) {
     const [load, setLoad] = useState(false);
     const [data, setData] = useState(null);
     const [showAddPay, setShowAddPay] = useState(false);
+    const [showAddPayView, setShowAddPayView] = useState(false);
+    const [showAddPayWriteId, setShowAddPayWriteId] = useState(false);
     const [formData, setFormData] = useState({
-        // Дані відправника (обов'язкові)
-        SenderWarehouseIndex: '',    //Цифрова адреса відділення відправника
-        // senderCity: 'Київ',         // Обов'язкове: місто відправника (наприклад, "Київ" або GUID міста)
-        CitySender: 'Київ',         // Обов'язкове: місто відправника (наприклад, "Київ" або GUID міста)
-        // CitySender: '8d5a980d-391c-11dd-90d9-001a92567626',         // Обов'язкове: місто відправника (наприклад, "Київ" або GUID міста)
-        // Sender: '',             // Обов'язкове: GUID відділення-відправника
-        SenderAddress: '',      // Опційне: адреса відправника (потрібно для адресної доставки)
-        SendersPhone: '+38 065 666 66 67',       // Опційне: телефон відправника
+        name: '',
+        address: '',
+        bankName: '',
+        iban: '',
+        edrpou: '',
+        email: '',
+        phone: '',
+        taxSystem: '',
+        comment: '',
     });
     const [result, setResult] = useState(null);
     const [error, setError] = useState(null);
@@ -43,13 +47,37 @@ function PaysInOrder({ showPays, setShowPays, thisOrder, setThisOrder }) {
         }, 300); // После завершения анимации скрываем модальное окно
     }
 
-    const handleChange = (e) => {
-        const { name, value } = e.target;
-        setFormData(prev => ({ ...prev, [name]: value }));
-    };
-
     const openAddPay = () => {
         setShowAddPay(!showAddPay)
+        setShowAddPayView(false)
+        setFormData({
+            name: "",
+            address: "",
+            bankName: "",
+            iban: "",
+            edrpou: "",
+            email: "",
+            phone: "",
+            taxSystem: "",
+            comment: "",
+        })
+    };
+
+    const openSeePay = (e, item) => {
+        setShowAddPay(!showAddPay)
+        setShowAddPayView(true)
+        setShowAddPayWriteId(item.id)
+        setFormData({
+                name: item.name,
+                address: item.address,
+                bankName: item.bankName,
+                iban: item.iban,
+                edrpou: item.edrpou,
+                email: item.email,
+                phone: item.phone,
+                taxSystem: item.taxSystem,
+                comment: item.comment,
+        })
     };
 
     useEffect(() => {
@@ -65,8 +93,8 @@ function PaysInOrder({ showPays, setShowPays, thisOrder, setThisOrder }) {
         setLoad(true);
         axios.post(`/user/getPayments`, data)
             .then(response => {
-                // console.log(response.data);
-                setData(response.data);
+                console.log(response.data);
+                setData(response.data.rows);
                 setError(null);
                 setLoad(false);
                 setPageCount(Math.ceil(response.data.count / inPageCount));
@@ -147,46 +175,84 @@ function PaysInOrder({ showPays, setShowPays, thisOrder, setThisOrder }) {
                         {load && (
                             <div className="d-flex justify-content-center align-items-center" style={{height: "100%"}}><Spinner animation="border" className="mainLoader" variant="dark" /></div>
                         )}
-                        {data && (
-                            <>
-                                {data.rows.map(order => {
-                                    return (
-                                        <div key={order.id}>
-                                            <div className="CustomOrderTable-row">
-                                                {/* Використання класів відповідно до HTML */}
-                                                <div className="CustomOrderTable-cell">{order.id}</div>
-                                                <div className="CustomOrderTable-cell">{order.userId}</div>
-                                                <div className="CustomOrderTable-cell">{order.type}</div>
-                                                <div className="CustomOrderTable-cell">{order.value}</div>
-                                                <div className="CustomOrderTable-cell">{order.currency}</div>
-                                                <div className="CustomOrderTable-cell">{order.status}</div>
-                                                <div className="CustomOrderTable-cell">{order.cardHolderName}</div>
-                                                <div className="CustomOrderTable-cell">{order.cardExpiry}</div>
-                                                <div className="CustomOrderTable-cell">{order.bankName}</div>
-                                                <div className="CustomOrderTable-cell">{order.bankAccountNumber}</div>
-                                                <div className="CustomOrderTable-cell">{order.bankMFO}</div>
-                                                <div className="CustomOrderTable-cell">{order.fopName}</div>
-                                                <div className="CustomOrderTable-cell">{order.fopNumber}</div>
-                                                <div className="CustomOrderTable-cell">{order.edrpouCode}</div>
-                                                <div className="CustomOrderTable-cell">{order.legalEntityId}</div>
-                                                <div className="CustomOrderTable-cell">
-                                                    {`${new Date(order.createdAt).toLocaleDateString()} ${new Date(order.createdAt).toLocaleTimeString()}`}
-                                                </div>
-                                                <div className="CustomOrderTable-cell">
-                                                    {order.updatedAt
-                                                        ? `${new Date(order.updatedAt).toLocaleDateString()} ${new Date(order.updatedAt).toLocaleTimeString()}`
-                                                        : '—'}
-                                                </div>
-                                            </div>
-                                        </div>
-                                    );
-                                })}
-                            </>
-                        )}
-                        <button onClick={openAddPay}>+</button>
+                        <table className="ContractorTable">
+                            <thead>
+                            <tr className="ContractorRow" style={{}}>
+                                <th>Номер</th>
+                                <th>Найменування</th>
+                                <th>taxSystem</th>
+                                <th></th>
+                            </tr>
+                            </thead>
+                            <tbody>
+                            {data && (
+                                <>
+                                    {data.map((order, itr) => {
+                                        return (
+                                            <tr className="ContractorRow">
+                                                <td className="ContractorCell">{itr+1}</td>
+                                                <td className="ContractorCell ContractorName">{order.name}</td>
+                                                <td className="ContractorCell ContractorName">{order.taxSystem}</td>
+                                                <td className="ContractorCell ContractorActions">
+                                                    <button className="ContractorViewBtn" onClick={(event) => openSeePay(event, order)}>Переглянути/Редагувати</button>
+                                                    <button className="ContractorMoreBtn">⋮</button>
+                                                </td>
+                                            </tr>
+                                        );
+                                    })}
+                                </>
+                            )}
+                            </tbody>
+                        </table>
+                        {/*{data && (*/}
+                        {/*    <>*/}
+                        {/*        {data.rows.map(order => {*/}
+                        {/*            return (*/}
+                        {/*                <div key={order.id}>*/}
+                        {/*                    <div className="CustomOrderTable-row">*/}
+                        {/*                        /!* Використання класів відповідно до HTML *!/*/}
+                        {/*                        <div className="CustomOrderTable-cell">{order.id}</div>*/}
+                        {/*                        <div className="CustomOrderTable-cell">{order.name}</div>*/}
+                        {/*                        /!*<div className="CustomOrderTable-cell">{order.address}</div>*!/*/}
+                        {/*                        /!*<div className="CustomOrderTable-cell">{order.bankName}</div>*!/*/}
+                        {/*                        /!*<div className="CustomOrderTable-cell">{order.iban}</div>*!/*/}
+                        {/*                        /!*<div className="CustomOrderTable-cell">{order.edrpou}</div>*!/*/}
+                        {/*                        /!*<div className="CustomOrderTable-cell">{order.email}</div>*!/*/}
+                        {/*                        /!*<div className="CustomOrderTable-cell">{order.phone}</div>*!/*/}
+                        {/*                        /!*<div className="CustomOrderTable-cell">{order.taxSystem}</div>*!/*/}
+                        {/*                        /!*<div className="CustomOrderTable-cell">{order.comment}</div>*!/*/}
+                        {/*                        /!*<div className="CustomOrderTable-cell">{order.userId}</div>*!/*/}
+                        {/*                        <div className="CustomOrderTable-cell">*/}
+                        {/*                            {`${new Date(order.createdAt).toLocaleDateString()} ${new Date(order.createdAt).toLocaleTimeString()}`}*/}
+                        {/*                        </div>*/}
+                        {/*                        <div className="CustomOrderTable-cell">*/}
+                        {/*                            {order.updatedAt*/}
+                        {/*                                ? `${new Date(order.updatedAt).toLocaleDateString()} ${new Date(order.updatedAt).toLocaleTimeString()}`*/}
+                        {/*                                : '—'}*/}
+                        {/*                        </div>*/}
+                        {/*                    </div>*/}
+                        {/*                </div>*/}
+                        {/*            );*/}
+                        {/*        })}*/}
+                        {/*    </>*/}
+                        {/*)}*/}
+                        <button className="ContractorViewBtn" onClick={openAddPay}>Додати контрагента</button>
                         {showAddPay &&
                             <div style={{ }} className="">
-                                <AddPaysInOrder showAddPay={showAddPay} setShowAddPay={setShowAddPay} thisOrder={thisOrder} setThisOrder={setThisOrder}/>
+                                <AddPaysInOrder
+                                    showAddPay={showAddPay}
+                                    setShowAddPay={setShowAddPay}
+                                    formData={formData}
+                                    setFormData={setFormData}
+                                    thisOrder={thisOrder}
+                                    setThisOrder={setThisOrder}
+                                    data={data}
+                                    setData={setData}
+                                    showAddPayView={showAddPayView}
+                                    setShowAddPayView={setShowAddPayView}
+                                    showAddPayWriteId={showAddPayWriteId}
+                                    setShowAddPayWriteId={setShowAddPayWriteId}
+                                />
                             </div>
                         }
                     </div>
