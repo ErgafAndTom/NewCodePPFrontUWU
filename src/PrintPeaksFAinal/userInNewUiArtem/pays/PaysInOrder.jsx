@@ -84,17 +84,30 @@ function PaysInOrder({ showPays, setShowPays, thisOrder, setThisOrder }) {
             contractorId: item.id,
             thisOrderId: thisOrder.id,
         };
-        axios.post(`/user/updatePayment`, dataToSend)
+        axios.post(`/user/generateDoc`, dataToSend, {
+            responseType: 'blob',
+        })
             .then(response => {
                 console.log(response.data);
-                setData(prevData =>
-                    prevData.map(obj =>
-                        obj.id === response.data.id ? response.data : obj
-                    )
-                );
                 setError(null);
                 setLoad(false);
                 setShowAddPay(false)
+                const contentDisposition = response.headers['content-disposition'];
+                let fileName = 'invoice.docx'; // За замовчуванням
+                if (contentDisposition) {
+                    const fileNameMatch = contentDisposition.match(/filename="(.+)"/);
+                    if (fileNameMatch.length === 2) fileName = fileNameMatch[1];
+                }
+
+                // Створюємо тимчасовий URL і клікаємо по ньому
+                const url = window.URL.createObjectURL(new Blob([response.data]));
+                const link = document.createElement('a');
+                link.href = url;
+                link.setAttribute('download', fileName);
+                document.body.appendChild(link);
+                link.click();
+                link.remove();
+                window.URL.revokeObjectURL(url);
                 // setPageCount(Math.ceil(response.data.count / inPageCount));
             })
             .catch(error => {

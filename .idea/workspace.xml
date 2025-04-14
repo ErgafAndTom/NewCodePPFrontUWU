@@ -5,9 +5,7 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="7e58169f-d1e8-4cb2-8753-447dd0b39044" name="Changes" comment="ddd">
-      <change afterPath="$PROJECT_DIR$/src/PrintPeaksFAinal/userInNewUiArtem/dockGenerate.png" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/PrintPeaksFAinal/userInNewUiArtem/ClientChangerUIArtem.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/PrintPeaksFAinal/userInNewUiArtem/ClientChangerUIArtem.jsx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/PrintPeaksFAinal/userInNewUiArtem/pays/PaysInOrder.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/PrintPeaksFAinal/userInNewUiArtem/pays/PaysInOrder.jsx" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -58,33 +56,33 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent"><![CDATA[{
-  "keyToString": {
-    "Node.js.Bukletvimogi.js.executor": "Run",
-    "Node.js.Bukletvimogi.jsx.executor": "Debug",
-    "Node.js.ClientChangerUIArtem.jsx.executor": "Run",
-    "RunOnceActivity.ShowReadmeOnStart": "true",
-    "RunOnceActivity.git.unshallow": "true",
-    "git-widget-placeholder": "master",
-    "ignore.virus.scanning.warn.message": "true",
-    "last_opened_file_path": "C:/Users/AIATO/Desktop/CodePPNew/frontpp/src/PrintPeaksFAinal/userInNewUiArtem",
-    "list.type.of.created.stylesheet": "CSS",
-    "node.js.detected.package.eslint": "true",
-    "node.js.detected.package.tslint": "true",
-    "node.js.selected.package.eslint": "(autodetect)",
-    "node.js.selected.package.tslint": "(autodetect)",
-    "nodejs.mocha.mocha_node_package_dir": "",
-    "nodejs_package_manager_path": "yarn",
-    "npm.React Buddy Preview.executor": "Run",
-    "npm.build.executor": "Run",
-    "npm.start.executor": "Run",
-    "run.code.analysis.last.selected.profile": "pProject Default",
-    "settings.editor.selected.configurable": "settings.sync",
-    "ts.external.directory.path": "C:\\Users\\AIATO\\AppData\\Local\\Programs\\WebStorm\\plugins\\javascript-plugin\\jsLanguageServicesImpl\\external",
-    "two.files.diff.last.used.file": "C:/Users/AIATO/Desktop/CodePPNew/frontpp/src/components/admin/crm/Vimogi/Colorprinthelpsmall.jsx",
-    "vue.rearranger.settings.migration": "true"
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;Node.js.Bukletvimogi.js.executor&quot;: &quot;Run&quot;,
+    &quot;Node.js.Bukletvimogi.jsx.executor&quot;: &quot;Debug&quot;,
+    &quot;Node.js.ClientChangerUIArtem.jsx.executor&quot;: &quot;Run&quot;,
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.git.unshallow&quot;: &quot;true&quot;,
+    &quot;git-widget-placeholder&quot;: &quot;master&quot;,
+    &quot;ignore.virus.scanning.warn.message&quot;: &quot;true&quot;,
+    &quot;last_opened_file_path&quot;: &quot;C:/Users/AIATO/Desktop/CodePPNew/frontpp/src/PrintPeaksFAinal/userInNewUiArtem&quot;,
+    &quot;list.type.of.created.stylesheet&quot;: &quot;CSS&quot;,
+    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
+    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
+    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
+    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
+    &quot;nodejs.mocha.mocha_node_package_dir&quot;: &quot;&quot;,
+    &quot;nodejs_package_manager_path&quot;: &quot;yarn&quot;,
+    &quot;npm.React Buddy Preview.executor&quot;: &quot;Run&quot;,
+    &quot;npm.build.executor&quot;: &quot;Run&quot;,
+    &quot;npm.start.executor&quot;: &quot;Run&quot;,
+    &quot;run.code.analysis.last.selected.profile&quot;: &quot;pProject Default&quot;,
+    &quot;settings.editor.selected.configurable&quot;: &quot;settings.sync&quot;,
+    &quot;ts.external.directory.path&quot;: &quot;C:\\Users\\AIATO\\AppData\\Local\\Programs\\WebStorm\\plugins\\javascript-plugin\\jsLanguageServicesImpl\\external&quot;,
+    &quot;two.files.diff.last.used.file&quot;: &quot;C:/Users/AIATO/Desktop/CodePPNew/frontpp/src/components/admin/crm/Vimogi/Colorprinthelpsmall.jsx&quot;,
+    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
   }
-}]]></component>
+}</component>
   <component name="ReactBuddySettings">
     <option name="extensionsIgnore" value="true" />
   </component>
@@ -239,15 +237,10 @@
       <workItem from="1744200736989" duration="475000" />
       <workItem from="1744226376260" duration="17961000" />
       <workItem from="1744488643631" duration="5505000" />
-      <workItem from="1744544805639" duration="15558000" />
-    </task>
-    <task id="LOCAL-00024" summary="ddd">
-      <option name="closed" value="true" />
-      <created>1739415336499</created>
-      <option name="number" value="00024" />
-      <option name="presentableId" value="LOCAL-00024" />
-      <option name="project" value="LOCAL" />
-      <updated>1739415336499</updated>
+      <workItem from="1744544805639" duration="16234000" />
+      <workItem from="1744640564598" duration="594000" />
+      <workItem from="1744665076045" duration="2135000" />
+      <workItem from="1744670094230" duration="689000" />
     </task>
     <task id="LOCAL-00025" summary="ddd">
       <option name="closed" value="true" />
@@ -633,7 +626,15 @@
       <option name="project" value="LOCAL" />
       <updated>1744565688748</updated>
     </task>
-    <option name="localTasksCounter" value="73" />
+    <task id="LOCAL-00073" summary="ddd">
+      <option name="closed" value="true" />
+      <created>1744568859799</created>
+      <option name="number" value="00073" />
+      <option name="presentableId" value="LOCAL-00073" />
+      <option name="project" value="LOCAL" />
+      <updated>1744568859799</updated>
+    </task>
+    <option name="localTasksCounter" value="74" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
