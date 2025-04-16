@@ -4,10 +4,15 @@ import { useNavigate } from "react-router-dom";
 import {Spinner} from "react-bootstrap";
 import "./styles.css"
 import AddPaysInOrder from "./AddPayInOrder";
+import ModalDeleteOrder from "../../Orders/ModalDeleteOrder";
 
 function PaysInOrder({ showPays, setShowPays, thisOrder, setThisOrder }) {
     const [load, setLoad] = useState(false);
     const [data, setData] = useState(null);
+
+    const [thisOrderForDelete, setThisOrderForDelete] = useState(null);
+    const [showDeleteOrderModal, setShowDeleteOrderModal] = useState(false);
+
     const [showAddPay, setShowAddPay] = useState(false);
     const [showAddPayView, setShowAddPayView] = useState(false);
     const [showAddPayWriteId, setShowAddPayWriteId] = useState(false);
@@ -77,6 +82,12 @@ function PaysInOrder({ showPays, setShowPays, thisOrder, setThisOrder }) {
                 taxSystem: item.taxSystem,
                 comment: item.comment,
         })
+    };
+
+    const openDeletePay = (e, item) => {
+        // setShowAddPay(!showAddPay)
+        setShowDeleteOrderModal(true)
+        setThisOrderForDelete(item)
     };
 
     const generateDoc = (e, item) => {
@@ -235,7 +246,7 @@ function PaysInOrder({ showPays, setShowPays, thisOrder, setThisOrder }) {
                                                 <td className="ContractorCell ContractorActions">
                                                     <button className="ContractorViewBtn" style={{background: "green"}} onClick={(event) => generateDoc(event, item)}>Генерувати докі</button>
                                                     <button className="ContractorViewBtn" onClick={(event) => openSeePay(event, item)}>Переглянути/Редагувати</button>
-                                                    <button className="ContractorMoreBtn">⋮</button>
+                                                    <button className="ContractorMoreBtn" onClick={(event) => openDeletePay(event, item)}>⋮</button>
                                                 </td>
                                             </tr>
                                         );
@@ -295,6 +306,15 @@ function PaysInOrder({ showPays, setShowPays, thisOrder, setThisOrder }) {
                                 />
                             </div>
                         }
+                        <ModalDeleteOrder
+                            showDeleteOrderModal={showDeleteOrderModal}
+                            setShowDeleteOrderModal={setShowDeleteOrderModal}
+                            thisOrderForDelete={thisOrderForDelete}
+                            setThisOrderForDelete={setThisOrderForDelete}
+                            data={data}
+                            setData={setData}
+                            url={`/user/deletePayment`}
+                        />
                     </div>
                 </div>
             </div>

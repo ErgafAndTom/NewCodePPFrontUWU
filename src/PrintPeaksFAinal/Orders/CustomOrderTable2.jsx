@@ -452,6 +452,7 @@ const CustomOrderTable2 = () => {
                 setThisOrderForDelete={setThisOrderForDelete}
                 data={data}
                 setData={setData}
+                url={"/orders/OneOrder/"}
             />
             <PaginationMy
                 name={"Order"}

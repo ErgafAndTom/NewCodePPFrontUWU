@@ -2,7 +2,7 @@ import React, {useCallback, useEffect, useState} from 'react';
 import axios from '../../api/axiosInstance';
 import {Navigate, useNavigate} from "react-router-dom";
 
-function ModalDeleteOrder({thisOrderForDelete, showDeleteOrderModal, setThisOrderForDelete, setShowDeleteOrderModal, data, setData}) {
+function ModalDeleteOrder({thisOrderForDelete, showDeleteOrderModal, setThisOrderForDelete, setShowDeleteOrderModal, data, setData, url}) {
     const [load, setLoad] = useState(false);
     const navigate = useNavigate();
     const [isVisible, setIsVisible] = useState(showDeleteOrderModal);
@@ -20,30 +20,31 @@ function ModalDeleteOrder({thisOrderForDelete, showDeleteOrderModal, setThisOrde
     const deleteThis = () => {
         let id = thisOrderForDelete.id
         setLoad(true)
-        axios.delete(`/orders/OneOrder//${id}`)
+        axios.delete(`${url}:${id}`, id)
             .then(response => {
                 if (response.status === 200) {
                     setData(prevData => ({
                         ...prevData,
-                        count: prevData.count - 1, // Увеличиваем общий счетчик заказов
-                        rows: prevData.rows.filter(order => order.id !== id) // Добавляем новый заказ в массив rows
+                        rows: prevData.filter(order => order.id !== id) // Добавляем новый заказ в массив rows
                     }));
                     setLoad(false)
                     setShowDeleteOrderModal(false);
                 }
             })
             .catch(error => {
-                if(error.response.status === 403){
-                    navigate('/login');
-                }
+                // if(error.response.status === 403){
+                //     navigate('/login');
+                // }
                 console.log(error.message);
-                setError(error)
+                setLoad(false)
+                setError(error.message)
             });
     };
 
     useEffect(() => {
         if (showDeleteOrderModal) {
             setIsVisible(true); // Сначала показываем модальное окно
+            // setError(null)
             setTimeout(() => setIsAnimating(true), 100); // После короткой задержки запускаем анимацию появления
         } else {
             setIsAnimating(false); // Начинаем анимацию закрытия
