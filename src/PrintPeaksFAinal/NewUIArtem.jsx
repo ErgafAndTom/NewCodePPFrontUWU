@@ -347,7 +347,7 @@ const NewUIArtem = () => {
                                                             position: "relative"
                                                         }}>
                                                         <div className="adminFontTable d-flex align-items-center"
-                                                             // style={{width: "23vw"}}
+                                                             style={{width: "24vw"}}
                                                         >
                                                             {thing.name}
                                                             <div className="d-flex align-items-center">
