@@ -88,7 +88,7 @@ const NewSheetCut = ({
         let dataToSend = {
             orderId: thisOrder.id,
             toCalc: {
-                nameOrderUnit: "Продукція цифрового друку в аркушах",
+                nameOrderUnit: "Цифровий друк в аркушах",
                 type: "SheetCut",
                 size: size,
                 material: material,
