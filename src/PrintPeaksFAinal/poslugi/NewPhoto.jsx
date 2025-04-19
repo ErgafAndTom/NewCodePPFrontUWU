@@ -76,7 +76,7 @@ const NewPhoto = ({thisOrder, newThisOrder, setNewThisOrder, selectedThings2, sh
         let dataToSend = {
             orderId: thisOrder.id,
             toCalc: {
-                nameOrderUnit: "Фото друк",
+                nameOrderUnit: "Фотографія",
                 type: "Photo",
                 size: size,
                 material: {
@@ -218,7 +218,7 @@ const NewPhoto = ({thisOrder, newThisOrder, setNewThisOrder, selectedThings2, sh
                                 className="d-flex inputsArtemNumber inputsArtem "
                                 style={{
                                     marginLeft: "1vw",
-                                    background: "#F2EFE8",
+                                    background: "#FBFAF6",
                                     width: "5vw",
                                     alignItems: "center",
                                     justifyContent:"center",

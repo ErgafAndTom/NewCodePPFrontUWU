@@ -3,7 +3,7 @@
 }
 
 .b {
-    fill: #e9e6da;
+    fill: #F2F0E7;
 }
 
 .c {
@@ -304,7 +304,7 @@
     /*padding-left: 0.1vw;*/
     overflow: auto;
     direction: rtl;
-    background: #E9E6DA;
+    background: #F2F0E7;
 
 }
 
@@ -314,7 +314,7 @@
     margin-left: 0.1vw;
     width: 7.5vw;
     /*height: 2vh;*/
-    border: #E9E6DA solid 0.1vw;
+    border: #F2F0E7 solid 0.1vw;
     /*background: #ffcc00;*/
     border-radius: 0.3vw;
     font-size: 1.28vh;
@@ -436,7 +436,7 @@
 /*    border: #D3D3D3 solid 0.1vh;*/
 /*    border-radius: 0.5vh;*/
 
-/*    background: #E9E6DA;*/
+/*    background: #F2F0E7;*/
 
 /*}*/
 
@@ -505,8 +505,8 @@
     justify-content: space-around;
     align-items: center;
     border: gray solid 0.1vw;
-    /*background: #F2EFE8;*/
-    background: #E9E6DA;
+    /*background: #FBFAF6;*/
+    background: #F2F0E7;
 }
 
 
@@ -1141,7 +1141,7 @@
 /*    right: 0.42%;*/
 /*    bottom: 41.39%;*/
 /*    left: 65.1%;*/
-/*    background-color: var(#F2EFE8);*/
+/*    background-color: var(#FBFAF6);*/
 /*    border: 1px solid var(--color-dimgray);*/
 /*}*/
 .field-button {
@@ -1155,7 +1155,7 @@
     right: 3px;
     bottom: 0;
     left: 3px;
-    background-color: var(#F2EFE8);
+    background-color: var(#FBFAF6);
     border: 1px solid var(--color-lightgray-100);
 }
 .clientb,
@@ -1862,7 +1862,7 @@ margin-left: -9vw;
     right: 11.71%;
     bottom: 10.71%;
     left: 70.27%;
-    background-color: #F2EFE8;
+    background-color: #FBFAF6;
 }
 .label1 {
     position: absolute;
@@ -4927,7 +4927,7 @@ margin-left: -9vw;
 .ClientsMenuAll {
     margin: 0;
     padding: 0;
-    background: #f1efed;
+    /*background: #f1efed;*/
     font-family: 'Montserrat', sans-serif;
     border-radius: 1vw;
 }

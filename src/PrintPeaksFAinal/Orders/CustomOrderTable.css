@@ -19,8 +19,8 @@ body {
     width: 100%;
     /*max-width: 1720px;*/
 
-    /*background-color: #F2EFE8; !* Фон списку замовлень *!*/
-    background-color: #E9E6DA; /* Фон списку замовлень */
+    /*background-color: #FBFAF6; !* Фон списку замовлень *!*/
+    background-color: #F2F0E7; /* Фон списку замовлень */
     padding: 0.3vw;
     /*box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);*/
     border-radius: 12px;
@@ -42,13 +42,13 @@ body {
 .CustomOrderTable-header, .CustomOrderTable-row {
     display: flex;
     background-color: #f1f1f1;
-    /*background-color: #F2EFE8;*/
+    /*background-color: #FBFAF6;*/
 
 }
 
 .CustomOrderTable-header {
     background-color: #e2e2e2;
-    /*background-color: #F2EFE8;*/
+    /*background-color: #FBFAF6;*/
     font-weight: bold;
 
 }
@@ -66,7 +66,7 @@ body {
 }
 
 .CustomOrderTable-header-cell {
-    background-color: #F2EFE8; /* Фон для заголовків колонок */
+    background-color: #FBFAF6; /* Фон для заголовків колонок */
     border-bottom: 1px solid #FFC107;
 }
 
@@ -79,8 +79,8 @@ body {
 }
 
 .CustomOrderTable-cell {
-    /*background-color: #F2EFE8; !* Фон для замовлень та колонок *!*/
-    background-color: #E9E6DA; /* Фон для замовлень та колонок */
+    /*background-color: #FBFAF6; !* Фон для замовлень та колонок *!*/
+    background-color: #F2F0E7; /* Фон для замовлень та колонок */
     border-bottom: 1px solid #ddd;
 }
 
@@ -108,7 +108,7 @@ body {
 
 .CustomOrderTable-order-details {
     padding: 0.1vw;
-    background-color: #F2EFE8;
+    background-color: #FBFAF6;
     border-top: 1px solid #eee;
     border-radius: 12px;
     margin: 1vw;
@@ -125,7 +125,7 @@ body {
 }
 
 .CustomOrderTable-order-unit {
-    background-color: #F2EFE8;
+    background-color: #FBFAF6;
     /*padding: 10px;*/
     padding: 0.3vw;
     border-radius: 8px;
@@ -136,7 +136,7 @@ body {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    background-color: #E9E6DA;
+    background-color: #F2F0E7;
     padding: 0.3vw;
     border-radius: 12px;
     cursor: pointer;
@@ -221,14 +221,20 @@ body {
 .CustomOrderTable-pay-paid {
     background-color: #008249;
     color: white;
+    height: 1.2vw;
     padding: 0.2vw;
-    border-radius: 0.4vw;
+    align-items: center;
+    justify-content: center;
+    border-radius: 0.3vw;
 }
 
 .CustomOrderTable-pay-pending {
     background-color: #EE3C23;
     padding: 0.2vw;
-    border-radius: 0.4vw;
+    height: 1.2vw;
+    border-radius: 0.3vw;
+    align-items: center;
+    justify-content: center;
     color: white;
 }
 

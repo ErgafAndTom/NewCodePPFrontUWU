@@ -71,14 +71,14 @@ const CustomOrderTable2 = () => {
         setLoading(true);
         axios.post(`/orders/all`, data)
             .then(response => {
-                // console.log(response.data);
+                console.log("Orders data:", response.data.rows[0]);
                 setData(response.data);
                 setError(null);
                 setLoading(false);
                 setPageCount(Math.ceil(response.data.count / inPageCount));
             })
             .catch(error => {
-                if (error.response.status === 403) {
+                if (error.response?.status === 403) {
                     navigate('/login');
                 }
                 setError(error.message);
@@ -243,6 +243,44 @@ const CustomOrderTable2 = () => {
                             </>
                         )}
                     </div>
+                    <div className="CustomOrderTable-header-cell" onClick={(event) => setCol("manufacturingStartTime")}>
+                        {"manufacturingStartTime" === thisColumn.column ? (
+                            <>
+                                {!thisColumn.reverse ? (
+                                    <>
+                                        ^{"Час початку"}
+                                    </>
+                                ) : (
+                                    <>
+                                        !^{"Час початку"}
+                                    </>
+                                )}
+                            </>
+                        ) : (
+                            <>
+                                {"Час початку"}
+                            </>
+                        )}
+                    </div>
+                    <div className="CustomOrderTable-header-cell" onClick={(event) => setCol("totalManufacturingTimeSeconds")}>
+                        {"totalManufacturingTimeSeconds" === thisColumn.column ? (
+                            <>
+                                {!thisColumn.reverse ? (
+                                    <>
+                                        ^{"Час виготовлення"}
+                                    </>
+                                ) : (
+                                    <>
+                                        !^{"Час виготовлення"}
+                                    </>
+                                )}
+                            </>
+                        ) : (
+                            <>
+                                {"Час виготовлення"}
+                            </>
+                        )}
+                    </div>
                     <div className="CustomOrderTable-header-cell">deadline</div>
                     <div className="CustomOrderTable-header-cell">Відповідальний</div>
                     <div className="CustomOrderTable-header-cell">До каси</div>
@@ -366,6 +404,18 @@ const CustomOrderTable2 = () => {
                                                     : '—'}
                                             </div>
                                             <div className="CustomOrderTable-cell">
+                                                {order.manufacturingStartTime 
+                                                    ? `${new Date(order.manufacturingStartTime).toLocaleDateString()} ${new Date(order.manufacturingStartTime).toLocaleTimeString()}`
+                                                    : '—'}
+                                            </div>
+                                            <div className="CustomOrderTable-cell">
+                                                {order.finalManufacturingTime 
+                                                    ? `${order.finalManufacturingTime.days}д ${order.finalManufacturingTime.hours}год ${order.finalManufacturingTime.minutes}хв ${order.finalManufacturingTime.seconds}сек`
+                                                    : order.manufacturingStartTime 
+                                                        ? 'В процесі'
+                                                        : '—'}
+                                            </div>
+                                            <div className="CustomOrderTable-cell">
                                                 {order.deadline
                                                     ? `${new Date(order.deadline).toLocaleDateString()} ${new Date(order.deadline).toLocaleTimeString()}`
                                                     : '—'}
@@ -401,7 +451,7 @@ const CustomOrderTable2 = () => {
                                                     {order.OrderUnits.length > 0 ? (
                                                         order.OrderUnits.map((orderUnit, index) => (
                                                             <div key={index} style={{
-                                                                backgroundColor: "#E9E6DA",
+                                                                backgroundColor: "#F2F0E7",
                                                                 borderRadius: "0.3vw",
                                                                 padding: "0.5vw",
                                                                 margin: "0.5vw"

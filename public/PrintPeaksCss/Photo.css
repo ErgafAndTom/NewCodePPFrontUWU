@@ -60,7 +60,7 @@
   bottom: 0px;
   left: 0px;
   border-radius: 30px;
-  background-color: #e9e6da;
+  background-color: #F2F0E7;
   border: 1px solid #707070;
   box-sizing: border-box;
 }
@@ -248,7 +248,7 @@
   bottom: 0px;
   left: 0px;
   border-radius: 12px;
-  background-color: #e9e6da;
+  background-color: #F2F0E7;
   border: 1px solid #707070;
   box-sizing: border-box;
 }
@@ -390,7 +390,7 @@
 .input7 {
   border: 1px solid #707070;
   outline: none;
-  background-color: #f2efe8;
+  background-color: #FBFAF6;
   position: absolute;
   height: calc(100% - 8.5px);
   width: 100%;
@@ -419,7 +419,7 @@
   position: absolute;
   right: 11.98px;
   bottom: 8.5px;
-  background-color: #f2efe8;
+  background-color: #FBFAF6;
   width: 23.5px;
   height: 3px;
 }
@@ -562,7 +562,7 @@
   cursor: pointer;
   border: 1px solid #707070;
   padding: 0;
-  background-color: #e9e6da;
+  background-color: #F2F0E7;
   position: absolute;
   height: 81.4%;
   width: 48.77%;
@@ -591,7 +591,7 @@
   cursor: pointer;
   border: 1px solid #707070;
   padding: 0;
-  background-color: #e9e6da;
+  background-color: #F2F0E7;
   position: absolute;
   height: 100%;
   width: 100%;
@@ -621,7 +621,7 @@
   cursor: pointer;
   border: 1px solid #707070;
   padding: 0;
-  background-color: #e9e6da;
+  background-color: #F2F0E7;
   position: absolute;
   height: 140%;
   width: 71.43%;
@@ -664,7 +664,7 @@
   cursor: pointer;
   border: 1px solid #707070;
   padding: 0;
-  background-color: #e9e6da;
+  background-color: #F2F0E7;
   position: absolute;
   height: 100%;
   width: 100%;
@@ -694,7 +694,7 @@
   cursor: pointer;
   border: 1px solid #707070;
   padding: 0;
-  background-color: #e9e6da;
+  background-color: #F2F0E7;
   position: absolute;
   height: 152%;
   width: 65.79%;
@@ -724,7 +724,7 @@
   cursor: pointer;
   border: 1px solid #707070;
   padding: 0;
-  background-color: #e9e6da;
+  background-color: #F2F0E7;
   position: absolute;
   height: 80.56%;
   width: 124.14%;
@@ -742,7 +742,7 @@
   cursor: pointer;
   border: 1px solid #707070;
   padding: 0;
-  background-color: #e9e6da;
+  background-color: #F2F0E7;
   position: absolute;
   height: 65.74%;
   width: 83.91%;
@@ -834,7 +834,7 @@
   right: -0.03px;
   bottom: 0px;
   border-radius: 5px;
-  background-color: #f2efe8;
+  background-color: #FBFAF6;
   border: 1px solid #707070;
   box-sizing: border-box;
   width: 283px;
@@ -845,7 +845,7 @@
 .size-wide3 {
   border: 1px solid #707070;
   outline: none;
-  background-color: #f2efe8;
+  background-color: #FBFAF6;
   position: absolute;
   height: calc(100% - 0.1px);
   top: 0px;
@@ -872,7 +872,7 @@
 .size-hight3 {
   border: 1px solid #707070;
   outline: none;
-  background-color: #f2efe8;
+  background-color: #FBFAF6;
   position: absolute;
   height: calc(100% - 0.1px);
   top: 0px;
@@ -942,7 +942,7 @@
   top: 0px;
   right: -0.03px;
   border-radius: 5px;
-  background-color: #f2efe8;
+  background-color: #FBFAF6;
   border: 1px solid #707070;
   box-sizing: border-box;
   width: 283px;

@@ -91,7 +91,7 @@ const PerepletMet = ({
         let dataToSend = {
             orderId: thisOrder.id,
             toCalc: {
-                nameOrderUnit: "Перепліт без матеріалу(бумаги)",
+                nameOrderUnit: "Брошурована продукція",
                 type: "PerepletMet",
                 size: size,
                 material: material,
@@ -229,7 +229,7 @@ const PerepletMet = ({
                                 className="d-flex inputsArtemNumber inputsArtem "
                                 style={{
                                     marginLeft: "1vw",
-                                    background: "#F2EFE8",
+                                    background: "#FBFAF6",
                                     width: "5vw",
                                     alignItems: "center",
                                     justifyContent:"center",

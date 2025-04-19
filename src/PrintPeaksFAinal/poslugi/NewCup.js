@@ -81,7 +81,7 @@ const NewCup = ({
         let dataToSend = {
             orderId: thisOrder.id,
             toCalc: {
-                nameOrderUnit: "Чашка",
+                nameOrderUnit: "Кружка",
                 type: "Cup",
                 size: size,
                 material: material,
@@ -224,7 +224,7 @@ const NewCup = ({
                                         className="d-flex inputsArtemNumber inputsArtem "
                                         style={{
                                             marginLeft: "1vw",
-                                            background: "#F2EFE8",
+                                            background: "#FBFAF6",
                                             width: "5vw",
                                             alignItems: "center",
                                             justifyContent: "center",

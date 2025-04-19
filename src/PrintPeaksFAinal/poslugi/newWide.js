@@ -71,7 +71,7 @@ const NewWide = ({thisOrder, newThisOrder, setNewThisOrder, selectedThings2, set
         let dataToSend = {
             orderId: thisOrder.id,
             toCalc: {
-                nameOrderUnit: "Широкоформатна продукція",
+                nameOrderUnit: "Продукція широкоформатного друку в аркушах",
                 type: "Wide",
                 size: size,
                 material: material,
@@ -201,7 +201,7 @@ const NewWide = ({thisOrder, newThisOrder, setNewThisOrder, selectedThings2, set
                                     className="d-flex inputsArtemNumber inputsArtem "
                                     style={{
                                         marginLeft: "1vw",
-                                        background: "#F2EFE8",
+                                        background: "#FBFAF6",
                                         width: "5vw",
                                         alignItems: "center",
                                         justifyContent:"center",

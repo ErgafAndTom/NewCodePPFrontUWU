@@ -45,7 +45,7 @@
   --bs-danger-rgb: 220, 53, 69;
   --bs-light-rgb: 248, 249, 250;
   --bs-dark-rgb: 33, 37, 41;
-  --bs-white-rgb: #F2EFE8;
+  --bs-white-rgb: #FBFAF6;
   --bs-black-rgb: 0, 0, 0;
   --bs-body-color-rgb: 33, 37, 41;
   --bs-body-bg-rgb: 255, 255, 255;
@@ -2037,7 +2037,7 @@ progress {
   opacity: 1;
 }
 .form-control:disabled {
-  background: #E9E6DA;
+  background: #F2F0E7;
   opacity: 1;
 }
 .form-control::-webkit-file-upload-button {
@@ -4389,7 +4389,7 @@ textarea.form-control-lg {
   --bs-accordion-body-padding-x: 1.25rem;
   --bs-accordion-body-padding-y: 1rem;
   --bs-accordion-active-color: #000000;
-  --bs-accordion-active-bg: #e9e6da;
+  --bs-accordion-active-bg: #F2F0E7;
 }
 
 .accordion-button {
@@ -8238,7 +8238,7 @@ textarea.form-control-lg {
 
 .bg-white {
   --bs-bg-opacity: 1;
-  background-color: #F2EFE8 !important;
+  background-color: #FBFAF6 !important;
 }
 
 .bg-body {

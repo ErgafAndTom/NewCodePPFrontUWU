@@ -81,7 +81,7 @@ body {
     width: 100%;
     max-width: 1720px;
     margin: 0 auto;
-    background-color: #F2EFE8; /* Фон списку замовлень */
+    background-color: #FBFAF6; /* Фон списку замовлень */
     padding: 10px;
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
     border-radius: 12px;
@@ -100,7 +100,7 @@ table {
 }
 
 thead {
-    background-color: #F2EFE8;
+    background-color: #FBFAF6;
 }
 
 th {
@@ -115,7 +115,7 @@ td {
     text-align: center;
     border-bottom: 2px solid #ddd;
     font-size: 11px; /* Однаковий розмір шрифту */
-    background-color: #F2EFE8; /* Фон для замовлень та колонок */
+    background-color: #FBFAF6; /* Фон для замовлень та колонок */
 }
 
 thead {
@@ -182,7 +182,7 @@ button {
     flex-direction: column;
     width: 100%;
     margin: 0 auto;
-    background-color: #F2EFE8;
+    background-color: #FBFAF6;
     padding: 5px;
     /*margin-top: 5px;*/
     border-radius: 12px;

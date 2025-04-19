@@ -55,7 +55,7 @@ function PaymentCalculator({thisOrder, setThisOrder}) {
 
     return (
         <div>
-            <div style={{display: 'flex', alignItems: 'center', marginTop: '1vh'}}>
+            <div style={{display: 'flex', alignItems: 'center', marginTop: '-1vh'}}>
                 <label style={{fontSize: '0.7vw', color: '#707070'}}>Загальна вартість:</label>
                 <input
                     disabled
@@ -67,7 +67,7 @@ function PaymentCalculator({thisOrder, setThisOrder}) {
                         padding: '0.5vh',
                         fontSize: '0.7vw',
                         width: '28%',
-                        backgroundColor: '#E9E6DA',
+                        backgroundColor: '#F2F0E7',
                         position: 'relative',
                         border: 'none',
                         borderRadius: '1vw',
@@ -78,7 +78,7 @@ function PaymentCalculator({thisOrder, setThisOrder}) {
                 />
             </div>
 
-            <div style={{display: 'flex', alignItems: 'center', marginTop: '1vh' }}>
+            <div style={{display: 'flex', alignItems: 'center', marginTop: '0.5vh' }}>
                 <label style={{ fontSize: '0.7vw', color: '#707070' }}>Знижка:</label>
                 <div style={{display: 'flex', alignItems: 'center', width: '70%'}}>
                     <input
@@ -90,7 +90,7 @@ function PaymentCalculator({thisOrder, setThisOrder}) {
                             fontSize: '0.7vw',
                             width: '40%',
                             marginLeft: '4.25vw',
-                            backgroundColor: '#E9E6DA',
+                            backgroundColor: '#F2F0E7',
                             position: 'relative',
                             border: 'none',
                             borderRadius: '1vw',
@@ -107,10 +107,10 @@ function PaymentCalculator({thisOrder, setThisOrder}) {
             </div>
 
             {error && (
-                <div style={{ color: 'red', fontSize: '0.7vw', marginTop: '1vh' }}>{error}</div>
+                <div style={{ color: 'red', fontSize: '0.7vw', marginTop: '0.5vh' }}>{error}</div>
             )}
 
-            <div style={{ display: 'flex', alignItems: 'center', marginTop: '1vh' }}>
+            <div style={{ display: 'flex', alignItems: 'center', marginTop: '0.5vh' }}>
                 <label style={{ fontSize: '0.7vw', color: '#707070' }}>К оплаті буде:</label>
                 <input
                     disabled
@@ -121,7 +121,7 @@ function PaymentCalculator({thisOrder, setThisOrder}) {
                         padding: '0.5vh',
                         fontSize: '0.7vw',
                         width: '28%',
-                        backgroundColor: '#E9E6DA',
+                        backgroundColor: '#F2F0E7',
                         position: 'relative',
                         border: 'none',
                         borderRadius: '1vw',

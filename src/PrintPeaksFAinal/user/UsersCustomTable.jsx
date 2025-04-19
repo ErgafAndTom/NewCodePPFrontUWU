@@ -143,7 +143,7 @@ const UsersCustomTable = ({name}) => {
                     {/*<div className="CustomOrderTable-header-cell CustomOrderTable-right-rounded">Видалити</div>*/}
                     {data.metadata.map((item, iter) => (
                         <div
-                            style={{background: "#F2EFE8", borderColor: "#f4c24b"}}
+                            style={{background: "#FBFAF6", borderColor: "#f4c24b"}}
                             // className="adminFontTable"
                             className="CustomOrderTable-header-cell"
                             key={item+iter}

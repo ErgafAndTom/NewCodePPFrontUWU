@@ -244,7 +244,7 @@ style={{ position: "absolute", marginLeft: "42vw", marginTop: "-2vh"}}
                         width: "5vw",
                         fontSize: "0.8vw",
                         padding: "0.5vw",
-                        backgroundColor: "#F2EFE8"
+                        backgroundColor: "#FBFAF6"
 
 
                     }}

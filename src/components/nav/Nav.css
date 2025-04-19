@@ -49,7 +49,7 @@
 .top-menu {
     /*align-items: left;*/
     margin-top: 0.1vw;
-    background-color: #E9E6DA;
+    background-color: #F2F0E7;
     display: flex;
     height: 1vh;
     margin-left: 0.9vw;
@@ -58,7 +58,7 @@
 .top-menu button {
     display: flex;
     margin:auto;
-    background-color: #F2EFE8;
+    background-color: #FBFAF6;
     padding: 1vw;
     cursor: pointer;
     font-size: 0.8vw;
@@ -77,7 +77,7 @@
 
 .Search
 {
-    background-color: #F2EFE8;
+    background-color: #FBFAF6;
     /*display: flex;*/
     height: 4vh;
     width: 14vw;

@@ -31,19 +31,28 @@
     "react-popper": "^2.3.0",
     "react-redux": "^8.0.0",
     "react-router-dom": "^6.11.2",
-    "react-scripts": "^5.0.1",
+    "react-scripts": "5.0.1",
     "react-tooltip": "^5.11.0",
     "redux": "^4.2.1",
     "redux-thunk": "^2.4.2",
     "three": "^0.173.0",
     "util": "^0.12.5",
-    "web-vitals": "^2.1.4"
+    "web-vitals": "^2.1.4",
+    "@testing-library/jest-dom": "^5.16.5",
+    "@testing-library/react": "^13.4.0",
+    "@testing-library/user-event": "^13.5.0",
+    "styled-components": "^5.3.10",
+    "prop-types": "^15.8.1",
+    "@babel/parser": "^7.22.5",
+    "@babel/traverse": "^7.22.5",
+    "@babel/types": "^7.22.5"
   },
   "scripts": {
     "start": "react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test",
-    "eject": "react-scripts eject"
+    "eject": "react-scripts eject",
+    "refactor": "node src/scripts/runRefactoring.js"
   },
   "eslintConfig": {
     "extends": [
@@ -64,6 +73,13 @@
     ]
   },
   "devDependencies": {
+    "@babel/core": "^7.22.5",
+    "@babel/preset-react": "^7.22.5",
+    "eslint": "^8.42.0",
+    "eslint-plugin-react": "^7.32.2",
+    "typescript": "^4.9.5",
+    "@types/react": "^18.2.12",
+    "@types/react-dom": "^18.2.5",
     "webpack": "^5.97.1",
     "webpack-cli": "^6.0.1",
     "webpack-dev-server": "^4.11.0"

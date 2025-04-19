@@ -5,19 +5,19 @@ const OneItemInTable = ({itemData, tablPosition, item, metaItem, handleItemClick
     if (tablPosition === "id") {
         return (
             <div className="CustomOrderTable-cell"
-                 style={{border: "0.05vw solid #F2EFE8"}}>{itemData}</div>
+                 style={{border: "0.05vw solid #FBFAF6"}}>{itemData}</div>
         )
     }
     if (tablPosition === "password") {
         return (
             <div className="CustomOrderTable-cell"
-                 style={{border: "0.05vw solid #F2EFE8"}}>{itemData}</div>
+                 style={{border: "0.05vw solid #FBFAF6"}}>{itemData}</div>
         )
     }
     if (tablPosition === "createdAt") {
         return (
             <div className="CustomOrderTable-cell"
-                 style={{border: "0.05vw solid #F2EFE8"}}>
+                 style={{border: "0.05vw solid #FBFAF6"}}>
                 {`${new Date(itemData).toLocaleDateString()} ${new Date(itemData).toLocaleTimeString()}`}
             </div>
         )
@@ -25,7 +25,7 @@ const OneItemInTable = ({itemData, tablPosition, item, metaItem, handleItemClick
     if (tablPosition === "updatedAt") {
         return (
             <div className="CustomOrderTable-cell"
-                 style={{border: "0.05vw solid #F2EFE8"}}
+                 style={{border: "0.05vw solid #FBFAF6"}}
             >
                 {`${new Date(itemData).toLocaleDateString()} ${new Date(itemData).toLocaleTimeString()}`}
             </div>
@@ -34,7 +34,7 @@ const OneItemInTable = ({itemData, tablPosition, item, metaItem, handleItemClick
     if (tablPosition === "photo") {
         return (
             <div className="CustomOrderTable-cell"
-                 style={{border: "0.05vw solid #F2EFE8"}}>{itemData}</div>
+                 style={{border: "0.05vw solid #FBFAF6"}}>{itemData}</div>
         )
     }
 
@@ -47,7 +47,7 @@ const OneItemInTable = ({itemData, tablPosition, item, metaItem, handleItemClick
     return (
         <div
             className="CustomOrderTable-cell CustomOrderTable-cellCan"
-            style={{border: "0.05vw solid #F2EFE8"}}
+            style={{border: "0.05vw solid #FBFAF6"}}
             onClick={(e) => handleItemClickRed(item, e, metaItem)}
         >
             {itemData}

@@ -2,13 +2,13 @@
     font-family: 'Montserrat', sans-serif;
 }
 .color {
-    background: #E9E6DA;
+    background: #F2F0E7;
 }
 .btnFile {
     display: flex;
 }
 .btnm {
-    border: #E9E6DA solid 0.1vw;
+    border: #F2F0E7 solid 0.1vw;
     color: #000000;
     font-weight: 600;
     z-index: 33;
@@ -32,7 +32,7 @@
     border: #2a2a2a solid 0.1vw;
 }
 .gray {
-    background: #E9E6DA;
+    background: #F2F0E7;
     z-index: 5;
 }
 .btnHoverIfTransparent {
@@ -425,21 +425,21 @@
     width: 50vw;
     border-radius: 7vw;
     height: 2.65vw;
-    background: #E9E6DAFF;
+    background: #F2F0E7FF;
     border: black solid 0.1vw;
 }
 .moreOptionsIn {
     margin-top: 0.4vw;
     border-radius: 7vw;
     height: 2.65vw;
-    background: #E9E6DAFF;
+    background: #F2F0E7FF;
     border: black solid 0.1vw;
     width: 47vw;
 }
 .inMoreOptions {
     width: 45vw;
     border-radius: 7vw;
-    background: #E9E6DAFF;
+    background: #F2F0E7FF;
     border: black solid 0.1vw;
 }
 .destinyButtons {
@@ -448,12 +448,12 @@
 input[type="number"].inputCount::-webkit-inner-spin-button,
 input[type="number"].inputCount::-webkit-outer-spin-button{
     /*-webkit-appearance: none;*/
-    background-color: #E9E6DA;
-    -moz-background-color: #E9E6DA;
-    -webkit-background-color: #E9E6DA;
-    -ms-background-color: #E9E6DA;
-    -webkit-background-color: #E9E6DA;
-    -khtml-background-color: #E9E6DA;
+    background-color: #F2F0E7;
+    -moz-background-color: #F2F0E7;
+    -webkit-background-color: #F2F0E7;
+    -ms-background-color: #F2F0E7;
+    -webkit-background-color: #F2F0E7;
+    -khtml-background-color: #F2F0E7;
     width: 6vw;
     height: 6vw;
     max-width: 6vw;
@@ -535,7 +535,7 @@ input[type="number"].inputCount::-webkit-outer-spin-button{
     .btn {
         font-weight: 400;
         border-radius: 10vw;
-        border: #E9E6DA solid 0.3vw;
+        border: #F2F0E7 solid 0.3vw;
         font-size: 3vw;
         overflow: hidden;
         white-space: nowrap;

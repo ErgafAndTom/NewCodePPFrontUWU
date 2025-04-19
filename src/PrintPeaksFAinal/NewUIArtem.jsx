@@ -200,7 +200,7 @@ const NewUIArtem = () => {
                     <div className="d-flex flex-column" style={{
                         border: "1px solid gray",
                         width: "7vw",
-                        background: "#E9E6DA",
+                        background: "#F2F0E7",
                         borderRadius: "1.5vh",
                         padding: "0.7vh",
                         marginLeft: "0.5vw",
@@ -451,11 +451,22 @@ const NewUIArtem = () => {
                                 </div>
                             )}
                         </div>
-                        <div className="d-flex flex-column" style={{marginLeft: "0.3vw", marginTop: "1.6vw", borderRadius: "1.5vh"}}>
+                        <div className="d-flex flex-column" style={{marginTop: "1.6vw"}}>
                             {/*<ProgressBar/>*/}
                             {/*<div className="containerNewUI containerDetailsThisOrder " style={{border: "0vw"}}>*/}
                                 {thisOrder ? (
-                                    <div className="ClientsMenuAll">
+                                    <div className="ClientsMenuAll" style={{
+                                        fontFamily: 'Montserrat, sans-serif',
+                                        padding: '1vw',
+                                        width: '32.3vw',
+                                        height: '31.8vh',
+                                        margin: 'auto',
+                                        textAlign: 'left',
+                                        backgroundColor: '#FBFAF6',
+                                        borderRadius: '1vw',
+                                        position: 'relative'
+
+                                    }}>
                                         <ProgressBar thisOrder={thisOrder} setThisOrder={setThisOrder}
                                                      setNewThisOrder={setNewThisOrder}
                                                      handleThisOrderChange={handleThisOrderChange}/>

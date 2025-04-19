@@ -31,7 +31,7 @@ export const Login = () => {
                     <Form.Group className="" controlId="formBasicLogin">
                         <Form.Control style={{
                             height: "5vh",
-                            background: "#E9E6DA",
+                            background: "#F2F0E7",
                         }}
                             className="inputLogin"
                             name="username"
@@ -47,7 +47,7 @@ export const Login = () => {
                               >
                         <Form.Control   style={{
                             height: "5vh",
-                            background: "#E9E6DA",
+                            background: "#F2F0E7",
                             marginTop: "2vh"
                         }}
                             className="inputLogin"

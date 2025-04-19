@@ -121,7 +121,7 @@ function AddPaysInOrder({ showAddPay, setShowAddPay, formData, setFormData, data
                 display: "flex",
                 flexDirection: "column",
                 position: "fixed",
-                // backgroundColor: '#f2efe8',
+                // backgroundColor: '#FBFAF6',
                 backgroundColor: '#FAF8F3FF',
                 left: "50%",
                 top: "50%",

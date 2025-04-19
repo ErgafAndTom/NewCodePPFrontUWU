@@ -88,7 +88,7 @@ const NewSheetCut = ({
         let dataToSend = {
             orderId: thisOrder.id,
             toCalc: {
-                nameOrderUnit: "Листова продукція з порізкою",
+                nameOrderUnit: "Продукція цифрового друку в аркушах",
                 type: "SheetCut",
                 size: size,
                 material: material,
@@ -226,7 +226,7 @@ const NewSheetCut = ({
                                     className="d-flex inputsArtemNumber inputsArtem "
                                     style={{
                                         marginLeft: "1vw",
-                                        background: "#F2EFE8",
+                                        background: "#FBFAF6",
                                         width: "5vw",
                                         alignItems: "center",
                                         justifyContent:"center",

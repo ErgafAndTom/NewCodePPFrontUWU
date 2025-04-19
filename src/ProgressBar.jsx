@@ -9,24 +9,24 @@ import TimerDeadline from "./PrintPeaksFAinal/Orders/TimerDeadline";
 
 const stages = [
     { id: 1, label: 'Сектор 1', color: '#FFC107' },
-    { id: 2, label: 'Сектор 2', color: '#e9e6da' },
-    { id: 3, label: 'Сектор 3', color: '#e9e6da' },
-    { id: 4, label: 'Сектор 4', color: '#e9e6da' },
-    { id: 5, label: 'Сектор 5', color: '#e9e6da' },
-    { id: 6, label: 'Сектор 6', color: '#e9e6da' }
+    { id: 2, label: 'Сектор 2', color: '#F2F0E7' },
+    { id: 3, label: 'Сектор 3', color: '#F2F0E7' },
+    { id: 4, label: 'Сектор 4', color: '#F2F0E7' },
+    { id: 5, label: 'Сектор 5', color: '#F2F0E7' },
+    { id: 6, label: 'Сектор 6', color: '#F2F0E7' }
 ];
 
 
-const ProgressBar = ({thisOrder, setThisOrder, setNewThisOrder, handleThisOrderChange}) => {
+const ProgressBar = ({ thisOrder, setThisOrder, setNewThisOrder, handleThisOrderChange }) => {
     const [isVisible, setIsVisible] = useState(true);
-    const [currentStage, setCurrentStage] = useState(parseInt(thisOrder.status));
+    const [currentStage, setCurrentStage] = useState(thisOrder?.status ? parseInt(thisOrder.status) : 0);
     const [isPaid, setIsPaid] = useState(false);
     const [isCancelled, setIsCancelled] = useState(false);
     const [paymentDate, setPaymentDate] = useState(null);
     const [startTime, setStartTime] = useState(null);
     const [error, setError] = useState(null);
     const [load, setLoad] = useState(false);
-    const [elapsedTime, setElapsedTime] = useState(null);
+    const [elapsedTime, setElapsedTime] = useState({ days: 0, hours: 0, minutes: 0, seconds: 0 });
     const [remainingTime, setRemainingTime] = useState(null);
     const [amount, setAmount] = useState(0);
     const [discount, setDiscount] = useState('');
@@ -36,6 +36,9 @@ const ProgressBar = ({thisOrder, setThisOrder, setNewThisOrder, handleThisOrderC
     const [isFocused, setIsFocused] = useState(false);
     const [showPlaceholder, setShowPlaceholder] = useState(true);
     const [placeholderIndex, setPlaceholderIndex] = useState(0);
+    const [manufacturingStartTime, setManufacturingStartTime] = useState(null);
+    const [finalManufacturingTime, setFinalManufacturingTime] = useState(null);
+
     const formats = [
         "Д|",
         "Де|",
@@ -73,7 +76,7 @@ const ProgressBar = ({thisOrder, setThisOrder, setNewThisOrder, handleThisOrderC
     // };
 
 
-       const AnimatedPlaceholderInput = ({ onChange }) => {
+    const AnimatedPlaceholderInput = ({ onChange }) => {
         useEffect(() => {
             if (!isFocused) {
                 const interval = setInterval(() => {
@@ -86,7 +89,7 @@ const ProgressBar = ({thisOrder, setThisOrder, setNewThisOrder, handleThisOrderC
 
         return (
             <div style={{ display: 'flex', alignItems: 'center', marginBottom: '0.5vh', position: 'relative' }}>
-                 <input
+                <input
                     type={isFocused ? "datetime-local" : formats[placeholderIndex]}
                     value={isFocused ? "datetime-local" : formats[placeholderIndex]}
                     onChange={(e) => onChange(new Date(e.target.value))}
@@ -99,7 +102,7 @@ const ProgressBar = ({thisOrder, setThisOrder, setNewThisOrder, handleThisOrderC
                         alignItems: 'center',
                         fontSize: '0.7vw',
                         width: '52.5%',
-                        backgroundColor: isFocused ? 'white' : '#E9E6DA',
+                        backgroundColor: isFocused ? 'white' : '#F2F0E7',
                         // position: 'relative',
                         border: 'none',
                         borderRadius: '1vw',
@@ -114,23 +117,37 @@ const ProgressBar = ({thisOrder, setThisOrder, setNewThisOrder, handleThisOrderC
         );
     };
 
+    const formatTimeDisplay = (time) => {
+        if (!time) return '';
+        const { days, hours, minutes, seconds } = time;
+        return `Час виготовлення замовлення: ${days}д ${hours}год ${minutes}хв ${seconds}сек`;
+    };
+
     useEffect(() => {
         let timer;
-        if (startTime && currentStage < 3) {
+        if (manufacturingStartTime && currentStage >= 1 && currentStage <= 3) {
             timer = setInterval(() => {
                 const now = new Date();
-                const diff = now - startTime;
+                const diff = now - new Date(manufacturingStartTime);
+                
                 const days = Math.floor(diff / (1000 * 60 * 60 * 24));
-                const hours = Math.floor((diff / (1000 * 60 * 60)) % 24);
-                const minutes = Math.floor((diff / (1000 * 60)) % 60);
-                const seconds = Math.floor((diff / 1000) % 60);
+                const hours = Math.floor((diff % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+                const minutes = Math.floor((diff % (1000 * 60 * 60)) / (1000 * 60));
+                const seconds = Math.floor((diff % (1000 * 60)) / 1000);
+                
                 setElapsedTime({ days, hours, minutes, seconds });
             }, 1000);
-        } else if (currentStage === 3) {
-            setElapsedTime(null);
         }
-        return () => clearInterval(timer);
-    }, [startTime, currentStage]);
+        return () => {
+            if (timer) {
+                clearInterval(timer);
+            }
+        };
+    }, [manufacturingStartTime, currentStage]);
+
+    useEffect(() => {
+        console.log(isCancelled);
+    }, [isCancelled]);
 
     useEffect(() => {
         let timer;
@@ -151,23 +168,23 @@ const ProgressBar = ({thisOrder, setThisOrder, setNewThisOrder, handleThisOrderC
     }, [deadline, currentStage]);
 
     useEffect(() => {
-        if(thisOrder.payStatus === "pay") {
-            setIsVisible(false);
+        if (!thisOrder) return;
+        
+        if (thisOrder.payStatus === "pay") {
             setIsPaid(true);
         } else {
-            setIsVisible(true);
             setIsPaid(false);
             setPaymentDate(new Date());
         }
         setDeadline(thisOrder.deadline);
-        setCurrentStage(parseInt(thisOrder.status));
-    }, [thisOrder.payStatus, thisOrder.status, thisOrder.deadline]);
+        setCurrentStage(thisOrder.status ? parseInt(thisOrder.status) : 0);
+    }, [thisOrder?.payStatus, thisOrder?.status, thisOrder?.deadline]);
+
 
     const handleStageChange = (stage) => {
         if (stage === 'pay') {
             setIsPaid(true);
             setPaymentDate(new Date());
-            setIsVisible(false); // Сховати кнопку
             return;
         }
 
@@ -185,27 +202,66 @@ const ProgressBar = ({thisOrder, setThisOrder, setNewThisOrder, handleThisOrderC
     };
 
     const handleStageChangeServer = (stage) => {
+        if (!thisOrder?.id) return;
+        
         let dataToSend = {
             newStatus: stage,
             thisOrderId: thisOrder.id,
         }
-        // setLoad(true)
+
+        // Додаємо час виготовлення до даних
+        if (stage === 1) {
+            dataToSend.manufacturingStartTime = new Date().toISOString();
+        }
+        
+        if (stage === 3) {
+            const finalTime = {
+                days: elapsedTime.days,
+                hours: elapsedTime.hours,
+                minutes: elapsedTime.minutes,
+                seconds: elapsedTime.seconds
+            };
+            dataToSend.finalManufacturingTime = finalTime;
+            dataToSend.totalManufacturingTimeInSeconds = 
+                (finalTime.days * 24 * 60 * 60) + 
+                (finalTime.hours * 60 * 60) + 
+                (finalTime.minutes * 60) + 
+                finalTime.seconds;
+        }
+
         axios.put(`/orders/OneOrder/statusUpdate`, dataToSend)
             .then(response => {
                 console.log(response.data);
-                setThisOrder({...thisOrder, status: response.data.status, payStatus: response.data.payStatus})
-                // setLoad(false)
-                // setThisOrder(response.data)
-                // handleClose()
+                if (stage === 'pay') {
+                    setThisOrder(prevState => ({
+                        ...prevState,
+                        payStatus: "pay"
+                    }));
+                    setIsPaid(true);
+                } else {
+                    setThisOrder(prevState => ({
+                        ...prevState,
+                        status: response.data.status,
+                        manufacturingStartTime: stage === 1 ? dataToSend.manufacturingStartTime : prevState.manufacturingStartTime,
+                        finalManufacturingTime: stage === 3 ? dataToSend.finalManufacturingTime : prevState.finalManufacturingTime
+                    }));
+                    
+                    if (stage === 1) {
+                        const currentTime = new Date().toISOString();
+                        setManufacturingStartTime(currentTime);
+                    }
+                    if (stage === 3) {
+                        setFinalManufacturingTime({...elapsedTime});
+                        setManufacturingStartTime(null); // Зупиняємо таймер
+                    }
+                }
             })
             .catch(error => {
-                if (error.response.status === 403) {
+                if (error.response?.status === 403) {
                     // navigate('/login');
                 }
-                // setError(error)
-                // setLoad(false)
                 console.log(error.message);
-            })
+            });
     };
 
     const handleDeadlineChangeServer = (deadlineNew) => {
@@ -217,7 +273,7 @@ const ProgressBar = ({thisOrder, setThisOrder, setNewThisOrder, handleThisOrderC
         axios.put(`/orders/OneOrder/deadlineUpdate`, dataToSend)
             .then(response => {
                 console.log(response.data);
-                setThisOrder({...thisOrder, deadline: response.data.deadline})
+                setThisOrder({ ...thisOrder, deadline: response.data.deadline })
                 // setLoad(false)
                 // setThisOrder(response.data)
                 // handleClose()
@@ -238,14 +294,13 @@ const ProgressBar = ({thisOrder, setThisOrder, setNewThisOrder, handleThisOrderC
 
     const getSegmentColor = (id) => {
         if (isCancelled) return '#ee3c23';
-        if (isPaid && id === 5) return '#008249';
+        if (id === stages[4].id && thisOrder.payStatus === "pay") return '#008249';
         if (currentStage === 1 && [1, 2].includes(id)) return '#8B4513';
         if (currentStage === 2 && [1, 2, 3].includes(id)) return '#3C60A6';
         if (currentStage === 3 && [1, 2, 3, 4].includes(id)) return '#F075AA';
-        if (currentStage >= 4 && [1, 2, 3, 4, 6].includes(id)) return '#008249';
+        if (currentStage === 4 && [1, 2, 3, 4, 6].includes(id)) return '#008249';
         if (currentStage === 0 && id === 0) return '#FFC107';
-        const segment = stages.find((segment) => segment.id === id);
-        return segment ? segment.color : '#e9e6da'; // Default value if not found
+        return '#F2F0E7';
     };
 
     const formatDate = (date) => {
@@ -346,8 +401,8 @@ const ProgressBar = ({thisOrder, setThisOrder, setNewThisOrder, handleThisOrderC
             backgroundColor: 'transparent',
             color: '#ee3c23',
             position: 'absolute',
-            top: '0.3vh',
-            right: '-1vw',
+            top: '0vh',
+            right: '-0.1vw',
             cursor: 'pointer',
             transform: 'scale(0.5)',
             border: 'none'
@@ -356,21 +411,7 @@ const ProgressBar = ({thisOrder, setThisOrder, setNewThisOrder, handleThisOrderC
 
     return (
 
-        <div
-            style={{
-                fontFamily: 'Montserrat, sans-serif',
-                paddingTop: '0.6vw',
-                width: '31vw',
-                height: '31.8vh',
-                margin: 'auto',
-                textAlign: 'left',
-                backgroundColor: '#f2efe8',
-                borderRadius: '2vw',
-                position: 'relative'
-
-            }}
-
-        >
+        <div style={{ marginTop: "-0.8vh" }}  >
             <ClientChangerUIArtem
                 thisOrder={thisOrder}
                 setThisOrder={setThisOrder}
@@ -380,12 +421,11 @@ const ProgressBar = ({thisOrder, setThisOrder, setNewThisOrder, handleThisOrderC
             <button onClick={() => handleStageChange('cancel')} style={buttonStyles.cancel}>
                 ❌
             </button>
-            <div style={{display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: '1vh'}}>
+            <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: '1vh' }}>
                 <div
                     style={{
                         fontSize: '2.3vh',
-                        // fontWeight: "bold",
-                        color: isCancelled ? '#ee3c23' : getSegmentColor(currentStage)
+                        color: isCancelled ? '#ee3c23' : '#000000'
                     }}
                 >
                     {isCancelled
@@ -400,44 +440,42 @@ const ProgressBar = ({thisOrder, setThisOrder, setNewThisOrder, handleThisOrderC
                                         ? 'Готове замовлення'
                                         : 'Віддали замовлення'}
                 </div>
-                {!isCancelled && (
-                    <div style={{display: 'flex', }}>
-                        {currentStage === 0 && (
-                            <button
-                                onClick={() => handleStageChangeServer(1)}
-                                style={{...buttonStyles.base, ...buttonStyles.takeWork}}
-                            >
-                                Взяти в роботу
-                            </button>
-                        )}
-                        {currentStage === 1 && (
-                            <button
-                                onClick={() => handleStageChangeServer(2)}
-                                style={{...buttonStyles.base, ...buttonStyles.postpress}}
-                            >
-                                Відправити на постпрес
-                            </button>
-                        )}
-                        {currentStage === 2 && (
-                            <button
-                                onClick={() => handleStageChangeServer(3)}
-                                style={{...buttonStyles.base, ...buttonStyles.done}}
-                            >
-                                Виконане
-                            </button>
-                        )}
-                        {currentStage === 3 && (
-                            <button
-                                onClick={() => handleStageChangeServer(4)}
-                                style={{...buttonStyles.base, ...buttonStyles.handover}}
-                            >
-                                Віддати
-                            </button>
-                        )}
-                    </div>
-                )}
+                <div style={{ display: 'flex', }}>
+                    {thisOrder?.status && parseInt(thisOrder.status) === 0 && (
+                        <button
+                            onClick={() => handleStageChangeServer(1)}
+                            style={{ ...buttonStyles.base, ...buttonStyles.takeWork }}
+                        >
+                            Взяти в роботу
+                        </button>
+                    )}
+                    {thisOrder?.status && parseInt(thisOrder.status) === 1 && (
+                        <button
+                            onClick={() => handleStageChangeServer(2)}
+                            style={{ ...buttonStyles.base, ...buttonStyles.postpress }}
+                        >
+                            Відправити на постпрес
+                        </button>
+                    )}
+                    {thisOrder?.status && parseInt(thisOrder.status) === 2 && (
+                        <button
+                            onClick={() => handleStageChangeServer(3)}
+                            style={{ ...buttonStyles.base, ...buttonStyles.done }}
+                        >
+                            Виконане
+                        </button>
+                    )}
+                    {thisOrder?.status && parseInt(thisOrder.status) === 3 && (
+                        <button
+                            onClick={() => handleStageChangeServer(4)}
+                            style={{ ...buttonStyles.base, ...buttonStyles.handover }}
+                        >
+                            Віддати
+                        </button>
+                    )}
+                </div>
             </div>
-            <div style={{display: 'flex', gap: '0.5vw', marginBottom: '2vh'}}>
+            <div style={{ display: 'flex', gap: '0.5vw', marginBottom: '2vh' }}>
                 {stages.map((segment) => (
                     <div
                         key={segment.id}
@@ -451,23 +489,22 @@ const ProgressBar = ({thisOrder, setThisOrder, setNewThisOrder, handleThisOrderC
                 ))}
             </div>
 
-
-            <div style={{marginBottom: '1vh'}}>
-                <DiscountCalculator thisOrder={thisOrder} setThisOrder={setThisOrder}/>
+            <div style={{ marginBottom: '0.5vh' }}>
+                <DiscountCalculator thisOrder={thisOrder} setThisOrder={setThisOrder} />
             </div>
             {deadline === null && (
-                <div style={{marginBottom: '0vh'}}>
-                    <AnimatedPlaceholderInput onChange={handleDeadlineChangeServer}/>
+                <div style={{ marginBottom: '0.5vh' }}>
+                    <AnimatedPlaceholderInput onChange={handleDeadlineChangeServer} />
                 </div>
             )}
             {deadline && (
                 <div>
-                    <div className="d-flex align-items-center" style={{marginTop: '1vh', fontSize: '0.7vw', color: '#707070', marginBottom: '1vh'}}>
+                    <div className="d-flex align-items-center" style={{ marginTop: '0.5vh', fontSize: '0.7vw', color: '#707070', marginBottom: '0.5vh' }}>
                         {/*Обраний дедлайн: {deadline.toString()} &*/}
                         {`Обраний дедлайн: ${new Date(deadline).toLocaleDateString()} ${new Date(deadline).toLocaleTimeString()}`}
 
                         {currentStage === 0 && (
-                            <div style={{marginLeft: "0.5vw"}} onClick={() => handleDeadlineChangeServer(null)}>❌</div>
+                            <div style={{ marginLeft: "0.5vw" }} onClick={() => handleDeadlineChangeServer(null)}>❌</div>
                         )}
                         {/*Обраний дедлайн: {deadline.toLocaleString('uk-UA', {*/}
                         {/*day: '2-digit',*/}
@@ -480,10 +517,10 @@ const ProgressBar = ({thisOrder, setThisOrder, setNewThisOrder, handleThisOrderC
                 </div>
 
             )}
-            <TimerDeadline deadline={deadline} thisOrder={thisOrder}/>
+            {/* <TimerDeadline deadline={deadline} thisOrder={thisOrder} /> */}
 
-            <div style={{justifyContent: 'end', marginTop: '-15vh'}}>
-                {isVisible && (
+            {!isPaid && (
+                <div style={{ justifyContent: 'end', marginTop: '-18vh' }}>
                     <button
                         onClick={() => handleStageChangeServer('pay')}
                         style={{
@@ -493,32 +530,33 @@ const ProgressBar = ({thisOrder, setThisOrder, setNewThisOrder, handleThisOrderC
                     >
                         Оплатити
                     </button>
-                )}
-            </div>
-            {!isCancelled && isPaid && (
+                </div>
+            )}
+
+            {isPaid && (
                 <div style={{
-                    display: 'flex',
+
                     justifyContent: 'flex-end',
                     alignItems: 'flex-end',
-                    flexDirection: 'column',
-                    marginTop: '5vh'
+
                 }}>
 
                     <div style={{
-                        position: 'relative',
+                        // position: 'relative',
                         width: '45%',
                         transform: 'rotate(-30deg)'
                     }}>
                         <img
                             src={rozrahuvImage}
                             alt="Розрахувались"
-                            style={{width: '100%', height: 'auto'}}
+                            style={{ width: '100%', height: 'auto', marginTop: "8vh", marginLeft: "19vw" }}
                         />
                         {paymentDate && (
                             <div style={{
                                 position: 'absolute',
-                                top: '1.55vw',
-                                right: '1vw',
+                                top: '11.1vh',
+                                // marginBottom: "19vw",   
+                                right: '-13vw',
                                 fontSize: '0.5vw',
                                 color: '#008249'
                             }}>
@@ -528,6 +566,28 @@ const ProgressBar = ({thisOrder, setThisOrder, setNewThisOrder, handleThisOrderC
                         )}
                     </div>
 
+                </div>
+            )}
+            
+            {(currentStage >= 1 && currentStage <= 3 ? elapsedTime : finalManufacturingTime) && (
+                <div style={{
+                    fontSize: '1.1vh',
+                    color: '#707070',
+                    marginBottom: '1vh',
+                    display: 'flex',
+                    alignItems: 'center',
+                    position: 'relative',
+                    top: '14vh'
+                }}>
+                    {currentStage === 3 ? "Фінальний час виготовлення: " : "Час виготовлення замовлення: "}
+                    <span style={{ fontWeight: 'bold', marginLeft: '0.35vw' }}>{currentStage <= 3 ? elapsedTime.days : finalManufacturingTime.days}</span>
+                    <span style={{ fontWeight: 'bold', marginRight: '0.35vw' }}>д</span>
+                    <span style={{ fontWeight: 'bold' }}>{currentStage <= 3 ? elapsedTime.hours : finalManufacturingTime.hours}</span>
+                    <span style={{ fontWeight: 'bold', marginRight: '0.35vw' }}>год</span>
+                    <span style={{ fontWeight: 'bold' }}>{currentStage <= 3 ? elapsedTime.minutes : finalManufacturingTime.minutes}</span>
+                    <span style={{ fontWeight: 'bold', marginRight: '0.35vw' }}>хв</span>
+                    <span style={{ fontWeight: 'bold' }}>{currentStage <= 3 ? elapsedTime.seconds : finalManufacturingTime.seconds}</span>
+                    <span style={{ fontWeight: 'bold' }}>сек</span>
                 </div>
             )}
         </div>

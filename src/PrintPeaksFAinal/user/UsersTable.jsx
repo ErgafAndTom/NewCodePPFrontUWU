@@ -90,13 +90,13 @@ export const UsersTable = ({name}) => {
                 {/*    pageCount={pageCount}*/}
                 {/*    setPageCount={setPageCount}*/}
                 {/*/>*/}
-                <div style={{ maxWidth: '99vw', overflow: 'auto', height: "85vh", background: "#E9E6DA", marginTop: "1vh", borderRadius: "0.5vw" }}>
+                <div style={{ maxWidth: '99vw', overflow: 'auto', height: "85vh", background: "#F2F0E7", marginTop: "1vh", borderRadius: "0.5vw" }}>
                     <Table bordered hover variant="" size="sm" >
                         <thead>
                         <tr className="">
                             {data.metadata.map((item) => (
                                 <th
-                                    style={{background: "#F2EFE8",borderColor:"#F2EFE8" }}
+                                    style={{background: "#FBFAF6",borderColor:"#FBFAF6" }}
                                     className="adminFontTable"
                                     key={item}
                                     onClick={(event) => setCol(item)}

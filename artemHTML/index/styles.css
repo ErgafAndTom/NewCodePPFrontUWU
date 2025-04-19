@@ -7,7 +7,7 @@
 
 body {
     font-family: Montserrat, sans-serif;
-    background-color: #E9E6DA;
+    background-color: #F2F0E7;
     color: black;
 }
 
@@ -22,7 +22,7 @@ body {
 header {
     display: flex;
     align-items: left;
-    background-color: #E9E6DA;
+    background-color: #F2F0E7;
     padding: 0px;
 	margin-left: 0;
 }
@@ -47,7 +47,7 @@ header {
 .top-menu button {
 	display: flex;
     margin:auto;
-    background-color: #E9E6DA;
+    background-color: #F2F0E7;
     border: 1px solid #707070;
     padding: 10px;
     cursor: pointer;
@@ -64,7 +64,7 @@ header {
 	width: 8vw;
 	height: 42vw;
     border-radius: 10px;
-    background-color: #E9E6DA;
+    background-color: #F2F0E7;
     padding: 5px;
     border: 1px solid #707070;
 }

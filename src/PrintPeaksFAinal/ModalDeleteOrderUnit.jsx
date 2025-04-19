@@ -105,7 +105,7 @@ function ModalDeleteOrderUnit({showDeleteOrderUnitModal, setShowDeleteOrderUnitM
                         <div
                             style={{
                                 padding: "0.5vw",
-                                background: '#E9E6DA',
+                                background: '#F2F0E7',
                                 borderRadius: "1vw 1vw 0 0",
                                 // borderRadius: "1vw",
                             }}
@@ -116,7 +116,7 @@ function ModalDeleteOrderUnit({showDeleteOrderUnitModal, setShowDeleteOrderUnitM
                             className="d-flex justify-content-center align-content-center"
                             style={{
                                 borderRadius: "0 0 1vw 1vw",
-                                background: '#E9E6DA',
+                                background: '#F2F0E7',
                                 padding: "0.5vw",
                             }}
                         >

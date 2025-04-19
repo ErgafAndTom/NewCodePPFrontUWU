@@ -251,18 +251,19 @@ const Nav = () => {
                         name="search"
                         type="text"
                         onChange={handleChange}
-                        placeholder="search"
+                        placeholder="Пошук"
                         defaultValue={""}
                         value={search.search}
                         required
                     />
                     <img style={{
+                        opacity: '0.5',
                         position: 'absolute',
                         left: '85%',
                         top: '50%',
                         transform: 'translateY(-50%)',
                         pointerEvents: 'none',
-                        width: "1.7vw", height: "1.7vw", marginLeft: "auto"
+                        width: "1.5vw", height: "1.5vw", marginLeft: "auto"
                     }} src={find} alt="Search Icon" className="Seaechicon"/>
                 </div>
             </MDBContainer>

@@ -187,20 +187,7 @@ const ClientChangerUIArtem = ({thisOrder, setThisOrder}) => {
         <div>
             {isVisible === true ? (
                 <div>
-                    {/*<style>{keyframesStyle}</style>*/}
                     <div
-                        // style={{
-                        //     height: '54vh',
-                        //     zIndex: "999",
-                        //     position: "fixed",
-                        //     background: "#dcd9ce",
-                        //     // top: "17.8vh",
-                        //     // left: "60vw",
-                        //     // width: "40vw",
-                        //     marginTop: "-40vh",
-                        //     marginLeft: "-40vh",
-                        //     width: "35.3vw",
-                        // }}
                         style={{
                             zIndex: "100",
                             position: "fixed",
@@ -210,7 +197,7 @@ const ClientChangerUIArtem = ({thisOrder, setThisOrder}) => {
                             transform: isAnimating ? "translate(-50%, -50%) scale(1)" : "translate(-0%, -0%) scale(0.8)", // анимация масштаба
                             opacity: isAnimating ? 1 : 0, // анимация прозрачности
                             transition: "opacity 0.3s ease-in-out, transform 0.3s ease-in-out", // плавная анимация
-                            borderRadius: "1vw",
+                            borderRadius: "0.5vw",
                             width: "90vw",
                             height: "90vh",
                             animation: "rotate-animation 2s infinite",
@@ -221,6 +208,7 @@ const ClientChangerUIArtem = ({thisOrder, setThisOrder}) => {
                         className="shadow-lg">
                         <div
                             style={{
+
                                 height: '86vh',
                                 overflow: 'auto',
                             }}
@@ -230,7 +218,8 @@ const ClientChangerUIArtem = ({thisOrder, setThisOrder}) => {
                                     className="btn btn-sm btn-outline-light d-flex flex-row text-black"
                                     style={{
                                         border: "solid 1px #cccabf",
-                                        borderRadius: "1vw"
+                                        borderRadius: "1vw",
+
                                     }}
                                     key={thing.id + index}
                                     onClick={(event) => preHandleThisOrderChange('clientId', event, thing.id)}
@@ -301,12 +290,13 @@ const ClientChangerUIArtem = ({thisOrder, setThisOrder}) => {
                                     // marginTop: "0.2vw",
                                     marginLeft: "0.3vw",
                                     border: "0px",
-                                    borderRadius: "0.5vw"
+                                    borderRadius: "0.5vw",
+                                    background: "transparent",
 
                                 }} onClick={toggleUserList} title="Вибрати клієнта">
                                     <img src={ChangeClienticons} alt="ChangeClient "
                                          style={{width: "1.8vw",  marginLeft: "auto",
-                                             opacity: "80%" }}
+                                             opacity: "80%", background: "transparent", border: "0px", borderRadius: "0.5vw"}}
                                          className="ChangeClient-icons"/>
                                 </button>
                                     </Tooltip>

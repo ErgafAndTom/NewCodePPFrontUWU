@@ -130,6 +130,46 @@ function PaysInOrder({ showPays, setShowPays, thisOrder, setThisOrder }) {
             });
     };
 
+    const generateDoc1 = (e, item) => {
+        let dataToSend = {
+            contractorId: item.id,
+            thisOrderId: thisOrder.id,
+        };
+        axios.post(`/user/generateDoc1`, dataToSend, {
+            responseType: 'blob',
+        })
+            .then(response => {
+                console.log(response.data);
+                setError(null);
+                setLoad(false);
+                setShowAddPay(false)
+                const contentDisposition = response.headers['content-disposition'];
+                let fileName = 'invoice.docx'; // За замовчуванням
+                if (contentDisposition) {
+                    const fileNameMatch = contentDisposition.match(/filename="(.+)"/);
+                    if (fileNameMatch.length === 2) fileName = fileNameMatch[1];
+                }
+
+                // Створюємо тимчасовий URL і клікаємо по ньому
+                const url = window.URL.createObjectURL(new Blob([response.data]));
+                const link = document.createElement('a');
+                link.href = url;
+                link.setAttribute('download', fileName);
+                document.body.appendChild(link);
+                link.click();
+                link.remove();
+                window.URL.revokeObjectURL(url);
+                // setPageCount(Math.ceil(response.data.count / inPageCount));
+            })
+            .catch(error => {
+                if (error.response.status === 403) {
+                    navigate('/login');
+                }
+                setError(error.message);
+                setLoad(false);
+            });
+    };
+
     useEffect(() => {
         let data = {
             inPageCount: inPageCount,
@@ -187,7 +227,7 @@ function PaysInOrder({ showPays, setShowPays, thisOrder, setThisOrder }) {
                 display: "flex",
                 flexDirection: "column",
                 position: "fixed",
-                backgroundColor: '#f2efe8',
+                backgroundColor: '#FBFAF6',
                 left: "50%",
                 top: "50%",
                 transform: isAnimating ? "translate(-50%, -50%) scale(1)" : "translate(-50%, -50%) scale(0.8)", // анимация масштаба
@@ -244,7 +284,8 @@ function PaysInOrder({ showPays, setShowPays, thisOrder, setThisOrder }) {
                                                 <td className="ContractorCell ContractorName">{item.name}</td>
                                                 <td className="ContractorCell ContractorName">{item.taxSystem}</td>
                                                 <td className="ContractorCell ContractorActions">
-                                                    <button className="ContractorViewBtn" style={{background: "green"}} onClick={(event) => generateDoc(event, item)}>Генерувати докі</button>
+                                                    <button className="ContractorViewBtn" style={{background: "green"}} onClick={(event) => generateDoc(event, item)}>Генерувати Накладна/Акт</button>
+                                                    <button className="ContractorViewBtn" style={{background: "green"}} onClick={(event) => generateDoc1(event, item)}>Генерувати Рахунок</button>
                                                     <button className="ContractorViewBtn" onClick={(event) => openSeePay(event, item)}>Переглянути/Редагувати</button>
                                                     <button className="ContractorMoreBtn" onClick={(event) => openDeletePay(event, item)}>⋮</button>
                                                 </td>

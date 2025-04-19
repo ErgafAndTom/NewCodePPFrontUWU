@@ -80,7 +80,7 @@ const BigOvshik = ({
         let dataToSend = {
             orderId: thisOrder.id,
             toCalc: {
-                nameOrderUnit: "Постпресс",
+                nameOrderUnit: "Блок постобробки",
                 type: "BigOvshik",
                 size: size,
                 material: material,
@@ -219,7 +219,7 @@ const BigOvshik = ({
                                                 className="d-flex inputsArtemNumber inputsArtem "
                                                 style={{
                                                     marginLeft: "1vw",
-                                                    background: "#F2EFE8",
+                                                    background: "#FBFAF6",
                                                     width: "5vw",
                                                     alignItems: "center",
                                                     justifyContent:"center",

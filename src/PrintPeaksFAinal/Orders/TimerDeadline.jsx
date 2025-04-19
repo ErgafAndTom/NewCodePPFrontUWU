@@ -101,7 +101,7 @@ const TimerDeadline = ({deadline, thisOrder}) => {
                 </div>
             )}
             <div className={"d-flex justify-content-between"}>
-                <div style={{marginTop: "0.3vh"}}>
+                <div style={{marginTop: "-0.5vh"}}>
                     <div>Час виготовлення замовлення: {lifeComponents.length ? lifeComponents : <span><Spinner animation="border" variant="danger" size="sm" /></span>}</div>
                 </div>
 

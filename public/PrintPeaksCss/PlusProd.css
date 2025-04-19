@@ -7,14 +7,14 @@
   bottom: 0px;
   left: 0px;
   border-radius: 30px;
-  background-color: #e9e6da;
+  background-color: #F2F0E7;
   border: 1px solid #707070;
   box-sizing: border-box;
 }
 .name {
   border: 1px solid #707070;
   outline: none;
-  background-color: #f2efe8;
+  background-color: #FBFAF6;
   position: absolute;
   width: calc(100% - 22px);
   top: calc(50% - 22px);
@@ -38,7 +38,7 @@
   bottom: 0px;
   left: 0px;
   border-radius: 12px;
-  background-color: #f2efe8;
+  background-color: #FBFAF6;
   border: 0.5px solid #707070;
   box-sizing: border-box;
 }

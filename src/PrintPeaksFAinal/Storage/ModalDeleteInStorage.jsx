@@ -52,7 +52,7 @@ function ModalDeleteInStorage({tableName, data, setData, inPageCount, setInPageC
 
                 <Modal.Header className="borderRadius">Видалити {item.type} {item.name}?</Modal.Header>
                 {/*<Modal.Body>Видалити {item.type} {item.name}?</Modal.Body>*/}
-                <Modal.Footer style={{ background: '#E9E6DA'}}>
+                <Modal.Footer style={{ background: '#F2F0E7'}}>
                     <button className="hoverOrange" onClick={(e) => {deleteThisRowF(e)}}>
                         Так
                     </button>

@@ -72,7 +72,7 @@ const NewSheetCutBw = ({thisOrder, newThisOrder, setNewThisOrder, selectedThings
         let dataToSend = {
             orderId: thisOrder.id,
             toCalc: {
-                nameOrderUnit: "Листова продукція Ч/Б",
+                nameOrderUnit: "Продукція чорно-білого друку в аркушах",
                 type: "SheetCutBW",
                 size: size,
                 material: material,
@@ -218,7 +218,7 @@ const NewSheetCutBw = ({thisOrder, newThisOrder, setNewThisOrder, selectedThings
                                                 className="d-flex inputsArtemNumber inputsArtem "
                                                 style={{
                                                     marginLeft: "1vw",
-                                                    background: "#F2EFE8",
+                                                    background: "#FBFAF6",
                                                     width: "5vw",
                                                     alignItems: "center",
                                                     justifyContent:"center",

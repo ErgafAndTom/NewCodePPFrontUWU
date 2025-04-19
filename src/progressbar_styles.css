@@ -1,7 +1,7 @@
 
 
 .progress-segment {
-    flex: 1;
+    /*flex: 1;*/
     height: 0.5vh;
     border-radius: 1vw;
 }
@@ -89,8 +89,8 @@
     width: 2vw;
     height: 2vw;
     border-radius: 50%;
-    background-color: #f2efe8;
-    border: 1px solid #e9e6da;
+    background-color: #FBFAF6;
+    border: 1px solid #F2F0E7;
     cursor: pointer;
 }
 
@@ -99,7 +99,7 @@
 }
 
 .placeholder {
-    color: rgba(0, 0, 0, 50);
+    /*color: rgba(0, 0, 0, 50);*/
     animation: fadeInOut 3s infinite alternate ease-in-out;
 }
 

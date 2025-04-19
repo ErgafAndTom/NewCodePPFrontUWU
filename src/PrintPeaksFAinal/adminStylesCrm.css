@@ -3,11 +3,11 @@
     font-weight: 500;
 }
 .adminBackGround {
-    background: #F2EFE8;
+    background: #FBFAF6;
     min-height: 86.5vh;
 }
 .adminNavBackGround {
-    background: #F2EFE8;
+    background: #FBFAF6;
 }
 .adminFontTable {
     font-size: 1.4vh;
@@ -21,7 +21,7 @@
     margin: 0.25vw;
     display: flex;
     justify-content: center;
-    background: #F2EFE8;
+    background: #FBFAF6;
     padding: 0.3vw;
     border-radius: 1.5vw;
     border: 1px solid transparent;
@@ -31,7 +31,7 @@
     display: flex;
     justify-content: center;
     margin: 0.3vw;
-    background: #F2EFE8;
+    background: #FBFAF6;
     width: 2vw;
     height: 2vw;
     border-radius: 1.5vw;
@@ -43,23 +43,25 @@
     font-weight: 600;
 }
 .modalForBorderRadius {
-    background: #E9E6DA;
+    background: #F2F0E7;
     display: none;
 }
 .adminButtonAdd {
     /*position: fixed;*/
     /*bottom: 5vh;*/
-    /*right: 5vh;*/
     /*z-index: 9999;*/
     /*border-radius: 50%;*/
-    /*width: 5vh;*/
-    padding: 1vh;
+    display: flex;
+    height: 4vh;
+    width: 12vw;
+    align-items: center;
+    justify-content: center;
+    /*padding: 1vh;*/
+    border-radius: 1vh;
     color: #000000;
-    background: #F2EFE8;
+    background: #FBFAF6;
 }
-.adminButtonAdd:before {
-    content: "";
-}
+
 .adminButtonAdd:hover{
     cursor: pointer;
     background: #FAB416;
@@ -74,7 +76,7 @@
     border-radius: 50%;
 }
 .whiteBG{
-    background: #F2EFE8;
+    background: #FBFAF6;
 }
 
 .redStorageItem:hover {
@@ -103,7 +105,7 @@
 
 /* Стилізація доріжки полоси прокрутки */
 ::-webkit-scrollbar-track {
-    background: #F2EFE8; /* Колір фону доріжки */
+    background: #FBFAF6; /* Колір фону доріжки */
 }
 
 /* Стилізація ручки полоси прокрутки */
@@ -136,7 +138,7 @@
 }
 
 .colorCards{
-    background: #F2EFE8;
+    background: #FBFAF6;
 }
 .adminFont2 {
     font-size: 1.5vw;
@@ -156,7 +158,7 @@
 .navbarMy {
     border-radius: 12px;
     /*align-items: left;*/
-    background: #E9E6DA;
+    background: #F2F0E7;
     height: 4vw;
     order-top-left-radius: 12px;
 }

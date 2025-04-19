@@ -1,5 +1,5 @@
 .rdrCalendarWrapper{
-  color: #F2EFE8;
+  color: #FBFAF6;
     margin-left: 0.1vw;
   font-size: 0.8vh;
     font-family: 'Montserrat', sans-serif ;
@@ -59,7 +59,7 @@
   /*align-items: center;*/
   height: 2vw;
       padding:0.3vw;
-    /*background: #F2EFE8;*/
+    /*background: #FBFAF6;*/
     justify-content: center;
 }
 
@@ -89,7 +89,7 @@
   }
 
 .rdrMonthAndYearPickers select:hover{
-      /*background-color: #E9E6DA;*/
+      /*background-color: #F2F0E7;*/
     border-color: transparent;
 
     }
@@ -110,7 +110,7 @@
   border: 0;
     margin-top: -1vh;
   border-radius: 5px;
-    background-color: #F2EFE8;
+    background-color: #FBFAF6;
 }
 
 .rdrNextPrevButton:hover{
@@ -144,7 +144,7 @@
 .rdrWeekDays {
     font-family: 'Montserrat', sans-serif ;
   padding: 1vw;
-    background: #F2EFE8;
+    background: #FBFAF6;
     border-radius: 0.5vw;
 }
 
@@ -154,12 +154,12 @@
 
 .rdrMonth .rdrWeekDays {
     padding: 0;
-    background: #F2EFE8;
+    background: #FBFAF6;
   }
 
 .rdrMonths.rdrMonthsVertical .rdrMonth:first-child .rdrMonthName{
   display: none;
-   background: #F2EFE8;
+   background: #FBFAF6;
 }
 
 .rdrWeekDay {
@@ -342,7 +342,7 @@
   font-size: 0.7vh;
   width: 6vw;
   border-right: solid 1px black;
-  background: #E9E6DA
+  background: #F2F0E7
 
 }
 

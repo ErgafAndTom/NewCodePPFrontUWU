@@ -25,7 +25,7 @@ table {
 }
 
 thead {
-    background-color: #F2EFE8;
+    background-color: #FBFAF6;
 }
 
 th   {
@@ -40,7 +40,7 @@ td {
     text-align: center;
     border-bottom: 3px solid #f9f9f9;
     font-size: 12px; /* Однаковий розмір шрифту */
-    background-color: #F2EFE8; /* Фон для замовлень та колонок */
+    background-color: #FBFAF6; /* Фон для замовлень та колонок */
 	white-space: nowrap;
 }
 th {
@@ -98,8 +98,8 @@ button {
 }
 
 .sub-order {
-    /*background-color: #F2EFE8;*/
-    background-color: #E9E6DA;
+    /*background-color: #FBFAF6;*/
+    background-color: #F2F0E7;
     padding: 10px;
     margin-top: 20px;
     border-radius: 12px;

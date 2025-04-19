@@ -12,7 +12,7 @@ const styles = {
         margin: "0.3vw"
     },
     input1: {
-        background: "#e9e6da",
+        background: "#F2F0E7",
         padding: "0.4vw",
         borderRadius: "0.5vw",
         fontSize: "0.7vw",
@@ -20,7 +20,7 @@ const styles = {
         width: "12vw"
     },
     select1: {
-        background: "#e9e6da",
+        background: "#F2F0E7",
         padding: "0.4vw",
         borderRadius: "0.5vw",
         fontSize: "0.7vw",
@@ -185,7 +185,7 @@ function NP({ showNP, setShowNP, thisOrder, setThisOrder }) {
                 display: "flex",
                 flexDirection: "column",
                 position: "fixed",
-                backgroundColor: '#f2efe8',
+                backgroundColor: '#FBFAF6',
                 left: "50%",
                 top: "50%",
                 transform: isAnimating ? "translate(-50%, -50%) scale(1)" : "translate(-50%, -50%) scale(0.8)", // анимация масштаба

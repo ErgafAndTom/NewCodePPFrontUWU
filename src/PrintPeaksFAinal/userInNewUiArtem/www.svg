@@ -22,7 +22,7 @@
     <g id="New" transform="translate(2.5 2.5)">
         <g data-type="innerShadowGroup">
             <g transform="matrix(1, 0, 0, 1, -2.5, -2.5)" filter="url(#Rectangle_1516)">
-                <rect id="Rectangle_1516-3" data-name="Rectangle 1516" width="665" height="461" rx="12" transform="translate(2.5 2.5)" fill="#e9e6da"/>
+                <rect id="Rectangle_1516-3" data-name="Rectangle 1516" width="665" height="461" rx="12" transform="translate(2.5 2.5)" fill="#F2F0E7"/>
             </g>
             <g transform="matrix(1, 0, 0, 1, -2.5, -2.5)" filter="url(#Rectangle_1516-2)">
                 <rect id="Rectangle_1516-4" data-name="Rectangle 1516" width="665" height="461" rx="12" transform="translate(2.5 2.5)" fill="#fff"/>

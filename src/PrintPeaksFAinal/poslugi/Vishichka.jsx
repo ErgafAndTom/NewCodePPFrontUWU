@@ -246,7 +246,7 @@ const Vishichka = ({
                                         className="d-flex inputsArtemNumber inputsArtem "
                                         style={{
                                             marginLeft: "1vw",
-                                            background: "#F2EFE8",
+                                            background: "#FBFAF6",
                                             width: "5vw",
                                             alignItems: "center",
                                             justifyContent:"center",

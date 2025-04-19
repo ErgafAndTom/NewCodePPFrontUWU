@@ -20,13 +20,10 @@ function ModalDeleteOrder({thisOrderForDelete, showDeleteOrderModal, setThisOrde
     const deleteThis = () => {
         let id = thisOrderForDelete.id
         setLoad(true)
-        axios.delete(`${url}:${id}`, id)
+        axios.delete(`${url}/${id}`)
             .then(response => {
                 if (response.status === 200) {
-                    setData(prevData => ({
-                        ...prevData,
-                        rows: prevData.filter(order => order.id !== id) // Добавляем новый заказ в массив rows
-                    }));
+                    setData(prevData => prevData.filter(order => order.id !== id));
                     setLoad(false)
                     setShowDeleteOrderModal(false);
                 }
@@ -103,7 +100,7 @@ function ModalDeleteOrder({thisOrderForDelete, showDeleteOrderModal, setThisOrde
                         <div
                             style={{
                                 padding: "0.5vw",
-                                background: '#E9E6DA',
+                                background: '#F2F0E7',
                                 borderRadius: "1vw 1vw 0 0",
                                 // borderRadius: "1vw",
                             }}
@@ -114,7 +111,7 @@ function ModalDeleteOrder({thisOrderForDelete, showDeleteOrderModal, setThisOrde
                             className="d-flex justify-content-center align-content-center"
                             style={{
                                 borderRadius: "0 0 1vw 1vw",
-                                background: '#E9E6DA',
+                                background: '#F2F0E7',
                                 padding: "0.5vw",
                             }}
                         >

@@ -23,7 +23,7 @@ const styles = {
     //     color: "red",
     // },
     input1: {
-        background: "#e9e6da",
+        background: "#F2F0E7",
         padding: "0.4vw",
         borderRadius: "0.5vw",
         fontSize: "0.7vw",
@@ -31,7 +31,7 @@ const styles = {
         width: "12vw"
     },
     input: {
-        background: "#e9e6da",
+        background: "#F2F0E7",
         padding: "0.3vw",
         borderRadius: "0.5vw",
         fontSize: "0.7vw",
@@ -39,7 +39,7 @@ const styles = {
         width: "12vw"
     },
     inputSmall: {
-        background: "#e9e6da",
+        background: "#F2F0E7",
         padding: "0.3vw",
         borderRadius: "0.5vw",
         fontSize: "0.7vw",
@@ -177,7 +177,7 @@ function AddUserWindow({showAddUser, setShowAddUser, thisOrder, setThisOrder}) {
                 display: "flex",
                 flexDirection: "column",
                 position: "fixed",
-                backgroundColor: '#f2efe8',
+                backgroundColor: '#FBFAF6',
                 bottom: "3.5vh",
                 right: "-15.75vw",
                 transform: isAnimating ? "translate(-50%, -50%) scale(1)" : "translate(-50%, 10%) scale(1)", // анимация масштаба

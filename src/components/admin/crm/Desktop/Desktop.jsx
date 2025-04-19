@@ -36,7 +36,7 @@ const Desktop = () => {
 
     return (
         <div className="d-flex flex-column  p-2 mt-2  flex-grow-1 adminBackGround"
-             style={{borderRadius: '1vw', background: '#E9E6DA'}}>
+             style={{borderRadius: '1vw', background: '#F2F0E7'}}>
             <div className="d-flex mt-0">
                 {/*<input*/}
                 {/*    // type={"datetime-local"}*/}
@@ -50,7 +50,7 @@ const Desktop = () => {
                 {/*        alignItems: 'center',*/}
                 {/*        fontSize: '0.7vw',*/}
                 {/*        width: '52.5%',*/}
-                {/*        backgroundColor: isFocused ? 'white' : '#E9E6DA',*/}
+                {/*        backgroundColor: isFocused ? 'white' : '#F2F0E7',*/}
                 {/*        // position: 'relative',*/}
                 {/*        border: 'none',*/}
                 {/*        borderRadius: '1vw',*/}

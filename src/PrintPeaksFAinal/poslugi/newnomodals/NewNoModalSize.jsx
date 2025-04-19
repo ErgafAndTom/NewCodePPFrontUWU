@@ -303,7 +303,7 @@ const ModalSize = ({size, setSize, type, buttonsArr, color, setColor, count, set
             {/*    className="inputsArtem inputsArtemNumber"*/}
             {/*    style={{*/}
             {/*        marginLeft: "1vw",*/}
-            {/*        background: "#F2EFE8"*/}
+            {/*        background: "#FBFAF6"*/}
             {/*    }}*/}
             {/*    type="number"*/}
             {/*    value={count}*/}

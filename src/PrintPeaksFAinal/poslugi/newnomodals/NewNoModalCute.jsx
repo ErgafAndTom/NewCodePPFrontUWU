@@ -134,7 +134,7 @@ const NewNoModalCute = ({cute, setCute, cuteLocal, setCuteLocal, prices, buttons
                                 className="buttonsArtem"
                                 onClick={() => handleClickLeftTop()}
                                 style={{
-                                    backgroundColor: cuteLocal.leftTop === true ? 'orange' : '#F2EFE8',
+                                    backgroundColor: cuteLocal.leftTop === true ? 'orange' : '#FBFAF6',
                                     border: cuteLocal.leftTop === true ? '0.13vw solid transparent' : '0.13vw solid transparent',
                                     borderRadius: '0.627vw',
                                     padding: '1.273vh 1.273vw',
@@ -152,7 +152,7 @@ const NewNoModalCute = ({cute, setCute, cuteLocal, setCuteLocal, prices, buttons
                                 className="buttonsArtem"
                                 onClick={() => handleClickRightTop()}
                                 style={{
-                                    backgroundColor: cuteLocal.rightTop === true ? 'orange' : '#F2EFE8',
+                                    backgroundColor: cuteLocal.rightTop === true ? 'orange' : '#FBFAF6',
                                     border: cuteLocal.rightTop === true ? '0.13vw solid transparent' : '0.13vw solid transparent',
                                     borderRadius: '0.627vw',
                                     padding: '1.273vh 1.273vw',
@@ -170,7 +170,7 @@ const NewNoModalCute = ({cute, setCute, cuteLocal, setCuteLocal, prices, buttons
                                 className="buttonsArtem"
                                 onClick={() => handleClickRightBottom()}
                                 style={{
-                                    backgroundColor: cuteLocal.rightBottom === true ? 'orange' : '#F2EFE8',
+                                    backgroundColor: cuteLocal.rightBottom === true ? 'orange' : '#FBFAF6',
                                     border: cuteLocal.rightBottom === true ? '0.13vw solid transparent' : '0.13vw solid transparent',
                                     borderRadius: '0.627vw',
                                     padding: '1.273vh 1.273vw',
@@ -188,7 +188,7 @@ const NewNoModalCute = ({cute, setCute, cuteLocal, setCuteLocal, prices, buttons
                                 className="buttonsArtem"
                                 onClick={() => handleClickLeftBottom()}
                                 style={{
-                                    backgroundColor: cuteLocal.leftBottom === true ? 'orange' : '#F2EFE8',
+                                    backgroundColor: cuteLocal.leftBottom === true ? 'orange' : '#FBFAF6',
                                     border: cuteLocal.leftBottom === true ? '0.13vw solid transparent' : '0.13vw solid transparent',
                                     borderRadius: '0.627vw',
                                     padding: '1.273vh 1.273vw',
