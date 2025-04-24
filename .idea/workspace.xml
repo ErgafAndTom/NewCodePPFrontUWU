@@ -5,8 +5,24 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="7e58169f-d1e8-4cb2-8753-447dd0b39044" name="Changes" comment="ddd">
+      <change afterPath="$PROJECT_DIR$/src/PrintPeaksFAinal/user/AddUserButton.jsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/components/Invoices/InvoiceDetailsModal.jsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/components/Invoices/InvoiceForm.jsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/components/Invoices/InvoiceFormItem.jsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/components/Invoices/InvoiceList.jsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/components/Invoices/InvoicePrint.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/components/Invoices/InvoicePrint.jsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/components/Invoices/InvoicePrintModal.jsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/utils/numberToWords.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/PrintPeaksFAinal/poslugi/NewSheetCut.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/PrintPeaksFAinal/poslugi/NewSheetCut.jsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/App.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/App.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/PrintPeaksFAinal/user/AddUserWindow.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/PrintPeaksFAinal/user/AddUserWindow.jsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/PrintPeaksFAinal/userInNewUiArtem/ClientChangerUIArtem.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/PrintPeaksFAinal/userInNewUiArtem/ClientChangerUIArtem.jsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/PrintPeaksFAinal/userInNewUiArtem/pays/PaysInOrder.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/PrintPeaksFAinal/userInNewUiArtem/pays/PaysInOrder.jsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/AllWindow.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/AllWindow.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/calc/AfterNav.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/calc/AfterNav.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/nav/Nav.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/nav/Nav.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/reducers/rootReducer.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/reducers/rootReducer.js" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -65,6 +81,7 @@
     "RunOnceActivity.git.unshallow": "true",
     "git-widget-placeholder": "master",
     "ignore.virus.scanning.warn.message": "true",
+    "junie.onboarding.icon.badge.shown": "true",
     "last_opened_file_path": "C:/Users/AIATO/Desktop/CodePPNew/frontpp",
     "list.type.of.created.stylesheet": "CSS",
     "node.js.detected.package.eslint": "true",
@@ -77,8 +94,8 @@
     "npm.build.executor": "Run",
     "npm.start.executor": "Run",
     "run.code.analysis.last.selected.profile": "pProject Default",
-    "settings.editor.selected.configurable": "settings.sync",
-    "ts.external.directory.path": "C:\\Users\\AIATO\\AppData\\Local\\Programs\\WebStorm\\plugins\\javascript-plugin\\jsLanguageServicesImpl\\external",
+    "settings.editor.selected.configurable": "ml.llm.mcp",
+    "ts.external.directory.path": "C:\\Users\\AIATO\\Desktop\\CodePPNew\\frontpp\\node_modules\\typescript\\lib",
     "two.files.diff.last.used.file": "C:/Users/AIATO/Desktop/CodePPNew/frontpp/src/components/admin/crm/Vimogi/Colorprinthelpsmall.jsx",
     "vue.rearranger.settings.migration": "true"
   }
@@ -243,6 +260,12 @@
       <workItem from="1744670094230" duration="2488000" />
       <workItem from="1744688294885" duration="23011000" />
       <workItem from="1745087741214" duration="3500000" />
+      <workItem from="1745326280201" duration="4683000" />
+      <workItem from="1745340478288" duration="627000" />
+      <workItem from="1745341274602" duration="2198000" />
+      <workItem from="1745344766053" duration="7919000" />
+      <workItem from="1745416667751" duration="329000" />
+      <workItem from="1745451929456" duration="1879000" />
     </task>
     <task id="LOCAL-00029" summary="ddd">
       <option name="closed" value="true" />

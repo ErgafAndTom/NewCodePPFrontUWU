@@ -1,282 +1,290 @@
-import React, {useEffect, useState} from "react";
+import React, { useState } from "react";
 import axios from "../../api/axiosInstance";
-import {useNavigate} from "react-router-dom";
-import Loader2 from "../../components/calc/Loader2";
-const styles = {
-    inputContainer: {
-        display: "flex",
-        alignItems: "center",
-        gap: "1vw",
-        border: "none",
-        margin: "0.3vw"
-    },
-    inputContainer1: {
-        display: "flex",
-        alignItems: "center",
-        gap: "1vw",
-        border: "none",
-        margin: "0.3vw",
-        justifyContent: "flex-end"
-    },
-    // novaPoshtaIcon: {
-    //     fontSize: "1vw",
-    //     color: "red",
-    // },
-    input1: {
-        background: "#F2F0E7",
-        padding: "0.4vw",
-        borderRadius: "0.5vw",
-        fontSize: "0.7vw",
-        border: "none",
-        width: "12vw"
-    },
-    input: {
-        background: "#F2F0E7",
-        padding: "0.3vw",
-        borderRadius: "0.5vw",
-        fontSize: "0.7vw",
-        border: "none",
-        width: "12vw"
-    },
-    inputSmall: {
-        background: "#F2F0E7",
-        padding: "0.3vw",
-        borderRadius: "0.5vw",
-        fontSize: "0.7vw",
-        border: "none",
-        // width: "10vw"
-    },
+import { useNavigate } from "react-router-dom";
+import { Modal, Form, Button, Row, Col, InputGroup, Spinner, Alert } from "react-bootstrap";
+import { BsPerson, BsEnvelope, BsTelephone, BsTelegram, BsGeoAlt } from "react-icons/bs";
 
-    importButton: {
-        backgroundColor: "#f1c40f",
-        padding: "0.5vh 1vw",
-        borderRadius: "0.5vw",
-        cursor: "pointer",
-        border: "none",
-        fontSize: "0.5vw",
-    },
-    addButton: {
-        marginLeft: "19.5vw",
-        marginTop: "1vh",
-        // display: "flex",
-        padding: "0.3vh",
-        backgroundColor: "#f1c40f",
-        borderRadius: "1vw",
-        fontSize: "0.7vw",
-        border: "none",
-        cursor: "pointer",
-        width: "12vw",
-        height: "3.5vh",
-        justifyContent: "center",
-        alignItems: "center",
-    },
-};
-
-
-
-function AddUserWindow({showAddUser, setShowAddUser, thisOrder, setThisOrder}) {
-
-    const [phone, setPhone] = useState('+38 ');
-    const handleInputChange = (e) => {
-        let value = e.target.value.replace(/[^+\d]/g, ''); // Видаляємо все, крім цифр і знаку +
-
-        if (!value.startsWith('+')) {
-            value = '+38' + value; // Додаємо + на початку, якщо його немає
-        }
-
-        // Форматуємо текст у формат +XX XXX XXX-XX-XX
-        const formattedValue = value
-            .replace(/^(\+\d{2})/, '$1 ') // Додаємо пробіл після коду країни
-            .replace(/(\d{3})(\d)/, '$1 $2') // Пробіл після перших трьох цифр
-            .replace(/(\d{3}) (\d{3})(\d)/, '$1 $2-$3') // Дефіс після наступних двох
-            .replace(/-(\d{2})(\d{1,2})/, '-$1-$2'); // Дефіс після останніх двох цифр
-
-        setPhone(formattedValue.trim());
-    };
-
-    const handleFocus = () => {
-        if (phone.trim() === '') {
-            setPhone('+38 ');
-        }
-    };
-
-    const handleBlur = () => {
-        if (phone.trim() === '+38') {
-            setPhone('');
-        }
-    };
+function AddUserWindow({ show, onHide, onUserAdded }) {
     const navigate = useNavigate();
-    const [isVisible, setIsVisible] = useState(false);
+    const [loading, setLoading] = useState(false);
     const [error, setError] = useState(null);
-    const [load, setLoad] = useState(false);
-    const [isAnimating, setIsAnimating] = useState(false);
-    const [credentials, setCredentials] = useState({ email: '', phoneNumber: '', telegram: '', firstName: '', lastName: '', familyName: '', sity: '', numbernp: '' });
-    const handleClose = () => {
-        setIsAnimating(false); // Начинаем анимацию закрытия
-        setTimeout(() => {
-            setIsVisible(false)
-            setShowAddUser(false);
-        }, 400); // После завершения анимации скрываем модальное окно
-    }
+    const [validated, setValidated] = useState(false);
+    const [user, setUser] = useState({
+        firstName: '',
+        lastName: '',
+        familyName: '',
+        phoneNumber: '',
+        email: '',
+        telegramlogin: '',
+        address: '',
+        notes: '',
+        discount: 0
+    });
 
-    const handleChange = (e) => {
-        setCredentials({
-            ...credentials,
-            [e.target.name]: e.target.value
-        });
+    // Форматування телефону при введенні
+    const handlePhoneChange = (e) => {
+        let value = e.target.value.replace(/[^+\d]/g, '');
+        
+        if (!value.startsWith('+')) {
+            value = '+38' + value;
+        }
+        
+        // Форматуємо номер телефону
+        const formattedValue = value
+            .replace(/^(\+\d{2})/, '$1 ')
+            .replace(/(\d{3})(\d)/, '$1 $2')
+            .replace(/(\d{3}) (\d{3})(\d)/, '$1 $2-$3')
+            .replace(/-(\d{2})(\d{1,2})/, '-$1-$2');
+            
+        setUser({ ...user, phoneNumber: formattedValue.trim() });
     };
 
-    const handleSaveOrder = (event, valueName) => {
-        let dataToSend = {
-            ...credentials,
-            thisOrderId: thisOrder.id,
+    // Обробка зміни полів форми
+    const handleChange = (e) => {
+        const { name, value } = e.target;
+        setUser({ ...user, [name]: value });
+    };
+
+    // Обробка відправки форми
+    const handleSubmit = (event) => {
+        event.preventDefault();
+        const form = event.currentTarget;
+        
+        // Валідація форми
+        if (form.checkValidity() === false) {
+            event.stopPropagation();
+            setValidated(true);
+            return;
         }
-        setLoad(true)
-        axios.post(`/user/registerInOrder`, dataToSend)
+        
+        setLoading(true);
+        setError(null);
+        console.log(user);
+
+        axios.post('/user/create', user)
             .then(response => {
-                console.log(response.data);
-                setLoad(false)
-                setThisOrder(response.data)
-                handleClose()
+                setLoading(false);
+                if (onUserAdded) {
+                    onUserAdded(response.data);
+                }
+                onHide();
             })
             .catch(error => {
-                if (error.response.status === 403) {
+                setLoading(false);
+                if (error.response && error.response.status === 403) {
                     navigate('/login');
                 }
-                setError(error)
-                setLoad(false)
-                console.log(error.message);
-            })
+                setError(error.response?.data?.message || 'Помилка при додаванні клієнта');
+                console.error('Помилка додавання клієнта:', error);
+            });
     };
 
-    useEffect(() => {
-        if (showAddUser) {
-            setIsVisible(true); // Сначала показываем модальное окно
-            setTimeout(() => setIsAnimating(true), 100); // После короткой задержки запускаем анимацию появления
-        } else {
-            setIsAnimating(false); // Начинаем анимацию закрытия
-            setTimeout(() => setIsVisible(false), 400); // После завершения анимации скрываем модальное окно
-        }
-    }, [showAddUser]);
-
     return (
-        <div>
-            <div className="" onClick={handleClose} style={{
-                width: "100vw",
-                zIndex: "100",
-                height: "100vh",
-                background: "rgba(0, 0, 0, 0.2)",
-                opacity: isAnimating ? 1 : 0, // для анимации прозрачности
-                transition: "opacity 0.3s ease-in-out", // плавная анимация
-                position: "fixed",
-                left: "0",
-                bottom: "0"
-            }}></div>
-            <div style={{
-                zIndex: "100",
-                display: "flex",
-                flexDirection: "column",
-                position: "fixed",
-                backgroundColor: '#FBFAF6',
-                bottom: "3.5vh",
-                right: "-15.75vw",
-                transform: isAnimating ? "translate(-50%, -50%) scale(1)" : "translate(-50%, 10%) scale(1)", // анимация масштаба
-                opacity: isAnimating ? 1 : 0, // анимация прозрачности
-                transition: "opacity 0.3s ease-in-out, transform 0.3s ease-in-out", // плавная анимация
-                borderRadius: "1vw",
-                width: "33vw",
-                height: "20vh",
-                // gap: "1vw",
-            }}>
-                <div style={{
-                    // display: "flex",
-                    // padding: "0.3vw",
-                    // flexDirection: "column",
-                    // alignItems: "center",
-                    border: "none",
-                    borderRadius: "1vw",
-                    marginTop: "0.3vw",
-                    marginLeft: "0.3vw",
-
-                }}>
-                    <div>
-                        <div style={styles.inputContainer}>
-                            <span style={{...(styles?.icon || {}), fontSize: "2.4vh", alignItems: "center"}}>ヅ</span>
-                            <input onChange={handleChange} type="text" value={credentials.firstName} placeholder="Ім'я"
-                                   name="firstName" style={styles.input1}/>
-
-                        </div>
-                        <div style={styles.inputContainer}>
-                            <span style={{...(styles?.icon || {}), fontSize: "2.4vh", alignItems: "center"}}>ヅ</span>
-                            <input onChange={handleChange} type="text" value={credentials.lastName}
-                                   placeholder="По батькові"
-                                   name="lastName" style={styles.input1}/>
-
-                        </div>
-                        <div style={styles.inputContainer}>
-                            <span style={{...(styles?.icon || {}), fontSize: "2.4vh", alignItems: "center"}}>ヅ</span>
-                            <input onChange={handleChange} type="text" value={credentials.familyName}
-                                   placeholder="Прізвище"
-                                   name="familyName" style={styles.input1}/>
-
-                        </div>
-                    </div>
-                    <div style={{
-                        justifyContent: "flex-right",
-                        display: "flex",
-                        alignItems: "center",
-                        marginTop: "-14vh",
-                        marginLeft: "16vw",
-                        flexDirection: "column",
-                    }}>
-                        <div style={styles.inputContainer1}>
-                            <span>
-                            <img src="https://upload.wikimedia.org/wikipedia/commons/8/82/Telegram_logo.svg" alt="Telegram Icon" style={{ width: '1vw' }} />
-                        </span>
-                            <input onChange={handleChange} type="text" value={credentials.telegram}
-                                   placeholder="Telegram"
-                                   name="telegram" style={styles.input1}/>
-                        </div>
-                        <div style={styles.inputContainer1}>
-                            <span style={{...(styles?.icon || {}), fontSize:"2.3vh", alignItems:"center"}}>✉</span>
-                            <input
-                            onChange={handleChange} type="email" value={credentials.email} placeholder="E-mail"
-                            name="email" style={styles.input1}/>
-                        </div>
-
-                        <div style={styles.inputContainer1}>
-                            <span style={{...(styles?.icon || {}), fontSize: "2.1vh", alignItems: "center", display: "flex",  }}>📱</span>
-                            <input
-                                type="tel"
-                                id="phone-input"
-                                value={credentials.phoneNumber}
-                                placeholder="№ телефону"
-                                name="phoneNumber"
-                                style={styles.input1}
-                                onChange={handleInputChange}
-                                onFocus={handleFocus}
-                                onBlur={handleBlur}
-                                maxLength="17"
+        <Modal 
+            show={show} 
+            onHide={onHide}
+            size="lg"
+            centered
+            backdrop="static"
+        >
+            <Modal.Header closeButton>
+                <Modal.Title>Додавання нового клієнта</Modal.Title>
+            </Modal.Header>
+            
+            <Modal.Body>
+                {error && (
+                    <Alert variant="danger" onClose={() => setError(null)} dismissible>
+                        {error}
+                    </Alert>
+                )}
+                
+                <Form noValidate validated={validated} onSubmit={handleSubmit}>
+                    <Row className="mb-3">
+                        <Col md={6}>
+                            <Form.Group className="mb-3">
+                                <Form.Label>Ім'я <span className="text-danger">*</span></Form.Label>
+                                <InputGroup>
+                                    <InputGroup.Text><BsPerson /></InputGroup.Text>
+                                    <Form.Control
+                                        required
+                                        type="text"
+                                        name="firstName"
+                                        value={user.firstName}
+                                        onChange={handleChange}
+                                        placeholder="Введіть ім'я"
+                                    />
+                                    <Form.Control.Feedback type="invalid">
+                                        Будь ласка, введіть ім'я клієнта
+                                    </Form.Control.Feedback>
+                                </InputGroup>
+                            </Form.Group>
+                            
+                            <Form.Group className="mb-3">
+                                <Form.Label>По батькові</Form.Label>
+                                <InputGroup>
+                                    <InputGroup.Text><BsPerson /></InputGroup.Text>
+                                    <Form.Control
+                                        type="text"
+                                        name="lastName"
+                                        value={user.lastName}
+                                        onChange={handleChange}
+                                        placeholder="Введіть по батькові"
+                                    />
+                                </InputGroup>
+                            </Form.Group>
+                            
+                            <Form.Group className="mb-3">
+                                <Form.Label>Прізвище <span className="text-danger">*</span></Form.Label>
+                                <InputGroup>
+                                    <InputGroup.Text><BsPerson /></InputGroup.Text>
+                                    <Form.Control
+                                        required
+                                        type="text"
+                                        name="familyName"
+                                        value={user.familyName}
+                                        onChange={handleChange}
+                                        placeholder="Введіть прізвище"
+                                    />
+                                    <Form.Control.Feedback type="invalid">
+                                        Будь ласка, введіть прізвище клієнта
+                                    </Form.Control.Feedback>
+                                </InputGroup>
+                            </Form.Group>
+                        </Col>
+                        
+                        <Col md={6}>
+                            <Form.Group className="mb-3">
+                                <Form.Label>Номер телефону <span className="text-danger">*</span></Form.Label>
+                                <InputGroup>
+                                    <InputGroup.Text><BsTelephone /></InputGroup.Text>
+                                    <Form.Control
+                                        required
+                                        type="tel"
+                                        name="phoneNumber"
+                                        value={user.phoneNumber}
+                                        onChange={handlePhoneChange}
+                                        placeholder="+38 XXX XXX-XX-XX"
+                                        maxLength="17"
+                                    />
+                                    <Form.Control.Feedback type="invalid">
+                                        Будь ласка, введіть номер телефону
+                                    </Form.Control.Feedback>
+                                </InputGroup>
+                            </Form.Group>
+                            
+                            <Form.Group className="mb-3">
+                                <Form.Label>Email</Form.Label>
+                                <InputGroup>
+                                    <InputGroup.Text><BsEnvelope /></InputGroup.Text>
+                                    <Form.Control
+                                        type="email"
+                                        name="email"
+                                        value={user.email}
+                                        onChange={handleChange}
+                                        placeholder="email@example.com"
+                                    />
+                                    <Form.Control.Feedback type="invalid">
+                                        Будь ласка, введіть коректний email
+                                    </Form.Control.Feedback>
+                                </InputGroup>
+                            </Form.Group>
+                            
+                            <Form.Group className="mb-3">
+                                <Form.Label>Telegram</Form.Label>
+                                <InputGroup>
+                                    <InputGroup.Text><BsTelegram /></InputGroup.Text>
+                                    <Form.Control
+                                        type="text"
+                                        name="telegramlogin"
+                                        value={user.telegramlogin}
+                                        onChange={handleChange}
+                                        placeholder="username (без @)"
+                                    />
+                                </InputGroup>
+                            </Form.Group>
+                        </Col>
+                    </Row>
+                    
+                    <Row>
+                        <Col md={12}>
+                            <Form.Group className="mb-3">
+                                <Form.Label>Адреса</Form.Label>
+                                <InputGroup>
+                                    <InputGroup.Text><BsGeoAlt /></InputGroup.Text>
+                                    <Form.Control
+                                        type="text"
+                                        name="address"
+                                        value={user.address}
+                                        onChange={handleChange}
+                                        placeholder="Введіть адресу"
+                                    />
+                                </InputGroup>
+                            </Form.Group>
+                        </Col>
+                    </Row>
+                    
+                    <Row>
+                        <Col md={8}>
+                            <Form.Group className="mb-3">
+                                <Form.Label>Примітки</Form.Label>
+                                <Form.Control
+                                    as="textarea"
+                                    name="notes"
+                                    value={user.notes}
+                                    onChange={handleChange}
+                                    placeholder="Додаткова інформація про клієнта"
+                                    style={{ height: '80px' }}
+                                />
+                            </Form.Group>
+                        </Col>
+                        
+                        <Col md={4}>
+                            <Form.Group className="mb-3">
+                                <Form.Label>Знижка (%)</Form.Label>
+                                <Form.Control
+                                    type="number"
+                                    name="discount"
+                                    value={user.discount}
+                                    onChange={handleChange}
+                                    min="0"
+                                    max="100"
+                                />
+                            </Form.Group>
+                        </Col>
+                    </Row>
+                </Form>
+            </Modal.Body>
+            
+            <Modal.Footer>
+                <Button variant="secondary" onClick={onHide}>
+                    Скасувати
+                </Button>
+                <Button 
+                    variant="success" 
+                    onClick={handleSubmit}
+                    disabled={loading}
+                >
+                    {loading ? (
+                        <>
+                            <Spinner
+                                as="span"
+                                animation="border"
+                                size="sm"
+                                role="status"
+                                aria-hidden="true"
+                                className="me-2"
                             />
-                        </div>
-                    </div>
-                    <div style={{}}>
-                    <button style={{...styles.addButton}} onClick={handleSaveOrder}>
+                            Зберігаємо...
+                        </>
+                    ) : (
+                        <>
+                            <i className="bi bi-plus-circle me-1"></i>
                             Додати клієнта
-                        </button>
-                        {load &&
-                            <div style={{color: "red"}}><Loader2/></div>
-                        }
-                        {error &&
-                            <div style={{color: "red"}}>{error.message}</div>
-                        }
-                    </div>
-                </div>
-
-
-            </div>
-        </div>
-
+                        </>
+                    )}
+                </Button>
+            </Modal.Footer>
+        </Modal>
     );
 }
 

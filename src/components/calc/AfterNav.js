@@ -36,6 +36,7 @@ import CounterpartyList from "../../PrintPeaksFAinal/novaPoshta/CounterpartyList
 import LifeHackLikeBoards2 from "../../PrintPeaksFAinal/lifeHacksBoard/LifeHackLikeBoards2";
 import MyFiles from "../../PrintPeaksFAinal/user/MyFiles";
 import Payments from "../../PrintPeaksFAinal/user/Payments";
+import Invoices from "../../pages/Invoices";
 
 
 
@@ -99,6 +100,8 @@ const AfterNav = () => {
                 <Route path="/Devices" element={<TableStorage name={"Devices"} />} />
                 <Route path="/Desktop" element={<Desktop />} />
                 <Route path="/CounterpartyList" element={<CounterpartyList />} />
+
+                <Route path="/Invoices" element={<Invoices />} />
 
                 {/* Додаємо маршрути для вкладок Vimogi */}
 

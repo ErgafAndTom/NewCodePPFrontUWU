@@ -5,6 +5,7 @@ import filesReducer from "./filesReducer";
 import pricesReducer from "./pricesReducer";
 import currentUserReducer from "./CurrentUserReducer";
 import authReducer from "./authReducer";
+import invoiceReducer from "./invoiceReducer";
 
 const rootReducer = combineReducers({
     prices: pricesReducer,
@@ -12,6 +13,7 @@ const rootReducer = combineReducers({
     counter: counterReducer,
     currentUser: currentUserReducer,
     auth: authReducer,
+    invoices: invoiceReducer
     // words: wordsSlice,
 })
 

@@ -1,6 +1,6 @@
-import React, {useCallback, useEffect, useState} from "react";
+import React, { useCallback, useEffect, useState } from "react";
 import './ClientArtem.css';
-import  './ClientsMenuu.css'
+import './ClientsMenuu.css';
 import www from "./www.svg";
 import whiteSVG from "../../components/whiteSVG.svg";
 import pays from "../Pays.png";
@@ -17,506 +17,760 @@ import telegram from "./img/Telegram-icon-on-transparent-background-PNG.png";
 import FilesButton from "./img/files-icon.png";
 import addclienticons from "./img/Path 13360.png";
 import Tooltip from '../TooltipButton2';
-import {useNavigate} from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 import AddUserWindow from "../user/AddUserWindow";
-import {Spinner} from "react-bootstrap";
+import { Button, Modal, Spinner, ListGroup, InputGroup } from "react-bootstrap";
 import NP from "./NP";
 import PaysInOrder from "./pays/PaysInOrder";
-import {tr} from "date-fns/locale"; //
 
-const ClientChangerUIArtem = ({thisOrder, setThisOrder}) => {
+const ClientChangerUIArtem = ({ thisOrder, setThisOrder }) => {
     const navigate = useNavigate();
     const [showAddUser, setShowAddUser] = useState(false);
     const [showDocGenerate, setShowDocGenerate] = useState(false);
     const [showNP, setShowNP] = useState(false);
     const [showPays, setShowPays] = useState(false);
     const [load, setLoad] = useState(false);
+    const [searchQuery, setSearchQuery] = useState("");
     const [typeSelect, setTypeSelect] = useState("");
-    const [users, setUsers] = useState([]);
+    const [users, setUsers] = useState({ rows: [] });
     const [show, setShow] = useState(false);
     const [error, setError] = useState(false);
+    const [filteredUsers, setFilteredUsers] = useState([]);
 
-    const [isVisible, setIsVisible] = useState(false);
-    const [isAnimating, setIsAnimating] = useState(false);
+    // Функція для закриття модального вікна
     const handleClose = () => {
-        setIsAnimating(false); // Начинаем анимацию закрытия
-        setTimeout(() => {
-            setIsVisible(false)
-            setShow(false);
-        }, 100); // После завершения анимации скрываем модальное окно
-    }
-    useEffect(() => {
-        if (show) {
-            setIsVisible(true); // Сначала показываем модальное окно
-            setTimeout(() => setIsAnimating(true), 100); // После короткой задержки запускаем анимацию появления
-        } else {
-            setIsAnimating(false); // Начинаем анимацию закрытия
-            setTimeout(() => setIsVisible(false), 300); // После завершения анимации скрываем модальное окно
-        }
-    }, [show]);
-
-    const handleCloseSearch = useCallback(() => {
         setShow(false);
-    }, []);
-
-    const handleSearch = useCallback(() => {
-        setShow(true);
-        setTypeSelect("")
-    }, []);
-
-    const preHandleThisOrderChange = (fieldName, event, value) => {
-        // const updatedThisOrder = thisOrder;
-        // updatedThisOrder[fieldName] = value;
-        // setNewThisOrder(updatedThisOrder)
-        // setShow(false);
-
-        let data = {
-            orderId: thisOrder.id,
-            userId: value,
-        }
-        setLoad(true)
-        setError(null)
-        axios.put(`/orders/OneOrder/user`, data)
-            .then(response => {
-                // console.log(response.data);
-                setLoad(false)
-                setThisOrder(response.data)
-                // setUsers(response.data)
-                setShow(false);
-                // setPageCount(Math.ceil(response.data.result.count / inPageCount))
-            })
-            .catch(error => {
-                setLoad(false)
-                if(error.response.status === 403){
-                    navigate('/login');
-                }
-                setError(error.message)
-                console.log(error.message);
-            })
     };
 
-    // console.log(thisOrder);
+    // Функція для відкриття модального вікна
+    const handleShow = () => {
+        setShow(true);
+        setSearchQuery("");
+        fetchUsers();
+    };
 
-    useEffect(() => {
+    // Завантаження списку користувачів
+    const fetchUsers = async () => {
         let data = {
             name: "",
             inPageCount: 999999,
             currentPage: 1,
-            search: typeSelect,
+            search: searchQuery,
             columnName: {
                 column: "id",
                 reverse: false
             },
         }
-        setLoad(true)
-        setError(null)
-        axios.post(`/user/all`, data)
+        setLoad(true);
+        setError(null);
+
+        try {
+            const response = await axios.post(`/user/all`, data);
+            setLoad(false);
+            setUsers(response.data);
+            setFilteredUsers(response.data.rows);
+        } catch (error) {
+            setLoad(false);
+            if (error.response && error.response.status === 403) {
+                navigate('/login');
+            }
+            setError(error.message);
+            console.error(error.message);
+        }
+    };
+
+    // Пошук користувачів при зміні запиту
+    useEffect(() => {
+        if (show) {
+            const timer = setTimeout(() => {
+                fetchUsers();
+            }, 300);
+            return () => clearTimeout(timer);
+        }
+    }, [searchQuery, show]);
+
+    // Обробник для вибору користувача
+    const handleSelectUser = (userId) => {
+        let data = {
+            orderId: thisOrder.id,
+            userId: userId,
+        };
+
+        setLoad(true);
+        setError(null);
+
+        axios.put(`/orders/OneOrder/user`, data)
             .then(response => {
-                // console.log(response.data);
-                setLoad(false)
-                setUsers(response.data)
-                // setPageCount(Math.ceil(response.data.result.count / inPageCount))
+                setLoad(false);
+                setThisOrder(response.data);
+                setShow(false);
             })
             .catch(error => {
-                setLoad(false)
-                if(error.response.status === 403){
+                setLoad(false);
+                if (error.response && error.response.status === 403) {
                     navigate('/login');
                 }
-                setError(error.message)
-                console.log(error.message);
-            })
-    }, [typeSelect, show]);
+                setError(error.message);
+                console.error(error.message);
+            });
+    };
 
+    // Обробник для фільтрування списку користувачів
+    const handleSearchChange = (e) => {
+        const value = e.target.value;
+        setSearchQuery(value);
+    };
+
+    // Функції для месенджерів
     const openMessenger = (messenger) => {
+        if (!thisOrder.client) return;
+
         let url = '';
-        if (thisOrder.client) {
-            const phoneNum = thisOrder.client.phoneNumber.replace(/\s+/g, '');
-            switch (messenger) {
-                case 'signal':
-                    url = `signal://${thisOrder.client.phoneNum}`;
-                    break;
-                case 'viber':
-                    url = `viber://chat?number=${thisOrder.client.phoneNum}`;
-                    break;
-                case 'whatsapp':
-                    url = `https://wa.me/${thisOrder.client.phoneNum}`;
-                    break;
-                case 'telegram':
-                    url = `https://t.me/${thisOrder.client.telegramlogin}`;
-                    break;
-                default:
-                    break;
-            }
+        const phoneNum = thisOrder.client.phoneNumber ? thisOrder.client.phoneNumber.replace(/\s+/g, '') : '';
+
+        switch (messenger) {
+            case 'signal':
+                url = `signal://${phoneNum}`;
+                break;
+            case 'viber':
+                url = `viber://chat?number=${phoneNum}`;
+                break;
+            case 'whatsapp':
+                url = `https://wa.me/${phoneNum}`;
+                break;
+            case 'telegram':
+                url = thisOrder.client.telegramlogin ? `https://t.me/${thisOrder.client.telegramlogin}` : '';
+                break;
+            default:
+                break;
+        }
+
+        if (url) {
             window.open(url, '_blank');
         }
     };
 
-    const printBarcode = () => {
-        // Логіка друку штрих-коду
+    // Додавання нового користувача
+    const handleAddNewUser = () => {
+        setShowAddUser(true);
     };
-
-    const openUserSettings = () => {
-        // Логіка відкриття налаштувань користувача
-    };
-
-    const toggleUserList = () => {
-        setShow(true)
-    };
-
-
-    const AddNewUser = () => {
-        setShowAddUser(true)
-    };
-    const openPays = () => {
-        setShowPays(true)
-    };
-    const openDocGenerate = () => {
-        setShowDocGenerate(true)
-    };
-
-    const NPS = () => {
-        setShowNP(true)
-    };
-
-    const selectUser = (user) => {
-        setShow(true)
-        console.log('Вибраний користувач:', user);  // Наприклад, тут ви можете оновити стан поточного користувача.
+    
+    // Обробник успішного додавання нового користувача
+    const handleUserAdded = (newUser) => {
+        fetchUsers(); // Оновлюємо список після додавання
+        
+        // Автоматично обираємо нового користувача, якщо він успішно доданий
+        if (newUser && newUser.id) {
+            handleSelectUser(newUser.id);
+        }
     };
 
     return (
-        <div>
-            {isVisible === true ? (
-                <div>
-                    <div
-                        style={{
-                            zIndex: "100",
-                            position: "fixed",
-                            background: "#dcd9ce",
-                            top: "50%",
-                            left: "50%",
-                            transform: isAnimating ? "translate(-50%, -50%) scale(1)" : "translate(-0%, -0%) scale(0.8)", // анимация масштаба
-                            opacity: isAnimating ? 1 : 0, // анимация прозрачности
-                            transition: "opacity 0.3s ease-in-out, transform 0.3s ease-in-out", // плавная анимация
-                            borderRadius: "0.5vw",
-                            width: "90vw",
-                            height: "90vh",
-                            animation: "rotate-animation 2s infinite",
-                            fontFamily: 'Montserrat, sans-serif',
-                            fontSize: '0.7vw'
-                            // padding: "20px"
-                        }}
-                        className="shadow-lg">
-                        <div
-                            style={{
-
-                                height: '86vh',
-                                overflow: 'auto',
-                            }}
-                        >
-                            {users.rows.map((thing, index) => (
-                                <div
-                                    className="btn btn-sm btn-outline-light d-flex flex-row text-black"
-                                    style={{
-                                        border: "solid 1px #cccabf",
-                                        borderRadius: "1vw",
-
-                                    }}
-                                    key={thing.id + index}
-                                    onClick={(event) => preHandleThisOrderChange('clientId', event, thing.id)}
-                                >
-                                    <div className="d-flex">
-                                        <div className="adminFont btn btn-sm">
-                                            {thing.clientId} {thing.firstName} {thing.lastName} {thing.familyName} {thing.discount}
-                                        </div>
-                                        <div className="adminFont btn btn-sm">
-                                            {thing.role}
-                                        </div>
-                                        <div className="adminFont btn btn-sm">
-                                            Phone: {thing.phoneNumber}
-                                        </div>
-                                        <div className="adminFont btn btn-sm">
-                                            Messenger: {thing.telegram}
-                                        </div>
-                                    </div>
-                                    <img className=""
-                                           style={{width: "1.7vw", height: "1.7vw", marginLeft: "auto"}}
-                                           src={whiteSVG}/>
-                                </div>
-                            ))}
-                        </div>
-                        <div className="d-flex justify-content-end">
-                            {load && (
-                                <Spinner animation="border" variant="danger" size="sm" />
-                            )}
-                            <Form.Control
-                                type="text"
-                                placeholder={"Search..."}
-                                value={typeSelect}
-                                className="adminFontTable shadow-lg bg-transparent"
-                                onChange={(event) => setTypeSelect(event.target.value)}
-                                style={{border: "solid 1px #cccabf", borderRadius: "0", width: "97%"}}
-                            />
-                        </div>
-                        {error && (
-                            <div style={{ color: 'red', fontSize: '0.7vw', marginTop: '1vh' }}>{error}</div>
-                        )}
-                    </div>
-                    <div style={{
-                        width: "100vw",
-                        zIndex: "99",
-                        height: "100vh",
-                        background: "rgba(0, 0, 0, 0.5)",
-                        opacity: isAnimating ? 1 : 0, // для анимации прозрачности
-                        transition: "opacity 0.3s ease-in-out", // плавная анимация
-                        position: "fixed",
-                        left: "0",
-                        bottom: "0"
-                    }} onClick={handleCloseSearch}></div>
+        <>
+            {/* Кнопка для відкриття модального вікна */}
+            <div
+                className="btn btn-sm btn-outline-primary"
+                onClick={handleShow}
+                style={{
+                    display: 'flex',
+                    flexDirection: 'column',
+                    alignItems: 'flex-start',
+                    gap: '4px',
+                    maxWidth: '100%',
+                    overflow: 'hidden',
+                    padding: '8px 12px',
+                    textAlign: 'left'
+                }}
+            >
+                <div style={{ display: 'flex', alignItems: 'center', gap: '8px', width: '100%' }}>
+                    <img src={ChangeClienticons} alt="Change Client" style={{ width: '20px', height: '20px', flexShrink: 0 }} />
+                    {thisOrder.client ? (
+                        <span className="fw-semibold">
+                            {thisOrder.client.firstName} {thisOrder.client.lastName} {thisOrder.client.familyName}
+                        </span>
+                    ) : (
+                        <span>Вибрати клієнта</span>
+                    )}
                 </div>
-            ) : (
-                <div className="clientsproject">
-                    <div className="ClientsMenuu"
-                         style={{
-                             marginTop: "0vw",
-                             width: "31vw"
 
-                    }}>
-                        <div className="d-flex">
-                            <div className="left-section" style={{marginLeft: "-0.6vw"}}>
-                                <Tooltip text="Вибрати клієнта">
-                                <button className="ChangeClient" style={{
-                                    width: "2.6vw",
-                                    height: "2.6vw",
-                                    // marginTop: "0.2vw",
-                                    marginLeft: "0.3vw",
-                                    border: "0px",
-                                    borderRadius: "0.5vw",
-                                    background: "transparent",
-
-                                }} onClick={toggleUserList} title="Вибрати клієнта">
-                                    <img src={ChangeClienticons} alt="ChangeClient "
-                                         style={{width: "1.8vw",  marginLeft: "auto",
-                                             opacity: "80%", background: "transparent", border: "0px", borderRadius: "0.5vw"}}
-                                         className="ChangeClient-icons"/>
-                                </button>
-                                    </Tooltip>
-                                <Tooltip text="Штрих-код клієнта">
-                                <button className="BarcodeClientMenu" style={{
-                                    width: "2vw",
-                                    height: "3vh",
-                                    marginLeft: "0.3vw",
-                                    borderRadius: "0.5vw",
-                                    background: "transparent",
-                                    border: "0px",
-                                    padding: "0px"
-                                }}>
-
-                                    <img src={barcode} alt="bar-code"
-                                         style={{ width: "2.4vw",
-                                             height: "2.4vw",
-                                             // marginTop: "0.2vw",
-                                             // marginLeft: "0.3vw",
-                                             border: "0px",
-                                             borderRadius: "0.5vw",
-                                                opacity: "70%"}}
-                                         className="barcodeclientmenuimg"
-                                         onClick={printBarcode}/>
-                                </button>
-                                    </Tooltip>
-                                <img src={profile} alt="Профіль"
-                                     style={{width: "2.6vw", marginLeft: "0.4vw",}}
-                                     className="profile-photo" onClick={openUserSettings}/>
-                            </div>
-                            <div className="middle-section" style={{marginLeft: "0.3vw"}}>
-                                {thisOrder.client ? (
-                                    <div className="username" style={{
-                                        fontSize: "0.7vw",
-                                        fontWeight: "bold",
-                                        whiteSpace: "nowrap",
-                                        overflow: "hidden",
-                                        textOverflow: "ellipsis",
-                                        maxWidth: "15vw",
-                                        opacity: "80%"
-                                    }}>
-                                        {thisOrder.client.firstName} {thisOrder.client.lastName} {thisOrder.client.familyName}
-                                    </div>
-                                ) : (
-                                    <div className="username" style={{
-                                        fontSize: "0.7vw",
-                                        fontWeight: "bold",
-                                        whiteSpace: "nowrap",
-                                        overflow: "hidden",
-                                        textOverflow: "ellipsis",
-                                        maxWidth: "15vw",
-                                        opacity: "80%"
-                                    }}>
-                                        —
-                                    </div>
-                                )}
-                                {thisOrder.client ? (
-                                    <>
-                                        <div className="contact-number" style={{
-                                            display: "flex",
-                                            flexDirection: "row",
-                                            height: "1vw",
-                                            alignItems: "center"
-                                        }}>
-
-                                            <div className="nicknameArtemCli"
-                                                 style={{fontSize: "0.7vw", display: "flex", alignItems: "center", marginTop: "0.2vw",
-                                                     opacity: "80%"}}>
-                                                {thisOrder.client.phoneNumber}
-                                                <img style={{width: "0.9vw", marginLeft: "0.3vw", alignItems: "center"}}
-                                                     src={signallogo}
-                                                     alt="Signal" className="img-fluid"
-                                                     onClick={() => openMessenger('signal')}/>
-                                                <img style={{width: "0.9vw", marginLeft: "0.3vw", alignItems: "center"}}
-                                                     src={viberlogo} alt="Viber" className="img-fluid"
-                                                     onClick={() => openMessenger('viber')}/>
-                                                <img style={{width: "0.9vw", marginLeft: "0.3vw", alignItems: "center"}}
-                                                     src={whatsapplogo} alt="WhatsApp" className="img-fluid"
-                                                     onClick={() => openMessenger('whatsapp')}/>
-                                            </div>
-                                        </div>
-                                        <div className="nicknameArtemCli" style={{display: "flex",fontSize: "0.7vw", alignItems: "center", color: "#239cd7", marginTop: "0.2vw",
-                                            opacity: "80%"}}>
-                                            {thisOrder.client.telegram}
-                                            <img src={telegram} alt="Telegram" style={{width: "0.9vw", marginLeft: "0.3vw"}}
-                                                 className="img-fluid"
-                                                 onClick={() => openMessenger('telegram')}/>
-                                        </div>
-                                    </>
-                                ) : (
-                                    <div>—</div>
-                                )}
-                            </div>
-
-                            <div className="right-section"
-                                 style={{justifyContent: 'flex-end', display: 'flex', marginLeft: 'auto', paddingRight:"0"}}>
-
-
-                                <Tooltip text="Оплата">
-                                    <div className="discount-button" data-toggle="tooltip" data-placement="top"
-                                         title="Оплата" style={{
-                                        // transform: "rotate(360deg)",
-                                        alignItems: "center",
-                                        marginTop: "-0.1vw",
-                                        fontSize: "2vw",
-                                        opacity: "80%"
-                                    }}>
-                                        <button className="addclient grayFonColorBackground " style={{
-                                            width: "2.4vw",
-                                            height: "2.4vw",
-                                            // marginTop: "0.2vw",
-                                            marginLeft: "0.3vw",
-                                            border: "0px",
-                                            borderRadius: "0.5vw",
-                                            opacity: "80%"
-                                        }} onClick={openPays}>
-                                            <img src={pays} style={{width: "1.5vw",  marginLeft: "auto"}} alt="addclients" className="addclient-icons"
-                                            />
-
-                                        </button>
-                                    </div>
-                                    {showPays &&
-                                        <div style={{ }} className="">
-                                            <PaysInOrder showPays={showPays} setShowPays={setShowPays} thisOrder={thisOrder} setThisOrder={setThisOrder}/>
-                                        </div>
-                                    }
-                                </Tooltip>
-
-                                <Tooltip text="Знижка">
-                                <div className="discount-button" data-toggle="tooltip" data-placement="top"
-                                     title="Знижка" style={{
-                                    // transform: "rotate(360deg)",
-                                    alignItems: "center",
-                                    marginTop: "-0.1vw",
-                                    fontSize: "2vw",
-                                    opacity: "80%"
-                                }}>
-                                    <div className="discountwords"
-                                         style={{}}>
-                                        {thisOrder.client ? (
-                                            <div>{thisOrder.client.discount}</div>
-                                        ) : (
-                                            <div>—</div>
-                                        )}
-                                    </div>
-                                    <div className="ProzentClient" style={{}}></div>
+                {thisOrder.client && (
+                    <div className="client-details" style={{ fontSize: '0.85rem', width: '100%' }}>
+                        <div className="d-flex flex-wrap">
+                            {thisOrder.client.id && (
+                                <div className="me-2">
+                                    <i className="bi bi-person-badge me-1"></i>
+                                    <span className="text-muted">ID: {thisOrder.client.id}</span>
                                 </div>
-                                </Tooltip>
-                                {/*<Tooltip text="Файли кліента"><button className="files-button d-flex grayFonColorBackground  justify-content-center align-items-center align-content-center" style={{*/}
-                                {/*    width: "2.4vw",*/}
-                                {/*    height: "2.4vw",*/}
-                                {/*    // marginTop: "0.2vw",*/}
-                                {/*    marginLeft: "0.3vw",*/}
-                                {/*    border: "0px",*/}
-                                {/*    borderRadius: "0.5vw"*/}
-                                {/*}} onClick={() => window.open('https://drive.google.com', '_blank')}>*/}
+                            )}
 
-                                {/*    <img src={FilesButton} style={{*/}
-                                {/*        // width: "1.7vw",*/}
-                                {/*        height: "1.7vw",*/}
-                                {/*        alignItems: "center",*/}
-                                {/*        justifyContent: "center",*/}
-                                {/*        display: "flex",*/}
-                                {/*    }} alt="FilesButton"*/}
-                                {/*         className="FilesButton-icons d-flex justify-content-center align-items-center align-content-center"/>*/}
-                                {/*</button> </Tooltip>*/}
-                                <Tooltip text="Додати кліента">
-                                    <button className="addclient grayFonColorBackground " style={{
-                                        width: "2.4vw",
-                                        height: "2.4vw",
-                                        // marginTop: "0.2vw",
-                                        marginLeft: "0.3vw",
-                                        border: "0px",
-                                        borderRadius: "0.5vw",
-                                        opacity: "80%"
-                                    }} onClick={AddNewUser}>
-                                        <img src={addclienticons} style={{width: "1.5vw",  marginLeft: "auto"}} alt="addclients" className="addclient-icons"
-                                        />
+                            {thisOrder.client.phoneNumber && (
+                                <div className="me-2">
+                                    <i className="bi bi-telephone me-1"></i>
+                                    <span className="text-muted">{thisOrder.client.phoneNumber}</span>
+                                </div>
+                            )}
 
-                                    </button>
-                                    {showAddUser &&
-                                        <div style={{ }} className="">
-                                            {/*<img src={www} className="position-absolute" style={{*/}
-                                            {/*    width: "35.5vw",*/}
-                                            {/*    marginLeft: "-31.9vw",*/}
-                                            {/*    marginTop: "-20.5vw",*/}
-                                            {/*}} alt="www"/>*/}
-                                            <AddUserWindow showAddUser={showAddUser} setShowAddUser={setShowAddUser} thisOrder={thisOrder} setThisOrder={setThisOrder}/>
-                                        </div>
-                                    }
-                                </Tooltip>
-                                <Tooltip text="Нова пошта">
-                                    <button className="addclient grayFonColorBackground " style={{
-                                        width: "2.4vw",
-                                        height: "2.4vw",
-                                        // marginTop: "0.2vw",
-                                        marginLeft: "0.3vw",
-                                        border: "0px",
-                                        borderRadius: "0.5vw",
-                                        opacity: "80%"
-                                    }} onClick={NPS}>
-                                        <div>
-                                            НП
-                                        </div>
-                                        {showNP.toString()}
-                                    </button>
-                                    {showNP &&
-                                        <div style={{ }} className="">
-                                            <NP showNP={showNP} setShowNP={setShowNP} thisOrder={thisOrder} setThisOrder={setThisOrder}/>
-                                        </div>
-                                    }
-                                </Tooltip>
-                            </div>
+                            {thisOrder.client.email && (
+                                <div className="me-2">
+                                    <i className="bi bi-envelope me-1"></i>
+                                    <span className="text-muted">{thisOrder.client.email}</span>
+                                </div>
+                            )}
+                        </div>
 
+                        <div className="d-flex flex-wrap mt-1">
+                            {thisOrder.client.address && (
+                                <div className="me-2">
+                                    <i className="bi bi-geo-alt me-1"></i>
+                                    <span className="text-muted">{thisOrder.client.address}</span>
+                                </div>
+                            )}
+
+                            {thisOrder.client.discount && (
+                                <div className="me-2">
+                                    <i className="bi bi-percent me-1"></i>
+                                    <span className="text-success">Знижка: {thisOrder.client.discount}%</span>
+                                </div>
+                            )}
+
+                            {thisOrder.client.telegramlogin && (
+                                <div className="me-2">
+                                    <i className="bi bi-telegram me-1"></i>
+                                    <span className="text-muted">@{thisOrder.client.telegramlogin}</span>
+                                </div>
+                            )}
                         </div>
                     </div>
+                )}
+            </div>
+
+            {/* Кнопки швидких дій з клієнтом */}
+            {!show && thisOrder.client && thisOrder.client.phoneNumber && (
+                <div className="d-flex gap-1 mt-2 justify-content-between">
+                    <div className="d-flex gap-1">
+                        <Button
+                            variant="outline-secondary"
+                            size="sm"
+                            onClick={() => openMessenger('viber')}
+                            title="Viber"
+                        >
+                            <img src={viberlogo} alt="Viber" style={{ width: '16px', height: '16px' }} />
+                        </Button>
+                
+                        <Button
+                            variant="outline-secondary"
+                            size="sm"
+                            onClick={() => openMessenger('whatsapp')}
+                            title="WhatsApp"
+                        >
+                            <img src={whatsapplogo} alt="WhatsApp" style={{ width: '16px', height: '16px' }} />
+                        </Button>
+            
+                        <Button
+                            variant="outline-secondary"
+                            size="sm"
+                            onClick={() => openMessenger('signal')}
+                            title="Signal"
+                        >
+                            <img src={signallogo} alt="Signal" style={{ width: '16px', height: '16px' }} />
+                        </Button>
+            
+                        {thisOrder.client.telegramlogin && (
+                            <Button
+                                variant="outline-secondary"
+                                size="sm"
+                                onClick={() => openMessenger('telegram')}
+                                title="Telegram"
+                            >
+                                <img src={telegram} alt="Telegram" style={{ width: '16px', height: '16px' }} />
+                            </Button>
+                        )}
+            
+                        <Button
+                            variant="outline-secondary"
+                            size="sm"
+                            onClick={() => setShowNP(true)}
+                            title="Нова Пошта"
+                        >
+                            НП
+                        </Button>
+            
+                        <Button
+                            variant="outline-secondary"
+                            size="sm"
+                            onClick={() => setShowPays(true)}
+                            title="Платежі"
+                        >
+                            <img src={pays} alt="Платежі" style={{ width: '16px', height: '16px' }} />
+                        </Button>
+                        
+                        <Button
+                            variant="outline-secondary"
+                            size="sm"
+                            onClick={() => setShowDocGenerate(true)}
+                            title="Генерувати документи"
+                        >
+                            <img src={dockGenerate} alt="Документи" style={{ width: '16px', height: '16px' }} />
+                        </Button>
+                        
+                        <Button
+                            variant="outline-secondary"
+                            size="sm"
+                            onClick={() => {
+                                if (thisOrder.client && thisOrder.client.id) {
+                                    window.open(`/client-files/${thisOrder.client.id}`, '_blank');
+                                } else {
+                                    setError('Спочатку виберіть клієнта');
+                                }
+                            }}
+                            title="Файли клієнта"
+                        >
+                            <img src={FilesButton} alt="Файли" style={{ width: '16px', height: '16px' }} />
+                        </Button>
+                                            </div>
+                                            
+                                            {thisOrder && (
+                        thisOrder.status === "Нове замовлення" ? (
+                            <Button
+                                variant="success"
+                                size="sm"
+                                onClick={() => {
+                                    // Логіка для взяття замовлення в роботу
+                                    if (thisOrder && thisOrder.id) {
+                                        setLoad(true);
+                                        axios.post(`/orders/takeToWork/${thisOrder.id}`)
+                                            .then(response => {
+                                                setLoad(false);
+                                                setThisOrder(response.data);
+                                            })
+                                            .catch(error => {
+                                                setLoad(false);
+                                                if (error.response && error.response.status === 403) {
+                                                    navigate('/login');
+                                                }
+                                                setError(error.message);
+                                                console.error(error.message);
+                                            });
+                                    }
+                                }}
+                                title="Взяти в роботу"
+                                style={{ float: "right" }}
+                            >
+                                <i className="bi bi-briefcase me-1"></i> Взяти в роботу
+                            </Button>
+                        ) : (
+                            <Button
+                                variant="outline-secondary"
+                                size="sm"
+                                disabled={thisOrder.status !== "Нове замовлення"}
+                                title={thisOrder.status !== "Нове замовлення" ? "Замовлення вже в роботі" : "Взяти в роботу"}
+                                style={{ float: "right" }}
+                            >
+                                <i className="bi bi-briefcase me-1"></i> 
+                                {thisOrder.worker ? `В роботі: ${thisOrder.worker.firstName}` : "В роботі"}
+                            </Button>
+                        )
+                                            )}
+                                        </div>
+                                    )}
+                                    
+                                    {/* Відображення помилки */}
+                                    {error && (
+                                        <div className="alert alert-danger alert-dismissible fade show mt-2" role="alert">
+                                            {error}
+                                            <button type="button" className="btn-close" onClick={() => setError(null)}></button>
                 </div>
             )}
-        </div>
-    )
+
+            {/* Модальне вікно для вибору користувача */}
+            <Modal show={show} onHide={handleClose} size="lg" centered>
+                <Modal.Header closeButton>
+                    <Modal.Title>Вибір клієнта</Modal.Title>
+                </Modal.Header>
+                <Modal.Body>
+                    {/* Відображення поточного клієнта якщо він обраний */}
+                    {thisOrder.client && (
+                        <div className="mb-4 p-3 border rounded bg-light">
+                            <h5 className="mb-3">Поточний клієнт:</h5>
+                            <div className="row">
+                                <div className="col-md-6">
+                                    <div className="mb-2 d-flex">
+                                        <div className="me-2" style={{ width: '24px', textAlign: 'center' }}>
+                                            <i className="bi bi-person-badge"></i>
+                                        </div>
+                                        <div>
+                                            <strong>ID:</strong> {thisOrder.client.id}
+                                        </div>
+                                    </div>
+                                    
+                                    <div className="mb-2 d-flex">
+                                        <div className="me-2" style={{ width: '24px', textAlign: 'center' }}>
+                                            <i className="bi bi-person"></i>
+                                        </div>
+                                        <div>
+                                            <strong>Ім'я:</strong> {thisOrder.client.firstName} {thisOrder.client.lastName} {thisOrder.client.familyName}
+                                        </div>
+                                    </div>
+                                    
+                                    {thisOrder.client.phoneNumber && (
+                                        <div className="mb-2 d-flex">
+                                            <div className="me-2" style={{ width: '24px', textAlign: 'center' }}>
+                                                <i className="bi bi-telephone"></i>
+                                            </div>
+                                            <div>
+                                                <strong>Телефон:</strong> {thisOrder.client.phoneNumber}
+                                            </div>
+                                        </div>
+                                    )}
+                                    
+                                    {thisOrder.client.email && (
+                                        <div className="mb-2 d-flex">
+                                            <div className="me-2" style={{ width: '24px', textAlign: 'center' }}>
+                                                <i className="bi bi-envelope"></i>
+                                            </div>
+                                            <div>
+                                                <strong>Email:</strong> {thisOrder.client.email}
+                                            </div>
+                                        </div>
+                                    )}
+                                </div>
+                                
+                                <div className="col-md-6">
+                                    {thisOrder.client.address && (
+                                        <div className="mb-2 d-flex">
+                                            <div className="me-2" style={{ width: '24px', textAlign: 'center' }}>
+                                                <i className="bi bi-geo-alt"></i>
+                                            </div>
+                                            <div>
+                                                <strong>Адреса:</strong> {thisOrder.client.address}
+                                            </div>
+                                        </div>
+                                    )}
+                                    
+                                    {thisOrder.client.discount && (
+                                        <div className="mb-2 d-flex">
+                                            <div className="me-2" style={{ width: '24px', textAlign: 'center' }}>
+                                                <i className="bi bi-percent"></i>
+                                            </div>
+                                            <div>
+                                                <strong>Знижка:</strong> <span className="text-success">{thisOrder.client.discount}%</span>
+                                            </div>
+                                        </div>
+                                    )}
+                                    
+                                    {thisOrder.client.telegramlogin && (
+                                        <div className="mb-2 d-flex">
+                                            <div className="me-2" style={{ width: '24px', textAlign: 'center' }}>
+                                                <i className="bi bi-telegram"></i>
+                                            </div>
+                                            <div>
+                                                <strong>Telegram:</strong> @{thisOrder.client.telegramlogin}
+                                            </div>
+                                        </div>
+                                    )}
+                                    
+                                    {thisOrder.client.notes && (
+                                        <div className="mb-2 d-flex">
+                                            <div className="me-2" style={{ width: '24px', textAlign: 'center' }}>
+                                                <i className="bi bi-sticky"></i>
+                                            </div>
+                                            <div>
+                                                <strong>Нотатки:</strong> {thisOrder.client.notes}
+                                            </div>
+                                        </div>
+                                    )}
+                                </div>
+                            </div>
+                    
+                            {/* Кнопки для взаємодії з поточним клієнтом */}
+                            <div className="mt-3 d-flex flex-wrap gap-2">
+                                {thisOrder.client.phoneNumber && (
+                                    <>
+                                        <Button
+                                            variant="outline-secondary"
+                                            size="sm"
+                                            onClick={() => openMessenger('viber')}
+                                            title="Viber"
+                                        >
+                                            <img src={viberlogo} alt="Viber" style={{ width: '20px', height: '20px' }} />
+                                        </Button>
+                    
+                                        <Button
+                                            variant="outline-secondary"
+                                            size="sm"
+                                            onClick={() => openMessenger('whatsapp')}
+                                            title="WhatsApp"
+                                        >
+                                            <img src={whatsapplogo} alt="WhatsApp" style={{ width: '20px', height: '20px' }} />
+                                        </Button>
+                    
+                                        <Button
+                                            variant="outline-secondary"
+                                            size="sm"
+                                            onClick={() => openMessenger('signal')}
+                                            title="Signal"
+                                        >
+                                            <img src={signallogo} alt="Signal" style={{ width: '20px', height: '20px' }} />
+                                        </Button>
+                                    </>
+                                )}
+                    
+                                {thisOrder.client.telegramlogin && (
+                                    <Button
+                                        variant="outline-secondary"
+                                        size="sm"
+                                        onClick={() => openMessenger('telegram')}
+                                        title="Telegram"
+                                    >
+                                        <img src={telegram} alt="Telegram" style={{ width: '20px', height: '20px' }} />
+                                    </Button>
+                                )}
+                                
+                                <Button
+                                    variant="outline-primary"
+                                    size="sm"
+                                    onClick={() => window.open(`/client/${thisOrder.client.id}`, '_blank')}
+                                    title="Відкрити профіль клієнта"
+                                    style={{ marginLeft: 'auto', float: 'right' }}
+                                >
+                                    <i className="bi bi-person-lines-fill me-1"></i>
+                                    Профіль клієнта
+                                </Button>
+                            </div>
+                        </div>
+                    )}
+
+                    {/* Пошук клієнтів */}
+                    <div className="mb-3">
+                        <InputGroup>
+                            <Form.Control
+                                type="text"
+                                placeholder="Пошук за ім'ям, прізвищем, номером телефону або email..."
+                                value={searchQuery}
+                                onChange={handleSearchChange}
+                            />
+                            <Button
+                                variant="outline-secondary"
+                                onClick={fetchUsers}
+                            >
+                                <i className="bi bi-search"></i>
+                            </Button>
+                            <Button
+                                variant="success"
+                                onClick={handleAddNewUser}
+                            >
+                                <i className="bi bi-plus-circle me-1"></i>
+                                Створити нового
+                            </Button>
+                        </InputGroup>
+                    </div>
+
+                    {/* Відображення списку користувачів */}
+                    {load ? (
+                        <div className="text-center my-4">
+                            <Spinner animation="border" variant="primary" />
+                        </div>
+                    ) : error ? (
+                        <div className="alert alert-danger">{error}</div>
+                    ) : (
+                        <div className="user-list" style={{ maxHeight: '400px', overflowY: 'auto' }}>
+                            {users.rows && users.rows.length > 0 ? (
+                                <ListGroup>
+                                    {users.rows.map((user) => (
+                                        <ListGroup.Item
+                                            key={user.id}
+                                            action
+                                            onClick={() => handleSelectUser(user.id)}
+                                            className={`d-flex justify-content-between align-items-start ${thisOrder.client && thisOrder.client.id === user.id ? 'border-primary' : ''}`}
+                                        >
+                                            <div className="ms-2 me-auto w-100">
+                                                <div className="row">
+                                                    <div className="col-md-6">
+                                                        <div className="fw-bold d-flex align-items-center">
+                                                            <i className="bi bi-person-circle me-2"></i>
+                                                            {user.firstName} {user.lastName} {user.familyName}
+                                                        </div>
+                                                        <div style={{ fontSize: '0.85rem' }}>
+                                                            <div><i className="bi bi-person-badge me-1"></i> ID: {user.id}</div>
+                                                            {user.phoneNumber && <div><i className="bi bi-telephone me-1"></i> {user.phoneNumber}</div>}
+                                                            {user.email && <div><i className="bi bi-envelope me-1"></i> {user.email}</div>}
+                                                        </div>
+                                                    </div>
+                                                    <div className="col-md-6">
+                                                        <div style={{ fontSize: '0.85rem' }}>
+                                                            {user.address && <div><i className="bi bi-geo-alt me-1"></i> {user.address}</div>}
+                                                            {user.telegramlogin && <div><i className="bi bi-telegram me-1"></i> @{user.telegramlogin}</div>}
+                                                            {user.discount > 0 && <div><i className="bi bi-percent me-1"></i> <span className="text-success">Знижка: {user.discount}%</span></div>}
+                                                            {user.notes && <div><i className="bi bi-sticky me-1"></i> {user.notes}</div>}
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            {thisOrder.client && thisOrder.client.id === user.id && (
+                                                <span className="badge bg-primary rounded-pill">Обрано</span>
+                                            )}
+                                        </ListGroup.Item>
+                                    ))}
+                                </ListGroup>
+                            ) : (
+                                <div className="text-center p-4 bg-light rounded">
+                                    <p>Немає клієнтів за даним запитом</p>
+                                    <Button 
+                                        variant="success" 
+                                        onClick={handleAddNewUser}
+                                    >
+                                        <i className="bi bi-plus-circle me-1"></i>
+                                        Створити нового клієнта
+                                    </Button>
+                                </div>
+                            )}
+                        </div>
+                    )}
+                </Modal.Body>
+                <Modal.Footer>
+                    <Button variant="secondary" onClick={handleClose}>
+                        Скасувати
+                    </Button>
+                    {thisOrder.client && (
+                        <Button variant="danger" onClick={() => handleSelectUser(null)}>
+                            Видалити вибір
+                        </Button>
+                    )}
+                </Modal.Footer>
+            </Modal>
+
+            {/* Модальне вікно для додавання нового користувача */}
+            <AddUserWindow
+                show={showAddUser}
+                onHide={() => setShowAddUser(false)}
+                onUserAdded={handleUserAdded}
+            />
+            
+            {/* Інші модальні вікна, які можуть бути потрібні */}
+            {showNP && <NP show={showNP} onHide={() => setShowNP(false)} />}
+            {showPays && <PaysInOrder show={showPays} onHide={() => setShowPays(false)} orderId={thisOrder.id} />}
+            
+            {/* Модальне вікно для генерації документів */}
+            <Modal 
+                show={showDocGenerate} 
+                onHide={() => setShowDocGenerate(false)}
+                size="lg"
+                centered
+            >
+                <Modal.Header closeButton>
+                    <Modal.Title>Генерація документів</Modal.Title>
+                </Modal.Header>
+                <Modal.Body>
+                    {!thisOrder.client ? (
+                        <div className="alert alert-warning">
+                            <i className="bi bi-exclamation-triangle-fill me-2"></i>
+                            Спочатку виберіть клієнта для можливості генерації документів
+                        </div>
+                    ) : (
+                        <div className="row g-3">
+                            <div className="col-md-6">
+                                <div className="card h-100">
+                                    <div className="card-body text-center">
+                                        <img src={whiteSVG} alt="Договір" style={{ width: '64px', height: '64px', marginBottom: '15px' }} />
+                                        <h5 className="card-title">Договір</h5>
+                                        <p className="card-text">Створення договору для замовлення</p>
+                                        <Button 
+                                            variant="primary" 
+                                            className="w-100"
+                                            onClick={() => {
+                                                // Логіка для генерації договору
+                                                if (thisOrder && thisOrder.id) {
+                                                    window.open(`/api/documents/contract/${thisOrder.id}`, '_blank');
+                                                }
+                                            }}
+                                        >
+                                            <i className="bi bi-file-earmark-text me-2"></i>
+                                            Згенерувати договір
+                                        </Button>
+                                    </div>
+                                </div>
+                            </div>
+                            
+                            <div className="col-md-6">
+                                <div className="card h-100">
+                                    <div className="card-body text-center">
+                                        <img src={barcode} alt="Накладна" style={{ width: '64px', height: '64px', marginBottom: '15px' }} />
+                                        <h5 className="card-title">Накладна</h5>
+                                        <p className="card-text">Створення накладної для замовлення</p>
+                                        <Button 
+                                            variant="primary" 
+                                            className="w-100"
+                                            onClick={() => {
+                                                // Логіка для генерації накладної
+                                                if (thisOrder && thisOrder.id) {
+                                                    window.open(`/api/documents/invoice/${thisOrder.id}`, '_blank');
+                                                }
+                                            }}
+                                        >
+                                            <i className="bi bi-receipt me-2"></i>
+                                            Згенерувати накладну
+                                        </Button>
+                                    </div>
+                                </div>
+                            </div>
+                            
+                            <div className="col-md-6">
+                                <div className="card h-100">
+                                    <div className="card-body text-center">
+                                        <img src={profile} alt="Акт" style={{ width: '64px', height: '64px', marginBottom: '15px' }} />
+                                        <h5 className="card-title">Акт виконаних робіт</h5>
+                                        <p className="card-text">Створення акту виконаних робіт</p>
+                                        <Button 
+                                            variant="primary" 
+                                            className="w-100"
+                                            onClick={() => {
+                                                // Логіка для генерації акту
+                                                if (thisOrder && thisOrder.id) {
+                                                    window.open(`/api/documents/act/${thisOrder.id}`, '_blank');
+                                                }
+                                            }}
+                                        >
+                                            <i className="bi bi-file-check me-2"></i>
+                                            Згенерувати акт
+                                        </Button>
+                                    </div>
+                                </div>
+                            </div>
+                            
+                            <div className="col-md-6">
+                                <div className="card h-100">
+                                    <div className="card-body text-center">
+                                        <img src={www} alt="Рахунок-фактура" style={{ width: '64px', height: '64px', marginBottom: '15px' }} />
+                                        <h5 className="card-title">Рахунок-фактура</h5>
+                                        <p className="card-text">Створення рахунку-фактури для замовлення</p>
+                                        <Button 
+                                            variant="primary" 
+                                            className="w-100"
+                                            onClick={() => {
+                                                // Логіка для генерації рахунку-фактури
+                                                if (thisOrder && thisOrder.id) {
+                                                    window.open(`/api/documents/invoice-print/${thisOrder.id}`, '_blank');
+                                                    setShowDocGenerate(false);
+                                                }
+                                            }}
+                                        >
+                                            <i className="bi bi-cash-coin me-2"></i>
+                                            Згенерувати рахунок
+                                        </Button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    )}
+                </Modal.Body>
+                <Modal.Footer>
+                    <Button variant="secondary" onClick={() => setShowDocGenerate(false)}>
+                        Закрити
+                    </Button>
+                </Modal.Footer>
+            </Modal>
+        </>
+    );
 };
 
 export default ClientChangerUIArtem;

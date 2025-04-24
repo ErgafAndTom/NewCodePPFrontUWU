@@ -5,13 +5,19 @@ import AfterNav from "./calc/AfterNav";
 import {useDispatch} from "react-redux";
 import {Route, Routes} from "react-router-dom";
 import Footer from "./footer/Footer";
+import Invoices from "../pages/Invoices";
 
 function AllWindow() {
     const dispatch = useDispatch();
-    useEffect(() => {
-        // dispatch(fetchPrices())
-    }, [])
     const [err, setErr] = useState(null);
+
+    useEffect(() => {
+        // Обробка помилок
+        window.addEventListener('error', (event) => {
+            setErr(event.error);
+        });
+    }, []);
+
     return (
         <div>
             <Routes>
@@ -27,6 +33,7 @@ function AllWindow() {
 
                 {/*<Route path="/CashFull" element={<Kassa setErr={setErr}/>} />*/}
                 {/*<Route path="/CashFull/:id" element={<Kassa setErr={setErr}/>} />*/}
+
 
                 <Route path="*" element={(
                     <>

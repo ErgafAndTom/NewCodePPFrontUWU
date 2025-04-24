@@ -24,7 +24,6 @@ function App() {
     }, []);
     return (
         <div>
-
             <Provider store={store}>
                 <Router>
                     <AllWindow/>

@@ -171,6 +171,14 @@ const Nav = () => {
                             >Вимоги
                             </button>
                         </Link>
+                        <Link to="/Invoices" style={{textDecoration: 'none', margin: 'auto', padding: '0', background: 'transparent'}}>
+                            <button
+                                onClick={() => handleBasicClick('/Invoices')}
+                                className={basicActive === "/Invoices" ? 'ButtonVimogi ButtonVimogia' : 'ButtonVimogi'}
+                                style={basicActive === "/Invoices" ? {background: "#FAB416"} : {}}
+                            >Рахунки
+                            </button>
+                        </Link>
                         {/*<Link disabled onClick={() => handleBasicClick('/Trello2')} to="/Trello2"*/}
                         {/*      style={{textDecoration: 'none', margin: 'auto', padding: '0', background: 'transparent'}}>*/}
                         {/*    <button*/}
