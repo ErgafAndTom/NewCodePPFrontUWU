@@ -22,6 +22,7 @@ import AddUserWindow from "../user/AddUserWindow";
 import { Button, Modal, Spinner, ListGroup, InputGroup } from "react-bootstrap";
 import NP from "./NP";
 import PaysInOrder from "./pays/PaysInOrder";
+import { buttonStyles, containerStyles, formStyles } from './styles';
 
 const ClientChangerUIArtem = ({ thisOrder, setThisOrder }) => {
     const navigate = useNavigate();
@@ -154,11 +155,11 @@ const ClientChangerUIArtem = ({ thisOrder, setThisOrder }) => {
     const handleAddNewUser = () => {
         setShowAddUser(true);
     };
-    
+
     // Обробник успішного додавання нового користувача
     const handleUserAdded = (newUser) => {
         fetchUsers(); // Оновлюємо список після додавання
-        
+
         // Автоматично обираємо нового користувача, якщо він успішно доданий
         if (newUser && newUser.id) {
             handleSelectUser(newUser.id);
@@ -169,7 +170,6 @@ const ClientChangerUIArtem = ({ thisOrder, setThisOrder }) => {
         <>
             {/* Кнопка для відкриття модального вікна */}
             <div
-                className="btn btn-sm btn-outline-primary"
                 onClick={handleShow}
                 style={{
                     display: 'flex',
@@ -178,8 +178,14 @@ const ClientChangerUIArtem = ({ thisOrder, setThisOrder }) => {
                     gap: '4px',
                     maxWidth: '100%',
                     overflow: 'hidden',
-                    padding: '8px 12px',
-                    textAlign: 'left'
+                    padding: '1vh',
+                    textAlign: 'left',
+                    borderRadius: '1vw',
+                    border: 'none',
+                    cursor: 'pointer',
+                    fontFamily: 'Montserrat, sans-serif',
+                    fontSize: '0.7vw',
+                    backgroundColor: '#F2F0E7'
                 }}
             >
                 <div style={{ display: 'flex', alignItems: 'center', gap: '8px', width: '100%' }}>
@@ -248,74 +254,65 @@ const ClientChangerUIArtem = ({ thisOrder, setThisOrder }) => {
             {!show && thisOrder.client && thisOrder.client.phoneNumber && (
                 <div className="d-flex gap-1 mt-2 justify-content-between">
                     <div className="d-flex gap-1">
-                        <Button
-                            variant="outline-secondary"
-                            size="sm"
+                        <button
                             onClick={() => openMessenger('viber')}
                             title="Viber"
+                            style={{ ...buttonStyles.base, ...buttonStyles.iconButton }}
                         >
                             <img src={viberlogo} alt="Viber" style={{ width: '16px', height: '16px' }} />
-                        </Button>
-                
-                        <Button
-                            variant="outline-secondary"
-                            size="sm"
+                        </button>
+
+                        <button
                             onClick={() => openMessenger('whatsapp')}
                             title="WhatsApp"
+                            style={{ ...buttonStyles.base, ...buttonStyles.iconButton }}
                         >
                             <img src={whatsapplogo} alt="WhatsApp" style={{ width: '16px', height: '16px' }} />
-                        </Button>
-            
-                        <Button
-                            variant="outline-secondary"
-                            size="sm"
+                        </button>
+
+                        <button
                             onClick={() => openMessenger('signal')}
                             title="Signal"
+                            style={{ ...buttonStyles.base, ...buttonStyles.iconButton }}
                         >
                             <img src={signallogo} alt="Signal" style={{ width: '16px', height: '16px' }} />
-                        </Button>
-            
+                        </button>
+
                         {thisOrder.client.telegramlogin && (
-                            <Button
-                                variant="outline-secondary"
-                                size="sm"
+                            <button
                                 onClick={() => openMessenger('telegram')}
                                 title="Telegram"
+                                style={{ ...buttonStyles.base, ...buttonStyles.iconButton }}
                             >
                                 <img src={telegram} alt="Telegram" style={{ width: '16px', height: '16px' }} />
-                            </Button>
+                            </button>
                         )}
-            
-                        <Button
-                            variant="outline-secondary"
-                            size="sm"
+
+                        <button
                             onClick={() => setShowNP(true)}
                             title="Нова Пошта"
+                            style={{ ...buttonStyles.base, ...buttonStyles.iconButton }}
                         >
                             НП
-                        </Button>
-            
-                        <Button
-                            variant="outline-secondary"
-                            size="sm"
+                        </button>
+
+                        <button
                             onClick={() => setShowPays(true)}
                             title="Платежі"
+                            style={{ ...buttonStyles.base, ...buttonStyles.iconButton }}
                         >
                             <img src={pays} alt="Платежі" style={{ width: '16px', height: '16px' }} />
-                        </Button>
-                        
-                        <Button
-                            variant="outline-secondary"
-                            size="sm"
+                        </button>
+
+                        <button
                             onClick={() => setShowDocGenerate(true)}
                             title="Генерувати документи"
+                            style={{ ...buttonStyles.base, ...buttonStyles.iconButton }}
                         >
                             <img src={dockGenerate} alt="Документи" style={{ width: '16px', height: '16px' }} />
-                        </Button>
-                        
-                        <Button
-                            variant="outline-secondary"
-                            size="sm"
+                        </button>
+
+                        <button
                             onClick={() => {
                                 if (thisOrder.client && thisOrder.client.id) {
                                     window.open(`/client-files/${thisOrder.client.id}`, '_blank');
@@ -324,16 +321,15 @@ const ClientChangerUIArtem = ({ thisOrder, setThisOrder }) => {
                                 }
                             }}
                             title="Файли клієнта"
+                            style={{ ...buttonStyles.base, ...buttonStyles.iconButton }}
                         >
                             <img src={FilesButton} alt="Файли" style={{ width: '16px', height: '16px' }} />
-                        </Button>
+                        </button>
                                             </div>
-                                            
+
                                             {thisOrder && (
                         thisOrder.status === "Нове замовлення" ? (
-                            <Button
-                                variant="success"
-                                size="sm"
+                            <button
                                 onClick={() => {
                                     // Логіка для взяття замовлення в роботу
                                     if (thisOrder && thisOrder.id) {
@@ -354,26 +350,34 @@ const ClientChangerUIArtem = ({ thisOrder, setThisOrder }) => {
                                     }
                                 }}
                                 title="Взяти в роботу"
-                                style={{ float: "right" }}
+                                style={{ 
+                                    ...buttonStyles.base, 
+                                    ...buttonStyles.takeWork, 
+                                    float: "right" 
+                                }}
                             >
                                 <i className="bi bi-briefcase me-1"></i> Взяти в роботу
-                            </Button>
+                            </button>
                         ) : (
-                            <Button
-                                variant="outline-secondary"
-                                size="sm"
+                            <button
                                 disabled={thisOrder.status !== "Нове замовлення"}
                                 title={thisOrder.status !== "Нове замовлення" ? "Замовлення вже в роботі" : "Взяти в роботу"}
-                                style={{ float: "right" }}
+                                style={{ 
+                                    ...buttonStyles.base, 
+                                    ...buttonStyles.secondary, 
+                                    ...buttonStyles.actionButton, 
+                                    float: "right",
+                                    cursor: 'default'
+                                }}
                             >
                                 <i className="bi bi-briefcase me-1"></i> 
                                 {thisOrder.worker ? `В роботі: ${thisOrder.worker.firstName}` : "В роботі"}
-                            </Button>
+                            </button>
                         )
                                             )}
                                         </div>
                                     )}
-                                    
+
                                     {/* Відображення помилки */}
                                     {error && (
                                         <div className="alert alert-danger alert-dismissible fade show mt-2" role="alert">
@@ -402,7 +406,7 @@ const ClientChangerUIArtem = ({ thisOrder, setThisOrder }) => {
                                             <strong>ID:</strong> {thisOrder.client.id}
                                         </div>
                                     </div>
-                                    
+
                                     <div className="mb-2 d-flex">
                                         <div className="me-2" style={{ width: '24px', textAlign: 'center' }}>
                                             <i className="bi bi-person"></i>
@@ -411,7 +415,7 @@ const ClientChangerUIArtem = ({ thisOrder, setThisOrder }) => {
                                             <strong>Ім'я:</strong> {thisOrder.client.firstName} {thisOrder.client.lastName} {thisOrder.client.familyName}
                                         </div>
                                     </div>
-                                    
+
                                     {thisOrder.client.phoneNumber && (
                                         <div className="mb-2 d-flex">
                                             <div className="me-2" style={{ width: '24px', textAlign: 'center' }}>
@@ -422,7 +426,7 @@ const ClientChangerUIArtem = ({ thisOrder, setThisOrder }) => {
                                             </div>
                                         </div>
                                     )}
-                                    
+
                                     {thisOrder.client.email && (
                                         <div className="mb-2 d-flex">
                                             <div className="me-2" style={{ width: '24px', textAlign: 'center' }}>
@@ -434,7 +438,7 @@ const ClientChangerUIArtem = ({ thisOrder, setThisOrder }) => {
                                         </div>
                                     )}
                                 </div>
-                                
+
                                 <div className="col-md-6">
                                     {thisOrder.client.address && (
                                         <div className="mb-2 d-flex">
@@ -446,7 +450,7 @@ const ClientChangerUIArtem = ({ thisOrder, setThisOrder }) => {
                                             </div>
                                         </div>
                                     )}
-                                    
+
                                     {thisOrder.client.discount && (
                                         <div className="mb-2 d-flex">
                                             <div className="me-2" style={{ width: '24px', textAlign: 'center' }}>
@@ -457,7 +461,7 @@ const ClientChangerUIArtem = ({ thisOrder, setThisOrder }) => {
                                             </div>
                                         </div>
                                     )}
-                                    
+
                                     {thisOrder.client.telegramlogin && (
                                         <div className="mb-2 d-flex">
                                             <div className="me-2" style={{ width: '24px', textAlign: 'center' }}>
@@ -468,7 +472,7 @@ const ClientChangerUIArtem = ({ thisOrder, setThisOrder }) => {
                                             </div>
                                         </div>
                                     )}
-                                    
+
                                     {thisOrder.client.notes && (
                                         <div className="mb-2 d-flex">
                                             <div className="me-2" style={{ width: '24px', textAlign: 'center' }}>
@@ -481,61 +485,61 @@ const ClientChangerUIArtem = ({ thisOrder, setThisOrder }) => {
                                     )}
                                 </div>
                             </div>
-                    
+
                             {/* Кнопки для взаємодії з поточним клієнтом */}
                             <div className="mt-3 d-flex flex-wrap gap-2">
                                 {thisOrder.client.phoneNumber && (
                                     <>
-                                        <Button
-                                            variant="outline-secondary"
-                                            size="sm"
+                                        <button
                                             onClick={() => openMessenger('viber')}
                                             title="Viber"
+                                            style={{ ...buttonStyles.base, ...buttonStyles.iconButton }}
                                         >
                                             <img src={viberlogo} alt="Viber" style={{ width: '20px', height: '20px' }} />
-                                        </Button>
-                    
-                                        <Button
-                                            variant="outline-secondary"
-                                            size="sm"
+                                        </button>
+
+                                        <button
                                             onClick={() => openMessenger('whatsapp')}
                                             title="WhatsApp"
+                                            style={{ ...buttonStyles.base, ...buttonStyles.iconButton }}
                                         >
                                             <img src={whatsapplogo} alt="WhatsApp" style={{ width: '20px', height: '20px' }} />
-                                        </Button>
-                    
-                                        <Button
-                                            variant="outline-secondary"
-                                            size="sm"
+                                        </button>
+
+                                        <button
                                             onClick={() => openMessenger('signal')}
                                             title="Signal"
+                                            style={{ ...buttonStyles.base, ...buttonStyles.iconButton }}
                                         >
                                             <img src={signallogo} alt="Signal" style={{ width: '20px', height: '20px' }} />
-                                        </Button>
+                                        </button>
                                     </>
                                 )}
-                    
+
                                 {thisOrder.client.telegramlogin && (
-                                    <Button
-                                        variant="outline-secondary"
-                                        size="sm"
+                                    <button
                                         onClick={() => openMessenger('telegram')}
                                         title="Telegram"
+                                        style={{ ...buttonStyles.base, ...buttonStyles.iconButton }}
                                     >
                                         <img src={telegram} alt="Telegram" style={{ width: '20px', height: '20px' }} />
-                                    </Button>
+                                    </button>
                                 )}
-                                
-                                <Button
-                                    variant="outline-primary"
-                                    size="sm"
+
+                                <button
                                     onClick={() => window.open(`/client/${thisOrder.client.id}`, '_blank')}
                                     title="Відкрити профіль клієнта"
-                                    style={{ marginLeft: 'auto', float: 'right' }}
+                                    style={{ 
+                                        ...buttonStyles.base, 
+                                        ...buttonStyles.primary, 
+                                        ...buttonStyles.actionButton,
+                                        marginLeft: 'auto',
+                                        float: 'right'
+                                    }}
                                 >
                                     <i className="bi bi-person-lines-fill me-1"></i>
                                     Профіль клієнта
-                                </Button>
+                                </button>
                             </div>
                         </div>
                     )}
@@ -549,19 +553,23 @@ const ClientChangerUIArtem = ({ thisOrder, setThisOrder }) => {
                                 value={searchQuery}
                                 onChange={handleSearchChange}
                             />
-                            <Button
-                                variant="outline-secondary"
+                            <button
                                 onClick={fetchUsers}
+                                style={{ ...buttonStyles.base, ...buttonStyles.iconButton }}
                             >
                                 <i className="bi bi-search"></i>
-                            </Button>
-                            <Button
-                                variant="success"
+                            </button>
+                            <button
                                 onClick={handleAddNewUser}
+                                style={{ 
+                                    ...buttonStyles.base, 
+                                    ...buttonStyles.warning, 
+                                    ...buttonStyles.actionButton
+                                }}
                             >
                                 <i className="bi bi-plus-circle me-1"></i>
                                 Створити нового
-                            </Button>
+                            </button>
                         </InputGroup>
                     </div>
 
@@ -615,26 +623,42 @@ const ClientChangerUIArtem = ({ thisOrder, setThisOrder }) => {
                             ) : (
                                 <div className="text-center p-4 bg-light rounded">
                                     <p>Немає клієнтів за даним запитом</p>
-                                    <Button 
-                                        variant="success" 
+                                    <button 
                                         onClick={handleAddNewUser}
+                                        style={{ 
+                                            ...buttonStyles.base, 
+                                            ...buttonStyles.createNew
+                                        }}
                                     >
                                         <i className="bi bi-plus-circle me-1"></i>
                                         Створити нового клієнта
-                                    </Button>
+                                    </button>
                                 </div>
                             )}
                         </div>
                     )}
                 </Modal.Body>
                 <Modal.Footer>
-                    <Button variant="secondary" onClick={handleClose}>
+                    <button 
+                        onClick={handleClose}
+                        style={{ 
+                            ...buttonStyles.base, 
+                            ...buttonStyles.close,
+                            marginRight: '0.5vw'
+                        }}
+                    >
                         Скасувати
-                    </Button>
+                    </button>
                     {thisOrder.client && (
-                        <Button variant="danger" onClick={() => handleSelectUser(null)}>
+                        <button 
+                            onClick={() => handleSelectUser(null)}
+                            style={{ 
+                                ...buttonStyles.base, 
+                                ...buttonStyles.delete
+                            }}
+                        >
                             Видалити вибір
-                        </Button>
+                        </button>
                     )}
                 </Modal.Footer>
             </Modal>
@@ -645,11 +669,11 @@ const ClientChangerUIArtem = ({ thisOrder, setThisOrder }) => {
                 onHide={() => setShowAddUser(false)}
                 onUserAdded={handleUserAdded}
             />
-            
+
             {/* Інші модальні вікна, які можуть бути потрібні */}
             {showNP && <NP show={showNP} onHide={() => setShowNP(false)} />}
             {showPays && <PaysInOrder show={showPays} onHide={() => setShowPays(false)} orderId={thisOrder.id} />}
-            
+
             {/* Модальне вікно для генерації документів */}
             <Modal 
                 show={showDocGenerate} 
@@ -674,78 +698,85 @@ const ClientChangerUIArtem = ({ thisOrder, setThisOrder }) => {
                                         <img src={whiteSVG} alt="Договір" style={{ width: '64px', height: '64px', marginBottom: '15px' }} />
                                         <h5 className="card-title">Договір</h5>
                                         <p className="card-text">Створення договору для замовлення</p>
-                                        <Button 
-                                            variant="primary" 
-                                            className="w-100"
+                                        <button 
                                             onClick={() => {
                                                 // Логіка для генерації договору
                                                 if (thisOrder && thisOrder.id) {
                                                     window.open(`/api/documents/contract/${thisOrder.id}`, '_blank');
                                                 }
                                             }}
+                                            style={{ 
+                                                ...buttonStyles.base, 
+                                                ...buttonStyles.primary, 
+                                                width: '100%'
+                                            }}
                                         >
                                             <i className="bi bi-file-earmark-text me-2"></i>
                                             Згенерувати договір
-                                        </Button>
+                                        </button>
                                     </div>
                                 </div>
                             </div>
-                            
+
                             <div className="col-md-6">
                                 <div className="card h-100">
                                     <div className="card-body text-center">
                                         <img src={barcode} alt="Накладна" style={{ width: '64px', height: '64px', marginBottom: '15px' }} />
                                         <h5 className="card-title">Накладна</h5>
                                         <p className="card-text">Створення накладної для замовлення</p>
-                                        <Button 
-                                            variant="primary" 
-                                            className="w-100"
+                                        <button 
                                             onClick={() => {
                                                 // Логіка для генерації накладної
                                                 if (thisOrder && thisOrder.id) {
                                                     window.open(`/api/documents/invoice/${thisOrder.id}`, '_blank');
                                                 }
                                             }}
+                                            style={{ 
+                                                ...buttonStyles.base, 
+                                                ...buttonStyles.primary, 
+                                                width: '100%'
+                                            }}
                                         >
                                             <i className="bi bi-receipt me-2"></i>
                                             Згенерувати накладну
-                                        </Button>
+                                        </button>
                                     </div>
                                 </div>
                             </div>
-                            
+
                             <div className="col-md-6">
                                 <div className="card h-100">
                                     <div className="card-body text-center">
                                         <img src={profile} alt="Акт" style={{ width: '64px', height: '64px', marginBottom: '15px' }} />
                                         <h5 className="card-title">Акт виконаних робіт</h5>
                                         <p className="card-text">Створення акту виконаних робіт</p>
-                                        <Button 
-                                            variant="primary" 
-                                            className="w-100"
+                                        <button 
                                             onClick={() => {
                                                 // Логіка для генерації акту
                                                 if (thisOrder && thisOrder.id) {
                                                     window.open(`/api/documents/act/${thisOrder.id}`, '_blank');
                                                 }
                                             }}
+                                            style={{ 
+                                                ...buttonStyles.base, 
+                                                ...buttonStyles.primary, 
+                                                width: '100%'
+                                            }}
                                         >
                                             <i className="bi bi-file-check me-2"></i>
                                             Згенерувати акт
-                                        </Button>
+                                        </button>
                                     </div>
                                 </div>
                             </div>
-                            
+
                             <div className="col-md-6">
                                 <div className="card h-100">
                                     <div className="card-body text-center">
                                         <img src={www} alt="Рахунок-фактура" style={{ width: '64px', height: '64px', marginBottom: '15px' }} />
                                         <h5 className="card-title">Рахунок-фактура</h5>
                                         <p className="card-text">Створення рахунку-фактури для замовлення</p>
-                                        <Button 
-                                            variant="primary" 
-                                            className="w-100"
+                                        <button 
                                             onClick={() => {
                                                 // Логіка для генерації рахунку-фактури
                                                 if (thisOrder && thisOrder.id) {
@@ -753,10 +784,15 @@ const ClientChangerUIArtem = ({ thisOrder, setThisOrder }) => {
                                                     setShowDocGenerate(false);
                                                 }
                                             }}
+                                            style={{ 
+                                                ...buttonStyles.base, 
+                                                ...buttonStyles.primary, 
+                                                width: '100%'
+                                            }}
                                         >
                                             <i className="bi bi-cash-coin me-2"></i>
                                             Згенерувати рахунок
-                                        </Button>
+                                        </button>
                                     </div>
                                 </div>
                             </div>
@@ -764,9 +800,12 @@ const ClientChangerUIArtem = ({ thisOrder, setThisOrder }) => {
                     )}
                 </Modal.Body>
                 <Modal.Footer>
-                    <Button variant="secondary" onClick={() => setShowDocGenerate(false)}>
+                    <button 
+                        onClick={() => setShowDocGenerate(false)}
+                        style={{ ...buttonStyles.base, ...buttonStyles.close }}
+                    >
                         Закрити
-                    </Button>
+                    </button>
                 </Modal.Footer>
             </Modal>
         </>

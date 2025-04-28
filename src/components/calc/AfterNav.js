@@ -34,7 +34,7 @@ import Widephototab from "../admin/crm/Vimogi/Widephototab";
 import Holsttab from "../admin/crm/Vimogi/Holsttab";
 import CounterpartyList from "../../PrintPeaksFAinal/novaPoshta/CounterpartyList";
 import LifeHackLikeBoards2 from "../../PrintPeaksFAinal/lifeHacksBoard/LifeHackLikeBoards2";
-import MyFiles from "../../PrintPeaksFAinal/user/MyFiles";
+import UserFiles from "../../PrintPeaksFAinal/user/UserFiles";
 import Payments from "../../PrintPeaksFAinal/user/Payments";
 import Invoices from "../../pages/Invoices";
 
@@ -90,7 +90,7 @@ const AfterNav = () => {
                 <Route path="/Users" element={<UsersCustomTable />} />
 
                 <Route path="/currentUser" element={<Profile />} />
-                <Route path="/myFiles" element={<MyFiles />} />
+                <Route path="/myFiles" element={<UserFiles />} />
                 <Route path="/myPayments" element={<Payments />} />
 
                 <Route path="/Orders" element={<CustomOrderTable2 />} />

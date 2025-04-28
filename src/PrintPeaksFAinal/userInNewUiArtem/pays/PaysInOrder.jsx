@@ -188,7 +188,8 @@ function PaysInOrder({ show, onHide, orderId }) {
         setLoading(true);
         try {
             const response = await axios.get(`/orders/payments/${orderId}`);
-            setPayments(response.data || []);
+            // Переконуємося, що payments завжди є масивом
+            setPayments(Array.isArray(response.data) ? response.data : []);
             setLoading(false);
         } catch (error) {
             setLoading(false);
@@ -276,7 +277,7 @@ function PaysInOrder({ show, onHide, orderId }) {
 
     // Обчислення загальної суми платежів
     const calculateTotalPaid = () => {
-        return payments.reduce((total, payment) => total + parseFloat(payment.amount), 0);
+        return Array.isArray(payments) ? payments.reduce((total, payment) => total + parseFloat(payment.amount), 0) : 0;
     };
 
     // Обчислення суми до сплати
@@ -461,7 +462,7 @@ function PaysInOrder({ show, onHide, orderId }) {
                                     </tr>
                                 </thead>
                                 <tbody>
-                                    {payments.map((payment, index) => (
+                                    {Array.isArray(payments) && payments.map((payment, index) => (
                                         <tr key={payment.id}>
                                             <td>{index + 1}</td>
                                             <td>{formatDate(payment.createdAt)}</td>
