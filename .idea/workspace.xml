@@ -69,23 +69,26 @@
     &quot;Node.js.ClientChangerUIArtem.jsx.executor&quot;: &quot;Run&quot;,
     &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
     &quot;RunOnceActivity.git.unshallow&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.rust.reset.selective.auto.import&quot;: &quot;true&quot;,
     &quot;git-widget-placeholder&quot;: &quot;master&quot;,
     &quot;ignore.virus.scanning.warn.message&quot;: &quot;true&quot;,
     &quot;junie.onboarding.icon.badge.shown&quot;: &quot;true&quot;,
-    &quot;last_opened_file_path&quot;: &quot;C:/Users/AIATO/Desktop/CodePPNew/frontpp&quot;,
+    &quot;last_opened_file_path&quot;: &quot;D:/code Old/frontpp&quot;,
     &quot;list.type.of.created.stylesheet&quot;: &quot;CSS&quot;,
     &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
     &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
     &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
     &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
     &quot;nodejs.mocha.mocha_node_package_dir&quot;: &quot;&quot;,
-    &quot;nodejs_package_manager_path&quot;: &quot;yarn&quot;,
+    &quot;nodejs_interpreter_path&quot;: &quot;C:/Users/AIATO/AppData/Roaming/JetBrains/RustRover2025.1/node/versions/22.15.0/node&quot;,
+    &quot;nodejs_package_manager_path&quot;: &quot;C:\\Users\\AIATO\\AppData\\Roaming\\JetBrains\\RustRover2025.1\\node\\versions\\22.15.0\\npm.cmd&quot;,
     &quot;npm.React Buddy Preview.executor&quot;: &quot;Run&quot;,
     &quot;npm.build.executor&quot;: &quot;Run&quot;,
     &quot;npm.start.executor&quot;: &quot;Run&quot;,
+    &quot;org.rust.cargo.project.model.impl.CargoExternalSystemProjectAware.subscribe.first.balloon&quot;: &quot;&quot;,
     &quot;run.code.analysis.last.selected.profile&quot;: &quot;pProject Default&quot;,
     &quot;settings.editor.selected.configurable&quot;: &quot;ml.llm.LLMThirdPartyAiProvidersConfigurable&quot;,
-    &quot;ts.external.directory.path&quot;: &quot;C:\\Users\\AIATO\\Desktop\\CodePPNew\\frontpp\\node_modules\\typescript\\lib&quot;,
+    &quot;ts.external.directory.path&quot;: &quot;D:\\code Old\\frontpp\\node_modules\\typescript\\lib&quot;,
     &quot;two.files.diff.last.used.file&quot;: &quot;C:/Users/AIATO/Desktop/CodePPNew/frontpp/src/components/admin/crm/Vimogi/Colorprinthelpsmall.jsx&quot;,
     &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
   }
@@ -264,6 +267,20 @@
       <workItem from="1745809553804" duration="1402000" />
       <workItem from="1745877378207" duration="389000" />
       <workItem from="1745878375044" duration="595000" />
+      <workItem from="1745887316607" duration="1266000" />
+      <workItem from="1745919285622" duration="647000" />
+      <workItem from="1745925263202" duration="5861000" />
+      <workItem from="1745955252762" duration="1091000" />
+      <workItem from="1745962242033" duration="168000" />
+      <workItem from="1745962427583" duration="30000" />
+      <workItem from="1745962470242" duration="262000" />
+      <workItem from="1745962749890" duration="1433000" />
+      <workItem from="1746025724693" duration="4266000" />
+      <workItem from="1746213496558" duration="39000" />
+      <workItem from="1746213570758" duration="69000" />
+      <workItem from="1746213653405" duration="5638000" />
+      <workItem from="1746226916532" duration="1531000" />
+      <workItem from="1746286634861" duration="1119000" />
     </task>
     <task id="LOCAL-00030" summary="ddd">
       <option name="closed" value="true" />
@@ -679,5 +696,15 @@
     <option name="CHECK_NEW_TODO" value="false" />
     <MESSAGE value="ddd" />
     <option name="LAST_COMMIT_MESSAGE" value="ddd" />
+    <option name="NON_MODAL_COMMIT_POSTPONE_SLOW_CHECKS" value="false" />
+  </component>
+  <component name="XSLT-Support.FileAssociations.UIState">
+    <expand />
+    <select />
+  </component>
+  <component name="com.apollographql.ijplugin.settings.ProjectSettingsState">
+    <option name="hasEnabledGraphQLPluginApolloKotlinSupport" value="true" />
+    <option name="lspPassPathToSuperGraphYaml" value="false" />
+    <option name="telemetryInstanceId" value="f447a17f-f8aa-4ae4-8b17-f2035b99285f" />
   </component>
 </project>
