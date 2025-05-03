@@ -7,10 +7,11 @@ const counterpartyApi = {
   /**
    * Отримати всіх контрагентів користувача
    * @param {number} userId - ID користувача
+   * @param {Object} getData
    * @returns {Promise} - Promise з даними контрагентів
    */
-  getCounterparties: (userId) => {
-    return axios.get(`/user/counterparties/${userId}`);
+  getCounterparties: (userId, getData) => {
+    return axios.post(`/user/getMyPayments`, getData);
   },
 
   /**

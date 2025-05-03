@@ -289,13 +289,13 @@ const ClientChangerUIArtem = ({thisOrder, setThisOrder}) => {
                             </button>
                         )}
 
-                        <button
-                            onClick={() => setShowNP(true)}
-                            title="Нова Пошта"
-                            style={{...buttonStyles.base, ...buttonStyles.iconButton}}
-                        >
-                            НП
-                        </button>
+                        {/*<button*/}
+                        {/*    onClick={() => setShowNP(true)}*/}
+                        {/*    title="Нова Пошта"*/}
+                        {/*    style={{...buttonStyles.base, ...buttonStyles.iconButton}}*/}
+                        {/*>*/}
+                        {/*    НП*/}
+                        {/*</button>*/}
 
                         <button
                             onClick={() => setShowPays(true)}
@@ -688,7 +688,7 @@ const ClientChangerUIArtem = ({thisOrder, setThisOrder}) => {
             />
 
             {/* Інші модальні вікна, які можуть бути потрібні */}
-            {showNP && <NP show={showNP} onHide={() => setShowNP(false)}/>}
+            {/*{showNP && <NP show={showNP} onHide={() => setShowNP(false)}/>}*/}
             {showPays && <PaysInOrder show={showPays} onHide={() => setShowPays(false)} orderId={thisOrder.id}/>}
 
             {/* Модальне вікно для генерації документів */}

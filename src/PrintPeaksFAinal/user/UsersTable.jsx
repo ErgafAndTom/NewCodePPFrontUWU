@@ -13,7 +13,7 @@ import {Navigate, useNavigate} from "react-router-dom";
 export const UsersTable = ({name}) => {
     const [data, setData] = useState(null);
     const navigate = useNavigate();
-    const [inPageCount, setInPageCount] = useState(27);
+    const [inPageCount, setInPageCount] = useState(100);
     const [currentPage, setCurrentPage] = useState(1);
     const [pageCount, setPageCount] = useState(null);
     const [typeSelect, setTypeSelect] = useState("");

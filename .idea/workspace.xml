@@ -5,14 +5,12 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="7e58169f-d1e8-4cb2-8753-447dd0b39044" name="Changes" comment="ddd">
-      <change afterPath="$PROJECT_DIR$/.junie/guidelines.md" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/1.svg" beforeDir="false" afterPath="$PROJECT_DIR$/src/1.svg" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/PrintPeaksFAinal/user/profile/Profile.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/PrintPeaksFAinal/user/profile/Profile.jsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/PrintPeaksFAinal/user/profile/styles.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/PrintPeaksFAinal/user/profile/styles.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/PrintPeaksFAinal/user/UsersTable.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/PrintPeaksFAinal/user/UsersTable.jsx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/PrintPeaksFAinal/userInNewUiArtem/ClientChangerUIArtem.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/PrintPeaksFAinal/userInNewUiArtem/ClientChangerUIArtem.jsx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/PrintPeaksFAinal/userInNewUiArtem/pays/PaysInOrder.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/PrintPeaksFAinal/userInNewUiArtem/pays/PaysInOrder.jsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/calc/AfterNav.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/calc/AfterNav.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/api/counterpartyApi.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/api/counterpartyApi.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/usersettings/Counterparty.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/usersettings/Counterparty.js" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -42,12 +40,12 @@
     &quot;assignee&quot;: &quot;ErgafAndTom&quot;
   }
 }</component>
-  <component name="GithubPullRequestsUISettings"><![CDATA[{
-  "selectedUrlAndAccountId": {
-    "url": "https://github.com/ErgafAndTom/NewCodePPFrontUWU.git",
-    "accountId": "d0c3c3cd-83f7-4644-ba19-f4aae714a2fd"
+  <component name="GithubPullRequestsUISettings">{
+  &quot;selectedUrlAndAccountId&quot;: {
+    &quot;url&quot;: &quot;https://github.com/ErgafAndTom/NewCodePPFrontUWU.git&quot;,
+    &quot;accountId&quot;: &quot;d0c3c3cd-83f7-4644-ba19-f4aae714a2fd&quot;
   }
-}]]></component>
+}</component>
   <component name="PackageJsonUpdateNotifier">
     <dismissed value="$PROJECT_DIR$/package.json" />
   </component>
@@ -281,6 +279,8 @@
       <workItem from="1746213653405" duration="5638000" />
       <workItem from="1746226916532" duration="1531000" />
       <workItem from="1746286634861" duration="1805000" />
+      <workItem from="1746298275057" duration="315000" />
+      <workItem from="1746304652943" duration="659000" />
     </task>
     <task id="LOCAL-00031" summary="ddd">
       <option name="closed" value="true" />

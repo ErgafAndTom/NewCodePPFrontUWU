@@ -5,6 +5,11 @@
 import "./styles.css"
 import AddPaysInOrder from "./AddPayInOrder";
 import ModalDeleteOrder from "../../Orders/ModalDeleteOrder";
+import React, { useState, useEffect } from "react";
+import axios from "../../../api/axiosInstance";
+import { useNavigate } from "react-router-dom";
+import { Modal, Button, Form, Table, Spinner, Alert, Badge, Row, Col, InputGroup } from "react-bootstrap";
+import { BsCashCoin, BsCreditCard, BsBank, BsCashStack, BsCurrencyExchange } from "react-icons/bs";
 
 // function PaysInOrder({ showPays, setShowPays, thisOrder, setThisOrder }) {
 //     const [load, setLoad] = useState(false);
@@ -129,11 +134,6 @@ import ModalDeleteOrder from "../../Orders/ModalDeleteOrder";
 //                 setLoad(false);
 //             });
 //     };
-import React, { useState, useEffect } from "react";
-import axios from "../../../api/axiosInstance";
-import { useNavigate } from "react-router-dom";
-import { Modal, Button, Form, Table, Spinner, Alert, Badge, Row, Col, InputGroup } from "react-bootstrap";
-import { BsCashCoin, BsCreditCard, BsBank, BsCashStack, BsCurrencyExchange } from "react-icons/bs";
 
 const PaymentMethodIcons = {
     "Готівка": <BsCashCoin className="me-2" />,

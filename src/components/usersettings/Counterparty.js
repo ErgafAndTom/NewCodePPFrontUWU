@@ -38,19 +38,35 @@ const Counterparty = () => {
   });
   const [validated, setValidated] = useState(false);
 
+  const [inPageCount, setInPageCount] = useState(100);
+  const [currentPage, setCurrentPage] = useState(1);
+  const [pageCount, setPageCount] = useState(null);
+  const [typeSelect, setTypeSelect] = useState("");
+  const [thisColumn, setThisColumn] = useState({
+    column: "id",
+    reverse: false
+  });
+
   // Завантаження контрагентів користувача
   useEffect(() => {
     if (user && user.id) {
       fetchCounterparties();
     }
-  }, [user]);
+  }, [user, searchTerm]);
 
   const fetchCounterparties = async () => {
     setLoading(true);
     setError(null);
+    let getData = {
+      inPageCount: inPageCount,
+      currentPage: currentPage,
+      search: searchTerm,
+      columnName: thisColumn,
+    }
     try {
-      const response = await counterpartyApi.getCounterparties(user.id);
-      setCounterparties(response.data || []);
+      const response = await counterpartyApi.getCounterparties(user.id, getData);
+      console.log(response.data.rows);
+      setCounterparties(response.data.rows || []);
       setLoading(false);
     } catch (err) {
       setError('Помилка при завантаженні контрагентів: ' + (err.response?.data?.message || err.message));
@@ -59,11 +75,13 @@ const Counterparty = () => {
   };
 
   // Фільтрація контрагентів за пошуковим запитом
-  const filteredCounterparties = counterparties.filter(cp => 
-    cp.name.toLowerCase().includes(searchTerm.toLowerCase()) || 
-    cp.code.includes(searchTerm) ||
-    cp.contactPerson.name.toLowerCase().includes(searchTerm.toLowerCase())
-  );
+  // const filteredCounterparties = counterparties.filter(cp =>
+  //   cp.name.toLowerCase().includes(searchTerm.toLowerCase()) ||
+  //   cp.code.includes(searchTerm) ||
+  //   cp.contactPerson.name.toLowerCase().includes(searchTerm.toLowerCase())
+  // );
+  const filteredCounterparties = counterparties
+
 
   // Обробники форми
   const handleInputChange = (e) => {
@@ -376,7 +394,7 @@ const Counterparty = () => {
   );
 
   return (
-    <Container className="mt-4">
+    <div className="mt-4">
       <h2 className="mb-4">Мої контрагенти</h2>
 
       {error && (
@@ -457,22 +475,22 @@ const Counterparty = () => {
                   {counterparty.address && (
                     <p className="mb-1"><strong>Адреса:</strong> {counterparty.address}</p>
                   )}
-                  {counterparty.contactPerson.name && (
-                    <p className="mb-1">
-                      <strong>Контактна особа:</strong> {counterparty.contactPerson.name}
-                      {counterparty.contactPerson.position && `, ${counterparty.contactPerson.position}`}
-                      {counterparty.contactPerson.phone && `, ${counterparty.contactPerson.phone}`}
-                    </p>
-                  )}
-                  {counterparty.bankDetails.bankName && (
-                    <p className="mb-1">
-                      <strong>Банк:</strong> {counterparty.bankDetails.bankName}
-                      {counterparty.bankDetails.mfo && `, МФО: ${counterparty.bankDetails.mfo}`}
-                    </p>
-                  )}
-                  {counterparty.bankDetails.account && (
-                    <p className="mb-1"><strong>Р/р:</strong> {counterparty.bankDetails.account}</p>
-                  )}
+                  {/*{counterparty.contactPerson.name && (*/}
+                  {/*  <p className="mb-1">*/}
+                  {/*    <strong>Контактна особа:</strong> {counterparty.contactPerson.name}*/}
+                  {/*    {counterparty.contactPerson.position && `, ${counterparty.contactPerson.position}`}*/}
+                  {/*    {counterparty.contactPerson.phone && `, ${counterparty.contactPerson.phone}`}*/}
+                  {/*  </p>*/}
+                  {/*)}*/}
+                  {/*{counterparty.bankDetails.bankName && (*/}
+                  {/*  <p className="mb-1">*/}
+                  {/*    <strong>Банк:</strong> {counterparty.bankDetails.bankName}*/}
+                  {/*    {counterparty.bankDetails.mfo && `, МФО: ${counterparty.bankDetails.mfo}`}*/}
+                  {/*  </p>*/}
+                  {/*)}*/}
+                  {/*{counterparty.bankDetails.account && (*/}
+                  {/*  <p className="mb-1"><strong>Р/р:</strong> {counterparty.bankDetails.account}</p>*/}
+                  {/*)}*/}
                 </Col>
                 <Col md={4} className="text-end">
                   <Button 
@@ -617,7 +635,7 @@ const Counterparty = () => {
           </Button>
         </Modal.Footer>
       </Modal>
-    </Container>
+    </div>
   );
 };
 
