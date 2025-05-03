@@ -498,6 +498,7 @@ const NewSheetCut = ({
                                             className="versant80-img-icon"
                                             style={{
                                                 width: "13.5vw",
+                                                height: "23vh"
 
 
                                             }}

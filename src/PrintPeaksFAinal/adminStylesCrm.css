@@ -148,7 +148,8 @@
     font-weight: bold;
 }
 .fontInfoForPricing {
-    font-size: 1vw;
+    font-size: 1.3vmin;
+    /*font-size: clamp(10px, 1.5vmin, 14px);*/
 }
 .fontProductName {
     font-size: 1vw;

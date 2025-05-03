@@ -274,7 +274,7 @@ const NewUIArtem = () => {
                                     className="d-flex flex-column align-content-center align-items-center justify-content-center">
                                     <div
                                         onClick={(event) => setShowPerepletMet(true)}
-                                        className="cursorPointer printers gif"
+                                        className="cursorPointer printers gif "
                                         style={{width: "8vw", marginLeft: "0vw"}}>
                                         <img src={imgg6} className="card-img-top noanim" alt="..."/>
                                         <img src={img9} className="card-img-top anim" alt="..."/>

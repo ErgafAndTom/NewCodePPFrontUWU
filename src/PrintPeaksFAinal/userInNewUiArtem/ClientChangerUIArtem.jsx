@@ -1,4 +1,4 @@
-import React, { useCallback, useEffect, useState } from "react";
+import React, {useCallback, useEffect, useState} from "react";
 import './ClientArtem.css';
 import './ClientsMenuu.css';
 import www from "./www.svg";
@@ -17,14 +17,14 @@ import telegram from "./img/Telegram-icon-on-transparent-background-PNG.png";
 import FilesButton from "./img/files-icon.png";
 import addclienticons from "./img/Path 13360.png";
 import Tooltip from '../TooltipButton2';
-import { useNavigate } from "react-router-dom";
+import {useNavigate} from "react-router-dom";
 import AddUserWindow from "../user/AddUserWindow";
-import { Button, Modal, Spinner, ListGroup, InputGroup } from "react-bootstrap";
+import {Button, Modal, Spinner, ListGroup, InputGroup} from "react-bootstrap";
 import NP from "./NP";
 import PaysInOrder from "./pays/PaysInOrder";
-import { buttonStyles, containerStyles, formStyles } from './styles';
+import {buttonStyles, containerStyles, formStyles} from './styles';
 
-const ClientChangerUIArtem = ({ thisOrder, setThisOrder }) => {
+const ClientChangerUIArtem = ({thisOrder, setThisOrder}) => {
     const navigate = useNavigate();
     const [showAddUser, setShowAddUser] = useState(false);
     const [showDocGenerate, setShowDocGenerate] = useState(false);
@@ -33,7 +33,7 @@ const ClientChangerUIArtem = ({ thisOrder, setThisOrder }) => {
     const [load, setLoad] = useState(false);
     const [searchQuery, setSearchQuery] = useState("");
     const [typeSelect, setTypeSelect] = useState("");
-    const [users, setUsers] = useState({ rows: [] });
+    const [users, setUsers] = useState({rows: []});
     const [show, setShow] = useState(false);
     const [error, setError] = useState(false);
     const [filteredUsers, setFilteredUsers] = useState([]);
@@ -188,8 +188,9 @@ const ClientChangerUIArtem = ({ thisOrder, setThisOrder }) => {
                     backgroundColor: '#F2F0E7'
                 }}
             >
-                <div style={{ display: 'flex', alignItems: 'center', gap: '8px', width: '100%' }}>
-                    <img src={ChangeClienticons} alt="Change Client" style={{ width: '20px', height: '20px', flexShrink: 0 }} />
+                <div style={{display: 'flex', alignItems: 'center', gap: '8px', width: '100%'}}>
+                    <img src={ChangeClienticons} alt="Change Client"
+                         style={{width: '20px', height: '20px', flexShrink: 0}}/>
                     {thisOrder.client ? (
                         <span className="fw-semibold">
                             {thisOrder.client.firstName} {thisOrder.client.lastName} {thisOrder.client.familyName}
@@ -200,7 +201,7 @@ const ClientChangerUIArtem = ({ thisOrder, setThisOrder }) => {
                 </div>
 
                 {thisOrder.client && (
-                    <div className="client-details" style={{ fontSize: '0.85rem', width: '100%' }}>
+                    <div className="client-details" style={{fontSize: '0.85rem', width: '100%'}}>
                         <div className="d-flex flex-wrap">
                             {thisOrder.client.id && (
                                 <div className="me-2">
@@ -257,41 +258,41 @@ const ClientChangerUIArtem = ({ thisOrder, setThisOrder }) => {
                         <button
                             onClick={() => openMessenger('viber')}
                             title="Viber"
-                            style={{ ...buttonStyles.base, ...buttonStyles.iconButton }}
+                            style={{...buttonStyles.base, ...buttonStyles.iconButton}}
                         >
-                            <img src={viberlogo} alt="Viber" style={{ width: '16px', height: '16px' }} />
+                            <img src={viberlogo} alt="Viber" style={{width: '16px', height: '16px'}}/>
                         </button>
 
                         <button
                             onClick={() => openMessenger('whatsapp')}
                             title="WhatsApp"
-                            style={{ ...buttonStyles.base, ...buttonStyles.iconButton }}
+                            style={{...buttonStyles.base, ...buttonStyles.iconButton}}
                         >
-                            <img src={whatsapplogo} alt="WhatsApp" style={{ width: '16px', height: '16px' }} />
+                            <img src={whatsapplogo} alt="WhatsApp" style={{width: '16px', height: '16px'}}/>
                         </button>
 
                         <button
                             onClick={() => openMessenger('signal')}
                             title="Signal"
-                            style={{ ...buttonStyles.base, ...buttonStyles.iconButton }}
+                            style={{...buttonStyles.base, ...buttonStyles.iconButton}}
                         >
-                            <img src={signallogo} alt="Signal" style={{ width: '16px', height: '16px' }} />
+                            <img src={signallogo} alt="Signal" style={{width: '16px', height: '16px'}}/>
                         </button>
 
                         {thisOrder.client.telegramlogin && (
                             <button
                                 onClick={() => openMessenger('telegram')}
                                 title="Telegram"
-                                style={{ ...buttonStyles.base, ...buttonStyles.iconButton }}
+                                style={{...buttonStyles.base, ...buttonStyles.iconButton}}
                             >
-                                <img src={telegram} alt="Telegram" style={{ width: '16px', height: '16px' }} />
+                                <img src={telegram} alt="Telegram" style={{width: '16px', height: '16px'}}/>
                             </button>
                         )}
 
                         <button
                             onClick={() => setShowNP(true)}
                             title="Нова Пошта"
-                            style={{ ...buttonStyles.base, ...buttonStyles.iconButton }}
+                            style={{...buttonStyles.base, ...buttonStyles.iconButton}}
                         >
                             НП
                         </button>
@@ -299,17 +300,17 @@ const ClientChangerUIArtem = ({ thisOrder, setThisOrder }) => {
                         <button
                             onClick={() => setShowPays(true)}
                             title="Платежі"
-                            style={{ ...buttonStyles.base, ...buttonStyles.iconButton }}
+                            style={{...buttonStyles.base, ...buttonStyles.iconButton}}
                         >
-                            <img src={pays} alt="Платежі" style={{ width: '16px', height: '16px' }} />
+                            <img src={pays} alt="Платежі" style={{width: '16px', height: '16px'}}/>
                         </button>
 
                         <button
                             onClick={() => setShowDocGenerate(true)}
                             title="Генерувати документи"
-                            style={{ ...buttonStyles.base, ...buttonStyles.iconButton }}
+                            style={{...buttonStyles.base, ...buttonStyles.iconButton}}
                         >
-                            <img src={dockGenerate} alt="Документи" style={{ width: '16px', height: '16px' }} />
+                            <img src={dockGenerate} alt="Документи" style={{width: '16px', height: '16px'}}/>
                         </button>
 
                         <button
@@ -321,68 +322,68 @@ const ClientChangerUIArtem = ({ thisOrder, setThisOrder }) => {
                                 }
                             }}
                             title="Файли клієнта"
-                            style={{ ...buttonStyles.base, ...buttonStyles.iconButton }}
+                            style={{...buttonStyles.base, ...buttonStyles.iconButton}}
                         >
-                            <img src={FilesButton} alt="Файли" style={{ width: '16px', height: '16px' }} />
+                            <img src={FilesButton} alt="Файли" style={{width: '16px', height: '16px'}}/>
                         </button>
-                                            </div>
+                    </div>
 
-                                            {thisOrder && (
-                        thisOrder.status === "Нове замовлення" ? (
-                            <button
-                                onClick={() => {
-                                    // Логіка для взяття замовлення в роботу
-                                    if (thisOrder && thisOrder.id) {
-                                        setLoad(true);
-                                        axios.post(`/orders/takeToWork/${thisOrder.id}`)
-                                            .then(response => {
-                                                setLoad(false);
-                                                setThisOrder(response.data);
-                                            })
-                                            .catch(error => {
-                                                setLoad(false);
-                                                if (error.response && error.response.status === 403) {
-                                                    navigate('/login');
-                                                }
-                                                setError(error.message);
-                                                console.error(error.message);
-                                            });
-                                    }
-                                }}
-                                title="Взяти в роботу"
-                                style={{ 
-                                    ...buttonStyles.base, 
-                                    ...buttonStyles.takeWork, 
-                                    float: "right" 
-                                }}
-                            >
-                                <i className="bi bi-briefcase me-1"></i> Взяти в роботу
-                            </button>
-                        ) : (
-                            <button
-                                disabled={thisOrder.status !== "Нове замовлення"}
-                                title={thisOrder.status !== "Нове замовлення" ? "Замовлення вже в роботі" : "Взяти в роботу"}
-                                style={{ 
-                                    ...buttonStyles.base, 
-                                    ...buttonStyles.secondary, 
-                                    ...buttonStyles.actionButton, 
-                                    float: "right",
-                                    cursor: 'default'
-                                }}
-                            >
-                                <i className="bi bi-briefcase me-1"></i> 
-                                {thisOrder.worker ? `В роботі: ${thisOrder.worker.firstName}` : "В роботі"}
-                            </button>
-                        )
-                                            )}
-                                        </div>
-                                    )}
+                    {/*{thisOrder && (*/}
+                    {/*    thisOrder.status === "Нове замовлення" ? (*/}
+                    {/*        <button*/}
+                    {/*            onClick={() => {*/}
+                    {/*                // Логіка для взяття замовлення в роботу*/}
+                    {/*                if (thisOrder && thisOrder.id) {*/}
+                    {/*                    setLoad(true);*/}
+                    {/*                    axios.post(`/orders/takeToWork/${thisOrder.id}`)*/}
+                    {/*                        .then(response => {*/}
+                    {/*                            setLoad(false);*/}
+                    {/*                            setThisOrder(response.data);*/}
+                    {/*                        })*/}
+                    {/*                        .catch(error => {*/}
+                    {/*                            setLoad(false);*/}
+                    {/*                            if (error.response && error.response.status === 403) {*/}
+                    {/*                                navigate('/login');*/}
+                    {/*                            }*/}
+                    {/*                            setError(error.message);*/}
+                    {/*                            console.error(error.message);*/}
+                    {/*                        });*/}
+                    {/*                }*/}
+                    {/*            }}*/}
+                    {/*            title="Взяти в роботу"*/}
+                    {/*            style={{*/}
+                    {/*                ...buttonStyles.base,*/}
+                    {/*                ...buttonStyles.takeWork,*/}
+                    {/*                float: "right"*/}
+                    {/*            }}*/}
+                    {/*        >*/}
+                    {/*            <i className="bi bi-briefcase me-1"></i> Взяти в роботу*/}
+                    {/*        </button>*/}
+                    {/*    ) : (*/}
+                    {/*        <button*/}
+                    {/*            disabled={thisOrder.status !== "Нове замовлення"}*/}
+                    {/*            title={thisOrder.status !== "Нове замовлення" ? "Замовлення вже в роботі" : "Взяти в роботу"}*/}
+                    {/*            style={{*/}
+                    {/*                ...buttonStyles.base,*/}
+                    {/*                ...buttonStyles.secondary,*/}
+                    {/*                ...buttonStyles.actionButton,*/}
+                    {/*                float: "right",*/}
+                    {/*                cursor: 'default'*/}
+                    {/*            }}*/}
+                    {/*        >*/}
+                    {/*            <i className="bi bi-briefcase me-1"></i>*/}
+                    {/*            /!*{thisOrder.worker ? `В роботі: ${thisOrder.worker.firstName}` : "В роботі"}*!/*/}
+                    {/*        </button>*/}
+                    {/*    )*/}
+                    {/*)}*/}
+                </div>
+            )}
 
-                                    {/* Відображення помилки */}
-                                    {error && (
-                                        <div className="alert alert-danger alert-dismissible fade show mt-2" role="alert">
-                                            {error}
-                                            <button type="button" className="btn-close" onClick={() => setError(null)}></button>
+            {/* Відображення помилки */}
+            {error && (
+                <div className="alert alert-danger alert-dismissible fade show mt-2" role="alert">
+                    {error}
+                    <button type="button" className="btn-close" onClick={() => setError(null)}></button>
                 </div>
             )}
 
@@ -399,7 +400,7 @@ const ClientChangerUIArtem = ({ thisOrder, setThisOrder }) => {
                             <div className="row">
                                 <div className="col-md-6">
                                     <div className="mb-2 d-flex">
-                                        <div className="me-2" style={{ width: '24px', textAlign: 'center' }}>
+                                        <div className="me-2" style={{width: '24px', textAlign: 'center'}}>
                                             <i className="bi bi-person-badge"></i>
                                         </div>
                                         <div>
@@ -408,7 +409,7 @@ const ClientChangerUIArtem = ({ thisOrder, setThisOrder }) => {
                                     </div>
 
                                     <div className="mb-2 d-flex">
-                                        <div className="me-2" style={{ width: '24px', textAlign: 'center' }}>
+                                        <div className="me-2" style={{width: '24px', textAlign: 'center'}}>
                                             <i className="bi bi-person"></i>
                                         </div>
                                         <div>
@@ -418,7 +419,7 @@ const ClientChangerUIArtem = ({ thisOrder, setThisOrder }) => {
 
                                     {thisOrder.client.phoneNumber && (
                                         <div className="mb-2 d-flex">
-                                            <div className="me-2" style={{ width: '24px', textAlign: 'center' }}>
+                                            <div className="me-2" style={{width: '24px', textAlign: 'center'}}>
                                                 <i className="bi bi-telephone"></i>
                                             </div>
                                             <div>
@@ -429,7 +430,7 @@ const ClientChangerUIArtem = ({ thisOrder, setThisOrder }) => {
 
                                     {thisOrder.client.email && (
                                         <div className="mb-2 d-flex">
-                                            <div className="me-2" style={{ width: '24px', textAlign: 'center' }}>
+                                            <div className="me-2" style={{width: '24px', textAlign: 'center'}}>
                                                 <i className="bi bi-envelope"></i>
                                             </div>
                                             <div>
@@ -442,7 +443,7 @@ const ClientChangerUIArtem = ({ thisOrder, setThisOrder }) => {
                                 <div className="col-md-6">
                                     {thisOrder.client.address && (
                                         <div className="mb-2 d-flex">
-                                            <div className="me-2" style={{ width: '24px', textAlign: 'center' }}>
+                                            <div className="me-2" style={{width: '24px', textAlign: 'center'}}>
                                                 <i className="bi bi-geo-alt"></i>
                                             </div>
                                             <div>
@@ -453,18 +454,19 @@ const ClientChangerUIArtem = ({ thisOrder, setThisOrder }) => {
 
                                     {thisOrder.client.discount && (
                                         <div className="mb-2 d-flex">
-                                            <div className="me-2" style={{ width: '24px', textAlign: 'center' }}>
+                                            <div className="me-2" style={{width: '24px', textAlign: 'center'}}>
                                                 <i className="bi bi-percent"></i>
                                             </div>
                                             <div>
-                                                <strong>Знижка:</strong> <span className="text-success">{thisOrder.client.discount}%</span>
+                                                <strong>Знижка:</strong> <span
+                                                className="text-success">{thisOrder.client.discount}%</span>
                                             </div>
                                         </div>
                                     )}
 
                                     {thisOrder.client.telegramlogin && (
                                         <div className="mb-2 d-flex">
-                                            <div className="me-2" style={{ width: '24px', textAlign: 'center' }}>
+                                            <div className="me-2" style={{width: '24px', textAlign: 'center'}}>
                                                 <i className="bi bi-telegram"></i>
                                             </div>
                                             <div>
@@ -475,7 +477,7 @@ const ClientChangerUIArtem = ({ thisOrder, setThisOrder }) => {
 
                                     {thisOrder.client.notes && (
                                         <div className="mb-2 d-flex">
-                                            <div className="me-2" style={{ width: '24px', textAlign: 'center' }}>
+                                            <div className="me-2" style={{width: '24px', textAlign: 'center'}}>
                                                 <i className="bi bi-sticky"></i>
                                             </div>
                                             <div>
@@ -493,25 +495,26 @@ const ClientChangerUIArtem = ({ thisOrder, setThisOrder }) => {
                                         <button
                                             onClick={() => openMessenger('viber')}
                                             title="Viber"
-                                            style={{ ...buttonStyles.base, ...buttonStyles.iconButton }}
+                                            style={{...buttonStyles.base, ...buttonStyles.iconButton}}
                                         >
-                                            <img src={viberlogo} alt="Viber" style={{ width: '20px', height: '20px' }} />
+                                            <img src={viberlogo} alt="Viber" style={{width: '20px', height: '20px'}}/>
                                         </button>
 
                                         <button
                                             onClick={() => openMessenger('whatsapp')}
                                             title="WhatsApp"
-                                            style={{ ...buttonStyles.base, ...buttonStyles.iconButton }}
+                                            style={{...buttonStyles.base, ...buttonStyles.iconButton}}
                                         >
-                                            <img src={whatsapplogo} alt="WhatsApp" style={{ width: '20px', height: '20px' }} />
+                                            <img src={whatsapplogo} alt="WhatsApp"
+                                                 style={{width: '20px', height: '20px'}}/>
                                         </button>
 
                                         <button
                                             onClick={() => openMessenger('signal')}
                                             title="Signal"
-                                            style={{ ...buttonStyles.base, ...buttonStyles.iconButton }}
+                                            style={{...buttonStyles.base, ...buttonStyles.iconButton}}
                                         >
-                                            <img src={signallogo} alt="Signal" style={{ width: '20px', height: '20px' }} />
+                                            <img src={signallogo} alt="Signal" style={{width: '20px', height: '20px'}}/>
                                         </button>
                                     </>
                                 )}
@@ -520,18 +523,18 @@ const ClientChangerUIArtem = ({ thisOrder, setThisOrder }) => {
                                     <button
                                         onClick={() => openMessenger('telegram')}
                                         title="Telegram"
-                                        style={{ ...buttonStyles.base, ...buttonStyles.iconButton }}
+                                        style={{...buttonStyles.base, ...buttonStyles.iconButton}}
                                     >
-                                        <img src={telegram} alt="Telegram" style={{ width: '20px', height: '20px' }} />
+                                        <img src={telegram} alt="Telegram" style={{width: '20px', height: '20px'}}/>
                                     </button>
                                 )}
 
                                 <button
                                     onClick={() => window.open(`/client/${thisOrder.client.id}`, '_blank')}
                                     title="Відкрити профіль клієнта"
-                                    style={{ 
-                                        ...buttonStyles.base, 
-                                        ...buttonStyles.primary, 
+                                    style={{
+                                        ...buttonStyles.base,
+                                        ...buttonStyles.primary,
                                         ...buttonStyles.actionButton,
                                         marginLeft: 'auto',
                                         float: 'right'
@@ -555,15 +558,15 @@ const ClientChangerUIArtem = ({ thisOrder, setThisOrder }) => {
                             />
                             <button
                                 onClick={fetchUsers}
-                                style={{ ...buttonStyles.base, ...buttonStyles.iconButton }}
+                                style={{...buttonStyles.base, ...buttonStyles.iconButton}}
                             >
                                 <i className="bi bi-search"></i>
                             </button>
                             <button
                                 onClick={handleAddNewUser}
-                                style={{ 
-                                    ...buttonStyles.base, 
-                                    ...buttonStyles.warning, 
+                                style={{
+                                    ...buttonStyles.base,
+                                    ...buttonStyles.warning,
                                     ...buttonStyles.actionButton
                                 }}
                             >
@@ -576,12 +579,12 @@ const ClientChangerUIArtem = ({ thisOrder, setThisOrder }) => {
                     {/* Відображення списку користувачів */}
                     {load ? (
                         <div className="text-center my-4">
-                            <Spinner animation="border" variant="primary" />
+                            <Spinner animation="border" variant="primary"/>
                         </div>
                     ) : error ? (
                         <div className="alert alert-danger">{error}</div>
                     ) : (
-                        <div className="user-list" style={{ maxHeight: '400px', overflowY: 'auto' }}>
+                        <div className="user-list" style={{maxHeight: '400px', overflowY: 'auto'}}>
                             {users.rows && users.rows.length > 0 ? (
                                 <ListGroup>
                                     {users.rows.map((user) => (
@@ -598,18 +601,32 @@ const ClientChangerUIArtem = ({ thisOrder, setThisOrder }) => {
                                                             <i className="bi bi-person-circle me-2"></i>
                                                             {user.firstName} {user.lastName} {user.familyName}
                                                         </div>
-                                                        <div style={{ fontSize: '0.85rem' }}>
-                                                            <div><i className="bi bi-person-badge me-1"></i> ID: {user.id}</div>
-                                                            {user.phoneNumber && <div><i className="bi bi-telephone me-1"></i> {user.phoneNumber}</div>}
-                                                            {user.email && <div><i className="bi bi-envelope me-1"></i> {user.email}</div>}
+                                                        <div style={{fontSize: '0.85rem'}}>
+                                                            <div><i
+                                                                className="bi bi-person-badge me-1"></i> ID: {user.id}
+                                                            </div>
+                                                            {user.phoneNumber && <div><i
+                                                                className="bi bi-telephone me-1"></i> {user.phoneNumber}
+                                                            </div>}
+                                                            {user.email && <div><i
+                                                                className="bi bi-envelope me-1"></i> {user.email}</div>}
                                                         </div>
                                                     </div>
                                                     <div className="col-md-6">
-                                                        <div style={{ fontSize: '0.85rem' }}>
-                                                            {user.address && <div><i className="bi bi-geo-alt me-1"></i> {user.address}</div>}
-                                                            {user.telegramlogin && <div><i className="bi bi-telegram me-1"></i> @{user.telegramlogin}</div>}
-                                                            {user.discount > 0 && <div><i className="bi bi-percent me-1"></i> <span className="text-success">Знижка: {user.discount}%</span></div>}
-                                                            {user.notes && <div><i className="bi bi-sticky me-1"></i> {user.notes}</div>}
+                                                        <div style={{fontSize: '0.85rem'}}>
+                                                            {user.address && <div><i
+                                                                className="bi bi-geo-alt me-1"></i> {user.address}
+                                                            </div>}
+                                                            {user.telegramlogin && <div><i
+                                                                className="bi bi-telegram me-1"></i> @{user.telegramlogin}
+                                                            </div>}
+                                                            {user.discount > 0 &&
+                                                                <div><i className="bi bi-percent me-1"></i> <span
+                                                                    className="text-success">Знижка: {user.discount}%</span>
+                                                                </div>}
+                                                            {user.notes &&
+                                                                <div><i className="bi bi-sticky me-1"></i> {user.notes}
+                                                                </div>}
                                                         </div>
                                                     </div>
                                                 </div>
@@ -623,10 +640,10 @@ const ClientChangerUIArtem = ({ thisOrder, setThisOrder }) => {
                             ) : (
                                 <div className="text-center p-4 bg-light rounded">
                                     <p>Немає клієнтів за даним запитом</p>
-                                    <button 
+                                    <button
                                         onClick={handleAddNewUser}
-                                        style={{ 
-                                            ...buttonStyles.base, 
+                                        style={{
+                                            ...buttonStyles.base,
                                             ...buttonStyles.createNew
                                         }}
                                     >
@@ -639,10 +656,10 @@ const ClientChangerUIArtem = ({ thisOrder, setThisOrder }) => {
                     )}
                 </Modal.Body>
                 <Modal.Footer>
-                    <button 
+                    <button
                         onClick={handleClose}
-                        style={{ 
-                            ...buttonStyles.base, 
+                        style={{
+                            ...buttonStyles.base,
                             ...buttonStyles.close,
                             marginRight: '0.5vw'
                         }}
@@ -650,10 +667,10 @@ const ClientChangerUIArtem = ({ thisOrder, setThisOrder }) => {
                         Скасувати
                     </button>
                     {thisOrder.client && (
-                        <button 
+                        <button
                             onClick={() => handleSelectUser(null)}
-                            style={{ 
-                                ...buttonStyles.base, 
+                            style={{
+                                ...buttonStyles.base,
                                 ...buttonStyles.delete
                             }}
                         >
@@ -671,12 +688,12 @@ const ClientChangerUIArtem = ({ thisOrder, setThisOrder }) => {
             />
 
             {/* Інші модальні вікна, які можуть бути потрібні */}
-            {showNP && <NP show={showNP} onHide={() => setShowNP(false)} />}
-            {showPays && <PaysInOrder show={showPays} onHide={() => setShowPays(false)} orderId={thisOrder.id} />}
+            {showNP && <NP show={showNP} onHide={() => setShowNP(false)}/>}
+            {showPays && <PaysInOrder show={showPays} onHide={() => setShowPays(false)} orderId={thisOrder.id}/>}
 
             {/* Модальне вікно для генерації документів */}
-            <Modal 
-                show={showDocGenerate} 
+            <Modal
+                show={showDocGenerate}
                 onHide={() => setShowDocGenerate(false)}
                 size="lg"
                 centered
@@ -695,19 +712,20 @@ const ClientChangerUIArtem = ({ thisOrder, setThisOrder }) => {
                             <div className="col-md-6">
                                 <div className="card h-100">
                                     <div className="card-body text-center">
-                                        <img src={whiteSVG} alt="Договір" style={{ width: '64px', height: '64px', marginBottom: '15px' }} />
+                                        <img src={whiteSVG} alt="Договір"
+                                             style={{width: '64px', height: '64px', marginBottom: '15px'}}/>
                                         <h5 className="card-title">Договір</h5>
                                         <p className="card-text">Створення договору для замовлення</p>
-                                        <button 
+                                        <button
                                             onClick={() => {
                                                 // Логіка для генерації договору
                                                 if (thisOrder && thisOrder.id) {
                                                     window.open(`/api/documents/contract/${thisOrder.id}`, '_blank');
                                                 }
                                             }}
-                                            style={{ 
-                                                ...buttonStyles.base, 
-                                                ...buttonStyles.primary, 
+                                            style={{
+                                                ...buttonStyles.base,
+                                                ...buttonStyles.primary,
                                                 width: '100%'
                                             }}
                                         >
@@ -721,19 +739,20 @@ const ClientChangerUIArtem = ({ thisOrder, setThisOrder }) => {
                             <div className="col-md-6">
                                 <div className="card h-100">
                                     <div className="card-body text-center">
-                                        <img src={barcode} alt="Накладна" style={{ width: '64px', height: '64px', marginBottom: '15px' }} />
+                                        <img src={barcode} alt="Накладна"
+                                             style={{width: '64px', height: '64px', marginBottom: '15px'}}/>
                                         <h5 className="card-title">Накладна</h5>
                                         <p className="card-text">Створення накладної для замовлення</p>
-                                        <button 
+                                        <button
                                             onClick={() => {
                                                 // Логіка для генерації накладної
                                                 if (thisOrder && thisOrder.id) {
                                                     window.open(`/api/documents/invoice/${thisOrder.id}`, '_blank');
                                                 }
                                             }}
-                                            style={{ 
-                                                ...buttonStyles.base, 
-                                                ...buttonStyles.primary, 
+                                            style={{
+                                                ...buttonStyles.base,
+                                                ...buttonStyles.primary,
                                                 width: '100%'
                                             }}
                                         >
@@ -747,19 +766,20 @@ const ClientChangerUIArtem = ({ thisOrder, setThisOrder }) => {
                             <div className="col-md-6">
                                 <div className="card h-100">
                                     <div className="card-body text-center">
-                                        <img src={profile} alt="Акт" style={{ width: '64px', height: '64px', marginBottom: '15px' }} />
+                                        <img src={profile} alt="Акт"
+                                             style={{width: '64px', height: '64px', marginBottom: '15px'}}/>
                                         <h5 className="card-title">Акт виконаних робіт</h5>
                                         <p className="card-text">Створення акту виконаних робіт</p>
-                                        <button 
+                                        <button
                                             onClick={() => {
                                                 // Логіка для генерації акту
                                                 if (thisOrder && thisOrder.id) {
                                                     window.open(`/api/documents/act/${thisOrder.id}`, '_blank');
                                                 }
                                             }}
-                                            style={{ 
-                                                ...buttonStyles.base, 
-                                                ...buttonStyles.primary, 
+                                            style={{
+                                                ...buttonStyles.base,
+                                                ...buttonStyles.primary,
                                                 width: '100%'
                                             }}
                                         >
@@ -773,10 +793,11 @@ const ClientChangerUIArtem = ({ thisOrder, setThisOrder }) => {
                             <div className="col-md-6">
                                 <div className="card h-100">
                                     <div className="card-body text-center">
-                                        <img src={www} alt="Рахунок-фактура" style={{ width: '64px', height: '64px', marginBottom: '15px' }} />
+                                        <img src={www} alt="Рахунок-фактура"
+                                             style={{width: '64px', height: '64px', marginBottom: '15px'}}/>
                                         <h5 className="card-title">Рахунок-фактура</h5>
                                         <p className="card-text">Створення рахунку-фактури для замовлення</p>
-                                        <button 
+                                        <button
                                             onClick={() => {
                                                 // Логіка для генерації рахунку-фактури
                                                 if (thisOrder && thisOrder.id) {
@@ -784,9 +805,9 @@ const ClientChangerUIArtem = ({ thisOrder, setThisOrder }) => {
                                                     setShowDocGenerate(false);
                                                 }
                                             }}
-                                            style={{ 
-                                                ...buttonStyles.base, 
-                                                ...buttonStyles.primary, 
+                                            style={{
+                                                ...buttonStyles.base,
+                                                ...buttonStyles.primary,
                                                 width: '100%'
                                             }}
                                         >
@@ -800,9 +821,9 @@ const ClientChangerUIArtem = ({ thisOrder, setThisOrder }) => {
                     )}
                 </Modal.Body>
                 <Modal.Footer>
-                    <button 
+                    <button
                         onClick={() => setShowDocGenerate(false)}
-                        style={{ ...buttonStyles.base, ...buttonStyles.close }}
+                        style={{...buttonStyles.base, ...buttonStyles.close}}
                     >
                         Закрити
                     </button>

@@ -520,7 +520,8 @@ const ProgressBar = ({ thisOrder, setThisOrder, setNewThisOrder, handleThisOrder
             {/* <TimerDeadline deadline={deadline} thisOrder={thisOrder} /> */}
 
             {!isPaid && (
-                <div style={{ justifyContent: 'end', marginTop: '-18vh' }}>
+                <div style={{ justifyContent: 'flex-end',
+                    alignItems: 'flex-end', marginTop: '-10vh' ,}}>
                     <button
                         onClick={() => handleStageChangeServer('pay')}
                         style={{
