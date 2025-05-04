@@ -1,7 +1,3 @@
-// import React, { useEffect, useState } from "react";
-// import axios from "../../../api/axiosInstance";
-// import { useNavigate } from "react-router-dom";
-// import {Spinner} from "react-bootstrap";
 import "./styles.css"
 import AddPaysInOrder from "./AddPayInOrder";
 import ModalDeleteOrder from "../../Orders/ModalDeleteOrder";
@@ -144,7 +140,7 @@ const PaymentMethodIcons = {
     "Інше": <BsCurrencyExchange className="me-2" />
 };
 
-function PaysInOrder({ show, onHide, orderId }) {
+function PaysInOrder({ show, onHide, orderId, thisOrder, setThisOrder }) {
     const navigate = useNavigate();
     const [loading, setLoading] = useState(false);
     const [payments, setPayments] = useState([]);
@@ -159,21 +155,21 @@ function PaysInOrder({ show, onHide, orderId }) {
         method: "Готівка",
         amount: "",
         comment: "",
-        orderId: orderId
+        orderId: thisOrder.id
     });
 
     // Завантаження даних про замовлення та платежі
-    useEffect(() => {
-        if (show && orderId) {
-            fetchPayments();
-            fetchOrderInfo();
-        }
-    }, [show, orderId]);
+    // useEffect(() => {
+    //     if (show && orderId) {
+    //         fetchPayments();
+    //         fetchOrderInfo();
+    //     }
+    // }, [show, thisOrder]);
 
     // Отримання інформації про замовлення
     const fetchOrderInfo = async () => {
         try {
-            const response = await axios.get(`/orders/OneOrder/${orderId}`);
+            const response = await axios.get(`/orders/OneOrder/${thisOrder.id}`);
             setOrderInfo(response.data);
         } catch (error) {
             console.error("Помилка при отриманні замовлення:", error);
@@ -187,7 +183,7 @@ function PaysInOrder({ show, onHide, orderId }) {
     const fetchPayments = async () => {
         setLoading(true);
         try {
-            const response = await axios.get(`/orders/payments/${orderId}`);
+            const response = await axios.get(`/orders/payments/${thisOrder.id}`);
             // Переконуємося, що payments завжди є масивом
             setPayments(Array.isArray(response.data) ? response.data : []);
             setLoading(false);

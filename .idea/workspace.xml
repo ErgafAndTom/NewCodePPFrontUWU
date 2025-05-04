@@ -6,11 +6,6 @@
   <component name="ChangeListManager">
     <list default="true" id="7e58169f-d1e8-4cb2-8753-447dd0b39044" name="Changes" comment="ddd">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/PrintPeaksFAinal/user/UsersTable.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/PrintPeaksFAinal/user/UsersTable.jsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/PrintPeaksFAinal/userInNewUiArtem/ClientChangerUIArtem.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/PrintPeaksFAinal/userInNewUiArtem/ClientChangerUIArtem.jsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/PrintPeaksFAinal/userInNewUiArtem/pays/PaysInOrder.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/PrintPeaksFAinal/userInNewUiArtem/pays/PaysInOrder.jsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/api/counterpartyApi.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/api/counterpartyApi.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/usersettings/Counterparty.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/usersettings/Counterparty.js" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -280,15 +275,9 @@
       <workItem from="1746226916532" duration="1531000" />
       <workItem from="1746286634861" duration="1805000" />
       <workItem from="1746298275057" duration="315000" />
-      <workItem from="1746304652943" duration="659000" />
-    </task>
-    <task id="LOCAL-00031" summary="ddd">
-      <option name="closed" value="true" />
-      <created>1739840410044</created>
-      <option name="number" value="00031" />
-      <option name="presentableId" value="LOCAL-00031" />
-      <option name="project" value="LOCAL" />
-      <updated>1739840410044</updated>
+      <workItem from="1746304652943" duration="2276000" />
+      <workItem from="1746371299537" duration="612000" />
+      <workItem from="1746384125034" duration="15000" />
     </task>
     <task id="LOCAL-00032" summary="ddd">
       <option name="closed" value="true" />
@@ -674,7 +663,15 @@
       <option name="project" value="LOCAL" />
       <updated>1746287840947</updated>
     </task>
-    <option name="localTasksCounter" value="80" />
+    <task id="LOCAL-00080" summary="ddd">
+      <option name="closed" value="true" />
+      <created>1746305494346</created>
+      <option name="number" value="00080" />
+      <option name="presentableId" value="LOCAL-00080" />
+      <option name="project" value="LOCAL" />
+      <updated>1746305494347</updated>
+    </task>
+    <option name="localTasksCounter" value="81" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">

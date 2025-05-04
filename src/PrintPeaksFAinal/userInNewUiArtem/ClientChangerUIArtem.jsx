@@ -23,6 +23,8 @@ import {Button, Modal, Spinner, ListGroup, InputGroup} from "react-bootstrap";
 import NP from "./NP";
 import PaysInOrder from "./pays/PaysInOrder";
 import {buttonStyles, containerStyles, formStyles} from './styles';
+import PaysInOrderRestored from "./pays/PayInOrderRestored";
+import AddPaysInOrder from "./pays/AddPayInOrder";
 
 const ClientChangerUIArtem = ({thisOrder, setThisOrder}) => {
     const navigate = useNavigate();
@@ -689,7 +691,8 @@ const ClientChangerUIArtem = ({thisOrder, setThisOrder}) => {
 
             {/* Інші модальні вікна, які можуть бути потрібні */}
             {/*{showNP && <NP show={showNP} onHide={() => setShowNP(false)}/>}*/}
-            {showPays && <PaysInOrder show={showPays} onHide={() => setShowPays(false)} orderId={thisOrder.id}/>}
+            {showPays && <PaysInOrderRestored showPays={showPays} setShowPays={setShowPays} thisOrder={thisOrder} setThisOrder={setThisOrder}/>}
+
 
             {/* Модальне вікно для генерації документів */}
             <Modal

@@ -1,7 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { fetchUser, logout, updateUser } from '../../../actions/authActions';
-import axios from 'axios';
 import {Link} from "react-router-dom";
 import Counterparty from '../../../components/usersettings/Counterparty';
 import { buttonStyles, containerStyles, formStyles, avatarStyles, tabStyles } from './styles';
@@ -64,7 +63,7 @@ function Profile() {
                     }}
                     onClick={() => setActiveTab('counterparties')}
                 >
-                    Контрагенти
+                    Мої контрагенти
                 </button>
             </div>
 
