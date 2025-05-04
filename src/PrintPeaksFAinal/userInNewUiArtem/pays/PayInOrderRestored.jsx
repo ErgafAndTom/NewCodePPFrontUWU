@@ -139,6 +139,32 @@ function PaysInOrderRestored({ showPays, setShowPays, thisOrder, setThisOrder })
         setLoad(false);
     };
 
+    // const handleSaveNewInvoice = async () => {
+    //     let formDataToSend = {
+    //         invoiceNumber: '',
+    //         invoiceDate: new Date().toISOString().split('T')[0],
+    //         supplierId: '',
+    //         supplierName: '',
+    //         buyerId: '',
+    //         buyerName: '',
+    //         totalSum: '',
+    //         items: [
+    //             // За замовчуванням додаємо один порожній елемент товару
+    //             { id: 1, name: '', quantity: 1, price: 0, unit: 'шт.' }
+    //         ]
+    //     }
+    //     try {
+    //         setLoading(true);
+    //         const response = await axios.post('/api/invoices', formData);
+    //         setInvoices([...invoices, response.data]);
+    //         setShowAddModal(false);
+    //         setLoading(false);
+    //     } catch (err) {
+    //         setError(err.message);
+    //         setLoading(false);
+    //     }
+    // };
+
     // ──────────────────────────── DATA FETCH ────────────────────────────
     useEffect(() => {
         const payload = {
