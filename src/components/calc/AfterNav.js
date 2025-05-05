@@ -37,6 +37,7 @@ import LifeHackLikeBoards2 from "../../PrintPeaksFAinal/lifeHacksBoard/LifeHackL
 import UserFiles from "../../PrintPeaksFAinal/user/UserFiles";
 import Payments from "../../PrintPeaksFAinal/user/Payments";
 import Invoices from "../../pages/Invoices";
+import ClientUserProfile from "../../PrintPeaksFAinal/user/client/ClientUserProfile";
 
 
 
@@ -90,6 +91,7 @@ const AfterNav = () => {
                 <Route path="/Users" element={<UsersCustomTable />} />
 
                 <Route path="/currentUser" element={<Profile />} />
+                <Route path="/client/:id" element={<ClientUserProfile />} />
                 <Route path="/myFiles" element={<UserFiles />} />
                 <Route path="/myPayments" element={<Payments />} />
 

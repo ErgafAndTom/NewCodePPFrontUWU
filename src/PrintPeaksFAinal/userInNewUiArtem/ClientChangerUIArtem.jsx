@@ -636,6 +636,9 @@ const ClientChangerUIArtem = ({thisOrder, setThisOrder}) => {
                                             {thisOrder.client && thisOrder.client.id === user.id && (
                                                 <span className="badge bg-primary rounded-pill">Обрано</span>
                                             )}
+                                            {thisOrder.executor && thisOrder.executor.id === user.id && (
+                                                <span className="badge bg-success rounded-pill">Це ви</span>
+                                            )}
                                         </ListGroup.Item>
                                     ))}
                                 </ListGroup>
