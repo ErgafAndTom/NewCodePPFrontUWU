@@ -24,10 +24,13 @@ function AddPaysInOrder({ showAddPay, setShowAddPay, formData, setFormData, data
     // };
 
     const handleChange = (e) => {
-        setFormData({
-            ...formData,
-            [e.target.name]: e.target.value,
-        });
+        const { name, value, type, checked } = e.target;
+        setFormData(prev => ({
+            ...prev,
+            [name]: type === 'checkbox'
+                ? (checked ? "true" : "false")
+                : value,
+        }));
     };
 
     const handleSubmit = async (e) => {
@@ -149,7 +152,7 @@ function AddPaysInOrder({ showAddPay, setShowAddPay, formData, setFormData, data
                 <div style={{
                     border: "none",
                     borderRadius: "1vw",
-                    marginTop: "0.3vw",
+                    marginTop: "0",
                     marginLeft: "0.3vw",
                 }}>
 
@@ -167,13 +170,20 @@ function AddPaysInOrder({ showAddPay, setShowAddPay, formData, setFormData, data
                                 {/*    <button className="AddContractorInOrderTab">Іноземна Компанія</button>*/}
                                 {/*</div>*/}
 
-                                <h3 className="AddContractorInOrderSubtitle">Банківські реквізити:</h3>
+                                <div className="AddContractorInOrderSubtitle">Банківські реквізити:</div>
 
                                 <div className="AddContractorInOrderFieldGroup">
                                     <div className="AddContractorInOrderFieldRow">
                                         <label className="adminFontTable">Найменування</label>
                                         <input required value={formData.name} name="name" type="text" placeholder="Найменування ФОП або ТОВ" className="AddContractorInOrderInput" onChange={handleChange} />
                                     </div>
+                                    {/*<div className="AddContractorInOrderFieldRow">*/}
+                                    {/*    <label className="adminFontTable">Тип</label>*/}
+                                    {/*    <select value={formData.type} name="type" onChange={handleChange} className="AddContractorInOrderSelect">*/}
+                                    {/*        <option value="Фізична особа">Фізична особа</option>*/}
+                                    {/*        <option value="Юридична особа">Юридична особа</option>*/}
+                                    {/*    </select>*/}
+                                    {/*</div>*/}
                                     <div className="AddContractorInOrderFieldRow">
                                         <label className="adminFontTable">Адреса</label>
                                         <input value={formData.address} name="address" type="text" placeholder="Адреса" className="AddContractorInOrderInput" onChange={handleChange} />
@@ -222,6 +232,15 @@ function AddPaysInOrder({ showAddPay, setShowAddPay, formData, setFormData, data
                                             <option value="Дія.Сіті">Дія.Сіті</option>
                                             <option value="Неприбуткова організація">Неприбуткова організація</option>
                                         </select>
+                                    </div>
+                                    <div className="AddContractorInOrderFieldRow">
+                                        <label className="adminFontTable">ПДВ</label>
+                                        <input
+                                            name="pdv"
+                                            type="checkbox"
+                                            checked={formData.pdv === "true"}
+                                            onChange={handleChange}
+                                        />
                                     </div>
                                     <div className="AddContractorInOrderFieldRow">
                                         <label className="adminFontTable">Коментар</label>

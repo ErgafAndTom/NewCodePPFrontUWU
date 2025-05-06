@@ -1,17 +1,17 @@
 import "./styles.css";
 import AddPaysInOrder from "./AddPayInOrder";
 import ModalDeleteOrder from "../../Orders/ModalDeleteOrder";
-import React, { useState, useEffect } from "react";
+import React, {useState, useEffect} from "react";
 import axios from "../../../api/axiosInstance";
-import { useNavigate } from "react-router-dom";
-import { Spinner } from "react-bootstrap";
+import {useNavigate} from "react-router-dom";
+import {Spinner} from "react-bootstrap";
 
 /**
  * RESTORED VERSION — 04 May 2025
  * Оригінальна логіка на «showPays / setShowPays» із плавною анімацією, списком реквізитів
  * та генерацією документів (накладна / акт, рахунок).
  */
-function PaysInOrderRestored({ showPays, setShowPays, thisOrder, setThisOrder }) {
+function PaysInOrderRestored({showPays, setShowPays, thisOrder, setThisOrder}) {
     const navigate = useNavigate();
 
     // ──────────────────────────── STATE ────────────────────────────
@@ -29,6 +29,7 @@ function PaysInOrderRestored({ showPays, setShowPays, thisOrder, setThisOrder })
     const [showAddPayWriteId, setShowAddPayWriteId] = useState(false);
     const [formData, setFormData] = useState({
         name: "",
+        type: "",
         address: "",
         bankName: "",
         iban: "",
@@ -36,6 +37,7 @@ function PaysInOrderRestored({ showPays, setShowPays, thisOrder, setThisOrder })
         email: "",
         phone: "",
         taxSystem: "",
+        pdv: "",
         comment: "",
     });
 
@@ -44,7 +46,7 @@ function PaysInOrderRestored({ showPays, setShowPays, thisOrder, setThisOrder })
     const [currentPage, setCurrentPage] = useState(1);
     const [pageCount, setPageCount] = useState(null);
     const [typeSelect, setTypeSelect] = useState("");
-    const [thisColumn, setThisColumn] = useState({ column: "id", reverse: true });
+    const [thisColumn, setThisColumn] = useState({column: "id", reverse: true});
     const [startDate, setStartDate] = useState("");
     const [endDate, setEndDate] = useState("");
 
@@ -66,6 +68,7 @@ function PaysInOrderRestored({ showPays, setShowPays, thisOrder, setThisOrder })
         setShowAddPayView(false);
         setFormData({
             name: "",
+            type: "",
             address: "",
             bankName: "",
             iban: "",
@@ -73,6 +76,7 @@ function PaysInOrderRestored({ showPays, setShowPays, thisOrder, setThisOrder })
             email: "",
             phone: "",
             taxSystem: "",
+            pdv: "",
             comment: "",
         });
     };
@@ -83,6 +87,7 @@ function PaysInOrderRestored({ showPays, setShowPays, thisOrder, setThisOrder })
         setShowAddPayWriteId(item.id);
         setFormData({
             name: item.name,
+            type: item.type,
             address: item.address,
             bankName: item.bankName,
             iban: item.iban,
@@ -90,6 +95,7 @@ function PaysInOrderRestored({ showPays, setShowPays, thisOrder, setThisOrder })
             email: item.email,
             phone: item.phone,
             taxSystem: item.taxSystem,
+            pdv: item.pdv,
             comment: item.comment,
         });
     };
@@ -99,18 +105,40 @@ function PaysInOrderRestored({ showPays, setShowPays, thisOrder, setThisOrder })
         setThisOrderForDelete(item);
     };
 
-    const generateDoc = (e, item) => {
-        const dataToSend = { contractorId: item.id, thisOrderId: thisOrder.id };
+    const generateInvoice = (e, item) => {
+        e.preventDefault();
+        setLoad(true);
         axios
-            .post(`/user/generateDoc`, dataToSend, { responseType: "blob" })
+            .post(
+                `/api/invoices/from-order/${thisOrder.id}/document`,
+                { supplierId: thisOrder.executorId, buyerId: item.id },
+                { responseType: "blob" }
+            )
+            .then(resp => downloadBlob(resp, `invoice_${thisOrder.id}.docx`))
+            .catch(handleAxiosError)
+            .finally(() => setLoad(false));
+    };
+
+    const generateDoc = (e, item) => {
+        // const dataToSend = {contractorId: item.id, thisOrderId: thisOrder.id};
+        // axios
+        //     .post(`/user/generateDoc`, dataToSend, {responseType: "blob"})
+        //     .then((response) => downloadBlob(response, "invoice.docx"))
+        //     .catch(handleAxiosError);
+        let dataToSend = {
+            supplierId: 1,
+            buyerId: thisOrder.clientId
+        }
+        axios
+            .post(`/api/invoices/from-order/${thisOrder.id}/document`, dataToSend, {responseType: "blob"})
             .then((response) => downloadBlob(response, "invoice.docx"))
             .catch(handleAxiosError);
     };
 
     const generateDoc1 = (e, item) => {
-        const dataToSend = { contractorId: item.id, thisOrderId: thisOrder.id };
+        const dataToSend = {contractorId: item.id, thisOrderId: thisOrder.id};
         axios
-            .post(`/user/generateDoc1`, dataToSend, { responseType: "blob" })
+            .post(`/user/generateDoc1`, dataToSend, {responseType: "blob"})
             .then((response) => downloadBlob(response, "invoice.docx"))
             .catch(handleAxiosError);
     };
@@ -245,16 +273,16 @@ function PaysInOrderRestored({ showPays, setShowPays, thisOrder, setThisOrder })
                 {/* Header */}
                 <div className="d-flex">
                     <div className="m-auto text-center fontProductName">Реквізити</div>
-                    <button className="btn btn-close btn-lg" style={{ margin: "0.5vw" }} onClick={handleClose} />
+                    <button className="btn btn-close btn-lg" style={{margin: "0.5vw"}} onClick={handleClose}/>
                 </div>
 
                 {/* Body */}
-                <div style={{ padding: "1vw", overflow: "auto" }}>
+                <div style={{padding: "1vw", overflow: "auto"}}>
                     {error && <div className="text-danger mb-2">{error}</div>}
 
                     {load ? (
-                        <div className="d-flex justify-content-center align-items-center" style={{ height: "100%" }}>
-                            <Spinner animation="border" variant="dark" />
+                        <div className="d-flex justify-content-center align-items-center" style={{height: "100%"}}>
+                            <Spinner animation="border" variant="dark"/>
                         </div>
                     ) : (
                         <table className="ContractorTable w-100">
@@ -273,16 +301,19 @@ function PaysInOrderRestored({ showPays, setShowPays, thisOrder, setThisOrder })
                                     <td className="ContractorCell ContractorName">{item.name}</td>
                                     <td className="ContractorCell">{item.taxSystem}</td>
                                     <td className="ContractorCell ContractorActions">
-                                        <button className="ContractorViewBtn" style={{ background: "green" }} onClick={(e) => generateDoc(e, item)}>
-                                            Накладна/Акт
+                                        <button className="ContractorViewBtn" style={{background: "green"}}
+                                                onClick={(e) => generateInvoice(e, item)}>
+                                            Накладна/Акт+Рахунок+вДатабазе+2Варианта+дляЭтогоЗаказа
                                         </button>
-                                        <button className="ContractorViewBtn" style={{ background: "green" }} onClick={(e) => generateDoc1(e, item)}>
-                                            Рахунок
-                                        </button>
+                                        {/*<button className="ContractorViewBtn" style={{background: "green"}}*/}
+                                        {/*        onClick={(e) => generateDoc1(e, item)}>*/}
+                                        {/*    Рахунок*/}
+                                        {/*</button>*/}
                                         <button className="ContractorViewBtn" onClick={(e) => openSeePay(e, item)}>
                                             Переглянути/Редагувати
                                         </button>
-                                        <button className="ContractorMoreBtn" onClick={(e) => openDeletePay(e, item)}>
+                                        <button className="ContractorMoreBtn"
+                                                onClick={(e) => openDeletePay(e, item)}>
                                             ⋮
                                         </button>
                                     </td>
