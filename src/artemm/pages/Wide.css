@@ -69,7 +69,7 @@
   top: calc(50% - 15px);
   left: 26.67px;
   font-size: var(--font-size-5xl);
-  font-family: var(--font-Montserrat-office);
+  font-family: var(--font-Montserrat);
   color: var(--color-black);
   text-align: center;
 }
@@ -273,7 +273,7 @@
   height: 30px;
 }
 .b3 {
-  font-family: var(--font-Montserrat-office);
+  font-family: var(--font-Montserrat);
 }
 .span45 {
   font-size: var(--font-size-xl);
@@ -659,7 +659,7 @@
   bottom: 0px;
   font-size: var(--font-size-3xs);
   letter-spacing: 0.33px;
-  font-family: var(--font-Montserrat-office);
+  font-family: var(--font-Montserrat);
 }
 .div463 {
   position: absolute;
@@ -828,7 +828,7 @@
   top: 4px;
   left: 50px;
   font-size: var(--font-size-5xl);
-  font-family: var(--font-Montserrat-office);
+  font-family: var(--font-Montserrat);
   color: var(--color-black);
   text-align: center;
 }
@@ -1033,5 +1033,5 @@
   text-align: left;
   font-size: var(--font-size-5xl);
   color: var(--color-black);
-  font-family: var(--font-Montserrat-office);
+  font-family: var(--font-Montserrat);
 }

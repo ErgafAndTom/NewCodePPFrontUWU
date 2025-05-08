@@ -12,7 +12,7 @@ const ButtonSmallInfoComponent = () => (
     <defs>
       <style>
         {
-          ".a{fill:#b7b7b7;}.b{font-size:14px;font-family:MontserratOffice-Regular, Montserrat;}"
+          ".a{fill:#b7b7b7;}.b{font-size:14px;font-family:Montserrat-Regular, Montserrat;}"
         }
       </style>
     </defs>

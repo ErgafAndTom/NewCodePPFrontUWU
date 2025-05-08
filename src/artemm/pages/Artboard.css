@@ -2085,7 +2085,7 @@
   top: 4px;
   left: 50px;
   font-size: var(--font-size-5xl);
-  font-family: var(--font-Montserrat-office);
+  font-family: var(--font-Montserrat);
   color: var(--color-black);
   text-align: center;
 }
@@ -2153,7 +2153,7 @@
   bottom: 0px;
   font-size: var(--font-size-3xs);
   letter-spacing: 0.33px;
-  font-family: var(--font-Montserrat-office);
+  font-family: var(--font-Montserrat);
 }
 .div679 {
   position: absolute;
@@ -3120,7 +3120,7 @@
   left: 72.97%;
   font-size: var(--font-size-6xs);
   letter-spacing: 0.23px;
-  font-family: var(--font-Montserrat-office);
+  font-family: var(--font-Montserrat);
   text-align: center;
 }
 .div698 {
@@ -3270,7 +3270,7 @@
   top: 3px;
   left: 0px;
   font-size: var(--font-size-base);
-  font-family: var(--font-Montserrat-office);
+  font-family: var(--font-Montserrat);
   color: var(--color-gray-300);
   display: inline-block;
 }
@@ -3319,7 +3319,7 @@
   font-size: var(--font-size-3xs);
   letter-spacing: 0.33px;
   line-height: 11px;
-  font-family: var(--font-Montserrat-office);
+  font-family: var(--font-Montserrat);
   text-align: center;
 }
 .div720 {
@@ -4133,7 +4133,7 @@
   top: 0px;
   left: 0px;
   font-size: var(--font-size-sm);
-  font-family: var(--font-Montserrat-office);
+  font-family: var(--font-Montserrat);
   color: var(--color-darkslategray);
   text-align: center;
 }
@@ -4176,7 +4176,7 @@
   top: calc(50% - 8px);
   left: calc(50% - 19px);
   font-size: var(--font-size-sm);
-  font-family: var(--font-Montserrat-office);
+  font-family: var(--font-Montserrat);
   color: var(--color-black);
   text-align: center;
 }
@@ -4288,7 +4288,7 @@
   top: calc(50% - 8px);
   left: 10px;
   font-size: var(--font-size-sm);
-  font-family: var(--font-Montserrat-office);
+  font-family: var(--font-Montserrat);
   color: var(--color-darkslategray);
   text-align: center;
 }
@@ -4377,7 +4377,7 @@
   top: calc(50% - 8px);
   left: 9.68px;
   font-size: var(--font-size-sm);
-  font-family: var(--font-Montserrat-office);
+  font-family: var(--font-Montserrat);
   color: var(--color-darkslategray);
   text-align: center;
 }
@@ -4410,7 +4410,7 @@
   top: calc(50% - 8px);
   right: 14px;
   font-size: var(--font-size-sm);
-  font-family: var(--font-Montserrat-office);
+  font-family: var(--font-Montserrat);
   color: var(--color-darkslategray);
   text-align: center;
 }
@@ -5018,7 +5018,7 @@
   top: calc(50% - 8px);
   left: calc(50% - 29px);
   font-size: var(--font-size-sm);
-  font-family: var(--font-Montserrat-office);
+  font-family: var(--font-Montserrat);
   color: var(--color-darkslategray);
   text-align: center;
 }
@@ -5051,7 +5051,7 @@
   top: calc(50% - 8px);
   left: calc(50% - 16.5px);
   font-size: var(--font-size-sm);
-  font-family: var(--font-Montserrat-office);
+  font-family: var(--font-Montserrat);
   color: var(--color-black);
   text-align: center;
 }
@@ -5084,7 +5084,7 @@
   top: calc(50% - 8px);
   left: 7px;
   font-size: var(--font-size-sm);
-  font-family: var(--font-Montserrat-office);
+  font-family: var(--font-Montserrat);
   color: var(--color-darkslategray);
   text-align: center;
 }
@@ -5120,7 +5120,7 @@
   top: calc(50% - 8px);
   left: 12.99px;
   font-size: var(--font-size-sm);
-  font-family: var(--font-Montserrat-office);
+  font-family: var(--font-Montserrat);
   color: var(--color-darkslategray);
   text-align: center;
 }
@@ -5178,7 +5178,7 @@
   top: calc(50% - 8px);
   left: 11px;
   font-size: var(--font-size-sm);
-  font-family: var(--font-Montserrat-office);
+  font-family: var(--font-Montserrat);
   color: var(--color-darkslategray);
   text-align: center;
 }
@@ -5211,7 +5211,7 @@
   top: calc(50% - 7.95px);
   left: calc(50% - 20.75px);
   font-size: var(--font-size-sm);
-  font-family: var(--font-Montserrat-office);
+  font-family: var(--font-Montserrat);
   color: var(--color-darkslategray);
   text-align: center;
 }
@@ -5244,7 +5244,7 @@
   top: calc(50% - 8px);
   left: calc(50% - 16.5px);
   font-size: var(--font-size-sm);
-  font-family: var(--font-Montserrat-office);
+  font-family: var(--font-Montserrat);
   color: var(--color-darkslategray);
   text-align: center;
 }
@@ -5277,7 +5277,7 @@
   top: calc(50% - 7.95px);
   left: 9.68px;
   font-size: var(--font-size-sm);
-  font-family: var(--font-Montserrat-office);
+  font-family: var(--font-Montserrat);
   color: var(--color-darkslategray);
   text-align: center;
 }
@@ -5334,7 +5334,7 @@
   top: calc(50% - 8px);
   left: calc(50% - 46.97px);
   font-size: var(--font-size-sm);
-  font-family: var(--font-Montserrat-office);
+  font-family: var(--font-Montserrat);
   color: var(--color-darkslategray);
   text-align: center;
 }
@@ -5364,5 +5364,5 @@
   text-align: left;
   font-size: var(--font-size-sm);
   color: var(--color-black);
-  font-family: var(--font-Montserrat-office);
+  font-family: var(--font-Montserrat);
 }

@@ -10,6 +10,9 @@ import AddNewOrder from "../Orders/AddNewOrder";
 import ModalDeleteInStorage from "../Storage/ModalDeleteInStorage";
 import AddEditUser from "./AddEditUser";
 import UserForm from "./UserForm";
+import {useDispatch} from "react-redux";
+import {login} from "../../actions/authActions";
+import {fetchUser} from "../../actions/actions";
 
 // Основний компонент CustomOrderTable
 const UsersCustomTable = ({name}) => {
@@ -24,6 +27,7 @@ const UsersCustomTable = ({name}) => {
     const [inPageCount, setInPageCount] = useState(500);
     const [currentPage, setCurrentPage] = useState(1);
     const [pageCount, setPageCount] = useState(null);
+    const dispatch = useDispatch();
     const [typeSelect, setTypeSelect] = useState("");
     const [thisColumn, setThisColumn] = useState({
         column: "id",
@@ -86,6 +90,10 @@ const UsersCustomTable = ({name}) => {
                 console.log(error.message);
             })
     }, [typeSelect, thisColumn]);
+
+    // useEffect(() => {
+    //     dispatch(fetchUser(typeSelect))
+    // }, [typeSelect]);
 
 
     const toggleOrder = (orderId) => {

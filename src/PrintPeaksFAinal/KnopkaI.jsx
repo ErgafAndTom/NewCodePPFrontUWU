@@ -1,4 +1,7 @@
 import React, { useState } from 'react';
+import '../poslugi/newnomodals/CornerRounding.css';
+
+import './index.css'
 
 const KnopkaI = () => {
     const [isOneSided, setIsOneSided] = useState(true);

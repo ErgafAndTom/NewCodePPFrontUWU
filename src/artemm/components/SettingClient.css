@@ -843,7 +843,7 @@
     text-align: left;
     font-size: var(--font-size-5xl);
     color: var(--color-black);
-    font-family: var(--font-Montserrat-office);
+    font-family: var(--font-Montserrat);
 } {
   position: relative;
   width: 1920px;
@@ -854,5 +854,5 @@
   text-align: left;
   font-size: var(--font-size-5xl);
   color: var(--color-black);
-  font-family: var(--font-Montserrat-office);
+  font-family: var(--font-Montserrat);
 }

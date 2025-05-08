@@ -91,7 +91,7 @@ const ModalColor = ({color, setColor}) => {
                     <Modal.Title>Кольоровість друку</Modal.Title>
                 </Modal.Header>
                 <Modal.Body className="d-flex">
-                    <div style={{width: '24.5vw', height: '30vh', overflow: 'auto', border: '1px solid #ccc'}} className="m-3">
+                    <div style={{width: '24.5vw', height: '30vh', overflow: 'auto', border: '1px solid #ccc'}} >
                         {/* Много элементов */}
                         <div style={{padding: '10px'}}>
                             <div

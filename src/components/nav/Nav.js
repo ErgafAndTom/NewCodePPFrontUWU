@@ -29,6 +29,11 @@ const Nav = () => {
         setBasicActive(document.location.pathname);
     }, [document.location.pathname])
 
+    const handleSearch  = () => {
+        console.log(search.search);
+        dispatch(fetchUser(search.search))
+    };
+
     const handleBasicClick = (value) => {
         if (value === basicActive) {
             return;
@@ -258,10 +263,11 @@ const Nav = () => {
                         className="Search"
                         name="search"
                         type="text"
-                        onChange={handleChange}
+                        // onChange={handleChange}
                         placeholder="Пошук"
                         defaultValue={""}
                         value={search.search}
+                        onChange={() => handleSearch()}
                         required
                     />
                     <img style={{

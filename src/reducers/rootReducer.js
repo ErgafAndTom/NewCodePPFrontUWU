@@ -6,6 +6,7 @@ import pricesReducer from "./pricesReducer";
 import currentUserReducer from "./CurrentUserReducer";
 import authReducer from "./authReducer";
 import invoiceReducer from "./invoiceReducer";
+import search from "./search";
 
 const rootReducer = combineReducers({
     prices: pricesReducer,
@@ -13,8 +14,9 @@ const rootReducer = combineReducers({
     counter: counterReducer,
     currentUser: currentUserReducer,
     auth: authReducer,
-    invoices: invoiceReducer
+    invoices: invoiceReducer,
     // words: wordsSlice,
+    search: search,
 })
 
 export default rootReducer;

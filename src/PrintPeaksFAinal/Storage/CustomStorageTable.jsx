@@ -10,6 +10,12 @@ import ModalDeleteInStorage from "./ModalDeleteInStorage";
 import ModalStorageRed from "./ModalStorageRed";
 import NewWide from "../poslugi/newWide";
 import OneItemInTable from "./OneUnitInTable";
+import Button from "react-bootstrap/Button";
+import Offcanvas from "react-bootstrap/Offcanvas";
+import InputGroup from "react-bootstrap/InputGroup";
+import Form from "react-bootstrap/Form";
+import {da} from "date-fns/locale";
+import NewNote from "../poslugi/NewNote";
 
 // Основний компонент CustomOrderTable
 const CustomStorageTable = ({name}) => {
@@ -25,10 +31,12 @@ const CustomStorageTable = ({name}) => {
     const [currentPage, setCurrentPage] = useState(1);
     const [pageCount, setPageCount] = useState(null);
     const [typeSelect, setTypeSelect] = useState("");
+    const [show, setShow] = useState("");
     const [thisColumn, setThisColumn] = useState({
         column: "id",
         reverse: false
     });
+    const [formValues, setFormValues] = useState({});
     const [expandedOrders, setExpandedOrders] = useState([]);
     const [showRed, setShowRed] = useState(false);
 
@@ -59,9 +67,12 @@ const CustomStorageTable = ({name}) => {
         setThisItemForModal(item)
     };
 
+    const handleInputChange = (event, metaItem) => {
+        setFormValues(prev => ({...prev, [metaItem]: event.target.value}));
+    }
+
     useEffect(() => {
         let data = {
-            // name: "Orders",
             inPageCount: inPageCount,
             currentPage: currentPage,
             search: typeSelect,
@@ -83,7 +94,43 @@ const CustomStorageTable = ({name}) => {
                 setError(error.message)
                 console.log(error.message);
             })
-    }, [typeSelect, thisColumn]);
+    }, [typeSelect, thisColumn, show]);
+
+    useEffect(() => {
+        if (data) {
+            let newMetadata = data.metadata.filter((t) => t !== "id" && t !== "createdAt" && t !== "updatedAt" && t !== "photo")
+            let meta = newMetadata.reduce((acc, cur) => {
+                return {...acc, [cur]: ""};
+            }, {})
+            setFormValues(meta);
+        }
+    }, [data]);
+
+    const handleClose = () => {
+        setShow(false);
+    }
+
+    let saveAll = (event) => {
+        let forData = formValues
+        forData.id = 0
+        let data = {
+            // tableName: namem,
+            inPageCount: inPageCount,
+            currentPage: currentPage,
+            formValues: forData
+        }
+        console.log(data);
+        axios.post(`/materials/`, data)
+            .then(response => {
+                console.log(response.data);
+                setData(response.data)
+                setPageCount(Math.ceil(response.data.count / inPageCount))
+
+            })
+            .catch(error => {
+                console.log(error.message);
+            })
+    }
 
     const toggleOrder = (orderId) => {
         if (expandedOrders.includes(orderId)) {
@@ -93,10 +140,11 @@ const CustomStorageTable = ({name}) => {
         }
     };
 
+    const handleShow = () => setShow(true);
+
     if (data) {
         return (
             <div className="CustomOrderTable-order-list">
-
                 <div className="CustomOrderTable-header">
 
                     {data.metadata.map((item, iter) => (
@@ -104,7 +152,7 @@ const CustomStorageTable = ({name}) => {
                             style={{background: "#FBFAF6", borderColor: "#f4c24b"}}
                             // className="adminFontTable"
                             className="CustomOrderTable-header-cell"
-                            key={item+iter}
+                            key={item + iter}
                             onClick={(event) => setCol(item)}
                         >
                             {item === thisColumn.column ? (
@@ -127,7 +175,8 @@ const CustomStorageTable = ({name}) => {
                         </div>
                     ))}
                 </div>
-                <div className="CustomOrderTable-body" style={{ maxWidth: '99.5vw', overflow: 'auto', height: "80vh", background: "transparent", }}>
+                <div className="CustomOrderTable-body"
+                     style={{maxWidth: '99.5vw', overflow: 'auto', height: "80vh", background: "transparent",}}>
 
                     {data.rows.map((item, iter) => (
                         <div key={item.id}>
@@ -195,9 +244,39 @@ const CustomStorageTable = ({name}) => {
                         url={`/materials/OnlyOneField`}
                     />
                 }
+                <Button className="adminButtonAdd" style={{position: "fixed", right: "1vw"}} variant="danger" onClick={saveAll}>
+                    +
+                </Button>
+                <Offcanvas show={show} onHide={handleClose}>
+                    <Offcanvas.Header closeButton>
+                        <Offcanvas.Title>Новий щось</Offcanvas.Title>
+                    </Offcanvas.Header>
+                    <Offcanvas.Body>
+                        {/*{formValues &&*/}
+                        {/*    <>*/}
+                        {/*        {formValues.map((metaItem) => (*/}
+                        {/*            <InputGroup className="mb-3" key={metaItem}>*/}
+                        {/*                <Form.Control*/}
+                        {/*                    placeholder={metaItem}*/}
+                        {/*                    aria-label={metaItem}*/}
+                        {/*                    aria-describedby="basic-addon1"*/}
+                        {/*                    value={formValues[metaItem]}*/}
+                        {/*                    onChange={(event) => handleInputChange(event, metaItem)}*/}
+                        {/*                />*/}
+                        {/*                <InputGroup.Text id="basic-addon1">{metaItem}</InputGroup.Text>*/}
+                        {/*            </InputGroup>*/}
+                        {/*        ))}*/}
+                        {/*    </>*/}
+                        {/*}*/}
+                        <Button onClick={saveAll} variant="primary" type="submit">
+                            Додати
+                        </Button>
+                    </Offcanvas.Body>
+                </Offcanvas>
             </div>
         );
     }
+
     if (error) {
         return (
             <h1 className="d-flex justify-content-center align-items-center">

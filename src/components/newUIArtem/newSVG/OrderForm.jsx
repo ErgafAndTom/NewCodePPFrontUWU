@@ -28,30 +28,30 @@ const OrderForm = ({thisOrder}) => {
             <g transform="translate(392.5 133.656)">
                 <g transform="translate(-34)" onClick={handlePaymentClick} style={{ cursor: 'pointer' }}>
                     <rect width="177" height="17" rx="4" fill="#74c686"/>
-                    <text transform="translate(89 13)" fontSize="14" fontFamily="MontserratOffice-Regular, Montserrat">
+                    <text transform="translate(89 13)" fontSize="14" fontFamily="Montserrat-Regular, Montserrat">
                         <tspan x="-84.665" y="0">Оплатити замовлення</tspan>
                     </text>
                 </g>
             </g>
-            <text transform="translate(11 11.828)" fill="#212529" fontSize="16" fontFamily="MontserratOffice-Regular, Montserrat">
+            <text transform="translate(11 11.828)" fill="#212529" fontSize="16" fontFamily="Montserrat-Regular, Montserrat">
                 <tspan x="0" y="15">Сума всього замовлення:</tspan>
             </text>
-            <text transform="translate(11 41.828)" fill="#212529" fontSize="16" fontFamily="MontserratOffice-Regular, Montserrat">
+            <text transform="translate(11 41.828)" fill="#212529" fontSize="16" fontFamily="Montserrat-Regular, Montserrat">
                 <tspan x="0" y="15">Знижка</tspan>
             </text>
-            <text transform="translate(11 71.828)" fill="#212529" fontSize="16" fontFamily="MontserratOffice-Regular, Montserrat">
+            <text transform="translate(11 71.828)" fill="#212529" fontSize="16" fontFamily="Montserrat-Regular, Montserrat">
                 <tspan x="0" y="15">Загальна сума</tspan>
             </text>
-            <text transform="translate(11 130.172)" fill="#212529" fontSize="16" fontFamily="MontserratOffice-Regular, Montserrat">
+            <text transform="translate(11 130.172)" fill="#212529" fontSize="16" fontFamily="Montserrat-Regular, Montserrat">
                 <tspan x="0" y="15">К оплаті</tspan>
             </text>
-            <text transform="translate(317.5 11)" fill="#212529" fontSize="16" fontFamily="MontserratOffice-Regular, Montserrat">
+            <text transform="translate(317.5 11)" fill="#212529" fontSize="16" fontFamily="Montserrat-Regular, Montserrat">
                 <tspan x="0" y="15">грн</tspan>
             </text>
-            <text transform="translate(317.5 41)" fill="#212529" fontSize="16" fontFamily="MontserratOffice-Regular, Montserrat">
+            <text transform="translate(317.5 41)" fill="#212529" fontSize="16" fontFamily="Montserrat-Regular, Montserrat">
                 <tspan x="0" y="15">грн/відсоток</tspan>
             </text>
-            <text transform="translate(317.5 131.578)" fill="#212529" fontSize="16" fontFamily="MontserratOffice-Regular, Montserrat">
+            <text transform="translate(317.5 131.578)" fill="#212529" fontSize="16" fontFamily="Montserrat-Regular, Montserrat">
                 <tspan x="0" y="15">грн</tspan>
             </text>
             <g transform="translate(238 11)" fill="#e4e2da" stroke="#d3d3d3" strokeWidth="1">
@@ -97,17 +97,17 @@ const OrderForm = ({thisOrder}) => {
             <g onClick={handleWorkClick} style={{cursor: 'pointer'}}>
                 <rect width="146" height="47" rx="12" transform="translate(514 12)" fill="#fc0"
                       />
-                <text transform="translate(588 39)" fontSize="11" fontFamily="MontserratOffice-Bold, Montserrat"
+                <text transform="translate(588 39)" fontSize="11" fontFamily="Montserrat-Bold, Montserrat"
                       fontWeight="700">
                     <tspan x="-46.75" y="0">Взяти в роботу</tspan>
                 </text>
             </g>
             <text transform="translate(11.5 100.598)" fill="#212529" fontSize="16"
-                  fontFamily="MontserratOffice-Regular, Montserrat">
+                  fontFamily="Montserrat-Regular, Montserrat">
                 <tspan x="0" y="15">Предоплата</tspan>
             </text>
             <text transform="translate(318 100.598)" fill="#212529" fontSize="16"
-                  fontFamily="MontserratOffice-Regular, Montserrat">
+                  fontFamily="Montserrat-Regular, Montserrat">
             <tspan x="0" y="15">грн</tspan>
             </text>
             <g transform="translate(238.5 100.598)" fill="#e4e2da" stroke="#d3d3d3" strokeWidth="1">
@@ -122,7 +122,7 @@ const OrderForm = ({thisOrder}) => {
             </g>
             <g transform="translate(358 99.676)" onClick={handleDepositClick} style={{ cursor: 'pointer' }}>
                 <rect width="168" height="25" rx="4" fill="#74c686"/>
-                <text transform="translate(85 17)" fontSize="14" fontFamily="MontserratOffice-Regular, Montserrat">
+                <text transform="translate(85 17)" fontSize="14" fontFamily="Montserrat-Regular, Montserrat">
                     <tspan x="-27.237" y="0">Внести</tspan>
                 </text>
             </g>

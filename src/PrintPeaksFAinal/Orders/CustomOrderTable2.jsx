@@ -84,7 +84,7 @@ const CustomOrderTable2 = () => {
                 setError(error.message);
                 setLoading(false);
             });
-    }, [typeSelect, thisColumn, startDate, endDate, statuses]);
+    }, [typeSelect, thisColumn, startDate, endDate, statuses, ]);
 
     const toggleOrder = (orderId) => {
         if (expandedOrders.includes(orderId)) {
