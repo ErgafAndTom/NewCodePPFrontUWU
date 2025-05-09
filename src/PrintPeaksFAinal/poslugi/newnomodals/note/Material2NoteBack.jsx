@@ -217,7 +217,7 @@ style={{ position: "absolute", marginLeft: "42vw", marginTop: "-2vh"}}
                     style={{
                         fontSize: "1vw",
                         width: "6vw",
-                        fontFamily: "Montserrat",
+                        fontFamily: "inter",
                         fontWeight: "bold",
 
                     }}
@@ -228,7 +228,7 @@ style={{ position: "absolute", marginLeft: "42vw", marginTop: "-2vh"}}
                 style={{
                     fontSize: "1vw",
                     marginRight: "0.5vw",
-                    fontFamily: "Montserrat",
+                    fontFamily: "inter",
                     whiteSpace: "nowrap",
 
                 }}
@@ -261,7 +261,7 @@ style={{ position: "absolute", marginLeft: "42vw", marginTop: "-2vh"}}
             <span
                 style={{
                     fontSize: "1vw",
-                    fontFamily: "Montserrat",
+                    fontFamily: "inter",
                     marginRight: "0.5vw",
                     whiteSpace: "nowrap"
                 }}
@@ -335,7 +335,9 @@ style={{ position: "absolute", marginLeft: "42vw", marginTop: "-2vh"}}
             <span
                 style={{
                     fontSize: "1vw",
-                    fontFamily: "Montserrat",
+                    fontFamily: "inter",
+
+
                     marginRight: "0.5vw",
                     whiteSpace: "nowrap"
                 }}
@@ -428,7 +430,9 @@ style={{ position: "absolute", marginLeft: "42vw", marginTop: "-2vh"}}
                 <span
                     style={{
                         fontSize: "1vw",
-                        fontFamily: "Montserrat",
+                        fontFamily: "inter",
+
+
                         whiteSpace: "nowrap",
                         alignSelf: "center",
                         // marginLeft: "0.5vw"

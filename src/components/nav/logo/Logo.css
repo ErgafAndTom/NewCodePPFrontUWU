@@ -19,7 +19,7 @@
     width: 77px;
     height: 67px;
     font-size: var(--font-size-3xl);
-    font-family: var(--font-Montserrat);
+
 }
 
 /* Анимация градиентного текста */
@@ -108,7 +108,7 @@
     /*height: 100vh;*/
     /*background-color: #1a1a1a;*/
     color: white;
-    font-family: 'Arial', sans-serif;
+    font-family: 'inter', sans-serif;
     font-size: 1vw;
     text-transform: uppercase;
 }

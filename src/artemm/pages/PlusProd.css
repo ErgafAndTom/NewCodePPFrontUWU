@@ -130,7 +130,5 @@
   width: 100%;
   height: 193px;
   text-align: center;
-  font-size: var(--font-size-xl);
   color: var(--color-black);
-  font-family: var(--font-Montserrat);
 }

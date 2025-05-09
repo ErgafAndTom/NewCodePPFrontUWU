@@ -121,7 +121,7 @@ export const tabStyles = {
     borderRadius: '8px 8px 0 0',
     cursor: 'pointer',
     marginRight: '5px',
-    fontFamily: 'Montserrat, sans-serif',
+    fontFamily: 'inter, sans-serif',
     fontSize: '14px',
     transition: 'background-color 0.3s',
   },

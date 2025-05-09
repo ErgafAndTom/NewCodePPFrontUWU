@@ -33,15 +33,6 @@
   left: 0px;
   line-height: 18px;
 }
-/*.logo {*/
-/*  position: absolute;*/
-/*  top: 41px;*/
-/*  left: 58.17px;*/
-/*  width: 77px;*/
-/*  height: 67px;*/
-/*  font-size: var(--font-size-3xl);*/
-/*  font-family: var(--font-Montserrat);*/
-/*}*/
 .untitled-3-icon1 {
   position: absolute;
   height: 100%;
@@ -211,9 +202,7 @@
   position: absolute;
   top: calc(50% - 15px);
   left: 21px;
-  font-size: var(--font-size-5xl);
-  font-family: var(--font-Montserrat);
-  color: var(--color-black);
+   color: var(--color-black);
   text-align: left;
 }
 .button3 {
@@ -233,8 +222,6 @@
   position: absolute;
   top: calc(50% - 15px);
   left: 21.5px;
-  font-size: var(--font-size-5xl);
-  font-family: var(--font-Montserrat);
   color: var(--color-black);
   text-align: left;
 }
@@ -274,8 +261,7 @@
   position: absolute;
   top: calc(50% - 14.95px);
   left: 18px;
-  font-family: var(--font-Montserrat);
-  color: var(--color-black);
+
   text-align: left;
 }
 .button5 {
@@ -371,9 +357,9 @@
   position: absolute;
   right: 1px;
   bottom: 0px;
-  font-size: var(--font-size-3xs);
+
   letter-spacing: 0.33px;
-  font-family: var(--font-Montserrat);
+
 }
 .div417 {
   position: absolute;
@@ -383,7 +369,7 @@
   left: 10px;
   height: 37px;
   font-size: var(--font-size-5xl);
-  font-family: var(--font-Montserrat);
+
 }
 .frame6 {
   position: absolute;
@@ -444,7 +430,7 @@
   left: calc(50% + 5.43px);
   width: 98px;
   height: 47px;
-  font-size: var(--font-size-3xs);
+
   color: var(--color-dimgray-100);
 }
 .div419 {
@@ -465,7 +451,7 @@
   top: calc(50% - 15px);
   left: 24px;
   font-size: var(--font-size-5xl);
-  font-family: var(--font-Montserrat);
+
   color: var(--color-black);
   text-align: left;
   display: inline-block;
@@ -487,7 +473,7 @@
   top: calc(50% - 15px);
   left: 25px;
   font-size: var(--font-size-5xl);
-  font-family: var(--font-Montserrat);
+
   color: var(--color-black);
   text-align: left;
   display: inline-block;
@@ -508,7 +494,7 @@
   top: calc(50% - 15px);
   left: 22.5px;
   font-size: var(--font-size-5xl);
-  font-family: var(--font-Montserrat);
+
   color: var(--color-black);
   text-align: left;
 }
@@ -539,7 +525,7 @@
   top: 4px;
   left: 50px;
   font-size: var(--font-size-5xl);
-  font-family: var(--font-Montserrat);
+
   color: var(--color-black);
   text-align: center;
 }
@@ -599,7 +585,7 @@
   top: 1.42px;
   left: 19px;
   font-size: var(--font-size-5xl);
-  font-family: var(--font-Montserrat);
+
   color: var(--color-black);
   text-align: left;
 }
@@ -633,7 +619,7 @@
   top: calc(50% - 14.53px);
   left: 25.67px;
   font-size: var(--font-size-5xl);
-  font-family: var(--font-Montserrat);
+
   color: var(--color-black);
   text-align: left;
 }
@@ -656,7 +642,7 @@
   top: calc(50% - 15px);
   left: 26px;
   font-size: var(--font-size-5xl);
-  font-family: var(--font-Montserrat);
+
   color: var(--color-black);
   text-align: left;
 }
@@ -690,7 +676,7 @@
   right: 354.6px;
   bottom: 0px;
   left: 220px;
-  font-size: var(--font-size-3xs);
+
   color: var(--color-dimgray-100);
 }
 .span40 {
@@ -705,7 +691,7 @@
   width: calc(100% - 15.8px);
   top: calc(50% - 15.9px);
   left: 9px;
-  font-family: var(--font-Montserrat);
+
   color: var(--color-black);
   text-align: left;
   display: inline-block;
@@ -741,7 +727,7 @@
   width: calc(100% - 14px);
   top: calc(50% - 15.75px);
   left: 10px;
-  font-family: var(--font-Montserrat);
+
   color: var(--color-black);
   text-align: left;
   display: inline-block;
@@ -781,5 +767,5 @@
   text-align: left;
   font-size: var(--font-size-5xl);
   color: var(--color-black);
-  font-family: var(--font-Montserrat);
+
 }

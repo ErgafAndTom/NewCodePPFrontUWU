@@ -116,7 +116,7 @@ const NewNoModalLamination = ({lamination, setLamination, prices, buttonsArr, se
             </div>
             <div className="d-flex flex-column">
             <span style={{
-                fontSize: '1vw', marginRight: '0.633vw', fontFamily: "Montserrat", fontWeight: "bold"
+                fontSize: '1vw', marginRight: '0.633vw'
             }}>{"Ламінація:"}</span>
                 {lamination.type !== "Не потрібно" ? (
                     <div style={{display: 'flex', justifyContent: 'center', alignItems: 'center',}}>

@@ -26,8 +26,6 @@
   position: absolute;
   top: calc(50% - 8px);
   left: calc(50% - 29px);
-  font-size: var(--font-size-sm);
-  font-family: var(--font-Montserrat);
   color: var(--color-darkslategray);
   text-align: center;
 }
@@ -69,8 +67,7 @@
   position: absolute;
   top: calc(50% - 8px);
   left: calc(50% - 16.5px);
-  font-size: var(--font-size-sm);
-  font-family: var(--font-Montserrat);
+
   color: var(--color-black);
   text-align: center;
 }
@@ -103,8 +100,6 @@
   position: absolute;
   top: calc(50% - 8px);
   left: 7px;
-  font-size: var(--font-size-sm);
-  font-family: var(--font-Montserrat);
   color: var(--color-darkslategray);
   text-align: center;
 }
@@ -140,8 +135,6 @@
   position: absolute;
   top: calc(50% - 8px);
   left: 13.2px;
-  font-size: var(--font-size-sm);
-  font-family: var(--font-Montserrat);
   color: var(--color-darkslategray);
   text-align: center;
 }
@@ -200,8 +193,6 @@
   position: absolute;
   top: calc(50% - 8px);
   left: 11px;
-  font-size: var(--font-size-sm);
-  font-family: var(--font-Montserrat);
   color: var(--color-darkslategray);
   text-align: center;
 }
@@ -235,7 +226,7 @@
   top: calc(50% - 8px);
   left: calc(50% - 20.75px);
   font-size: var(--font-size-sm);
-  font-family: var(--font-Montserrat);
+
   color: var(--color-darkslategray);
   text-align: center;
 }
@@ -269,7 +260,7 @@
   top: calc(50% - 8px);
   left: calc(50% - 16.5px);
   font-size: var(--font-size-sm);
-  font-family: var(--font-Montserrat);
+
   color: var(--color-darkslategray);
   text-align: center;
 }
@@ -303,7 +294,7 @@
   top: calc(50% - 8px);
   left: 9.68px;
   font-size: var(--font-size-sm);
-  font-family: var(--font-Montserrat);
+
   color: var(--color-darkslategray);
   text-align: center;
 }
@@ -337,7 +328,7 @@
   top: calc(50% - 8px);
   right: 14px;
   font-size: var(--font-size-sm);
-  font-family: var(--font-Montserrat);
+
   color: var(--color-darkslategray);
   text-align: center;
 }
@@ -371,7 +362,7 @@
   top: calc(50% - 8px);
   left: calc(50% - 46.76px);
   font-size: var(--font-size-sm);
-  font-family: var(--font-Montserrat);
+
   color: var(--color-darkslategray);
   text-align: center;
 }
@@ -425,7 +416,7 @@
   width: 87px;
   height: 77px;
   text-align: left;
-  font-family: var(--font-Montserrat);
+
 }
 .div256 {
   position: absolute;
@@ -1939,5 +1930,5 @@
   text-align: center;
   font-size: var(--font-size-6xl);
   color: var(--color-black);
-  font-family: var(--font-Montserrat);
+
 }

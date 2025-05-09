@@ -124,14 +124,7 @@ const UsersCustomTable = ({name}) => {
                 {/*    selectedUser={selectedUser}*/}
                 {/*    setSelectedUser={setSelectedUser}*/}
                 {/*/>*/}
-                <UserForm
-                    data={data}
-                    setData={setData}
-                    selectedUser={selectedUser}
-                    setSelectedUser={setSelectedUser}
-                    show={show}
-                    setShow ={setShow}
-                />
+
                 <div className="CustomOrderTable-header">
                     {/*<div className="CustomOrderTable-header-cell CustomOrderTable-left-rounded">№ замовлення</div>*/}
                     {/*<div className="CustomOrderTable-header-cell">Розгорнути</div>*/}
@@ -205,6 +198,7 @@ const UsersCustomTable = ({name}) => {
                 {/*    setData={setData}*/}
                 {/*    url={"/materials/All"}*/}
                 {/*/>*/}
+                <div className="controls-row">
                 <PaginationMy
                     name={"Order"}
                     data={data}
@@ -219,6 +213,17 @@ const UsersCustomTable = ({name}) => {
                     url={"/materials/All"}
                     thisColumn={thisColumn}
                 />
+                    <div className="right-group">
+                <UserForm
+                    data={data}
+                    setData={setData}
+                    selectedUser={selectedUser}
+                    setSelectedUser={setSelectedUser}
+                    show={show}
+                    setShow ={setShow}
+                />
+                    </div>
+                </div>
                 {showRed &&
                     <ModalStorageRed
                         dataTypeInTable={"string"}

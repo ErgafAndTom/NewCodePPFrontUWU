@@ -19,8 +19,12 @@ const ButtonE = ({nameOfX, buttonsArr, selectArr}) => {
                 <div className={`toggle-button ${isEnabled ? 'enabledd' : 'disabled'}`}>
                 </div>
             </div>
-            <span style={{fontSize: '1.273vw', marginRight: '0.633vw', fontFamily: "Montserrat", fontWeight: "bold"}}>{nameOfX}</span>
-            <select value={radius} onChange={handleSelectChange} style={{backgroundColor: 'transparent', fontFamily: "Montserrat", padding: '0.633vh 1.273vw', fontSize: '1.3vw', borderRadius: '0.5vw', border: '0.15vw solid grey' }}>
+            <span style={{fontSize: '1.273vw', marginRight: '0.633vw', fontFamily: "inter",
+
+ fontWeight: "bold"}}>{nameOfX}</span>
+            <select value={radius} onChange={handleSelectChange} style={{backgroundColor: 'transparent', fontFamily: "inter",
+
+ padding: '0.633vh 1.273vw', fontSize: '1.3vw', borderRadius: '0.5vw', border: '0.15vw solid grey' }}>
                 {selectArr.map((item, iter2) => (
                     <option key={item} value={item}>{item}</option>
                 ))}

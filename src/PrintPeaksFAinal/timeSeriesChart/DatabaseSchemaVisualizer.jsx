@@ -60,7 +60,7 @@ const DatabaseSchemaVisualizer = () => {
             canvas.height = 64;
             const context = canvas.getContext('2d');
             context.fillStyle = '#000';
-            context.font = '24px Arial';
+            context.font = '24px inter';
             context.fillText(item.table, 10, 40);
 
             const texture = new THREE.CanvasTexture(canvas);

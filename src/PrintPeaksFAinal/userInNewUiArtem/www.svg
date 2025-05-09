@@ -57,52 +57,52 @@
                 <rect width="48.055" height="445.508" rx="12" stroke="none"/>
                 <rect x="0.5" y="0.5" width="47.055" height="444.508" rx="11.5" fill="none"/>
             </g>
-            <text id="Нік" transform="translate(44.34 32.114)" font-size="24" font-family="Montserrat-Italic, Montserrat" font-style="italic" opacity="0.2"><tspan x="-20.136" y="0">Нік</tspan></text>
+            <text id="Нік" transform="translate(44.34 32.114)" font-size="24" font-family="inter-Italic, inter" font-style="italic" opacity="0.2"><tspan x="-20.136" y="0">Нік</tspan></text>
         </g>
         <g id="Component_1955_1" data-name="Component 1955 – 1" transform="translate(114.633 111.821)">
             <g id="Rectangle_1519" data-name="Rectangle 1519" transform="translate(443.912) rotate(90)" fill="none" stroke="#292929" stroke-width="1">
                 <rect width="48.055" height="443.912" rx="12" stroke="none"/>
                 <rect x="0.5" y="0.5" width="47.055" height="442.912" rx="11.5" fill="none"/>
             </g>
-            <text id="_telegram" data-name="@telegram" transform="translate(93.34 31.595)" font-size="24" font-family="Montserrat-Italic, Montserrat" font-style="italic" opacity="0.2"><tspan x="-68.244" y="0">@telegram</tspan></text>
+            <text id="_telegram" data-name="@telegram" transform="translate(93.34 31.595)" font-size="24" font-family="inter-Italic, inter" font-style="italic" opacity="0.2"><tspan x="-68.244" y="0">@telegram</tspan></text>
         </g>
         <g id="Component_1954_2" data-name="Component 1954 – 2" transform="translate(113.036 173.259)">
             <g id="Rectangle_1520" data-name="Rectangle 1520" transform="translate(511.927) rotate(90)" fill="none" stroke="#292929" stroke-width="1">
                 <rect width="48.055" height="511.927" rx="12" stroke="none"/>
                 <rect x="0.5" y="0.5" width="47.055" height="510.927" rx="11.5" fill="none"/>
             </g>
-            <text id="E-mail" transform="translate(67.533 32.537)" font-size="24" font-family="Montserrat-Italic, Montserrat" font-style="italic" opacity="0.2"><tspan x="-39.552" y="0">E-mail</tspan></text>
+            <text id="E-mail" transform="translate(67.533 32.537)" font-size="24" font-family="inter-Italic, inter" font-style="italic" opacity="0.2"><tspan x="-39.552" y="0">E-mail</tspan></text>
         </g>
         <g id="Component_1953_2" data-name="Component 1953 – 2" transform="translate(113.036 234.698)">
             <g id="Rectangle_1521" data-name="Rectangle 1521" transform="translate(511.927) rotate(90)" fill="none" stroke="#292929" stroke-width="1">
                 <rect width="48.055" height="511.927" rx="12" stroke="none"/>
                 <rect x="0.5" y="0.5" width="47.055" height="510.927" rx="11.5" fill="none"/>
             </g>
-            <text id="Номер_телефона" data-name="Номер телефона" transform="translate(136.533 32.997)" font-size="24" font-family="Montserrat-Italic, Montserrat" font-style="italic" opacity="0.2"><tspan x="-108.816" y="0">Номер телефона</tspan></text>
+            <text id="Номер_телефона" data-name="Номер телефона" transform="translate(136.533 32.997)" font-size="24" font-family="inter-Italic, inter" font-style="italic" opacity="0.2"><tspan x="-108.816" y="0">Номер телефона</tspan></text>
         </g>
         <g id="Component_1960_4" data-name="Component 1960 – 4" transform="translate(569.172 111.821)">
             <rect id="Rectangle_1524" data-name="Rectangle 1524" width="48.055" height="57.388" rx="12" transform="translate(57.388) rotate(90)" fill="#fc0"/>
             <text id="Імпорт_з_Telegram" data-name="Імпорт
 з
-Telegram" transform="translate(28 13)" font-size="10" font-family="Montserrat-Regular, Montserrat"><tspan x="-18.3" y="0">Імпорт</tspan><tspan x="-4.545" y="14">з </tspan><tspan x="-23.88" y="28">Telegram</tspan></text>
+Telegram" transform="translate(28 13)" font-size="10" font-family="inter, inter"><tspan x="-18.3" y="0">Імпорт</tspan><tspan x="-4.545" y="14">з </tspan><tspan x="-23.88" y="28">Telegram</tspan></text>
         </g>
         <g id="Component_1961_1" data-name="Component 1961 – 1" transform="translate(440.173 390.272)">
             <rect id="Rectangle_1543" data-name="Rectangle 1543" width="48.055" height="211.828" rx="12" transform="translate(211.828) rotate(90)" fill="#fc0"/>
-            <text id="Додати_клієнта" data-name="Додати клієнта" transform="translate(106 32)" font-size="20" font-family="Montserrat-Regular, Montserrat"><tspan x="-82.83" y="0">Додати клієнта</tspan></text>
+            <text id="Додати_клієнта" data-name="Додати клієнта" transform="translate(106 32)" font-size="20" font-family="inter, inter"><tspan x="-82.83" y="0">Додати клієнта</tspan></text>
         </g>
         <g id="Component_1958_1" data-name="Component 1958 – 1" transform="translate(182.772 296.136)">
             <g id="Rectangle_1553" data-name="Rectangle 1553" transform="translate(275.342) rotate(90)" fill="none" stroke="#292929" stroke-width="1">
                 <rect width="48.055" height="275.342" rx="12" stroke="none"/>
                 <rect x="0.5" y="0.5" width="47.055" height="274.342" rx="11.5" fill="none"/>
             </g>
-            <text id="Місто" transform="translate(16 32.028)" font-size="24" font-family="Montserrat-Italic, Montserrat" font-style="italic" opacity="0.2"><tspan x="0" y="0">Місто</tspan></text>
+            <text id="Місто" transform="translate(16 32.028)" font-size="24" font-family="inter-Italic, inter" font-style="italic" opacity="0.2"><tspan x="0" y="0">Місто</tspan></text>
         </g>
         <g id="Component_1959_1" data-name="Component 1959 – 1" transform="translate(471.688 296.136)">
             <g id="Rectangle_1554" data-name="Rectangle 1554" transform="translate(153.275) rotate(90)" fill="none" stroke="#292929" stroke-width="1">
                 <rect width="48.055" height="153.275" rx="12" stroke="none"/>
                 <rect x="0.5" y="0.5" width="47.055" height="152.275" rx="11.5" fill="none"/>
             </g>
-            <text id="Відділення" transform="translate(5.675 32.028)" font-size="24" font-family="Montserrat-Italic, Montserrat" font-style="italic" opacity="0.2"><tspan x="0" y="0">Відділення</tspan></text>
+            <text id="Відділення" transform="translate(5.675 32.028)" font-size="24" font-family="inter-Italic, inter" font-style="italic" opacity="0.2"><tspan x="0" y="0">Відділення</tspan></text>
         </g>
         <g id="layer1" transform="translate(43.239 -682.723)">
             <g id="g4203" transform="translate(0 977.361)">

@@ -19,7 +19,7 @@ const TimeSeriesChart = ({ data }) => {
         const ctx = canvas.getContext("2d");
         const resolutionX = 5;
         const resolutionY = 10;
-        const fontStyle = "Montserrat";
+        const fontStyle = "inter";
         const fontSize = "0.8vh";
 
         ctx.clearRect(0, 0, canvas.width, canvas.height);
@@ -85,7 +85,7 @@ const TimeSeriesChart = ({ data }) => {
 
         // Draw x-axis labels
         ctx.fillStyle = "#000";
-        ctx.font = "1vh Arial";
+        ctx.font = "1vh inter";
         for (let i = 0; i <= resolutionX; i++) {
             const time = minTime + (i / resolutionX) * (maxTime - minTime);
             const date = new Date(time);

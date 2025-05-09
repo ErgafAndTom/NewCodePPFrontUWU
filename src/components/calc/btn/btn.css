@@ -12,7 +12,8 @@
 /*    !*z-index: 33;*!*/
 /*    !*border-radius: 7vw;*!*/
 /*    !*transition: 0s;*!*/
-/*    !*font-family: 'Montserrat', sans-serif;*!*/
+/*    !*font-family: var(--font-inter)
+, sans-serif;*!*/
 /*    !*cursor: pointer;*!*/
 /*    !*white-space: nowrap;*!*/
 /*    border: #F2F0E7 solid 0.1vw;*/
@@ -21,7 +22,8 @@
 /*    z-index: 33;*/
 /*    border-radius: 7vw;*/
 /*    transition: 0s;*/
-/*    font-family: 'Montserrat', sans-serif;*/
+/*    font-family: var(--font-inter)
+, sans-serif;*/
 /*}*/
 /*.fileActive {*/
 /*    !*border: #000000 solid 0.1vw;*!*/

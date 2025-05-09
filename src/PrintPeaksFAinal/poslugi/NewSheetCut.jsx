@@ -13,6 +13,7 @@ import Materials2 from "./newnomodals/Materials2";
 import {useNavigate} from "react-router-dom";
 import PhotoPosluga from "./newnomodals/photo/PhotoPosluga";
 import Porizka from "./newnomodals/Porizka";
+import "../global.css"
 
 const NewSheetCut = ({
                          thisOrder,
@@ -52,10 +53,11 @@ const NewSheetCut = ({
     const [material, setMaterial] = useState({
         type: "Папір",
         thickness: "Офісний",
-        material: "",
-        materialId: "",
+        material: "Крейдований",
+        materialId: "237",
         typeUse: "Офісний"
     });
+
     const [color, setColor] = useState({
         sides: "односторонній",
         one: "",
@@ -215,6 +217,7 @@ const NewSheetCut = ({
                                 className="btn btn-close btn-lg"
                                 style={{
                                     margin: "0.5vw",
+
                                 }}
                                 onClick={handleClose}
                             >
@@ -223,15 +226,13 @@ const NewSheetCut = ({
                         <div className="d-flex flex-column">
                             <div className="d-flex flex-row inputsArtemkilk allArtemElem" style={{marginLeft: "1.4vw", border: "transparent", justifyContent:"left", marginTop:"1vw"}}> У кількості:
                                 <input
-                                    className="d-flex inputsArtemNumber inputsArtem "
+                                    className="d-flex inputsArtemNumber inputsArtem"
                                     style={{
                                         marginLeft: "1vw",
-                                        background: "#FBFAF6",
-                                        width: "5vw",
+                                                                                width: "5vw",
                                         alignItems: "center",
                                         justifyContent:"center",
                                         paddingLeft: "0.5vw",
-
                                     }}
                                     type="number"
                                     value={count}
@@ -241,7 +242,7 @@ const NewSheetCut = ({
                                 />
                                 <div className="inputsArtemx allArtemElem" style={{ border:"transparent", marginTop:"-2vh" }}> шт</div></div>
                             <MDBContainer fluid style={{width: '100%', marginLeft: '-1vw', marginTop:"2vh"}}>
-                                <Row xs={1} md={6} className="">
+                                <Row  className="">
                                     <div className="d-flex flex-column">
                                         <NewNoModalSize
                                             size={size}
@@ -309,16 +310,7 @@ const NewSheetCut = ({
                                             buttonsArr={[]}
                                             selectArr={["", "3,5 мм", "4 мм", "5 мм", "6 мм", "8 мм"]}
                                         />
-                                        {/*<NewNoModalHoles*/}
-                                        {/*    holes={holes}*/}
-                                        {/*    setHoles={setHoles}*/}
-                                        {/*    holesR={holesR}*/}
-                                        {/*    setHolesR={setHolesR}*/}
-                                        {/*    prices={prices}*/}
-                                        {/*    type={"SheetCut"}*/}
-                                        {/*    buttonsArr={[]}*/}
-                                        {/*    selectArr={["", "3,5 мм", "4 мм", "5 мм", "6 мм", "8 мм"]}*/}
-                                        {/*/>*/}
+
                                         <Porizka
                                             porizka={porizka}
                                             setPorizka={setPorizka}
@@ -334,35 +326,20 @@ const NewSheetCut = ({
                                             style={{
                                                 width: "90vw",
                                                 marginLeft: "2.5vw",
-                                                fontFamily: "Montserrat",
+                                                fontFamily: "inter",
                                                 fontWeight: "bold",
                                                 display: 'flex',
                                                 justifyContent: 'center',
                                                 alignItems: 'center',
-                                                transition: "all 0.3s ease",
+                                                // transition: "all 0.3s ease",
                                                 height: '3vw',
                                             }}
                                         >
-                                            <div
-                                                className="btn btn-warning" style={{
-                                                borderRadius: '0.5vw',
-                                                // border: '0.08vw solid gray',
-                                                padding: '0.2vw 0.7vw',
-                                            }}
-                                                onClick={addNewOrderUnit}
+                                            <button  className="adminButtonAdd" variant="danger"  onClick={addNewOrderUnit}
                                             >
                                                 Додати до замовлення
-                                            </div>
-                                            {/*<div*/}
-                                            {/*    className="btn btn-warning" style={{*/}
-                                            {/*    borderRadius: '0.627vw',*/}
-                                            {/*    border: '0.08vw solid gray',*/}
-                                            {/*    padding: '0.2vw 0.7vw',*/}
-                                            {/*}}*/}
-                                            {/*    // onClick={handleThingClickAndHide}*/}
-                                            {/*>*/}
-                                            {/*    Додати до пресетів*/}
-                                            {/*</div>*/}
+                                            </button>
+
                                         </div>
                                     )}
                                 </div>
@@ -374,58 +351,7 @@ const NewSheetCut = ({
 
                                     </div>
                                 ) : (
-                                    <div className="d-flex justify-content-between pricesBlockContainer" style={{width: '92vw'}}>
-                                        {/*<div className="">*/}
-
-                                        {/*    <div className="fontInfoForPricing">*/}
-                                        {/*        Друк: {pricesThis.priceForDrukThisUnit.toFixed(2)} грн * {pricesThis.skolko} шт*/}
-                                        {/*        = {(pricesThis.priceForDrukThisUnit * pricesThis.skolko).toFixed(2)} грн*/}
-                                        {/*    </div>*/}
-                                        {/*    <div className="fontInfoForPricing">*/}
-                                        {/*        Матеріали: {pricesThis.priceForThisUnitOfPapper.toFixed(2)}грн.*/}
-                                        {/*        * {pricesThis.skolko} шт*/}
-                                        {/*        = {(pricesThis.priceForThisUnitOfPapper * pricesThis.skolko).toFixed(2)}грн.*/}
-                                        {/*    </div>*/}
-
-                                        {/*    <div className="fontInfoForPricing">*/}
-                                        {/*        Ламінація: {pricesThis.priceForThisUnitOfLamination} грн*/}
-                                        {/*        * {pricesThis.skolko} шт*/}
-                                        {/*        = {pricesThis.priceForThisAllUnitsOfLamination} грн*/}
-                                        {/*    </div>*/}
-                                        {/*    <div className="fontInfoForPricing">*/}
-                                        {/*        Згинання {pricesThis.priceForThisUnitOfBig} грн * {count} шт*/}
-                                        {/*        = {pricesThis.priceForAllUnitsOfBig} грн*/}
-                                        {/*    </div>*/}
-                                        {/*    <div className=" fontInfoForPricing">*/}
-                                        {/*        Скруглення кутів: {pricesThis.priceForThisUnitOfCute} грн * {count} шт*/}
-                                        {/*        = {pricesThis.priceForAllUnitsOfCute} грн*/}
-                                        {/*    </div>*/}
-                                        {/*    <div className="fontInfoForPricing">*/}
-                                        {/*        Свердління отворів: {pricesThis.priceForThisUnitOfHoles} грн * {count} шт*/}
-                                        {/*        = {pricesThis.priceForAllUnitsOfHoles} грн*/}
-                                        {/*    </div>*/}
-                                        {/*    {pricesThis.porizka !== 0 &&*/}
-                                        {/*        <div className="fontInfoForPricing">*/}
-                                        {/*            Порізка: {pricesThis.porizka.toFixed(2)} грн * {count} шт*/}
-                                        {/*            = {pricesThis.porizka.toFixed(2)*count} грн*/}
-                                        {/*        </div>*/}
-                                        {/*    }*/}
-                                        {/*    <div className="fontInfoForPricing1">*/}
-                                        {/*        Загалом: {pricesThis.price} грн*/}
-                                        {/*    </div>*/}
-                                        {/*    <div className="fontInfoForPricing">*/}
-                                        {/*        - З одного аркуша A3 можливо*/}
-                                        {/*        зробити {pricesThis.skolkoListovNaOdin} виробів*/}
-                                        {/*    </div>*/}
-                                        {/*    <div className="fontInfoForPricing">*/}
-                                        {/*        - Затрачено {pricesThis.skolko} аркушів (SR A3)*/}
-                                        {/*    </div>*/}
-                                        {/*    <div className="fontInfoForPricing1">*/}
-                                        {/*        Вартість 1 аркуша: {pricesThis.priceForThisUnit} грн*/}
-                                        {/*    </div>*/}
-                                        {/*</div>*/}
-
-
+                                    <div className="d-flex justify-content-between pricesBlockContainer">
 
                                         <div className="">
                                             {/* Друк (рахується за sheetCount) */}
@@ -496,12 +422,6 @@ const NewSheetCut = ({
 
                                         <img
                                             className="versant80-img-icon"
-                                            style={{
-                                                width: "13.5vw",
-                                                height: "23vh"
-
-
-                                            }}
                                             alt="sssss"
                                             src={versantIcon}
                                         />

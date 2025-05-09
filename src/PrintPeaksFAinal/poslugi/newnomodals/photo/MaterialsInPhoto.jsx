@@ -104,7 +104,9 @@ const MaterialsInPhoto = ({material, setMaterial, count, setCount, prices, type,
                 {/*<span style={{*/}
                 {/*    fontSize: '1.273vw',*/}
                 {/*    marginRight: '0.633vw',*/}
-                {/*    fontFamily: "Montserrat",*/}
+                {/*    fontFamily: "inter",
+
+*/}
                 {/*    fontWeight: "bold",*/}
                 {/*    whiteSpace: "nowrap",*/}
                 {/*}}>{name}</span>*/}

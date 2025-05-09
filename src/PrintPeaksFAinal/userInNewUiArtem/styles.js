@@ -10,7 +10,7 @@ export const buttonStyles = {
     borderRadius: '1vw',
     border: 'none',
     cursor: 'pointer',
-    fontFamily: 'Montserrat, sans-serif',
+    fontFamily: 'inter, sans-serif',
     fontSize: '0.7vw',
     display: 'flex',
     justifyContent: 'center',

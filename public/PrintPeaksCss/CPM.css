@@ -38,7 +38,7 @@
   top: calc(50% - 15px);
   left: 26.67px;
   font-size: 24px;
-  font-family: "Montserrat";
+
   color: #000;
   text-align: center;
 }
@@ -278,7 +278,7 @@
   top: 4px;
   left: 50px;
   font-size: 24px;
-  font-family: "Montserrat";
+
   color: #000;
   text-align: center;
 }
@@ -317,7 +317,7 @@
   height: 67px;
   font-size: 22px;
   color: inherit;
-  font-family: Montserrat;
+
 }
 .input-text25 {
   position: absolute;
@@ -341,7 +341,7 @@
   box-sizing: border-box;
   font-size: 24;
   text-align: center;
-  font-family: Montserrat;
+
 }
 .frame16 {
   position: absolute;
@@ -369,7 +369,7 @@
   font-size: 16px;
   letter-spacing: 0.53px;
   line-height: 16px;
-  font-family: "Montserrat";
+
   text-align: center;
 }
 .quantity10 {
@@ -379,7 +379,7 @@
   width: 95.8px;
   height: 40.5px;
   color: #707070;
-  font-family: Montserrat;
+
 }
 .sizes9 {
   position: absolute;
@@ -392,7 +392,7 @@
   border: 1px solid #707070;
   box-sizing: border-box;
   width: 485.1px;
-  font-family: Montserrat;
+
   font-size: 23;
   color: #000;
 }
@@ -408,7 +408,7 @@
   border-radius: 5px;
   box-sizing: border-box;
   width: 115.7px;
-  font-family: Montserrat;
+
   font-size: 23;
   color: #000;
   cursor: text;
@@ -435,7 +435,7 @@
   border-radius: 5px;
   box-sizing: border-box;
   width: 114.8px;
-  font-family: Montserrat;
+
   font-size: 23;
   color: #000;
   cursor: text;
@@ -460,7 +460,7 @@
   top: calc(50% - 15px);
   left: 24px;
   font-size: 24px;
-  font-family: "Montserrat";
+
   color: #000;
   text-align: left;
   display: inline-block;
@@ -485,7 +485,7 @@
   top: calc(50% - 14px);
   left: 25px;
   font-size: 24px;
-  font-family: "Montserrat";
+
   color: #000;
   text-align: left;
   display: inline-block;
@@ -563,7 +563,7 @@
   top: calc(50% - 14.95px);
   left: 16px;
   font-size: 24px;
-  font-family: "Montserrat";
+
   color: #000;
   text-align: left;
   display: inline-block;
@@ -586,7 +586,7 @@
   top: calc(50% - 14.95px);
   left: 36px;
   font-size: 24px;
-  font-family: "Montserrat";
+
   color: #000;
   text-align: left;
   display: inline-block;
@@ -609,7 +609,7 @@
   top: calc(50% - 14.95px);
   left: 18px;
   font-size: 24px;
-  font-family: "Montserrat";
+
   color: #000;
   text-align: left;
   display: inline-block;
@@ -637,7 +637,7 @@
   border: 1px solid #707070;
   box-sizing: border-box;
   width: 207.2px;
-  font-family: Montserrat;
+
   font-size: 23;
   color: #000;
 }
@@ -672,7 +672,7 @@
   border: 1px solid #707070;
   box-sizing: border-box;
   width: 213.1px;
-  font-family: Montserrat;
+
   font-size: 23;
   color: #000;
 }
@@ -706,7 +706,7 @@
   box-sizing: border-box;
   width: 120.4px;
   height: 36.4px;
-  font-family: Montserrat;
+
   font-size: 23;
   color: #000;
 }
@@ -754,7 +754,7 @@
   top: 1.42px;
   left: 19px;
   font-size: 24px;
-  font-family: "Montserrat";
+
   color: #000;
   text-align: left;
 }
@@ -788,7 +788,7 @@
   top: calc(50% - 14.53px);
   left: 25.67px;
   font-size: 24px;
-  font-family: "Montserrat";
+
   color: #000;
   text-align: left;
 }
@@ -811,7 +811,7 @@
   top: calc(50% - 15px);
   left: 26px;
   font-size: 24px;
-  font-family: "Montserrat";
+
   color: #000;
   text-align: left;
 }
@@ -858,7 +858,7 @@
   width: calc(100% - 15.8px);
   top: calc(50% - 15.9px);
   left: 9px;
-  font-family: "Montserrat";
+
   color: #000;
   text-align: left;
   display: inline-block;
@@ -894,7 +894,7 @@
   width: calc(100% - 14px);
   top: calc(50% - 15.75px);
   left: 10px;
-  font-family: "Montserrat";
+
   color: #000;
   text-align: left;
   display: inline-block;
@@ -927,7 +927,7 @@
   width: 95.8px;
   height: 40.5px;
   color: #707070;
-  font-family: Montserrat;
+
 }
 .broshura1 {
   position: absolute;
@@ -954,7 +954,7 @@
   top: 0px;
   right: 41.81px;
   font-size: 24px;
-  font-family: "Montserrat";
+
   color: #000;
   text-align: left;
 }
@@ -989,7 +989,7 @@
   width: 95.8px;
   height: 40.5px;
   color: #707070;
-  font-family: Montserrat;
+
 }
 .scan {
   position: absolute;
@@ -1021,7 +1021,7 @@
   box-sizing: border-box;
   width: 120.4px;
   height: 36.4px;
-  font-family: Montserrat;
+
   font-size: 23;
   color: #000;
 }
@@ -1481,5 +1481,5 @@
   text-align: left;
   font-size: 24px;
   color: #000;
-  font-family: "Montserrat";
+
 }

@@ -10,31 +10,34 @@
     background: #FBFAF6;
 }
 .adminFontTable {
-    font-size: 1.4vh;
-    font-weight: 400;
+    font-size: 1.8vh;
+    /*font-weight: 400;*/
     margin: 0.1vw;
     margin-left: 0.4vw;
     align-items: flex-start /* Вертикальне вирівнювання тексту */
 }
 .paginationZakaz {
     align-items: center;
-    margin: 0.25vw;
-    display: flex;
+    width: 5vw;
+    margin: 0.4vw;
+    /*display: flex;*/
     justify-content: center;
     background: #FBFAF6;
     padding: 0.3vw;
     border-radius: 1.5vw;
-    border: 1px solid transparent;
+    border: none;
 }
 .paginationNamberZakaz {
     align-items: center;
     display: flex;
     justify-content: center;
-    margin: 0.3vw;
+    margin: 1.1vh;
     background: #FBFAF6;
-    width: 2vw;
-    height: 2vw;
+    width: 1.7vw;
+    height: 1.7vw;
     border-radius: 1.5vw;
+    border: none;
+
 }
 .activePag{
     background: #FAB416;
@@ -47,6 +50,7 @@
     display: none;
 }
 .adminButtonAdd {
+
     /*position: fixed;*/
     /*bottom: 5vh;*/
     /*z-index: 9999;*/
@@ -56,15 +60,32 @@
     width: 12vw;
     align-items: center;
     justify-content: center;
+    border: none;
     /*padding: 1vh;*/
+    font-size: var(--font-size-sm);
     border-radius: 1vh;
+    right: 1vw;
     color: #000000;
-    background: #FBFAF6;
+    background: #f5f5f0;
 }
 
 .adminButtonAdd:hover{
     cursor: pointer;
     background: #FAB416;
+}
+.adminButtonAdd:active{
+    background: #FAB416;
+
+}
+.adminButtonAdd:active:focus{
+    background: #FAB416;
+}
+.adminButtonAdd:focus{
+    outline: none;
+}
+.adminButtonAdd:disabled{
+    background: #F2F0E7;
+    cursor: not-allowed;
 }
 .hoverOrange:hover {
     background: #FAB416;
@@ -144,11 +165,11 @@
     font-size: 1.5vw;
 }
 .fontInfoForPricing1 {
-    font-size: 1vw;
+    font-size: 2vmin;
     font-weight: bold;
 }
 .fontInfoForPricing {
-    font-size: 1.3vmin;
+    font-size: 1.6vmin;
     /*font-size: clamp(10px, 1.5vmin, 14px);*/
 }
 .fontProductName {

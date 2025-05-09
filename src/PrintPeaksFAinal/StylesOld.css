@@ -1,5 +1,6 @@
-.Montserrat {
-    font-family: 'Montserrat', sans-serif;
+.inter {
+    font-family: var(--font-inter)
+, sans-serif;
 }
 .color {
     background: #F2F0E7;
@@ -14,7 +15,8 @@
     z-index: 33;
     border-radius: 7vw;
     transition: 0s;
-    font-family: 'Montserrat', sans-serif;
+    font-family: var(--font-inter)
+, sans-serif;
 }
 .fileActive {
     background: #2a2a2a;
@@ -136,7 +138,8 @@
     border: #000000 solid 0.1vw;
     width: 14vw;
     margin: 0.2vw;
-    font-family: 'Montserrat', sans-serif;
+    font-family: var(--font-inter)
+, sans-serif;
 }
 .containerForImgInServer {
     display: flex;
@@ -354,7 +357,8 @@
     padding: 0;
 }
 .inputCount {
-    font-family: 'Montserrat', sans-serif;
+    font-family: var(--font-inter)
+, sans-serif;
     border: none;
     border-bottom: black solid;
     border-radius: 0;
@@ -363,7 +367,8 @@
     width: 14vw;
 }
 .inputPrice {
-    font-family: 'Montserrat', sans-serif;
+    font-family: var(--font-inter)
+, sans-serif;
     border: none;
     border-radius: 0;
     font-size: 4vw;

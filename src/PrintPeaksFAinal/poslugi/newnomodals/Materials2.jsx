@@ -68,19 +68,19 @@ const Materials2 = ({material, setMaterial, count, setCount, prices, type, name,
                 // console.log(response.data);
                 setPaper(response.data.rows)
                 setLoad(false)
-                if(response.data && response.data.rows && response.data.rows[0]){
-                    setMaterial({
-                        ...material,
-                        material: response.data.rows[0].name,
-                        materialId: response.data.rows[0].id,
-                    })
-                } else {
-                    setMaterial({
-                        ...material,
-                        material: "Немає",
-                        materialId: 0,
-                    })
-                }
+                // if(response.data && response.data.rows && response.data.rows[0]){
+                //     setMaterial({
+                //         ...material,
+                //         material: response.data.rows[0].name,
+                //         materialId: response.data.rows[0].id,
+                //     })
+                // } else {
+                //     setMaterial({
+                //         ...material,
+                //         material: "Немає",
+                //         materialId: 0,
+                //     })
+                // }
             })
             .catch(error => {
                 setLoad(false)
@@ -92,40 +92,6 @@ const Materials2 = ({material, setMaterial, count, setCount, prices, type, name,
             })
     }, [material.thickness, size]);
 
-    // useEffect(() => {
-    //     let data = {
-    //         name: "MaterialsPrices",
-    //         inPageCount: 999999,
-    //         currentPage: 1,
-    //         search: "",
-    //         columnName: {
-    //             column: "id",
-    //             reverse: false
-    //         },
-    //         material: material
-    //     }
-    //     axios.post(`/materials/NotAll`, data)
-    //         .then(response => {
-    //             console.log(response.data);
-    //             // setPaper(response.data.rows)
-    //             if(response.data && response.data.rows){
-    //                 setPaper(response.data.rows)
-    //             }
-    //             // if(response.data && response.data.rows && response.data.rows[0]){
-    //             //     setMaterial({
-    //             //         ...material,
-    //             //         material: response.data.rows[0].name,
-    //             //         materialId: response.data.rows[0].id,
-    //             //     })
-    //             // }
-    //         })
-    //         .catch(error => {
-    //             console.log(error.message);
-    //             if(error.response && error.response.status === 403){
-    //                 navigate('/login');
-    //             }
-    //         })
-    // }, []);
 
     return (
         <div className="d-flex allArtemElem" style={{marginLeft: "2vw", marginTop: "1vh"}}>
@@ -143,15 +109,15 @@ const Materials2 = ({material, setMaterial, count, setCount, prices, type, name,
                         >
                             <div className="" style={{
                                 height: "100%",
-                                opacity: item === material.thickness ? '100%' : '70%',
-                                whiteSpace: "nowrap",
+                                opacity: item === material.thickness ? '100%' : '50%',
+
                             }}>
                                 {item}
                             </div>
                         </div>
                     ))}
                 </div>
-                <div className="ArtemNewSelectContainer" style={{marginTop: "0vw", display: 'flex', justifyContent: 'center'}}>
+                <div className="ArtemNewSelectContainer" style={{marginTop: "0vw", justifyContent: 'center'}}>
                     <select
                         name="materialSelect"
                         value={material.material || ""}
@@ -174,9 +140,9 @@ const Materials2 = ({material, setMaterial, count, setCount, prices, type, name,
                                 value={item.name}
                                 data-id={item.id}
                             >
-                                {/*<>{"id:"}</>*/}
-                                {/*<>{item.id}</>*/}
-                                {/*<>{" "}</>*/}
+                                <>{"id:"}</>
+                                <>{item.id}</>
+                                <>{" "}</>
                                 <>{item.name}</>
                                 <>{" "}</>
                                 <>{item.thickness} gsm</>

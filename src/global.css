@@ -1,30 +1,30 @@
-@import url("https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,400;0,700;1,400;1,700&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=inter:ital,wght@0,400;0,700;1,400;1,700&display=swap");
 @import url("https://fonts.googleapis.com/css2?family=Ink+Free:wght@400&display=swap");
 @import url("https://fonts.googleapis.com/css2?family=Roboto:wght@500&display=swap");
 @import url("https://fonts.googleapis.com/css2?family=Adobe+Clean:wght@400&display=swap");
 @import url("https://fonts.googleapis.com/css2?family=Lato:wght@400;700&display=swap");
 @import url("https://fonts.googleapis.com/icon?family=Material+Icons");
+@import url("https://use.typekit.net/iro7gjn.css");
 
 @font-face {
-  font-family: 'Montserrat';
-  src: url('./fonts/Montserrat-Regular.ttf') format('truetype');
-  font-weight: 400;
+  font-family: "Inter";
+  src: url('./fonts/Inter_18pt-Regular.ttf') format('truetype');
+  font-weight: normal;
   font-style: normal;
   font-display: swap;
 }
 
-@font-face {
-  font-family: 'Montserrat';
-  src: url('./fonts/Montserrat-Bold.ttf') format('truetype');
-  font-weight: 700;
-  font-style: normal;
-  font-display: swap;
-}
+/*@font-face {*/
+/*    */
+/*  font-weight: 700;*/
+/*  font-style: normal;*/
+/*  font-display: swap;*/
+/*}*/
 
 body {
   margin: 0;
   line-height: normal;
-  font-family: 'Montserrat', sans-serif;
+
 }
 
 .popup-overlay {
@@ -35,15 +35,13 @@ body {
 }
 :root {
   /* fonts */
-  --font-Montserrat: "Montserrat";
-  --font-Montserrat: Montserrat;
-  --font-ink-free: "Ink Free";
-
+  --font-inter: 'Inter';
+  --font-ink-free: 'Ink Free';
   /* font sizes */
-  --font-size-3xs: 10px;
-  --font-size-sm: 14px;
+  --font-size-3xs: 1vmin;
+  --font-size-sm: 1.5vmin;
   --font-size-26xl: 45px;
-  --font-size-base: 16px;
+  --font-size-base: 1.9vmin;
   --font-size-5xl: 24px;
   --font-size-xl: 20px;
   --font-size-6xs: 7px;
@@ -82,5 +80,3 @@ body {
   --br-11xl: 30px;
   --br-81xl: 100px;
 }
-
-

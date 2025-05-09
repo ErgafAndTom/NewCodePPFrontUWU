@@ -133,7 +133,8 @@
 .ContractorTable {
     width: 100%;
     border-collapse: collapse;
-    font-family: Montserrat, sans-serif;
+    font-family: var(--font-inter)
+, sans-serif;
     border-radius: 0.5vw;
     overflow: hidden;
     background-color: #faf8f3;

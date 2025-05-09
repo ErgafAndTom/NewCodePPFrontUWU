@@ -4466,7 +4466,7 @@ s: 4px; box-shadow: rgba(0, 0, 0, 0.05) 0px 1px 1px inset; }
 
 .close { font-size: 18px; line-height: 1; color: rgb(34, 34, 34); }
 
-.popover, .tooltip { font-family: RobotoSlab, "Times New Roman", Times, ser=
+.popover, .tooltip { font-family: RobotoSlab, "inter", Times, ser=
 if; font-style: normal; font-weight: 400; letter-spacing: normal; line-brea=
 k: auto; text-shadow: none; text-transform: none; white-space: normal; word=
 -break: normal; word-spacing: normal; overflow-wrap: normal; text-decoratio=
@@ -9783,7 +9783,7 @@ ulation; }
 .mfp-close { width: 44px; height: 44px; line-height: 44px; position: absolu=
 te; right: 2px; top: 6px; text-decoration: none; text-align: center; opacit=
 y: 0.65; padding: 0px 0px 18px 10px; color: rgb(255, 255, 255); font-style:=
- normal; font-size: 28px; font-family: Arial, Baskerville, monospace; }
+ normal; font-size: 28px; font-family: var(--font-inter), Arial, Baskerville, monospace; }
 
 .mfp-close:hover, .mfp-close:focus { opacity: 1; }
 
@@ -10038,7 +10038,7 @@ sition: relative; overflow: hidden; z-index: 1102; border: 0px solid rgb(25=
 ; height: 30px; background: url("/assets/plugins/fancybox/fancybox.png") -4=
 0px 0px transparent; cursor: pointer; z-index: 1103; display: none; }
 
-#fancybox-error { color: rgb(68, 68, 68); font: 12px / 20px Arial; padding:=
+#fancybox-error { color: rgb(68, 68, 68); font: 12px / 20px inter; padding:=
  14px; margin: 0px; }
 
 #fancybox-img { width: 100%; height: 100%; padding: 0px; margin: 0px; borde=

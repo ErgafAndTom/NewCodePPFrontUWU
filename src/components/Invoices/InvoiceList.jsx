@@ -403,16 +403,7 @@ const InvoiceList = () => {
 
     return (
         <div className="">
-            <div className="d-flex justify-content-between align-items-center mb-3">
-                <h2>Список рахунків</h2>
-                <Button
-                    variant="primary"
-                    onClick={handleOpenAddModal}
-                >
-                    <i className="bi bi-plus-circle me-2"></i>
-                    Додати новий рахунок
-                </Button>
-            </div>
+
             
             {invoices.length === 0 ? (
                 <div className="text-center p-5 bg-light rounded">
@@ -447,40 +438,49 @@ const InvoiceList = () => {
                                 <td className="text-end fw-bold">{parseFloat(invoice.totalSum).toLocaleString('uk-UA')} грн</td>
                                 <td className="text-center">
                                     <Button
-                                        variant="outline-primary"
+                                        variant="light"
                                         size="sm"
-                                        className="me-2"
+                                        className="p-1 border-0 me-1"
+                                        style={{ width: '18px', height: '18px', backgroundColor: '#007bff', borderRadius: '50%' }}
                                         onClick={() => handleViewInvoice(invoice)}
                                         title="Переглянути"
                                     >
-                                        <i className="bi bi-eye"></i>
+                                        <i className="bi bi-eye" style={{ fontSize: '10px', color: 'white' }}></i>
                                     </Button>
-                                    <Button 
-                                        variant="primary" 
-                                        size="sm" 
-                                        className="me-1" 
+
+                                    <Button
+                                        variant="light"
+                                        size="sm"
+                                        className="p-1 border-0 me-1"
+                                        style={{ width: '18px', height: '18px', backgroundColor: '#0d6efd', borderRadius: '50%' }}
                                         onClick={() => handlePrintInvoice(invoice)}
                                         title="Друкувати"
                                     >
-                                        <i className="bi bi-printer"></i>
+                                        <i className="bi bi-printer" style={{ fontSize: '10px', color: 'white' }}></i>
                                     </Button>
+
                                     <Button
-                                        variant="outline-success"
+                                        variant="light"
                                         size="sm"
-                                        className="me-2"
+                                        className="p-1 border-0 me-1"
+                                        style={{ width: '18px', height: '18px', backgroundColor: '#198754', borderRadius: '50%' }}
                                         onClick={() => handlePrepareEdit(invoice)}
                                         title="Редагувати"
                                     >
-                                        <i className="bi bi-pencil"></i>
+                                        <i className="bi bi-pencil" style={{ fontSize: '10px', color: 'white' }}></i>
                                     </Button>
+
                                     <Button
-                                        variant="outline-danger"
+                                        variant="light"
                                         size="sm"
+                                        className="p-1 border-0"
+                                        style={{ width: '18px', height: '18px', backgroundColor: '#dc3545', borderRadius: '50%' }}
                                         onClick={() => handlePrepareDelete(invoice)}
                                         title="Видалити"
                                     >
-                                        <i className="bi bi-trash"></i>
+                                        <i className="bi bi-trash" style={{ fontSize: '10px', color: 'white' }}></i>
                                     </Button>
+
                                 </td>
                             </tr>
                         ))}
@@ -890,7 +890,16 @@ const InvoiceList = () => {
                     </Button>
                 </Modal.Footer>
             </Modal>
-                            
+            <div className="d-flex justify-content-between align-items-center mb-3">
+
+                <Button className="adminButtonAdd"
+                        variant="danger"
+                        onClick={handleOpenAddModal}
+                >
+
+                    Додати новий рахунок
+                </Button>
+            </div>
                             {/* Модальне вікно для друку рахунку */}
                             <InvoicePrintModal
                 show={showPrintModal}

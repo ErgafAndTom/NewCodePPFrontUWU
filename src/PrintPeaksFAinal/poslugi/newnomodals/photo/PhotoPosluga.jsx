@@ -87,7 +87,8 @@ const PhotoPosluga = ({photo, setPhoto, prices, buttonsArr, selectArr}) => {
             </div>
             <div className="d-flex flex-column">
             <span style={{
-                fontSize: '1.273vw', marginRight: '0.633vw', fontFamily: "Montserrat", fontWeight: "bold"
+                fontSize: '1.273vw', marginRight: '0.633vw', fontFamily: "inter",
+ fontWeight: "bold"
             }}>{"Фото на документи:"}</span>
                 {/*{photo.type !== "Не потрібно" ? (*/}
                 {/*    <div style={{display: 'flex', justifyContent: 'center', alignItems: 'center',}}>*/}

@@ -1,20 +1,34 @@
 /* CustomOrderTable.css */
 
 /*@font-face {*/
-/*    font-family: 'Montserrat';*/
-/*    src: url('fonts/Montserrat.woff2') format('woff2'),*/
-/*    url('fonts/Montserrat.woff') format('woff');*/
+/*     */
+/*    src: url('fonts/inter.woff2') format('woff2'),*/
+/*    url('fonts/inter.woff') format('woff');*/
 /*    font-weight: normal;*/
 /*    font-style: normal;*/
 /*}*/
 
 body {
     display: flex;
-    font-family: 'Montserrat', Arial, sans-serif;
+    font-family: var(--font-inter)
+, inter, sans-serif;
     /*margin: 10px;*/
     /*background-color: rgba(233, 230, 218, 0.5); !* Прозорість 50% *!*/
 }
+.controls-row {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-top: 1rem;
 
+}
+.right-group {
+    display: flex;
+    align-items: center;
+    margin-right: 0.3vw;
+
+
+}
 .CustomOrderTable-order-list {
     width: 100%;
     /*max-width: 1720px;*/

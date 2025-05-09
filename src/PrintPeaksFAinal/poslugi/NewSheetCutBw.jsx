@@ -290,7 +290,9 @@ const NewSheetCutBw = ({thisOrder, newThisOrder, setNewThisOrder, selectedThings
                                             className="d-flex align-content-between"
                                             style={{
                                                 width: "90vw",
-                                                fontFamily: "Montserrat",
+                                                fontFamily: "inter",
+
+
                                                 // fontWeight: "bold",
                                                 display: 'flex',
                                                 // justifyContent: 'center',
@@ -301,18 +303,10 @@ const NewSheetCutBw = ({thisOrder, newThisOrder, setNewThisOrder, selectedThings
                                                 marginLeft: "2vw",
                                             }}
                                         >
-                                            <div
-                                                className="btn btn-warning" style={{
-                                                borderRadius: '0.5vw',
-                                                // border: '0.08vw solid gray',
-                                                padding: '0.2vw 0.7vw',
-                                                marginLeft: '-0.7vw',
-
-                                            }}
-                                                onClick={addNewOrderUnit}
+                                            <button  className="adminButtonAdd" variant="danger"  onClick={addNewOrderUnit}
                                             >
                                                 Додати до замовлення
-                                            </div>
+                                            </button>
                                             {/*<div*/}
                                             {/*    className="btn btn-warning" style={{*/}
                                             {/*    borderRadius: '0.627vw',*/}
@@ -404,10 +398,6 @@ const NewSheetCutBw = ({thisOrder, newThisOrder, setNewThisOrder, selectedThings
 
                                         <img
                                             className="kyosera-img-icon"
-                                            style={{
-                                                width: "12vw",
-
-                                            }}
                                             alt="sssss"
                                             src={versantIcon}
                                         />

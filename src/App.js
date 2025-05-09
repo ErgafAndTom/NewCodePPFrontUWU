@@ -11,37 +11,44 @@ import store from "./stores/store";
 import {BrowserRouter as Router} from 'react-router-dom'
 import React, {useEffect} from "react";
 import AllWindow from "./components/AllWindow";
+// В App.tsx або іншому компоненті високого рівня
+import { Global, css } from '@emotion/react';
 
+const globalStyles = css`
+  @import url('https://use.typekit.net/iro7gjn.css');
+`;
 
 function App() {
     useEffect(() => {
         document.fonts.ready.then(() => {
-            if (document.fonts.check('1.3vh "Montserrat"')) {
-                console.log('✅ Шрифт Montserrat завантажено та готовий до використання!');
+            if (document.fonts.check('1.3vh "Inter"')) {
+                console.log('✅ Шрифт inter завантажено та готовий до використання!');
             } else {
-                console.warn('❌ Шрифт Montserrat не завантажено або недоступний.');
+                console.warn('❌ Шрифт inter не завантажено або недоступний.');
                 // Спробуємо примусово завантажити шрифти
                 // Використовуємо відносні шляхи до шрифтів
-                const regularFont = new FontFace('Montserrat', 'url(./fonts/Montserrat-Regular.ttf)', { weight: '400' });
-                const boldFont = new FontFace('Montserrat', 'url(./fonts/Montserrat-Bold.ttf)', { weight: '700' });
+                const regularFont = new FontFace('Inter', 'url(./fonts/Inter_18pt-Regular.ttf)', { weight: '400' });
                 
-                Promise.all([regularFont.load(), boldFont.load()])
+                Promise.all([regularFont.load() ])
                     .then(loadedFonts => {
                         loadedFonts.forEach(font => document.fonts.add(font));
-                        console.log('✅ Шрифти Montserrat завантажено примусово!');
+                        console.log('✅ Шрифти inter завантажено примусово!');
                     })
                     .catch(err => console.error('❌ Помилка при завантаженні шрифтів:', err));
             }
         });
     }, []);
     return (
-        <div>
-            <Provider store={store}>
-                <Router>
-                    <AllWindow/>
-                </Router>
-            </Provider>
-        </div>
+        <>
+            <Global styles={globalStyles} />
+            <div>
+                <Provider store={store}>
+                    <Router>
+                        <AllWindow/>
+                    </Router>
+                </Provider>
+            </div>
+        </>
     )
 }
 

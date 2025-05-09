@@ -48,8 +48,6 @@
   left: 58.17px;
   width: 77px;
   height: 67px;
-  font-size: var(--font-size-3xl);
-  font-family: var(--font-Montserrat);
 }
 .div481 {
   position: absolute;
@@ -91,8 +89,6 @@
   position: absolute;
   top: 4px;
   left: 50px;
-  font-size: var(--font-size-5xl);
-  font-family: var(--font-Montserrat);
   color: var(--color-black);
   text-align: center;
 }
@@ -298,9 +294,9 @@
   position: absolute;
   right: 1px;
   bottom: 0px;
-  font-size: var(--font-size-3xs);
+
   letter-spacing: 0.33px;
-  font-family: var(--font-Montserrat);
+
 }
 .div484 {
   position: absolute;
@@ -310,7 +306,7 @@
   left: 10px;
   height: 37px;
   font-size: var(--font-size-5xl);
-  font-family: var(--font-Montserrat);
+
 }
 .frame16 {
   position: absolute;
@@ -363,7 +359,7 @@
   left: calc(50% - 107.01px);
   width: 98px;
   height: 47px;
-  font-size: var(--font-size-3xs);
+
   color: var(--color-dimgray-100);
 }
 .krugr-button {
@@ -468,7 +464,7 @@
   font-size: var(--font-size-8xl);
   letter-spacing: 0.25px;
   line-height: 32px;
-  font-family: var(--font-Montserrat);
+
   text-align: left;
 }
 .frame18 {
@@ -524,7 +520,7 @@
   left: calc(50% - 29px);
   width: 99px;
   text-align: center;
-  font-size: var(--font-size-3xs);
+
   color: var(--color-dimgray-100);
 }
 .div491 {
@@ -535,7 +531,7 @@
   left: calc(50% - 164px);
   width: 99px;
   text-align: center;
-  font-size: var(--font-size-3xs);
+
   color: var(--color-dimgray-100);
 }
 .widek1 {
@@ -560,7 +556,7 @@
   bottom: 0px;
   left: calc(50% - 217.01px);
   width: 98px;
-  font-size: var(--font-size-3xs);
+
   color: var(--color-dimgray-100);
 }
 .krugr-button1 {
@@ -589,7 +585,7 @@
   bottom: 0px;
   left: calc(50% + 104.49px);
   width: 98px;
-  font-size: var(--font-size-3xs);
+
   color: var(--color-dimgray-100);
 }
 .krugr-button2 {
@@ -677,5 +673,5 @@
   text-align: left;
   font-size: var(--font-size-5xl);
   color: var(--color-black);
-  font-family: var(--font-Montserrat);
+
 }

@@ -1121,9 +1121,7 @@
   left: 1642px;
   width: 87px;
   height: 77px;
-  font-size: var(--font-size-6xl);
-  font-family: var(--font-Montserrat);
-}
+ }
 .div629 {
   position: absolute;
   top: 0px;
@@ -1135,7 +1133,6 @@
   top: 0px;
   right: 107px;
   left: 0px;
-  background-color: var(--color-red-100);
   height: 56px;
   opacity: 0;
 }
@@ -1496,7 +1493,7 @@
   font-size: var(--font-size-xl);
   letter-spacing: 0.19px;
   line-height: 24px;
-  font-family: var(--font-Montserrat);
+
   text-align: left;
 }
 .frame44 {
@@ -1741,7 +1738,7 @@
   font-size: var(--font-size-8xl);
   letter-spacing: 0.25px;
   line-height: 32px;
-  font-family: var(--font-Montserrat);
+
   text-align: left;
 }
 .frame48 {
@@ -1797,7 +1794,7 @@
   left: calc(50% - 29px);
   width: 99px;
   text-align: center;
-  font-size: var(--font-size-3xs);
+
   color: var(--color-dimgray-100);
 }
 .div658 {
@@ -1808,7 +1805,7 @@
   left: calc(50% - 164px);
   width: 99px;
   text-align: center;
-  font-size: var(--font-size-3xs);
+
   color: var(--color-dimgray-100);
 }
 .div652 {
@@ -2085,7 +2082,7 @@
   top: 4px;
   left: 50px;
   font-size: var(--font-size-5xl);
-  font-family: var(--font-Montserrat);
+
   color: var(--color-black);
   text-align: center;
 }
@@ -2151,9 +2148,9 @@
   position: absolute;
   right: 1px;
   bottom: 0px;
-  font-size: var(--font-size-3xs);
+
   letter-spacing: 0.33px;
-  font-family: var(--font-Montserrat);
+
 }
 .div679 {
   position: absolute;
@@ -2163,7 +2160,7 @@
   left: 10px;
   height: 37px;
   font-size: var(--font-size-5xl);
-  font-family: var(--font-Montserrat);
+
 }
 .frame52 {
   position: absolute;
@@ -2217,7 +2214,7 @@
   bottom: 0px;
   left: 0px;
   width: 98px;
-  font-size: var(--font-size-3xs);
+
   color: var(--color-dimgray-100);
 }
 .arckush1 {
@@ -3120,7 +3117,7 @@
   left: 72.97%;
   font-size: var(--font-size-6xs);
   letter-spacing: 0.23px;
-  font-family: var(--font-Montserrat);
+
   text-align: center;
 }
 .div698 {
@@ -3131,7 +3128,7 @@
   height: 28px;
   font-size: var(--font-size-mid);
   color: var(--color-dimgray-100);
-  font-family: var(--font-Montserrat);
+
 }
 .div701 {
   position: absolute;
@@ -3247,7 +3244,7 @@
   width: 111px;
   font-size: var(--font-size-mid);
   color: var(--color-dimgray-100);
-  font-family: var(--font-Montserrat);
+
 }
 .div708 {
   position: absolute;
@@ -3270,7 +3267,7 @@
   top: 3px;
   left: 0px;
   font-size: var(--font-size-base);
-  font-family: var(--font-Montserrat);
+
   color: var(--color-gray-300);
   display: inline-block;
 }
@@ -3316,10 +3313,10 @@
   position: absolute;
   top: 58.06%;
   left: 60.47%;
-  font-size: var(--font-size-3xs);
+
   letter-spacing: 0.33px;
   line-height: 11px;
-  font-family: var(--font-Montserrat);
+
   text-align: center;
 }
 .div720 {
@@ -3350,7 +3347,7 @@
   height: 31px;
   font-size: var(--font-size-mid);
   color: var(--color-dimgray-100);
-  font-family: var(--font-Montserrat);
+
 }
 .div723 {
   position: absolute;
@@ -3730,7 +3727,7 @@
   width: 87px;
   height: 77px;
   font-size: var(--font-size-6xl);
-  font-family: var(--font-Montserrat);
+
 }
 .container-l-color46 {
   position: absolute;
@@ -3770,7 +3767,7 @@
   font-size: var(--font-size-xl);
   letter-spacing: 0.19px;
   line-height: 24px;
-  font-family: var(--font-Montserrat);
+
 }
 .label107 {
   position: absolute;
@@ -3793,7 +3790,7 @@
   left: 1516px;
   width: 82px;
   height: 39px;
-  font-size: var(--font-size-3xs);
+
   color: var(--color-dimgray-100);
 }
 .label108 {
@@ -3819,7 +3816,7 @@
   left: 1516px;
   width: 82px;
   height: 39px;
-  font-size: var(--font-size-3xs);
+
   color: var(--color-dimgray-100);
 }
 .div749 {
@@ -4133,7 +4130,7 @@
   top: 0px;
   left: 0px;
   font-size: var(--font-size-sm);
-  font-family: var(--font-Montserrat);
+
   color: var(--color-darkslategray);
   text-align: center;
 }
@@ -4176,7 +4173,7 @@
   top: calc(50% - 8px);
   left: calc(50% - 19px);
   font-size: var(--font-size-sm);
-  font-family: var(--font-Montserrat);
+
   color: var(--color-black);
   text-align: center;
 }
@@ -4288,7 +4285,7 @@
   top: calc(50% - 8px);
   left: 10px;
   font-size: var(--font-size-sm);
-  font-family: var(--font-Montserrat);
+
   color: var(--color-darkslategray);
   text-align: center;
 }
@@ -4377,7 +4374,7 @@
   top: calc(50% - 8px);
   left: 9.68px;
   font-size: var(--font-size-sm);
-  font-family: var(--font-Montserrat);
+
   color: var(--color-darkslategray);
   text-align: center;
 }
@@ -4410,7 +4407,7 @@
   top: calc(50% - 8px);
   right: 14px;
   font-size: var(--font-size-sm);
-  font-family: var(--font-Montserrat);
+
   color: var(--color-darkslategray);
   text-align: center;
 }
@@ -4874,7 +4871,7 @@
   right: 115px;
   width: 98px;
   height: 47px;
-  font-size: var(--font-size-3xs);
+
   color: var(--color-dimgray-100);
 }
 .bind-text4 {
@@ -4927,7 +4924,7 @@
   left: calc(50% - 100.27px);
   width: 98px;
   height: 47px;
-  font-size: var(--font-size-3xs);
+
   color: var(--color-dimgray-100);
 }
 .r-15814 {
@@ -5018,7 +5015,7 @@
   top: calc(50% - 8px);
   left: calc(50% - 29px);
   font-size: var(--font-size-sm);
-  font-family: var(--font-Montserrat);
+
   color: var(--color-darkslategray);
   text-align: center;
 }
@@ -5051,7 +5048,7 @@
   top: calc(50% - 8px);
   left: calc(50% - 16.5px);
   font-size: var(--font-size-sm);
-  font-family: var(--font-Montserrat);
+
   color: var(--color-black);
   text-align: center;
 }
@@ -5084,7 +5081,7 @@
   top: calc(50% - 8px);
   left: 7px;
   font-size: var(--font-size-sm);
-  font-family: var(--font-Montserrat);
+
   color: var(--color-darkslategray);
   text-align: center;
 }
@@ -5120,7 +5117,7 @@
   top: calc(50% - 8px);
   left: 12.99px;
   font-size: var(--font-size-sm);
-  font-family: var(--font-Montserrat);
+
   color: var(--color-darkslategray);
   text-align: center;
 }
@@ -5178,7 +5175,7 @@
   top: calc(50% - 8px);
   left: 11px;
   font-size: var(--font-size-sm);
-  font-family: var(--font-Montserrat);
+
   color: var(--color-darkslategray);
   text-align: center;
 }
@@ -5211,7 +5208,7 @@
   top: calc(50% - 7.95px);
   left: calc(50% - 20.75px);
   font-size: var(--font-size-sm);
-  font-family: var(--font-Montserrat);
+
   color: var(--color-darkslategray);
   text-align: center;
 }
@@ -5244,7 +5241,7 @@
   top: calc(50% - 8px);
   left: calc(50% - 16.5px);
   font-size: var(--font-size-sm);
-  font-family: var(--font-Montserrat);
+
   color: var(--color-darkslategray);
   text-align: center;
 }
@@ -5277,7 +5274,7 @@
   top: calc(50% - 7.95px);
   left: 9.68px;
   font-size: var(--font-size-sm);
-  font-family: var(--font-Montserrat);
+
   color: var(--color-darkslategray);
   text-align: center;
 }
@@ -5334,7 +5331,7 @@
   top: calc(50% - 8px);
   left: calc(50% - 46.97px);
   font-size: var(--font-size-sm);
-  font-family: var(--font-Montserrat);
+
   color: var(--color-darkslategray);
   text-align: center;
 }
@@ -5364,5 +5361,5 @@
   text-align: left;
   font-size: var(--font-size-sm);
   color: var(--color-black);
-  font-family: var(--font-Montserrat);
+
 }

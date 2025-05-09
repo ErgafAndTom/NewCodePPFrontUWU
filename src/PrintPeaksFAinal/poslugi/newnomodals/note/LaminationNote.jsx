@@ -115,7 +115,9 @@ const LaminationNote = ({materialAndDruk, setMaterialAndDruk, prices, buttonsArr
             </div>
             <div className="d-flex flex-column">
             <span style={{
-                fontSize: '1.273vw', marginRight: '0', fontFamily: "Montserrat", fontWeight: "bold"
+                fontSize: '1.273vw', marginRight: '0', fontFamily: "inter",
+
+ fontWeight: "bold"
             }}>{"Ламінація:"}</span>
                 {materialAndDruk.laminationType !== "Не потрібно" ? (
                     <div style={{display: 'flex', justifyContent: 'center', alignItems: 'center',}}>

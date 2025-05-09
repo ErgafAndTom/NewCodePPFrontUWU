@@ -185,7 +185,7 @@ const ClientChangerUIArtem = ({thisOrder, setThisOrder}) => {
                     borderRadius: '1vw',
                     border: 'none',
                     cursor: 'pointer',
-                    fontFamily: 'Montserrat, sans-serif',
+                    fontFamily: 'inter, sans-serif',
                     fontSize: '0.7vw',
                     backgroundColor: '#F2F0E7'
                 }}

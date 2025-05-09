@@ -153,7 +153,7 @@ const PaginationMy = ({name, data, setData, inPageCount, setInPageCount, current
     return (
         <div className="d-flex adminPagination">
             <div className="adminFontTable">
-                <select className="paginationZakaz" style={{border: "gray 1px solid"}} name="pagination" onChange={(event) => setPageCountF(event)} value={inPageCount}>
+                <select className="paginationZakaz" style={{border: "none"}} name="pagination" onChange={(event) => setPageCountF(event)} value={inPageCount}>
                     <option className="adminFontTable" value="1">1</option>
                     <option className="adminFontTable" value="20">20</option>
                     {/*<option className="adminFontTable" value="30">30</option>*/}

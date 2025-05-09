@@ -350,7 +350,9 @@ const Vishichka = ({
                                                 style={{
                                                     width: "90vw",
                                                     marginLeft: "2.5vw",
-                                                    fontFamily: "Montserrat",
+                                                    fontFamily: "inter",
+
+
                                                     fontWeight: "bold",
                                                     display: 'flex',
                                                     justifyContent: 'center',

@@ -5,13 +5,13 @@
     margin: auto;
     font-size: 1.1vw;
     text-align: left;
-    font-family: 'Montserrat', sans-serif;
+
 }
 .titleLogin {
     margin: auto;
     margin-top: 4vw;
     margin-bottom: 1.5vw;
-    font-family: 'Montserrat', sans-serif;
+
 }
 .buttonLogin {
     margin: auto;
@@ -19,7 +19,7 @@
     height: 3.4vw;
     margin-top: 1.5vw;
     font-size: 1.1vw;
-    font-family: 'Montserrat', sans-serif;
+
 }
 
 

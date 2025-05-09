@@ -456,7 +456,7 @@ const NewUIArtem = () => {
                             {/*<div className="containerNewUI containerDetailsThisOrder " style={{border: "0vw"}}>*/}
                                 {thisOrder ? (
                                     <div className="ClientsMenuAll" style={{
-                                        fontFamily: 'Montserrat, sans-serif',
+                                        fontFamily: 'inter, sans-serif',
                                         padding: '1vw',
                                         width: '32.3vw',
                                         height: '31.8vh',

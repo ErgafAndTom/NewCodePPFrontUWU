@@ -250,8 +250,8 @@ const ModalSize = ({size, setSize, type, buttonsArr, color, setColor, count, set
     }, [size.x, size.y]);
 
     return (
-        <div className="d-flex allArtemElem" >
-            <div className="d-flex">
+        <div className="d-flex allArtemElem"  >
+            <div className="d-flex" >
                 {isCustom === true ? (
                     <Form.Control
                         className="inputsArtem"
@@ -337,15 +337,12 @@ const ModalSize = ({size, setSize, type, buttonsArr, color, setColor, count, set
                         className={item === color.sides ? 'buttonsArtem buttonsArtemActive' : 'buttonsArtem'}
                         key={index}
                         onClick={() => handleClick(item)}
-                        // style={{
-                        //     backgroundColor: item === color.sides ? 'orange' : 'transparent',
-                        //     border: item === color.sides ? '0.13vw solid transparent' : '0.13vw solid transparent',
-                        // }}
-                    >
+                         >
                         <div className="" style={{
-                            height: "100%",
-                            opacity: item === color.sides ? '100%' : '90%',
-                            whiteSpace: "nowrap",
+
+
+                            opacity: item === color.sides ? '100%' : '60%',
+
                         }}>
                             {item}
                         </div>

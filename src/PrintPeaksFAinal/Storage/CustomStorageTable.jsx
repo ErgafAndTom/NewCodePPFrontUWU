@@ -204,6 +204,7 @@ const CustomStorageTable = ({name}) => {
                 {/*    setData={setData}*/}
                 {/*    url={"/materials/All"}*/}
                 {/*/>*/}
+                <div className="controls-row">
                 <PaginationMy
                     name={"Order"}
                     data={data}
@@ -218,6 +219,12 @@ const CustomStorageTable = ({name}) => {
                     url={"/materials/All"}
                     thisColumn={thisColumn}
                 />
+                    <div className="right-group">
+                        <Button className="adminButtonAdd" variant="danger" onClick={saveAll}>
+                Додати матеріал
+            </Button>
+               </div>
+                </div>
                 {showRed &&
                     <ModalStorageRed
                         dataTypeInTable={"string"}
@@ -244,9 +251,7 @@ const CustomStorageTable = ({name}) => {
                         url={`/materials/OnlyOneField`}
                     />
                 }
-                <Button className="adminButtonAdd" style={{position: "fixed", right: "1vw"}} variant="danger" onClick={saveAll}>
-                    +
-                </Button>
+
                 <Offcanvas show={show} onHide={handleClose}>
                     <Offcanvas.Header closeButton>
                         <Offcanvas.Title>Новий щось</Offcanvas.Title>

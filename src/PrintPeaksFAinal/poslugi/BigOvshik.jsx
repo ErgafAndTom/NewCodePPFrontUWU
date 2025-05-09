@@ -271,7 +271,9 @@ const BigOvshik = ({
                                             style={{
                                                 width: "90vw",
                                                 marginLeft: "2.5vw",
-                                                fontFamily: "Montserrat",
+                                                fontFamily: "inter",
+
+
                                                 fontWeight: "bold",
                                                 display: 'flex',
                                                 justifyContent: 'center',
@@ -332,7 +334,7 @@ const BigOvshik = ({
                                                 Згинання {pricesThis.big.pricePerUnit} грн * {pricesThis.big.count} шт
                                                 = {pricesThis.big.totalPrice} грн
                                             </div>
-                                            <div className=" fontInfoForPricing">
+                                            <div className="fontInfoForPricing">
                                                 Свердління отворів: {pricesThis.cute.pricePerUnit} грн * {pricesThis.cute.count} шт
                                                 = {pricesThis.cute.totalPrice} грн
                                             </div>

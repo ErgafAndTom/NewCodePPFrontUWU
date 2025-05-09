@@ -27,8 +27,7 @@ const NewNoModalBig = ({big, setBig, prices, buttonsArr, selectArr}) => {
                     <span style={{
                         fontSize: '1vw',
                         marginRight: '0.633vw',
-                        fontFamily: "Montserrat",
-                        fontWeight: "bold", width: "500%"
+
                     }}>{"Згинання:"}</span>
                     {big !== "Не потрібно" ? (
                         <div className="ArtemNewSelectContainer" style={{display: 'flex', justifyContent: 'center', alignItems: 'center',}}>
