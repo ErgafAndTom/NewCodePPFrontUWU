@@ -201,8 +201,7 @@ const NewWide = ({thisOrder, newThisOrder, setNewThisOrder, selectedThings2, set
                                     className="d-flex inputsArtemNumber inputsArtem "
                                     style={{
                                         marginLeft: "1vw",
-                                        background: "#FBFAF6",
-                                        width: "5vw",
+
                                         alignItems: "center",
                                         justifyContent:"center",
                                         paddingLeft: "0.5vw",
@@ -284,17 +283,10 @@ const NewWide = ({thisOrder, newThisOrder, setNewThisOrder, selectedThings2, set
                                                 height: '5vw',
                                             }}
                                         >
-                                            <div
-                                                className="btn btn-warning" style={{
-                                                borderRadius: '0.5vw',
-                                                marginLeft:"-0.5vw",
-                                                marginTop: "3vh",
-                                                padding: '0.2vw 0.7vw',
-                                            }}
-                                                onClick={addNewOrderUnit}
+                                            <button  className="adminButtonAdd" variant="danger"  onClick={addNewOrderUnit}
                                             >
                                                 Додати до замовлення
-                                            </div>
+                                            </button>
                                         </div>
                                     )}
                                 </div>
@@ -306,8 +298,8 @@ const NewWide = ({thisOrder, newThisOrder, setNewThisOrder, selectedThings2, set
 
                                     </div>
                                 ) : (
-                                    <div className="d-flex justify-content-between pricesBlockContainer" style={{width:"92vw"}}>
-                                        <div className="">
+                                    <div className="d-flex justify-content-between pricesBlockContainer"style={{height: '20vmin'}} >
+                                        <div className="" style={{height: '19vmin'}}>
                                             {/* Друк (рахується за sheetCount) */}
                                             <div className="fontInfoForPricing">
                                                 Друк: {parseFloat(pricesThis.priceDrukPerSheet).toFixed(2)} грн * {pricesThis.sheetCount} м2 = {(parseFloat(pricesThis.priceDrukPerSheet) * pricesThis.sheetCount).toFixed(2)} грн
@@ -365,7 +357,8 @@ const NewWide = ({thisOrder, newThisOrder, setNewThisOrder, selectedThings2, set
                                             alt="sssss"
                                             src={versantIcon}
                                             style={{
-                                                width: "15vw",
+                                                height: "17vmin",
+marginRight: "2vmin",
 
                                             }}
                                         />

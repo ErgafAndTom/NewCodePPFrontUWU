@@ -229,7 +229,7 @@ const PerepletMet = ({
                                 className="d-flex inputsArtemNumber inputsArtem "
                                 style={{
                                     marginLeft: "1vw",
-                                    background: "#FBFAF6",
+
                                     width: "5vw",
                                     alignItems: "center",
                                     justifyContent:"center",
@@ -269,58 +269,7 @@ const PerepletMet = ({
                                             defaultt={"А3 (297 х 420 мм)"}
                                         />
 
-                                        {/*<NewNoModalMaterial*/}
-                                        {/*<Materials2*/}
-                                        {/*    material={material}*/}
-                                        {/*    setMaterial={setMaterial}*/}
-                                        {/*    count={count}*/}
-                                        {/*    setCount={setCount}*/}
-                                        {/*    prices={prices}*/}
-                                        {/*    selectArr={["3,5 мм", "4 мм", "5 мм", "6 мм", "8 мм"]}*/}
-                                        {/*    name={"Чорно-білий друк на монохромному принтері:"}*/}
-                                        {/*    buttonsArr={["Тонкі",*/}
-                                        {/*        "Середньої щільності",*/}
-                                        {/*        "Цупкі", "Самоклеючі"]}*/}
-                                        {/*    typeUse={null}*/}
-                                        {/*/>*/}
-                                        {/*<NewNoModalLamination*/}
-                                        {/*    lamination={lamination}*/}
-                                        {/*    setLamination={setLamination}*/}
-                                        {/*    prices={prices}*/}
-                                        {/*    type={"SheetCut"}*/}
-                                        {/*    buttonsArr={["З глянцевим ламінуванням",*/}
-                                        {/*        "З матовим ламінуванням",*/}
-                                        {/*        "З ламінуванням Soft Touch",]}*/}
-                                        {/*    selectArr={["30", "80", "100", "125", "250"]}*/}
-                                        {/*/>*/}
-                                        {/*<NewNoModalCornerRounding*/}
-                                        {/*    big={big}*/}
-                                        {/*    setBig={setBig}*/}
-                                        {/*    prices={prices}*/}
-                                        {/*    type={"SheetCut"}*/}
-                                        {/*    buttonsArr={[]}*/}
-                                        {/*    selectArr={["", "1", "2", "3", "4", "5", "6", "7", "8", "9"]}*/}
-                                        {/*/>*/}
-                                        {/*<NewNoModalCute*/}
-                                        {/*    cute={cute}*/}
-                                        {/*    setCute={setCute}*/}
-                                        {/*    cuteLocal={cuteLocal}*/}
-                                        {/*    setCuteLocal={setCuteLocal}*/}
-                                        {/*    prices={prices}*/}
-                                        {/*    type={"SheetCut"}*/}
-                                        {/*    buttonsArr={[]}*/}
-                                        {/*    selectArr={["3", "6", "8", "10", "13"]}*/}
-                                        {/*/>*/}
-                                        {/*<NewNoModalHoles*/}
-                                        {/*    holes={holes}*/}
-                                        {/*    setHoles={setHoles}*/}
-                                        {/*    holesR={holesR}*/}
-                                        {/*    setHolesR={setHolesR}*/}
-                                        {/*    prices={prices}*/}
-                                        {/*    type={"SheetCut"}*/}
-                                        {/*    buttonsArr={[]}*/}
-                                        {/*    selectArr={["", "3,5 мм", "4 мм", "5 мм", "6 мм", "8 мм"]}*/}
-                                        {/*/>*/}
+
                                     </div>
                                 </Row>
                                 <div className="d-flex">
@@ -329,11 +278,6 @@ const PerepletMet = ({
                                             className="d-flex align-content-between justify-content-between"
                                             style={{
                                                 width: "90vw",
-                                                marginLeft: "2.5vw",
-                                                fontFamily: "inter",
-
-
-                                                fontWeight: "bold",
                                                 display: 'flex',
                                                 justifyContent: 'center',
                                                 alignItems: 'center',
@@ -341,27 +285,11 @@ const PerepletMet = ({
                                                 height: '3vw',
                                             }}
                                         >
-                                            <div
-                                                className="btn btn-warning" style={{
-                                                borderRadius: '0.5vw',
-                                                // border: '0.08vw solid gray',
-                                                padding: '0.2vw 0.7vw',
-                                                marginLeft: '-2vw',
-                                            }}
-                                                onClick={addNewOrderUnit}
+                                            <button  className="adminButtonAdd" variant="danger"  onClick={addNewOrderUnit}
                                             >
                                                 Додати до замовлення
-                                            </div>
-                                            {/*<div*/}
-                                            {/*    className="btn btn-warning" style={{*/}
-                                            {/*    borderRadius: '0.627vw',*/}
-                                            {/*    border: '0.08vw solid gray',*/}
-                                            {/*    padding: '0.2vw 0.7vw',*/}
-                                            {/*}}*/}
-                                            {/*    // onClick={handleThingClickAndHide}*/}
-                                            {/*>*/}
-                                            {/*    Додати до пресетів*/}
-                                            {/*</div>*/}
+                                            </button>
+
                                         </div>
                                     )}
                                 </div>
@@ -373,8 +301,8 @@ const PerepletMet = ({
 
                                     </div>
                                 ) : (
-                                    <div className="d-flex justify-content-between pricesBlockContainer" style={{width: '92vw'}}>
-                                        <div className="">
+                                    <div className="d-flex justify-content-between pricesBlockContainer" style={{height: '20vmin'}}>
+                                        <div className="" style={{height: '19vmin'}}>
 
                                             <div className="fontInfoForPricing">
                                                 Прошивка {pricesThis.priceForOneOfPereplet} грн * {count} шт

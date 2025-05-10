@@ -16,6 +16,8 @@ import InputGroup from "react-bootstrap/InputGroup";
 import Form from "react-bootstrap/Form";
 import {da} from "date-fns/locale";
 import NewNote from "../poslugi/NewNote";
+import { columnTranslations, translateColumnName } from "./translations";
+
 
 // Основний компонент CustomOrderTable
 const CustomStorageTable = ({name}) => {
@@ -72,14 +74,14 @@ const CustomStorageTable = ({name}) => {
     }
 
     useEffect(() => {
-        let data = {
+        let requestData = {
             inPageCount: inPageCount,
             currentPage: currentPage,
             search: typeSelect,
             columnName: thisColumn
         }
         setLoading(true)
-        axios.post(`/materials/All`, data)
+        axios.post(`/materials/All`, requestData)
             .then(response => {
                 console.log(response.data);
                 setData(response.data)
@@ -88,13 +90,14 @@ const CustomStorageTable = ({name}) => {
                 setPageCount(Math.ceil(response.data.count / inPageCount))
             })
             .catch(error => {
-                if (error.response.status === 403) {
+                if (error.response && error.response.status === 403) {
                     navigate('/login');
                 }
                 setError(error.message)
                 console.log(error.message);
+                setLoading(false)
             })
-    }, [typeSelect, thisColumn, show]);
+    }, [typeSelect, thisColumn, show, currentPage, inPageCount, navigate, showRed]);
 
     useEffect(() => {
         if (data) {
@@ -144,42 +147,84 @@ const CustomStorageTable = ({name}) => {
 
     if (data) {
         return (
-            <div className="CustomOrderTable-order-list">
-                <div className="CustomOrderTable-header">
+            <div className="CustomOrderTable-order-list" style={{
+                flexDirection: "column",
+                background: "transparent",
 
-                    {data.metadata.map((item, iter) => (
-                        <div
-                            style={{background: "#FBFAF6", borderColor: "#f4c24b"}}
-                            // className="adminFontTable"
-                            className="CustomOrderTable-header-cell"
-                            key={item + iter}
-                            onClick={(event) => setCol(item)}
-                        >
-                            {item === thisColumn.column ? (
-                                <>
-                                    {!thisColumn.reverse ? (
-                                        <>
-                                            ^{item}
-                                        </>
-                                    ) : (
-                                        <>
-                                            !^{item}
-                                        </>
-                                    )}
-                                </>
-                            ) : (
-                                <>
-                                    {item}
-                                </>
-                            )}
-                        </div>
-                    ))}
+            }}>
+
+                <div className="CustomOrderTable-header" style={{
+                    height:'4vh',
+                    border: "1px solid white",
+                    background: "transparent",
+                            }}>
+                    {data.metadata.map((item, iter) => {
+                        // Визначення ширини для конкретних стовпців
+                        const getColumnWidth = (columnName) => {
+                            switch(columnName) {
+                                case 'id': return '2vw';
+                                case 'amount': return '3.35vw';
+                                case 'name': return '13.9vw'; // Фіксована ширина для name в пікселях
+                                case 'type': return '7vw';  // Фіксована ширина для type в пікселях
+                                case 'typeUse': return '7vw'; // Фіксована ширина для typeUse в пікселях
+                                case 'createdAt': return '6vw';
+                                case 'updatedAt': return '6vw';
+                                case 'price4': return '3.6vw';
+                                default: return '3.55vw';     // Фіксована ширина для інших колонок в пікселях
+                            }
+                        };
+                        return (
+                            <div
+                                style={{
+                                    background: "#F2F0E7",
+                                    cursor: "pointer",
+                                    fontWeight: "600",
+                                    fontSize: "0.6rem",
+                                    display: "flex",
+                                    alignItems: "center",
+                                    justifyContent: "center",
+                                    height: "auto",
+                                    minHeight: "1vh",
+                                    boxSizing: "border-box",
+                                    textAlign: "center",
+                                    width: getColumnWidth(item),
+                                    maxWidth: getColumnWidth(item),
+                                    minWidth: getColumnWidth(item),
+                                    overflow: "hidden",
+                                    whiteSpace: "pre-line", // Додано для підтримки переносів
+                                    lineHeight: "1.7", // Збільшено для кращої читабельності
+                                    borderRadius: "0rem",
+
+                                }}
+                                className="CustomOrderTable-header-cell"
+                                key={item + iter}
+                                onClick={(event) => setCol(item)}
+                            >
+                                {item === thisColumn.column ? (
+                                    <div  style={{ display: 'flex', alignItems: "center", justifyContent: "center", flexDirection: "row", cursor: "pointer", borderRadius: "none", height:"2vh" }}>
+                                        <span style={{ whiteSpace: "pre-line", }}>{translateColumnName(item)}</span>
+                                        <span style={{ color: "#FAB416", fontSize: "1.2rem", position:'relative', right: "-0.2rem", cursor: "pointer", whiteSpace: "pre-line" }}>
+                                            {!thisColumn.reverse ? "↑" : "↓"}
+                                        </span>
+                                    </div>
+                                ) : (
+                                    <span style={{ whiteSpace: "pre-line",  }}>{translateColumnName(item)}</span>
+                                )}
+                            </div>
+                        );
+                    })}
                 </div>
-                <div className="CustomOrderTable-body"
-                     style={{maxWidth: '99.5vw', overflow: 'auto', height: "80vh", background: "transparent",}}>
-
+                <div className="CustomOrderTable-body "
+                     style={{
+                         maxWidth: '99vw',
+                         height: "79vh",
+                         // background: "transparent",
+                         display: "flex",
+                         flexDirection: "column"
+                     }}>
+                
                     {data.rows.map((item, iter) => (
-                        <div key={item.id}>
+                        <div key={item.id} className="table-row-container">
                             <div className="CustomOrderTable-row">
                                 {data.metadata.map((metaItem, iter2) => (
                                     <OneItemInTable
@@ -195,35 +240,45 @@ const CustomStorageTable = ({name}) => {
                         </div>
                     ))}
                 </div>
-                {/*<ModalDeleteInStorage*/}
-                {/*    showDeleteOrderModal={showDeleteOrderModal}*/}
-                {/*    setShowDeleteOrderModal={setShowDeleteOrderModal}*/}
-                {/*    thisOrderForDelete={thisOrderForDelete}*/}
-                {/*    setThisOrderForDelete={setThisOrderForDelete}*/}
-                {/*    data={data}*/}
-                {/*    setData={setData}*/}
-                {/*    url={"/materials/All"}*/}
-                {/*/>*/}
-                <div className="controls-row">
-                <PaginationMy
-                    name={"Order"}
-                    data={data}
-                    setData={setData}
-                    inPageCount={inPageCount}
-                    setInPageCount={setInPageCount}
-                    currentPage={currentPage}
-                    setCurrentPage={setCurrentPage}
-                    pageCount={pageCount}
-                    setPageCount={setPageCount}
-                    typeSelect={typeSelect}
-                    url={"/materials/All"}
-                    thisColumn={thisColumn}
-                />
-                    <div className="right-group">
-                        <Button className="adminButtonAdd" variant="danger" onClick={saveAll}>
-                Додати матеріал
-            </Button>
-               </div>
+                
+                <div className="controls-row" style={{ 
+
+                    display: "flex",
+                    justifyContent: "space-between",
+                    alignItems: "center"
+                }}>
+                    <div className="pagination-container">
+                        <PaginationMy
+                            name={"Order"}
+                            data={data}
+                            setData={setData}
+                            inPageCount={inPageCount}
+                            setInPageCount={setInPageCount}
+                            currentPage={currentPage}
+                            setCurrentPage={setCurrentPage}
+                            pageCount={pageCount}
+                            setPageCount={setPageCount}
+                            typeSelect={typeSelect}
+                            url={"/materials/All"}
+                            thisColumn={thisColumn}
+                        />
+                    </div>
+                    <div className="right-group" style={{ display: "flex", alignItems: "center" }}>
+                        <Button 
+                            className="adminButtonAdd" 
+                            variant="primary" 
+                            onClick={handleShow}
+                            style={{
+                                border: "none",
+                                borderRadius: "0.5rem",
+                                fontWeight: "400",
+                                boxShadow: "0 2px 4px rgba(0,0,0,0.1)",
+                                transition: "all 0.2s ease"
+                            }}
+                        >
+                            Додати матеріал
+                        </Button>
+                    </div>
                 </div>
                 {showRed &&
                     <ModalStorageRed
@@ -254,28 +309,33 @@ const CustomStorageTable = ({name}) => {
 
                 <Offcanvas show={show} onHide={handleClose}>
                     <Offcanvas.Header closeButton>
-                        <Offcanvas.Title>Новий щось</Offcanvas.Title>
+                        <Offcanvas.Title>Додавання нового матеріалу</Offcanvas.Title>
                     </Offcanvas.Header>
                     <Offcanvas.Body>
-                        {/*{formValues &&*/}
-                        {/*    <>*/}
-                        {/*        {formValues.map((metaItem) => (*/}
-                        {/*            <InputGroup className="mb-3" key={metaItem}>*/}
-                        {/*                <Form.Control*/}
-                        {/*                    placeholder={metaItem}*/}
-                        {/*                    aria-label={metaItem}*/}
-                        {/*                    aria-describedby="basic-addon1"*/}
-                        {/*                    value={formValues[metaItem]}*/}
-                        {/*                    onChange={(event) => handleInputChange(event, metaItem)}*/}
-                        {/*                />*/}
-                        {/*                <InputGroup.Text id="basic-addon1">{metaItem}</InputGroup.Text>*/}
-                        {/*            </InputGroup>*/}
-                        {/*        ))}*/}
-                        {/*    </>*/}
-                        {/*}*/}
-                        <Button onClick={saveAll} variant="primary" type="submit">
-                            Додати
-                        </Button>
+                        <Form>
+                            {Object.keys(formValues).map((metaItem, index) => (
+                                <Form.Group key={index} className="">
+                                    <Form.Label>{translateColumnName(metaItem)}</Form.Label>
+                                    <Form.Control
+                                        type="text"
+                                        placeholder={`Введіть ${translateColumnName(metaItem).toLowerCase()}`}
+                                        value={formValues[metaItem]}
+                                        onChange={(e) => handleInputChange(e, metaItem)}
+                                    />
+                                </Form.Group>
+                            ))}
+                            <Button 
+                                onClick={saveAll} 
+                                variant="primary" 
+                                type="button"
+                                style={{
+                                    marginTop: '1rem',
+                                    width: '100%'
+                                }}
+                            >
+                                Зберегти
+                            </Button>
+                        </Form>
                     </Offcanvas.Body>
                 </Offcanvas>
             </div>

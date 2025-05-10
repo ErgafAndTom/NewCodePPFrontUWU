@@ -151,9 +151,9 @@ const PaginationMy = ({name, data, setData, inPageCount, setInPageCount, current
 
 
     return (
-        <div className="d-flex adminPagination">
-            <div className="adminFontTable">
-                <select className="paginationZakaz" style={{border: "none"}} name="pagination" onChange={(event) => setPageCountF(event)} value={inPageCount}>
+        <div className="d-flex adminPagination" >
+            <div className="adminFontTable ">
+                <select className="paginationZakaz " style={{border: "none", marginLeft:"-0.5vw", marginTop:"0.3vh"}} name="pagination" onChange={(event) => setPageCountF(event)} value={inPageCount}>
                     <option className="adminFontTable" value="1">1</option>
                     <option className="adminFontTable" value="20">20</option>
                     {/*<option className="adminFontTable" value="30">30</option>*/}
@@ -165,7 +165,20 @@ const PaginationMy = ({name, data, setData, inPageCount, setInPageCount, current
             </div>
             <div className="d-flex">
                 {pag.map((item) => (
-                    <div className={item === currentPage ? "paginationNamberZakaz activePag" : "paginationNamberZakaz"} onClick={(e) => clickFunc(item)} key={item} active={item === currentPage}>
+                    <div className={item === currentPage ? "paginationNamberZakaz adminButtonAdd activePag" : "paginationNamberZakaz"} onClick={(e) => clickFunc(item)} key={item} active={item === currentPage}
+                    style={{
+                        justifyContent: "center",
+                        alignItems: "center",
+                        // display: "flex",
+                        width: "1.7vw",
+                        height: "1.7vw",
+                        borderRadius: "1.7vw",
+                        // border: "solid 1px #cccabf",
+                        fontSize: "var(--font-size-base)",
+                        // margin: "0.3vw",
+                        cursor: "pointer",
+                        minWidth: "1.5vw",
+                    }}>
                         {item}
                     </div>
                 ))}

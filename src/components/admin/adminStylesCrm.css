@@ -22,7 +22,9 @@
     background: #FBFAF6;
     padding: 0.3vw;
     border-radius: 6px;
-    border: 0px;
+    border: none ;
+    position: relative;
+    align-items: center;
 }
 .paginationNamberZakaz {
     align-items: center;
@@ -33,6 +35,7 @@
     /*width: 1.5vw;*/
     border-radius: 1.5vw;
 }
+
 .activePag{
     background: #FAB416;
 }
@@ -127,7 +130,8 @@
     margin: 0.5vw;
 }
 .fontProductName {
-    font-size: 1vw;
+    font-style: var(--font-inter);
+    font-size: var(--font-size-base);
     padding-bottom: 0.6vw;
     padding-top: 0.6vw;
 }

@@ -219,8 +219,6 @@ const BigOvshik = ({
                                                 className="d-flex inputsArtemNumber inputsArtem "
                                                 style={{
                                                     marginLeft: "1vw",
-                                                    background: "#FBFAF6",
-                                                    width: "5vw",
                                                     alignItems: "center",
                                                     justifyContent:"center",
                                                     paddingLeft: "0.5vw",
@@ -271,37 +269,18 @@ const BigOvshik = ({
                                             style={{
                                                 width: "90vw",
                                                 marginLeft: "2.5vw",
-                                                fontFamily: "inter",
-
-
-                                                fontWeight: "bold",
                                                 display: 'flex',
                                                 justifyContent: 'center',
                                                 alignItems: 'center',
                                                 transition: "all 0.3s ease",
-                                                height: '3vw',
+
                                             }}
                                         >
-                                            <div
-                                                className="btn btn-warning" style={{
-                                                borderRadius: '0.627vw',
-                                                // border: '0.08vw solid gray',
-                                                padding: '0.2vw 0.7vw',
-                                            }}
-                                                onClick={addNewOrderUnit}
+                                            <button  className="adminButtonAdd" variant="danger"  onClick={addNewOrderUnit}
                                             >
                                                 Додати до замовлення
-                                            </div>
-                                            {/*<div*/}
-                                            {/*    className="btn btn-warning" style={{*/}
-                                            {/*    borderRadius: '0.627vw',*/}
-                                            {/*    border: '0.08vw solid gray',*/}
-                                            {/*    padding: '0.2vw 0.7vw',*/}
-                                            {/*}}*/}
-                                            {/*    // onClick={handleThingClickAndHide}*/}
-                                            {/*>*/}
-                                            {/*    Додати до пресетів*/}
-                                            {/*</div>*/}
+                                            </button>
+
                                         </div>
                                     )}
                                 </div>
@@ -313,8 +292,8 @@ const BigOvshik = ({
 
                                     </div>
                                 ) : (
-                                    <div className="d-flex justify-content-between pricesBlockContainer" style={{width:"92vw"}}>
-                                        <div className="">
+                                    <div className="d-flex justify-content-between pricesBlockContainer" style={{height:"20vmin"}}>
+                                        <div className="" style={{height:"19vmin"}} >
 
                                             {/*<div className="fontInfoForPricing">*/}
                                             {/*    Друк: {pricesThis.priceForDrukThisUnit} грн * {pricesThis.skolko} шт*/}
@@ -339,7 +318,7 @@ const BigOvshik = ({
                                                 = {pricesThis.cute.totalPrice} грн
                                             </div>
                                             <div className="fontInfoForPricing">
-                                                Суруглення кутів: {pricesThis.holes.pricePerUnit} грн * {pricesThis.holes.count} шт
+                                                Скруглення кутів: {pricesThis.holes.pricePerUnit} грн * {pricesThis.holes.count} шт
                                                 = {pricesThis.holes.totalPrice} грн
 
                                             </div>
@@ -370,7 +349,9 @@ const BigOvshik = ({
                                             alt="sssss"
                                             src={versantIcon}
                                             style={{
-                                                width: "10vw",
+                                                height: "16vmin",
+                                                marginLeft: "15vmin",
+                                                marginRight: "2vmin",
 
                                             }}
                                         />

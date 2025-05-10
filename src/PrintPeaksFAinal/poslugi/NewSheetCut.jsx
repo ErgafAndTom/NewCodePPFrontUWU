@@ -242,7 +242,7 @@ const NewSheetCut = ({
                                 />
                                 <div className="inputsArtemx allArtemElem" style={{ border:"transparent", marginTop:"-2vh" }}> шт</div></div>
                             <MDBContainer fluid style={{width: '100%', marginLeft: '-1vw', marginTop:"2vh"}}>
-                                <Row  className="">
+                                <Row  xs={1} md={6} className="">
                                     <div className="d-flex flex-column">
                                         <NewNoModalSize
                                             size={size}
@@ -351,7 +351,8 @@ const NewSheetCut = ({
 
                                     </div>
                                 ) : (
-                                    <div className="d-flex justify-content-between pricesBlockContainer">
+                                    <div className="d-flex justify-content-between pricesBlockContainer"
+                                    style={{height: "29vmin"}}>
 
                                         <div className="">
                                             {/* Друк (рахується за sheetCount) */}

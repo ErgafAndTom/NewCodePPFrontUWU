@@ -290,27 +290,16 @@ const ModalSize = ({size, setSize, type, buttonsArr, color, setColor, count, set
                         // }}
                     >
                         <div className="" style={{
-                            height: "100%",
-                            opacity: item === color.sides ? '100%' : '90%',
-                            whiteSpace: "nowrap",
+                        fontSize: "var(--font-size-base)",
+                            opacity: item === color.sides ? '100%' : '100%',
+
                         }}>
                             {item}
                         </div>
                     </button>
                 ))}
             </div>
-            {/*<input*/}
-            {/*    className="inputsArtem inputsArtemNumber"*/}
-            {/*    style={{*/}
-            {/*        marginLeft: "1vw",*/}
-            {/*        background: "#FBFAF6"*/}
-            {/*    }}*/}
-            {/*    type="number"*/}
-            {/*    value={count}*/}
-            {/*    min={1}*/}
-            {/*    // disabled*/}
-            {/*    onChange={(event) => handleChange(event.target.value)}*/}
-            {/*/>*/}
+
 
         </div>
 

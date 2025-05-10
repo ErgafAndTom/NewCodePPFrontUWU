@@ -25,7 +25,7 @@ const NewNoModalBig = ({big, setBig, prices, buttonsArr, selectArr}) => {
                 </div>
                 <div className="d-flex flex-column">
                     <span style={{
-                        fontSize: '1vw',
+
                         marginRight: '0.633vw',
 
                     }}>{"Згинання:"}</span>

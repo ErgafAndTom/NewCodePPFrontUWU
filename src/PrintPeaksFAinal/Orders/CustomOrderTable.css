@@ -1,5 +1,131 @@
 /* CustomOrderTable.css */
+/* Базові стилі для таблиць */
+.CustomOrderTable-order-list {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    height: 100%;
+    padding: 0.5rem;
+    box-sizing: border-box;
+    background-color: #FBFAF6;
+    border-radius: 1rem;
+}
 
+.CustomOrderTable-header {
+    display: flex;
+    flex-direction: row;
+    background-color: #FBFAF6;
+    position: sticky;
+    top: 0;
+    z-index: 10;
+    width: 100%;
+    overflow-x: auto;
+    border-radius: 0.5rem 0.5rem 0 0;
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.05);
+}
+
+.CustomOrderTable-body {
+    display: flex;
+    flex-direction: column;
+    overflow-y: auto;
+    width: 100%;
+    max-height: 81vh;
+    /*background: transparent;*/
+cursor: pointer;
+    /*border-radius: 0 0 0.5rem 0.5rem;*/
+}
+.CustomOrderTable-body:hover {
+
+    transition: background-color 0.2s ease;
+}
+.CustomOrderTable-row {
+    display: flex;
+    flex-direction: row;
+    min-height: 3vh;
+    border-bottom: 1px solid #eaeaea;
+
+    width: 100%;
+}
+.CustomOrderTable-body:hover {
+
+    transition: background-color 0.2s ease;
+}
+.CustomOrderTable-row:hover {
+    background-color: #FAB416;
+    transition: background-color 0.2s ease;
+}
+
+.table-row-container {
+    width: 100%;
+    /*margin: 0.2rem 0;*/
+    transition: background-color 0.3s ease;
+}
+
+.table-row-container:hover {
+    background-color: rgba(250, 180, 22, 0.05);
+}
+
+.CustomOrderTable-header-cell {
+    background-color: #FBFAF6;
+    font-weight: 600;
+    /*border-right: 1px solid #f0f0f0;*/
+
+    text-align: center;
+    min-height: 1vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+}
+
+.CustomOrderTable-header-cell:last-child {
+    border-right: none;
+    background-color: #FAB416;
+}
+
+.CustomOrderTable-cell {
+    background-color: #F2F0E7;
+
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    overflow: hidden;
+    text-overflow: ellipsis;
+
+}
+
+.CustomOrderTable-left-rounded {
+    height: 1vw;
+}
+
+.CustomOrderTable-right-rounded {
+    height: 1vw;
+}
+
+/* Стилі для контролів */
+.controls-row {
+    margin-top: 0.1rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+
+}
+
+.pagination-container {
+    display: flex;
+    align-items: center;
+    background: #FBFAF6;
+    border-radius: 0.5rem;
+    padding: 0.5rem;
+    box-shadow: 0 1px 3px rgba(0,0,0,0.1);
+}
+
+.right-group {
+    display: flex;
+    align-items: center;
+    gap: 0.8rem;
+}
 /*@font-face {*/
 /*     */
 /*    src: url('fonts/inter.woff2') format('woff2'),*/
@@ -19,26 +145,59 @@ body {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    margin-top: 1rem;
-
+    margin-top: 1.5rem;
+    padding: 0 0.5rem;
+    flex-wrap: wrap;
+    gap: 1rem;
 }
 .right-group {
     display: flex;
     align-items: center;
     margin-right: 0.3vw;
+    gap: 0.8rem;
+}
+.pagination-container {
+    display: flex;
+    align-items: center;
+    background: #FBFAF6;
+    border-radius: 0.5rem;
+    padding: 0.5rem;
+    box-shadow: 0 1px 3px rgba(0,0,0,0.1);
+}
+.table-row-container {
+    transition: background-color 0.5s ease;
+    width: 100%;
+    margin: 0.2rem 0;
+}
+.table-row-container:hover {
+    background-color: rgba(250, 180, 22, 0.05);
+}
 
+.CustomOrderTable-cell1 {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.CustomOrderTable-cell1:hover {
+    background-color: #FAB416;
+    cursor: pointer;
+    color: white;
+    transition: all 0.2s ease;
 
+}
+.price-cell {
+    color: #008249;
+    font-weight: 600;
 }
 .CustomOrderTable-order-list {
     width: 100%;
-    /*max-width: 1720px;*/
-
-    /*background-color: #FBFAF6; !* Фон списку замовлень *!*/
-    background-color: #F2F0E7; /* Фон списку замовлень */
-    padding: 0.3vw;
-    /*box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);*/
-    border-radius: 12px;
-    /*margin-top: 1vh;*/
+    background-color: #FAB416; /* Світліший фон списку замовлень */
+    border-radius: 1rem;
+    display: flex;
+    flex-direction: column;
+    align-items: stretch;
 }
 .CustomOrderTable-containerOfTable {
     width: 100%;
@@ -47,41 +206,72 @@ body {
     width: 100%;
     height: 80vh;
     overflow-x: auto;
+    /*border-radius: 0 0 0.5rem 0.5rem;*/
+    background-color: transparent;
 }
 .CustomOrderTable-preHeader{
     width: 100%;
-    height: 3vh;
+    height: 2vh;
+    background-color: #FBFAF6;
 }
 
 .CustomOrderTable-header, .CustomOrderTable-row {
-    display: flex;
-    background-color: #f1f1f1;
-    /*background-color: #FBFAF6;*/
+    /*display: flex;*/
+    /*box-sizing: border-box;*/
+    width: 100%;
+    margin: 0;
+    height: 100%;
+    border-radius: 0 0 0 0;
+    padding: -1vw;
 
+        /*justify-content: center;*/
 }
 
 .CustomOrderTable-header {
-    background-color: #e2e2e2;
-    /*background-color: #FBFAF6;*/
-    font-weight: bold;
+    background-color: #FBFAF6;
+    top: 0;
+    z-index: 0;
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.05);
+}
+
+.CustomOrderTable-row {
 
 }
 
 .CustomOrderTable-header-cell, .CustomOrderTable-cell {
-    flex: 1;
-    padding: 0.3vw;
-    text-align: start;
-    font-size: 0.5vw; /* Одинаковий розмір шрифту */
     word-break: break-word;
+    overflow-wrap: break-word;
+    white-space: pre-line;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    font-size: 0.9rem;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    background-color: #FBFAF6;
+    border-radius: 0px;
+
 }
+
+.CustomOrderTable-header-cell:last-child,
+.CustomOrderTable-cell:last-child {
+    border-right: none;
+    background-color: #FAB416;
+}
+
 .CustomOrderTable-cellCan:hover {
-    background-color: rgba(0, 0, 0, 0.1);
+    background-color: #FAB416;
     cursor: pointer;
+    color: white;
+    transition: all 0.2s ease;
 }
 
 .CustomOrderTable-header-cell {
-    background-color: #FBFAF6; /* Фон для заголовків колонок */
-    border-bottom: 1px solid #FFC107;
+    background-color: #FBFAF6;
+    font-weight: 600;
+
+    min-height: 2vh;
 }
 
 .CustomOrderTable-left-rounded {
@@ -93,18 +283,26 @@ body {
 }
 
 .CustomOrderTable-cell {
-    /*background-color: #FBFAF6; !* Фон для замовлень та колонок *!*/
-    background-color: #F2F0E7; /* Фон для замовлень та колонок */
+    background: #F2F0E7;  /* Фон для замовлень та колонок */
     border-bottom: 1px solid #ddd;
+    word-break: normal;
+    overflow-wrap: normal;
+    white-space: normal;
+
 }
 
-.CustomOrderTable-row {
-    background-color: #fff;
-    /*border-bottom: 1px solid #ddd;*/
-}
+
 
 .CustomOrderTable-row:hover {
     background-color: #f9f9f9;
+    align-items: stretch;
+}
+.CustomOrderTable-header {
+    width: 100%;
+    table-layout: fixed;
+    word-break: normal;
+    overflow-wrap: normal;
+    white-space: normal;
 }
 
 .CustomOrderTable-toggle-btn {
@@ -260,7 +458,218 @@ body {
     border-radius: 12px;
     cursor: pointer;
 }
+.CustomOrderTable-order-list {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    height: 100%;
+    padding: 0.5rem;
+    box-sizing: border-box;
+    background-color: #FBFAF6;
+    border-radius: 1rem;
+    align-items: stretch;
+}
 
+.CustomOrderTable-header {
+    display: flex;
+    flex-direction: row;
+    background-color: #FBFAF6;
+    position: sticky;
+    top: 0;
+    z-index: 10;
+    border-radius: 0.5rem 0.5rem 0 0;
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.05);
+    width: 100%;
+}
+
+.CustomOrderTable-body {
+    display: flex;
+    flex-direction: column;
+    overflow-y: auto;
+    width: 100%;
+    height: 80vh;
+    overflow-x: auto;
+    border-radius: 0 0 0.5rem 0.5rem;
+    background-color: transparent;
+}
+
+.CustomOrderTable-row {
+    display: flex;
+    flex-direction: row;
+    min-height: 3vh;
+    border-bottom: 1px solid #eaeaea;
+    transition: background-color 0.2s ease;
+    width: 100%;
+    margin: 0.1rem 0;
+}
+
+.CustomOrderTable-row:hover {
+    background-color: #f5f5f5;
+    align-items: stretch;
+}
+
+.table-row-container {
+    width: 100%;
+    transition: background-color 0.5s ease;
+    margin: 0.2rem 0;
+}
+
+.table-row-container:hover {
+    background-color: rgba(250, 180, 22, 0.05);
+}
+
+.CustomOrderTable-header-cell {
+
+    text-align: center;
+    font-weight: 600;
+border-left: 1px solid rgba(0, 0, 0, 0.05);
+    background-color: #FBFAF6;
+    border-radius: 0 0 0 0;
+    align-items: center;
+    justify-content: center;
+
+}
+
+.CustomOrderTable-header-cell:last-child {
+    border-right: none;
+}
+
+.CustomOrderTable-cell {
+
+    word-break: normal;
+    overflow-wrap: normal;
+    white-space: normal;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    font-size: 0.7rem;
+    border-right: 1px solid rgba(0, 0, 0, 0.05);
+
+    box-sizing: border-box;
+    overflow: hidden;
+    text-overflow: ellipsis;
+
+}
+
+.CustomOrderTable-left-rounded {
+    border-top-left-radius: 12px;
+}
+
+.CustomOrderTable-right-rounded {
+    border-top-right-radius: 12px;
+}
+
+.controls-row {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-top: 1.5rem;
+    padding: 0 0.5rem;
+    flex-wrap: wrap;
+    gap: 1rem;
+    width: 100%;
+}
+
+.right-group {
+    display: flex;
+    align-items: center;
+    margin-right: 0.3vw;
+    gap: 0.8rem;
+}
+
+.pagination-container {
+    display: flex;
+    align-items: center;
+    background: #FBFAF6;
+    border-radius: 0.5rem;
+    padding: 0.5rem;
+    box-shadow: 0 1px 3px rgba(0,0,0,0.1);
+}
+
+.CustomOrderTable-kassa-btn,
+.CustomOrderTable-invoice-btn,
+.CustomOrderTable-toggle-btn {
+    padding: 0.3rem 0.6rem;
+    border: none;
+    border-radius: 0.3rem;
+    background-color: #FAB416;
+    color: white;
+    font-weight: 500;
+    cursor: pointer;
+    transition: all 0.2s ease;
+}
+
+.CustomOrderTable-kassa-btn:hover,
+.CustomOrderTable-invoice-btn:hover,
+.CustomOrderTable-toggle-btn:hover {
+    background-color: #e9a712;
+    transform: translateY(-1px);
+}
+
+.CustomOrderTable-pay-btn {
+    padding: 0.2rem 0.5rem;
+    border-radius: 0.3rem;
+    font-size: 0.75rem;
+    font-weight: 500;
+    text-align: center;
+}
+
+.CustomOrderTable-pay-paid {
+    background-color: #4CAF50;
+    color: white;
+}
+
+.CustomOrderTable-pay-pending {
+    background-color: #ff9800;
+    color: white;
+}
+
+.controls-row {
+
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+
+}
+
+.CustomOrderTable-kassa-btn,
+.CustomOrderTable-invoice-btn,
+.CustomOrderTable-toggle-btn {
+    padding: 0.3rem 0.6rem;
+    border: none;
+    border-radius: 0.3rem;
+    background-color: #FAB416;
+    color: white;
+    font-weight: 500;
+    cursor: pointer;
+    transition: all 0.2s ease;
+}
+
+.CustomOrderTable-kassa-btn:hover,
+.CustomOrderTable-invoice-btn:hover,
+.CustomOrderTable-toggle-btn:hover {
+    background-color: #e9a712;
+    transform: translateY(-1px);
+}
+
+.CustomOrderTable-pay-btn {
+    padding: 0.2rem 0.5rem;
+    border-radius: 0.3rem;
+    font-size: 0.75rem;
+    font-weight: 500;
+    text-align: center;
+}
+
+.CustomOrderTable-pay-paid {
+    background-color: #4CAF50;
+    color: white;
+}
+
+.CustomOrderTable-pay-pending {
+    background-color: #ff9800;
+    color: white;
+}
 .CustomOrderTable-invoice-btn {
     background-color: #FAB416;
     color: white;

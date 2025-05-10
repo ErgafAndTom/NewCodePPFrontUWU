@@ -41,8 +41,8 @@ const NewNoModalHoles = ({holes, setHoles, holesR, setHolesR, prices, buttonsArr
     }
 
     return (
-        <div className="d-flex allArtemElem">
-            <div style={{display: 'flex', alignItems: 'center',}}>
+        <div className="d-flex flex-column allArtemElem">
+            <div style={{display: 'flex', alignItems: 'center',  width: '15vm'}}>
                 <div className={`toggleContainer scale04ForButtonToggle ${holes === "Не потрібно" ? 'disabledCont' : 'enabledCont'}`}
                      onClick={handleToggle}
                      >
@@ -51,12 +51,10 @@ const NewNoModalHoles = ({holes, setHoles, holesR, setHolesR, prices, buttonsArr
                 </div>
                 <div className="d-flex flex-column">
                     <span style={{
-                        fontSize: '1vw',
-                        marginRight: '0.633vw',
-
+                        width: "10vw",
                     }}>{"Cвердління отворів:"}</span>
                     {holes !== "Не потрібно" ? (
-                        <div style={{display: 'flex', justifyContent: 'center', alignItems: 'center',}}>
+                        <div style={{display: 'flex', justifyContent: 'center', alignItems: 'center',width: '44vmin'}}>
                             <div className="ArtemNewSelectContainer">
                                 <select
                                     className="selectArtem"

@@ -1,26 +1,33 @@
 import React from 'react';
 import { translateColumnName } from './translations';
 
-const OneItemInTable = ({itemData, tablPosition, item, metaItem, handleItemClickRed}) => {
-    // Функція для визначення ширини стовпця - має бути ідентичним в CustomStorageTable.jsx
+const OneUnitInTable = ({itemData, tablPosition, item, metaItem, handleItemClickRed}) => {
+    // Функція для визначення ширини стовпця - має бути ідентичним в усіх таблицях
     const getColumnWidth = (columnName) => {
         switch(columnName) {
             // Спільні колонки
             case 'id': return '2vw';
-            case 'name': return '14vw'; // Фіксована ширина для name в пікселях
-            case 'type': return '7vw';  // Фіксована ширина для type в пікселях
-            case 'typeUse': return '7vw'; // Фіксована ширина для typeUse в пікселях
-            case 'createdAt': return '6vw';
-            case 'price4': return '3.6vw';
-            case 'amount': return '3.35vw';
-            case 'updatedAt': return '6vw';
-            default: return '3.55vw';     // Фіксована ширина для інших колонок в пікселях
+            case 'createdAt': return '7vw';
+            case 'updatedAt': return '7vw';
+            
+            // Колонки користувачів
+            case 'username': return '6vw';
+            case 'firstName': return '6vw';
+            case 'lastName': return '6vw';
+            case 'familyName': return '6vw';
+            case 'email': return '8vw';
+            case 'phoneNumber': return '8vw';
+            case 'role': return '4vw';
+            case 'password': return '5vw';
+            
+            // За замовчуванням
+            default: return '3.55vw';
         }
     };
     
     // Базові стилі для клітинки
     const cellStyle = {
-        // border: "0.05vw solid #FBFAF6",
+        border: "0.05vw solid #FBFAF6",
         width: getColumnWidth(metaItem),
         minWidth: getColumnWidth(metaItem),
         maxWidth: getColumnWidth(metaItem),
@@ -28,26 +35,18 @@ const OneItemInTable = ({itemData, tablPosition, item, metaItem, handleItemClick
         textOverflow: 'ellipsis',
         whiteSpace: 'nowrap',
         height: "auto",
-        minHeight: "2vh",
+        minHeight: "3vmin",
         display: "flex",
         alignItems: "center",
         justifyContent: "center",
         fontSize: "0.7rem",
         boxSizing: "border-box",
         textAlign: "center",
+        padding: "0.2rem",
         background: "#FBFAF6",
+        borderRadius: "0.3rem",
+        margin: "0.05rem 0",
         boxShadow: "0 1px 2px rgba(0,0,0,0.05)"
-    };
-
-    // Перевірка чи це цінова колонка
-    const isPriceColumn = (columnName) => {
-        return [
-            'price1',
-            'price2',
-            'price3',
-            'price4',
-            'price5'
-        ].includes(columnName);
     };
 
     if (tablPosition === "id") {
@@ -58,7 +57,7 @@ const OneItemInTable = ({itemData, tablPosition, item, metaItem, handleItemClick
     
     if (tablPosition === "password") {
         return (
-            <div className="CustomOrderTable-cell" style={cellStyle}>•••••••</div>
+            <div className="CustomOrderTable-cell" style={cellStyle}>********</div>
         );
     }
     
@@ -69,12 +68,6 @@ const OneItemInTable = ({itemData, tablPosition, item, metaItem, handleItemClick
             </div>
         );
     }
-    
-    if (tablPosition === "photo") {
-        return (
-            <div className="CustomOrderTable-cell" style={cellStyle}>{itemData}</div>
-        );
-    }
 
     // Додаємо стилі для редагованих клітинок
     const editableCellStyle = {
@@ -83,15 +76,15 @@ const OneItemInTable = ({itemData, tablPosition, item, metaItem, handleItemClick
         transition: 'background-color 0.2s ease'
     };
 
-    // Спеціальне форматування для типу
-    if (tablPosition === "type") {
+    // Спеціальне форматування для ролей
+    if (tablPosition === "role") {
         return (
             <div
                 className="CustomOrderTable-cell CustomOrderTable-cellCan"
                 style={{
                     ...editableCellStyle,
-                    backgroundColor: itemData === 'папір' ? '#f2ffe9' : 
-                                    itemData === 'фарба' ? '#e9f8ff' : '#FBFAF6'
+                    backgroundColor: itemData === 'admin' ? '#ffe9e9' : 
+                                    itemData === 'manager' ? '#e9f8ff' : '#f2ffe9'
                 }}
                 onClick={(e) => handleItemClickRed(item, e, metaItem)}
             >
@@ -108,17 +101,11 @@ const OneItemInTable = ({itemData, tablPosition, item, metaItem, handleItemClick
             style={editableCellStyle}
             onClick={(e) => handleItemClickRed(item, e, metaItem)}
         >
-            <div
-                className={`CustomOrderTable-cell1 ${isPriceColumn(metaItem) ? "price-cell" : ""}`}
-                style={{
-                    color: isPriceColumn(metaItem) ? "#008249" : undefined,
-                    fontWeight: isPriceColumn(metaItem) ? "600" : undefined
-                }}
-            >
+            <div className="CustomOrderTable-cell1">
                 {itemData}
             </div>
         </div>
     );
 };
 
-export default OneItemInTable;
+export default OneUnitInTable;

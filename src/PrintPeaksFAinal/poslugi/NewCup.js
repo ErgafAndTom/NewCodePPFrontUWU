@@ -293,18 +293,10 @@ const NewCup = ({
                                                 height: '3vw',
                                             }}
                                         >
-                                            <div
-                                                className="btn btn-warning" style={{
-                                                borderRadius: '0.5vw',
-                                                // border: '0.08vw solid gray',
-                                                marginLeft: "-2vw",
-                                                marginTop: "2.5vw",
-                                                padding: '0.2vw 0.7vw',
-                                            }}
-                                                onClick={addNewOrderUnit}
+                                            <button  className="adminButtonAdd" variant="danger"  onClick={addNewOrderUnit}
                                             >
                                                 Додати до замовлення
-                                            </div>
+                                            </button>
                                             {/*<div*/}
                                             {/*    className="btn btn-warning" style={{*/}
                                             {/*    borderRadius: '0.627vw',*/}
@@ -326,52 +318,18 @@ const NewCup = ({
 
                                     </div>
                                 ) : (
-                                    <div className="d-flex justify-content-between pricesBlockContainer" style={{width:"92vw"}}>
-                                        <div className="">
+                                    <div className="d-flex justify-content-between pricesBlockContainer" style={{height:"20vmin"}}>
+                                        <div className=""style={{height:"19vh"}}>
 
-                                            <div className="fontInfoForPricing">
+                                            <div className="fontInfoForPricing" >
                                                 Друк: {pricesThis.priceForThisUnitOfCup.toFixed(2)} грн * {pricesThis.skolko} шт
                                                 = {(pricesThis.priceForAllUnitOfCup).toFixed(2)} грн
                                             </div>
-                                            {/*<div className="fontInfoForPricing">*/}
-                                            {/*    Матеріали: {pricesThis.priceForThisUnitOfPapper.toFixed(2)}грн.*/}
-                                            {/*    * {pricesThis.skolko} шт*/}
-                                            {/*    = {(pricesThis.priceForThisUnitOfPapper * pricesThis.skolko).toFixed(2)}грн.*/}
-                                            {/*</div>*/}
 
-                                            {/*<div className="fontInfoForPricing">*/}
-                                            {/*    Ламінація: {pricesThis.priceForThisUnitOfLamination} грн*/}
-                                            {/*    * {pricesThis.skolko} шт*/}
-                                            {/*    = {pricesThis.priceForThisAllUnitsOfLamination} грн*/}
-                                            {/*</div>*/}
-                                            {/*<div className="fontInfoForPricing">*/}
-                                            {/*    Згинання {pricesThis.priceForThisUnitOfBig} грн * {count} шт*/}
-                                            {/*    = {pricesThis.priceForAllUnitsOfBig} грн*/}
-                                            {/*</div>*/}
-                                            {/*<div className=" fontInfoForPricing">*/}
-                                            {/*    Скруглення кутів: {pricesThis.priceForThisUnitOfCute} грн * {count} шт*/}
-                                            {/*    = {pricesThis.priceForAllUnitsOfCute} грн*/}
-                                            {/*</div>*/}
-                                            {/*<div className="fontInfoForPricing">*/}
-                                            {/*    Свердління отворів: {pricesThis.priceForThisUnitOfHoles} грн * {count} шт*/}
-                                            {/*    = {pricesThis.priceForAllUnitsOfHoles} грн*/}
-                                            {/*</div>*/}
-                                            {/*{pricesThis.porizka !== 0 &&*/}
-                                            {/*    <div className="fontInfoForPricing">*/}
-                                            {/*        Порізка: {pricesThis.porizka.toFixed(2)} грн * {count} шт*/}
-                                            {/*        = {pricesThis.porizka.toFixed(2)*count} грн*/}
-                                            {/*    </div>*/}
-                                            {/*}*/}
                                             <div className="fontInfoForPricing1">
                                                 Загалом: {pricesThis.price} грн
                                             </div>
-                                            {/*<div className="fontInfoForPricing">*/}
-                                            {/*    - З одного аркуша A3 можливо*/}
-                                            {/*    зробити {pricesThis.skolkoListovNaOdin} виробів*/}
-                                            {/*</div>*/}
-                                            {/*<div className="fontInfoForPricing">*/}
-                                            {/*    - Затрачено {pricesThis.skolko} аркушів (SR A3)*/}
-                                            {/*</div>*/}
+
                                         </div>
 
 
@@ -380,7 +338,9 @@ const NewCup = ({
                                             alt="sssss"
                                             src={versantIcon}
                                             style={{
-                                                width: "13vw",
+                                                height: "14vmin",
+                                                marginLeft: "10vmin",
+                                                marginRight: "2vmin",
 
                                             }}
                                         />

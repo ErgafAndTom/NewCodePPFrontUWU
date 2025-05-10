@@ -112,7 +112,7 @@ const NewNoModalCute = ({cute, setCute, cuteLocal, setCuteLocal, prices, buttons
 
                 <div className="d-flex flex-column">
                     <span style={{
-                        fontSize: '1vw',
+                    width: "10vw",
                         marginRight: '0.633vw',
 
                     }}>{"Скруглення кутів:"}</span>
@@ -138,7 +138,7 @@ const NewNoModalCute = ({cute, setCute, cuteLocal, setCuteLocal, prices, buttons
                                     borderRadius: '0.627vw',
                                     padding: '1.273vh 1.273vw',
                                     margin: '0.323vw',
-                                    width: '3.173vw',
+                                    width: '10vmin',
                                     height: '3.173vw',
                                 }}
                             >

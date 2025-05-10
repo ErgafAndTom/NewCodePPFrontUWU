@@ -352,7 +352,7 @@ const NewNote = ({
                                         className="d-flex inputsArtemNumber inputsArtem "
                                         style={{
                                             marginLeft: "1vw",
-                                            background: "#FBFAF6",
+
                                             width: "5vw",
                                             alignItems: "center",
                                             justifyContent: "center",
@@ -454,16 +454,10 @@ const NewNote = ({
                                             height: '3vw',
                                         }}
                                     >
-                                        <div
-                                            className="btn btn-warning" style={{
-                                            borderRadius: '0.5vw',
-                                            // border: '0.08vw solid gray',
-                                            padding: '0.2vw 0.7vw',
-                                        }}
-                                            onClick={addNewOrderUnit}
+                                        <button  className="adminButtonAdd" variant="danger"  onClick={addNewOrderUnit}
                                         >
                                             Додати до замовлення
-                                        </div>
+                                        </button>
                                     </div>
                                 )}
                             </div>

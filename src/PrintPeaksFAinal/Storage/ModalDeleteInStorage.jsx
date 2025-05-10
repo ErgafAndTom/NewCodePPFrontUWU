@@ -1,8 +1,10 @@
+import {translateColumnName} from './translations';
 import React, { useState } from 'react';
 import axios from "../../api/axiosInstance";
 import {Modal} from "react-bootstrap";
 import TrashIcon from '../../artemm/public/Trash.png';
 import {useNavigate} from "react-router-dom";
+
 
 function ModalDeleteInStorage({tableName, data, setData, inPageCount, setInPageCount, currentPage, setCurrentPage, pageCount, setPageCount,  item}) {
     const [show, setShow] = useState(false);
@@ -50,7 +52,7 @@ function ModalDeleteInStorage({tableName, data, setData, inPageCount, setInPageC
 
             <Modal show={show} onHide={handleClose} >
 
-                <Modal.Header className="borderRadius">Видалити {item.type} {item.name}?</Modal.Header>
+                <Modal.Header className="borderRadius">Видалити {translateColumnName('type')}: {item.type}, {translateColumnName('name')}: {item.name}?</Modal.Header>
                 {/*<Modal.Body>Видалити {item.type} {item.name}?</Modal.Body>*/}
                 <Modal.Footer style={{ background: '#F2F0E7'}}>
                     <button className="hoverOrange" onClick={(e) => {deleteThisRowF(e)}}>

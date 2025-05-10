@@ -83,7 +83,7 @@ const VishichkaVibor = ({vishichka, setVishichka, prices, buttonsArr, selectArr,
                                         <div className="d-flex flex-column" style={{
                                             // width: "10vw",
                                             height: "100%",
-                                            opacity: item.id === vishichka.materialId ? '100%' : '90%',
+                                            opacity: item.id === vishichka.materialId ? '100%' : '50%',
                                             whiteSpace: "nowrap",
                                             borderRadius:"1vw"
                                         }}>

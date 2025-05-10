@@ -16,27 +16,47 @@
     margin-left: 0.4vw;
     align-items: flex-start /* Вертикальне вирівнювання тексту */
 }
+.adminPagination
+{
+    /*display: flex;*/
+    top: 2vh;
+    height: 3vh;
+    justify-content: center;
+
+
+
+}
 .paginationZakaz {
     align-items: center;
-    width: 5vw;
+    width: 3.1vw;
+
     margin: 0.4vw;
     /*display: flex;*/
     justify-content: center;
     background: #FBFAF6;
-    padding: 0.3vw;
+    /*padding: 0.3vw;*/
+    font-size: var(--font-size-base);
     border-radius: 1.5vw;
     border: none;
 }
 .paginationNamberZakaz {
+
     align-items: center;
+    font-size: var(--font-size-base);
     display: flex;
     justify-content: center;
-    margin: 1.1vh;
     background: #FBFAF6;
     width: 1.7vw;
     height: 1.7vw;
     border-radius: 1.5vw;
     border: none;
+}
+.paginationNamberZakaz:hover
+{
+    background: #FAB416;
+    cursor: pointer;
+    color: white;
+    transform: translateY(-1px);
 
 }
 .activePag{
@@ -50,42 +70,48 @@
     display: none;
 }
 .adminButtonAdd {
-
-    /*position: fixed;*/
-    /*bottom: 5vh;*/
-    /*z-index: 9999;*/
-    /*border-radius: 50%;*/
     display: flex;
-    height: 4vh;
-    width: 12vw;
+    height: auto;
+    width: auto;
+    min-width: 10rem;
     align-items: center;
     justify-content: center;
     border: none;
-    /*padding: 1vh;*/
+    padding: 0.5rem 1rem;
     font-size: var(--font-size-sm);
-    border-radius: 1vh;
-    right: 1vw;
+    border-radius: 0.5rem;
     color: #000000;
-    background: #f5f5f0;
+    background: #FAB416;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    transition: all 0.2s ease;
+    font-weight: 500;
 }
 
 .adminButtonAdd:hover{
     cursor: pointer;
-    background: #FAB416;
+    background: #f5a400;
+    color: white;
+    transform: translateY(-2px);
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.15);
 }
 .adminButtonAdd:active{
     background: #FAB416;
-
+    transform: translateY(0);
+    box-shadow: 0 1px 2px rgba(0, 0, 0, 0.1);
 }
 .adminButtonAdd:active:focus{
     background: #FAB416;
 }
 .adminButtonAdd:focus{
     outline: none;
+    box-shadow: 0 0 0 3px rgba(250, 180, 22, 0.3);
 }
 .adminButtonAdd:disabled{
     background: #F2F0E7;
     cursor: not-allowed;
+    opacity: 0.7;
+    transform: none;
+    box-shadow: none;
 }
 .hoverOrange:hover {
     background: #FAB416;
@@ -162,14 +188,16 @@
     background: #FBFAF6;
 }
 .adminFont2 {
-    font-size: 1.5vw;
+    font-size: 1.5vmin;
 }
 .fontInfoForPricing1 {
     font-size: 2vmin;
     font-weight: bold;
 }
 .fontInfoForPricing {
-    font-size: 1.6vmin;
+
+    font-size: var(--font-size-base);
+
     /*font-size: clamp(10px, 1.5vmin, 14px);*/
 }
 .fontProductName {

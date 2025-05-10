@@ -218,7 +218,6 @@ const NewPhoto = ({thisOrder, newThisOrder, setNewThisOrder, selectedThings2, sh
                                 className="d-flex inputsArtemNumber inputsArtem "
                                 style={{
                                     marginLeft: "1vw",
-                                    background: "#FBFAF6",
                                     width: "5vw",
                                     alignItems: "center",
                                     justifyContent:"center",
@@ -265,44 +264,7 @@ const NewPhoto = ({thisOrder, newThisOrder, setNewThisOrder, selectedThings2, sh
                                             typeUse={"Фото"}
                                         />
 
-                                        {/*<PhotoPosluga*/}
-                                        {/*    photo={photo}*/}
-                                        {/*    setPhoto={setPhoto}*/}
-                                        {/*    prices={prices}*/}
-                                        {/*    type={"SheetCut"}*/}
-                                        {/*    buttonsArr={["З глянцевим ламінуванням",*/}
-                                        {/*        "З матовим ламінуванням",*/}
-                                        {/*        "З ламінуванням Soft Touch",]}*/}
-                                        {/*    selectArr={["3,5 мм", "4 мм", "5 мм", "6 мм", "8 мм"]}*/}
-                                        {/*/>*/}
-                                        {/*<NewNoModalCornerRounding*/}
-                                        {/*    big={big}*/}
-                                        {/*    setBig={setBig}*/}
-                                        {/*    prices={prices}*/}
-                                        {/*    type={"SheetCut"}*/}
-                                        {/*    buttonsArr={[]}*/}
-                                        {/*    selectArr={["", "1", "2", "3", "4", "5", "6", "7", "8", "9"]}*/}
-                                        {/*/>*/}
-                                        {/*<NewNoModalCute*/}
-                                        {/*    cute={cute}*/}
-                                        {/*    setCute={setCute}*/}
-                                        {/*    cuteLocal={cuteLocal}*/}
-                                        {/*    setCuteLocal={setCuteLocal}*/}
-                                        {/*    prices={prices}*/}
-                                        {/*    type={"SheetCut"}*/}
-                                        {/*    buttonsArr={[]}*/}
-                                        {/*    selectArr={[]}*/}
-                                        {/*/>*/}
-                                        {/*<NewNoModalHoles*/}
-                                        {/*    holes={holes}*/}
-                                        {/*    setHoles={setHoles}*/}
-                                        {/*    holesR={holesR}*/}
-                                        {/*    setHolesR={setHolesR}*/}
-                                        {/*    prices={prices}*/}
-                                        {/*    type={"SheetCut"}*/}
-                                        {/*    buttonsArr={[]}*/}
-                                        {/*    selectArr={["", "3,5 мм", "4 мм", "5 мм", "6 мм", "8 мм"]}*/}
-                                        {/*/>*/}
+
                                     </div>
                                 </Row>
                                 <div className="d-flex">
@@ -310,39 +272,21 @@ const NewPhoto = ({thisOrder, newThisOrder, setNewThisOrder, selectedThings2, sh
                                         <div
                                             className="d-flex align-content-between justify-content-between"
                                             style={{
-                                                width: "90vw",
+                                                height: "15vmin",
                                                 marginLeft: "2.5vw",
-                                                fontFamily: "inter",
-
-
                                                 fontWeight: "bold",
                                                 display: 'flex',
                                                 justifyContent: 'center',
                                                 alignItems: 'center',
                                                 transition: "all 0.3s ease",
-                                                height: '5vw',
+
                                             }}
                                         >
-                                            <div
-                                                className="btn btn-warning" style={{
-                                                borderRadius: '0.5vw',
-                                                padding: '0.2vw 0.7vw',
-                                                margin: '-1.8vw',
-                                            }}
-                                                onClick={addNewOrderUnit}
+                                            <button  className="adminButtonAdd" variant="danger"  onClick={addNewOrderUnit}
                                             >
                                                 Додати до замовлення
-                                            </div>
-                                            {/*<div*/}
-                                            {/*    className="btn btn-warning" style={{*/}
-                                            {/*    borderRadius: '0.627vw',*/}
-                                            {/*    border: '0.08vw solid gray',*/}
-                                            {/*    padding: '0.2vw 0.7vw',*/}
-                                            {/*}}*/}
-                                            {/*    // onClick={handleThingClickAndHide}*/}
-                                            {/*>*/}
-                                            {/*    Додати до пресетів*/}
-                                            {/*</div>*/}
+                                            </button>
+
                                         </div>
                                     )}
                                 </div>
@@ -354,8 +298,8 @@ const NewPhoto = ({thisOrder, newThisOrder, setNewThisOrder, selectedThings2, sh
 
                                     </div>
                                 ) : (
-                                    <div className="d-flex justify-content-between pricesBlockContainer" style={{width:"92vw"}}>
-                                        <div className="">
+                                    <div className="d-flex justify-content-between pricesBlockContainer" style={{height:"20vmin"}}>
+                                        <div className="" style={{height:"19vmin"}}>
                                             {/*<div className="adminFont fontInfoForPricing1">*/}
                                             {/*    {pricesThis.skolkoListovNaOdin}шт. - Виробів з 1 листа A3(можливо зробити)*/}
                                             {/*</div>*/}
@@ -409,7 +353,7 @@ const NewPhoto = ({thisOrder, newThisOrder, setNewThisOrder, selectedThings2, sh
                                             className="versant80-img-icon"
                                             // alt="sssss"
                                             src={versantIcon}
-                                            style={{width: "14vw"}}
+                                            style={{height: "16vmin"}}
                                         />
                                     </div>
                                 )}

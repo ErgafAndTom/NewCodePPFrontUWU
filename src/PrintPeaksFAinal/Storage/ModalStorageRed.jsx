@@ -3,6 +3,7 @@ import Form from "react-bootstrap/Form";
 import axios from '../../api/axiosInstance';
 import StatusBar from "../Orders/StatusBar";
 import {useNavigate} from "react-router-dom";
+import {translateColumnName} from './translations';
 
 const ModalStorageRed = ({
                              tableName,
@@ -143,6 +144,7 @@ const ModalStorageRed = ({
         )
     }
 
+
     if (tablPosition === "status") {
         return (
             <StatusBar item={item}/>
@@ -169,9 +171,9 @@ const ModalStorageRed = ({
                             width: "100vw",
                             zIndex: "99",
                             height: "100vh",
-                            background: "rgba(0, 0, 0, 0.5)",
-                            opacity: isAnimating ? 1 : 0, // для анимации прозрачности
-                            transition: "opacity 0.1s ease-in-out", // плавная анимация
+                            background: "transparent",
+                            // opacity: isAnimating ? 1 : 0, // для анимации прозрачности
+                            // transition: "opacity 0.1s ease-in-out", // плавная анимация
                             position: "fixed",
                             left: "0",
                             bottom: "0"
@@ -179,14 +181,14 @@ const ModalStorageRed = ({
                         <div style={{
                             ...modalStyle,
                             zIndex: "100", // модальное окно поверх затемненного фона
-                            position: "fixed",
-                            background: "#dcd9ce",
-                            borderRadius: "1vw",
+
+                            background: "#FBFAF6",
+                            borderRadius: "0.7vw",
                             maxWidth: "90vw", // ограничение по ширине
                             padding: "0.5vw",
                             transform: isAnimating ? "translate(-50%, -50%) scale(1)" : "translate(-50%, -30%) scale(0.8)", // анимация масштаба
-                            opacity: isAnimating ? 1 : 0, // анимация прозрачности
-                            transition: "opacity 0.1s ease-in-out, transform 0.1s ease-in-out", // плавная анимация
+                            // opacity: isAnimating ? 1 : 0, // анимация прозрачности
+                            // transition: "opacity 0.1s ease-in-out, transform 0.1s ease-in-out", // плавная анимация
                         }} className="shadow-lg">
                             <div style={{
                                 // height: '90vh',
@@ -198,18 +200,18 @@ const ModalStorageRed = ({
                                     value={modalInput}
                                     className="adminFontTable shadow-lg bg-transparent"
                                     onChange={(event) => setModalInput(event.target.value)}
-                                    style={{border: "solid 1px #cccabf", borderRadius: "0"}}
+                                    style={{border: "none", borderRadius: "0"}}
                                 />
                                 <button className="adminFontTable"
-                                        onClick={handleCloseModal}>Закрити
+                                        onClick={handleCloseModal} style={{borderRadius: "1vw", border:'none'}}>Закрити
                                 </button>
                                 {load && (<>
-                                    <button disabled className="adminFontTable">Збереження
+                                    <button disabled className="adminFontTable" style={{borderRadius: "1vw", border:'none'}}>Збереження
                                         змін</button>
                                 </>)}
                                 {!load && (
                                     <>
-                                    <button className="adminFontTable" onClick={saveThis}>Зберегти
+                                    <button className="adminFontTable" onClick={saveThis} style={{borderRadius: "1vw", border:'none'}}>Зберегти
                                         зміни</button>
                                     </>
                                 )}

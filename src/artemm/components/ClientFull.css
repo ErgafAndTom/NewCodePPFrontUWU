@@ -225,7 +225,7 @@
   position: absolute;
   top: calc(50% - 8px);
   left: calc(50% - 20.75px);
-  font-size: var(--font-size-sm);
+  font-size: var(--кількістьze-sm);
 
   color: var(--color-darkslategray);
   text-align: center;

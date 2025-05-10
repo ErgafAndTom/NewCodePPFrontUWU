@@ -1,6 +1,7 @@
 import React, {useEffect, useState} from "react";
 import axios from '../../../api/axiosInstance';
 import {Navigate, useNavigate} from "react-router-dom";
+import "../../global.css"
 
 const NewNoModalLamination = ({lamination, setLamination, prices, buttonsArr, selectArr, size, type}) => {
     const [thisLaminationSizes, setThisLaminationSizes] = useState([]);
@@ -116,12 +117,12 @@ const NewNoModalLamination = ({lamination, setLamination, prices, buttonsArr, se
             </div>
             <div className="d-flex flex-column">
             <span style={{
-                fontSize: '1vw', marginRight: '0.633vw'
+                 marginRight: '0.633vw'
             }}>{"Ламінація:"}</span>
                 {lamination.type !== "Не потрібно" ? (
                     <div style={{display: 'flex', justifyContent: 'center', alignItems: 'center',}}>
                         <div style={{
-                            display: 'flex', justifyContent: 'center', alignItems: 'center', marginLeft: "2vw"
+                            display: 'flex', justifyContent: 'center', alignItems: 'center'
                         }}>
                             {buttonsArr.map((item, index) => (<button
                                 className={item === lamination.material ? 'buttonsArtem buttonsArtemActive' : 'buttonsArtem'}
@@ -133,9 +134,10 @@ const NewNoModalLamination = ({lamination, setLamination, prices, buttonsArr, se
                                 // }}
                             >
                                 <div className="" style={{
-                                    height: "100%",
-                                    opacity: item === lamination.material ? '100%' : '90%',
-                                    whiteSpace: "nowrap",
+                                    fontSize: "var(--font-size-base)",
+                                    opacity: item === lamination.material ? '100%' : '50%',
+                                    width:"13vw"
+
                                 }}>
                                     {item}
                                 </div>

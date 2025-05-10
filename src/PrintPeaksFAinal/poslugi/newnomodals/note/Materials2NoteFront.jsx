@@ -377,12 +377,7 @@ alignItems: "center",
                 </div>
                 <span
                     style={{
-                        fontSize: "1vw",
-                        fontFamily: "inter",
 
-
-                        whiteSpace: "nowrap",
-                        marginLeft: "0vw",
                     }}
                 >
 

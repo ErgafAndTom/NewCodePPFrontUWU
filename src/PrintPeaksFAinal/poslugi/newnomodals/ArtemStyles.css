@@ -5,6 +5,8 @@
 }
 .allArtemElem {
     margin-left: 2vw;
+    font-style: var(--font-inter);
+    font-size: var(--font-size-base);
 
 }
 .scale04ForButtonToggle{
@@ -77,6 +79,7 @@
     align-items: center;
     background-color: transparent;
     padding: 0.38vh 0.76vw;
+    font-style: var(--font-inter);
     font-size: var(--font-size-base);
     outline: none;
     background: none;
@@ -90,11 +93,12 @@
 
 .optionInSelectArtem {
     display: flex;
+    font-style: var(--font-inter);
     font-size: var(--font-size-base);
     justify-content: center;
     align-items: center;
     background-color: transparent;
-    padding: 0.5vh 1vw;
+    /*padding: 0.5vh 1vw;*/
     border-radius: 0.3vw; /* 0.5vw * 0.6 */
     /*border: 0.09vw solid grey; !* 0.15vw * 0.6 *!*/
 }
@@ -107,7 +111,7 @@
     /* border-radius: 0.627vw; */ /* если использовать, то 0.627vw * 0.6 ≈ 0.38vw */
     padding: 0.48vh 0.76vw; /* 0.8vh и 1.273vw умноженные на 0.6 */
     margin: 0.3vw; /* 0.323vw * 0.6 */
-    transition: all 0.3s ease;
+    font-style: var(--font-inter);
     font-size: var(--font-size-base); /* 1.3vw * 0.6 */
     background: transparent;
     /* text-decoration:  overline line-through #ff0000; */
@@ -122,28 +126,27 @@
 
 .buttonsArtemActive {
     border-bottom: 3px solid #FFA500; /* 5px * 0.6 */
-    font-family: var(--font-inter)Bold, 'interBold', sans-serif;
+
 }
 
 .buttonsArtemNotActive {
-    filter: grayscale(100%);
+    /*filter: grayscale(100%);*/
 }
 
 .pricesBlockContainer {
     position: fixed; /* или absolute, если в контейнере с relative */
     bottom: 0;
     right: 0;
-
-    height: 28vmin;
+    height: 25vmin;
     border: 0.06vw solid grey;
     border-radius: 0.6vw;
     padding: 0.48vh 0.76vw;
     font-size: var(--font-size-base);
-
+    align-items: center;
+    justify-content: center;
     display: flex;
-    justify-content: center; /* по центру по горизонталі внутри блока */
-    align-items: center;     /* по центру по вертикалі внутри блока */
 
+     /* по центру по вертикалі внутри блока */
     margin: 1vw; /* небольшой отступ от краёв */
     overflow: hidden;
 }
@@ -180,7 +183,7 @@
     background-color: #2b2b2b;
     border-radius: 50%;
     cursor: pointer;
-    box-shadow: 0 0 1.2px #000; /* 2px * 0.6 */
+    /*box-shadow: 0 0 1.2px #000; !* 2px * 0.6 *!*/
 }
 
 .custom-slider::-moz-range-thumb {
@@ -204,23 +207,22 @@
 .ArtemNewSelectContainer {
     position: relative;
     display: inline-block;
+    font-size: var(--font-size-base);
 }
 
 .ArtemNewSelect {
     font-size:  var(--font-size-base);
-    color: #000000;
     padding: 3px 18px 3px 6px; /* верх/низ: 5px*0.6, правый: 30px*0.6, левый: 10px*0.6 */
     border: none;
     outline: none;
     background: none;
     appearance: none;
-    border-bottom: 3px solid #FFA500; /* 5px * 0.6 */
+
 }
 
 .ArtemNewSelectContainer::before {
     content: "";
-    width: 0;
-    height: 0;
+    font-style: var(--font-inter);
     font-size: var(--font-size-base);
     border-left: 6px solid transparent;  /* 10px * 0.6 */
     border-right: 6px solid transparent;
