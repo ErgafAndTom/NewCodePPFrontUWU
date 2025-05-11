@@ -14,7 +14,7 @@ const OneItemInTable = ({itemData, tablPosition, item, metaItem, handleItemClick
             case 'price4': return '3.6vw';
             case 'amount': return '3.35vw';
             case 'updatedAt': return '6vw';
-            default: return '3.55vw';     // Фіксована ширина для інших колонок в пікселях
+            default: return '3.54vw';     // Фіксована ширина для інших колонок в пікселях
         }
     };
     

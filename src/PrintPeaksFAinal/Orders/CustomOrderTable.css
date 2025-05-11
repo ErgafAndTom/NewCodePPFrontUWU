@@ -7,14 +7,16 @@
     height: 100%;
     padding: 0.5rem;
     box-sizing: border-box;
-    background-color: #FBFAF6;
     border-radius: 1rem;
+    background: transparent;
 }
 
 .CustomOrderTable-header {
     display: flex;
     flex-direction: row;
-    background-color: #FBFAF6;
+    background: transparent;
+    border: 1px solid white;
+    height: 4vh;
     position: sticky;
     top: 0;
     z-index: 10;
@@ -527,6 +529,7 @@ border-left: 1px solid rgba(0, 0, 0, 0.05);
     border-radius: 0 0 0 0;
     align-items: center;
     justify-content: center;
+
 
 }
 

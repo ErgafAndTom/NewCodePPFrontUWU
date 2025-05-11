@@ -105,44 +105,36 @@ const UsersCustomTable = ({name}) => {
     // Функція для визначення ширини колонок - ОБОВ'ЯЗКОВО повинна бути така сама, як у OneUnitInTable.jsx
     const getColumnWidth = (columnName) => {
         switch(columnName) {
+            // Спільні колонки
             case 'id': return '2vw';
+            case 'createdAt': return '7vw';
+            case 'updatedAt': return '7vw';
+
+            // Колонки користувачів
             case 'username': return '6vw';
             case 'firstName': return '6vw';
             case 'lastName': return '6vw';
             case 'familyName': return '6vw';
             case 'email': return '8vw';
             case 'phoneNumber': return '8vw';
-            case 'createdAt': return '7vw';
-            case 'updatedAt': return '7vw';
             case 'role': return '4vw';
-            default: return '3.55vw';
+            case 'password': return '5vw';
+            case 'lastLoginAt': return '2.8vw';
+            case 'discount': return '3.2vw';
+
+            // За замовчуванням
+            default: return '3.955vw';
         }
     };
 
     if (data) {
         return (
-            <div className="CustomOrderTable-order-list" style={{
-                flexDirection: "column",
-                width: "100%",
-                height: "100%"
-            }}>
-                <div className="CustomOrderTable-header" style={{
-                    borderRadius: "0.5rem 0.5rem 0 0",
-                    display: "flex",
-                    flexDirection: "row",
-                    overflowX: "auto",
-                    position: "sticky",
-                    top: 0,
-                    zIndex: 10,
-                    backgroundColor: "#FBFAF6",
-                    width: "100%",
-
-                }}>
+            <div className="CustomOrderTable-order-list">
+                <div className="CustomOrderTable-header">
                     {data.metadata.map((item, iter) => (
                         <div
                             style={{
-                                background: "#FBFAF6",
-                                wordBreak: "break-all",
+                                background: "#F2F0E7",
                                 cursor: "pointer",
                                 fontWeight: "600",
                                 fontSize: "0.6rem",
@@ -150,31 +142,30 @@ const UsersCustomTable = ({name}) => {
                                 alignItems: "center",
                                 justifyContent: "center",
                                 height: "auto",
-                                minHeight: "3vh",
+                                minHeight: "1vh",
                                 boxSizing: "border-box",
                                 textAlign: "center",
                                 width: getColumnWidth(item),
-                                minWidth: getColumnWidth(item),
                                 maxWidth: getColumnWidth(item),
+                                minWidth: getColumnWidth(item),
                                 overflow: "hidden",
-                                whiteSpace: "pre-line",
-                                lineHeight: "1",
-                                flex: "0 0 auto",
-                                padding: "0.2rem"
+                                whiteSpace: "pre-line", // Додано для підтримки переносів
+                                lineHeight: "1.7", // Збільшено для кращої читабельності
+                                borderRadius: "0rem",
                             }}
                             className="CustomOrderTable-header-cell"
                             key={item + iter}
                             onClick={(event) => setCol(item)}
                         >
                             {item === thisColumn.column ? (
-                                <div style={{ display: "flex", alignItems: "center", justifyContent: "center", flexDirection: "column" }}>
-                                    <span style={{ whiteSpace: "pre-line", lineHeight: "1" }}>{translateColumnName(item)}</span>
-                                    <span style={{ color: "#FAB416", fontSize: "1.4rem" }}>
-                                        {!thisColumn.reverse ? "↑" : "↓"}
-                                    </span>
+                                <div  style={{ display: 'flex', height: '4vh', alignItems: "center", justifyContent: "center", flexDirection: "row", cursor: "pointer", borderRadius: "none", }}>
+                                    <span style={{ whiteSpace: "pre-line", }}>{translateColumnName(item)}</span>
+                                    <span style={{ color: "#FAB416", fontSize: "1.2rem", position:'relative', right: "-0.2rem", cursor: "pointer", whiteSpace: "pre-line" }}>
+                                            {!thisColumn.reverse ? "↑" : "↓"}
+                                        </span>
                                 </div>
                             ) : (
-                                <span style={{ whiteSpace: "pre-line", lineHeight: "1" }}>{translateColumnName(item)}</span>
+                                <span style={{ whiteSpace: "pre-line",  }}>{translateColumnName(item)}</span>
                             )}
                         </div>
                     ))}
@@ -183,7 +174,7 @@ const UsersCustomTable = ({name}) => {
                      style={{
                          maxWidth: '99vw',
                          overflow: 'auto',
-                         height: "81vh",
+                         height: "76vh",
                          background: "transparent",
                          borderRadius: "0.5rem",
                          display: "flex",
@@ -195,9 +186,6 @@ const UsersCustomTable = ({name}) => {
                     {data.rows.map((item, iter) => (
                         <div key={item.id} className="table-row-container">
                             <div className="CustomOrderTable-row" style={{
-                                display: "flex",
-                                width: "100%",
-                                flexDirection: "row"
                             }}>
                                 {data.metadata.map((metaItem, iter2) => (
                                     <OneUnitInTable
@@ -214,13 +202,7 @@ const UsersCustomTable = ({name}) => {
                     ))}
                 </div>
                 
-                <div className="controls-row" style={{ 
-                    marginTop: "0.5rem",
-                    display: "flex",
-                    justifyContent: "space-between",
-                    alignItems: "center",
-                    width: "100%"
-                }}>
+                <div className="controls-row" >
                     <div className="pagination-container">
                         <PaginationMy
                             name={"User"}
@@ -246,21 +228,7 @@ const UsersCustomTable = ({name}) => {
                             show={show}
                             setShow={setShow}
                         />
-                        <Button 
-                            className="adminButtonAdd" 
-                            variant="primary" 
-                            onClick={() => setShow(true)}
-                            style={{
-                                border: "none",
-                                borderRadius: "0.5rem",
-                                fontWeight: "400",
-                                boxShadow: "0 2px 4px rgba(0,0,0,0.1)",
-                                transition: "all 0.2s ease",
-                                marginLeft: "1rem"
-                            }}
-                        >
-                            Додати користувача
-                        </Button>
+
 
 
                     </div>

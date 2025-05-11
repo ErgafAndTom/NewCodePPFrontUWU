@@ -104,7 +104,7 @@ function AddNewOrder({namem, data, setData, inPageCount, setInPageCount, current
             {/*<Button className="adminButtonAdd" variant="danger" onClick={handleShow}>*/}
             {/*    +*/}
             {/*</Button>*/}
-            <div className="adminButtonAdd" onClick={handleShow} style={{marginTop: "0.9vmin"}} >
+            <div className="adminButtonAdd" onClick={handleShow} style={{marginTop: "-2.2vmin"}} >
                 Нове замовлення
             </div>
 

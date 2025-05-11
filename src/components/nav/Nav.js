@@ -53,21 +53,21 @@ const Nav = () => {
     };
 
     return (
-        <MDBNavbar expand='lg' light bgColor='' className="navbarMy">
+        <MDBNavbar expand='lg' light bgColor='' className="navbarMy" >
             <MDBContainer fluid>
                 <div className="d-flex">
                     <div className="logo">
                         <h1 className="Logo">
 
-                            <div className="gradient-text">PRINT PEAKS <span style={{fontSize: "0.7vw"}}>ERP 7.14</span></div>
+                            <div className="gradient-text">PRINT PEAKS <span style={{fontSize: "0.7vw"}}>ERP 9.05</span></div>
                             {/*<div style={{fontSize: "0.7vw"}}> ERP 6.1</div>*/}
                             {/*<Logo/>*/}
 
                         </h1>
                     </div>
 
-                    <div className="top-menu">
-                        <Link to="/Desktop" style={{textDecoration: 'none', margin: 'auto', padding: '0', background: 'transparent'}}>
+                    <div className="top-menu" style={{height:"1vw", justifyContent:'center', alignItems:'center', padding: "0", background: "transparent", boxShadow: "none"}}>
+                        <Link to="/Desktop" style={{textDecoration: 'none',  padding: '0', background: 'transparent'}}>
                             <button
                                 onClick={() => handleBasicClick('/Desktop')}
                                 className={basicActive === "/Desktop" ? 'ButtonClients ButtonVimogia' : 'ButtonClients'} style={basicActive === "/Desktop" ? {background: "#FAB416"} : {}}>Головна
@@ -75,7 +75,7 @@ const Nav = () => {
                         </Link>
 
                         {/*<button className="ButtonClients">Головна</button>*/}
-                        <Link to="/Users" style={{textDecoration: 'none', margin: 'auto', padding: '0', background: 'transparent'}}>
+                        <Link to="/Users" style={{textDecoration: 'none', padding: '0', background: 'transparent'}}>
                             <button
                                 onClick={() => handleBasicClick('/Users')}
                                 className={basicActive === "/Users" ? 'ButtonVimogi ButtonVimogia' : 'ButtonVimogi'}
@@ -84,11 +84,8 @@ const Nav = () => {
                             </button>
                         </Link>
 
-                        {/*<button className="ButtonVimogi">Спілкування</button>*/}
-                        {/*<button className="ButtonVimogi">Вимоги</button>*/}
-                        {/*<button disabled className="ButtonVimogi">Постачальники</button>*/}
-                        {/*<button disabled className="ButtonVimogi">Підрядники</button>*/}
-                        <Link to="/Orders" style={{textDecoration: 'none', margin: 'auto', padding: '0', background: 'transparent'}}>
+
+                        <Link to="/Orders" style={{textDecoration: 'none', padding: '0', background: 'transparent'}}>
                             <button
                                 onClick={() => handleBasicClick('/Orders')}
                                 className={basicActive === "/Orders" ? 'ButtonVimogi ButtonVimogia' : 'ButtonVimogi'}
@@ -96,30 +93,18 @@ const Nav = () => {
                             >Замовлення
                             </button>
                         </Link>
-                        {/*<Link to="/Devices" style={{textDecoration: 'none', margin: 'auto', padding: '0', background: 'transparent'}}>*/}
-                        {/*    <button*/}
-                        {/*        onClick={() => handleBasicClick('/Devices')}*/}
-                        {/*        className={basicActive === "/Devices" ? 'ButtonVimogi activeChose' : 'ButtonVimogi'}>Devices*/}
-                        {/*    </button>*/}
-                        {/*</Link>*/}
+
                         <Link disabled onClick={() => handleBasicClick('/Storage')} to="/Storage"
-                              style={{textDecoration: 'none', margin: 'auto', padding: '0', background: 'transparent'}}>
+                              style={{textDecoration: 'none', padding: '0', background: 'transparent'}}>
                             <button
                                 className={basicActive === "/Storage" ? 'ButtonVimogi ButtonVimogia' : 'ButtonVimogi'}
                                 style={basicActive === "/Storage" ? {background: "#FAB416"} : {}}
                             >Склад
                             </button>
                         </Link>
-                        {/*<Link disabled onClick={() => handleBasicClick('/db')} to="/db"*/}
-                        {/*      style={{textDecoration: 'none', margin: 'auto', padding: '0', background: 'transparent'}}>*/}
-                        {/*    <button*/}
-                        {/*        className={basicActive === "/db" ? 'ButtonVimogi ButtonVimogia' : 'ButtonVimogi'}*/}
-                        {/*        style={basicActive === "/db" ? {background: "#FAB416"} : {}}*/}
-                        {/*    >/db*/}
-                        {/*    </button>*/}
-                        {/*</Link>*/}
+
                         <Link disabled onClick={() => handleBasicClick('/db2')} to="/db2"
-                              style={{textDecoration: 'none', margin: 'auto', padding: '0', background: 'transparent'}}>
+                              style={{textDecoration: 'none',  padding: '0', background: 'transparent'}}>
                             <button
                                 className={basicActive === "/db2" ? 'ButtonVimogi ButtonVimogia' : 'ButtonVimogi'}
                                 style={basicActive === "/db2" ? {background: "#FAB416"} : {}}
@@ -127,24 +112,16 @@ const Nav = () => {
                             </button>
                         </Link>
                         <Link disabled onClick={() => handleBasicClick('/Trello')} to="/Trello"
-                              style={{textDecoration: 'none', margin: 'auto', padding: '0', background: 'transparent'}}>
+                              style={{textDecoration: 'none',  padding: '0', background: 'transparent'}}>
                             <button
                                 className={basicActive === "/Trello" ? 'ButtonVimogi ButtonVimogia' : 'ButtonVimogi'}
                                 style={basicActive === "/Trello" ? {background: "#FAB416"} : {}}
                             >Завдання
                             </button>
                         </Link>
-                        {/*<Link disabled onClick={() => handleBasicClick('/Trello2')} to="/Trello2"*/}
-                        {/*      style={{textDecoration: 'none', margin: 'auto', padding: '0', background: 'transparent'}}>*/}
-                        {/*    <button*/}
-                        {/*        className={basicActive === "/Trello2" ? 'ButtonVimogi ButtonVimogia' : 'ButtonVimogi'}*/}
-                        {/*        style={basicActive === "/Trello2" ? {background: "#FAB416"} : {}}*/}
-                        {/*    >Завдання*/}
-                        {/*    </button>*/}
-                        {/*</Link>*/}
 
                         <Link disabled onClick={() => handleBasicClick('/myFiles')} to="/myFiles"
-                              style={{textDecoration: 'none', margin: 'auto', padding: '0', background: 'transparent'}}>
+                              style={{textDecoration: 'none',  padding: '0', background: 'transparent'}}>
                             <button disabled
                                 className={basicActive === "/myFiles" ? 'ButtonVimogi ButtonVimogia' : 'ButtonVimogi'}
                                 style={basicActive === "/myFiles" ? {background: "#FAB416"} : {}}
@@ -152,23 +129,8 @@ const Nav = () => {
                             </button>
                         </Link>
 
-                        {/*<Link disabled onClick={() => handleBasicClick('/CounterpartyList')} to="/CounterpartyList"*/}
-                        {/*      style={{textDecoration: 'none', margin: 'auto', padding: '0', background: 'transparent'}}>*/}
-                        {/*    <button*/}
-                        {/*        className={basicActive === "/CounterpartyList" ? 'ButtonVimogi ButtonVimogia' : 'ButtonVimogi'}*/}
-                        {/*        style={basicActive === "/CounterpartyList" ? {background: "#FAB416"} : {}}*/}
-                        {/*    >CounterpartyList*/}
-                        {/*    </button>*/}
-                        {/*</Link>*/}
-                        {/*<Link disabled onClick={() => handleBasicClick('/TG')} to="/TG"*/}
-                        {/*      style={{textDecoration: 'none', margin: 'auto', padding: '0', background: 'transparent'}}>*/}
-                        {/*    <button*/}
-                        {/*        className={basicActive === "/TG" ? 'ButtonVimogi ButtonVimogia' : 'ButtonVimogi'}*/}
-                        {/*        style={basicActive === "/TG" ? {background: "#FAB416"} : {}}*/}
-                        {/*    >Telegram*/}
-                        {/*    </button>*/}
-                        {/*</Link>*/}
-                        <Link to="/Vimogi" style={{textDecoration: 'none', margin: 'auto', padding: '0', background: 'transparent'}}>
+
+                        <Link to="/Vimogi" style={{textDecoration: 'none',  padding: '0', background: 'transparent'}}>
                             <button
                                 onClick={() => handleBasicClick('/Vimogi')}
                                 className={basicActive === "/Vimogi" ? 'ButtonVimogi ButtonVimogia' : 'ButtonVimogi'}
@@ -176,7 +138,7 @@ const Nav = () => {
                             >Вимоги
                             </button>
                         </Link>
-                        <Link to="/Invoices" style={{textDecoration: 'none', margin: 'auto', padding: '0', background: 'transparent'}}>
+                        <Link to="/Invoices" style={{textDecoration: 'none',  padding: '0', background: 'transparent'}}>
                             <button
                                 onClick={() => handleBasicClick('/Invoices')}
                                 className={basicActive === "/Invoices" ? 'ButtonVimogi ButtonVimogia' : 'ButtonVimogi'}
@@ -184,30 +146,6 @@ const Nav = () => {
                             >Рахунки
                             </button>
                         </Link>
-                        {/*<Link disabled onClick={() => handleBasicClick('/Trello2')} to="/Trello2"*/}
-                        {/*      style={{textDecoration: 'none', margin: 'auto', padding: '0', background: 'transparent'}}>*/}
-                        {/*    <button*/}
-                        {/*        className={basicActive === "/Trello2" ? 'ButtonVimogi ButtonVimogia' : 'ButtonVimogi'}*/}
-                        {/*        style={basicActive === "/Trello2" ? {background: "#FAB416"} : {}}*/}
-                        {/*    >Завдання2*/}
-                        {/*    </button>*/}
-                        {/*</Link>*/}
-                        {/*<Link disabled onClick={() => handleBasicClick('/TrelloLikeBoards1')} to="/TrelloLikeBoards1"*/}
-                        {/*      style={{textDecoration: 'none', margin: 'auto', padding: '0', background: 'transparent'}}>*/}
-                        {/*    <button*/}
-                        {/*        className={basicActive === "/TrelloLikeBoards1" ? 'ButtonVimogi ButtonVimogia' : 'ButtonVimogi'}*/}
-                        {/*        style={basicActive === "/TrelloLikeBoards1" ? {background: "#FAB416"} : {}}*/}
-                        {/*    >/TrelloLikeBoards1*/}
-                        {/*    </button>*/}
-                        {/*</Link>*/}
-                        {/*<button className="ButtonVimogi">Документи</button>*/}
-
-                        {/*<button className="ButtonVimogi">Ціни</button>*/}
-                        {/*<button className="ButtonVimogi">Нова Пошта</button>*/}
-                        {/*<button className="ButtonVimogi">Звіти</button>*/}
-                        {/*<button className="ButtonVimogi">Статистка</button>*/}
-                        {/*<button className="ButtonVimogi">Угоди</button>*/}
-                        {/*<button className="ButtonVimogi">Обладнання</button>*/}
 
                         {currentUser ? (
                             <div style={{marginLeft: "0vw"}}>
@@ -258,7 +196,7 @@ const Nav = () => {
                     </div>
                 </div>
                 <AddNewOrder/>
-                <div style={{ position: 'relative', display: 'inline-block' }}>
+                <div style={{ position: 'relative', marginTop:'-1vw', display: 'inline-block' }}>
                     <Form.Control
                         className="Search"
                         name="search"

@@ -25,7 +25,7 @@
 /* Анимация градиентного текста */
 .gradient-text {
     font-size: 1vw;
-    font-weight: bold;
+    font-weight: 1000;
     background: linear-gradient(42deg, #000000, #000000,
     #333333, #ffffff,
     #272727, #000000,

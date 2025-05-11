@@ -147,17 +147,9 @@ const CustomStorageTable = ({name}) => {
 
     if (data) {
         return (
-            <div className="CustomOrderTable-order-list" style={{
-                flexDirection: "column",
-                background: "transparent",
+            <div className="CustomOrderTable-order-list">
 
-            }}>
-
-                <div className="CustomOrderTable-header" style={{
-                    height:'4vh',
-                    border: "1px solid white",
-                    background: "transparent",
-                            }}>
+                <div className="CustomOrderTable-header">
                     {data.metadata.map((item, iter) => {
                         // Визначення ширини для конкретних стовпців
                         const getColumnWidth = (columnName) => {
@@ -170,7 +162,7 @@ const CustomStorageTable = ({name}) => {
                                 case 'createdAt': return '6vw';
                                 case 'updatedAt': return '6vw';
                                 case 'price4': return '3.6vw';
-                                default: return '3.55vw';     // Фіксована ширина для інших колонок в пікселях
+                                default: return '3.54vw';     // Фіксована ширина для інших колонок в пікселях
                             }
                         };
                         return (
@@ -217,7 +209,7 @@ const CustomStorageTable = ({name}) => {
                 <div className="CustomOrderTable-body "
                      style={{
                          maxWidth: '99vw',
-                         height: "79vh",
+                         height: "76vh",
                          // background: "transparent",
                          display: "flex",
                          flexDirection: "column"
@@ -241,12 +233,7 @@ const CustomStorageTable = ({name}) => {
                     ))}
                 </div>
                 
-                <div className="controls-row" style={{ 
-
-                    display: "flex",
-                    justifyContent: "space-between",
-                    alignItems: "center"
-                }}>
+                <div className="controls-row">
                     <div className="pagination-container">
                         <PaginationMy
                             name={"Order"}
