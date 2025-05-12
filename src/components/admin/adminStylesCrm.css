@@ -16,16 +16,7 @@
     /*margin-left: 0.5vw;*/
     align-items: flex-start /* Вертикальне вирівнювання тексту */
 }
-.paginationZakaz {
-    display: flex;
-    justify-content: center;
-    background: #FBFAF6;
-    padding: 0.3vw;
-    border-radius: 6px;
-    border: none ;
-    position: relative;
-    align-items: center;
-}
+
 .paginationNamberZakaz {
     align-items: center;
     display: flex;

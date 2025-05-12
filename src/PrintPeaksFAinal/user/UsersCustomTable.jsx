@@ -134,24 +134,24 @@ const UsersCustomTable = ({name}) => {
                     {data.metadata.map((item, iter) => (
                         <div
                             style={{
-                                background: "#F2F0E7",
-                                cursor: "pointer",
-                                fontWeight: "600",
-                                fontSize: "0.6rem",
-                                display: "flex",
-                                alignItems: "center",
-                                justifyContent: "center",
-                                height: "auto",
-                                minHeight: "1vh",
-                                boxSizing: "border-box",
-                                textAlign: "center",
-                                width: getColumnWidth(item),
-                                maxWidth: getColumnWidth(item),
-                                minWidth: getColumnWidth(item),
-                                overflow: "hidden",
-                                whiteSpace: "pre-line", // Додано для підтримки переносів
-                                lineHeight: "1.7", // Збільшено для кращої читабельності
-                                borderRadius: "0rem",
+                            background: "#F2F0E7",
+                            cursor: "pointer",
+                            fontWeight: "600",
+                            fontSize: "0.6rem",
+                            display: "flex",
+                            alignItems: "center",
+                            justifyContent: "center",
+                            height: "auto",
+                            minHeight: "1vh",
+                            boxSizing: "border-box",
+                            textAlign: "center",
+                            width: getColumnWidth(item),
+                            maxWidth: getColumnWidth(item),
+                            minWidth: getColumnWidth(item),
+                            overflow: "hidden",
+                            whiteSpace: "pre-line", // Додано для підтримки переносів
+                            lineHeight: "1.7", // Збільшено для кращої читабельності
+                            borderRadius: "0rem",
                             }}
                             className="CustomOrderTable-header-cell"
                             key={item + iter}

@@ -8,53 +8,8 @@
     padding: 0.5rem;
     box-sizing: border-box;
     border-radius: 1rem;
-    background: transparent;
-}
-
-.CustomOrderTable-header {
-    display: flex;
-    flex-direction: row;
-    background: transparent;
-    border: 1px solid white;
-    height: 4vh;
-    position: sticky;
-    top: 0;
-    z-index: 10;
-    width: 100%;
-    overflow-x: auto;
-    border-radius: 0.5rem 0.5rem 0 0;
-    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.05);
-}
-
-.CustomOrderTable-body {
-    display: flex;
-    flex-direction: column;
-    overflow-y: auto;
-    width: 100%;
-    max-height: 81vh;
-    /*background: transparent;*/
-cursor: pointer;
-    /*border-radius: 0 0 0.5rem 0.5rem;*/
-}
-.CustomOrderTable-body:hover {
-
-    transition: background-color 0.2s ease;
-}
-.CustomOrderTable-row {
-    display: flex;
-    flex-direction: row;
-    min-height: 3vh;
-    border-bottom: 1px solid #eaeaea;
-
-    width: 100%;
-}
-.CustomOrderTable-body:hover {
-
-    transition: background-color 0.2s ease;
-}
-.CustomOrderTable-row:hover {
-    background-color: #FAB416;
-    transition: background-color 0.2s ease;
+    align-items: stretch;
+    background-color: #FBFAF6;
 }
 
 .table-row-container {
@@ -67,35 +22,6 @@ cursor: pointer;
     background-color: rgba(250, 180, 22, 0.05);
 }
 
-.CustomOrderTable-header-cell {
-    background-color: #FBFAF6;
-    font-weight: 600;
-    /*border-right: 1px solid #f0f0f0;*/
-
-    text-align: center;
-    min-height: 1vh;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-
-}
-
-.CustomOrderTable-header-cell:last-child {
-    border-right: none;
-    background-color: #FAB416;
-}
-
-.CustomOrderTable-cell {
-    background-color: #F2F0E7;
-
-    align-items: center;
-    justify-content: center;
-    text-align: center;
-    overflow: hidden;
-    text-overflow: ellipsis;
-
-}
-
 .CustomOrderTable-left-rounded {
     height: 1vw;
 }
@@ -106,21 +32,13 @@ cursor: pointer;
 
 /* Стилі для контролів */
 .controls-row {
-    margin-top: 0.1rem;
     display: flex;
     justify-content: space-between;
     align-items: center;
     width: 100%;
-
-}
-
-.pagination-container {
-    display: flex;
-    align-items: center;
-    background: #FBFAF6;
-    border-radius: 0.5rem;
-    padding: 0.5rem;
-    box-shadow: 0 1px 3px rgba(0,0,0,0.1);
+    padding: 0 0.5rem;
+    flex-wrap: wrap;
+    gap: 1rem;
 }
 
 .right-group {
@@ -128,13 +46,6 @@ cursor: pointer;
     align-items: center;
     gap: 0.8rem;
 }
-/*@font-face {*/
-/*     */
-/*    src: url('fonts/inter.woff2') format('woff2'),*/
-/*    url('fonts/inter.woff') format('woff');*/
-/*    font-weight: normal;*/
-/*    font-style: normal;*/
-/*}*/
 
 body {
     display: flex;
@@ -143,29 +54,14 @@ body {
     /*margin: 10px;*/
     /*background-color: rgba(233, 230, 218, 0.5); !* Прозорість 50% *!*/
 }
-.controls-row {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    margin-top: 1.5rem;
-    padding: 0 0.5rem;
-    flex-wrap: wrap;
-    gap: 1rem;
-}
+
 .right-group {
     display: flex;
     align-items: center;
     margin-right: 0.3vw;
     gap: 0.8rem;
 }
-.pagination-container {
-    display: flex;
-    align-items: center;
-    background: #FBFAF6;
-    border-radius: 0.5rem;
-    padding: 0.5rem;
-    box-shadow: 0 1px 3px rgba(0,0,0,0.1);
-}
+
 .table-row-container {
     transition: background-color 0.5s ease;
     width: 100%;
@@ -193,73 +89,15 @@ body {
     color: #008249;
     font-weight: 600;
 }
-.CustomOrderTable-order-list {
-    width: 100%;
-    background-color: #FAB416; /* Світліший фон списку замовлень */
-    border-radius: 1rem;
-    display: flex;
-    flex-direction: column;
-    align-items: stretch;
-}
+
 .CustomOrderTable-containerOfTable {
     width: 100%;
 }
-.CustomOrderTable-body {
-    width: 100%;
-    height: 80vh;
-    overflow-x: auto;
-    /*border-radius: 0 0 0.5rem 0.5rem;*/
-    background-color: transparent;
-}
+
 .CustomOrderTable-preHeader{
     width: 100%;
     height: 2vh;
     background-color: #FBFAF6;
-}
-
-.CustomOrderTable-header, .CustomOrderTable-row {
-    /*display: flex;*/
-    /*box-sizing: border-box;*/
-    width: 100%;
-    margin: 0;
-    height: 100%;
-    border-radius: 0 0 0 0;
-    padding: -1vw;
-
-        /*justify-content: center;*/
-}
-
-.CustomOrderTable-header {
-    background-color: #FBFAF6;
-    top: 0;
-    z-index: 0;
-    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.05);
-}
-
-.CustomOrderTable-row {
-
-}
-
-.CustomOrderTable-header-cell, .CustomOrderTable-cell {
-    word-break: break-word;
-    overflow-wrap: break-word;
-    white-space: pre-line;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    text-align: center;
-    font-size: 0.9rem;
-    overflow: hidden;
-    text-overflow: ellipsis;
-    background-color: #FBFAF6;
-    border-radius: 0px;
-
-}
-
-.CustomOrderTable-header-cell:last-child,
-.CustomOrderTable-cell:last-child {
-    border-right: none;
-    background-color: #FAB416;
 }
 
 .CustomOrderTable-cellCan:hover {
@@ -267,57 +105,6 @@ body {
     cursor: pointer;
     color: white;
     transition: all 0.2s ease;
-}
-
-.CustomOrderTable-header-cell {
-    background-color: #FBFAF6;
-    font-weight: 600;
-
-    min-height: 2vh;
-}
-
-.CustomOrderTable-left-rounded {
-    border-top-left-radius: 12px;
-}
-
-.CustomOrderTable-right-rounded {
-    border-top-right-radius: 12px;
-}
-
-.CustomOrderTable-cell {
-    background: #F2F0E7;  /* Фон для замовлень та колонок */
-    border-bottom: 1px solid #ddd;
-    word-break: normal;
-    overflow-wrap: normal;
-    white-space: normal;
-
-}
-
-
-
-.CustomOrderTable-row:hover {
-    background-color: #f9f9f9;
-    align-items: stretch;
-}
-.CustomOrderTable-header {
-    width: 100%;
-    table-layout: fixed;
-    word-break: normal;
-    overflow-wrap: normal;
-    white-space: normal;
-}
-
-.CustomOrderTable-toggle-btn {
-    background-color: #FAB416;
-    color: white;
-    border: none;
-    padding: 0.3vw;
-    border-radius: 6px;
-    cursor: pointer;
-}
-
-.CustomOrderTable-toggle-btn:hover {
-    background-color: #e0a40e;
 }
 
 .CustomOrderTable-order-details {
@@ -435,7 +222,7 @@ body {
 .CustomOrderTable-pay-paid {
     background-color: #008249;
     color: white;
-    height: 1.2vw;
+    /*height: 1vw;*/
     padding: 0.2vw;
     align-items: center;
     justify-content: center;
@@ -445,69 +232,11 @@ body {
 .CustomOrderTable-pay-pending {
     background-color: #EE3C23;
     padding: 0.2vw;
-    height: 1.2vw;
+    /*height: 1.2vw;*/
     border-radius: 0.3vw;
     align-items: center;
     justify-content: center;
     color: white;
-}
-
-.CustomOrderTable-kassa-btn,
-.CustomOrderTable-invoice-btn,
-.CustomOrderTable-delete-btn {
-    padding: 5px;
-    border: none;
-    border-radius: 12px;
-    cursor: pointer;
-}
-.CustomOrderTable-order-list {
-    display: flex;
-    flex-direction: column;
-    width: 100%;
-    height: 100%;
-    padding: 0.5rem;
-    box-sizing: border-box;
-    background-color: #FBFAF6;
-    border-radius: 1rem;
-    align-items: stretch;
-}
-
-.CustomOrderTable-header {
-    display: flex;
-    flex-direction: row;
-    background-color: #FBFAF6;
-    position: sticky;
-    top: 0;
-    z-index: 10;
-    border-radius: 0.5rem 0.5rem 0 0;
-    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.05);
-    width: 100%;
-}
-
-.CustomOrderTable-body {
-    display: flex;
-    flex-direction: column;
-    overflow-y: auto;
-    width: 100%;
-    height: 80vh;
-    overflow-x: auto;
-    border-radius: 0 0 0.5rem 0.5rem;
-    background-color: transparent;
-}
-
-.CustomOrderTable-row {
-    display: flex;
-    flex-direction: row;
-    min-height: 3vh;
-    border-bottom: 1px solid #eaeaea;
-    transition: background-color 0.2s ease;
-    width: 100%;
-    margin: 0.1rem 0;
-}
-
-.CustomOrderTable-row:hover {
-    background-color: #f5f5f5;
-    align-items: stretch;
 }
 
 .table-row-container {
@@ -518,60 +247,6 @@ body {
 
 .table-row-container:hover {
     background-color: rgba(250, 180, 22, 0.05);
-}
-
-.CustomOrderTable-header-cell {
-
-    text-align: center;
-    font-weight: 600;
-border-left: 1px solid rgba(0, 0, 0, 0.05);
-    background-color: #FBFAF6;
-    border-radius: 0 0 0 0;
-    align-items: center;
-    justify-content: center;
-
-
-}
-
-.CustomOrderTable-header-cell:last-child {
-    border-right: none;
-}
-
-.CustomOrderTable-cell {
-
-    word-break: normal;
-    overflow-wrap: normal;
-    white-space: normal;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    text-align: center;
-    font-size: 0.7rem;
-    border-right: 1px solid rgba(0, 0, 0, 0.05);
-
-    box-sizing: border-box;
-    overflow: hidden;
-    text-overflow: ellipsis;
-
-}
-
-.CustomOrderTable-left-rounded {
-    border-top-left-radius: 12px;
-}
-
-.CustomOrderTable-right-rounded {
-    border-top-right-radius: 12px;
-}
-
-.controls-row {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    margin-top: 1.5rem;
-    padding: 0 0.5rem;
-    flex-wrap: wrap;
-    gap: 1rem;
-    width: 100%;
 }
 
 .right-group {
@@ -590,26 +265,6 @@ border-left: 1px solid rgba(0, 0, 0, 0.05);
     box-shadow: 0 1px 3px rgba(0,0,0,0.1);
 }
 
-.CustomOrderTable-kassa-btn,
-.CustomOrderTable-invoice-btn,
-.CustomOrderTable-toggle-btn {
-    padding: 0.3rem 0.6rem;
-    border: none;
-    border-radius: 0.3rem;
-    background-color: #FAB416;
-    color: white;
-    font-weight: 500;
-    cursor: pointer;
-    transition: all 0.2s ease;
-}
-
-.CustomOrderTable-kassa-btn:hover,
-.CustomOrderTable-invoice-btn:hover,
-.CustomOrderTable-toggle-btn:hover {
-    background-color: #e9a712;
-    transform: translateY(-1px);
-}
-
 .CustomOrderTable-pay-btn {
     padding: 0.2rem 0.5rem;
     border-radius: 0.3rem;
@@ -626,34 +281,6 @@ border-left: 1px solid rgba(0, 0, 0, 0.05);
 .CustomOrderTable-pay-pending {
     background-color: #ff9800;
     color: white;
-}
-
-.controls-row {
-
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-
-}
-
-.CustomOrderTable-kassa-btn,
-.CustomOrderTable-invoice-btn,
-.CustomOrderTable-toggle-btn {
-    padding: 0.3rem 0.6rem;
-    border: none;
-    border-radius: 0.3rem;
-    background-color: #FAB416;
-    color: white;
-    font-weight: 500;
-    cursor: pointer;
-    transition: all 0.2s ease;
-}
-
-.CustomOrderTable-kassa-btn:hover,
-.CustomOrderTable-invoice-btn:hover,
-.CustomOrderTable-toggle-btn:hover {
-    background-color: #e9a712;
-    transform: translateY(-1px);
 }
 
 .CustomOrderTable-pay-btn {
@@ -700,6 +327,8 @@ border-left: 1px solid rgba(0, 0, 0, 0.05);
     color: white;
     padding: 0.3vw;
     border-radius: 6px;
+    border: none;
+    cursor: pointer;
 }
 
 .CustomOrderTable-delete-btn:hover {
@@ -713,4 +342,148 @@ border-left: 1px solid rgba(0, 0, 0, 0.05);
 }
 .statusDisabled:hover{
     background: linear-gradient(27deg, #FAB416 40%, red 45%, red 55%, #FAB416 60%);
+}
+
+.CustomOrderTable2-header-cell {
+    background: #F2F0E7;
+    cursor: pointer;
+    font-weight: 600;
+    font-size: 0.6rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: auto;
+    min-height: 1vh;
+    box-sizing: border-box;
+    text-align: center;
+    border-right: 0.1vw solid rgba(0, 0, 0, 0.05);
+    overflow: hidden;
+    white-space: pre-line; /* підтримка переносів */
+    line-height: 1.7;      /* краща читабельність */
+    border-radius: 0rem;
+}
+
+.disabled-CustomOrderTable2-header-cell {
+    color: #878787;
+    cursor: default;
+}
+
+.CustomOrderTable-cell {
+    word-break: normal;
+    overflow-wrap: normal;
+    white-space: normal;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    font-size: 0.6rem;
+    border-right: 0.1vw solid rgba(0, 0, 0, 0.05);
+    box-sizing: border-box;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    background-color: #F2F0E7;
+    border-bottom: 0.1vw solid #ddd;
+    border-radius: 0;
+}
+
+.CustomOrderTable-cell:hover {
+    /*background-color: #FAB416;*/
+    cursor: pointer;
+    /*color: white;*/
+    transition: all 0.2s ease;
+}
+
+.CustomOrderTable-header-cell {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: auto;
+    min-height: 2vh;
+    box-sizing: border-box;
+    text-align: center;
+    font-weight: 600;
+    font-size: 0.5rem;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: pre-line;
+    line-height: 1.7;
+    background-color: #FBFAF6;
+    border-radius: 0;
+    border-right: 0.1vw solid rgba(0, 0, 0, 0.05);
+}
+
+.CustomOrderTable-header-cell:last-child {
+    border-right: none;
+    background-color: #FAB416;
+}
+
+.CustomOrderTable-toggle-btn {
+    background-color: #FAB416;
+    color: white;
+    border: none;
+    padding: 0.3rem 0.6rem;
+    border-radius: 6px;
+    font-weight: 500;
+    cursor: pointer;
+    transition: all 0.2s ease;
+    font-size: 0.5rem;
+}
+
+.CustomOrderTable-toggle-btn:hover {
+    background-color: #e0a40e;
+}
+
+.CustomOrderTable-row {
+    display: flex;
+    flex-direction: row;
+    /*width: 100%;*/
+    min-height: 3vh;
+    border-bottom: 0.1vw solid #eaeaea;
+    transition: background-color 0.2s ease;
+    margin: 0.1rem 0;
+    border-radius: 0;
+    padding: 0;
+    /*box-sizing: border-box;*/
+    background-color: transparent;
+}
+
+.CustomOrderTable-row:hover {
+    background-color: #f5f5f5;
+    align-items: stretch;
+}
+
+.CustomOrderTable-header {
+    display: flex;
+    flex-direction: row;
+    width: 100%;
+    height: 4vh;
+    background-color: #FBFAF6;
+    border: 0.1vw solid white;
+    position: sticky;
+    top: 0;
+    z-index: 10;
+    overflow-x: auto;
+    border-radius: 0.5rem 0.5rem 0 0;
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.05);
+    table-layout: fixed;
+    word-break: normal;
+    overflow-wrap: normal;
+    white-space: normal;
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+.CustomOrderTable-body {
+    display: flex;
+    flex-direction: column;
+    overflow-y: auto;
+    overflow-x: auto;
+    width: 100%;
+    height: 80vh;
+    max-height: 76vh;
+    border: 0.1vw solid white;
+    background-color: transparent;
+    cursor: pointer;
+    border-radius: 0 0 0.5rem 0.5rem;
 }

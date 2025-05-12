@@ -10,6 +10,9 @@ import ModalDeleteOrder from "./ModalDeleteOrder";
 import FiltrOrders from "./FiltrOrders";
 import {Spinner} from "react-bootstrap";
 import Barcode from 'react-barcode';
+import {translateColumnName} from "../user/translations";
+import NewSheetCutBw from "../poslugi/NewSheetCutBw";
+import UserForm from "../user/UserForm";
 
 // Основний компонент CustomOrderTable
 const CustomOrderTable2 = () => {
@@ -71,7 +74,7 @@ const CustomOrderTable2 = () => {
         setLoading(true);
         axios.post(`/orders/all`, data)
             .then(response => {
-                console.log("Orders data:", response.data.rows[0]);
+                console.log("Orders data:", response.data);
                 setData(response.data);
                 setError(null);
                 setLoading(false);
@@ -119,173 +122,117 @@ const CustomOrderTable2 = () => {
                     setStatuses={setStatuses}
                 />
             </div>
-            <div className="CustomOrderTable-containerOfTable">
+            <div className="CustomOrderTable-order-list">
                 <div className="CustomOrderTable-header">
                     {/* Використання класів для відображення заголовків, як у HTML */}
-                    <div className="CustomOrderTable-header-cell CustomOrderTable-left-rounded"
+                    <div className="CustomOrderTable2-header-cell CustomOrderTable-left-rounded" style={{width:'2vw'}}
                          onClick={(event) => setCol("id")}>
                         {"id" === thisColumn.column ? (
-                            <>
-                                {!thisColumn.reverse ? (
-                                    <>
-                                        ^{"№ замовлення"}
-                                    </>
-                                ) : (
-                                    <>
-                                        !^{"№ замовлення"}
-                                    </>
-                                )}
-                            </>
+                            <div  style={{ display: 'flex', height: '4vh', alignItems: "center", justifyContent: "center", flexDirection: "row", cursor: "pointer", borderRadius: "none", }}>
+                                <span style={{ whiteSpace: "pre-line"}}>{"ID"}</span>
+                                <span style={{ color: "#FAB416", fontSize: "1.2rem", position:'relative', right: "-0.2rem", cursor: "pointer", whiteSpace: "pre-line" }}>
+                                            {!thisColumn.reverse ? "↑" : "↓"}
+                                        </span>
+                            </div>
                         ) : (
-                            <>
-                                {"№ замовлення"}
-                            </>
+                            <span style={{ whiteSpace: "pre-line"}}>{"ID"}</span>
                         )}
                     </div>
-                    <div className="CustomOrderTable-header-cell">Розгорнути</div>
-                    <div className="CustomOrderTable-header-cell">Штрих-код</div>
-                    <div className="CustomOrderTable-header-cell" onClick={(event) => setCol("status")}>
+                    <div className="CustomOrderTable2-header-cell disabled-CustomOrderTable2-header-cell" style={{width:'4vw'}}>Розгорнути4</div>
+                    <div className="CustomOrderTable2-header-cell disabled-CustomOrderTable2-header-cell" style={{width:'4vw'}}>Штрих-код4</div>
+                    <div className="CustomOrderTable2-header-cell" style={{width:'5vw'}} onClick={(event) => setCol("status")}>
                         {"status" === thisColumn.column ? (
-                            <>
-                                {!thisColumn.reverse ? (
-                                    <>
-                                        ^{"Поточний статус"}
-                                    </>
-                                ) : (
-                                    <>
-                                        !^{"Поточний статус"}
-                                    </>
-                                )}
-                            </>
+                            <div  style={{ display: 'flex', height: '4vh', alignItems: "center", justifyContent: "center", flexDirection: "row", cursor: "pointer", borderRadius: "none", }}>
+                                <span style={{ whiteSpace: "pre-line"}}>{"Статус"}</span>
+                                <span style={{ color: "#FAB416", fontSize: "1.2rem", position:'relative', right: "-0.2rem", cursor: "pointer", whiteSpace: "pre-line" }}>
+                                            {!thisColumn.reverse ? "↑" : "↓"}
+                                        </span>
+                            </div>
                         ) : (
-                            <>
-                                {"Поточний статус"}
-                            </>
+                            <span style={{ whiteSpace: "pre-line"}}>{"Статус"}</span>
                         )}
                     </div>
-                    <div className="CustomOrderTable-header-cell">Фото</div>
-                    <div className="CustomOrderTable-header-cell">Клієнт</div>
-                    <div className="CustomOrderTable-header-cell">Номер телефона</div>
-                    <div className="CustomOrderTable-header-cell">Telegram</div>
-                    <div className="CustomOrderTable-header-cell" onClick={(event) => setCol("allPrice")}>
+                    <div className="CustomOrderTable2-header-cell disabled-CustomOrderTable2-header-cell" style={{width:'4vw'}}>Фото</div>
+                    <div className="CustomOrderTable2-header-cell disabled-CustomOrderTable2-header-cell" style={{width:'8vw'}}>Клієнт</div>
+                    <div className="CustomOrderTable2-header-cell disabled-CustomOrderTable2-header-cell" style={{width:'8vw'}}>Номер телефона</div>
+                    <div className="CustomOrderTable2-header-cell disabled-CustomOrderTable2-header-cell" style={{width:'5vw'}}>Telegram</div>
+                    <div className="CustomOrderTable2-header-cell" style={{width:'5vw'}} onClick={(event) => setCol("allPrice")}>
                         {"allPrice" === thisColumn.column ? (
-                            <>
-                                {!thisColumn.reverse ? (
-                                    <>
-                                        ^{"Вартість"}
-                                    </>
-                                ) : (
-                                    <>
-                                        !^{"Вартість"}
-                                    </>
-                                )}
-                            </>
+                            <div  style={{ display: 'flex', height: '4vh', alignItems: "center", justifyContent: "center", flexDirection: "row", cursor: "pointer", borderRadius: "none", }}>
+                                <span style={{ whiteSpace: "pre-line"}}>{"Вартість"}</span>
+                                <span style={{ color: "#FAB416", fontSize: "1.2rem", position:'relative', right: "-0.2rem", cursor: "pointer", whiteSpace: "pre-line" }}>
+                                            {!thisColumn.reverse ? "↑" : "↓"}
+                                        </span>
+                            </div>
                         ) : (
-                            <>
-                                {"Вартість"}
-                            </>
+                            <span style={{ whiteSpace: "pre-line"}}>{"Вартість"}</span>
                         )}
                     </div>
-                    <div className="CustomOrderTable-header-cell" onClick={(event) => setCol("payStatus")}>
+                    <div className="CustomOrderTable2-header-cell" style={{width:'5vw'}} onClick={(event) => setCol("payStatus")}>
                         {"payStatus" === thisColumn.column ? (
-                            <>
-                                {!thisColumn.reverse ? (
-                                    <>
-                                        ^{"Статус оплати"}
-                                    </>
-                                ) : (
-                                    <>
-                                        !^{"Статус оплати"}
-                                    </>
-                                )}
-                            </>
+                            <div  style={{ display: 'flex', height: '4vh', alignItems: "center", justifyContent: "center", flexDirection: "row", cursor: "pointer", borderRadius: "none", }}>
+                                <span style={{ whiteSpace: "pre-line"}}>{"Статус оплати"}</span>
+                                <span style={{ color: "#FAB416", fontSize: "1.2rem", position:'relative', right: "-0.2rem", cursor: "pointer", whiteSpace: "pre-line" }}>
+                                            {!thisColumn.reverse ? "↑" : "↓"}
+                                        </span>
+                            </div>
                         ) : (
-                            <>
-                                {"Статус оплати"}
-                            </>
+                            <span style={{ whiteSpace: "pre-line"}}>{"Статус оплати"}</span>
                         )}
                     </div>
-                    <div className="CustomOrderTable-header-cell" onClick={(event) => setCol("createdAt")}>
+                    <div className="CustomOrderTable2-header-cell" style={{width:'5vw'}} onClick={(event) => setCol("createdAt")}>
                         {"createdAt" === thisColumn.column ? (
-                            <>
-                                {!thisColumn.reverse ? (
-                                    <>
-                                        ^{"Дата створення"}
-                                    </>
-                                ) : (
-                                    <>
-                                        !^{"Дата створення"}
-                                    </>
-                                )}
-                            </>
+                            <div  style={{ display: 'flex', height: '4vh', alignItems: "center", justifyContent: "center", flexDirection: "row", cursor: "pointer", borderRadius: "none", }}>
+                                <span style={{ whiteSpace: "pre-line"}}>{"Дата створення"}</span>
+                                <span style={{ color: "#FAB416", fontSize: "1.2rem", position:'relative', right: "-0.2rem", cursor: "pointer", whiteSpace: "pre-line" }}>
+                                            {!thisColumn.reverse ? "↑" : "↓"}
+                                        </span>
+                            </div>
                         ) : (
-                            <>
-                                {"Дата створення"}
-                            </>
+                            <span style={{ whiteSpace: "pre-line"}}>{"Дата створення"}</span>
                         )}
                     </div>
-                    <div className="CustomOrderTable-header-cell" onClick={(event) => setCol("updatedAt")}>
+                    <div className="CustomOrderTable2-header-cell" style={{width:'5vw'}} onClick={(event) => setCol("updatedAt")}>
                         {"updatedAt" === thisColumn.column ? (
-                            <>
-                                {!thisColumn.reverse ? (
-                                    <>
-                                        ^{"Дата оновлення"}
-                                    </>
-                                ) : (
-                                    <>
-                                        !^{"Дата оновлення"}
-                                    </>
-                                )}
-                            </>
+                            <div  style={{ display: 'flex', height: '4vh', alignItems: "center", justifyContent: "center", flexDirection: "row", cursor: "pointer", borderRadius: "none", }}>
+                                <span style={{ whiteSpace: "pre-line"}}>{"Дата оновлення"}</span>
+                                <span style={{ color: "#FAB416", fontSize: "1.2rem", position:'relative', right: "-0.2rem", cursor: "pointer", whiteSpace: "pre-line" }}>
+                                            {!thisColumn.reverse ? "↑" : "↓"}
+                                        </span>
+                            </div>
                         ) : (
-                            <>
-                                {"Дата оновлення"}
-                            </>
+                            <span style={{ whiteSpace: "pre-line"}}>{"Дата оновлення"}</span>
                         )}
                     </div>
-                    <div className="CustomOrderTable-header-cell" onClick={(event) => setCol("manufacturingStartTime")}>
+                    <div className="CustomOrderTable2-header-cell" style={{width:'5vw'}} onClick={(event) => setCol("manufacturingStartTime")}>
                         {"manufacturingStartTime" === thisColumn.column ? (
-                            <>
-                                {!thisColumn.reverse ? (
-                                    <>
-                                        ^{"Час початку"}
-                                    </>
-                                ) : (
-                                    <>
-                                        !^{"Час початку"}
-                                    </>
-                                )}
-                            </>
+                            <div  style={{ display: 'flex', height: '4vh', alignItems: "center", justifyContent: "center", flexDirection: "row", cursor: "pointer", borderRadius: "none", }}>
+                                <span style={{ whiteSpace: "pre-line"}}>{"Час початку"}</span>
+                                <span style={{ color: "#FAB416", fontSize: "1.2rem", position:'relative', right: "-0.2rem", cursor: "pointer", whiteSpace: "pre-line" }}>
+                                            {!thisColumn.reverse ? "↑" : "↓"}
+                                        </span>
+                            </div>
                         ) : (
-                            <>
-                                {"Час початку"}
-                            </>
+                            <span style={{ whiteSpace: "pre-line"}}>{"Час початку"}</span>
                         )}
                     </div>
-                    <div className="CustomOrderTable-header-cell" onClick={(event) => setCol("totalManufacturingTimeSeconds")}>
+                    <div className="CustomOrderTable2-header-cell" style={{width:'5vw'}} onClick={(event) => setCol("totalManufacturingTimeSeconds")}>
                         {"totalManufacturingTimeSeconds" === thisColumn.column ? (
-                            <>
-                                {!thisColumn.reverse ? (
-                                    <>
-                                        ^{"Час виготовлення"}
-                                    </>
-                                ) : (
-                                    <>
-                                        !^{"Час виготовлення"}
-                                    </>
-                                )}
-                            </>
+                            <div  style={{ display: 'flex', height: '4vh', alignItems: "center", justifyContent: "center", flexDirection: "row", cursor: "pointer", borderRadius: "none", }}>
+                                <span style={{ whiteSpace: "pre-line"}}>{"Час виготовлення"}</span>
+                                <span style={{ color: "#FAB416", fontSize: "1.2rem", position:'relative', right: "-0.2rem", cursor: "pointer", whiteSpace: "pre-line" }}>
+                                            {!thisColumn.reverse ? "↑" : "↓"}
+                                        </span>
+                            </div>
                         ) : (
-                            <>
-                                {"Час виготовлення"}
-                            </>
+                            <span style={{ whiteSpace: "pre-line"}}>{"Час виготовлення"}</span>
                         )}
                     </div>
-                    <div className="CustomOrderTable-header-cell">deadline</div>
-                    <div className="CustomOrderTable-header-cell">Відповідальний</div>
-                    <div className="CustomOrderTable-header-cell">До каси</div>
-                    <div className="CustomOrderTable-header-cell">Зробити рахунок</div>
-                    <div className="CustomOrderTable-header-cell CustomOrderTable-right-rounded">Видалити</div>
+                    <div className="CustomOrderTable2-header-cell disabled-CustomOrderTable2-header-cell" style={{width:'5vw'}}>deadline</div>
+                    <div className="CustomOrderTable2-header-cell disabled-CustomOrderTable2-header-cell" style={{width:'8vw'}}>Відповідальний</div>
+                    <div className="CustomOrderTable2-header-cell disabled-CustomOrderTable2-header-cell" style={{width:'5vw'}}>До каси</div>
+                    <div className="CustomOrderTable2-header-cell disabled-CustomOrderTable2-header-cell" style={{width:'5vw'}}>Зробити рахунок</div>
+                    <div className="CustomOrderTable2-header-cell CustomOrderTable-right-rounded" style={{width:'5vw'}}>Видалити</div>
                 </div>
                 <div className="CustomOrderTable-body">
                     {error && (
@@ -300,10 +247,10 @@ const CustomOrderTable2 = () => {
                                 const isExpanded = expandedOrders.includes(order.id);
                                 return (
                                     <div key={order.id}>
-                                        <div className="CustomOrderTable-row">
+                                        <div className="CustomOrderTable-row" >
                                             {/* Використання класів відповідно до HTML */}
-                                            <div className="CustomOrderTable-cell">{order.id}</div>
-                                            <div className="CustomOrderTable-cell">
+                                            <div className="CustomOrderTable-cell" style={{width:'2vw'}}>{order.id}</div>
+                                            <div className="CustomOrderTable-cell" style={{width:'4vw'}}>
                                                 <button
                                                     className="toggle-btn CustomOrderTable-toggle-btn"  // Використання існуючого класу з HTML
                                                     onClick={() => toggleOrder(order.id)}
@@ -311,18 +258,18 @@ const CustomOrderTable2 = () => {
                                                     {isExpanded ? 'Згорнути' : 'Розгорнути'}
                                                 </button>
                                             </div>
-                                            <div className="CustomOrderTable-cell d-flex align-items-center justify-content-center">
+                                            <div className="CustomOrderTable-cell d-flex align-items-center justify-content-center" style={{width:'4vw'}}>
                                                 {/*{order.barcode || '—'}*/}
 
                                                 {order.barcode ? (
                                                     <Barcode
                                                         className="d-flex align-items-center justify-content-center"
                                                         value={order.barcode.toString()}
-                                                        width={0.6}
+                                                        width={0.4}
                                                         margin={0}
                                                         padding={0}
                                                         format="CODE128"
-                                                        fontSize={10}
+                                                        fontSize={7}
                                                         lineColor="#000"
                                                         height={15}
                                                         displayValue={true}
@@ -333,12 +280,12 @@ const CustomOrderTable2 = () => {
                                                 )}
 
                                             </div>
-                                            <div className="CustomOrderTable-cell">
+                                            <div className="CustomOrderTable-cell"  style={{width:'5vw'}}>
                                                 <div className="" style={{background: "transparent"}}>
                                                     <StatusBar item={order}/>
                                                 </div>
                                             </div>
-                                            <div className="CustomOrderTable-cell">
+                                            <div className="CustomOrderTable-cell"  style={{width:'4vw'}}>
                                                 {order.client ? (
                                                     <>
                                                         {order.client.photoLink ? (
@@ -352,21 +299,21 @@ const CustomOrderTable2 = () => {
                                                         )}
                                                     </>
                                                 ) : (
-                                                    <div className="CustomOrderTable-cell">—</div>
+                                                    <div >—</div>
                                                 )}
                                             </div>
                                             {order.client ? (
-                                                <div className="CustomOrderTable-cell">{`${order.client.firstName} ${order.client.lastName} ${order.client.familyName}`}</div>
+                                                <div className="CustomOrderTable-cell" style={{width:'8vw'}}>{`${order.client.firstName} ${order.client.lastName} ${order.client.familyName}`}</div>
                                             ) : (
-                                                <div className="CustomOrderTable-cell">—</div>
+                                                <div className="CustomOrderTable-cell" style={{width:'8vw'}}>—</div>
                                             )}
                                             {order.client ? (
-                                                <div className="CustomOrderTable-cell">{order.client.phoneNumber}</div>
+                                                <div className="CustomOrderTable-cell" style={{width:'8vw'}}>{order.client.phoneNumber}</div>
                                             ) : (
-                                                <div className="CustomOrderTable-cell">—</div>
+                                                <div className="CustomOrderTable-cell" style={{width:'8vw'}}>—</div>
                                             )}
                                             {order.client ? (
-                                                <div className="CustomOrderTable-cell">
+                                                <div className="CustomOrderTable-cell" style={{width:'5vw'}}>
                                                     {order.client.telegram ? (
                                                         <a
                                                             href={order.client.telegram}
@@ -381,10 +328,10 @@ const CustomOrderTable2 = () => {
                                                     )}
                                                 </div>
                                             ) : (
-                                                <div className="CustomOrderTable-cell">—</div>
+                                                <div className="CustomOrderTable-cell" style={{width:'5vw'}}>—</div>
                                             )}
-                                            <div className="CustomOrderTable-cell">{order.price} грн</div>
-                                            <div className="CustomOrderTable-cell">
+                                            <div className="CustomOrderTable-cell" style={{width:'5vw'}}>{order.price} грн</div>
+                                            <div className="CustomOrderTable-cell" style={{width:'5vw'}}>
                                                 <div
                                                     className={`pay-btn d-flex align-content-center justify-content-center ${
                                                         order.payStatus === 'pay'
@@ -395,48 +342,48 @@ const CustomOrderTable2 = () => {
                                                     {order.payStatus || 'Не оплачено'}
                                                 </div>
                                             </div>
-                                            <div className="CustomOrderTable-cell">
+                                            <div className="CustomOrderTable-cell" style={{width:'5vw'}}>
                                                 {`${new Date(order.createdAt).toLocaleDateString()} ${new Date(order.createdAt).toLocaleTimeString()}`}
                                             </div>
-                                            <div className="CustomOrderTable-cell">
+                                            <div className="CustomOrderTable-cell" style={{width:'5vw'}}>
                                                 {order.updatedAt
                                                     ? `${new Date(order.updatedAt).toLocaleDateString()} ${new Date(order.updatedAt).toLocaleTimeString()}`
                                                     : '—'}
                                             </div>
-                                            <div className="CustomOrderTable-cell">
-                                                {order.manufacturingStartTime 
+                                            <div className="CustomOrderTable-cell" style={{width:'5vw'}}>
+                                                {order.manufacturingStartTime
                                                     ? `${new Date(order.manufacturingStartTime).toLocaleDateString()} ${new Date(order.manufacturingStartTime).toLocaleTimeString()}`
                                                     : '—'}
                                             </div>
-                                            <div className="CustomOrderTable-cell">
-                                                {order.finalManufacturingTime 
+                                            <div className="CustomOrderTable-cell" style={{width:'5vw'}}>
+                                                {order.finalManufacturingTime
                                                     ? `${order.finalManufacturingTime.days}д ${order.finalManufacturingTime.hours}год ${order.finalManufacturingTime.minutes}хв ${order.finalManufacturingTime.seconds}сек`
-                                                    : order.manufacturingStartTime 
+                                                    : order.manufacturingStartTime
                                                         ? 'В процесі'
                                                         : '—'}
                                             </div>
-                                            <div className="CustomOrderTable-cell">
+                                            <div className="CustomOrderTable-cell" style={{width:'5vw'}}>
                                                 {order.deadline
                                                     ? `${new Date(order.deadline).toLocaleDateString()} ${new Date(order.deadline).toLocaleTimeString()}`
                                                     : '—'}
                                             </div>
                                             {order.executor ? (
-                                                <div className="CustomOrderTable-cell">{`${order.executor.firstName} ${order.executor.lastName} ${order.executor.familyName}`}</div>
+                                                <div className="CustomOrderTable-cell" style={{width:'8vw'}}>{`${order.executor.firstName} ${order.executor.lastName} ${order.executor.familyName}`}</div>
                                             ) : (
-                                                <div className="CustomOrderTable-cell">—</div>
+                                                <div className="CustomOrderTable-cell" style={{width:'8vw'}}>—</div>
                                             )}
-                                            <div className="CustomOrderTable-cell">
+                                            <div className="CustomOrderTable-cell" style={{width:'5vw'}}>
                                                 <Link to={`/Orders/${order.id}`}>
                                                     <button className="kassa-btn CustomOrderTable-toggle-btn">До каси
                                                     </button>
                                                     {/* Залишаємо клас "kassa-btn" */}
                                                 </Link>
                                             </div>
-                                            <div className="CustomOrderTable-cell">
-                                                <button className="CustomOrderTable-toggle-btn">Зробити рахунок</button>
+                                            <div className="CustomOrderTable-cell" style={{width:'5vw'}}>
+                                                <button className="CustomOrderTable-toggle-btn">Рахунок</button>
                                                 {/* Залишаємо клас "invoice-btn" */}
                                             </div>
-                                            <div className="CustomOrderTable-cell">
+                                            <div className="CustomOrderTable-cell" style={{width:'4.6vw'}}>
                                                 <button
                                                     className="CustomOrderTable-toggle-btn CustomOrderTable-delete-btn" // Використання існуючого класу з HTML
                                                     onClick={(e) => handleOrderClickDelete(order)}
@@ -495,6 +442,25 @@ const CustomOrderTable2 = () => {
                     )}
                 </div>
             </div>
+
+            <div className="controls-row" >
+                <div className="pagination-container">
+                    <PaginationMy
+                        name={"Order"}
+                        data={data}
+                        setData={setData}
+                        inPageCount={inPageCount}
+                        setInPageCount={setInPageCount}
+                        currentPage={currentPage}
+                        setCurrentPage={setCurrentPage}
+                        pageCount={pageCount}
+                        setPageCount={setPageCount}
+                        typeSelect={typeSelect}
+                        url={"/orders/all"}
+                        thisColumn={thisColumn}
+                    />
+                </div>
+            </div>
             <ModalDeleteOrder
                 showDeleteOrderModal={showDeleteOrderModal}
                 setShowDeleteOrderModal={setShowDeleteOrderModal}
@@ -503,20 +469,6 @@ const CustomOrderTable2 = () => {
                 data={data}
                 setData={setData}
                 url={"/orders/OneOrder/"}
-            />
-            <PaginationMy
-                name={"Order"}
-                data={data}
-                setData={setData}
-                inPageCount={inPageCount}
-                setInPageCount={setInPageCount}
-                currentPage={currentPage}
-                setCurrentPage={setCurrentPage}
-                pageCount={pageCount}
-                setPageCount={setPageCount}
-                typeSelect={typeSelect}
-                url={"/orders/all"}
-                thisColumn={thisColumn}
             />
         </div>
     );

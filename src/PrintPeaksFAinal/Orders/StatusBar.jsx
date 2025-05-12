@@ -16,9 +16,9 @@ function StatusBar({item}) {
         borderRadius: "0.3vw",
         alignItems: "center",
         justifyContent: "center",
-        height: "1.2vw",
-        padding: "1vw",
-        fontSize: "0.7vw",
+        // height: "1.2vw",
+        padding: "0.2vw",
+        fontSize: "0.5vw",
         // color: "black",
         backgroundColor:
             item.status === '0' ? '#FBFAF6' :
@@ -30,7 +30,7 @@ function StatusBar({item}) {
                                 '#F2F0E7',
     };
     return (
-        <div className="adminFontTable d-flex align-content-center justify-content-center m-auto p-0" style={style}>
+        <div className="adminFontTable d-flex align-content-center justify-content-center m-auto" style={style}>
             {/*{item.status}*/}
             {item.status === "-1"
                 ? 'Скасоване'
