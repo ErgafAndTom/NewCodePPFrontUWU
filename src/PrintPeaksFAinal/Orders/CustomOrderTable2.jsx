@@ -138,8 +138,8 @@ const CustomOrderTable2 = () => {
                             <span style={{ whiteSpace: "pre-line"}}>{"ID"}</span>
                         )}
                     </div>
-                    <div className="CustomOrderTable2-header-cell disabled-CustomOrderTable2-header-cell" style={{width:'4vw'}}>Розгорнути4</div>
-                    <div className="CustomOrderTable2-header-cell disabled-CustomOrderTable2-header-cell" style={{width:'4vw'}}>Штрих-код4</div>
+                    <div className="CustomOrderTable2-header-cell disabled-CustomOrderTable2-header-cell" style={{width:'4vw'}}>Розгорнути</div>
+                    <div className="CustomOrderTable2-header-cell disabled-CustomOrderTable2-header-cell" style={{width:'4vw'}}>Штрих-код</div>
                     <div className="CustomOrderTable2-header-cell" style={{width:'5vw'}} onClick={(event) => setCol("status")}>
                         {"status" === thisColumn.column ? (
                             <div  style={{ display: 'flex', height: '4vh', alignItems: "center", justifyContent: "center", flexDirection: "row", cursor: "pointer", borderRadius: "none", }}>
@@ -232,7 +232,7 @@ const CustomOrderTable2 = () => {
                     <div className="CustomOrderTable2-header-cell disabled-CustomOrderTable2-header-cell" style={{width:'8vw'}}>Відповідальний</div>
                     <div className="CustomOrderTable2-header-cell disabled-CustomOrderTable2-header-cell" style={{width:'5vw'}}>До каси</div>
                     <div className="CustomOrderTable2-header-cell disabled-CustomOrderTable2-header-cell" style={{width:'5vw'}}>Зробити рахунок</div>
-                    <div className="CustomOrderTable2-header-cell CustomOrderTable-right-rounded" style={{width:'5vw'}}>Видалити</div>
+                    <div className="CustomOrderTable2-header-cell disabled-CustomOrderTable2-header-cell CustomOrderTable-right-rounded" style={{width:'5vw'}}>Видалити</div>
                 </div>
                 <div className="CustomOrderTable-body">
                     {error && (
@@ -342,27 +342,27 @@ const CustomOrderTable2 = () => {
                                                     {order.payStatus || 'Не оплачено'}
                                                 </div>
                                             </div>
-                                            <div className="CustomOrderTable-cell" style={{width:'5vw'}}>
+                                            <div className="CustomOrderTable-cell" style={{width:'5vw', fontSize:'0.5rem'}}>
                                                 {`${new Date(order.createdAt).toLocaleDateString()} ${new Date(order.createdAt).toLocaleTimeString()}`}
                                             </div>
-                                            <div className="CustomOrderTable-cell" style={{width:'5vw'}}>
+                                            <div className="CustomOrderTable-cell" style={{width:'5vw', fontSize:'0.5rem'}}>
                                                 {order.updatedAt
                                                     ? `${new Date(order.updatedAt).toLocaleDateString()} ${new Date(order.updatedAt).toLocaleTimeString()}`
                                                     : '—'}
                                             </div>
-                                            <div className="CustomOrderTable-cell" style={{width:'5vw'}}>
+                                            <div className="CustomOrderTable-cell" style={{width:'5vw', fontSize:'0.5rem'}}>
                                                 {order.manufacturingStartTime
                                                     ? `${new Date(order.manufacturingStartTime).toLocaleDateString()} ${new Date(order.manufacturingStartTime).toLocaleTimeString()}`
                                                     : '—'}
                                             </div>
-                                            <div className="CustomOrderTable-cell" style={{width:'5vw'}}>
+                                            <div className="CustomOrderTable-cell" style={{width:'5vw', fontSize:'0.5rem'}}>
                                                 {order.finalManufacturingTime
                                                     ? `${order.finalManufacturingTime.days}д ${order.finalManufacturingTime.hours}год ${order.finalManufacturingTime.minutes}хв ${order.finalManufacturingTime.seconds}сек`
                                                     : order.manufacturingStartTime
                                                         ? 'В процесі'
                                                         : '—'}
                                             </div>
-                                            <div className="CustomOrderTable-cell" style={{width:'5vw'}}>
+                                            <div className="CustomOrderTable-cell" style={{width:'5vw', fontSize:'0.5rem'}}>
                                                 {order.deadline
                                                     ? `${new Date(order.deadline).toLocaleDateString()} ${new Date(order.deadline).toLocaleTimeString()}`
                                                     : '—'}

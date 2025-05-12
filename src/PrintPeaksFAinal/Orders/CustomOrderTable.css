@@ -381,7 +381,7 @@ body {
     box-sizing: border-box;
     overflow: hidden;
     text-overflow: ellipsis;
-    background-color: #F2F0E7;
+    background-color: #FBFAF6;
     border-bottom: 0.1vw solid #ddd;
     border-radius: 0;
 }

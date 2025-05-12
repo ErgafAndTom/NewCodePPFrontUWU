@@ -5,48 +5,8 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="7e58169f-d1e8-4cb2-8753-447dd0b39044" name="Changes" comment="ddd">
-      <change afterPath="$PROJECT_DIR$/src/PrintPeaksFAinal/Orders/OrderOneUnitInTable.jsx" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/PrintPeaksFAinal/Orders/translations.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/artemHTML/Client/303c7b213ec59d3734dfbbd2249f4a7a.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/artemHTML/Client/Clients.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/artemHTML/Client/IMG_0715.JPEG" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/artemHTML/Client/Telegram-icon-on-transparent-background-PNG.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/artemHTML/Client/WhatsApp_icon.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/artemHTML/Client/files-icon.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/artemHTML/Client/images.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/artemHTML/Client/jQueryAssets/images/animated-overlay.gif" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/artemHTML/Client/jQueryAssets/images/ui-bg_diagonals-thick_18_b81900_40x40.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/artemHTML/Client/jQueryAssets/images/ui-bg_diagonals-thick_20_666666_40x40.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/artemHTML/Client/jQueryAssets/images/ui-bg_flat_10_000000_40x100.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/artemHTML/Client/jQueryAssets/images/ui-bg_glass_100_f6f6f6_1x400.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/artemHTML/Client/jQueryAssets/images/ui-bg_glass_100_fdf5ce_1x400.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/artemHTML/Client/jQueryAssets/images/ui-bg_gloss-wave_35_f6a828_500x100.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/artemHTML/Client/jQueryAssets/images/ui-bg_highlight-soft_100_eeeeee_1x100.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/artemHTML/Client/jQueryAssets/images/ui-bg_highlight-soft_75_ffe45c_1x100.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/artemHTML/Client/jQueryAssets/images/ui-icons_228ef1_256x240.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/artemHTML/Client/jQueryAssets/images/ui-icons_ef8c08_256x240.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/artemHTML/Client/jQueryAssets/images/ui-icons_ffd27a_256x240.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/artemHTML/Client/jQueryAssets/images/ui-icons_ffffff_256x240.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/artemHTML/Client/jQueryAssets/jquery-1.11.1.min.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/artemHTML/Client/jQueryAssets/jquery.ui-1.10.4.slider.min.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/artemHTML/Client/jQueryAssets/jquery.ui.core.min.css" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/artemHTML/Client/jQueryAssets/jquery.ui.slider.min.css" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/artemHTML/Client/jQueryAssets/jquery.ui.theme.min.css" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/artemHTML/Client/pngwing.com.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/artemHTML/Client/settings.svg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/artemHTML/Client/styles.css" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/artemHTML/Orders/Orders.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/artemHTML/Orders/styles.css" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/artemHTML/index/print_peaks.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/artemHTML/index/styles.css" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/src/PrintPeaksFAinal/Orders/CustomOrderTable.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/PrintPeaksFAinal/Orders/CustomOrderTable.css" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/PrintPeaksFAinal/Orders/CustomOrderTable2.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/PrintPeaksFAinal/Orders/CustomOrderTable2.jsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/PrintPeaksFAinal/Orders/Orders.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/PrintPeaksFAinal/Orders/Orders.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/PrintPeaksFAinal/Orders/StatusBar.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/PrintPeaksFAinal/Orders/StatusBar.jsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/PrintPeaksFAinal/adminStylesCrm.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/PrintPeaksFAinal/adminStylesCrm.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/PrintPeaksFAinal/user/UsersCustomTable.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/PrintPeaksFAinal/user/UsersCustomTable.jsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/admin/adminStylesCrm.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/admin/adminStylesCrm.css" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -328,15 +288,7 @@
       <workItem from="1746789938225" duration="26399000" />
       <workItem from="1746821201658" duration="2852000" />
       <workItem from="1746824181400" duration="12395000" />
-      <workItem from="1746968398598" duration="22900000" />
-    </task>
-    <task id="LOCAL-00036" summary="ddd">
-      <option name="closed" value="true" />
-      <created>1740953944703</created>
-      <option name="number" value="00036" />
-      <option name="presentableId" value="LOCAL-00036" />
-      <option name="project" value="LOCAL" />
-      <updated>1740953944703</updated>
+      <workItem from="1746968398598" duration="23289000" />
     </task>
     <task id="LOCAL-00037" summary="ddd">
       <option name="closed" value="true" />
@@ -722,7 +674,15 @@
       <option name="project" value="LOCAL" />
       <updated>1746972460822</updated>
     </task>
-    <option name="localTasksCounter" value="85" />
+    <task id="LOCAL-00085" summary="ddd">
+      <option name="closed" value="true" />
+      <created>1747012750479</created>
+      <option name="number" value="00085" />
+      <option name="presentableId" value="LOCAL-00085" />
+      <option name="project" value="LOCAL" />
+      <updated>1747012750479</updated>
+    </task>
+    <option name="localTasksCounter" value="86" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
