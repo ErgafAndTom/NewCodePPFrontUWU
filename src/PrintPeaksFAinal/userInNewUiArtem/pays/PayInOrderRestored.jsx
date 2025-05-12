@@ -268,6 +268,8 @@ function PaysInOrderRestored({showPays, setShowPays, thisOrder, setThisOrder}) {
                                 <th>Тел</th>
                                 <th>E-mail</th>
                                 <th>НДС/ПДВ</th>
+                                <th>юзер/клієнт</th>
+                                <th>last оновл.</th>
                                 <th></th>
                             </tr>
                             </thead>
@@ -280,6 +282,8 @@ function PaysInOrderRestored({showPays, setShowPays, thisOrder, setThisOrder}) {
                                     <td className="ContractorCell">{item.phone}</td>
                                     <td className="ContractorCell">{item.email}</td>
                                     <td className="ContractorCell">{item.pdv ? '+' : '-'}</td>
+                                    <td className="ContractorCell">{`${thisOrder.client.firstName} ${thisOrder.client.lastName} ${thisOrder.client.familyName} (${thisOrder.client.phoneNumber})`}</td>
+                                    <td className="ContractorCell">{`${new Date(thisOrder.updatedAt).toLocaleDateString()} ${new Date(thisOrder.updatedAt).toLocaleTimeString()}`}</td>
                                     <td className="ContractorCell ContractorActions">
                                         <button className="ContractorViewBtn" style={{background: "green"}}
                                                 onClick={(e) => generateInvoice(e, item)}>
