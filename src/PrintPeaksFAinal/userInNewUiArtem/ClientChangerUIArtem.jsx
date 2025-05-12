@@ -403,7 +403,7 @@ const ClientChangerUIArtem = ({thisOrder, setThisOrder}) => {
                                 <div className="col-md-6">
                                     <div className="mb-2 d-flex">
                                         <div className="me-2" style={{width: '24px', textAlign: 'center'}}>
-                                            <i className="bi bi-person-badge"></i>
+                                            <i className="bi bi-person-badge">⋮</i>
                                         </div>
                                         <div>
                                             <strong>ID:</strong> {thisOrder.client.id}

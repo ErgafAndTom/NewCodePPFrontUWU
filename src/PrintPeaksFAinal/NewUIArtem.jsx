@@ -336,18 +336,22 @@ const NewUIArtem = () => {
                                                 className="d-flex flex-column justify-content-start align-items-start"
                                                 style={{
                                                     width: '32.1vw',
+                                                    background: "#FBFAF6",
                                                 }}>
                                                 <Modal.Header className="d-flex w-100"
                                                               style={{position: "relative"}}>
                                                     <div
                                                         className="piecesord d-flex align-items-center overflow-visible"
                                                         style={{
-                                                            marginLeft: "1vw",
+                                                            // marginLeft: "1vw",
                                                             padding: "0.5vw",
                                                             position: "relative"
                                                         }}>
                                                         <div className="adminFontTable d-flex align-items-center"
-                                                             style={{width: "24vw"}}
+                                                             style={{
+                                                                 width: "24vw",
+                                                                 // backgroundColor: "#ffffff",
+                                                             }}
                                                         >
                                                             {thing.name}
                                                             <div className="d-flex align-items-center">
@@ -384,7 +388,9 @@ const NewUIArtem = () => {
                                                                 </div>
                                                             </div>
                                                         </div>
-                                                        <div className="priceord d-flex align-items-center">
+                                                        <div className="priceord d-flex align-items-center"
+                                                             // style={{backgroundColor: "#ffffff"}}
+                                                        >
                                                             <div className="adminFontTable"
                                                                  style={{fontSize: "0.7vw", marginTop: "0.6vh"}}>
                                                                 =
@@ -428,7 +434,7 @@ const NewUIArtem = () => {
                                                                     handleAmountChange={handleAmountChange}
                                                                     index={index}/>
                                                 <Modal.Footer>
-                                                    <div className="d-flex justify-content-between align-content-between">
+                                                    <div className="d-flex justify-content-between align-content-between" style={{marginTop: "0.2vw"}}>
                                                         <div
                                                             className="d-flex adminFontTable"
                                                             style={{marginLeft: "1.5vw"}}>На

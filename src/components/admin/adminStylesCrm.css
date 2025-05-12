@@ -9,13 +9,13 @@
 .adminNavBackGround {
     background: #FBFAF6;
 }
-.adminFontTable {
-    font-size: 2vh;
-    font-weight: 400;
-    margin: 0.1vw;
-    /*margin-left: 0.5vw;*/
-    align-items: flex-start /* Вертикальне вирівнювання тексту */
-}
+/*.adminFontTable {*/
+/*    font-size: 2vh;*/
+/*    font-weight: 400;*/
+/*    margin: 0.1vw;*/
+/*    !*margin-left: 0.5vw;*!*/
+/*    align-items: flex-start !* Вертикальне вирівнювання тексту *!*/
+/*}*/
 
 .paginationNamberZakaz {
     align-items: center;
@@ -154,14 +154,13 @@
 /*        height: 10vw;*/
 /*    }*/
 /*}*/
-.priceord {
-    flex-direction: row;
-    display: flex;
-    margin-left: 1vw;
-}
-.piecesord {
-    flex-direction: row;
-    display: flex;
-    margin-left: 1vw;
-
-}
+/*.priceord {*/
+/*    flex-direction: row;*/
+/*    display: flex;*/
+/*    margin-left: 1vw;*/
+/*}*/
+/*.piecesord {*/
+/*    flex-direction: row;*/
+/*    display: flex;*/
+/*    margin-left: 1vw;*/
+/*}*/

@@ -135,13 +135,13 @@ function PaysInOrderRestored({showPays, setShowPays, thisOrder, setThisOrder}) {
             .catch(handleAxiosError);
     };
 
-    const generateDoc1 = (e, item) => {
-        const dataToSend = {contractorId: item.id, thisOrderId: thisOrder.id};
-        axios
-            .post(`/user/generateDoc1`, dataToSend, {responseType: "blob"})
-            .then((response) => downloadBlob(response, "invoice.docx"))
-            .catch(handleAxiosError);
-    };
+    // const generateDoc1 = (e, item) => {
+    //     const dataToSend = {contractorId: item.id, thisOrderId: thisOrder.id};
+    //     axios
+    //         .post(`/user/generateDoc1`, dataToSend, {responseType: "blob"})
+    //         .then((response) => downloadBlob(response, "invoice.docx"))
+    //         .catch(handleAxiosError);
+    // };
 
     const downloadBlob = (response, fallbackName) => {
         const contentDisposition = response.headers["content-disposition"];
@@ -166,32 +166,6 @@ function PaysInOrderRestored({showPays, setShowPays, thisOrder, setThisOrder}) {
         setError(error.message);
         setLoad(false);
     };
-
-    // const handleSaveNewInvoice = async () => {
-    //     let formDataToSend = {
-    //         invoiceNumber: '',
-    //         invoiceDate: new Date().toISOString().split('T')[0],
-    //         supplierId: '',
-    //         supplierName: '',
-    //         buyerId: '',
-    //         buyerName: '',
-    //         totalSum: '',
-    //         items: [
-    //             // За замовчуванням додаємо один порожній елемент товару
-    //             { id: 1, name: '', quantity: 1, price: 0, unit: 'шт.' }
-    //         ]
-    //     }
-    //     try {
-    //         setLoading(true);
-    //         const response = await axios.post('/api/invoices', formData);
-    //         setInvoices([...invoices, response.data]);
-    //         setShowAddModal(false);
-    //         setLoading(false);
-    //     } catch (err) {
-    //         setError(err.message);
-    //         setLoading(false);
-    //     }
-    // };
 
     // ──────────────────────────── DATA FETCH ────────────────────────────
     useEffect(() => {
@@ -291,6 +265,9 @@ function PaysInOrderRestored({showPays, setShowPays, thisOrder, setThisOrder}) {
                                 <th>№</th>
                                 <th>Найменування</th>
                                 <th>Податкова система</th>
+                                <th>Тел</th>
+                                <th>E-mail</th>
+                                <th>НДС/ПДВ</th>
                                 <th></th>
                             </tr>
                             </thead>
@@ -300,10 +277,13 @@ function PaysInOrderRestored({showPays, setShowPays, thisOrder, setThisOrder}) {
                                     <td className="ContractorCell">{idx + 1}</td>
                                     <td className="ContractorCell ContractorName">{item.name}</td>
                                     <td className="ContractorCell">{item.taxSystem}</td>
+                                    <td className="ContractorCell">{item.phone}</td>
+                                    <td className="ContractorCell">{item.email}</td>
+                                    <td className="ContractorCell">{item.pdv ? '+' : '-'}</td>
                                     <td className="ContractorCell ContractorActions">
                                         <button className="ContractorViewBtn" style={{background: "green"}}
                                                 onClick={(e) => generateInvoice(e, item)}>
-                                            Накладна/Акт+Рахунок+вДатабазе+2Варианта+дляЭтогоЗаказа
+                                            Генерим инвойс + получаем
                                         </button>
                                         {/*<button className="ContractorViewBtn" style={{background: "green"}}*/}
                                         {/*        onClick={(e) => generateDoc1(e, item)}>*/}
@@ -312,9 +292,14 @@ function PaysInOrderRestored({showPays, setShowPays, thisOrder, setThisOrder}) {
                                         <button className="ContractorViewBtn" onClick={(e) => openSeePay(e, item)}>
                                             Переглянути/Редагувати
                                         </button>
-                                        <button className="ContractorMoreBtn"
-                                                onClick={(e) => openDeletePay(e, item)}>
-                                            ⋮
+                                        <button
+                                            // className="ContractorMoreBtn"
+                                            className="ContractorViewBtn"
+                                            style={{background: "brown"}}
+                                            onClick={(e) => openDeletePay(e, item)}
+                                        >
+                                            {/*⋮*/}
+                                            Видалити
                                         </button>
                                     </td>
                                 </tr>

@@ -341,16 +341,11 @@ const ProgressBar = ({ thisOrder, setThisOrder, setNewThisOrder, handleThisOrder
         postpress: {
             backgroundColor: '#8B4513',
             color: 'white',
-            // border: 'none',
             cursor: 'pointer',
             width: '11vw',
             height: '3vh',
             fontFamily: 'inter, sans-serif',
-            // fontSize: '1.2vh',
-            // display: 'flex', // Використовуємо flex для центрованого контенту
             justifyContent: 'center', // Горизонтальне центрування тексту
-            // alignItems: 'center', // Вертикальне центрування тексту
-            // marginLeft: 'auto'
 
         },
         done: {

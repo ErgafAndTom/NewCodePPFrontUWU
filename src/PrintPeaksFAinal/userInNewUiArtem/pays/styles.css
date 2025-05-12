@@ -83,7 +83,7 @@
 .ContractorRow {
     background-color: #faf8f3;
     border-bottom: 1px solid #e1e1e1;
-    font-size: 0.9vw;
+    font-size: 0.6vw;
 }
 
 .ContractorCell {
@@ -110,7 +110,7 @@
     border: none;
     border-radius: 0.4vw;
     padding: 0.8vh 1.5vw;
-    font-size: 0.8vw;
+    font-size: 0.6vw;
     cursor: pointer;
     transition: background-color 0.2s;
 }

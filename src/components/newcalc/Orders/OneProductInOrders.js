@@ -26,28 +26,50 @@ function OneProductInOrders({item, cash = false, handleAmountChange, index}) {
 
                         {item.OrderUnitUnits.map((unitItem, iter) => (
                             <div key={`${item.idKey} ${unitItem.idKey} `} className="d-flex adminFontTable">
-                                <div className="adminFontTable d-flex shadow-sm " style={{
+                                <div className="adminFontTable d-flex justify-content-between shadow-sm" style={{
                                     borderBottom: "1 vh",
-                                    margin: "0.3vw",
-                                    borderRadius: "0.7vw"
+                                    padding: "0.1vw",
+                                    borderRadius: "0.5vw",
+                                    // backgroundColor: "#ffffff",
+                                    background: "#F2F0E7",
+                                    width: "32vw",
                                 }}>
-                                    <div className="adminFontTable p-1"
-                                         style={{
-                                             fontSize: "0.5vw",
-                                             alignItems: "center",
-                                             marginTop: "0.6vh"
-                                         }}>{iter + 1}</div>
-                                    <div className="adminFontTable">{unitItem.name}</div>
-                                    <div className="adminFontTable">{unitItem.newField5}</div>
-                                    <div className="adminFontTable" style={{marginTop: "0.5vw", fontSize: "0.5vw"}}>шт</div>
-                                    <div className="adminFontTable">x</div>
-                                    <div className="adminFontTable">{unitItem.priceForOneThis}</div>
-                                    <div className="adminFontTable" style={{marginTop: "0.5vw", fontSize: "0.5vw"}}>грн</div>
-                                    <div className="adminFontTable" style={{marginTop: "0.5vw", fontSize: "0.5vw"}}>=</div>
-                                    <div className="adminFontTable booooold">{unitItem.priceForOneThis*unitItem.newField5}</div>
-                                    {/*<div className="adminFontTable booooold">{unitItem.priceForOneThis*unitItem.newField3}</div>*/}
-                                    {/*<div className="adminFontTable booooold">{unitItem.priceForOneThis*unitItem.newField4}</div>*/}
-                                    <div className="adminFontTable " style={{marginTop: "0.5vw", fontSize: "0.5vw"}}>грн</div>
+                                    <div className="d-flex" style={{
+                                        // background: "#8e791c",
+                                        maxWidth: "19vw"}}
+                                    >
+                                        <div className="adminFontTable"
+                                             style={{
+                                                 fontSize: "0.5vw",
+                                                 alignItems: "center",
+                                                 marginTop: "0.6vh",
+                                             }}>{iter + 1}</div>
+                                        <div className="adminFontTable">{unitItem.name}</div>
+                                    </div>
+                                    <div className="d-flex" style={{
+                                        // background: "#8e791c",
+                                        maxWidth: "11vw"
+                                    }}>
+                                        <div className="adminFontTable">{unitItem.newField5}</div>
+                                        <div className="adminFontTable"
+                                             style={{marginTop: "0.5vw", fontSize: "0.5vw"}}>шт
+                                        </div>
+                                        <div className="adminFontTable">x</div>
+                                        <div className="adminFontTable">{unitItem.priceForOneThis}</div>
+                                        <div className="adminFontTable"
+                                             style={{marginTop: "0.5vw", fontSize: "0.5vw"}}>грн
+                                        </div>
+                                        <div className="adminFontTable"
+                                             style={{marginTop: "0.5vw", fontSize: "0.5vw"}}>=
+                                        </div>
+                                        <div
+                                            className="adminFontTable booooold">{unitItem.priceForOneThis * unitItem.newField5}</div>
+                                        {/*<div className="adminFontTable booooold">{unitItem.priceForOneThis*unitItem.newField3}</div>*/}
+                                        {/*<div className="adminFontTable booooold">{unitItem.priceForOneThis*unitItem.newField4}</div>*/}
+                                        <div className="adminFontTable "
+                                             style={{marginTop: "0.5vw", fontSize: "0.5vw"}}>грн
+                                        </div>
+                                    </div>
 
 
                                     {/*<div className="adminFontTable">x</div>*/}

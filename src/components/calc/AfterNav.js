@@ -8,7 +8,7 @@ import Files from "./files/Files";
 import CreateOrder from "./createorder/CreateOrder";
 import { Login } from "../../PrintPeaksFAinal/login/Login";
 import Profile from "../../PrintPeaksFAinal/user/profile/Profile";
-import CustomOrderTable from "../../PrintPeaksFAinal/Orders/CustomOrderTable";
+// import CustomOrderTable from "../../PrintPeaksFAinal/Orders/CustomOrderTable";
 import NewUIArtem from "../../PrintPeaksFAinal/NewUIArtem";
 import { TableStorage } from "../../PrintPeaksFAinal/Storage/TableStorage";
 import CustomStorageTable from "../../PrintPeaksFAinal/Storage/CustomStorageTable";
@@ -96,7 +96,7 @@ const AfterNav = () => {
                 <Route path="/myPayments" element={<Payments />} />
 
                 <Route path="/Orders" element={<CustomOrderTable2 />} />
-                <Route path="/OrdersOld" element={<CustomOrderTable />} />
+                {/*<Route path="/OrdersOld" element={<CustomOrderTable />} />*/}
                 <Route path="/Orders/:id" element={<NewUIArtem />} />
                 <Route path="/Storage" element={<CustomStorageTable name={"Склад"} />} />
                 <Route path="/Devices" element={<TableStorage name={"Devices"} />} />

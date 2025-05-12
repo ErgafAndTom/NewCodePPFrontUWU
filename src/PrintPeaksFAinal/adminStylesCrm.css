@@ -10,10 +10,9 @@
     background: #FBFAF6;
 }
 .adminFontTable {
-    font-size: 1.8vh;
-    /*font-weight: 400;*/
+    font-size: 1.4vh;
     margin: 0.1vw;
-    margin-left: 0.4vw;
+    margin-left: 0.3vw;
     align-items: flex-start /* Вертикальне вирівнювання тексту */
 }
 .adminPagination {
@@ -234,7 +233,7 @@
 .piecesord {
     flex-direction: row;
     display: flex;
-    margin-left: 1vw;
+    /*margin-left: 1vw;*/
     white-space: nowrap;
 
 }
