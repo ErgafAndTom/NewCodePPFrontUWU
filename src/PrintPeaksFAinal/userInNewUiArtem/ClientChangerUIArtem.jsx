@@ -391,13 +391,13 @@ const ClientChangerUIArtem = ({thisOrder, setThisOrder}) => {
 
             {/* Модальне вікно для вибору користувача */}
             <Modal show={show} onHide={handleClose} size="lg" centered>
-                <Modal.Header closeButton>
+                <Modal.Header style={{backgroundColor: '#F2F0E7'}} closeButton>
                     <Modal.Title>Вибір клієнта</Modal.Title>
                 </Modal.Header>
-                <Modal.Body>
+                <Modal.Body style={{backgroundColor: '#F2F0E7'}}>
                     {/* Відображення поточного клієнта якщо він обраний */}
                     {thisOrder.client && (
-                        <div className="mb-4 p-3 border rounded bg-light">
+                        <div className="mb-4 p-3 border rounded" style={{boxShadow: "0vh 0vh 2vh #ffffff"}}>
                             <h5 className="mb-3">Поточний клієнт:</h5>
                             <div className="row">
                                 <div className="col-md-6">
@@ -539,7 +539,8 @@ const ClientChangerUIArtem = ({thisOrder, setThisOrder}) => {
                                         ...buttonStyles.primary,
                                         ...buttonStyles.actionButton,
                                         marginLeft: 'auto',
-                                        float: 'right'
+                                        float: 'right',
+                                        boxShadow: "0vh 0vh 2vh #1351e6",
                                     }}
                                 >
                                     <i className="bi bi-person-lines-fill me-1"></i>
@@ -557,19 +558,37 @@ const ClientChangerUIArtem = ({thisOrder, setThisOrder}) => {
                                 placeholder="Пошук за ім'ям, прізвищем, номером телефону або email..."
                                 value={searchQuery}
                                 onChange={handleSearchChange}
+                                style={{
+                                    marginRight: "0.5vw",
+                                    boxShadow: "0vh 0vh 4vh #ffffff"
+                                }}
                             />
                             <button
                                 onClick={fetchUsers}
-                                style={{...buttonStyles.base, ...buttonStyles.iconButton}}
+                                style={{...buttonStyles.base,
+                                    height: '4vh',
+                                    fontSize: '2vh',
+                                    display: 'flex',
+                                    alignItems: 'center',
+                                    justifyContent: 'center',
+                                    background: "transparent",
+                                    boxShadow: "0vh 0vh 2vh #5a81bc",
+                                    color: '#5a81bc',
+                                    marginRight: "0.5vw",
+                            }}
+                                className=""
                             >
                                 <i className="bi bi-search"></i>
+                                🔄
                             </button>
                             <button
                                 onClick={handleAddNewUser}
                                 style={{
                                     ...buttonStyles.base,
                                     ...buttonStyles.warning,
-                                    ...buttonStyles.actionButton
+                                    ...buttonStyles.actionButton,
+                                    boxShadow: "0vh 0vh 2vh #f4c018",
+                                    height: '4vh'
                                 }}
                             >
                                 <i className="bi bi-plus-circle me-1"></i>
@@ -586,7 +605,8 @@ const ClientChangerUIArtem = ({thisOrder, setThisOrder}) => {
                     ) : error ? (
                         <div className="alert alert-danger">{error}</div>
                     ) : (
-                        <div className="user-list" style={{maxHeight: '400px', overflowY: 'auto'}}>
+                        <div className="user-list" style={{maxHeight: '400px', overflowY: 'auto', boxShadow: "0vh 0vh 2vh #ffffff",
+                        color: "#ffffff"}}>
                             {users.rows && users.rows.length > 0 ? (
                                 <ListGroup>
                                     {users.rows.map((user) => (
@@ -634,10 +654,12 @@ const ClientChangerUIArtem = ({thisOrder, setThisOrder}) => {
                                                 </div>
                                             </div>
                                             {thisOrder.client && thisOrder.client.id === user.id && (
-                                                <span className="badge bg-primary rounded-pill">Обрано</span>
+                                                <span className="badge bg-primary rounded-pill" style={{boxShadow: "0vh 0vh 1vh #0b2e83"}}>Обрано</span>
                                             )}
                                             {thisOrder.executor && thisOrder.executor.id === user.id && (
-                                                <span className="badge bg-success rounded-pill">Це ви</span>
+                                                <span className="badge bg-success rounded-pill" style={{
+                                                    boxShadow: "0vh 0vh 1vh #226012",
+                                                }}>Це ви</span>
                                             )}
                                         </ListGroup.Item>
                                     ))}
@@ -660,13 +682,14 @@ const ClientChangerUIArtem = ({thisOrder, setThisOrder}) => {
                         </div>
                     )}
                 </Modal.Body>
-                <Modal.Footer>
+                <Modal.Footer style={{backgroundColor: '#F2F0E7'}}>
                     <button
                         onClick={handleClose}
                         style={{
                             ...buttonStyles.base,
                             ...buttonStyles.close,
-                            marginRight: '0.5vw'
+                            marginRight: '0.5vw',
+                            boxShadow: "0vh 0vh 2vh #ffffff",
                         }}
                     >
                         Скасувати
@@ -676,7 +699,9 @@ const ClientChangerUIArtem = ({thisOrder, setThisOrder}) => {
                             onClick={() => handleSelectUser(null)}
                             style={{
                                 ...buttonStyles.base,
-                                ...buttonStyles.delete
+                                ...buttonStyles.delete,
+                                // color: '#d57272',
+                                boxShadow: "0vh 0vh 2vh #d57272",
                             }}
                         >
                             Видалити вибір
