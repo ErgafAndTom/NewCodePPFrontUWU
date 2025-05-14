@@ -150,7 +150,7 @@ function ClientUserProfile() {
                                     }}
                             >
                                 <i className="bi bi-folder me-2"></i>
-                                Мої файли
+                                Файли {thisUser.firstName} {thisUser.lastName} {thisUser.familyName}
                             </button>
                         </Link>
                         <Link style={{textDecoration: 'none'}} to="/client/1/orders">
@@ -161,7 +161,7 @@ function ClientUserProfile() {
                                     }}
                             >
                                 <i className="bi bi-cart me-2"></i>
-                                Мої замовлення
+                                Замовлення {thisUser.firstName} {thisUser.lastName} {thisUser.familyName}
                             </button>
                         </Link>
                         {/*<Link style={{textDecoration: 'none'}} to="/client/1/payments">*/}

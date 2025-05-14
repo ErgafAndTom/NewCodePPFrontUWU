@@ -325,10 +325,13 @@ const NewUIArtem = () => {
                     <div className="d-flex flex-column" style={{marginLeft: "0.3vw"}}>
                         <div className="containerNewUI containerOrderUnits" style={{
                             // padding: "0.3vw",
-                            border: "0vw"
+                            border: "0vw",
+                            boxShadow: "0vh 0.3vh 0.3vh #c1c1c1",
+                            // marginLeft: "0.3vw",
+                            // color: "#c1c1c1",
                         }}>
                             {selectedThings2 && selectedThings2.length !== 0 ? (
-                                <div className="containerOrderUnits">
+                                <div className="containerOrderUnits" style={{boxShadow: "0vh 0vh 2vh #5a81bc"}} >
                                     {selectedThings2.map((thing, index) => (
                                         <div key={index} className="d-flex containerNewUI HoverOrderUnits shadow-sm"
                                              style={{border: "1px #dcd9ce solid", margin: "0.2vw",}}>
@@ -457,7 +460,9 @@ const NewUIArtem = () => {
                                 </div>
                             )}
                         </div>
-                        <div className="d-flex flex-column" style={{marginTop: "1.6vw"}}>
+                        <div className="d-flex flex-column"
+                             style={{marginTop: "1.5vh"}}
+                        >
                             {/*<ProgressBar/>*/}
                             {/*<div className="containerNewUI containerDetailsThisOrder " style={{border: "0vw"}}>*/}
                                 {thisOrder ? (

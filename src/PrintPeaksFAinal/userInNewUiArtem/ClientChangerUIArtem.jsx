@@ -190,7 +190,7 @@ const ClientChangerUIArtem = ({thisOrder, setThisOrder}) => {
                     backgroundColor: '#F2F0E7'
                 }}
             >
-                <div style={{display: 'flex', alignItems: 'center', gap: '8px', width: '100%'}}>
+                <div style={{display: 'flex', alignItems: 'center', gap: '8px', width: '100%', transition: "opacity .3s, transform .3s",}}>
                     <img src={ChangeClienticons} alt="Change Client"
                          style={{width: '20px', height: '20px', flexShrink: 0}}/>
                     {thisOrder.client ? (
@@ -346,13 +346,13 @@ const ClientChangerUIArtem = ({thisOrder, setThisOrder}) => {
                             <img src={pays} alt="Платежі" style={{width: '16px', height: '16px'}}/>
                         </button>
 
-                        <button
-                            onClick={() => setShowDocGenerate(true)}
-                            title="Генерувати документи"
-                            style={{...buttonStyles.base, ...buttonStyles.iconButton}}
-                        >
-                            <img src={dockGenerate} alt="Документи" style={{width: '16px', height: '16px'}}/>
-                        </button>
+                        {/*<button*/}
+                        {/*    onClick={() => setShowDocGenerate(true)}*/}
+                        {/*    title="Генерувати документи"*/}
+                        {/*    style={{...buttonStyles.base, ...buttonStyles.iconButton}}*/}
+                        {/*>*/}
+                        {/*    <img src={dockGenerate} alt="Документи" style={{width: '16px', height: '16px'}}/>*/}
+                        {/*</button>*/}
 
                         <button
                             onClick={() => {
@@ -429,52 +429,52 @@ const ClientChangerUIArtem = ({thisOrder, setThisOrder}) => {
             )}
 
             {/* Модальне вікно для вибору користувача */}
-            <Modal show={show} onHide={handleClose} size="lg" centered>
-                <Modal.Header style={{backgroundColor: '#F2F0E7'}} closeButton>
+            <Modal show={show} onHide={handleClose} size="lg" style={{transition: "opacity .3s, transform .3s",}} centered>
+                <Modal.Header style={{backgroundColor: '#F2F0E7', }} closeButton>
                     <Modal.Title>Вибір клієнта</Modal.Title>
                 </Modal.Header>
                 <Modal.Body style={{backgroundColor: '#F2F0E7'}}>
                     {/* Відображення поточного клієнта якщо він обраний */}
                     {thisOrder.client && (
-                        <div className="mb-4 p-3 border rounded" style={{boxShadow: "0vh 0vh 2vh #ffffff"}}>
-                            <h5 className="mb-3">Поточний клієнт:</h5>
+                        <div className="mb-4 p-3 border rounded" style={{boxShadow: "0vh 0vh 2vh #ffffff", height: '18vh', overflow: 'auto', backgroundColor: '#F2F0E7'}}>
+                            <h5 className="mb-3 fontSize1-5VH">Поточний клієнт:</h5>
                             <div className="row">
                                 <div className="col-md-6">
-                                    <div className="mb-2 d-flex">
-                                        <div className="me-2" style={{width: '24px', textAlign: 'center'}}>
+                                    <div className="d-flex fontSize1-3VH">
+                                        <div className="" style={{width: '5vw', textAlign: 'center'}}>
                                             <i className="bi bi-person-badge">⋮</i>
                                         </div>
-                                        <div>
+                                        <div className="">
                                             <strong>ID:</strong> {thisOrder.client.id}
                                         </div>
                                     </div>
 
-                                    <div className="mb-2 d-flex">
-                                        <div className="me-2" style={{width: '24px', textAlign: 'center'}}>
+                                    <div className="d-flex fontSize1-3VH">
+                                        <div className="" style={{width: '5vw', textAlign: 'center'}}>
                                             <i className="bi bi-person"></i>
                                         </div>
-                                        <div>
+                                        <div className="">
                                             <strong>Ім'я:</strong> {thisOrder.client.firstName} {thisOrder.client.lastName} {thisOrder.client.familyName}
                                         </div>
                                     </div>
 
                                     {thisOrder.client.phoneNumber && (
-                                        <div className="mb-2 d-flex">
-                                            <div className="me-2" style={{width: '24px', textAlign: 'center'}}>
+                                        <div className="d-flex fontSize1-3VH">
+                                            <div className="" style={{width: '5vw', textAlign: 'center'}}>
                                                 <i className="bi bi-telephone"></i>
                                             </div>
-                                            <div>
-                                                <strong>Телефон:</strong> {thisOrder.client.phoneNumber}
+                                            <div className="">
+                                                <strong className="">Телефон:</strong> {thisOrder.client.phoneNumber}
                                             </div>
                                         </div>
                                     )}
 
                                     {thisOrder.client.email && (
-                                        <div className="mb-2 d-flex">
-                                            <div className="me-2" style={{width: '24px', textAlign: 'center'}}>
+                                        <div className="d-flex fontSize1-3VH">
+                                            <div className="" style={{width: '5vw', textAlign: 'center'}}>
                                                 <i className="bi bi-envelope"></i>
                                             </div>
-                                            <div>
+                                            <div className="">
                                                 <strong>Email:</strong> {thisOrder.client.email}
                                             </div>
                                         </div>
@@ -483,19 +483,19 @@ const ClientChangerUIArtem = ({thisOrder, setThisOrder}) => {
 
                                 <div className="col-md-6">
                                     {thisOrder.client.address && (
-                                        <div className="mb-2 d-flex">
-                                            <div className="me-2" style={{width: '24px', textAlign: 'center'}}>
+                                        <div className="d-flex fontSize1-3VH">
+                                            <div className="" style={{width: '5vw', textAlign: 'center'}}>
                                                 <i className="bi bi-geo-alt"></i>
                                             </div>
-                                            <div>
+                                            <div className="fontSize1-3VH">
                                                 <strong>Адреса:</strong> {thisOrder.client.address}
                                             </div>
                                         </div>
                                     )}
 
                                     {thisOrder.client.discount && (
-                                        <div className="mb-2 d-flex">
-                                            <div className="me-2" style={{width: '24px', textAlign: 'center'}}>
+                                        <div className="d-flex fontSize1-3VH">
+                                            <div className="" style={{width: '5vw', textAlign: 'center'}}>
                                                 <i className="bi bi-percent"></i>
                                             </div>
                                             <div>
@@ -506,8 +506,8 @@ const ClientChangerUIArtem = ({thisOrder, setThisOrder}) => {
                                     )}
 
                                     {thisOrder.client.telegram && (
-                                        <div className="mb-2 d-flex">
-                                            <div className="me-2" style={{width: '24px', textAlign: 'center'}}>
+                                        <div className="d-flex fontSize1-3VH">
+                                            <div className="" style={{width: '5vw', textAlign: 'center'}}>
                                                 <i className="bi bi-telegram"></i>
                                             </div>
                                             <div>
@@ -517,8 +517,8 @@ const ClientChangerUIArtem = ({thisOrder, setThisOrder}) => {
                                     )}
 
                                     {thisOrder.client.notes && (
-                                        <div className="mb-2 d-flex">
-                                            <div className="me-2" style={{width: '24px', textAlign: 'center'}}>
+                                        <div className="d-flex fontSize1-3VH">
+                                            <div className="" style={{width: '5vw', textAlign: 'center'}}>
                                                 <i className="bi bi-sticky"></i>
                                             </div>
                                             <div>
@@ -530,7 +530,7 @@ const ClientChangerUIArtem = ({thisOrder, setThisOrder}) => {
                             </div>
 
                             {/* Кнопки для взаємодії з поточним клієнтом */}
-                            <div className="mt-3 d-flex flex-wrap gap-2">
+                            <div className="d-flex flex-wrap" style={{marginTop: '1vh'}}>
                                 {thisOrder.client.phoneNumber && (
                                     <>
                                         <button
@@ -538,7 +538,7 @@ const ClientChangerUIArtem = ({thisOrder, setThisOrder}) => {
                                             title="Viber"
                                             style={{...buttonStyles.base, ...buttonStyles.iconButton}}
                                         >
-                                            <img src={viberlogo} alt="Viber" style={{width: '20px', height: '20px'}}/>
+                                            <img src={viberlogo} alt="Viber" style={{width: '2vh', height: '2vh'}}/>
                                         </button>
 
                                         <button
@@ -547,7 +547,7 @@ const ClientChangerUIArtem = ({thisOrder, setThisOrder}) => {
                                             style={{...buttonStyles.base, ...buttonStyles.iconButton}}
                                         >
                                             <img src={whatsapplogo} alt="WhatsApp"
-                                                 style={{width: '20px', height: '20px'}}/>
+                                                 style={{width: '2vh', height: '2vh'}}/>
                                         </button>
 
                                         <button
@@ -555,7 +555,7 @@ const ClientChangerUIArtem = ({thisOrder, setThisOrder}) => {
                                             title="Signal"
                                             style={{...buttonStyles.base, ...buttonStyles.iconButton}}
                                         >
-                                            <img src={signallogo} alt="Signal" style={{width: '20px', height: '20px'}}/>
+                                            <img src={signallogo} alt="Signal" style={{width: '2vh', height: '2vh'}}/>
                                         </button>
                                     </>
                                 )}
@@ -566,7 +566,7 @@ const ClientChangerUIArtem = ({thisOrder, setThisOrder}) => {
                                         title="Telegram"
                                         style={{...buttonStyles.base, ...buttonStyles.iconButton}}
                                     >
-                                        <img src={telegram} alt="Telegram" style={{width: '20px', height: '20px'}}/>
+                                        <img src={telegram} alt="Telegram" style={{width: '2vh', height: '2vh'}}/>
                                     </button>
                                 )}
 
@@ -579,10 +579,10 @@ const ClientChangerUIArtem = ({thisOrder, setThisOrder}) => {
                                         ...buttonStyles.actionButton,
                                         marginLeft: 'auto',
                                         float: 'right',
-                                        boxShadow: "0vh 0vh 2vh #1351e6",
+                                        // boxShadow: "0vh 0vh 2vh #1351e6",
                                     }}
                                 >
-                                    <i className="bi bi-person-lines-fill me-1"></i>
+                                    <i className="bi bi-person-lines-fill me-1 fontSize1-7VH"></i>
                                     Профіль клієнта
                                 </button>
                             </div>
@@ -611,7 +611,7 @@ const ClientChangerUIArtem = ({thisOrder, setThisOrder}) => {
                                     alignItems: 'center',
                                     justifyContent: 'center',
                                     background: "transparent",
-                                    boxShadow: "0vh 0vh 2vh #5a81bc",
+                                    // boxShadow: "0vh 0vh 2vh #5a81bc",
                                     color: '#5a81bc',
                                     marginRight: "0.5vw",
                             }}
@@ -626,7 +626,7 @@ const ClientChangerUIArtem = ({thisOrder, setThisOrder}) => {
                                     ...buttonStyles.base,
                                     ...buttonStyles.warning,
                                     ...buttonStyles.actionButton,
-                                    boxShadow: "0vh 0vh 2vh #f4c018",
+                                    // boxShadow: "0vh 0vh 2vh #f4c018",
                                     height: '4vh'
                                 }}
                             >
@@ -638,13 +638,15 @@ const ClientChangerUIArtem = ({thisOrder, setThisOrder}) => {
 
                     {/* Відображення списку користувачів */}
                     {load ? (
-                        <div className="text-center my-4">
+                        <div className="" style={{height: '48vh', overflowY: 'auto', boxShadow: "0vh 0vh 2vh #ffffff",
+                            color: "#ffffff", display: 'flex', alignItems: 'center', justifyContent: 'center'}}>
                             <Spinner animation="border" variant="primary"/>
                         </div>
                     ) : error ? (
-                        <div className="alert alert-danger">{error}</div>
+                        <div className="" style={{height: '48vh', overflowY: 'auto', boxShadow: "0vh 0vh 2vh #ffffff",
+                            color: "#ffffff"}}>{error}</div>
                     ) : (
-                        <div className="user-list" style={{maxHeight: '400px', overflowY: 'auto', boxShadow: "0vh 0vh 2vh #ffffff",
+                        <div className="user-list" style={{height: '48vh', overflowY: 'auto', boxShadow: "0vh 0vh 2vh #ffffff",
                         color: "#ffffff"}}>
                             {users.rows && users.rows.length > 0 ? (
                                 <ListGroup>

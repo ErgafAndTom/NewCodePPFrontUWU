@@ -17,6 +17,30 @@
 .fontSize0-7VW{
   font-size: 0.7vw;
 }
+.fontSize1VW{
+  font-size: 1vw;
+}
+.fontSize1-3VW{
+  font-size: 1.3vw;
+}
+.fontSize1-5VW{
+  font-size: 1.5vw;
+}
+.fontSize0-7VH{
+  font-size: 0.7vh;
+}
+.fontSize1VH{
+  font-size: 1vh;
+}
+.fontSize1-3VH{
+  font-size: 1.3vh;
+}
+.fontSize1-5VH{
+  font-size: 1.5vh;
+}
+.fontSize1-7VH{
+  font-size: 1.7vh;
+}
 
 /*@font-face {*/
 /*    */
