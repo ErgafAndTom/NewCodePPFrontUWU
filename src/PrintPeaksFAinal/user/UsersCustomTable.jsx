@@ -174,7 +174,7 @@ const UsersCustomTable = ({name}) => {
                      style={{
                          maxWidth: '99vw',
                          overflow: 'auto',
-                         height: "76vh",
+                         height: "82vh",
                          background: "transparent",
                          borderRadius: "0.5rem",
                          display: "flex",

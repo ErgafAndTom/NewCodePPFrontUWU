@@ -120,11 +120,6 @@ function PaysInOrderRestored({showPays, setShowPays, thisOrder, setThisOrder}) {
     };
 
     const generateDoc = (e, item) => {
-        // const dataToSend = {contractorId: item.id, thisOrderId: thisOrder.id};
-        // axios
-        //     .post(`/user/generateDoc`, dataToSend, {responseType: "blob"})
-        //     .then((response) => downloadBlob(response, "invoice.docx"))
-        //     .catch(handleAxiosError);
         let dataToSend = {
             supplierId: 1,
             buyerId: thisOrder.clientId
@@ -134,14 +129,6 @@ function PaysInOrderRestored({showPays, setShowPays, thisOrder, setThisOrder}) {
             .then((response) => downloadBlob(response, "invoice.docx"))
             .catch(handleAxiosError);
     };
-
-    // const generateDoc1 = (e, item) => {
-    //     const dataToSend = {contractorId: item.id, thisOrderId: thisOrder.id};
-    //     axios
-    //         .post(`/user/generateDoc1`, dataToSend, {responseType: "blob"})
-    //         .then((response) => downloadBlob(response, "invoice.docx"))
-    //         .catch(handleAxiosError);
-    // };
 
     const downloadBlob = (response, fallbackName) => {
         const contentDisposition = response.headers["content-disposition"];

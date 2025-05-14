@@ -22,7 +22,7 @@ const OneUnitInTable = ({itemData, tablPosition, item, metaItem, handleItemClick
             case 'discount': return '3.2vw';
 
             // За замовчуванням
-            default: return '3.966vw';
+            default: return '3.948vw';
 
         }
     };

@@ -209,7 +209,7 @@ const CustomStorageTable = ({name}) => {
                 <div className="CustomOrderTable-body "
                      style={{
                          maxWidth: '99vw',
-                         height: "76vh",
+                         height: "80vh",
                          // background: "transparent",
                          display: "flex",
                          flexDirection: "column"

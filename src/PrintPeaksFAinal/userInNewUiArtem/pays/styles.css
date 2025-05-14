@@ -1,11 +1,3 @@
-/*.AddContractorInOrderContainer {*/
-/*    font-family: sans-serif;*/
-/*    background: white;*/
-/*    width: 45vw;*/
-/*    padding: 2vh 2vw;*/
-/*    border-radius: 0.5vw;*/
-/*    box-sizing: border-box;*/
-/*}*/
 
 .AddContractorInOrderTitle {
     font-size: 1.5vw;
@@ -76,9 +68,6 @@
     font-size: 1vw;
     cursor: pointer;
 }
-
-
-
 
 .ContractorRow {
     background-color: #faf8f3;
