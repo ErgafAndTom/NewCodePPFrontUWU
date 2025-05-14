@@ -469,9 +469,9 @@ const NewUIArtem = () => {
                                     <div className="ClientsMenuAll" style={{
                                         fontFamily: 'inter, sans-serif',
                                         padding: '1vw',
-                                        width: '32.3vw',
+                                        width: '32.6vw',
                                         height: '31.8vh',
-                                        margin: 'auto',
+                                        marginLeft: '0.1vw',
                                         textAlign: 'left',
                                         backgroundColor: '#FBFAF6',
                                         borderRadius: '1vw',

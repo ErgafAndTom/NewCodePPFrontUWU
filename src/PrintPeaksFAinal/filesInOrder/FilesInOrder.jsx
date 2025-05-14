@@ -65,7 +65,7 @@ const FilesInOrder = ({thisOrder}) => {
     };
 
     return (
-        <div className="d-flex flex-column justify-content-between" style={{height: '88.1vh', background: 'transparent'}}>
+        <div className="d-flex flex-column justify-content-between" style={{height: '88.1vh', width: "5vw", background: 'transparent'}}>
             {/* Скрытый input для выбора файла */}
             <input
                 type="file"
@@ -73,7 +73,7 @@ const FilesInOrder = ({thisOrder}) => {
                 style={{ display: 'none' }}
                 onChange={handleFileChange}
             />
-            <div className="d-flex flex-column">
+            <div className="d-flex flex-column fontSize1VH">
                 {files && (
                     <div className="d-flex flex-column">
                         {files.map((item, iter2) => (

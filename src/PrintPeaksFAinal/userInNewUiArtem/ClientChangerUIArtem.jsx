@@ -4,7 +4,6 @@ import './ClientsMenuu.css';
 import www from "./www.svg";
 import whiteSVG from "../../components/whiteSVG.svg";
 import pays from "../Pays.png";
-import dockGenerate from "./dockGenerate.png";
 import axios from "../../api/axiosInstance";
 import Form from "react-bootstrap/Form";
 import ChangeClienticons from "./img/Group 1476.png";
@@ -15,16 +14,12 @@ import signallogo from "./img/signal.png";
 import whatsapplogo from "./img/whatsapp.png";
 import telegram from "./img/Telegram-icon-on-transparent-background-PNG.png";
 import FilesButton from "./img/files-icon.png";
-import addclienticons from "./img/Path 13360.png";
 import Tooltip from '../TooltipButton2';
 import {useNavigate} from "react-router-dom";
 import AddUserWindow from "../user/AddUserWindow";
 import {Button, Modal, Spinner, ListGroup, InputGroup} from "react-bootstrap";
-import NP from "./NP";
-import PaysInOrder from "./pays/PaysInOrder";
 import {buttonStyles, containerStyles, formStyles} from './styles';
 import PaysInOrderRestored from "./pays/PayInOrderRestored";
-import AddPaysInOrder from "./pays/AddPayInOrder";
 
 const ClientChangerUIArtem = ({thisOrder, setThisOrder}) => {
     const navigate = useNavigate();

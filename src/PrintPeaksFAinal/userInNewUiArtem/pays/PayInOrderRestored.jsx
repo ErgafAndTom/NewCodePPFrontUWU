@@ -19,6 +19,8 @@ function PaysInOrderRestored({showPays, setShowPays, thisOrder, setThisOrder}) {
     const [data, setData] = useState(null);
     const [error, setError] = useState(null);
 
+    const [showAllsOurContragents, setShowAllsOurContragents] = useState(false);
+
     // Delete‑flow
     const [thisOrderForDelete, setThisOrderForDelete] = useState(null);
     const [showDeleteOrderModal, setShowDeleteOrderModal] = useState(false);
