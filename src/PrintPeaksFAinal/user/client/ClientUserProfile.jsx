@@ -5,6 +5,7 @@ import {Link, useParams} from "react-router-dom";
 import Counterparty from '../../../components/usersettings/Counterparty';
 import { buttonStyles, containerStyles, formStyles, avatarStyles, tabStyles } from '../profile/styles';
 import axios from "../../../api/axiosInstance";
+import ContrAgentsInUserProfile from "../profile/ContrAgentsInUserProfile";
 
 function ClientUserProfile() {
     const dispatch = useDispatch();
@@ -21,7 +22,7 @@ function ClientUserProfile() {
     const [isLoad, setIsLoad] = useState(false);
     const [isError, setIsError] = useState(null);
 
-    const [thisUser, setThisUser] = useState(null);
+    const [thisUser, setThisUser] = useState({id: id});
 
     useEffect(() => {
         setIsLoad(true)
@@ -38,7 +39,7 @@ function ClientUserProfile() {
                 setIsLoad(false)
                 setIsError(error.message)
             })
-    }, [dispatch, user]);
+    }, [id]);
 
     const handleLogout = () => {
         dispatch(logout());
@@ -55,11 +56,11 @@ function ClientUserProfile() {
 
     if (isLoad) return <li>Загрузка...</li>;
     if (isError) return <li>Ошибка: {isError}</li>;
-    if (!thisUser) return <li>Пользователь не найден</li>;
+    if (!thisUser.role) return <li>Пользователь не найден</li>;
 
     return (
         <div style={containerStyles.profileContainer}>
-            <h2 style={containerStyles.header}>Профіль користувача {user.username}</h2>
+            <h2 style={containerStyles.header}>Профіль користувача ({thisUser.id})</h2>
 
             <div style={containerStyles.tabsContainer}>
                 <button
@@ -78,7 +79,7 @@ function ClientUserProfile() {
                     }}
                     onClick={() => setActiveTab('counterparties')}
                 >
-                    Контрагенти {thisUser.username} ({thisUser.firstName} {thisUser.lastName} {thisUser.familyName})
+                    Контрагенти ({thisUser.id}) ({thisUser.firstName} {thisUser.lastName} {thisUser.familyName})
                 </button>
             </div>
 
@@ -131,7 +132,8 @@ function ClientUserProfile() {
                         </>
                     ) : (
                         <>
-                            <li>Ім'я користувача: {thisUser.username}</li>
+                            <li>ID: {thisUser.id}</li>
+                            <li>Ім'я користувача: {thisUser.firstName} {thisUser.lastName} {thisUser.familyName} ({thisUser.phoneNumber})</li>
                             <li>Роль: {thisUser.role}</li>
                             <li>Спосіб оплати: {thisUser.paymentMethod || 'Не вказано'}</li>
                             {/*<button onClick={() => setEditMode(true)}>Редактировать профиль</button>*/}
@@ -140,30 +142,41 @@ function ClientUserProfile() {
 
                     <div style={{ display: 'flex', flexWrap: 'wrap', justifyContent: 'center', marginTop: '20px' }}>
                         <Link style={{textDecoration: 'none'}} to="/client/1/files">
-                            <button style={{...buttonStyles.filesButton}}>
+                            <button className="adminButtonAdd"
+                                    style={{
+                                        background: '#5d96ff',
+                                        padding: "0.5vw",
+                                        margin: "0.5vw",
+                                    }}
+                            >
                                 <i className="bi bi-folder me-2"></i>
-                                Файли
+                                Мої файли
                             </button>
                         </Link>
                         <Link style={{textDecoration: 'none'}} to="/client/1/orders">
-                            <button style={{...buttonStyles.ordersButton}}>
+                            <button className="adminButtonAdd"
+                                    style={{
+                                        padding: "0.5vw",
+                                        margin: "0.5vw",
+                                    }}
+                            >
                                 <i className="bi bi-cart me-2"></i>
-                                Замовлення
+                                Мої замовлення
                             </button>
                         </Link>
-                        <Link style={{textDecoration: 'none'}} to="/client/1/payments">
-                            <button style={{...buttonStyles.paymentsButton}}>
-                                <i className="bi bi-credit-card me-2"></i>
-                                Способи оплати
-                            </button>
-                        </Link>
+                        {/*<Link style={{textDecoration: 'none'}} to="/client/1/payments">*/}
+                        {/*    <button style={{...buttonStyles.paymentsButton}}>*/}
+                        {/*        <i className="bi bi-credit-card me-2"></i>*/}
+                        {/*        Способи оплати*/}
+                        {/*    </button>*/}
+                        {/*</Link>*/}
                     </div>
                 </div>
             )}
 
             {activeTab === 'counterparties' && (
                 <div style={containerStyles.contentContainer}>
-                    <Counterparty />
+                    <ContrAgentsInUserProfile user={thisUser}/>
                 </div>
             )}
         </div>

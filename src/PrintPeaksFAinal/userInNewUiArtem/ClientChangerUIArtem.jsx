@@ -142,7 +142,7 @@ const ClientChangerUIArtem = ({thisOrder, setThisOrder}) => {
                 url = `https://wa.me/${phoneNum}`;
                 break;
             case 'telegram':
-                url = thisOrder.client.telegramlogin ? `https://t.me/${thisOrder.client.telegramlogin}` : '';
+                url = thisOrder.client.telegram ? `https://t.me/${thisOrder.client.telegram}` : '';
                 break;
             default:
                 break;
@@ -215,14 +215,14 @@ const ClientChangerUIArtem = ({thisOrder, setThisOrder}) => {
                             {thisOrder.client.phoneNumber && (
                                 <div className="me-2">
                                     <i className="bi bi-telephone me-1"></i>
-                                    <span className="text-muted">{thisOrder.client.phoneNumber}</span>
+                                    <span className="text-muted fontSize0-7VW">{thisOrder.client.phoneNumber}</span>
                                 </div>
                             )}
 
                             {thisOrder.client.email && (
                                 <div className="me-2">
                                     <i className="bi bi-envelope me-1"></i>
-                                    <span className="text-muted">{thisOrder.client.email}</span>
+                                    <span className="text-muted fontSize0-7VW">{thisOrder.client.email}</span>
                                 </div>
                             )}
                         </div>
@@ -231,21 +231,21 @@ const ClientChangerUIArtem = ({thisOrder, setThisOrder}) => {
                             {thisOrder.client.address && (
                                 <div className="me-2">
                                     <i className="bi bi-geo-alt me-1"></i>
-                                    <span className="text-muted">{thisOrder.client.address}</span>
+                                    <span className="text-muted fontSize0-7VW">{thisOrder.client.address}</span>
                                 </div>
                             )}
 
                             {thisOrder.client.discount && (
                                 <div className="me-2">
                                     <i className="bi bi-percent me-1"></i>
-                                    <span className="text-success">Знижка: {thisOrder.client.discount}%</span>
+                                    <span className="text-success fontSize0-7VW">Знижка: {thisOrder.client.discount}%</span>
                                 </div>
                             )}
 
-                            {thisOrder.client.telegramlogin && (
+                            {thisOrder.client.telegram && (
                                 <div className="me-2">
                                     <i className="bi bi-telegram me-1"></i>
-                                    <span className="text-muted">@{thisOrder.client.telegramlogin}</span>
+                                    <span className="fontSize0-7VW" style={{color: "#000fa5"}}>{thisOrder.client.telegram}</span>
                                 </div>
                             )}
                         </div>
@@ -257,37 +257,76 @@ const ClientChangerUIArtem = ({thisOrder, setThisOrder}) => {
             {!show && thisOrder.client && thisOrder.client.phoneNumber && (
                 <div className="d-flex gap-1 mt-2 justify-content-between">
                     <div className="d-flex gap-1">
-                        <button
-                            onClick={() => openMessenger('viber')}
-                            title="Viber"
-                            style={{...buttonStyles.base, ...buttonStyles.iconButton}}
-                        >
-                            <img src={viberlogo} alt="Viber" style={{width: '16px', height: '16px'}}/>
-                        </button>
 
-                        <button
-                            onClick={() => openMessenger('whatsapp')}
-                            title="WhatsApp"
-                            style={{...buttonStyles.base, ...buttonStyles.iconButton}}
-                        >
-                            <img src={whatsapplogo} alt="WhatsApp" style={{width: '16px', height: '16px'}}/>
-                        </button>
+                        {thisOrder.client.viber && (
+                            <button
+                                onClick={() => openMessenger('viber')}
+                                title="Viber"
+                                style={{...buttonStyles.base, ...buttonStyles.iconButton}}
+                            >
+                                <img src={viberlogo} alt="Viber" style={{width: '16px', height: '16px'}}/>
+                            </button>
+                        )}
+                        {!thisOrder.client.viber && (
+                            <button
+                                title="Viber"
+                                style={{...buttonStyles.base, ...buttonStyles.iconButton}}
+                            >
+                                <img src={viberlogo} alt="Viber" style={{width: '16px', height: '16px', filter: 'grayscale(100%)', opacity: 0.5}}/>
+                            </button>
+                        )}
 
-                        <button
-                            onClick={() => openMessenger('signal')}
-                            title="Signal"
-                            style={{...buttonStyles.base, ...buttonStyles.iconButton}}
-                        >
-                            <img src={signallogo} alt="Signal" style={{width: '16px', height: '16px'}}/>
-                        </button>
+                        {thisOrder.client.whatsapp && (
+                            <button
+                                onClick={() => openMessenger('whatsapp')}
+                                title="WhatsApp"
+                                style={{...buttonStyles.base, ...buttonStyles.iconButton}}
+                            >
+                                <img src={whatsapplogo} alt="WhatsApp" style={{width: '16px', height: '16px'}}/>
+                            </button>
+                        )}
+                        {!thisOrder.client.whatsapp && (
+                            <button
+                                title="WhatsApp"
+                                style={{...buttonStyles.base, ...buttonStyles.iconButton}}
+                            >
+                                <img src={whatsapplogo} alt="WhatsApp" style={{width: '16px', height: '16px', filter: 'grayscale(100%)', opacity: 0.5}}/>
+                            </button>
+                        )}
 
-                        {thisOrder.client.telegramlogin && (
+                        {thisOrder.client.signal && (
+                            <button
+                                onClick={() => openMessenger('signal')}
+                                title="Signal"
+                                style={{...buttonStyles.base, ...buttonStyles.iconButton}}
+                            >
+                                <img src={signallogo} alt="Signal" style={{width: '16px', height: '16px'}}/>
+                            </button>
+                        )}
+                        {!thisOrder.client.signal && (
+                            <button
+                                title="Signal"
+                                style={{...buttonStyles.base, ...buttonStyles.iconButton}}
+                            >
+                                <img src={signallogo} alt="Signal" style={{width: '16px', height: '16px', filter: 'grayscale(100%)', opacity: 0.5}}/>
+                            </button>
+                        )}
+
+                        {thisOrder.client.telegram && (
                             <button
                                 onClick={() => openMessenger('telegram')}
                                 title="Telegram"
                                 style={{...buttonStyles.base, ...buttonStyles.iconButton}}
                             >
                                 <img src={telegram} alt="Telegram" style={{width: '16px', height: '16px'}}/>
+                            </button>
+                        )}
+                        {!thisOrder.client.telegram && (
+                            <button
+                                title="Telegram"
+                                style={{...buttonStyles.base, ...buttonStyles.iconButton}}
+                            >
+                                <img src={telegram} alt="Telegram" style={{width: '16px', height: '16px', filter: 'grayscale(100%)', opacity: 0.5}}/>
                             </button>
                         )}
 
@@ -466,13 +505,13 @@ const ClientChangerUIArtem = ({thisOrder, setThisOrder}) => {
                                         </div>
                                     )}
 
-                                    {thisOrder.client.telegramlogin && (
+                                    {thisOrder.client.telegram && (
                                         <div className="mb-2 d-flex">
                                             <div className="me-2" style={{width: '24px', textAlign: 'center'}}>
                                                 <i className="bi bi-telegram"></i>
                                             </div>
                                             <div>
-                                                <strong>Telegram:</strong> @{thisOrder.client.telegramlogin}
+                                                <strong>Telegram:</strong> @{thisOrder.client.telegram}
                                             </div>
                                         </div>
                                     )}
@@ -521,7 +560,7 @@ const ClientChangerUIArtem = ({thisOrder, setThisOrder}) => {
                                     </>
                                 )}
 
-                                {thisOrder.client.telegramlogin && (
+                                {thisOrder.client.telegram && (
                                     <button
                                         onClick={() => openMessenger('telegram')}
                                         title="Telegram"
@@ -639,8 +678,8 @@ const ClientChangerUIArtem = ({thisOrder, setThisOrder}) => {
                                                             {user.address && <div><i
                                                                 className="bi bi-geo-alt me-1"></i> {user.address}
                                                             </div>}
-                                                            {user.telegramlogin && <div><i
-                                                                className="bi bi-telegram me-1"></i> @{user.telegramlogin}
+                                                            {user.telegram && <div><i
+                                                                className="bi bi-telegram me-1"></i> {user.telegram}
                                                             </div>}
                                                             {user.discount > 0 &&
                                                                 <div><i className="bi bi-percent me-1"></i> <span

@@ -1,6 +1,7 @@
 import React, {useCallback, useEffect, useState} from 'react';
 import axios from '../../api/axiosInstance';
 import {Navigate, useNavigate} from "react-router-dom";
+import AddContrAgentInProfile from "../user/profile/AddContrAgentInProfile";
 
 function ModalDeleteOrder({thisOrderForDelete, showDeleteOrderModal, setThisOrderForDelete, setShowDeleteOrderModal, data, setData, url}) {
     const [load, setLoad] = useState(false);
@@ -105,7 +106,13 @@ function ModalDeleteOrder({thisOrderForDelete, showDeleteOrderModal, setThisOrde
                                 // borderRadius: "1vw",
                             }}
                         >
-                            Видалити {thisOrderForDelete.name}, {thisOrderForDelete.count}Шт, за ціною {thisOrderForDelete.priceForThis}грн?
+                            Видалити {thisOrderForDelete.name}
+                            {thisOrderForDelete.count && (
+                                <>, {thisOrderForDelete.count}Шт</>
+                            )}
+                            {thisOrderForDelete.priceForThis && (
+                                <>, за ціною {thisOrderForDelete.priceForThis}грн?</>
+                            )}
                         </div>
                         <div
                             className="d-flex justify-content-center align-content-center"
@@ -117,7 +124,7 @@ function ModalDeleteOrder({thisOrderForDelete, showDeleteOrderModal, setThisOrde
                         >
                             {!load && (
                                 <button
-                                    className="adminFontTable d-flex justify-content-center align-content-center hoverOrange"
+                                    className="adminButtonAdd hoverOrange"
                                     style={{
                                         padding: "0.5vw",
                                         margin: "0.5vw",
@@ -128,7 +135,7 @@ function ModalDeleteOrder({thisOrderForDelete, showDeleteOrderModal, setThisOrde
                             {load && (
                                 <button
                                     disabled
-                                    className="adminFontTable d-flex justify-content-center align-content-center hoverOrange"
+                                    className="adminButtonAdd hoverOrange"
                                     style={{
                                         padding: "0.5vw",
                                         margin: "0.5vw",
@@ -138,7 +145,7 @@ function ModalDeleteOrder({thisOrderForDelete, showDeleteOrderModal, setThisOrde
                             {error && (
                                 <button
                                     disabled
-                                    className="adminFontTable d-flex justify-content-center align-content-center hoverOrange"
+                                    className="adminButtonAdd hoverOrange"
                                     style={{
                                         padding: "0.5vw",
                                         margin: "0.5vw",
@@ -147,11 +154,11 @@ function ModalDeleteOrder({thisOrderForDelete, showDeleteOrderModal, setThisOrde
                             )}
                             {!load && (
                                 <button
-                                    className="adminFontTable d-flex justify-content-center align-content-center hoverOrange"
+                                    className="adminButtonAdd hoverOrange"
                                     style={{
+                                        background: '#ff5d5d',
                                         padding: "0.5vw",
                                         margin: "0.5vw",
-                                        background: '#ff5d5d',
                                     }}
                                     onClick={deleteThis}>Видалити</button>
                             )}

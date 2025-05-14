@@ -1,7 +1,7 @@
 import React, {useEffect, useState} from 'react';
 import '../Orders/CustomOrderTable.css';
 import axios from "../../api/axiosInstance";
-import {useNavigate} from "react-router-dom";
+import {Link, useNavigate} from "react-router-dom";
 import PaginationMy from "../../components/admin/pagination/PaginationMy";
 import Loader from "../../components/calc/Loader";
 import OneItemInTable from "../Storage/OneUnitInTable";
@@ -10,8 +10,9 @@ import ModalDeleteInStorage from "../Storage/ModalDeleteInStorage";
 import UserForm from "./UserForm";
 import {useDispatch} from "react-redux";
 import Button from "react-bootstrap/Button";
-import { translateColumnName } from "./translations";
+import {translateColumnName} from "./translations";
 import OneUnitInTable from "./OneUnitInTable";
+import {buttonStyles, formStyles} from "./profile/styles";
 
 // Основний компонент таблиці користувачів
 const UsersCustomTable = ({name}) => {
@@ -104,26 +105,40 @@ const UsersCustomTable = ({name}) => {
 
     // Функція для визначення ширини колонок - ОБОВ'ЯЗКОВО повинна бути така сама, як у OneUnitInTable.jsx
     const getColumnWidth = (columnName) => {
-        switch(columnName) {
+        switch (columnName) {
             // Спільні колонки
-            case 'id': return '2vw';
-            case 'createdAt': return '7vw';
-            case 'updatedAt': return '7vw';
+            case 'id':
+                return '2vw';
+            case 'createdAt':
+                return '7vw';
+            case 'updatedAt':
+                return '7vw';
 
             // Колонки користувачів
-            case 'username': return '6vw';
-            case 'firstName': return '6vw';
-            case 'lastName': return '6vw';
-            case 'familyName': return '6vw';
-            case 'email': return '8vw';
-            case 'phoneNumber': return '8vw';
-            case 'role': return '4vw';
-            case 'password': return '5vw';
-            case 'lastLoginAt': return '2.8vw';
-            case 'discount': return '3.2vw';
+            case 'username':
+                return '6vw';
+            case 'firstName':
+                return '6vw';
+            case 'lastName':
+                return '6vw';
+            case 'familyName':
+                return '6vw';
+            case 'email':
+                return '8vw';
+            case 'phoneNumber':
+                return '8vw';
+            case 'role':
+                return '4vw';
+            case 'password':
+                return '5vw';
+            case 'lastLoginAt':
+                return '2.8vw';
+            case 'discount':
+                return '3.2vw';
 
             // За замовчуванням
-            default: return '3.955vw';
+            default:
+                return '3.955vw';
         }
     };
 
@@ -134,38 +149,53 @@ const UsersCustomTable = ({name}) => {
                     {data.metadata.map((item, iter) => (
                         <div
                             style={{
-                            background: "#F2F0E7",
-                            cursor: "pointer",
-                            fontWeight: "600",
-                            fontSize: "0.6rem",
-                            display: "flex",
-                            alignItems: "center",
-                            justifyContent: "center",
-                            height: "auto",
-                            minHeight: "1vh",
-                            boxSizing: "border-box",
-                            textAlign: "center",
-                            width: getColumnWidth(item),
-                            maxWidth: getColumnWidth(item),
-                            minWidth: getColumnWidth(item),
-                            overflow: "hidden",
-                            whiteSpace: "pre-line", // Додано для підтримки переносів
-                            lineHeight: "1.7", // Збільшено для кращої читабельності
-                            borderRadius: "0rem",
+                                background: "#F2F0E7",
+                                cursor: "pointer",
+                                fontWeight: "600",
+                                fontSize: "0.6rem",
+                                display: "flex",
+                                alignItems: "center",
+                                justifyContent: "center",
+                                height: "auto",
+                                minHeight: "1vh",
+                                boxSizing: "border-box",
+                                textAlign: "center",
+                                width: getColumnWidth(item),
+                                maxWidth: getColumnWidth(item),
+                                minWidth: getColumnWidth(item),
+                                overflow: "hidden",
+                                whiteSpace: "pre-line", // Додано для підтримки переносів
+                                lineHeight: "1.7", // Збільшено для кращої читабельності
+                                borderRadius: "0rem",
                             }}
                             className="CustomOrderTable-header-cell"
                             key={item + iter}
                             onClick={(event) => setCol(item)}
                         >
                             {item === thisColumn.column ? (
-                                <div  style={{ display: 'flex', height: '4vh', alignItems: "center", justifyContent: "center", flexDirection: "row", cursor: "pointer", borderRadius: "none", }}>
-                                    <span style={{ whiteSpace: "pre-line", }}>{translateColumnName(item)}</span>
-                                    <span style={{ color: "#FAB416", fontSize: "1.2rem", position:'relative', right: "-0.2rem", cursor: "pointer", whiteSpace: "pre-line" }}>
+                                <div style={{
+                                    display: 'flex',
+                                    height: '4vh',
+                                    alignItems: "center",
+                                    justifyContent: "center",
+                                    flexDirection: "row",
+                                    cursor: "pointer",
+                                    borderRadius: "none",
+                                }}>
+                                    <span style={{whiteSpace: "pre-line",}}>{translateColumnName(item)}</span>
+                                    <span style={{
+                                        color: "#FAB416",
+                                        fontSize: "1.2rem",
+                                        position: 'relative',
+                                        right: "-0.2rem",
+                                        cursor: "pointer",
+                                        whiteSpace: "pre-line"
+                                    }}>
                                             {!thisColumn.reverse ? "↑" : "↓"}
                                         </span>
                                 </div>
                             ) : (
-                                <span style={{ whiteSpace: "pre-line",  }}>{translateColumnName(item)}</span>
+                                <span style={{whiteSpace: "pre-line",}}>{translateColumnName(item)}</span>
                             )}
                         </div>
                     ))}
@@ -185,24 +215,57 @@ const UsersCustomTable = ({name}) => {
                      }}>
                     {data.rows.map((item, iter) => (
                         <div key={item.id} className="table-row-container">
-                            <div className="CustomOrderTable-row" style={{
-                            }}>
+                            <div className="CustomOrderTable-row" style={{}}>
                                 {data.metadata.map((metaItem, iter2) => (
-                                    <OneUnitInTable
-                                        key={`${item.id}${iter}${iter2}`}
-                                        item={item}
-                                        metaItem={metaItem}
-                                        itemData={item[metaItem]}
-                                        tablPosition={metaItem}
-                                        handleItemClickRed={handleItemClickRed}
-                                    />
+                                    <>
+                                        {metaItem === "lastLoginAt" ? (
+                                            <Link className="CustomOrderTable-cell statusEnabled"
+                                                  style={{
+                                                      textDecoration: 'none',
+                                                      width: getColumnWidth(metaItem),
+                                                      minWidth: getColumnWidth(metaItem),
+                                                      maxWidth: getColumnWidth(metaItem),
+                                                      overflow: 'hidden',
+                                                      textOverflow: 'ellipsis',
+                                                      whiteSpace: 'nowrap',
+                                                      height: "auto",
+                                                      minHeight: "2vh",
+                                                      display: "flex",
+                                                      alignItems: "center",
+                                                      justifyContent: "center",
+                                                      fontSize: "1rem",
+                                                      boxSizing: "border-box",
+                                                      textAlign: "center",
+                                                      // background: "#FBFAF6",
+                                                      boxShadow: "0 1px 2px rgba(0,0,0,0.05)"
+                                                  }}
+                                                  to={`/client/${item.id}`}
+                                            >
+                                                <div className="" style={{
+                                                    background: "transparent",
+                                                    color: "#c1a537",
+                                                }}>
+                                                    ⋮
+                                                </div>
+                                            </Link>
+                                        ) : (
+                                            <OneUnitInTable
+                                                key={`${item.id}${iter}${iter2}`}
+                                                item={item}
+                                                metaItem={metaItem}
+                                                itemData={item[metaItem]}
+                                                tablPosition={metaItem}
+                                                handleItemClickRed={handleItemClickRed}
+                                            />
+                                        )}
+                                    </>
                                 ))}
                             </div>
                         </div>
                     ))}
                 </div>
-                
-                <div className="controls-row" >
+
+                <div className="controls-row">
                     <div className="pagination-container">
                         <PaginationMy
                             name={"User"}
@@ -219,7 +282,7 @@ const UsersCustomTable = ({name}) => {
                             thisColumn={thisColumn}
                         />
                     </div>
-                    <div className="right-group" style={{ display: "flex", alignItems: "center" }}>
+                    <div className="right-group" style={{display: "flex", alignItems: "center"}}>
                         <UserForm
                             data={data}
                             setData={setData}
@@ -230,10 +293,9 @@ const UsersCustomTable = ({name}) => {
                         />
 
 
-
                     </div>
                 </div>
-                
+
                 {showRed && (
                     <ModalStorageRed
                         dataTypeInTable={"string"}
@@ -260,7 +322,7 @@ const UsersCustomTable = ({name}) => {
                         url={`/user/OnlyOneField`}
                     />
                 )}
-                
+
                 {showDeleteItemModal && (
                     <ModalDeleteInStorage
                         showDeleteItemModal={showDeleteItemModal}
@@ -283,7 +345,7 @@ const UsersCustomTable = ({name}) => {
             </h1>
         );
     }
-    
+
     return (
         <h1 className="d-flex justify-content-center align-items-center">
             <Loader/>

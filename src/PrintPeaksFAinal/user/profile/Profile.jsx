@@ -4,6 +4,7 @@ import { fetchUser, logout, updateUser } from '../../../actions/authActions';
 import {Link} from "react-router-dom";
 import Counterparty from '../../../components/usersettings/Counterparty';
 import { buttonStyles, containerStyles, formStyles, avatarStyles, tabStyles } from './styles';
+import ContrAgentsInUserProfile from "./ContrAgentsInUserProfile";
 
 function Profile() {
     const dispatch = useDispatch();
@@ -125,26 +126,42 @@ function Profile() {
 
                     <div style={{ display: 'flex', flexWrap: 'wrap', justifyContent: 'center', marginTop: '20px' }}>
                         <Link style={{textDecoration: 'none'}} to="/myFiles">
-                            <button style={{...buttonStyles.filesButton}}>
+                            <button className="adminButtonAdd"
+                                    style={{
+                                        background: '#5d96ff',
+                                        padding: "0.5vw",
+                                        margin: "0.5vw",
+                                    }}
+                            >
                                 <i className="bi bi-folder me-2"></i>
                                 Мої файли
                             </button>
                         </Link>
                         <Link style={{textDecoration: 'none'}} to="/myOrders">
-                            <button style={{...buttonStyles.ordersButton}}>
+                            <button className="adminButtonAdd"
+                                    style={{
+                                        padding: "0.5vw",
+                                        margin: "0.5vw",
+                                    }}
+                            >
                                 <i className="bi bi-cart me-2"></i>
                                 Мої замовлення
                             </button>
                         </Link>
-                        <Link style={{textDecoration: 'none'}} to="/myPayments">
-                            <button style={{...buttonStyles.paymentsButton}}>
-                                <i className="bi bi-credit-card me-2"></i>
-                                Мої способи оплати
-                            </button>
-                        </Link>
+                        {/*<Link style={{textDecoration: 'none'}} to="/myPayments">*/}
+                        {/*    <button style={{...buttonStyles.paymentsButton}}>*/}
+                        {/*        <i className="bi bi-credit-card me-2"></i>*/}
+                        {/*        Мої способи оплати*/}
+                        {/*    </button>*/}
+                        {/*</Link>*/}
                         <button 
                             onClick={handleLogout}
-                            style={{...buttonStyles.logoutButton}}
+                            className="adminButtonAdd"
+                            style={{
+                                background: '#ff5d5d',
+                                padding: "0.5vw",
+                                margin: "0.5vw",
+                            }}
                         >
                             <i className="bi bi-box-arrow-right me-2"></i>
                             Вийти
@@ -155,7 +172,7 @@ function Profile() {
 
             {activeTab === 'counterparties' && (
                 <div style={containerStyles.contentContainer}>
-                    <Counterparty />
+                    <ContrAgentsInUserProfile user={user}/>
                 </div>
             )}
         </div>
