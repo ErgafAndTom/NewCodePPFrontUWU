@@ -44,7 +44,7 @@ function AddContrAgentInProfile({ showAddPay, setShowAddPay, formData, setFormDa
             formData: formData,
             contractorId: showAddPayWriteId
         };
-        axios.post(`/user/updatePayment`, dataToSend)
+        axios.post(`/api/contractorsN/updateContractor`, dataToSend)
             .then(response => {
                 console.log(response.data);
                 setData(prevData =>
@@ -73,7 +73,7 @@ function AddContrAgentInProfile({ showAddPay, setShowAddPay, formData, setFormDa
             formData: formData,
             clientId: user.id,
         };
-        axios.post(`/user/addPayment`, dataToSend)
+        axios.post(`/api/contractorsN/addContractor`, dataToSend)
             .then(response => {
                 console.log(response.data);
                 setData([

@@ -44,7 +44,7 @@ function AddPaysInOrder({ showAddPay, setShowAddPay, formData, setFormData, data
             formData: formData,
             contractorId: showAddPayWriteId
         };
-        axios.post(`/user/updatePayment`, dataToSend)
+        axios.post(`/api/contractorsN/updateContractor`, dataToSend)
             .then(response => {
                 console.log(response.data);
                 setData(prevData =>
@@ -73,7 +73,7 @@ function AddPaysInOrder({ showAddPay, setShowAddPay, formData, setFormData, data
             formData: formData,
             clientId: thisOrder.clientId,
         };
-        axios.post(`/user/addPayment`, dataToSend)
+        axios.post(`/api/contractorsN/addContractor`, dataToSend)
             .then(response => {
                 console.log(response.data);
                 setData([
@@ -250,12 +250,12 @@ function AddPaysInOrder({ showAddPay, setShowAddPay, formData, setFormData, data
 
                                 {showAddPayView &&
                                     <div className="AddContractorInOrderSubmitBlock">
-                                        <button className="AddContractorInOrderSubmitBtn" onClick={handleSubmitUpdate}>Редагувати</button>
+                                        <button className="adminButtonAdd" style={{background: "lightgray", fontSize: "1.2vh"}} onClick={handleSubmitUpdate}>Редагувати</button>
                                     </div>
                                 }
                                 {!showAddPayView &&
                                     <div className="AddContractorInOrderSubmitBlock">
-                                        <button type="submit" className="AddContractorInOrderSubmitBtn" onClick={handleSubmitAdd}>Додати</button>
+                                        <button type="submit" className="adminButtonAdd" style={{background: "lightgray", fontSize: "1.2vh"}} onClick={handleSubmitAdd}>Додати</button>
                                     </div>
                                 }
 

@@ -5,14 +5,13 @@ import React, {useState, useEffect} from "react";
 import axios from "../../../api/axiosInstance";
 import {useNavigate} from "react-router-dom";
 import {Spinner} from "react-bootstrap";
-import PaysInOrderRestoredForOurC from "./PaysInOrderRestoredForOurC";
 
 /**
  * RESTORED VERSION — 04 May 2025
  * Оригінальна логіка на «showPays / setShowPays» із плавною анімацією, списком реквізитів
  * та генерацією документів (накладна / акт, рахунок).
  */
-function PaysInOrderRestored({showPays, setShowPays, thisOrder, setThisOrder}) {
+function PaysInOrderRestoredForOurC({showPays, setShowPays, thisOrder, setThisOrder}) {
     const navigate = useNavigate();
 
     // ──────────────────────────── STATE ────────────────────────────
@@ -172,7 +171,7 @@ function PaysInOrderRestored({showPays, setShowPays, thisOrder, setThisOrder}) {
 
         setLoad(true);
         axios
-            .post(`/api/contractorsN/getContractors`, payload)
+            .post(`/user/getContractors`, payload)
             .then((response) => {
                 setData(response.data.rows);
                 setPageCount(Math.ceil(response.data.count / inPageCount));
@@ -203,11 +202,11 @@ function PaysInOrderRestored({showPays, setShowPays, thisOrder, setThisOrder}) {
             <div
                 onClick={handleClose}
                 style={{
-                    width: "100vw",
-                    height: "100vh",
+                    width: "150vw",
+                    height: "150vh",
                     position: "fixed",
-                    left: 0,
-                    top: 0,
+                    left: "-5vw",
+                    top: "-5vh",
                     background: "rgba(0,0,0,0.2)",
                     opacity: isAnimating ? 1 : 0,
                     transition: "opacity .3s ease-in-out",
@@ -237,9 +236,7 @@ function PaysInOrderRestored({showPays, setShowPays, thisOrder, setThisOrder}) {
             >
                 {/* Header */}
                 <div className="d-flex">
-                    {thisOrder && thisOrder.client &&
-                        <div className="m-auto text-center fontProductName">Реквізити user {thisOrder.client.username} - {thisOrder.client.firstName} {thisOrder.client.lastName} {thisOrder.client.familyName} (ID {thisOrder.client.id})</div>
-                    }
+                    <div className="m-auto text-center fontProductName">Реквізити Постачальника(PrintPeaks)</div>
                     <button className="btn btn-close btn-lg" style={{margin: "0.5vw"}} onClick={handleClose}/>
                 </div>
 
@@ -327,23 +324,6 @@ function PaysInOrderRestored({showPays, setShowPays, thisOrder, setThisOrder}) {
                         />
                     )}
 
-                    {showAllsOurContragents && (
-                        <PaysInOrderRestoredForOurC
-                            showPays={showAllsOurContragents}
-                            setShowPays={setShowAllsOurContragents}
-                            formData={formData}
-                            setFormData={setFormData}
-                            thisOrder={thisOrder}
-                            setThisOrder={setThisOrder}
-                            data={data}
-                            setData={setData}
-                            showAddPayView={showAddPayView}
-                            setShowAddPayView={setShowAddPayView}
-                            showAddPayWriteId={showAddPayWriteId}
-                            setShowAddPayWriteId={setShowAddPayWriteId}
-                        />
-                    )}
-
                     <ModalDeleteOrder
                         showDeleteOrderModal={showDeleteOrderModal}
                         setShowDeleteOrderModal={setShowDeleteOrderModal}
@@ -359,4 +339,4 @@ function PaysInOrderRestored({showPays, setShowPays, thisOrder, setThisOrder}) {
     );
 }
 
-export default PaysInOrderRestored;
+export default PaysInOrderRestoredForOurC;

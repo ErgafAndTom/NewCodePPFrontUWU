@@ -158,7 +158,7 @@ function ContrAgentsInUserProfile({user}) {
 
         setLoad(true);
         axios
-            .post(`/user/getPayments`, payload)
+            .post(`/api/contractorsN/getContractors`, payload)
             .then((response) => {
                 setData(response.data.rows);
                 setPageCount(Math.ceil(response.data.count / inPageCount));
@@ -318,7 +318,7 @@ function ContrAgentsInUserProfile({user}) {
                         setThisOrderForDelete={setThisOrderForDelete}
                         data={data}
                         setData={setData}
-                        url="/user/deletePayment"
+                        url="/api/contractorsN/deleteContractor"
                     />
                 </div>
             </div>
