@@ -171,7 +171,7 @@ function PaysInOrderRestoredForOurC({showPays, setShowPays, thisOrder, setThisOr
 
         setLoad(true);
         axios
-            .post(`/user/getContractors`, payload)
+            .post(`/api/contractorsN/getPPContractors`, payload)
             .then((response) => {
                 setData(response.data.rows);
                 setPageCount(Math.ceil(response.data.count / inPageCount));
@@ -226,8 +226,8 @@ function PaysInOrderRestoredForOurC({showPays, setShowPays, thisOrder, setThisOr
                     opacity: isAnimating ? 1 : 0,
                     transition: "opacity .3s, transform .3s",
                     backgroundColor: "#FBFAF6",
-                    width: "95vw",
-                    height: "95vh",
+                    width: "80vw",
+                    height: "90vh",
                     borderRadius: "1vw",
                     zIndex: 101,
                     display: "flex",
@@ -236,7 +236,7 @@ function PaysInOrderRestoredForOurC({showPays, setShowPays, thisOrder, setThisOr
             >
                 {/* Header */}
                 <div className="d-flex">
-                    <div className="m-auto text-center fontProductName">Реквізити Постачальника(PrintPeaks)</div>
+                    <div className="m-auto text-center fontProductName">Реквізити Постачальник/Виконавець(PrintPeaks?)</div>
                     <button className="btn btn-close btn-lg" style={{margin: "0.5vw"}} onClick={handleClose}/>
                 </div>
 
@@ -252,49 +252,51 @@ function PaysInOrderRestoredForOurC({showPays, setShowPays, thisOrder, setThisOr
                         <table className="ContractorTable w-100">
                             <thead>
                             <tr className="ContractorRow">
-                                <th>№</th>
-                                <th>Найменування</th>
-                                <th>Податкова система</th>
-                                <th>Тел</th>
-                                <th>E-mail</th>
-                                <th>НДС/ПДВ</th>
-                                <th>юзер/клієнт</th>
-                                <th>last оновл.</th>
-                                <th></th>
+                                <th className="fontSize1VH">№</th>
+                                <th className="fontSize1VH">Найменування</th>
+                                <th className="fontSize1VH">Найменування Contractor</th>
+                                <th className="fontSize1VH">Податкова система</th>
+                                <th className="fontSize1VH">Тел</th>
+                                <th className="fontSize1VH">E-mail</th>
+                                <th className="fontSize1VH">НДС/ПДВ</th>
+                                <th className="fontSize1VH">юзер/клієнт</th>
+                                <th className="fontSize1VH">last оновл.</th>
+                                <th className="fontSize1VH">Дії</th>
                             </tr>
                             </thead>
                             <tbody>
                             {data?.map((item, idx) => (
                                 <tr className="ContractorRow" key={item.id}>
-                                    <td className="ContractorCell">{idx + 1}</td>
-                                    <td className="ContractorCell ContractorName">{item.name}</td>
-                                    <td className="ContractorCell">{item.taxSystem}</td>
-                                    <td className="ContractorCell">{item.phone}</td>
-                                    <td className="ContractorCell">{item.email}</td>
-                                    <td className="ContractorCell">{item.pdv ? '+' : '-'}</td>
-                                    <td className="ContractorCell">{`${thisOrder.client.firstName} ${thisOrder.client.lastName} ${thisOrder.client.familyName} (${thisOrder.client.phoneNumber})`}</td>
-                                    <td className="ContractorCell">{`${new Date(thisOrder.updatedAt).toLocaleDateString()} ${new Date(thisOrder.updatedAt).toLocaleTimeString()}`}</td>
-                                    <td className="ContractorCell ContractorActions">
-                                        <button className="adminButtonAdd" style={{background: "lightgray", fontSize: "1.2vh"}}
-                                                onClick={(e) => generateInvoice(e, item)}>
-                                            Генерим инвойс
-                                        </button>
+                                    <td className="ContractorCell fontSize1VH">{idx + 1}</td>
+                                    <td className="ContractorCell ContractorName fontSize1VH">{item.name}</td>
+                                    <td className="ContractorCell fontSize1VH">{item.Contractor.name}</td>
+                                    <td className="ContractorCell fontSize1VH">{item.Contractor.taxSystem}</td>
+                                    <td className="ContractorCell fontSize1VH">{item.Contractor.phone}</td>
+                                    <td className="ContractorCell fontSize1VH">{item.Contractor.email}</td>
+                                    <td className="ContractorCell fontSize1VH">{item.Contractor.pdv ? '+' : '-'}</td>
+                                    <td className="ContractorCell fontSize1VH">{`${item.Contractor.User.firstName} ${item.Contractor.User.lastName} ${item.Contractor.User.familyName} (${item.Contractor.User.phoneNumber})`}</td>
+                                    <td className="ContractorCell fontSize1VH">{`${new Date(item.updatedAt).toLocaleDateString()} ${new Date(item.updatedAt).toLocaleTimeString()}`}</td>
+                                    <td className="ContractorCell ContractorActions fontSize1VH">
+                                        {/*<button className="ContractorViewBtn" style={{background: "green"}}*/}
+                                        {/*        onClick={(e) => generateInvoice(e, item)}>*/}
+                                        {/*    Генерим инвойс + получаем*/}
+                                        {/*</button>*/}
                                         {/*<button className="ContractorViewBtn" style={{background: "green"}}*/}
                                         {/*        onClick={(e) => generateDoc1(e, item)}>*/}
                                         {/*    Рахунок*/}
                                         {/*</button>*/}
-                                        <button className="adminButtonAdd" style={{fontSize: "1.2vh"}} onClick={(e) => openSeePay(e, item)}>
-                                            Переглянути/Редагувати
+                                        <button className="adminButtonAdd" onClick={(e) => openSeePay(e, item)}>
+                                            Invoice з цим Постачальник/Виконавець
                                         </button>
-                                        <button
-                                            // className="ContractorMoreBtn"
-                                            className="adminButtonAdd"
-                                            style={{background: "brown", fontSize: "1.2vh"}}
-                                            onClick={(e) => openDeletePay(e, item)}
-                                        >
-                                            {/*⋮*/}
-                                            Видалити
-                                        </button>
+                                        {/*<button*/}
+                                        {/*    // className="ContractorMoreBtn"*/}
+                                        {/*    className="adminButtonAdd"*/}
+                                        {/*    style={{background: '#ff5d5d',}}*/}
+                                        {/*    onClick={(e) => openDeletePay(e, item)}*/}
+                                        {/*>*/}
+                                        {/*    /!*⋮*!/*/}
+                                        {/*    Видалити*/}
+                                        {/*</button>*/}
                                     </td>
                                 </tr>
                             ))}
@@ -302,37 +304,37 @@ function PaysInOrderRestoredForOurC({showPays, setShowPays, thisOrder, setThisOr
                         </table>
                     )}
 
-                    <button className="adminButtonAdd mt-3" style={{background: "lightgray", fontSize: "1.2vh"}} onClick={openAddPay}>
-                        Додати контрагента
-                    </button>
+                    {/*<button className="adminButtonAdd mt-3" style={{background: "lightgray", fontSize: "1.2vh"}} onClick={openAddPay}>*/}
+                    {/*    Додати контрагента*/}
+                    {/*</button>*/}
 
                     {/* Nested modals */}
-                    {showAddPay && (
-                        <AddPaysInOrder
-                            showAddPay={showAddPay}
-                            setShowAddPay={setShowAddPay}
-                            formData={formData}
-                            setFormData={setFormData}
-                            thisOrder={thisOrder}
-                            setThisOrder={setThisOrder}
-                            data={data}
-                            setData={setData}
-                            showAddPayView={showAddPayView}
-                            setShowAddPayView={setShowAddPayView}
-                            showAddPayWriteId={showAddPayWriteId}
-                            setShowAddPayWriteId={setShowAddPayWriteId}
-                        />
-                    )}
+                    {/*{showAddPay && (*/}
+                    {/*    <AddPaysInOrder*/}
+                    {/*        showAddPay={showAddPay}*/}
+                    {/*        setShowAddPay={setShowAddPay}*/}
+                    {/*        formData={formData}*/}
+                    {/*        setFormData={setFormData}*/}
+                    {/*        thisOrder={thisOrder}*/}
+                    {/*        setThisOrder={setThisOrder}*/}
+                    {/*        data={data}*/}
+                    {/*        setData={setData}*/}
+                    {/*        showAddPayView={showAddPayView}*/}
+                    {/*        setShowAddPayView={setShowAddPayView}*/}
+                    {/*        showAddPayWriteId={showAddPayWriteId}*/}
+                    {/*        setShowAddPayWriteId={setShowAddPayWriteId}*/}
+                    {/*    />*/}
+                    {/*)}*/}
 
-                    <ModalDeleteOrder
-                        showDeleteOrderModal={showDeleteOrderModal}
-                        setShowDeleteOrderModal={setShowDeleteOrderModal}
-                        thisOrderForDelete={thisOrderForDelete}
-                        setThisOrderForDelete={setThisOrderForDelete}
-                        data={data}
-                        setData={setData}
-                        url="/api/contractorsN/deleteContractor"
-                    />
+                    {/*<ModalDeleteOrder*/}
+                    {/*    showDeleteOrderModal={showDeleteOrderModal}*/}
+                    {/*    setShowDeleteOrderModal={setShowDeleteOrderModal}*/}
+                    {/*    thisOrderForDelete={thisOrderForDelete}*/}
+                    {/*    setThisOrderForDelete={setThisOrderForDelete}*/}
+                    {/*    data={data}*/}
+                    {/*    setData={setData}*/}
+                    {/*    url="/api/contractorsN/deleteContractor"*/}
+                    {/*/>*/}
                 </div>
             </div>
         </div>

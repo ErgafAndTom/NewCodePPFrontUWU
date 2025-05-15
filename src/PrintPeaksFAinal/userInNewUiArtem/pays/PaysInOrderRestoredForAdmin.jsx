@@ -234,31 +234,31 @@ function PaysInOrderRestoredForAdmin({user}) {
                         <table className="ContractorTable w-100">
                             <thead>
                             <tr className="ContractorRow">
-                                <th>№</th>
-                                <th>Найменування</th>
-                                <th>Найменування Contractor</th>
-                                <th>Податкова система</th>
-                                <th>Тел</th>
-                                <th>E-mail</th>
-                                <th>НДС/ПДВ</th>
-                                <th>юзер/клієнт</th>
-                                <th>last оновл.</th>
-                                <th></th>
+                                <th className="fontSize1VH">№</th>
+                                <th className="fontSize1VH">Найменування</th>
+                                <th className="fontSize1VH">Найменування Contractor</th>
+                                <th className="fontSize1VH">Податкова система</th>
+                                <th className="fontSize1VH">Тел</th>
+                                <th className="fontSize1VH">E-mail</th>
+                                <th className="fontSize1VH">НДС/ПДВ</th>
+                                <th className="fontSize1VH">юзер/клієнт</th>
+                                <th className="fontSize1VH">last оновл.</th>
+                                <th className="fontSize1VH">Дії</th>
                             </tr>
                             </thead>
                             <tbody>
                             {data?.map((item, idx) => (
                                 <tr className="ContractorRow" key={item.id}>
-                                    <td className="ContractorCell">{idx + 1}</td>
-                                    <td className="ContractorCell ContractorName">{item.name}</td>
-                                    <td className="ContractorCell ContractorName">{item.Contractor.name}</td>
-                                    <td className="ContractorCell">{item.Contractor.taxSystem}</td>
-                                    <td className="ContractorCell">{item.Contractor.phone}</td>
-                                    <td className="ContractorCell">{item.Contractor.email}</td>
-                                    <td className="ContractorCell">{item.Contractor.pdv ? '+' : '-'}</td>
-                                    <td className="ContractorCell">{`${item.Contractor.User.firstName} ${item.Contractor.User.lastName} ${item.Contractor.User.familyName} (${item.Contractor.User.phoneNumber})`}</td>
-                                    <td className="ContractorCell">{`${new Date(item.updatedAt).toLocaleDateString()} ${new Date(item.updatedAt).toLocaleTimeString()}`}</td>
-                                    <td className="ContractorCell ContractorActions">
+                                    <td className="ContractorCell fontSize1VH">{idx + 1}</td>
+                                    <td className="ContractorCell ContractorName fontSize1VH">{item.name}</td>
+                                    <td className="ContractorCell fontSize1VH">{item.Contractor.name}</td>
+                                    <td className="ContractorCell fontSize1VH">{item.Contractor.taxSystem}</td>
+                                    <td className="ContractorCell fontSize1VH">{item.Contractor.phone}</td>
+                                    <td className="ContractorCell fontSize1VH">{item.Contractor.email}</td>
+                                    <td className="ContractorCell fontSize1VH">{item.Contractor.pdv ? '+' : '-'}</td>
+                                    <td className="ContractorCell fontSize1VH">{`${item.Contractor.User.firstName} ${item.Contractor.User.lastName} ${item.Contractor.User.familyName} (${item.Contractor.User.phoneNumber})`}</td>
+                                    <td className="ContractorCell fontSize1VH">{`${new Date(item.updatedAt).toLocaleDateString()} ${new Date(item.updatedAt).toLocaleTimeString()}`}</td>
+                                    <td className="ContractorCell ContractorActions fontSize1VH">
                                         {/*<button className="ContractorViewBtn" style={{background: "green"}}*/}
                                         {/*        onClick={(e) => generateInvoice(e, item)}>*/}
                                         {/*    Генерим инвойс + получаем*/}

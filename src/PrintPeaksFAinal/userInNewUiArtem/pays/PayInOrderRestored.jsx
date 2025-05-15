@@ -172,7 +172,7 @@ function PaysInOrderRestored({showPays, setShowPays, thisOrder, setThisOrder}) {
 
         setLoad(true);
         axios
-            .post(`/api/contractorsN/getContractorsAdmin`, payload)
+            .post(`/api/contractorsN/getContractors`, payload)
             .then((response) => {
                 setData(response.data.rows);
                 setPageCount(Math.ceil(response.data.count / inPageCount));
@@ -238,7 +238,7 @@ function PaysInOrderRestored({showPays, setShowPays, thisOrder, setThisOrder}) {
                 {/* Header */}
                 <div className="d-flex">
                     {thisOrder && thisOrder.client &&
-                        <div className="m-auto text-center fontProductName">Реквізити user {thisOrder.client.username} - {thisOrder.client.firstName} {thisOrder.client.lastName} {thisOrder.client.familyName} (ID {thisOrder.client.id})</div>
+                        <div className="m-auto text-center fontProductName">Реквізити Платник/Отримувач {thisOrder.client.username} - {thisOrder.client.firstName} {thisOrder.client.lastName} {thisOrder.client.familyName} (ID {thisOrder.client.id})</div>
                     }
                     <button className="btn btn-close btn-lg" style={{margin: "0.5vw"}} onClick={handleClose}/>
                 </div>
@@ -280,7 +280,7 @@ function PaysInOrderRestored({showPays, setShowPays, thisOrder, setThisOrder}) {
                                     <td className="ContractorCell ContractorActions">
                                         <button className="adminButtonAdd" style={{background: "lightgray", fontSize: "1.2vh"}}
                                                 onClick={(e) => generateInvoice(e, item)}>
-                                            Генерим инвойс
+                                            Инвойс+
                                         </button>
                                         {/*<button className="ContractorViewBtn" style={{background: "green"}}*/}
                                         {/*        onClick={(e) => generateDoc1(e, item)}>*/}
