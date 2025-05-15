@@ -1,26 +1,24 @@
 import "./styles.css";
-import AddPaysInOrder from "./AddPayInOrder";
+// import AddPaysInOrder from "./AddPayInOrder";
 import ModalDeleteOrder from "../../Orders/ModalDeleteOrder";
 import React, {useState, useEffect} from "react";
 import axios from "../../../api/axiosInstance";
 import {useNavigate} from "react-router-dom";
 import {Spinner} from "react-bootstrap";
-import PaysInOrderRestoredForOurC from "./PaysInOrderRestoredForOurC";
+import AddContrAgentInProfileAdmin from "./AddContrAgentInProfileAdmin";
 
 /**
  * RESTORED VERSION — 04 May 2025
  * Оригінальна логіка на «showPays / setShowPays» із плавною анімацією, списком реквізитів
  * та генерацією документів (накладна / акт, рахунок).
  */
-function PaysInOrderRestored({showPays, setShowPays, thisOrder, setThisOrder}) {
+function PaysInOrderRestoredForAdmin({user}) {
     const navigate = useNavigate();
 
     // ──────────────────────────── STATE ────────────────────────────
     const [load, setLoad] = useState(false);
     const [data, setData] = useState(null);
     const [error, setError] = useState(null);
-
-    const [showAllsOurContragents, setShowAllsOurContragents] = useState(false);
 
     // Delete‑flow
     const [thisOrderForDelete, setThisOrderForDelete] = useState(null);
@@ -58,13 +56,13 @@ function PaysInOrderRestored({showPays, setShowPays, thisOrder, setThisOrder}) {
     const [isAnimating, setIsAnimating] = useState(false);
 
     // ──────────────────────────── HELPERS ────────────────────────────
-    const handleClose = () => {
-        setIsAnimating(false);
-        setTimeout(() => {
-            setIsVisible(false);
-            setShowPays(false);
-        }, 300);
-    };
+    // const handleClose = () => {
+    //     setIsAnimating(false);
+    //     setTimeout(() => {
+    //         setIsVisible(false);
+    //         setActiveContrAgentTab(false);
+    //     }, 300);
+    // };
 
     const openAddPay = () => {
         setShowAddPay(!showAddPay);
@@ -81,6 +79,8 @@ function PaysInOrderRestored({showPays, setShowPays, thisOrder, setThisOrder}) {
             taxSystem: "",
             pdv: "",
             comment: "",
+            contractorId: "",
+            contractorName: "",
         });
     };
 
@@ -91,15 +91,8 @@ function PaysInOrderRestored({showPays, setShowPays, thisOrder, setThisOrder}) {
         setFormData({
             name: item.name,
             type: item.type,
-            address: item.address,
-            bankName: item.bankName,
-            iban: item.iban,
-            edrpou: item.edrpou,
-            email: item.email,
-            phone: item.phone,
-            taxSystem: item.taxSystem,
-            pdv: item.pdv,
-            comment: item.comment,
+            contractorId: item.id,
+            contractorName: item.Contractor.name
         });
     };
 
@@ -108,49 +101,37 @@ function PaysInOrderRestored({showPays, setShowPays, thisOrder, setThisOrder}) {
         setThisOrderForDelete(item);
     };
 
-    const generateInvoice = (e, item) => {
-        setShowAllsOurContragents(true)
-        e.preventDefault();
-        // setLoad(true);
-        // axios
-        //     .post(
-        //         `/api/invoices/from-order/${thisOrder.id}/document`,
-        //         { supplierId: thisOrder.executorId, buyerId: item.id },
-        //         { responseType: "blob" }
-        //     )
-        //     .then(resp => downloadBlob(resp, `invoice_${thisOrder.id}.docx`))
-        //     .catch(handleAxiosError)
-        //     .finally(() => setLoad(false));
-    };
+    // const generateInvoice = (e, item) => {
+    //     e.preventDefault();
+    //     setLoad(true);
+    //     axios
+    //         .post(
+    //             `/api/invoices/from-order/${thisOrder.id}/document`,
+    //             { supplierId: thisOrder.executorId, buyerId: item.id },
+    //             { responseType: "blob" }
+    //         )
+    //         .then(resp => downloadBlob(resp, `invoice_${thisOrder.id}.docx`))
+    //         .catch(handleAxiosError)
+    //         .finally(() => setLoad(false));
+    // };
 
-    const generateDoc = (e, item) => {
-        let dataToSend = {
-            supplierId: 1,
-            buyerId: thisOrder.clientId
-        }
-        axios
-            .post(`/api/invoices/from-order/${thisOrder.id}/document`, dataToSend, {responseType: "blob"})
-            .then((response) => downloadBlob(response, "invoice.docx"))
-            .catch(handleAxiosError);
-    };
-
-    const downloadBlob = (response, fallbackName) => {
-        const contentDisposition = response.headers["content-disposition"];
-        let fileName = fallbackName;
-        if (contentDisposition) {
-            const match = contentDisposition.match(/filename="(.+)"/);
-            if (match?.length === 2) fileName = match[1];
-        }
-
-        const url = window.URL.createObjectURL(new Blob([response.data]));
-        const link = document.createElement("a");
-        link.href = url;
-        link.setAttribute("download", fileName);
-        document.body.appendChild(link);
-        link.click();
-        link.remove();
-        window.URL.revokeObjectURL(url);
-    };
+    // const downloadBlob = (response, fallbackName) => {
+    //     const contentDisposition = response.headers["content-disposition"];
+    //     let fileName = fallbackName;
+    //     if (contentDisposition) {
+    //         const match = contentDisposition.match(/filename="(.+)"/);
+    //         if (match?.length === 2) fileName = match[1];
+    //     }
+    //
+    //     const url = window.URL.createObjectURL(new Blob([response.data]));
+    //     const link = document.createElement("a");
+    //     link.href = url;
+    //     link.setAttribute("download", fileName);
+    //     document.body.appendChild(link);
+    //     link.click();
+    //     link.remove();
+    //     window.URL.revokeObjectURL(url);
+    // };
 
     const handleAxiosError = (error) => {
         if (error.response?.status === 403) navigate("/login");
@@ -167,13 +148,13 @@ function PaysInOrderRestored({showPays, setShowPays, thisOrder, setThisOrder}) {
             columnName: thisColumn,
             startDate,
             endDate,
-            clientId: thisOrder.clientId,
         };
 
         setLoad(true);
         axios
-            .post(`/api/contractorsN/getContractorsAdmin`, payload)
+            .post(`/api/contractorsN/getPPContractors`, payload)
             .then((response) => {
+                console.log(response.data.rows);
                 setData(response.data.rows);
                 setPageCount(Math.ceil(response.data.count / inPageCount));
                 setError(null);
@@ -183,65 +164,63 @@ function PaysInOrderRestored({showPays, setShowPays, thisOrder, setThisOrder}) {
     }, [typeSelect, thisColumn, startDate, endDate]);
 
     // ──────────────────────────── MODAL ANIMATION ──────────────────────
-    useEffect(() => {
-        if (showPays) {
-            setIsVisible(true);
-            setTimeout(() => setIsAnimating(true), 100);
-        } else {
-            setIsAnimating(false);
-            setTimeout(() => setIsVisible(false), 300);
-        }
-        // console.log(showPays);
-    }, [showPays]);
+    // useEffect(() => {
+    //     if (showPays) {
+    //         setIsVisible(true);
+    //         setTimeout(() => setIsAnimating(true), 100);
+    //     } else {
+    //         setIsAnimating(false);
+    //         setTimeout(() => setIsVisible(false), 300);
+    //     }
+    //     // console.log(showPays);
+    // }, [showPays]);
 
     // ──────────────────────────── RENDER ───────────────────────────────
-    if (!isVisible) return null;
+    // if (!isVisible) return null;
 
     return (
         <div>
             {/* Overlay */}
-            <div
-                onClick={handleClose}
-                style={{
-                    width: "100vw",
-                    height: "100vh",
-                    position: "fixed",
-                    left: 0,
-                    top: 0,
-                    background: "rgba(0,0,0,0.2)",
-                    opacity: isAnimating ? 1 : 0,
-                    transition: "opacity .3s ease-in-out",
-                    zIndex: 100,
-                }}
-            />
+            {/*<div*/}
+            {/*    onClick={handleClose}*/}
+            {/*    style={{*/}
+            {/*        width: "100vw",*/}
+            {/*        height: "100vh",*/}
+            {/*        position: "fixed",*/}
+            {/*        left: 0,*/}
+            {/*        top: 0,*/}
+            {/*        background: "rgba(0,0,0,0.2)",*/}
+            {/*        opacity: isAnimating ? 1 : 0,*/}
+            {/*        transition: "opacity .3s ease-in-out",*/}
+            {/*        zIndex: 100,*/}
+            {/*    }}*/}
+            {/*/>*/}
 
             {/* Modal */}
             <div
                 style={{
-                    position: "fixed",
-                    left: "50%",
-                    top: "50%",
-                    transform: isAnimating
-                        ? "translate(-50%, -50%) scale(1)"
-                        : "translate(-50%, -50%) scale(0.8)",
-                    opacity: isAnimating ? 1 : 0,
+                    // position: "fixed",
+                    // left: "50%",
+                    // top: "50%",
+                    // transform: isAnimating
+                    //     ? "translate(-50%, -50%) scale(1)"
+                    //     : "translate(-50%, -50%) scale(0.8)",
+                    // opacity: isAnimating ? 1 : 0,
                     transition: "opacity .3s, transform .3s",
                     backgroundColor: "#FBFAF6",
-                    width: "95vw",
-                    height: "95vh",
+                    width: "86vw",
+                    height: "65vh",
                     borderRadius: "1vw",
-                    zIndex: 101,
+                    zIndex: 2,
                     display: "flex",
                     flexDirection: "column",
                 }}
             >
                 {/* Header */}
-                <div className="d-flex">
-                    {thisOrder && thisOrder.client &&
-                        <div className="m-auto text-center fontProductName">Реквізити user {thisOrder.client.username} - {thisOrder.client.firstName} {thisOrder.client.lastName} {thisOrder.client.familyName} (ID {thisOrder.client.id})</div>
-                    }
-                    <button className="btn btn-close btn-lg" style={{margin: "0.5vw"}} onClick={handleClose}/>
-                </div>
+                {/*<div className="d-flex">*/}
+                {/*    <div className="m-auto text-center fontProductName">Реквізити</div>*/}
+                {/*    /!*<button className="btn btn-close btn-lg" style={{margin: "0.5vw"}} onClick={handleClose}/>*!/*/}
+                {/*</div>*/}
 
                 {/* Body */}
                 <div style={{padding: "1vw", overflow: "auto"}}>
@@ -257,6 +236,7 @@ function PaysInOrderRestored({showPays, setShowPays, thisOrder, setThisOrder}) {
                             <tr className="ContractorRow">
                                 <th>№</th>
                                 <th>Найменування</th>
+                                <th>Найменування Contractor</th>
                                 <th>Податкова система</th>
                                 <th>Тел</th>
                                 <th>E-mail</th>
@@ -271,28 +251,29 @@ function PaysInOrderRestored({showPays, setShowPays, thisOrder, setThisOrder}) {
                                 <tr className="ContractorRow" key={item.id}>
                                     <td className="ContractorCell">{idx + 1}</td>
                                     <td className="ContractorCell ContractorName">{item.name}</td>
-                                    <td className="ContractorCell">{item.taxSystem}</td>
-                                    <td className="ContractorCell">{item.phone}</td>
-                                    <td className="ContractorCell">{item.email}</td>
-                                    <td className="ContractorCell">{item.pdv ? '+' : '-'}</td>
-                                    <td className="ContractorCell">{`${thisOrder.client.firstName} ${thisOrder.client.lastName} ${thisOrder.client.familyName} (${thisOrder.client.phoneNumber})`}</td>
-                                    <td className="ContractorCell">{`${new Date(thisOrder.updatedAt).toLocaleDateString()} ${new Date(thisOrder.updatedAt).toLocaleTimeString()}`}</td>
+                                    <td className="ContractorCell ContractorName">{item.Contractor.name}</td>
+                                    <td className="ContractorCell">{item.Contractor.taxSystem}</td>
+                                    <td className="ContractorCell">{item.Contractor.phone}</td>
+                                    <td className="ContractorCell">{item.Contractor.email}</td>
+                                    <td className="ContractorCell">{item.Contractor.pdv ? '+' : '-'}</td>
+                                    <td className="ContractorCell">{`${item.Contractor.User.firstName} ${item.Contractor.User.lastName} ${item.Contractor.User.familyName} (${item.Contractor.User.phoneNumber})`}</td>
+                                    <td className="ContractorCell">{`${new Date(item.updatedAt).toLocaleDateString()} ${new Date(item.updatedAt).toLocaleTimeString()}`}</td>
                                     <td className="ContractorCell ContractorActions">
-                                        <button className="adminButtonAdd" style={{background: "lightgray", fontSize: "1.2vh"}}
-                                                onClick={(e) => generateInvoice(e, item)}>
-                                            Генерим инвойс
-                                        </button>
+                                        {/*<button className="ContractorViewBtn" style={{background: "green"}}*/}
+                                        {/*        onClick={(e) => generateInvoice(e, item)}>*/}
+                                        {/*    Генерим инвойс + получаем*/}
+                                        {/*</button>*/}
                                         {/*<button className="ContractorViewBtn" style={{background: "green"}}*/}
                                         {/*        onClick={(e) => generateDoc1(e, item)}>*/}
                                         {/*    Рахунок*/}
                                         {/*</button>*/}
-                                        <button className="adminButtonAdd" style={{fontSize: "1.2vh"}} onClick={(e) => openSeePay(e, item)}>
+                                        <button className="adminButtonAdd" onClick={(e) => openSeePay(e, item)}>
                                             Переглянути/Редагувати
                                         </button>
                                         <button
                                             // className="ContractorMoreBtn"
                                             className="adminButtonAdd"
-                                            style={{background: "brown", fontSize: "1.2vh"}}
+                                            style={{background: '#ff5d5d',}}
                                             onClick={(e) => openDeletePay(e, item)}
                                         >
                                             {/*⋮*/}
@@ -305,36 +286,19 @@ function PaysInOrderRestored({showPays, setShowPays, thisOrder, setThisOrder}) {
                         </table>
                     )}
 
-                    <button className="adminButtonAdd mt-3" style={{background: "lightgray", fontSize: "1.2vh"}} onClick={openAddPay}>
-                        Додати контрагента
+                    <button className="adminButtonAdd" onClick={openAddPay} style={{marginTop: "2.2vmin"}}>
+                        Додати контрагента для Доков
                     </button>
 
-                    {/* Nested modals */}
                     {showAddPay && (
-                        <AddPaysInOrder
+                        <AddContrAgentInProfileAdmin
                             showAddPay={showAddPay}
                             setShowAddPay={setShowAddPay}
                             formData={formData}
                             setFormData={setFormData}
-                            thisOrder={thisOrder}
-                            setThisOrder={setThisOrder}
-                            data={data}
-                            setData={setData}
-                            showAddPayView={showAddPayView}
-                            setShowAddPayView={setShowAddPayView}
-                            showAddPayWriteId={showAddPayWriteId}
-                            setShowAddPayWriteId={setShowAddPayWriteId}
-                        />
-                    )}
-
-                    {showAllsOurContragents && (
-                        <PaysInOrderRestoredForOurC
-                            showPays={showAllsOurContragents}
-                            setShowPays={setShowAllsOurContragents}
-                            formData={formData}
-                            setFormData={setFormData}
-                            thisOrder={thisOrder}
-                            setThisOrder={setThisOrder}
+                            user={user}
+                            // thisOrder={thisOrder}
+                            // setThisOrder={setThisOrder}
                             data={data}
                             setData={setData}
                             showAddPayView={showAddPayView}
@@ -359,4 +323,4 @@ function PaysInOrderRestored({showPays, setShowPays, thisOrder, setThisOrder}) {
     );
 }
 
-export default PaysInOrderRestored;
+export default PaysInOrderRestoredForAdmin;

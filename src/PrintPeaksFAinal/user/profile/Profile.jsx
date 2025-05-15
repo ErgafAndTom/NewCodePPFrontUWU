@@ -5,6 +5,7 @@ import {Link} from "react-router-dom";
 import Counterparty from '../../../components/usersettings/Counterparty';
 import { buttonStyles, containerStyles, formStyles, avatarStyles, tabStyles } from './styles';
 import ContrAgentsInUserProfile from "./ContrAgentsInUserProfile";
+import PaysInOrderRestoredForAdmin from "../../userInNewUiArtem/pays/PaysInOrderRestoredForAdmin";
 
 function Profile() {
     const dispatch = useDispatch();
@@ -66,6 +67,17 @@ function Profile() {
                 >
                     Мої контрагенти
                 </button>
+                {user.role === 'admin' && (
+                    <button
+                        style={{
+                            ...tabStyles.tabButton,
+                            ...(activeTab === 'admin' ? tabStyles.activeTab : {})
+                        }}
+                        onClick={() => setActiveTab('admin')}
+                    >
+                        КонтрАгенти (Адміністратор)
+                    </button>
+                )}
             </div>
 
             {activeTab === 'profile' && (
@@ -173,6 +185,11 @@ function Profile() {
             {activeTab === 'counterparties' && (
                 <div style={containerStyles.contentContainer}>
                     <ContrAgentsInUserProfile user={user}/>
+                </div>
+            )}
+            {activeTab === 'admin' && (
+                <div style={containerStyles.contentContainer}>
+                    <PaysInOrderRestoredForAdmin user={user}/>
                 </div>
             )}
         </div>
