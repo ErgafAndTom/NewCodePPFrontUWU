@@ -11,7 +11,7 @@ import {Spinner} from "react-bootstrap";
  * Оригінальна логіка на «showPays / setShowPays» із плавною анімацією, списком реквізитів
  * та генерацією документів (накладна / акт, рахунок).
  */
-function PaysInOrderRestoredForOurC({showPays, setShowPays, thisOrder, setThisOrder}) {
+function PaysInOrderRestoredForOurC({showPays, setShowPays, thisOrder, setThisOrder, buyerId}) {
     const navigate = useNavigate();
 
     // ──────────────────────────── STATE ────────────────────────────
@@ -108,30 +108,30 @@ function PaysInOrderRestoredForOurC({showPays, setShowPays, thisOrder, setThisOr
     };
 
     const generateInvoice = (e, item) => {
-        setShowAllsOurContragents(true)
+        // setShowAllsOurContragents(true)
         e.preventDefault();
-        // setLoad(true);
-        // axios
-        //     .post(
-        //         `/api/invoices/from-order/${thisOrder.id}/document`,
-        //         { supplierId: thisOrder.executorId, buyerId: item.id },
-        //         { responseType: "blob" }
-        //     )
-        //     .then(resp => downloadBlob(resp, `invoice_${thisOrder.id}.docx`))
-        //     .catch(handleAxiosError)
-        //     .finally(() => setLoad(false));
+        setLoad(true);
+        axios
+            .post(
+                `/api/invoices/from-order/${thisOrder.id}/invoice`,
+                { supplierId: item.Contractor.id, buyerId: buyerId },
+                { responseType: "blob" }
+            )
+            .then(resp => downloadBlob(resp, `invoice_${thisOrder.id}.docx`))
+            .catch(handleAxiosError)
+            .finally(() => setLoad(false));
     };
 
-    const generateDoc = (e, item) => {
-        let dataToSend = {
-            supplierId: 1,
-            buyerId: thisOrder.clientId
-        }
-        axios
-            .post(`/api/invoices/from-order/${thisOrder.id}/document`, dataToSend, {responseType: "blob"})
-            .then((response) => downloadBlob(response, "invoice.docx"))
-            .catch(handleAxiosError);
-    };
+    // const generateDoc = (e, item) => {
+    //     let dataToSend = {
+    //         supplierId: 1,
+    //         buyerId: thisOrder.clientId
+    //     }
+    //     axios
+    //         .post(`/api/invoices/from-order/${thisOrder.id}/document`, dataToSend, {responseType: "blob"})
+    //         .then((response) => downloadBlob(response, "invoice.docx"))
+    //         .catch(handleAxiosError);
+    // };
 
     const downloadBlob = (response, fallbackName) => {
         const contentDisposition = response.headers["content-disposition"];
@@ -253,6 +253,7 @@ function PaysInOrderRestoredForOurC({showPays, setShowPays, thisOrder, setThisOr
                             <thead>
                             <tr className="ContractorRow">
                                 <th className="fontSize1VH">№</th>
+                                {/*<th className="fontSize1VH">ID (Contractor)</th>*/}
                                 <th className="fontSize1VH">Найменування</th>
                                 <th className="fontSize1VH">Найменування Contractor</th>
                                 <th className="fontSize1VH">Податкова система</th>
@@ -268,6 +269,7 @@ function PaysInOrderRestoredForOurC({showPays, setShowPays, thisOrder, setThisOr
                             {data?.map((item, idx) => (
                                 <tr className="ContractorRow" key={item.id}>
                                     <td className="ContractorCell fontSize1VH">{idx + 1}</td>
+                                    {/*<td className="ContractorCell fontSize1VH">{item.Contractor.id}</td>*/}
                                     <td className="ContractorCell ContractorName fontSize1VH">{item.name}</td>
                                     <td className="ContractorCell fontSize1VH">{item.Contractor.name}</td>
                                     <td className="ContractorCell fontSize1VH">{item.Contractor.taxSystem}</td>
@@ -285,7 +287,10 @@ function PaysInOrderRestoredForOurC({showPays, setShowPays, thisOrder, setThisOr
                                         {/*        onClick={(e) => generateDoc1(e, item)}>*/}
                                         {/*    Рахунок*/}
                                         {/*</button>*/}
-                                        <button className="adminButtonAdd" onClick={(e) => openSeePay(e, item)}>
+                                        <button className="adminButtonAdd"
+                                                // onClick={(e) => openSeePay(e, item)}
+                                                onClick={(e) => generateInvoice(e, item)}
+                                        >
                                             Invoice з цим Постачальник/Виконавець
                                         </button>
                                         {/*<button*/}

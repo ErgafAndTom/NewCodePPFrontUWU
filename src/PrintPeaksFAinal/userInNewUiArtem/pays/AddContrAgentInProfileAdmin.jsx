@@ -117,7 +117,7 @@ function AddContrAgentInProfileAdmin({ showAddPay, setShowAddPay, formData, setF
 
     useEffect(() => {
         const payload = {
-            inPageCount: 55,
+            inPageCount: 100,
             currentPage: 1,
             search: contrAgentSearch,
             columnName: {column: "id", reverse: true},

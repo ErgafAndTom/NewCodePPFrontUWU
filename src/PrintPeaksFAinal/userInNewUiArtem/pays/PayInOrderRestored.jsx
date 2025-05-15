@@ -30,6 +30,7 @@ function PaysInOrderRestored({showPays, setShowPays, thisOrder, setThisOrder}) {
     const [showAddPay, setShowAddPay] = useState(false);
     const [showAddPayView, setShowAddPayView] = useState(false);
     const [showAddPayWriteId, setShowAddPayWriteId] = useState(false);
+    const [buyerId, setBuyerId] = useState(null);
     const [formData, setFormData] = useState({
         name: "",
         type: "",
@@ -109,8 +110,9 @@ function PaysInOrderRestored({showPays, setShowPays, thisOrder, setThisOrder}) {
     };
 
     const generateInvoice = (e, item) => {
-        setShowAllsOurContragents(true)
+        setBuyerId(item.id)
         e.preventDefault();
+        setShowAllsOurContragents(true)
         // setLoad(true);
         // axios
         //     .post(
@@ -274,7 +276,7 @@ function PaysInOrderRestored({showPays, setShowPays, thisOrder, setThisOrder}) {
                                     <td className="ContractorCell">{item.taxSystem}</td>
                                     <td className="ContractorCell">{item.phone}</td>
                                     <td className="ContractorCell">{item.email}</td>
-                                    <td className="ContractorCell">{item.pdv ? '+' : '-'}</td>
+                                    <td className="ContractorCell">{item.pdv === "true" ? '+' : '-'}</td>
                                     <td className="ContractorCell">{`${thisOrder.client.firstName} ${thisOrder.client.lastName} ${thisOrder.client.familyName} (${thisOrder.client.phoneNumber})`}</td>
                                     <td className="ContractorCell">{`${new Date(thisOrder.updatedAt).toLocaleDateString()} ${new Date(thisOrder.updatedAt).toLocaleTimeString()}`}</td>
                                     <td className="ContractorCell ContractorActions">
@@ -341,6 +343,7 @@ function PaysInOrderRestored({showPays, setShowPays, thisOrder, setThisOrder}) {
                             setShowAddPayView={setShowAddPayView}
                             showAddPayWriteId={showAddPayWriteId}
                             setShowAddPayWriteId={setShowAddPayWriteId}
+                            buyerId={buyerId}
                         />
                     )}
 

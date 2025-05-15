@@ -315,7 +315,7 @@ function PaysInOrderRestoredForAdmin({user}) {
                         setThisOrderForDelete={setThisOrderForDelete}
                         data={data}
                         setData={setData}
-                        url="/api/contractorsN/deleteContractor"
+                        url="/api/contractorsN/deletePPContractor"
                     />
                 </div>
             </div>
