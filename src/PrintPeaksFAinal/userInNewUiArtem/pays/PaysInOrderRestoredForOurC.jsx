@@ -202,11 +202,12 @@ function PaysInOrderRestoredForOurC({showPays, setShowPays, thisOrder, setThisOr
             startDate,
             endDate,
             clientId: thisOrder.clientId,
+            buyerId: buyerId
         };
 
         setLoad(true);
         axios
-            .post(`/api/contractorsN/getPPContractors`, payload)
+            .post(`/api/contractorsN/getPPContractorsForDoc`, payload)
             .then((response) => {
                 setData(response.data.rows);
                 setPageCount(Math.ceil(response.data.count / inPageCount));
