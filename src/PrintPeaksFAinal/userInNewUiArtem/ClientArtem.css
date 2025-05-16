@@ -8,6 +8,42 @@
     font-size: 20px;
     color: #323232;
 }
+.modal-right {
+    position: fixed;
+    top: 8%;
+    right: 0;
+    margin-right: 0.3vw;
+    transform: translateX(100%);
+    opacity: 0;
+    /*margin: 0;*/
+    z-index: 9999;
+    background-color: white;
+    border-radius: 1vw 0 0 1vw;
+    max-width: 33vw;
+    height: 84vh;
+    animation: slideInRight 0.2s ease-out forwards;
+}
+
+@keyframes slideInRight {
+    0% {
+        transform: translateX(100%);
+        opacity: 0;
+    }
+    100% {
+        transform: translateX(0%);
+        opacity: 1;
+    }
+}
+.Modal-Header{
+    background-color: transparent;
+}
+.modal-content
+{
+    background-color: transparent;
+    border: none;
+    border-radius: 1vw;
+    width: 33vw;
+}
 
 .clienta {
     position: absolute;

@@ -107,20 +107,55 @@ function PaysInOrderRestoredForOurC({showPays, setShowPays, thisOrder, setThisOr
         setThisOrderForDelete(item);
     };
 
-    const generateInvoice = (e, item) => {
+    const generateDocInZip = (e, item) => {
         // setShowAllsOurContragents(true)
         e.preventDefault();
         setLoad(true);
         axios
             .post(
-                `/api/invoices/from-order/${thisOrder.id}/invoice`,
+                `/api/invoices/from-order/${thisOrder.id}/docInZip`,
                 { supplierId: item.Contractor.id, buyerId: buyerId },
                 { responseType: "blob" }
             )
-            .then(resp => downloadBlob(resp, `invoice_${thisOrder.id}.docx`))
+            // .then(resp => {
+            //     // Отримуємо ім’я файлу з заголовка
+            //     const disposition = resp.headers['content-disposition'];
+            //     let filename = 'download.zip';
+            //
+            //     if (disposition && disposition.includes('filename=')) {
+            //         const fileNameMatch = disposition.match(/filename="?(.+?)"?$/);
+            //         if (fileNameMatch.length > 1) {
+            //             filename = decodeURIComponent(fileNameMatch[1]);
+            //         }
+            //     }
+            //
+            //     downloadBlob(resp, filename);
+            // })
+            .then((response) => downloadBlob(response, "doc.zip"))
             .catch(handleAxiosError)
             .finally(() => setLoad(false));
     };
+
+    // const generateInvoice = (e, item) => {
+    //     // setShowAllsOurContragents(true)
+    //     e.preventDefault();
+    //     setLoad(true);
+    //     let dataToSend = {
+    //         supplierId: item.Contractor.id, buyerId: buyerId
+    //     }
+    //     axios.post(`/api/invoices/from-order/${thisOrder.id}/invoice`, dataToSend)
+    //         .then(response => {
+    //             console.log(response.data);
+    //             // setData(prevData =>
+    //             //     prevData.map(obj =>
+    //             //         obj.id === response.data.id ? response.data : obj
+    //             //     )
+    //             // );
+    //             // setPageCount(Math.ceil(response.data.count / inPageCount));
+    //         })
+    //         .catch(handleAxiosError)
+    //         .finally(() => setLoad(false));
+    // };
 
     // const generateDoc = (e, item) => {
     //     let dataToSend = {
@@ -289,9 +324,9 @@ function PaysInOrderRestoredForOurC({showPays, setShowPays, thisOrder, setThisOr
                                         {/*</button>*/}
                                         <button className="adminButtonAdd"
                                                 // onClick={(e) => openSeePay(e, item)}
-                                                onClick={(e) => generateInvoice(e, item)}
+                                                onClick={(e) => generateDocInZip(e, item)}
                                         >
-                                            Invoice з цим Постачальник/Виконавець
+                                            Отримати доки zip з цим Постачальник/Виконавець
                                         </button>
                                         {/*<button*/}
                                         {/*    // className="ContractorMoreBtn"*/}

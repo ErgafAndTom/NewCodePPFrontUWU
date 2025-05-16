@@ -6,7 +6,14 @@
   <component name="ChangeListManager">
     <list default="true" id="7e58169f-d1e8-4cb2-8753-447dd0b39044" name="Changes" comment="ddd">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/PrintPeaksFAinal/NewUIArtem.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/PrintPeaksFAinal/NewUIArtem.jsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/PrintPeaksFAinal/user/profile/AddContrAgentInProfile.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/PrintPeaksFAinal/user/profile/AddContrAgentInProfile.jsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/PrintPeaksFAinal/userInNewUiArtem/ClientArtem.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/PrintPeaksFAinal/userInNewUiArtem/ClientArtem.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/PrintPeaksFAinal/userInNewUiArtem/ClientChangerUIArtem.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/PrintPeaksFAinal/userInNewUiArtem/ClientChangerUIArtem.jsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/PrintPeaksFAinal/userInNewUiArtem/pays/AddPayInOrder.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/PrintPeaksFAinal/userInNewUiArtem/pays/AddPayInOrder.jsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/PrintPeaksFAinal/userInNewUiArtem/pays/PaysInOrderRestoredForOurC.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/PrintPeaksFAinal/userInNewUiArtem/pays/PaysInOrderRestoredForOurC.jsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/bootstrap.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/bootstrap.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/bootstrap.css.map" beforeDir="false" afterPath="$PROJECT_DIR$/src/bootstrap.css.map" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/global.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/global.css" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -290,15 +297,7 @@
       <workItem from="1746824181400" duration="12395000" />
       <workItem from="1746968398598" duration="34629000" />
       <workItem from="1747140426789" duration="12805000" />
-      <workItem from="1747250848968" duration="23892000" />
-    </task>
-    <task id="LOCAL-00049" summary="ddd">
-      <option name="closed" value="true" />
-      <created>1741570617487</created>
-      <option name="number" value="00049" />
-      <option name="presentableId" value="LOCAL-00049" />
-      <option name="project" value="LOCAL" />
-      <updated>1741570617487</updated>
+      <workItem from="1747250848968" duration="42992000" />
     </task>
     <task id="LOCAL-00050" summary="ddd">
       <option name="closed" value="true" />
@@ -684,7 +683,15 @@
       <option name="project" value="LOCAL" />
       <updated>1747279230223</updated>
     </task>
-    <option name="localTasksCounter" value="98" />
+    <task id="LOCAL-00098" summary="ddd">
+      <option name="closed" value="true" />
+      <created>1747397706594</created>
+      <option name="number" value="00098" />
+      <option name="presentableId" value="LOCAL-00098" />
+      <option name="project" value="LOCAL" />
+      <updated>1747397706594</updated>
+    </task>
+    <option name="localTasksCounter" value="99" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">

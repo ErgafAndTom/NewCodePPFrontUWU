@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import axios from "../../../api/axiosInstance";
 import { useNavigate } from "react-router-dom";
-import {Spinner} from "react-bootstrap";
+import {Form, Spinner} from "react-bootstrap";
 
 function AddContrAgentInProfile({ showAddPay, setShowAddPay, formData, setFormData, data, setData, showAddPayView, setShowAddPayView, showAddPayWriteId, setShowAddPayWriteId, user }) {
     const [load, setLoad] = useState(false);
@@ -222,22 +222,35 @@ function AddContrAgentInProfile({ showAddPay, setShowAddPay, formData, setFormDa
                                         <label className="adminFontTable">Система оподаткування</label>
                                         <select value={formData.taxSystem} name="taxSystem" onChange={handleChange} className="AddContractorInOrderSelect">
                                             <option value="">Оберіть систему оподаткування</option>
-                                            <option value="1 група">1 група</option>
-                                            <option value="2 група">2 група</option>
-                                            <option value="3 група">3 група</option>
-                                            <option value="3 група із ПДВ">3 група із ПДВ</option>
-                                            <option value="4 група">4 група</option>
-                                            <option value="загальна система без ПДВ">загальна система без ПДВ</option>
-                                            <option value="загальна система із ПДВ">загальна система із ПДВ</option>
-                                            <option value="Дія.Сіті">Дія.Сіті</option>
+                                            <option value="ФОП">ФОП</option>
+                                            {/*<option value="ФОП 2 група">2 група</option>*/}
+                                            {/*<option value="ФОП 3 група">3 група</option>*/}
+                                            {/*<option value="3 група із ПДВ">3 група із ПДВ</option>*/}
+                                            {/*<option value="4 група">4 група</option>*/}
+                                            {/*<option value="загальна система без ПДВ">Загальна система</option>*/}
+                                            <option value="ТОВ">ТОВ</option>
+                                            {/*<option value="загальна система із ПДВ">загальна система із ПДВ</option>*/}
+                                            {/*<option value="Дія.Сіті">Дія.Сіті</option>*/}
                                             <option value="Неприбуткова організація">Неприбуткова організація</option>
                                         </select>
                                     </div>
+                                    {/*<div className="AddContractorInOrderFieldRow">*/}
+                                    {/*    <label className="adminFontTable">ПДВ</label>*/}
+                                    {/*    <input*/}
+                                    {/*        name="pdv"*/}
+                                    {/*        type="checkbox"*/}
+                                    {/*        checked={formData.pdv === "true"}*/}
+                                    {/*        onChange={handleChange}*/}
+                                    {/*    />*/}
+                                    {/*</div>*/}
                                     <div className="AddContractorInOrderFieldRow">
                                         <label className="adminFontTable">ПДВ</label>
-                                        <input
-                                            name="pdv"
+                                        <Form.Check
                                             type="checkbox"
+                                            name="pdv"
+                                            id="pdv-checkbox"
+                                            label=""
+                                            className="fontSize2-5VH"
                                             checked={formData.pdv === "true"}
                                             onChange={handleChange}
                                         />
