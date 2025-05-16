@@ -8,7 +8,6 @@ import versantIcon from '../../components/newUIArtem/printers/p6.svg';
 import {useNavigate} from "react-router-dom";
 import PerepletSize from "./newnomodals/PerepletSize";
 import PerepletPereplet from "./newnomodals/PerepletPereplet";
-import handleChange from "./newnomodals/PerepletPereplet";
 const PerepletMet = ({
                        thisOrder,
                        newThisOrder,
@@ -85,9 +84,6 @@ const PerepletMet = ({
     const [pricesThis, setPricesThis] = useState(null);
 
     const addNewOrderUnit = e => {
-        let handleChange = (e) => {
-            setCount(e)
-        }
         let dataToSend = {
             orderId: thisOrder.id,
             toCalc: {
@@ -106,7 +102,6 @@ const PerepletMet = ({
                 pereplet: pereplet,
             }
         };
-
         axios.post(`/orderUnits/OneOrder/OneOrderUnitInOrder`, dataToSend)
             .then(response => {
                 console.log(response.data);
@@ -122,6 +117,10 @@ const PerepletMet = ({
                 console.log(error.message);
                 // setErr(error)
             });
+    }
+
+    let handleChange = (e) => {
+        setCount(e)
     }
 
     // useEffect(() => {
