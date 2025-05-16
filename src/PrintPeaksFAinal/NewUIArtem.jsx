@@ -441,13 +441,23 @@ const NewUIArtem = () => {
                                                         <div
                                                             className="d-flex adminFontTable"
                                                             style={{marginLeft: "1.5vw"}}>На
-                                                            аркуші міститься: {thing.newField4} виробів
+                                                            аркуші: {thing.newField4} виробів
                                                         </div>
                                                         <div
                                                             className="d-flex adminFontTable"
                                                             style={{marginLeft: "1.5vw"}}
                                                         > Використано: {thing.newField5} аркушів
                                                         </div>
+                                                        <div
+                                                            className="d-flex adminFontTable"
+                                                            style={{marginLeft: "1.5vw"}}
+                                                        > За 1 виріб: {thing.priceForThis/thing.amount} грн
+                                                        </div>
+                                                    </div>
+                                                    <div
+                                                        className="d-flex adminFontTable"
+                                                        style={{marginLeft: "1.5vw"}}
+                                                    > За 1 виріб (2 спосіб): {thing.priceForOneThis} грн
                                                     </div>
                                                 </Modal.Footer>
                                             </div>
