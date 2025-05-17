@@ -439,7 +439,7 @@ const NewUIArtem = () => {
                                                                 <div className="adminFontTable" style={{marginLeft: "2vw",}}>Зі знижкою: ({thisOrder.prepayment}) =</div>
                                                             </div>
                                                             <div className="d-flex">
-                                                                <div className="adminFontTable">{thing.newField5}</div>
+                                                                <div className="adminFontTable">{thing.amount}</div>
                                                                 <div className="adminFontTable"
                                                                      style={{marginTop: "0.5vw", fontSize: "0.5vw"}}>шт
                                                                 </div>
@@ -454,7 +454,7 @@ const NewUIArtem = () => {
                                                                 <div
                                                                     className="adminFontTable booooold" style={{fontSize: "0.8vw", color: "#EE3C23"}}>
                                                                     {
-                                                                        (thing.priceForOneThisDiscount * thing.newField5)
+                                                                        thing.priceForThisDiscount
                                                                     }
                                                                 </div>
                                                                 <div className="adminFontTable "
@@ -482,19 +482,24 @@ const NewUIArtem = () => {
                                                         <div
                                                             className="d-flex adminFontTable"
                                                             style={{marginLeft: "1.5vw"}}
-                                                        > За 1 виріб: {thing.priceForThis/thing.amount} грн
+                                                        > За 1 виріб: {thing.priceForOneThis} грн
+                                                        </div>
+                                                        <div
+                                                            className="d-flex adminFontTable"
+                                                            style={{marginLeft: "1.5vw"}}
+                                                        > За 1 (виріб): {thing.priceForOneThisDiscount} грн
                                                         </div>
                                                     </div>
-                                                    <div
-                                                        className="d-flex adminFontTable"
-                                                        style={{marginLeft: "1.5vw"}}
-                                                    > За 1 виріб (2 спосіб): {thing.priceForOneThis} грн
-                                                    </div>
-                                                    <div
-                                                        className="d-flex adminFontTable"
-                                                        style={{marginLeft: "1.5vw"}}
-                                                    > За ВСЕ (2 спосіб*шт): {thing.priceForOneThis*thing.amount} грн
-                                                    </div>
+                                                    {/*<div*/}
+                                                    {/*    className="d-flex adminFontTable"*/}
+                                                    {/*    style={{marginLeft: "1.5vw"}}*/}
+                                                    {/*> За 1 виріб (2 спосіб): {thing.priceForOneThis} грн*/}
+                                                    {/*</div>*/}
+                                                    {/*<div*/}
+                                                    {/*    className="d-flex adminFontTable"*/}
+                                                    {/*    style={{marginLeft: "1.5vw"}}*/}
+                                                    {/*> За ВСЕ (2 спосіб*шт): {thing.priceForOneThis*thing.amount} грн*/}
+                                                    {/*</div>*/}
                                                 </Modal.Footer>
                                             </div>
                                         </div>

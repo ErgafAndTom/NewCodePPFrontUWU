@@ -6,12 +6,7 @@
   <component name="ChangeListManager">
     <list default="true" id="7e58169f-d1e8-4cb2-8753-447dd0b39044" name="Changes" comment="ddd">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/DiscountCalculator.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/DiscountCalculator.jsx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/PrintPeaksFAinal/NewUIArtem.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/PrintPeaksFAinal/NewUIArtem.jsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/PrintPeaksFAinal/poslugi/NewSheetCut.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/PrintPeaksFAinal/poslugi/NewSheetCut.jsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/PrintPeaksFAinal/poslugi/newnomodals/ArtemStyles.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/PrintPeaksFAinal/poslugi/newnomodals/ArtemStyles.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/PrintPeaksFAinal/poslugi/newnomodals/Materials2.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/PrintPeaksFAinal/poslugi/newnomodals/Materials2.jsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/ProgressBar.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/ProgressBar.jsx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/components/newcalc/Orders/OneProductInOrders.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/newcalc/Orders/OneProductInOrders.js" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -297,15 +292,7 @@
       <workItem from="1746968398598" duration="34629000" />
       <workItem from="1747140426789" duration="12805000" />
       <workItem from="1747250848968" duration="45984000" />
-      <workItem from="1747426896849" duration="11211000" />
-    </task>
-    <task id="LOCAL-00053" summary="ddd">
-      <option name="closed" value="true" />
-      <created>1741580043122</created>
-      <option name="number" value="00053" />
-      <option name="presentableId" value="LOCAL-00053" />
-      <option name="project" value="LOCAL" />
-      <updated>1741580043122</updated>
+      <workItem from="1747426896849" duration="15274000" />
     </task>
     <task id="LOCAL-00054" summary="ddd">
       <option name="closed" value="true" />
@@ -691,7 +678,15 @@
       <option name="project" value="LOCAL" />
       <updated>1747424716756</updated>
     </task>
-    <option name="localTasksCounter" value="102" />
+    <task id="LOCAL-00102" summary="ddd">
+      <option name="closed" value="true" />
+      <created>1747442056513</created>
+      <option name="number" value="00102" />
+      <option name="presentableId" value="LOCAL-00102" />
+      <option name="project" value="LOCAL" />
+      <updated>1747442056513</updated>
+    </task>
+    <option name="localTasksCounter" value="103" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">

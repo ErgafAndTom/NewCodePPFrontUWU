@@ -118,7 +118,7 @@ function OneProductInOrders({item, cash = false, handleAmountChange, index, this
                                             <div
                                                 className="adminFontTable booooold" style={{color: "#450500"}}>
                                                 {
-                                                    (unitItem.priceForOneThisDiscount * unitItem.newField5)
+                                                    unitItem.priceForAllThisDiscount
                                                 }
                                             </div>
                                             <div className="adminFontTable "
