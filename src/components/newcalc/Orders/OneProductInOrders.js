@@ -1,6 +1,7 @@
 import React, {useEffect, useState} from "react";
+import NewSheetCutBw from "../../../PrintPeaksFAinal/poslugi/NewSheetCutBw";
 
-function OneProductInOrders({item, cash = false, handleAmountChange, index}) {
+function OneProductInOrders({item, cash = false, handleAmountChange, index, thisOrder}) {
     const [show, setShow] = useState(false);
 
     const handleClose = () => {
@@ -25,14 +26,14 @@ function OneProductInOrders({item, cash = false, handleAmountChange, index}) {
                     }}>
 
                         {item.OrderUnitUnits.map((unitItem, iter) => (
-                            <div key={`${item.idKey} ${unitItem.idKey} `} className="d-flex adminFontTable">
-                                <div className="adminFontTable d-flex justify-content-between shadow-sm" style={{
+                            <div key={`${item.idKey} ${unitItem.idKey} `} className="d-flex flex-column adminFontTable shadow-sm" style={{background: "#F2F0E7",borderRadius: "0.5vw",borderBottom: "0.3 vh #6a6a6a",}}>
+                                <div className="adminFontTable d-flex justify-content-between" style={{
                                     borderBottom: "1 vh",
                                     padding: "0.1vw",
-                                    borderRadius: "0.5vw",
+                                    // borderRadius: "0.5vw",
                                     // backgroundColor: "#ffffff",
                                     background: "#F2F0E7",
-                                    width: "32vw",
+                                    width: "31vw",
                                 }}>
                                     <div className="d-flex" style={{
                                         // background: "#8e791c",
@@ -48,7 +49,7 @@ function OneProductInOrders({item, cash = false, handleAmountChange, index}) {
                                     </div>
                                     <div className="d-flex" style={{
                                         // background: "#8e791c",
-                                        maxWidth: "11vw"
+                                        maxWidth: "12vw"
                                     }}>
                                         <div className="adminFontTable">{unitItem.newField5}</div>
                                         <div className="adminFontTable"
@@ -63,7 +64,12 @@ function OneProductInOrders({item, cash = false, handleAmountChange, index}) {
                                              style={{marginTop: "0.5vw", fontSize: "0.5vw"}}>=
                                         </div>
                                         <div
-                                            className="adminFontTable booooold">{unitItem.priceForOneThis * unitItem.newField5}</div>
+                                            className="adminFontTable booooold">
+                                            {
+                                                (unitItem.priceForOneThis * unitItem.newField5)
+                                                // *0.87
+                                            }
+                                        </div>
                                         {/*<div className="adminFontTable booooold">{unitItem.priceForOneThis*unitItem.newField3}</div>*/}
                                         {/*<div className="adminFontTable booooold">{unitItem.priceForOneThis*unitItem.newField4}</div>*/}
                                         <div className="adminFontTable "
@@ -78,6 +84,49 @@ function OneProductInOrders({item, cash = false, handleAmountChange, index}) {
                                     {/*<div className="adminFontTable ">{unitItem.priceForAllThis} </div>*/}
                                     {/*<div className="adminFontTable " style={{marginTop: "0.5vw", fontSize: "0.5vw"}}>грн</div>*/}
                                 </div>
+
+                                {!['0', '0%', '', '%'].includes(thisOrder.prepayment) &&
+                                    <div className="d-flex adminFontTable justify-content-end align-content-center" style={{width: "31vw",background: "#f2ebe7",}}>
+                                        {/*<div className="d-flex">*/}
+                                        {/*    <div className="adminFontTable" style={{marginLeft: "2vw",}}>Зі знижкою: ({thisOrder.prepayment}) =</div>*/}
+                                        {/*</div>*/}
+                                        <div className="d-flex">
+                                            <div className="adminFontTable">{unitItem.newField5}</div>
+                                            <div className="adminFontTable"
+                                                 style={{marginTop: "0.5vw", fontSize: "0.5vw"}}>шт
+                                            </div>
+                                            <div className="adminFontTable">x</div>
+                                            <div className="adminFontTable">({unitItem.priceForOneThis}</div>
+                                            <div className="adminFontTable"
+                                                 style={{marginTop: "0.5vw", fontSize: "0.5vw"}}>грн
+                                            </div>
+                                            <div className="adminFontTable"
+                                                 style={{marginTop: "0.5vw", fontSize: "0.5vw"}}>-
+                                            </div>
+                                            <div className="adminFontTable">{thisOrder.prepayment}</div>
+                                            <div className="adminFontTable"
+                                                 style={{marginTop: "0.5vw", fontSize: "0.5vw"}}>=
+                                            </div>
+                                            <div className="adminFontTable">{unitItem.priceForOneThisDiscount}</div>
+                                            <div className="adminFontTable"
+                                                 style={{marginTop: "0.5vw", fontSize: "0.5vw"}}>грн
+                                            </div>
+                                            <div className="adminFontTable">)</div>
+                                            <div className="adminFontTable"
+                                                 style={{marginTop: "0.5vw", fontSize: "0.5vw"}}>=
+                                            </div>
+                                            <div
+                                                className="adminFontTable booooold" style={{color: "#450500"}}>
+                                                {
+                                                    (unitItem.priceForOneThisDiscount * unitItem.newField5)
+                                                }
+                                            </div>
+                                            <div className="adminFontTable "
+                                                 style={{marginTop: "0.5vw", fontSize: "0.5vw"}}>грн
+                                            </div>
+                                        </div>
+                                    </div>
+                                }
                             </div>
                         ))}
                     </div>

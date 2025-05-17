@@ -17,7 +17,7 @@ const stages = [
 ];
 
 
-const ProgressBar = ({ thisOrder, setThisOrder, setNewThisOrder, handleThisOrderChange }) => {
+const ProgressBar = ({ thisOrder, setThisOrder, setNewThisOrder, handleThisOrderChange, setSelectedThings2 }) => {
     const [isVisible, setIsVisible] = useState(true);
     const [currentStage, setCurrentStage] = useState(thisOrder?.status ? parseInt(thisOrder.status) : 0);
     const [isPaid, setIsPaid] = useState(false);
@@ -484,7 +484,7 @@ const ProgressBar = ({ thisOrder, setThisOrder, setNewThisOrder, handleThisOrder
             </div>
 
             <div style={{ marginBottom: '0.5vh' }}>
-                <DiscountCalculator thisOrder={thisOrder} setThisOrder={setThisOrder} />
+                <DiscountCalculator thisOrder={thisOrder} setThisOrder={setThisOrder} setSelectedThings2={setSelectedThings2}/>
             </div>
             {deadline === null && (
                 <div style={{ marginBottom: '0.5vh' }}>

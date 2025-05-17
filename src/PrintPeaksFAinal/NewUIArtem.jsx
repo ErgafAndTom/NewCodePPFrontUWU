@@ -341,8 +341,7 @@ const NewUIArtem = () => {
                                                     width: '32.1vw',
                                                     background: "#FBFAF6",
                                                 }}>
-                                                <Modal.Header className="d-flex w-100"
-                                                              style={{position: "relative"}}>
+                                                <Modal.Header className="d-flex" style={{position: "relative", display: "flex", flexDirection: "column",}}>
                                                     <div
                                                         className="piecesord d-flex align-items-center overflow-visible"
                                                         style={{
@@ -430,12 +429,44 @@ const NewUIArtem = () => {
                                                             right: "-1.3vw",
                                                             top: "-0.3vw",
                                                         }}
-                                                    >✕
+                                                    >
+                                                        ✕
                                                     </div>
+
+                                                    {!['0', '0%', '', '%'].includes(thisOrder.prepayment) &&
+                                                        <div className="d-flex adminFontTable justify-content-end align-content-center" style={{width: "31vw",}}>
+                                                            <div className="d-flex">
+                                                                <div className="adminFontTable" style={{marginLeft: "2vw",}}>Зі знижкою: ({thisOrder.prepayment}) =</div>
+                                                            </div>
+                                                            <div className="d-flex">
+                                                                <div className="adminFontTable">{thing.newField5}</div>
+                                                                <div className="adminFontTable"
+                                                                     style={{marginTop: "0.5vw", fontSize: "0.5vw"}}>шт
+                                                                </div>
+                                                                <div className="adminFontTable">x</div>
+                                                                <div className="adminFontTable">{thing.priceForOneThisDiscount}</div>
+                                                                <div className="adminFontTable"
+                                                                     style={{marginTop: "0.5vw", fontSize: "0.5vw"}}>грн
+                                                                </div>
+                                                                <div className="adminFontTable"
+                                                                     style={{marginTop: "0.5vw", fontSize: "0.5vw"}}>=
+                                                                </div>
+                                                                <div
+                                                                    className="adminFontTable booooold" style={{fontSize: "0.8vw", color: "#EE3C23"}}>
+                                                                    {
+                                                                        (thing.priceForOneThisDiscount * thing.newField5)
+                                                                    }
+                                                                </div>
+                                                                <div className="adminFontTable "
+                                                                     style={{marginTop: "0.5vw", fontSize: "0.5vw", color: "#EE3C23"}}>грн
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    }
                                                 </Modal.Header>
                                                 <OneProductInOrders item={thing} cash={true}
                                                                     handleAmountChange={handleAmountChange}
-                                                                    index={index}/>
+                                                                    index={index} thisOrder={thisOrder}/>
                                                 <Modal.Footer>
                                                     <div className="d-flex justify-content-between align-content-between" style={{marginTop: "0.2vw"}}>
                                                         <div
@@ -458,6 +489,11 @@ const NewUIArtem = () => {
                                                         className="d-flex adminFontTable"
                                                         style={{marginLeft: "1.5vw"}}
                                                     > За 1 виріб (2 спосіб): {thing.priceForOneThis} грн
+                                                    </div>
+                                                    <div
+                                                        className="d-flex adminFontTable"
+                                                        style={{marginLeft: "1.5vw"}}
+                                                    > За ВСЕ (2 спосіб*шт): {thing.priceForOneThis*thing.amount} грн
                                                     </div>
                                                 </Modal.Footer>
                                             </div>
@@ -490,7 +526,8 @@ const NewUIArtem = () => {
                                     }}>
                                         <ProgressBar thisOrder={thisOrder} setThisOrder={setThisOrder}
                                                      setNewThisOrder={setNewThisOrder}
-                                                     handleThisOrderChange={handleThisOrderChange}/>
+                                                     handleThisOrderChange={handleThisOrderChange}
+                                                     setSelectedThings2={setSelectedThings2}/>
                                         {/*<ClientChangerUIArtem*/}
                                         {/*    client={thisOrder.User}*/}
                                         {/*    thisOrder={thisOrder}*/}

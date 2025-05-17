@@ -352,7 +352,7 @@ const NewSheetCut = ({
                                     </div>
                                 ) : (
                                     <div className="d-flex justify-content-between pricesBlockContainer"
-                                    style={{height: "29vmin"}}>
+                                    style={{height: "39vmin"}}>
 
                                         <div className="">
                                             {/* Друк (рахується за sheetCount) */}
@@ -416,6 +416,18 @@ const NewSheetCut = ({
                                             </div>
                                             <div className="fontInfoForPricing">
                                                 Ціна за аркуш {pricesThis.listsFromBd} (лише матеріал та друк): {pricesThis.priceForSheetMaterialPrint.toFixed(2)} грн
+                                            </div>
+                                            {/*<div className="fontInfoForPricing">*/}
+                                            {/*    Ціна за all(2спосіб) {pricesThis.totalSheetPrice} грн*/}
+                                            {/*</div>*/}
+                                            <div className="fontInfoForPricing">
+                                                Ціна за 1 виріб {pricesThis.totalPriceForOne} грн
+                                            </div>
+                                            <div className="fontInfoForPricing">
+                                                Ціна за all(2спосіб) {pricesThis.totalPriceForAllInPriceForOne} грн
+                                            </div>
+                                            <div className="fontInfoForPricing">
+                                                priceForSheetWithExtras {pricesThis.priceForSheetWithExtras} грн
                                             </div>
                                         </div>
 

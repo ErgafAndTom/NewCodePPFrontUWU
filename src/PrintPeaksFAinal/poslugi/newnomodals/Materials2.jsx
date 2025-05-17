@@ -68,19 +68,19 @@ const Materials2 = ({material, setMaterial, count, setCount, prices, type, name,
                 // console.log(response.data);
                 setPaper(response.data.rows)
                 setLoad(false)
-                // if(response.data && response.data.rows && response.data.rows[0]){
-                //     setMaterial({
-                //         ...material,
-                //         material: response.data.rows[0].name,
-                //         materialId: response.data.rows[0].id,
-                //     })
-                // } else {
-                //     setMaterial({
-                //         ...material,
-                //         material: "Немає",
-                //         materialId: 0,
-                //     })
-                // }
+                if(response.data && response.data.rows && response.data.rows[0]){
+                    setMaterial({
+                        ...material,
+                        material: response.data.rows[0].name,
+                        materialId: response.data.rows[0].id,
+                    })
+                } else {
+                    setMaterial({
+                        ...material,
+                        material: "Немає",
+                        materialId: 0,
+                    })
+                }
             })
             .catch(error => {
                 setLoad(false)
@@ -127,7 +127,7 @@ const Materials2 = ({material, setMaterial, count, setCount, prices, type, name,
                     >
                         <option
                             key="default"
-                            className={"optionInSelectArtem"}
+                            className="optionInSelectArtem"
                             value=""
                             data-id="default"
                         >
@@ -136,7 +136,7 @@ const Materials2 = ({material, setMaterial, count, setCount, prices, type, name,
                         {paper.map((item, iter) => (
                             <option
                                 key={item.name + iter}
-                                className={"optionInSelectArtem"}
+                                className="optionInSelectArtem"
                                 value={item.name}
                                 data-id={item.id}
                             >

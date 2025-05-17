@@ -3,7 +3,7 @@ import axios from "./api/axiosInstance";
 import {Spinner} from "react-bootstrap";
 import {useNavigate} from "react-router-dom";
 
-function PaymentCalculator({thisOrder, setThisOrder}) {
+function PaymentCalculator({thisOrder, setThisOrder, setSelectedThings2}) {
     const navigate = useNavigate();
     const [amount, setAmount] = useState(thisOrder.price);
     const [discount, setDiscount] = useState(thisOrder.prepayment);
@@ -35,6 +35,8 @@ function PaymentCalculator({thisOrder, setThisOrder}) {
             .then(response => {
                 console.log(response.data);
                 setThisOrder({...thisOrder, prepayment: response.data.prepayment, allPrice: response.data.allPrice})
+                // setThisOrder(response.data)
+                setSelectedThings2(response.data.OrderUnits)
                 setLoad(false)
             })
             .catch(error => {
