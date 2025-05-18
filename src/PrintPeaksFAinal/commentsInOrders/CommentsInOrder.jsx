@@ -1,10 +1,10 @@
 import axios from "../../api/axiosInstance";
-import React, { useEffect, useRef, useState } from "react";
-import { useNavigate } from "react-router-dom";
-import { Spinner } from "react-bootstrap";
-import { IoSend } from "react-icons/io5";
+import React, {useEffect, useRef, useState} from "react";
+import {useNavigate} from "react-router-dom";
+import {Spinner} from "react-bootstrap";
+import {IoSend} from "react-icons/io5";
 
-const CommentsInOrder = ({ thisOrder }) => {
+const CommentsInOrder = ({thisOrder}) => {
     const [loading, setLoading] = useState(true);
     const [error, setError] = useState(null);
     const [comments, setComments] = useState([]);
@@ -17,7 +17,7 @@ const CommentsInOrder = ({ thisOrder }) => {
         if (thisOrder.id) {
             setLoading(true);
             setError(null);
-            axios.post(`/orders/${thisOrder.id}/getComment`, { id: thisOrder.id })
+            axios.post(`/orders/${thisOrder.id}/getComment`, {id: thisOrder.id})
                 .then(response => {
                     setComments(response.data || []);
                     setLoading(false);
@@ -41,7 +41,7 @@ const CommentsInOrder = ({ thisOrder }) => {
         setLoading(true);
         setError(null);
         try {
-            const res = await axios.post(`/orders/${thisOrder.id}/addNewComment`, { comment: newCommentText });
+            const res = await axios.post(`/orders/${thisOrder.id}/addNewComment`, {comment: newCommentText});
             setComments(prev => [...prev, res.data]);
             setNewCommentText('');
         } catch (error) {
@@ -70,11 +70,12 @@ const CommentsInOrder = ({ thisOrder }) => {
     };
 
     return (
-        <div className="d-flex flex-column justify-content-between" style={{ height: '100%', background: 'transparent', width: '55vw' }}>
-            <div className="d-flex flex-column overflow-auto" style={{ flexGrow: 1, marginTop: '0.5vh' }}>
+        <div className="d-flex flex-column justify-content-between"
+        >
+            <div className="d-flex flex-column overflow-auto">
                 {loading && (
-                    <div className="d-flex justify-content-center align-items-center">
-                        <Spinner animation="grow" style={{ color: "rgb(10,255,0)" }} variant="dark" />
+                    <div className="d-flex">
+                        <Spinner animation="grow" style={{color: "rgb(10,255,0)"}} variant="dark"/>
                     </div>
                 )}
 
@@ -83,50 +84,53 @@ const CommentsInOrder = ({ thisOrder }) => {
                 )}
 
                 {!loading && comments.length === 0 && (
-                    <div className="text-muted text-center">Комментариев пока нет.</div>
+                    <div className=" ">Коментарі та нотатки для замовлення</div>
                 )}
 
                 {comments.map((item, idx) => (
-                    <div key={item.id || idx} className="d-flex justify-content-between align-items-center filesInOrder-addButton">
+                    <div key={item.id || idx}
+                         className=" ">
                         <div className="d-flex">
-                            <div style={{ opacity: "50%", color: "blue" }}>
+                            <div style={{color: "#ffc107"}}>
                                 {item.createdBy.username}:
                             </div>
-                            <div className="commentInOrder-textComment">
+                            <div
+                                className="adminFontTable justify-content-flex-start  commentInOrder-textData">
                                 {item.comment}
+                                <div style={{opacity: "50%", fontSize: "1vmin"}} className="commentInOrder-textData ">
+                                    {`${new Date(item.createdAt).toLocaleDateString()} ${new Date(item.createdAt).toLocaleTimeString()}`}
+                                </div>
                             </div>
                         </div>
-                        <div style={{ opacity: "50%" }} className="commentInOrder-textData">
-                            {`${new Date(item.createdAt).toLocaleDateString()} ${new Date(item.createdAt).toLocaleTimeString()}`}
-                        </div>
+
                     </div>
                 ))}
             </div>
 
             {commentInputActive ? (
-                <div className="d-flex align-items-center justify-content-between filesInOrder-addButton" style={{ marginTop: '0.5vh' }}>
+                <div className="d-flex align-items-center justify-content-between "
+                >
                     <input
                         autoFocus
-                        style={{ flexGrow: 1, border: 'none', outline: 'none', padding: '0.5rem' }}
+                        style={{border: 'none', padding: '0.5rem'}}
                         value={newCommentText}
                         onChange={(e) => setNewCommentText(e.target.value)}
                         onKeyPress={handleKeyPress}
                         onBlur={handleBlur}
                         onFocus={handleFocus}
-                        placeholder="Введите комментарий..."
+                        placeholder="..."
                     />
                     <IoSend
                         size={24}
-                        style={{ cursor: 'pointer', marginRight: '10px', color: '#007bff' }}
                         onMouseDown={(e) => e.preventDefault()} // предотвращаем потерю фокуса до клика
                         onClick={sendComment}
                     />
                 </div>
             ) : (
                 <div
-                    className="d-flex align-items-center justify-content-center filesInOrder-addButton"
+                    className="adminButtonAdd" style={{width: "8vw"}}
                     onClick={() => setCommentInputActive(true)}
-                    style={{ marginTop: '0.5vh', cursor: 'pointer', fontSize: '1.7vh' }}
+
                 >
                     +
                 </div>

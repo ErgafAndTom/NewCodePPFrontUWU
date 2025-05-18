@@ -8,21 +8,45 @@
     font-size: 20px;
     color: #323232;
 }
-.modal-right {
-    position: fixed;
-    top: 8%;
-    right: 0;
-    margin-right: 0.3vw;
-    transform: translateX(100%);
-    opacity: 0;
-    /*margin: 0;*/
-    z-index: 9999;
-    background-color: white;
-    border-radius: 1vw 0 0 1vw;
-    max-width: 33vw;
-    height: 84vh;
-    animation: slideInRight 0.2s ease-out forwards;
+.user-form-container {
+    scrollbar-width: thin;               /* Для Firefox */
+    scrollbar-color: #f5a400 transparent;
+    scrollbar-gutter: stable;
+
+
+
+
+
+    /*border-radius: 1vw 1vw ;!* thumb | track *!*/
 }
+
+/* Chrome, Edge, Safari */
+.user-form-container::-webkit-scrollbar {
+
+    border: 2px solid #ffffff;
+    width: 10px;
+    background-color: #f5a400;
+    border-radius: 1px;
+}
+
+.user-form-container::-webkit-scrollbar-track {
+    background: #f5a400;
+    border-radius: 1px;
+
+    border: 2px solid #ffffff;
+}
+
+.user-form-container::-webkit-scrollbar-thumb {
+    background-color: #3c60a6;
+    border-radius: 1vw;
+    border: 2px solid #ffffff;
+
+}
+
+.user-form-container::-webkit-scrollbar-thumb:hover {
+    background-color: #5a81bc;
+}
+
 
 @keyframes slideInRight {
     0% {
@@ -39,11 +63,20 @@
 }
 .modal-content
 {
-    background-color: transparent;
-    border: none;
-    border-radius: 1vw;
-    width: 33vw;
+    position: fixed;
+    top: 1.7vmin;
+    right: 1vmin;
+    opacity: 0;
+    transform: translateX(100%);
+   border-radius: 1vw;
+    max-width: 32.5vw;
+    max-height: 84vh;
+    min-height: 84vh;
+    background: transparent;
+    animation: slideInRight 0.5s ease-out forwards;
 }
+
+
 
 .clienta {
     position: absolute;

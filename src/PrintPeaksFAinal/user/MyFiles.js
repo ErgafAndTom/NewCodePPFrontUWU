@@ -376,6 +376,7 @@ const MyFiles = () => {
                                                                 backgroundColor: "#F2F0E7",
                                                                 borderRadius: "0.3vw",
                                                                 padding: "0.5vw",
+                                                                width: "15vw",
                                                                 margin: "0.5vw"
                                                             }}
                                                                  className="sub-order d-flex flex-column align-content-between justify-content-between">
@@ -398,8 +399,8 @@ const MyFiles = () => {
                                                                 <p className="adminFont">
                                                                     <strong>Розмір:</strong> {`${orderUnit.newField2} x ${orderUnit.newField3}`} мм
                                                                 </p>
-                                                                <p className="adminFont"><strong>Використано
-                                                                    аркушів:</strong> {orderUnit.newField5} шт</p>
+                                                                <p className="adminFont">Використано
+                                                                    аркушів:<strong>{orderUnit.newField5} шт</strong> </p>
                                                                 <p className="adminFont"><strong>Кількість виробів на
                                                                     аркуші:</strong> {orderUnit.newField4} шт</p>
                                                             </div>

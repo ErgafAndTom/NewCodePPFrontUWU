@@ -45,12 +45,12 @@ const OneOrder = () => {
                         <div className="m-1 p-1 btn btn-light">createdAt: {data.createdAt}</div>
                         <div className="m-1 p-1 btn btn-light">updatedAt: {data.updatedAt}</div>
                     </div>
-                    <div className="border-1 border-light border p-3" style={{width: "70%"}}>
+                    <div className="border-1 border-light " style={{width: "70%"}}>
                         <div className="text-center">
                             Складається з:
                         </div>
                         {data.orderunits.map((orderUnit, iter3) => (
-                            <div className="btn btn-light d-flex m-1 border-light" key={iter3}>
+                            <div className="btn btn-light d-flex " key={iter3}>
                                 <div className="adminFontTable p-1 m-1 bg-light">id: {orderUnit.id}.</div>
                                 <div className="adminFontTable p-1 m-1 bg-light">Назва: {orderUnit.name}.</div>
                                 {orderUnit.orderunitunits &&

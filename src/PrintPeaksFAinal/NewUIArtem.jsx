@@ -8,7 +8,10 @@ import './MainWindow.css';
 import {Link, useNavigate, useParams} from "react-router-dom";
 import axios from '../api/axiosInstance';
 import {Modal} from "react-bootstrap";
-
+import p8svg from "../components/newUIArtem/printers/p8.png";
+import p800 from "../components/newUIArtem/printers/p800.png";
+import creo from "../components/newUIArtem/printers/creo.png";
+import OrderItem from "./Orders/OrderItem.jsx";
 
 // Usage of ClientsMenu
 import img1 from '../components/newUIArtem/printers/46.png';
@@ -64,6 +67,8 @@ const NewUIArtem = () => {
     const [error, setError] = useState(null);
     const {id} = useParams();
     const [thisOrder, setThisOrder] = useState({
+
+
         // id: id
     });
     const [newThisOrder, setNewThisOrder] = useState({
@@ -193,366 +198,367 @@ const NewUIArtem = () => {
     if (thisOrder) {
         return (
             <div>
-
-                <div className="d-flex"
-                     style={{margin: "0", padding: "0"}}
-                >
-                    <div className="d-flex flex-column" style={{
-                        border: "1px solid gray",
-                        width: "7vw",
-                        background: "#F2F0E7",
-                        borderRadius: "1.5vh",
-                        padding: "0.7vh",
-                        marginLeft: "0.5vw",
-                        height: "vh",
-
-                    }}>
-                        <FilesInOrder
-                            thisOrder={thisOrder}
-                        />
-                    </div>
-
+                <div className="d-flex">
                     <div className="containerForContNewUI">
-                        <div className="containerNewUI containerPrints">
-                            <div className="d-flex" style={{
-                                // width: "34.4vw",
-                                height: "19.4vh",
-                                borderRadius: "1vw"
-                            }}>
-                                <div
-                                    onClick={(event) => setShowNewSheetCutBw(true)}
-                                    className="cursorPointer gif printers"
-                                    style={{width: "5vw", display: "grid", marginTop: "3vw"}}>
-                                    <img src={imgg1} className="card-img-top noanim" alt="..."/>
-                                    <img src={img5} className="card-img-top anim" alt="..."/>
-                                </div>
-                                <div
-                                    onClick={(event) => setShowNewSheetCut(true)}
-                                    className="cursorPointer printers gif" style={{width: "9vw", marginleft: "0vw"}}>
-                                    <img src={imgg2} className="card-img-top noanim" alt="..."/>
-                                    <img src={img1} className="card-img-top anim" alt="..."/>
-                                </div>
-                                <div
-                                    onClick={(event) => setShowNewWide(true)}
-                                    className="cursorPointer printers gif" style={{width: "10vw", marginTop: "2vw"}}>
-                                    <img src={imgg3} className="card-img-top noanim" alt="..."/>
-                                    <img src={img2} className="card-img-top anim" alt="..."/>
-                                </div>
-                                <div className="d-flex flex-column justify-content-center">
-                                    <div
-                                        onClick={(event) => setShowNewCup(true)}
-                                        className="cursorPointer printers gif" style={{width: "6vw"}}>
-                                        <img src={imgg5} className="card-img-top noanim" alt="..."/>
-                                        <img src={img6} className="card-img-top anim" alt="..."/>
-                                    </div>
-                                    <div
-                                        onClick={(event) => setShowNewPhoto(true)}
-                                        className="cursorPointer printers gif"
-                                        style={{width: "9vw", marginLeft: "0vw"}}>
-                                        <img src={imgg4} className="card-img-top noanim" alt="..."/>
-                                        <img src={img3} className="card-img-top anim"
-                                             style={{width: "6vw", marginLeft: "1.7vw"}} alt="..."/>
-                                    </div>
-                                </div>
-                            </div>
-                            <div className="d-flex" style={{
-                                // border: "1px solid gray",
-                                // width: "24.4vw",
-                                // height: "19.4vh",
-                                borderRadius: "1vw"
-                            }}>
-                                <div className="d-flex flex-column justify-content-center">
-                                    <div
-                                        onClick={(event) => setShowBigOvshik(true)}
-                                        className="cursorPointer printers gif"
-                                        style={{width: "7vw", marginleft: "0vw"}}>
-                                        <img src={imgg10} className="card-img-top noanim" alt="..."/>
-                                        <img src={imgg10} className="card-img-top anim" alt="..."/>
-                                    </div>
-                                </div>
-                                <div
-                                    className="d-flex flex-column align-content-center align-items-center justify-content-center">
-                                    <div
-                                        onClick={(event) => setShowPerepletMet(true)}
-                                        className="cursorPointer printers gif "
-                                        style={{width: "8vw", marginLeft: "0vw"}}>
-                                        <img src={imgg6} className="card-img-top noanim" alt="..."/>
-                                        <img src={img9} className="card-img-top anim" alt="..."/>
-                                    </div>
-                                    {/*<div*/}
-                                    {/*    onClick={(event) => setShowNewNote(true)}*/}
-                                    {/*    className="cursorPointer printers gif" style={{width: "4vw", marginLeft: "0vw"}}>*/}
-                                    {/*    <img src={versantIcon} className="card-img-top noanim" alt="..."/>*/}
-                                    {/*    <img src={versantIcon} className="card-img-top anim" alt="..."/>*/}
-                                    {/*    /!*<img src={imgg7} className="card-img-top noanim" alt="..."/>*!/*/}
-                                    {/*    /!*<img src={img7} className="card-img-top anim" alt="..."/>*!/*/}
-                                    {/*</div>*/}
-                                </div>
-                                <div className="d-flex flex-column justify-content-center">
-                                    <div
-                                        onClick={(event) => setShowLaminator(true)}
-                                        className="cursorPointer printers gif "
-                                        style={{width: "8vw", marginLeft: "0vw"}}>
-                                        <img src={imgg8} className="card-img-top noanim" alt="..."/>
-                                        <img src={img8} className="card-img-top anim" alt="..."/>
-                                    </div>
-                                    <div
-                                        onClick={(event) => setShowVishichka(true)}
-                                        className="cursorPointer printers gif"
-                                        style={{width: "7vw", marginLeft: "0vw"}}>
-                                        <img src={imgg9} className="card-img-top noanim" alt="..."/>
-                                        <img src={img4} className="card-img-top anim" alt="..."/>
-                                    </div>
-                                </div>
-                            </div>
-
-                        </div>
-
-                        <div className="containerNewUI containerProducts d-flex flex-column">
+                        <div className="buttonsRow">
+                            {/* 1 */}
                             <div
-                                onClick={(event) => setShowNewNote(true)}
-                                className="cursorPointer printers gif" style={{width: "4vw", marginLeft: "0vw"}}>
-                                <img src={versantIcon} className="card-img-top noanim" alt="..."/>
-                                <img src={versantIcon} className="card-img-top anim" alt="..."/>
-                                {/*<img src={imgg7} className="card-img-top noanim" alt="..."/>*/}
-                                {/*<img src={img7} className="card-img-top anim" alt="..."/>*/}
+                                onClick={() => setShowNewSheetCutBw(true)}
+                                className="colorButton bg-pink cursorPointer "
+                            >
+                                <img src={imgg1} className="card-img-top noanim" alt="Фото"/>
+                                <img src={img5} className="card-img-top anim" alt="Фото"/>
+                                <div className="buttonLabel">BLACK</div>
+
+                            </div>
+
+                            {/* 2 */}
+                            <div
+                                onClick={() => setShowNewSheetCut(true)}
+                                className="colorButton bg-yellow  cursorPointer "
+                            >
+                                <img src={imgg2} className="noanimcgcolor noanim"></img>
+                                <img src={img1} className="anim noanimcgcolor"></img>
+                                <div className="buttonLabel">COLOR</div>
+                            </div>
+
+                            {/* 3 */}
+                            <div
+                                onClick={() => setShowNewWide(true)}
+                                className="colorButton bg-green skewed cursorPointer "
+                            >
+                                <img src={imgg3} className="card-img-top noanim" alt="Чашки"/>
+                                <img src={img2} className="card-img-top anim" alt="Чашки"/>
+                                <div className="buttonLabel">WIDE</div>
+                            </div>
+
+                            {/* 4 */}
+                            <div
+                                onClick={() => setShowNewPhoto(true)}
+                                className="colorButton bg-light-cyan skewed cursorPointer "
+                            >
+                                <img src={p800} className="card-img-top noanim" alt="Фото"/>
+                                <img src={img3} className="card-img-top anim" alt="Фото"/>
+                                <div className="buttonLabel">PHOTO</div>
+                            </div>
+
+                            {/* 5 */}
+                            <div
+                                onClick={() => setShowBigOvshik(true)}
+                                className="colorButton bg-blue skewed cursorPointer "
+                            >
+                                <img src={imgg10} className="card-img-top noanim" alt="Овшик"/>
+                                <img src={creo} className="card-img-top anim" alt="Овшик"/>
+                                <div className="buttonLabel">POSTPRESS</div>
+                            </div>
+
+                            {/* 6 */}
+                            <div
+                                onClick={() => setShowPerepletMet(true)}
+                                className="colorButton bg-lavender skewed cursorPointer gif"
+                            >
+                                <img src={imgg6} className="card-img-top noanim" alt="Переплет"/>
+                                <img src={img9} className="card-img-top anim" alt="Переплет"/>
+                                <div className="buttonLabel">BINDING</div>
+                            </div>
+
+                            {/* 7 */}
+                            <div
+                                onClick={() => setShowLaminator(true)}
+                                className="colorButton bg-peach skewed cursorPointer "
+                            >
+                                <img src={p8svg} className="card-img-top noanim"
+                                     stalt="Ламінатор"/>
+                                <img src={img8} className="card-img-top anim" alt="Ламінатор"/>
+                                <div className="buttonLabel">LAMINATION</div>
+                            </div>
+
+                            {/* 8 */}
+                            <div
+                                onClick={() => setShowVishichka(true)}
+                                className="colorButton bg-green skewed cursorPointer "
+                            >
+                                <img src={imgg9} className="card-img-top noanim" alt="Вишичка"/>
+                                <img src={img4} className="card-img-top anim" alt="Вишичка"/>
+                                <div className="buttonLabel">CUTTING</div>
+                            </div>
+
+                            {/* 9 */}
+
+                        </div>
+
+                        <div className="containerNewUI d-flex "
+                             style={{marginBottom: "17vh", background: "transparent"}}>
+                            <div
+                                onClick={() => setShowNewNote(true)}
+                                className="colorButtonNote colorButton bg-brown  cursorPointer">
+                                <img src={versantIcon} className="card-img-top noanim" alt="Продукти"/>
+                                <img src={versantIcon} className="card-img-top anim" alt="Продукти"/>
+                                <div className="buttonLabel">NOTE</div>
                             </div>
                         </div>
-                        <div className="containerNewUI containerMaterials">
-                            <CommentsInOrder thisOrder={thisOrder}/>
+                        <div className="containerNewUI" style={{height: "15vh"}}>
+                            {/*<CommentsInOrder thisOrder={thisOrder}/>*/}
+                        </div>
+
+                        <div className="containerNewUI" style={{height: "15vh"}}>
+                            {/*<OrderItem thisOrder={thisOrder} item={thisOrder} cash={true}/>*/}
+
+
                         </div>
                     </div>
-                    <div className="d-flex flex-column" style={{marginLeft: "0.3vw"}}>
-                        <div className="containerNewUI containerOrderUnits" style={{
-                            // padding: "0.3vw",
-                            border: "0vw",
-                            boxShadow: "0vh 0.3vh 0.3vh #c1c1c1",
-                            // marginLeft: "0.3vw",
-                            // color: "#c1c1c1",
-                        }}>
+                    {/*        <div className="containerOrderUnits">*/}
+                    {/*            {selectedThings2 && selectedThings2.length !== 0 ? (*/}
+                    {/*                selectedThings2.map((thing, index) => (*/}
+                    {/*                    <div key={index} className="orderItem">*/}
+                    {/*                        <div className="orderHeader">*/}
+                    {/*                            <span>{thing.name}</span>*/}
+                    {/*                            <span className="deleteButton"*/}
+                    {/*                                  onClick={() => handleThingClickDelete2(thing)}>✕</span>*/}
+                    {/*                        </div>*/}
+
+                    {/*                        <div className="orderDetails">*/}
+                    {/*                            <div className="detailBlock">*/}
+                    {/*<span>*/}
+                    {/*  {thing.newField2} <span className="unitLabel">мм</span> x {thing.newField3} <span*/}
+                    {/*    className="unitLabel">мм</span>*/}
+                    {/*</span>*/}
+                    {/*                            </div>*/}
+                    {/*                            <div className="detailBlock">*/}
+                    {/*<span>*/}
+                    {/*  {thing.amount} <span className="unitLabel">шт</span>*/}
+                    {/*</span>*/}
+                    {/*                            </div>*/}
+                    {/*                            <div className="detailBlock price">*/}
+                    {/*<span>*/}
+                    {/*  = {thing.priceForThis} <span className="unitLabel">грн</span>*/}
+                    {/*</span>*/}
+                    {/*                            </div>*/}
+                    {/*                        </div>*/}
+
+                    {/*                        {!['0', '0%', '', '%'].includes(thisOrder.prepayment) && (*/}
+                    {/*                            <div className="orderDetails">*/}
+                    {/*                                <div className="detailBlock">*/}
+                    {/*                                    <span>Зі знижкою ({thisOrder.prepayment}) = </span>*/}
+                    {/*                                </div>*/}
+                    {/*                                <div className="detailBlock">*/}
+                    {/*  <span>*/}
+                    {/*    {thing.amount} <span className="unitLabel">шт</span>*/}
+                    {/*  </span>*/}
+                    {/*                                </div>*/}
+                    {/*                                <div className="detailBlock">*/}
+                    {/*  <span>*/}
+                    {/*    x {thing.priceForOneThisDiscount} <span className="unitLabel">грн</span>*/}
+                    {/*  </span>*/}
+                    {/*                                </div>*/}
+                    {/*                                <div className="detailBlock discountPrice">*/}
+                    {/*  <span>*/}
+                    {/*    = {thing.priceForThisDiscount} <span className="unitLabel">грн</span>*/}
+                    {/*  </span>*/}
+                    {/*                                </div>*/}
+                    {/*                            </div>*/}
+                    {/*                        )}*/}
+
+                    {/*                        <div className="additionalInfo">*/}
+                    {/*                            <div>*/}
+                    {/*                                На аркуші: <strong>{thing.newField4} <span*/}
+                    {/*                                className="unitLabel">шт</span></strong>*/}
+                    {/*                            </div>*/}
+                    {/*                            <div>*/}
+                    {/*                                Використано: <strong>{thing.newField5} <span*/}
+                    {/*                                className="unitLabel">аркушів</span></strong>*/}
+                    {/*                            </div>*/}
+                    {/*                            <div>*/}
+                    {/*                                За 1 шт: <strong>{parseFloat(thing.priceForOneThis).toFixed(2)} <span*/}
+                    {/*                                className="unitLabel">грн</span></strong>*/}
+                    {/*                            </div>*/}
+                    {/*                        </div>*/}
+                    {/*                    </div>*/}
+                    {/*                ))*/}
+                    {/*            ) : (*/}
+                    {/*                <div className="text-center text-black-50">Замовлення порожнє</div>*/}
+                    {/*            )}*/}
+                    {/*        </div>*/}
+
+
+                    <div className="d-flex flex-column">
+                        <div className="order-panel">
                             {selectedThings2 && selectedThings2.length !== 0 ? (
-                                <div className="containerOrderUnits" style={{boxShadow: "0vh 0vh 2vh #5a81bc"}} >
+                                <div className="order-list">
                                     {selectedThings2.map((thing, index) => (
-                                        <div key={index} className="d-flex containerNewUI HoverOrderUnits shadow-sm"
-                                             style={{border: "1px #dcd9ce solid", margin: "0.2vw",}}>
-                                            <div
-                                                className="d-flex flex-column justify-content-start align-items-start"
-                                                style={{
-                                                    width: '32.1vw',
-                                                    background: "#FBFAF6",
-                                                }}>
-                                                <Modal.Header className="d-flex" style={{position: "relative", display: "flex", flexDirection: "column",}}>
-                                                    <div
-                                                        className="piecesord d-flex align-items-center overflow-visible"
-                                                        style={{
-                                                            // marginLeft: "1vw",
-                                                            padding: "0.5vw",
-                                                            position: "relative"
-                                                        }}>
-                                                        <div className="adminFontTable d-flex align-items-center"
-                                                             style={{
-                                                                 width: "24vw",
-                                                                 // backgroundColor: "#ffffff",
-                                                             }}
-                                                        >
-                                                            {thing.name}
-                                                            <div className="d-flex align-items-center">
-                                                                <div className="adminFontTable">
-                                                                    ( {thing.newField2}
-                                                                </div>
-                                                                <div className="adminFontTable" style={{
-                                                                    marginTop: "0.5vw",
-                                                                    fontSize: "0.5vw"
-                                                                }}>
-                                                                    мм
-                                                                </div>
-                                                            </div>
-                                                            <div className="adminFontTable">x</div>
-                                                            <div className="d-flex align-items-center">
-                                                                <div className="adminFontTable">
-                                                                    {thing.newField3}
-                                                                </div>
-                                                                <div className="adminFontTable" style={{
-                                                                    marginTop: "0.5vw",
-                                                                    fontSize: "0.5vw"
-                                                                }}>мм
-                                                                </div>
-                                                                )
-                                                            </div>
-                                                            <div className="d-flex">
-                                                                <div className="adminFontTable"
-                                                                     style={{fontSize: "0.9vw", marginLeft: "0.3vw"}}>
-                                                                    {thing.amount}
-                                                                </div>
-                                                                <div className="adminFontTable"
-                                                                     style={{fontSize: "0.5vw", marginTop: "1vh"}}>
-                                                                    шт
-                                                                </div>
-                                                            </div>
-                                                        </div>
-                                                        <div className="priceord d-flex align-items-center"
-                                                             // style={{backgroundColor: "#ffffff"}}
-                                                        >
-                                                            <div className="adminFontTable"
-                                                                 style={{fontSize: "0.7vw", marginTop: "0.6vh"}}>
-                                                                =
-                                                            </div>
-                                                            <div className="adminFontTable booooold"
-                                                                 style={{fontSize: "0.9vw", color: "#EE3C23"}}>
-                                                                {thing.priceForThis}
-                                                            </div>
-                                                            <div className="adminFontTable "
-                                                                 style={{
-                                                                     fontSize: "0.5vw",
-                                                                     marginTop: "1.5vh",
-                                                                     color: "#EE3C23"
-                                                                 }}>
-                                                                грн
-                                                            </div>
-                                                        </div>
-                                                    </div>
+                                        <div key={index} className="order-item">
+                                            <div className="">
+                                                {selectedThings2 && selectedThings2.length !== 0 ? (
+                                                    <div className="containerOrderUnits">
 
-                                                    <div
-                                                        onClick={(e) => handleThingClickDelete2(thing)}
-                                                        className="battonClosed"
-                                                        style={{
-                                                            margin: "0.5vw",
-                                                            zIndex: "99",
-                                                            width: "1.5vw",
-                                                            height: "1.5vw",
-                                                            borderRadius: "50%",
-                                                            // backgroundColor: "#EE3C23",
-                                                            // color: "white",
-                                                            fontSize: "0.8vw",
-                                                            fontWeight: "bold",
-                                                            position: "absolute",
-                                                            right: "-1.3vw",
-                                                            top: "-0.3vw",
-                                                        }}
-                                                    >
-                                                        ✕
-                                                    </div>
+                                                        {selectedThings2.map((thing, index) => (
+                                                            <div key={index} className="d-flex">
 
-                                                    {!['0', '0%', '', '%'].includes(thisOrder.prepayment) &&
-                                                        <div className="d-flex adminFontTable justify-content-end align-content-center" style={{width: "31vw",}}>
-                                                            <div className="d-flex">
-                                                                <div className="adminFontTable" style={{marginLeft: "2vw",}}>Зі знижкою: ({thisOrder.prepayment}) =</div>
-                                                            </div>
-                                                            <div className="d-flex">
-                                                                <div className="adminFontTable">{thing.amount}</div>
-                                                                <div className="adminFontTable"
-                                                                     style={{marginTop: "0.5vw", fontSize: "0.5vw"}}>шт
-                                                                </div>
-                                                                <div className="adminFontTable">x</div>
-                                                                <div className="adminFontTable">{thing.priceForOneThisDiscount}</div>
-                                                                <div className="adminFontTable"
-                                                                     style={{marginTop: "0.5vw", fontSize: "0.5vw"}}>грн
-                                                                </div>
-                                                                <div className="adminFontTable"
-                                                                     style={{marginTop: "0.5vw", fontSize: "0.5vw"}}>=
-                                                                </div>
                                                                 <div
-                                                                    className="adminFontTable booooold" style={{fontSize: "0.8vw", color: "#EE3C23"}}>
-                                                                    {
-                                                                        thing.priceForThisDiscount
-                                                                    }
-                                                                </div>
-                                                                <div className="adminFontTable "
-                                                                     style={{marginTop: "0.5vw", fontSize: "0.5vw", color: "#EE3C23"}}>грн
+                                                                    className="d-flex flex-column justify-content-start ">
+                                                                    <div className="d-flex"
+                                                                    >
+                                                                        <div
+                                                                            onClick={(e) => handleThingClickDelete2(thing)}
+                                                                            className="battonClosed">
+                                                                            ✕
+                                                                        </div>
+                                                                        <div
+
+                                                                            className="d-flex align-items-start priceord"
+                                                                        >
+
+                                                                            <div
+                                                                                className="adminFontTable d-flex align-items-start"
+
+                                                                            >
+                                                                                {thing.name}
+                                                                                <div
+                                                                                    className="d-flex align-items-start">
+                                                                                    <div className="adminFontTable">
+                                                                                        ( {thing.newField2}
+                                                                                    </div>
+                                                                                    <div
+                                                                                        className="adminFontTable smalluah"
+                                                                                        style={{}}>
+                                                                                        мм
+                                                                                    </div>
+                                                                                </div>
+                                                                                <div className="adminFontTable">x</div>
+                                                                                <div
+                                                                                    className="d-flex align-items-center">
+                                                                                    <div className="adminFontTable">
+                                                                                        {thing.newField3}
+                                                                                    </div>
+                                                                                    <div
+                                                                                        className="adminFontTable smalluah"
+                                                                                        style={{}}>мм
+                                                                                    </div>
+                                                                                    )
+                                                                                </div>
+                                                                                <div className="d-flex">
+                                                                                    <div className="adminFontTable"
+                                                                                    >
+                                                                                        {thing.amount}
+                                                                                    </div>
+                                                                                    <div
+                                                                                        className="adminFontTable smalluah">
+
+                                                                                        шт
+                                                                                    </div>
+                                                                                </div>
+                                                                            </div>
+                                                                            <div className="priceord d-flex "
+                                                                                // style={{backgroundColor: "#ffffff"}}
+                                                                            >
+                                                                                <div className="adminFontTable"
+                                                                                     style={{}}>
+                                                                                    =
+                                                                                </div>
+                                                                                <div
+                                                                                    className="adminFontTable booooold priceord "
+                                                                                    style={{
+                                                                                        fontSize: "1vw",
+                                                                                        color: "#EE3C23"
+                                                                                    }}>
+                                                                                    {thing.priceForThis}
+                                                                                </div>
+                                                                                <div className="adminFontTable smalluah"
+                                                                                     style={{
+                                                                                         color: "#EE3C23"
+                                                                                     }}>
+                                                                                    грн
+                                                                                </div>
+
+                                                                                {!['0', '0%', '', '%'].includes(thisOrder.prepayment) && (
+                                                                                    <div className="discount-container">
+                                                                                        <span className="label">Зі знижкою: ({thisOrder.prepayment}) =</span>
+                                                                                        <span className="value">
+                                                                                       {thing.amount}<small>шт</small> × {thing.priceForOneThisDiscount}<small>грн</small> = </span>
+                                                                                        <span
+                                                                                            className="price">{thing.priceForThisDiscount}<small>грн</small></span>
+                                                                                    </div>
+                                                                                )}
+
+
+                                                                            </div>
+
+                                                                        </div>
+
+
+                                                                    </div>
+
+                                                                    <OneProductInOrders item={thing} cash={true}
+                                                                                        handleAmountChange={handleAmountChange}
+                                                                                        index={index}
+                                                                                        thisOrder={thisOrder}/>
+                                                                    <div
+                                                                        className="d-flex">
+                                                                        <div className="d-flex adminFontTable"
+                                                                        >
+                                                                            На аркуші:&nbsp;
+                                                                            <strong
+                                                                                style={{fontSize: "1.5vmin"}}> {thing.newField4} </strong>
+                                                                            &nbsp;шт
+                                                                        </div>
+                                                                        <div className="d-flex adminFontTable">
+                                                                            Використано:&nbsp;
+                                                                            <strong
+                                                                                style={{fontSize: "1.5vmin"}}> {thing.newField5} </strong>
+                                                                            &nbsp;аркушів
+                                                                        </div>
+                                                                        <div className="d-flex adminFontTable">
+                                                                            За 1 шт:&nbsp;
+                                                                            <strong
+                                                                                style={{fontSize: "1.5vmin"}}> {parseFloat(thing.priceForOneThis).toFixed(2)} </strong>
+                                                                            &nbsp;грн
+                                                                        </div>
+                                                                        <div className="d-flex adminFontTable">
+                                                                            За 1 (знижка):&nbsp;
+                                                                            <strong
+                                                                                style={{fontSize: "1.5vmin"}}>  {parseFloat(thing.priceForOneThisDiscount).toFixed(2)} </strong>
+                                                                            &nbsp;грн
+                                                                        </div>
+                                                                    </div>
+                                                                    <Modal.Footer>
+
+                                                                        {/*<div*/}
+                                                                        {/*    className="d-flex adminFontTable"*/}
+                                                                        {/*    style={{marginLeft: "1.5vw"}}*/}
+                                                                        {/*> За 1 виріб (2 спосіб): {thing.priceForOneThis} грн*/}
+                                                                        {/*</div>*/}
+                                                                        {/*<div*/}
+                                                                        {/*    className="d-flex adminFontTable"*/}
+                                                                        {/*    style={{marginLeft: "1.5vw"}}*/}
+                                                                        {/*> За ВСЕ (2 спосіб*шт): {thing.priceForOneThis*thing.amount} грн*/}
+                                                                        {/*</div>*/}
+                                                                    </Modal.Footer>
                                                                 </div>
                                                             </div>
-                                                        </div>
-                                                    }
-                                                </Modal.Header>
-                                                <OneProductInOrders item={thing} cash={true}
-                                                                    handleAmountChange={handleAmountChange}
-                                                                    index={index} thisOrder={thisOrder}/>
-                                                <Modal.Footer>
-                                                    <div className="d-flex justify-content-between align-content-between" style={{marginTop: "0.2vw"}}>
-                                                        <div
-                                                            className="d-flex adminFontTable"
-                                                            style={{marginLeft: "1.5vw"}}>На
-                                                            аркуші: {thing.newField4} виробів
-                                                        </div>
-                                                        <div
-                                                            className="d-flex adminFontTable"
-                                                            style={{marginLeft: "1.5vw"}}
-                                                        > Використано: {thing.newField5} аркушів
-                                                        </div>
-                                                        <div
-                                                            className="d-flex adminFontTable"
-                                                            style={{marginLeft: "1.5vw"}}
-                                                        > За 1 виріб: {thing.priceForOneThis} грн
-                                                        </div>
-                                                        <div
-                                                            className="d-flex adminFontTable"
-                                                            style={{marginLeft: "1.5vw"}}
-                                                        > За 1 (виріб): {thing.priceForOneThisDiscount} грн
-                                                        </div>
+                                                        ))}
+
                                                     </div>
-                                                    {/*<div*/}
-                                                    {/*    className="d-flex adminFontTable"*/}
-                                                    {/*    style={{marginLeft: "1.5vw"}}*/}
-                                                    {/*> За 1 виріб (2 спосіб): {thing.priceForOneThis} грн*/}
-                                                    {/*</div>*/}
-                                                    {/*<div*/}
-                                                    {/*    className="d-flex adminFontTable"*/}
-                                                    {/*    style={{marginLeft: "1.5vw"}}*/}
-                                                    {/*> За ВСЕ (2 спосіб*шт): {thing.priceForOneThis*thing.amount} грн*/}
-                                                    {/*</div>*/}
-                                                </Modal.Footer>
+                                                ) : (
+                                                    <div className="containerOrderUnits">
+                                                        <div className="text-center text-black-50">Замовлення</div>
+                                                    </div>
+                                                )}
                                             </div>
+                                            {/* …весь внутрішній JSX залишається, лише прибери зайві d-flex */}
                                         </div>
                                     ))}
                                 </div>
                             ) : (
-                                <div className="containerOrderUnits">
-                                    <h5 className="text-center text-black-50">Замовлення</h5>
-                                </div>
+                                <div className="empty">Немає елементів</div>
                             )}
                         </div>
+
                         <div className="d-flex flex-column"
-                             style={{marginTop: "1.5vh"}}
+
                         >
                             {/*<ProgressBar/>*/}
                             {/*<div className="containerNewUI containerDetailsThisOrder " style={{border: "0vw"}}>*/}
-                                {thisOrder ? (
-                                    <div className="ClientsMenuAll" style={{
-                                        fontFamily: 'inter, sans-serif',
-                                        padding: '1vw',
-                                        width: '32.6vw',
-                                        height: '31.8vh',
-                                        marginLeft: '0.1vw',
-                                        textAlign: 'left',
-                                        backgroundColor: '#FBFAF6',
-                                        borderRadius: '1vw',
-                                        position: 'relative'
 
-                                    }}>
-                                        <ProgressBar thisOrder={thisOrder} setThisOrder={setThisOrder}
-                                                     setNewThisOrder={setNewThisOrder}
-                                                     handleThisOrderChange={handleThisOrderChange}
-                                                     setSelectedThings2={setSelectedThings2}/>
-                                        {/*<ClientChangerUIArtem*/}
-                                        {/*    client={thisOrder.User}*/}
-                                        {/*    thisOrder={thisOrder}*/}
-                                        {/*    setThisOrder={setThisOrder}*/}
-                                        {/*    setNewThisOrder={setNewThisOrder}*/}
-                                        {/*    handleThisOrderChange={handleThisOrderChange}*/}
-                                        {/*/>*/}
-                                        {/*<ClientsMenu client={thisOrder.User} />*/}
-                                        {/*<ProgressBar thisOrder={thisOrder} setThisOrder={setThisOrder}/>*/}
-                                    </div>
-                                ) : (
-                                    <div>
-                                        <Loader/>
-                                        <div>Як так сталося що у вас Order без User?!?</div>
-                                    </div>
-                                    // <ClientChangerUIArtem client={thisOrder.User} thisOrder={thisOrder}
-                                    //                       setNewThisOrder={setNewThisOrder}
-                                    //                       handleThisOrderChange={handleThisOrderChange}/>
-                                    // <ClientChangerUIArtem client={{email: "null", id: 0, phone: "+00000000",}}/>
-                                )}
                             {/*</div>*/}
                             {/*<NovaPoshtaButton/>*/}
                         </div>
@@ -719,7 +725,34 @@ const NewUIArtem = () => {
                         setSelectedThings2={setSelectedThings2}
                     />
                 }
+                {thisOrder ? (
+                    <div className="ClientsMenuAll">
+                        <ProgressBar thisOrder={thisOrder} setThisOrder={setThisOrder}
+                                     setNewThisOrder={setNewThisOrder}
+                                     handleThisOrderChange={handleThisOrderChange}
+                                     setSelectedThings2={setSelectedThings2}/>
+                        {/*<ClientChangerUIArtem*/}
+                        {/*    client={thisOrder.User}*/}
+                        {/*    thisOrder={thisOrder}*/}
+                        {/*    setThisOrder={setThisOrder}*/}
+                        {/*    setNewThisOrder={setNewThisOrder}*/}
+                        {/*    handleThisOrderChange={handleThisOrderChange}*/}
+                        {/*/>*/}
+                        {/*<ClientsMenu client={thisOrder.User} />*/}
+                        {/*<ProgressBar thisOrder={thisOrder} setThisOrder={setThisOrder}/>*/}
+                    </div>
+                ) : (
+                    <div>
+                        <Loader/>
+                        <div>Як так сталося що у вас Order без User?!?</div>
+                    </div>
+                    // <ClientChangerUIArtem client={thisOrder.User} thisOrder={thisOrder}
+                    //                       setNewThisOrder={setNewThisOrder}
+                    //                       handleThisOrderChange={handleThisOrderChange}/>
+                    // <ClientChangerUIArtem client={{email: "null", id: 0, phone: "+00000000",}}/>
+                )}
             </div>
+
         );
     }
 

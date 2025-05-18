@@ -1,32 +1,46 @@
 import React from 'react';
-import { translateColumnName } from './translations';
+import {translateColumnName} from './translations';
 
 const OneUnitInTable = ({itemData, tablPosition, item, metaItem, handleItemClickRed}) => {
     // Функція для визначення ширини стовпця - має бути ідентичним в усіх таблицях
     const getColumnWidth = (columnName) => {
-        switch(columnName) {
-            case 'id': return '2vw';
-            case 'createdAt': return '7vw';
-            case 'updatedAt': return '7vw';
+        switch (columnName) {
+            case 'id':
+                return '2vw';
+            case 'createdAt':
+                return '7vw';
+            case 'updatedAt':
+                return '7vw';
 
             // Колонки користувачів
-            case 'username': return '6vw';
-            case 'firstName': return '6vw';
-            case 'lastName': return '6vw';
-            case 'familyName': return '6vw';
-            case 'email': return '8vw';
-            case 'phoneNumber': return '8vw';
-            case 'role': return '4vw';
-            case 'password': return '5vw';
-            case 'lastLoginAt': return '2.8vw';
-            case 'discount': return '3.2vw';
+            case 'username':
+                return '6vw';
+            case 'firstName':
+                return '6vw';
+            case 'lastName':
+                return '6vw';
+            case 'familyName':
+                return '6vw';
+            case 'email':
+                return '8vw';
+            case 'phoneNumber':
+                return '8vw';
+            case 'role':
+                return '4vw';
+            case 'password':
+                return '5vw';
+            case 'lastLoginAt':
+                return '2.8vw';
+            case 'discount':
+                return '3.2vw';
 
             // За замовчуванням
-            default: return '3.948vw';
+            default:
+                return '3.948vw';
 
         }
     };
-    
+
     // Базові стилі для клітинки
     const cellStyle = {
         width: getColumnWidth(metaItem),
@@ -52,13 +66,13 @@ const OneUnitInTable = ({itemData, tablPosition, item, metaItem, handleItemClick
             <div className="CustomOrderTable-cell" style={cellStyle}>{itemData}</div>
         );
     }
-    
+
     if (tablPosition === "password") {
         return (
             <div className="CustomOrderTable-cell" style={cellStyle}>********</div>
         );
     }
-    
+
     if (tablPosition === "createdAt" || tablPosition === "updatedAt") {
         return (
             <div className="CustomOrderTable-cell" style={cellStyle}>
@@ -81,8 +95,10 @@ const OneUnitInTable = ({itemData, tablPosition, item, metaItem, handleItemClick
                 className="CustomOrderTable-cell CustomOrderTable-cellCan"
                 style={{
                     ...editableCellStyle,
-                    backgroundColor: itemData === 'admin' ? '#ffe9e9' : 
-                                    itemData === 'manager' ? '#e9f8ff' : '#f2ffe9'
+                    backgroundColor: itemData === 'admin' ? '#ffe9e9' :
+                        itemData === 'manager' ? '#e9f8ff' :
+                            itemData === 'operator' ? '#f2ffe9' : '#FBFAF6'
+
                 }}
                 onClick={(e) => handleItemClickRed(item, e, metaItem)}
             >

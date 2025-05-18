@@ -2,23 +2,51 @@
     font-size: 1vh;
     font-weight: 500;
 }
+
 .adminBackGround {
     background: #FBFAF6;
     min-height: 86.5vh;
 }
+
 .adminNavBackGround {
     background: #FBFAF6;
+
 }
+
 .adminFontTable {
-    font-size: 1.4vh;
-    margin: 0.1vw;
-    margin-left: 0.3vw;
-    align-items: flex-start /* Вертикальне вирівнювання тексту */
+    font-size: 1.5vmin;
+    margin: 0.3vmin;
+
+    align-items: start;
+    justify-content: start;
+
+    /* Вертикальне вирівнювання тексту */
 }
+
+.priceord {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.5vw;
+
+
+}
+
+.priceord strong {
+    font-size: 1.2vmin;
+}
+
+
+.smalluah {
+    margin-top: 1vmin;
+    font-size: 1vmin
+}
+
 .adminPagination {
     height: 3vh;
     justify-content: center;
 }
+
 .paginationZakaz {
     align-items: center;
     width: 3.1vw;
@@ -32,6 +60,7 @@
     /*padding: 0.3vw;*/
     position: relative;
 }
+
 .paginationNamberZakaz {
     align-items: center;
     font-size: var(--font-size-base);
@@ -43,24 +72,28 @@
     border-radius: 1.5vw;
     border: none;
 }
-.paginationNamberZakaz:hover
-{
+
+.paginationNamberZakaz:hover {
     background: #FAB416;
     cursor: pointer;
     color: white;
     transform: translateY(-1px);
 
 }
-.activePag{
+
+.activePag {
     background: #FAB416;
 }
-.booooold{
+
+.booooold {
     font-weight: 600;
 }
+
 .modalForBorderRadius {
     background: #F2F0E7;
     display: none;
 }
+
 .adminButtonAdd {
     display: flex;
     height: auto;
@@ -79,42 +112,50 @@
     font-weight: 500;
 }
 
-.adminButtonAdd:hover{
+.adminButtonAdd:hover {
     cursor: pointer;
     background: #f5a400;
     color: white;
     transform: translateY(-2px);
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.15);
 }
-.adminButtonAdd:active{
+
+.adminButtonAdd:active {
     background: #FAB416;
     transform: translateY(0);
     box-shadow: 0 1px 2px rgba(0, 0, 0, 0.1);
 }
-.adminButtonAdd:active:focus{
+
+.adminButtonAdd:active:focus {
     background: #FAB416;
 }
-.adminButtonAdd:focus{
+
+.adminButtonAdd:focus {
     outline: none;
     box-shadow: 0 0 0 3px rgba(250, 180, 22, 0.3);
 }
-.adminButtonAdd:disabled{
+
+.adminButtonAdd:disabled {
     background: #F2F0E7;
     cursor: not-allowed;
     opacity: 0.7;
     transform: none;
     box-shadow: none;
 }
+
 .hoverOrange:hover {
     background: #FAB416;
 }
-.adminTable{
+
+.adminTable {
     min-height: 70vh;
 }
-.pagButton{
+
+.pagButton {
     border-radius: 50%;
 }
-.whiteBG{
+
+.whiteBG {
     background: #FBFAF6;
 }
 
@@ -122,16 +163,20 @@
     color: #0a53be;
     cursor: pointer;
 }
-.redIcon{
+
+.redIcon {
     width: 1.2vh;
     visibility: hidden;
 }
+
 .redStorageItem:hover .redIcon {
     visibility: visible;
 }
-.modalProductAdd{
+
+.modalProductAdd {
     width: 90vw;
 }
+
 .borderR0 {
     border-radius: 1.5vh;
 }
@@ -176,27 +221,32 @@
     color: white;
 }
 
-.colorCards{
+.colorCards {
     background: #FBFAF6;
 }
+
 .adminFont2 {
     font-size: 1.5vmin;
 }
+
 .fontInfoForPricing1 {
     font-size: 2vmin;
     font-weight: bold;
 }
+
 .fontInfoForPricing {
 
     font-size: var(--font-size-base);
 
     /*font-size: clamp(10px, 1.5vmin, 14px);*/
 }
+
 .fontProductName {
     font-size: 1vw;
     padding-bottom: 0.6vw;
     padding-top: 0.6vw;
 }
+
 .navbarMy {
     border-radius: 12px;
     /*align-items: left;*/
@@ -228,12 +278,9 @@
 .priceord {
     flex-direction: row;
     display: flex;
-    margin-left: 1vw;
-}
-.piecesord {
-    flex-direction: row;
-    display: flex;
     /*margin-left: 1vw;*/
     white-space: nowrap;
-
 }
+
+
+

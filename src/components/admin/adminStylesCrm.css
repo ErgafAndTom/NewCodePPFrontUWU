@@ -2,13 +2,16 @@
     font-size: 1vh;
     font-weight: 500;
 }
+
 .adminBackGround {
     background: #FBFAF6;
     min-height: 86.5vh;
 }
+
 .adminNavBackGround {
     background: #FBFAF6;
 }
+
 /*.adminFontTable {*/
 /*    font-size: 2vh;*/
 /*    font-weight: 400;*/
@@ -27,42 +30,53 @@
     border-radius: 1.5vw;
 }
 
-.activePag{
+.activePag {
     background: #FAB416;
 }
-.booooold{
+
+.booooold {
     font-weight: 600;
 }
+
 .modalForBorderRadius {
     background: #F2F0E7;
     display: none;
 }
+
 .hoverOrange:hover {
     background: #FAB416;
 }
-.adminTable{
+
+.adminTable {
     min-height: 70vh;
 }
-.pagButton{
+
+.pagButton {
     border-radius: 50%;
 }
-.whiteBG{
+
+.whiteBG {
     background: #FBFAF6;
 }
+
 .redStorageItem:hover {
     color: #0a53be;
     cursor: pointer;
 }
-.redIcon{
+
+.redIcon {
     width: 1.2vh;
     visibility: hidden;
 }
+
 .redStorageItem:hover .redIcon {
     visibility: visible;
 }
-.modalProductAdd{
+
+.modalProductAdd {
     width: 90vw;
 }
+
 .borderR0 {
     border-radius: 1.5vh;
 }
@@ -107,25 +121,30 @@
     color: white;
 }
 
-.colorCards{
+.colorCards {
     background: #FBFAF6;
 }
+
 .adminFont2 {
     font-size: 1.5vw;
 }
+
 .fontInfoForPricing1 {
     font-size: 1.5vw;
 }
+
 .fontInfoForPricing11 {
     font-size: 1vw;
     margin: 0.5vw;
 }
+
 .fontProductName {
     font-style: var(--font-inter);
     font-size: var(--font-size-base);
     padding-bottom: 0.6vw;
     padding-top: 0.6vw;
 }
+
 .navbarMy {
     border-radius: 12px;
     align-items: left;
@@ -159,7 +178,7 @@
 /*    display: flex;*/
 /*    margin-left: 1vw;*/
 /*}*/
-/*.piecesord {*/
+/*.priceord {*/
 /*    flex-direction: row;*/
 /*    display: flex;*/
 /*    margin-left: 1vw;*/

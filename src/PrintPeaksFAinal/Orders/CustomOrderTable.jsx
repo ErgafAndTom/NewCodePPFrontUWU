@@ -51,7 +51,7 @@ const CustomOrderTable = () => {
                 setPageCount(Math.ceil(response.data.count / inPageCount))
             })
             .catch(error => {
-                if(error.response.status === 403){
+                if (error.response.status === 403) {
                     navigate('/login');
                 }
                 setError(error.message)
@@ -184,7 +184,8 @@ const CustomOrderTable = () => {
                                         <button
                                             className="CustomOrderTable-delete-btn"
                                             onClick={(e) => handleOrderClickDelete2(order)}
-                                        >-</button>
+                                        >-
+                                        </button>
                                     </div>
                                 </div>
                                 {isExpanded && (
@@ -231,7 +232,7 @@ const CustomOrderTable = () => {
             </div>
         );
     }
-    if(error){
+    if (error) {
         return (
             <h1 className="d-flex justify-content-center align-items-center">
                 {error}
@@ -246,11 +247,11 @@ const CustomOrderTable = () => {
 };
 
 // Компонент для отображения деталей OrderUnitUnit
-const OrderUnitUnit = ({ unit, index, orderUnit}) => {
+const OrderUnitUnit = ({unit, index, orderUnit}) => {
     return (
         <div className="d-flex adminFontTable">
             <div className="adminFontTable d-flex shadow-sm " style={{
-                borderBottom: "1 vh",
+                borderBottom: "2 vh",
                 margin: "0.3vw",
                 borderRadius: "0.7vw"
             }}>
@@ -308,8 +309,8 @@ const OrderUnit = ({orderUnit}) => {
                         </div>
                         <div
                             className="d-flex justify-content-self-end adminFontTable"
-                            style={{marginLeft: "1.5vw"}}
-                        > Використано: {orderUnit.amountListForOne} аркушів
+                            style={{marginLeft: "1.5vw", width: "15vw"}}>
+                            > Використано: {orderUnit.amountListForOne} аркушів
                         </div>
                     </div>
                 </div>

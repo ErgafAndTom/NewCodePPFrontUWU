@@ -1,219 +1,90 @@
-/*.table-container {*/
-/*    max-width: 100vw;*/
-/*    height: 80vh;*/
-/*    overflow: auto;*/
-/*}*/
+/* OrderPanel.css */
 
-/*.table-bordered {*/
-/*    background: white;*/
-/*}*/
-
-/*.table thead tr {*/
-/*    background: #5D6A70;*/
-/*    color: white;*/
-/*}*/
-
-/*.table tbody tr:hover {*/
-/*    background: #f2f2f2;*/
-/*}*/
-
-/*.adminFontTable {*/
-/*    color: black;*/
-/*}*/
-
-/*.btn-edit {*/
-/*    color: white;*/
-/*    background-color: #5D6A70;*/
-/*    border: none;*/
-/*    padding: 5px 10px;*/
-/*    border-radius: 4px;*/
-/*    text-align: center;*/
-/*    cursor: pointer;*/
-/*}*/
-
-/*.btn-edit:hover {*/
-/*    background-color: #5D6A70;*/
-/*}*/
-
-/*.btn-update {*/
-/*    color: white;*/
-/*    background-color: #007bff;*/
-/*    border: none;*/
-/*    padding: 5px 10px;*/
-/*    border-radius: 4px;*/
-/*    text-align: center;*/
-/*    cursor: pointer;*/
-/*}*/
-
-/*.btn-update:hover {*/
-/*    background-color: #0069d9;*/
-/*}*/
-
-/*.btn-delete {*/
-/*    color: white;*/
-/*    background-color: #dc3545;*/
-/*    border: none;*/
-/*    padding: 5px 10px;*/
-/*    border-radius: 4px;*/
-/*    text-align: center;*/
-/*    cursor: pointer;*/
-/*}*/
-
-.btn-delete:hover {
-    background-color: #677067;
+/* 1) затемнюємо фон та ловимо кліки по всьому екрану */
+.order-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    background: rgba(0, 0, 0, 0.2);
+    z-index: 1000;
 }
 
-/*@font-face {*/
-/*     */
-/*    src: url('fonts/inter.woff2') format('woff2'),*/
-/*    url('fonts/inter.woff') format('woff');*/
-/*    font-weight: normal;*/
-/*    font-style: normal;*/
-/*}*/
+/* 2) сама панелька */
+.order-panel {
+    position: fixed;
+    bottom: 20.2rem; /* відступ від низу екрану */
+    right: 1rem; /* відступ від правого краю */
+    width: 44.5rem; /* статична ширина, щоб не “розпливалося” */
+    height: 65vh; /* щоб не виростало висотою більше за 60% екрану */
 
-body {
-    display: flex;
-    font-family: var(--font-inter)
-, inter, sans-serif;
-    margin: 10px;
-    background-color: rgba(233, 230, 218, 0.5); /* Прозорість 50% */
-}
-.order-list {
-    width: 100%;
-    max-width: 1720px;
-    margin: 0 auto;
-    background-color: #FBFAF6; /* Фон списку замовлень */
-    padding: 10px;
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-    border-radius: 12px;
+    border-radius: 1vw;
+    box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.1);
+    overflow-y: auto; /* внутрішня прокрутка, якщо занадто багато контенту */
+    z-index: 1010; /* вище за всі інші елементи на сторінці */
 }
 
-h1 {
-    text-align: center;
-    color: black;
-    font-size: 12px;
-}
-
-table {
-    width: 100%;
-    border-collapse: collapse;
-    margin-top: 10px;
-}
-
-thead {
-    background-color: #FBFAF6;
-}
-
-th {
-    padding: 7px;
-    text-align: center;
-    border-bottom: 2px solid #FAB416;
-    font-size: 11px; /* Однаковий розмір шрифту */
-    background-color: #f9f9f9; /* Фон для замовлень та колонок */
-}
-td {
-    padding: 7px;
-    text-align: center;
-    border-bottom: 2px solid #ddd;
-    font-size: 11px; /* Однаковий розмір шрифту */
-    background-color: #FBFAF6; /* Фон для замовлень та колонок */
-}
-
-thead {
-    padding: 7px;
-    text-align: center;
-    background-color: #f9f9f9; /* Фон для заголовків колонок */
-    font-weight: bold;
-}
-
-td {
-    text-align: center;
-
-}
-
-.left-rounded {
-    border-top-left-radius: 12px;
-
-}
-
-.right-rounded {
-    border-top-right-radius: 12px;
-
-}
-
-button {
-    padding: 5px;
+/* 3) кнопка-закриття всередині */
+.order-panel .close-btn {
+    position: absolute;
+    top: 0.5rem;
+    right: 0.5rem;
+    background: transparent;
     border: none;
-    border-radius: 12px;
-    font-size: 11px;
+    font-size: 1.2rem;
+    color: #888;
     cursor: pointer;
 }
 
-.invoice-btn {
-    background-color: #FAB416;
-    color: white;
+.order-panel .close-btn:hover {
+    color: #EE3C23;
 }
 
-.invoice-btn:hover {
-    background-color: #FAB416;
-}
-
-.delete-btn {
-    background-color: #EE3C23;
-    color: white;
-}
-
-.delete-btn:hover {
-    background-color: #c72e19;
-}
-
-.order-details {
-    display: flex;
-    width: 100%;
-    max-width: 1720px;
-    margin: 0 auto;
-    background-color: #f9f9f9;
-    padding: 5px;
-    margin-top: 5px;
-    border-radius: 12px;
-}
-
-.sub-order {
+/* 4) внутрішній список */
+.order-panel .order-list {
     display: flex;
     flex-direction: column;
-    width: 100%;
-    margin: 0 auto;
-    background-color: #FBFAF6;
-    padding: 5px;
-    /*margin-top: 5px;*/
-    border-radius: 12px;
-    line-height: 1;
+    gap: 0.75rem;
+    margin-top: 1.5rem; /* щоб не заходило під кнопку-закриття */
 }
 
-.sub-order p {
-    margin: 5px 0;
-    font-size: 11px; /* Шрифт для основних елементів субзамовлення */
-    text-align: left;
+/* 5) один рядок замовлення */
+.order-panel .order-item {
+    display: grid;
+    grid-template-columns: 1.5rem 1fr auto;
+    align-items: center;
+    padding: 0.5rem;
+    background: #f9f9f9;
+    border-radius: 0.25rem;
 }
 
-.order-details p {
-    font-size: 12px; /* Текст вирівнюється по розміру з іншими елементами */
-    text-align: left; /* Вирівнювання тексту по лівому краю */
-    margin: 5px 0; /* Відступи між абзацами */
-}
-/*.sub-order {*/
-/*    display: none; !* За замовчуванням приховано *!*/
-/*}*/
-
-.toggle-btn {
-    background-color: #FAB416;
-    color: white;
-    border: none;
-    /*padding: 5px 10px;*/
-    border-radius: 12px;
-    cursor: pointer;
+/* 6) скролбар всередині панелі */
+.order-panel::-webkit-scrollbar {
+    width: 0.4rem;
 }
 
-.toggle-btn:hover {
-    background-color: #e0a40e;
+.order-panel::-webkit-scrollbar-thumb {
+    background: rgba(0, 0, 0, 0.1);
+    border-radius: 0.2rem;
+}
+
+/* адаптив для дуже маленьких екранів */
+@media (max-width: 500px) {
+    .order-panel {
+        bottom: 1rem;
+        right: 1rem;
+        width: 90vw;
+        max-height: 70vh;
+    }
+
+    .order-panel .order-item {
+        grid-template-columns: 1.5rem 1fr;
+        grid-template-rows: auto auto;
+    }
+
+    .order-panel .order-item > :last-child {
+        grid-column: 1 / -1;
+        margin-top: 0.5rem;
+    }
 }
