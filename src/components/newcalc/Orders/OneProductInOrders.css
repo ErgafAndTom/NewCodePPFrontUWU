@@ -1,5 +1,5 @@
 :root {
-    --font-size: 1.2vmin;
+    --font-size: 1.5vmin;
     --spacing: 0.2rem;
     --radius: 0.5rem;
     --bg-item: #f9f9f9;
@@ -20,7 +20,7 @@
 
 /* Якщо .unit-item — grid із кількома колонками, гарантуємо, що дискаунт-рядок займає весь ряд */
 .unit-item .unit-discount {
-    grid-column: 1 / -1; /* від першої до останньої колонки */
+
 }
 
 .unit-item {
@@ -33,8 +33,9 @@
     display: flex;
     flex-direction: column;
     gap: calc(var(--spacing) / 2);
-    width: 36vw;
+    width: 35.5vw;
     overflow: hidden;
+
 
 }
 
@@ -42,8 +43,11 @@
 .unit-header {
     display: flex;
     flex-direction: row;
+    padding-right: 0.5rem;
     justify-content: space-between;
     align-items: center;
+    font-size: 1.6vmin;
+
 
 }
 
@@ -51,20 +55,21 @@
 .unit-index-name {
     display: flex;
     align-items: baseline;
+
     gap: 0.5rem;
 
 
 }
 
 .unit-index {
-    font-weight: 600;
-    font-size: 1rem;
+    font-weight: 900;
+    padding-left: 0.5rem;
     color: var(--text-main);
 
 }
 
 .unit-name {
-    font-size: 1rem;
+
     color: var(--text-main);
     white-space: nowrap;
     overflow: hidden;
@@ -84,7 +89,7 @@
 .unit-total .unit-qty,
 .unit-total .unit-price-one,
 .unit-total .unit-sum {
-    font-size: 1rem;
+    font-size: 0.8vw;
 }
 
 .unit-total small {
@@ -99,19 +104,19 @@
 /* Рядок зі знижкою */
 .unit-discount {
     display: flex;
-
-
-    align-items: flex-start;
+    align-items: center;
+    justify-content: flex-end;
     gap: 0.25rem;
-    font-family: var(--font);
+    margin-right: 0.4vw;
     color: var(--text-secondary);
+
 }
 
 .unit-discount .unit-qty,
 .unit-discount .unit-price-one,
 .unit-discount .unit-price-discounted,
 .unit-discount .unit-total-discounted {
-    font-size: 1.5vmin;
+    font-size: 0.8vw;
 }
 
 .unit-discount small {
@@ -125,7 +130,7 @@
 
 .unit-discount .minus {
     color: var(--accent);
-    font-size: 1.25rem;
+
 }
 
 .unit-discount .unit-discount-pct {

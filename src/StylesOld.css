@@ -69,9 +69,11 @@
 .battonClosed {
     color: black;
     cursor: pointer;
-    position: fixed;
-    top: 0;
+    font-size: 0.6vw;
+    margin-left: 35vw;
+    margin-top: -0.5vw;
     right: 0;
+
     /*background: #0c4128;*/
 }
 

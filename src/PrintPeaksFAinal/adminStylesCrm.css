@@ -16,24 +16,10 @@
 .adminFontTable {
     font-size: 1.5vmin;
     margin: 0.3vmin;
-
     align-items: start;
     justify-content: start;
 
     /* Вертикальне вирівнювання тексту */
-}
-
-.priceord {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    gap: 0.5vw;
-
-
-}
-
-.priceord strong {
-    font-size: 1.2vmin;
 }
 
 

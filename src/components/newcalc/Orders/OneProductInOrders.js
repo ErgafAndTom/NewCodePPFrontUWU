@@ -24,7 +24,7 @@ function OneProductInOrders({item, thisOrder}) {
                             <small>грн</small>
                             <span className="sep">=</span>
                             <span className="unit-sum booooold"
-                                  style={{color: "red"}}>{unit.priceForOneThis * unit.newField5}</span>
+                                  style={{color: "#ef5223"}}>{unit.priceForOneThis * unit.newField5}</span>
                             <small>грн</small>
                         </div>
                     </div>
@@ -35,15 +35,14 @@ function OneProductInOrders({item, thisOrder}) {
                             <span className="unit-qty">{unit.newField5}</span>
                             <small>шт</small>
                             <span className="sep">×</span>
-                            <span className="unit-price-one">({unit.priceForOneThis}</span>
-                            <small>грн</small>
-                            <span className="minus">−</span>
-                            <span className="unit-discount-pct">{thisOrder.prepayment}</span>
-                            <span className="sep">)=</span>
-                            <span className="unit-price-discounted">{unit.priceForOneThisDiscount}</span>
+
+                            <span
+                                className="unit-price-discounted"> {parseFloat(unit.priceForOneThisDiscount).toFixed(0)}</span>
                             <small>грн</small>
                             <span className="sep">=</span>
-                            <span className="unit-total-discounted">{unit.priceForAllThisDiscount}</span>
+                            <span
+                                className="unit-total-discounted">{parseFloat(unit.priceForAllThisDiscount).toFixed(0)}</span>
+
                             <small>грн</small>
                         </div>
                     )}

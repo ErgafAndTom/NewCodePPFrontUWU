@@ -13,16 +13,18 @@
 
 /* 2) сама панелька */
 .order-panel {
-    position: fixed;
-    bottom: 20.2rem; /* відступ від низу екрану */
-    right: 1rem; /* відступ від правого краю */
-    width: 44.5rem; /* статична ширина, щоб не “розпливалося” */
-    height: 65vh; /* щоб не виростало висотою більше за 60% екрану */
-
+    /*position: fixed;*/
+    margin-top: -0.5vh;
+    margin-right: 0.5vw;
+    width: 98%; /* статична ширина, щоб не “розпливалося” */
+    height: 59vh; /* щоб не виростало висотою більше за 60% екрану */
+    background: #f2f0e7;
+    padding: 1rem;
     border-radius: 1vw;
-    box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.1);
+    box-shadow: 0 0 0.1rem rgba(0.2, 0.2, 0.2, 0.2);
+
     overflow-y: auto; /* внутрішня прокрутка, якщо занадто багато контенту */
-    z-index: 1010; /* вище за всі інші елементи на сторінці */
+    /* вище за всі інші елементи на сторінці */
 }
 
 /* 3) кнопка-закриття всередині */
@@ -33,7 +35,6 @@
     background: transparent;
     border: none;
     font-size: 1.2rem;
-    color: #888;
     cursor: pointer;
 }
 
@@ -45,28 +46,30 @@
 .order-panel .order-list {
     display: flex;
     flex-direction: column;
-    gap: 0.75rem;
-    margin-top: 1.5rem; /* щоб не заходило під кнопку-закриття */
+    gap: 1rem;
+
+    /*margin-top: 1.5rem; !* щоб не заходило під кнопку-закриття *!*/
 }
 
 /* 5) один рядок замовлення */
 .order-panel .order-item {
-    display: grid;
-    grid-template-columns: 1.5rem 1fr auto;
+
     align-items: center;
-    padding: 0.5rem;
-    background: #f9f9f9;
-    border-radius: 0.25rem;
+
+    background: #f2f0e7;
+    border-radius: 1vw;
+
 }
 
 /* 6) скролбар всередині панелі */
 .order-panel::-webkit-scrollbar {
-    width: 0.4rem;
+    width: 0.3rem;
 }
 
 .order-panel::-webkit-scrollbar-thumb {
     background: rgba(0, 0, 0, 0.1);
     border-radius: 0.2rem;
+    cursor: pointer;
 }
 
 /* адаптив для дуже маленьких екранів */
