@@ -4,36 +4,7 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="7e58169f-d1e8-4cb2-8753-447dd0b39044" name="Changes" comment="ddd">
-      <change afterPath="$PROJECT_DIR$/src/PrintPeaksFAinal/Orders/OrderItem.jsx" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/artemm/public/creo.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/components/newUIArtem/printers/creo.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/components/newUIArtem/printers/p8.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/components/newUIArtem/printers/p800.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/PrintPeaksCss/index.css" beforeDir="false" afterPath="$PROJECT_DIR$/public/PrintPeaksCss/index.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/PrintPeaksFAinal/NewUIArtem.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/PrintPeaksFAinal/NewUIArtem.jsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/PrintPeaksFAinal/Orders/CustomOrderTable.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/PrintPeaksFAinal/Orders/CustomOrderTable.jsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/PrintPeaksFAinal/Orders/CustomOrderTable2.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/PrintPeaksFAinal/Orders/CustomOrderTable2.jsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/PrintPeaksFAinal/Orders/Orders.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/PrintPeaksFAinal/Orders/Orders.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/PrintPeaksFAinal/adminStylesCrm.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/PrintPeaksFAinal/adminStylesCrm.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/PrintPeaksFAinal/commentsInOrders/CommentsInOrder.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/PrintPeaksFAinal/commentsInOrders/CommentsInOrder.jsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/PrintPeaksFAinal/user/MyFiles.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/PrintPeaksFAinal/user/MyFiles.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/PrintPeaksFAinal/user/OneUnitInTable.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/PrintPeaksFAinal/user/OneUnitInTable.jsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/PrintPeaksFAinal/userInNewUiArtem/ClientArtem.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/PrintPeaksFAinal/userInNewUiArtem/ClientArtem.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/PrintPeaksFAinal/userInNewUiArtem/ClientChangerUIArtem.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/PrintPeaksFAinal/userInNewUiArtem/ClientChangerUIArtem.jsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/PrintPeaksFAinal/userInNewUiArtem/StyleArtem.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/PrintPeaksFAinal/userInNewUiArtem/StyleArtem.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/StylesOld.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/StylesOld.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/bootstrap.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/bootstrap.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/admin/adminStylesCrm.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/admin/adminStylesCrm.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/calc/main/MainWindow.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/calc/main/MainWindow.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/newUIArtem/printers/46.png" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/newUIArtem/printers/46.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/newUIArtem/printers/ComponentTMP_0-image2.png" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/newUIArtem/printers/ComponentTMP_0-image2.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/newUIArtem/printers/Без назви-1.png" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/newUIArtem/printers/Без назви-1.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/newcalc/Orders/OneOrder.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/newcalc/Orders/OneOrder.jsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/newcalc/Orders/OneProductInOrders.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/newcalc/Orders/OneProductInOrders.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/newGlobalCss.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/newGlobalCss.css" afterDir="false" />
-    </list>
+    <list default="true" id="7e58169f-d1e8-4cb2-8753-447dd0b39044" name="Changes" comment="ddd" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -325,6 +296,7 @@
       <workItem from="1747426896849" duration="16686000" />
       <workItem from="1747451279823" duration="4000" />
       <workItem from="1747461470981" duration="46638000" />
+      <workItem from="1747702968536" duration="9000" />
     </task>
     <task id="LOCAL-00055" summary="ddd">
       <option name="closed" value="true" />
@@ -753,13 +725,11 @@
         <line-breakpoint enabled="true" type="javascript">
           <url>file://$PROJECT_DIR$/src/PrintPeaksFAinal/NewUIArtem.jsx</url>
           <line>300</line>
-          <properties lambdaOrdinal="-1" />
           <option name="timeStamp" value="3" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="javascript">
           <url>file://$PROJECT_DIR$/src/PrintPeaksFAinal/NewUIArtem.jsx</url>
           <line>78</line>
-          <properties lambdaOrdinal="-1" />
           <option name="timeStamp" value="4" />
         </line-breakpoint>
       </breakpoints>

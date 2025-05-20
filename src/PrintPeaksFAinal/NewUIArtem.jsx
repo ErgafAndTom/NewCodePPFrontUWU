@@ -303,78 +303,78 @@ const NewUIArtem = () => {
 
 
                     </div>
-                    {/*        <div className="containerOrderUnits">*/}
-                    {/*            {selectedThings2 && selectedThings2.length !== 0 ? (*/}
-                    {/*                selectedThings2.map((thing, index) => (*/}
-                    {/*                    <div key={index} className="orderItem">*/}
-                    {/*                        <div className="orderHeader">*/}
-                    {/*                            <span>{thing.name}</span>*/}
-                    {/*                            <span className="deleteButton"*/}
-                    {/*                                  onClick={() => handleThingClickDelete2(thing)}>✕</span>*/}
-                    {/*                        </div>*/}
+                    {/*<div className="containerOrderUnits">*/}
+                    {/*    {selectedThings2 && selectedThings2.length !== 0 ? (*/}
+                    {/*        selectedThings2.map((thing, index) => (*/}
+                    {/*            <div key={index} className="orderItem">*/}
+                    {/*                <div className="orderHeader">*/}
+                    {/*                    <span>{thing.name}</span>*/}
+                    {/*                    <span className="deleteButton"*/}
+                    {/*                          onClick={() => handleThingClickDelete2(thing)}>✕</span>*/}
+                    {/*                </div>*/}
 
-                    {/*                        <div className="orderDetails">*/}
-                    {/*                            <div className="detailBlock">*/}
+                    {/*                <div className="orderDetails">*/}
+                    {/*                    <div className="detailBlock">*/}
                     {/*<span>*/}
                     {/*  {thing.newField2} <span className="unitLabel">мм</span> x {thing.newField3} <span*/}
                     {/*    className="unitLabel">мм</span>*/}
                     {/*</span>*/}
-                    {/*                            </div>*/}
-                    {/*                            <div className="detailBlock">*/}
+                    {/*                    </div>*/}
+                    {/*                    <div className="detailBlock">*/}
                     {/*<span>*/}
                     {/*  {thing.amount} <span className="unitLabel">шт</span>*/}
                     {/*</span>*/}
-                    {/*                            </div>*/}
-                    {/*                            <div className="detailBlock price">*/}
+                    {/*                    </div>*/}
+                    {/*                    <div className="detailBlock price">*/}
                     {/*<span>*/}
                     {/*  = {thing.priceForThis} <span className="unitLabel">грн</span>*/}
                     {/*</span>*/}
-                    {/*                            </div>*/}
-                    {/*                        </div>*/}
+                    {/*                    </div>*/}
+                    {/*                </div>*/}
 
-                    {/*                        {!['0', '0%', '', '%'].includes(thisOrder.prepayment) && (*/}
-                    {/*                            <div className="orderDetails">*/}
-                    {/*                                <div className="detailBlock">*/}
-                    {/*                                    <span>Зі знижкою ({thisOrder.prepayment}) = </span>*/}
-                    {/*                                </div>*/}
-                    {/*                                <div className="detailBlock">*/}
+                    {/*                {!['0', '0%', '', '%'].includes(thisOrder.prepayment) && (*/}
+                    {/*                    <div className="orderDetails">*/}
+                    {/*                        <div className="detailBlock">*/}
+                    {/*                            <span>Зі знижкою ({thisOrder.prepayment}) = </span>*/}
+                    {/*                        </div>*/}
+                    {/*                        <div className="detailBlock">*/}
                     {/*  <span>*/}
                     {/*    {thing.amount} <span className="unitLabel">шт</span>*/}
                     {/*  </span>*/}
-                    {/*                                </div>*/}
-                    {/*                                <div className="detailBlock">*/}
+                    {/*                        </div>*/}
+                    {/*                        <div className="detailBlock">*/}
                     {/*  <span>*/}
                     {/*    x {thing.priceForOneThisDiscount} <span className="unitLabel">грн</span>*/}
                     {/*  </span>*/}
-                    {/*                                </div>*/}
-                    {/*                                <div className="detailBlock discountPrice">*/}
+                    {/*                        </div>*/}
+                    {/*                        <div className="detailBlock discountPrice">*/}
                     {/*  <span>*/}
                     {/*    = {thing.priceForThisDiscount} <span className="unitLabel">грн</span>*/}
                     {/*  </span>*/}
-                    {/*                                </div>*/}
-                    {/*                            </div>*/}
-                    {/*                        )}*/}
-
-                    {/*                        <div className="additionalInfo">*/}
-                    {/*                            <div>*/}
-                    {/*                                На аркуші: <strong>{thing.newField4} <span*/}
-                    {/*                                className="unitLabel">шт</span></strong>*/}
-                    {/*                            </div>*/}
-                    {/*                            <div>*/}
-                    {/*                                Використано: <strong>{thing.newField5} <span*/}
-                    {/*                                className="unitLabel">аркушів</span></strong>*/}
-                    {/*                            </div>*/}
-                    {/*                            <div>*/}
-                    {/*                                За 1 шт: <strong>{parseFloat(thing.priceForOneThis).toFixed(2)} <span*/}
-                    {/*                                className="unitLabel">грн</span></strong>*/}
-                    {/*                            </div>*/}
                     {/*                        </div>*/}
                     {/*                    </div>*/}
-                    {/*                ))*/}
-                    {/*            ) : (*/}
-                    {/*                <div className="text-center text-black-50">Замовлення порожнє</div>*/}
-                    {/*            )}*/}
-                    {/*        </div>*/}
+                    {/*                )}*/}
+
+                    {/*                <div className="additionalInfo">*/}
+                    {/*                    <div>*/}
+                    {/*                        На аркуші: <strong>{thing.newField4} <span*/}
+                    {/*                        className="unitLabel">шт</span></strong>*/}
+                    {/*                    </div>*/}
+                    {/*                    <div>*/}
+                    {/*                        Використано: <strong>{thing.newField5} <span*/}
+                    {/*                        className="unitLabel">аркушів</span></strong>*/}
+                    {/*                    </div>*/}
+                    {/*                    <div>*/}
+                    {/*                        За 1 шт: <strong>{parseFloat(thing.priceForOneThis).toFixed(2)} <span*/}
+                    {/*                        className="unitLabel">грн</span></strong>*/}
+                    {/*                    </div>*/}
+                    {/*                </div>*/}
+                    {/*            </div>*/}
+                    {/*        ))*/}
+                    {/*    ) : (*/}
+                    {/*        <div className="text-center text-black-50">Замовлення порожнє</div>*/}
+                    {/*    )}*/}
+                    {/*</div>*/}
 
 
                     <div className="d-flex flex-column">
@@ -382,12 +382,31 @@ const NewUIArtem = () => {
                             {selectedThings2 && selectedThings2.length !== 0 ? (
                                 <div className="order-list">
                                     {selectedThings2.map((thing, index) => (
-                                        <div key={index} className="order-item">
+                                        <div key={index} className="order-item"
+                                             style={{
+                                                 position: "relative",
+                                                 // border: "0.2vw solid #0000001a",
+                                                 border: "0.1vw solid #ffffff",
+                                                 padding: "0.5vw",
+                                                 marginBottom: "1vh",
+                                                 borderRadius: "0.5vw",
+                                                 // backgroundColor: "#ffffff"
+                                             }}>
                                             <div
                                                 onClick={(e) => handleThingClickDelete2(thing)}
                                                 className="battonClosed">
                                                 ✕
                                             </div>
+                                            {/*<span className="battonClosed" style={{*/}
+                                            {/*    // float: "right",*/}
+                                            {/*    // // color: "#EE3C23",*/}
+                                            {/*    // fontSize: "2vh",*/}
+                                            {/*    // marginRight: "1vw",*/}
+                                            {/*    // marginTop: "0.5vh",*/}
+                                            {/*    // marginBottom: "0.5vh",*/}
+                                            {/*    zIndex: "1000",*/}
+                                            {/*}}*/}
+                                            {/*      onClick={(e) => handleThingClickDelete2(thing)}>✕</span>*/}
                                             <div className="containerOrderUnits">
 
 

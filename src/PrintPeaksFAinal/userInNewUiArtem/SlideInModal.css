@@ -1,0 +1,88 @@
+.modal-backdrop-custom {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    background-color: rgba(0,0,0,0.4);
+    z-index: 1000;
+}
+
+.modal-slide-container {
+
+    position: fixed;
+    top: 0;
+    width: 20vw;
+    right: 33vw;
+    border-radius: 1vw;
+    height: 90vh;
+    background-color: #f2f0e7;
+    display: flex;
+    flex-direction: column;
+
+    animation: slideInRight 0.3s ease-out;
+
+}
+
+@keyframes slideInRight {
+    from {
+        transform: translateX(100%);
+    }
+    to {
+        transform: translateX(0%);
+    }
+}
+
+.modal-slide-header {
+    border-radius: 1vw;
+    /*padding: 2vh 2vw;*/
+    font-size: 2vmin;
+    padding: 1vh 1vw;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background-color: #f8f9fa;
+    /*border-bottom: 1px solid #ccc;*/
+}
+
+.modal-close-btn {
+    background: none;
+    border: none;
+    font-size: 2vmin;
+    cursor: pointer;
+}
+
+.modal-slide-body {
+    font-size: 1.5vmin;
+    flex: 1;
+    padding: 2vh 2vw;
+    overflow-y: auto;
+
+
+}
+
+.modal-slide-footer {
+    padding: 1.5vh 2vw;
+    border-top: 1px solid #ccc;
+    display: flex;
+    justify-content: flex-end;
+    gap: 1vw;
+}
+
+.modal-footer-btn {
+    font-size: 1.5vmin;
+    padding: 0.8vh 2vw;
+    border-radius: 0.8vw;
+    border: none;
+    cursor: pointer;
+}
+
+.modal-footer-btn.cancel {
+    background-color: #ccc;
+    color: white;
+}
+
+.modal-footer-btn.confirm {
+    background-color: #3c60a6;
+    color: white;
+}

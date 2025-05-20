@@ -1,0 +1,109 @@
+.user-form-container {
+    width: 20vw;
+    height: 70vh;
+    padding: 2vh 1vw;
+    background: #f2f0e7;
+    border-radius: 1vw;
+    overflow-y: auto;
+    font-size: 1.5vmin;
+}
+
+.user-form-title {
+    margin-bottom: 1vh;
+    font-weight: bold;
+}
+
+.user-form-error {
+    color: red;
+    margin-bottom: 1vh;
+}
+
+.form-group-floating {
+    position: relative;
+    margin-bottom: 1.8vh;
+}
+
+.input-wrapper {
+    width: 16vw;
+    display: flex;
+    align-items: center;
+
+    background: #fff;
+    border-radius: 0.5vw;
+    position: relative;
+    height: 4.5vh;
+    padding-left: 2.5vw;
+}
+
+.input-icon {
+    position: absolute;
+    left: 0.8vw;
+    color: #666;
+    font-size: 1.5vmin;
+}
+
+.form-input {
+    border: none;
+    outline: none;
+    flex: 1;
+    font-size: 1.5vmin;
+    background: transparent;
+    padding: 0.7vh 0.5vw 0.3vh;
+}
+
+.form-floating-label {
+    position: absolute;
+    left: 2.5vw;
+    top: 50%;
+    transform: translateY(-50%);
+    color: #aaa;
+    font-size: 1.5vmin;
+    pointer-events: none;
+    transition: all 0.2s ease;
+}
+
+/* Якщо потрібно — активна анімація під фокусом */
+.input-wrapper:has(.form-input:focus) .form-floating-label,
+.input-wrapper:has(.form-input:not(:placeholder-shown)) .form-floating-label {
+    top: 0.3vh;
+    left: 2.5vw;
+    font-size: 1.2vmin;
+    color: #3c60a6;
+}
+
+.form-textarea {
+    width: 100%;
+    border-radius: 0.5vw;
+    border: 1px solid #ccc;
+    font-size: 1.5vmin;
+    padding: 0.5vh;
+    resize: vertical;
+    min-height: 5vh;
+    background: #fff;
+}
+
+.form-actions {
+    display: flex;
+    justify-content: flex-end;
+    gap: 1vw;
+    margin-top: 2vh;
+}
+
+.btn-cancel,
+.btn-confirm {
+    padding: 0.6vh 1.5vw;
+    font-size: 1.5vmin;
+    border: none;
+    border-radius: 0.5vw;
+    cursor: pointer;
+}
+
+.btn-cancel {
+    background-color: #ccc;
+    color: white;
+}
+
+.btn-confirm {
+    background-color: #3c60a6;
+    color: white;
+}

@@ -159,7 +159,8 @@
 
 /* Якщо .order-item — це grid із трьома колонками */
 .order-item {
-
+    box-shadow: var(--shadow);
+    /*background: #ffffff;*/
 }
 
 /* Рядок зі знижкою має займати всю ширину grid */
