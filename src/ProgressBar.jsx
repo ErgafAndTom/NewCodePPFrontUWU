@@ -17,7 +17,14 @@ const stages = [
 ];
 
 
-const ProgressBar = ({thisOrder, setThisOrder, setNewThisOrder, handleThisOrderChange, setSelectedThings2}) => {
+const ProgressBar = ({
+                         thisOrder,
+                         setThisOrder,
+                         setNewThisOrder,
+                         handleThisOrderChange,
+                         selectedThings2,
+                         setSelectedThings2
+                     }) => {
     const [isVisible, setIsVisible] = useState(true);
     const [currentStage, setCurrentStage] = useState(thisOrder?.status ? parseInt(thisOrder.status) : 0);
     const [isPaid, setIsPaid] = useState(false);
@@ -416,6 +423,7 @@ const ProgressBar = ({thisOrder, setThisOrder, setNewThisOrder, handleThisOrderC
                 thisOrder={thisOrder}
                 setThisOrder={setThisOrder}
                 setNewThisOrder={setNewThisOrder}
+                setSelectedThings2={setSelectedThings2}
                 handleThisOrderChange={handleThisOrderChange}
             />
             <button onClick={() => handleStageChange('cancel')} style={buttonStyles.cancel}>
@@ -513,7 +521,7 @@ const ProgressBar = ({thisOrder, setThisOrder, setNewThisOrder, handleThisOrderC
             </div>
 
             <div style={{marginBottom: '0.5vh'}}>
-                <DiscountCalculator thisOrder={thisOrder} setThisOrder={setThisOrder}
+                <DiscountCalculator thisOrder={thisOrder} setThisOrder={setThisOrder} selectedThings2={selectedThings2}
                                     setSelectedThings2={setSelectedThings2}/>
             </div>
             {deadline === null && (

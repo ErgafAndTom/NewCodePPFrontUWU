@@ -3,7 +3,7 @@ import axios from "./api/axiosInstance";
 import {Spinner} from "react-bootstrap";
 import {useNavigate} from "react-router-dom";
 
-function PaymentCalculator({thisOrder, setThisOrder, setSelectedThings2}) {
+function PaymentCalculator({thisOrder, setThisOrder, selectedThings2, setSelectedThings2}) {
     const navigate = useNavigate();
     const [amount, setAmount] = useState(thisOrder.price);
     const [discount, setDiscount] = useState(thisOrder.prepayment);
@@ -37,6 +37,7 @@ function PaymentCalculator({thisOrder, setThisOrder, setSelectedThings2}) {
                 setThisOrder({...thisOrder, prepayment: response.data.prepayment, allPrice: response.data.allPrice})
                 // setThisOrder(response.data)
                 setSelectedThings2(response.data.OrderUnits)
+                // setSelectedThings2({...selectedThings2, prepayment: response.data.prepayment, allPrice: response.data.allPrice})
                 setLoad(false)
             })
             .catch(error => {
@@ -80,8 +81,8 @@ function PaymentCalculator({thisOrder, setThisOrder, setSelectedThings2}) {
                 />
             </div>
 
-            <div style={{display: 'flex', alignItems: 'center', marginTop: '0.5vh' }}>
-                <label style={{ fontSize: '0.7vw', color: '#707070' }}>Знижка:</label>
+            <div style={{display: 'flex', alignItems: 'center', marginTop: '0.5vh'}}>
+                <label style={{fontSize: '0.7vw', color: '#707070'}}>Знижка:</label>
                 <div style={{display: 'flex', alignItems: 'center', width: '70%'}}>
                     <input
                         type="text"
@@ -102,18 +103,18 @@ function PaymentCalculator({thisOrder, setThisOrder, setSelectedThings2}) {
                         }}
                     />
                     {load && (
-                        <Spinner animation="border" variant="danger" size="sm" />
+                        <Spinner animation="border" variant="danger" size="sm"/>
                     )}
                     {/*<label style={{fontSize: '0.7vw', color: '#707070'}}>грн</label>*/}
                 </div>
             </div>
 
             {error && (
-                <div style={{ color: 'red', fontSize: '0.7vw', marginTop: '0.5vh' }}>{error}</div>
+                <div style={{color: 'red', fontSize: '0.7vw', marginTop: '0.5vh'}}>{error}</div>
             )}
 
-            <div style={{ display: 'flex', alignItems: 'center', marginTop: '0.5vh' }}>
-                <label style={{ fontSize: '0.7vw', color: '#707070' }}>К оплаті буде:</label>
+            <div style={{display: 'flex', alignItems: 'center', marginTop: '0.5vh'}}>
+                <label style={{fontSize: '0.7vw', color: '#707070'}}>К оплаті буде:</label>
                 <input
                     disabled
                     type="text"
@@ -134,7 +135,7 @@ function PaymentCalculator({thisOrder, setThisOrder, setSelectedThings2}) {
                     }}
                 />
                 {load && (
-                    <Spinner animation="border" variant="danger" size="sm" />
+                    <Spinner animation="border" variant="danger" size="sm"/>
                 )}
             </div>
         </div>

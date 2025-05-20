@@ -24,7 +24,7 @@ import {buttonStyles, containerStyles, formStyles} from './styles';
 import PaysInOrderRestored from "./pays/PayInOrderRestored";
 
 
-const ClientChangerUIArtem = ({thisOrder, setThisOrder}) => {
+const ClientChangerUIArtem = ({thisOrder, setThisOrder, setSelectedThings2}) => {
     const [modalVisible, setModalVisible] = useState(false);
     const navigate = useNavigate();
     const [showAddUser, setShowAddUser] = useState(false);
@@ -104,6 +104,7 @@ const ClientChangerUIArtem = ({thisOrder, setThisOrder}) => {
         axios.put(`/orders/OneOrder/user`, data)
             .then(response => {
                 setThisOrder(response.data);
+                setSelectedThings2(response.data.OrderUnits)
                 setLoad(false);
                 setShow(false);
             })

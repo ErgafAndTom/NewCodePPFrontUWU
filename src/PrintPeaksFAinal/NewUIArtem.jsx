@@ -195,6 +195,10 @@ const NewUIArtem = () => {
         }
     }, [id]);
 
+    useEffect(() => {
+
+    }, [selectedThings2]);
+
     if (thisOrder) {
         return (
             <div>
@@ -817,7 +821,8 @@ const NewUIArtem = () => {
                         <ProgressBar thisOrder={thisOrder} setThisOrder={setThisOrder}
                                      setNewThisOrder={setNewThisOrder}
                                      handleThisOrderChange={handleThisOrderChange}
-                                     setSelectedThings2={setSelectedThings2}/>
+                                     setSelectedThings2={setSelectedThings2}
+                                     selectedThings2={selectedThings2}/>
                         {/*<ClientChangerUIArtem*/}
                         {/*    client={thisOrder.User}*/}
                         {/*    thisOrder={thisOrder}*/}
