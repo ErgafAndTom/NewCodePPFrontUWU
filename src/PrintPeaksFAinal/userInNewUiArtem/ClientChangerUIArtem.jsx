@@ -36,16 +36,22 @@ const ClientChangerUIArtem = ({thisOrder, setThisOrder, setSelectedThings2}) => 
     const [typeSelect, setTypeSelect] = useState("");
     const [users, setUsers] = useState({rows: []});
     const [show, setShow] = useState(false);
+    const [showVisible, setShowVisible] = useState(false);
     const [error, setError] = useState(false);
     const [filteredUsers, setFilteredUsers] = useState([]);
 
     // Функція для закриття модального вікна
     const handleClose = () => {
-        setShow(false);
+        setShowVisible(false)
+        const timer = setTimeout(() => {
+            setShow(false);
+        }, 300);
+        return () => clearTimeout(timer);
     };
 
     // Функція для відкриття модального вікна
     const handleShow = () => {
+        setShowVisible(true)
         setShow(true);
         setSearchQuery("");
         fetchUsers();
@@ -84,10 +90,11 @@ const ClientChangerUIArtem = ({thisOrder, setThisOrder, setSelectedThings2}) => 
     // Пошук користувачів при зміні запиту
     useEffect(() => {
         if (show) {
-            const timer = setTimeout(() => {
-                fetchUsers();
-            }, 300);
-            return () => clearTimeout(timer);
+            // const timer = setTimeout(() => {
+            //     fetchUsers();
+            // }, 300);
+            // return () => clearTimeout(timer);
+            fetchUsers();
         }
     }, [searchQuery, show]);
 
@@ -372,10 +379,14 @@ const ClientChangerUIArtem = ({thisOrder, setThisOrder, setSelectedThings2}) => 
             )}
 
             {/* Модальне вікно для вибору користувача */}
-            <Modal
+            <div><Modal
                 show={show}
                 onHide={handleClose}
                 dialogClassName="modal-content"
+                style={{
+                    transform: `${showVisible ? 'translateX(0)' : 'translateX(35%)'}`,
+                    transition: 'transform 0.3s ease-in-out',
+                }}
             >
                 {/*<Modal.Header dialogClassName="Modal-Header" closeButton style={{background:"#f2f0e7", borderRadius: '1vw 1vw 0 0 ', fontSize:"1.2vmin", height: '3vh' }}>*/}
                 {/*    <Modal.Title dialogClassName="Modal-Header" style={{fontSize:"1.5vmin", marginLeft:'0.3vw'}}>Вибір клієнта:</Modal.Title>*/}
@@ -612,13 +623,37 @@ const ClientChangerUIArtem = ({thisOrder, setThisOrder, setSelectedThings2}) => 
                     {/* Відображення списку користувачів */}
                     {load ? (
                         <div className="" style={{
-                            color: "#f8f9fa",
-                            display: 'flex',
-                            alignItems: 'center',
-                            justifyContent: 'center',
-                            border: "none"
+                            background: "#f8f9fa",
+                            borderRadius: '1vw',
+                            padding: '1vh 0.8vw',
+                            Height: '74vh',
+
+                            marginTop: '0.5vh',
+                            overflow: 'hidden',              // ← додано
+                            paddingRight: "0.5vw",
                         }}>
-                            <Spinner animation="border" variant="primary"/>
+                            <div className="user-list user-form-container" style={{
+                                background: "transparent",
+                                border: "none",
+                                width: '31vw',
+                                marginLeft: '-1.1vw',
+                                marginTop: '-1.5vh',
+                                borderRadius: '1vw',
+                                maxHeight: "75vh",
+                                paddingRight: "0.5vw",
+                                justifyContent: "center",
+                                alignItems: "center",
+                                display: "flex",
+                                flexDirection: "column",
+                                textAlign: "center",
+                                // padding: "0.5vh 0.5vw",
+                                // paddingTop: "0.5vh",
+                                // paddingBottom: "0.5vh",
+                                // paddingLeft: "0.5vw",
+
+                            }}>
+                                <Spinner animation="border" variant="primary"/>
+                            </div>
                         </div>
                     ) : error ? (
                         <div className="" style={{
@@ -651,61 +686,74 @@ const ClientChangerUIArtem = ({thisOrder, setThisOrder, setSelectedThings2}) => 
                                 {users.rows && users.rows.length > 0 ? (
                                     <ListGroup>
                                         {users.rows.map((user) => (
-                                            <ListGroup.Item
-                                                style={{border: "none"}}
-                                                key={user.id}
-                                                action
-                                                onClick={() => handleSelectUser(user.id)}
-                                                className={`d-flex justify-content-between align-items-start ${thisOrder.client && thisOrder.client.id === user.id ? 'border-primary-5' : ''}`}
-                                            >
-                                                <div className="" style={{fontSize: '1.5vmin'}}>
-                                                    <div className="" style={{position: 'relative', width: '27.5vw'}}>
-                                                        <div className="" style={{position: 'relative'}}>
-                                                            <div className="fw-bold d-flex "
-                                                                 style={{flexcolumn: 'row'}}>
-                                                                {user.lastName} {user.firstName} {user.familyName} {}
-                                                                <div className="fw-lighter"
-                                                                     style={{fontSize: "1vmin"}}>: №{user.id}</div>
+                                            <div style={{
+                                                borderBottom: "0.1vw solid #e8e8e8",
+                                                borderRadius: "1vw",
+                                                // color: "#e8e8e8",
+                                            }}>
+                                                <ListGroup.Item
+                                                    style={{
+                                                        border: "none",
+                                                        // borderBottom: "0.1vw solid #b6b6b6",
+                                                        // color: "#b6b6b6",
+                                                    }}
+                                                    key={user.id}
+                                                    action
+                                                    onClick={() => handleSelectUser(user.id)}
+                                                    className={`d-flex justify-content-between align-items-start ${thisOrder.client && thisOrder.client.id === user.id ? 'border-primary-5' : ''}`}
+                                                >
+                                                    <div className="" style={{
+                                                        fontSize: '1.5vmin',
+                                                        // borderBottom: "0.1vw solid #ffffff",
+                                                    }}>
+                                                        <div className=""
+                                                             style={{position: 'relative', width: '27.5vw'}}>
+                                                            <div className="" style={{position: 'relative'}}>
+                                                                <div className="fw-bold d-flex "
+                                                                     style={{flexcolumn: 'row'}}>
+                                                                    {user.lastName} {user.firstName} {user.familyName} {}
+                                                                    <div className="fw-lighter"
+                                                                         style={{fontSize: "1vmin"}}>: №{user.id}</div>
+                                                                </div>
+
+
+                                                                {user.phoneNumber && <div> {user.phoneNumber} </div>}
+                                                                {user.email && <div>{user.email}</div>}
+                                                                {user.telegram && <div> {user.telegram}</div>}
+
                                                             </div>
+                                                            <div className="flex-right" style={{
+                                                                position: "absolute",
+                                                                display: "flex",
+                                                                top: "0vw",
+                                                                right: "0",
+                                                                fontSize: "1.5vmin"
+                                                            }}>
 
-
-                                                            {user.phoneNumber && <div> {user.phoneNumber} </div>}
-                                                            {user.email && <div>{user.email}</div>}
-                                                            {user.telegram && <div> {user.telegram}</div>}
-
-                                                        </div>
-                                                        <div className="flex-right" style={{
-                                                            position: "absolute",
-                                                            display: "flex",
-                                                            top: "0vw",
-                                                            right: "0",
-                                                            fontSize: "1.5vmin"
-                                                        }}>
-
-                                                            <div>
-                                                                {user.photoLink && <div> {user.photoLink} </div>}
-                                                                {user.discount > 0 &&
-                                                                    <div>
-                                                                        <strong> <span
-                                                                            className="text-success">Знижка: {user.discount}%</span></strong>
-                                                                    </div>}
-                                                                {user.address && <div>{user.address}</div>}
-                                                                {user.notes &&
-                                                                    <div> {user.notes}
-                                                                    </div>}
+                                                                <div>
+                                                                    {user.photoLink && <div> {user.photoLink} </div>}
+                                                                    {user.discount > 0 &&
+                                                                        <div>
+                                                                            <strong> <span
+                                                                                className="text-success">Знижка: {user.discount}%</span></strong>
+                                                                        </div>}
+                                                                    {user.address && <div>{user.address}</div>}
+                                                                    {user.notes &&
+                                                                        <div> {user.notes}
+                                                                        </div>}
+                                                                </div>
                                                             </div>
                                                         </div>
                                                     </div>
-                                                </div>
-                                                {/*{thisOrder.client && thisOrder.client.id === user.id && (*/}
-                                                {/*    <span className="badge bg-primary rounded-pill" style={{}}>✓</span>*/}
-                                                {/*)}*/}
-                                                {/*{thisOrder.executor && thisOrder.executor.id === user.id && (*/}
-                                                {/*    <span className="badge bg-success rounded-pill" style={{*/}
-                                                {/*        boxShadow: "0vh 0vh 1vh #226012",*/}
-                                                {/*    }}>Це ви</span>*/}
-                                                {/*)}*/}
-                                            </ListGroup.Item>
+                                                    {/*{thisOrder.client && thisOrder.client.id === user.id && (*/}
+                                                    {/*    <span className="badge bg-primary rounded-pill" style={{}}>✓</span>*/}
+                                                    {/*)}*/}
+                                                    {/*{thisOrder.executor && thisOrder.executor.id === user.id && (*/}
+                                                    {/*    <span className="badge bg-success rounded-pill" style={{*/}
+                                                    {/*        boxShadow: "0vh 0vh 1vh #226012",*/}
+                                                    {/*    }}>Це ви</span>*/}
+                                                    {/*)}*/}
+                                                </ListGroup.Item></div>
                                         ))}
                                     </ListGroup>
                                 ) : (
@@ -774,7 +822,7 @@ const ClientChangerUIArtem = ({thisOrder, setThisOrder, setSelectedThings2}) => 
                 {/*        </button>*/}
                 {/*    )}*/}
                 {/*</Modal.Footer>*/}
-            </Modal>
+            </Modal></div>
 
             {/* Модальне вікно для додавання нового користувача */}
 
