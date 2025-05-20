@@ -3,7 +3,19 @@ import axios from '../../../api/axiosInstance';
 import {useNavigate} from "react-router-dom";
 import {Spinner} from "react-bootstrap";
 
-const Materials2 = ({material, setMaterial, count, setCount, prices, type, name, buttonsArr, selectArr, typeUse, size}) => {
+const Materials2 = ({
+                        material,
+                        setMaterial,
+                        count,
+                        setCount,
+                        prices,
+                        type,
+                        name,
+                        buttonsArr,
+                        selectArr,
+                        typeUse,
+                        size
+                    }) => {
     const [paper, setPaper] = useState([]);
     const [error, setError] = useState(null);
     const [load, setLoad] = useState(true);
@@ -28,7 +40,7 @@ const Materials2 = ({material, setMaterial, count, setCount, prices, type, name,
     }
 
     let handleClick = (e) => {
-        if(e === "Самоклеючі"){
+        if (e === "Самоклеючі") {
             setMaterial({
                 type: "Плівка",
                 thickness: e,
@@ -68,7 +80,7 @@ const Materials2 = ({material, setMaterial, count, setCount, prices, type, name,
                 // console.log(response.data);
                 setPaper(response.data.rows)
                 setLoad(false)
-                if(response.data && response.data.rows && response.data.rows[0]){
+                if (response.data && response.data.rows && response.data.rows[0]) {
                     setMaterial({
                         ...material,
                         material: response.data.rows[0].name,
@@ -85,17 +97,20 @@ const Materials2 = ({material, setMaterial, count, setCount, prices, type, name,
             .catch(error => {
                 setLoad(false)
                 setError(error.message)
-                if(error.response.status === 403){
+                if (error.response.status === 403) {
                     navigate('/login');
                 }
                 console.log(error.message);
             })
-    }, [material.thickness, size]);
+    }, [
+        material.thickness,
+        // size
+    ]);
 
 
     return (
         <div className="d-flex allArtemElem" style={{marginLeft: "2vw", marginTop: "1vh"}}>
-            <div style={{display: 'flex', }}>
+            <div style={{display: 'flex',}}>
                 <div style={{display: 'flex'}}>
                     {buttonsArr.map((item, index) => (
                         <div
@@ -153,7 +168,7 @@ const Materials2 = ({material, setMaterial, count, setCount, prices, type, name,
                         ))}
                     </select>
                     {load && (
-                        <Spinner animation="border" variant="danger" size="sm" />
+                        <Spinner animation="border" variant="danger" size="sm"/>
                     )}
                     {error && (
                         <div>{error}</div>

@@ -24,8 +24,6 @@ import {buttonStyles, containerStyles, formStyles} from './styles';
 import PaysInOrderRestored from "./pays/PayInOrderRestored";
 
 
-
-
 const ClientChangerUIArtem = ({thisOrder, setThisOrder}) => {
     const [modalVisible, setModalVisible] = useState(false);
     const navigate = useNavigate();
@@ -105,9 +103,9 @@ const ClientChangerUIArtem = ({thisOrder, setThisOrder}) => {
 
         axios.put(`/orders/OneOrder/user`, data)
             .then(response => {
-                setLoad(false);
                 setThisOrder(response.data);
-                // setShow(false);
+                setLoad(false);
+                setShow(false);
             })
             .catch(error => {
                 setLoad(false);
@@ -196,9 +194,10 @@ const ClientChangerUIArtem = ({thisOrder, setThisOrder}) => {
 
                     {thisOrder.client ? (
 
-                        <div className="" style={{fontSize: '1.7vmin', position:"relative"}}>
-                            <div className="fw-bold d-flex "  style={{flexcolumn: 'row'}}>
-                                {thisOrder.client.lastName } {thisOrder.client.firstName } {thisOrder.client.familyName } <div className="fw-lighter" style={{fontSize:"1vmin"}}>: №{thisOrder.client.id}</div>
+                        <div className="" style={{fontSize: '1.7vmin', position: "relative"}}>
+                            <div className="fw-bold d-flex " style={{flexcolumn: 'row'}}>
+                                {thisOrder.client.lastName} {thisOrder.client.firstName} {thisOrder.client.familyName}
+                                <div className="fw-lighter" style={{fontSize: "1vmin"}}>: №{thisOrder.client.id}</div>
                             </div>
                         </div>
                     ) : (
@@ -208,17 +207,18 @@ const ClientChangerUIArtem = ({thisOrder, setThisOrder}) => {
                 </div>
 
                 {thisOrder.client && (
-                    <div className="client-details" style={{fontSize: '1.7vmin', marginLeft:"1vw"}}>
+                    <div className="client-details" style={{fontSize: '1.7vmin', marginLeft: "1vw"}}>
 
-                            {thisOrder.client.phoneNumber && (
-                                    <span className="">{thisOrder.client.phoneNumber}</span>
-                            )}
-                            {thisOrder.client.address && (
-                                    <span className="">{thisOrder.client.address}</span>
-                            )}
-                            {thisOrder.client.discount && (
-                                    <span className="text-success" style={{marginLeft:"3vw"}}>Знижка: {thisOrder.client.discount}%</span>
-                            )}
+                        {thisOrder.client.phoneNumber && (
+                            <span className="">{thisOrder.client.phoneNumber}</span>
+                        )}
+                        {thisOrder.client.address && (
+                            <span className="">{thisOrder.client.address}</span>
+                        )}
+                        {thisOrder.client.discount && (
+                            <span className="text-success"
+                                  style={{marginLeft: "3vw"}}>Знижка: {thisOrder.client.discount}%</span>
+                        )}
                     </div>
                 )}
             </div>
@@ -242,7 +242,8 @@ const ClientChangerUIArtem = ({thisOrder, setThisOrder}) => {
                                 title="Viber"
                                 style={{...buttonStyles.base, ...buttonStyles.iconButton}}
                             >
-                                <img src={viberlogo} alt="Viber" style={{width: '16px', height: '16px', filter: 'grayscale(100%)', opacity: 0.5}}/>
+                                <img src={viberlogo} alt="Viber"
+                                     style={{width: '16px', height: '16px', filter: 'grayscale(100%)', opacity: 0.5}}/>
                             </button>
                         )}
 
@@ -260,7 +261,8 @@ const ClientChangerUIArtem = ({thisOrder, setThisOrder}) => {
                                 title="WhatsApp"
                                 style={{...buttonStyles.base, ...buttonStyles.iconButton}}
                             >
-                                <img src={whatsapplogo} alt="WhatsApp" style={{width: '16px', height: '16px', filter: 'grayscale(100%)', opacity: 0.5}}/>
+                                <img src={whatsapplogo} alt="WhatsApp"
+                                     style={{width: '16px', height: '16px', filter: 'grayscale(100%)', opacity: 0.5}}/>
                             </button>
                         )}
 
@@ -278,7 +280,8 @@ const ClientChangerUIArtem = ({thisOrder, setThisOrder}) => {
                                 title="Signal"
                                 style={{...buttonStyles.base, ...buttonStyles.iconButton}}
                             >
-                                <img src={signallogo} alt="Signal" style={{width: '16px', height: '16px', filter: 'grayscale(100%)', opacity: 0.5}}/>
+                                <img src={signallogo} alt="Signal"
+                                     style={{width: '16px', height: '16px', filter: 'grayscale(100%)', opacity: 0.5}}/>
                             </button>
                         )}
 
@@ -295,7 +298,8 @@ const ClientChangerUIArtem = ({thisOrder, setThisOrder}) => {
                             <button
                                 title="Telegram"
                                 style={{...buttonStyles.base, ...buttonStyles.iconButton}}>
-                                <img src={telegram} alt="Telegram" style={{width: '16px', height: '16px', filter: 'grayscale(100%)', opacity: 0.5}}/>
+                                <img src={telegram} alt="Telegram"
+                                     style={{width: '16px', height: '16px', filter: 'grayscale(100%)', opacity: 0.5}}/>
                             </button>
                         )}
                         {thisOrder.client.email && (
@@ -367,14 +371,30 @@ const ClientChangerUIArtem = ({thisOrder, setThisOrder}) => {
             )}
 
             {/* Модальне вікно для вибору користувача */}
-            <Modal show={show} onHide={handleClose} dialogClassName="modal-content" >
+            <Modal
+                show={show}
+                onHide={handleClose}
+                dialogClassName="modal-content"
+            >
                 {/*<Modal.Header dialogClassName="Modal-Header" closeButton style={{background:"#f2f0e7", borderRadius: '1vw 1vw 0 0 ', fontSize:"1.2vmin", height: '3vh' }}>*/}
                 {/*    <Modal.Title dialogClassName="Modal-Header" style={{fontSize:"1.5vmin", marginLeft:'0.3vw'}}>Вибір клієнта:</Modal.Title>*/}
                 {/*</Modal.Header>*/}
-                <Modal.Body style={{background:"transparent", borderRadius: '1vw' , fontSize:"1.5vmin", minHeight: '75vh', maxHeight: "75vh", }}>
+                <Modal.Body style={{
+                    background: "transparent",
+                    borderRadius: '1vw',
+                    fontSize: "1.5vmin",
+                    minHeight: '75vh',
+                    maxHeight: "75vh",
+                }}>
                     {/* Відображення поточного клієнта якщо він обраний */}
                     {thisOrder.client && (
-                        <div className="" style={{ background: '#f8f9fa', borderRadius: '1vw', position:'relative', padding:'1vh 0.8vw', minHeight: '10vh'}}>
+                        <div className="" style={{
+                            background: '#f8f9fa',
+                            borderRadius: '1vw',
+                            position: 'relative',
+                            padding: '1vh 0.8vw',
+                            minHeight: '10vh'
+                        }}>
                             <button
                                 onClick={() => window.open(`/client/${thisOrder.client.id}`, '_blank')}
                                 title="Відкрити профіль клієнта"
@@ -398,68 +418,70 @@ const ClientChangerUIArtem = ({thisOrder, setThisOrder}) => {
                             </button>
 
 
-                                <div className="" style={{width: "20vw", margin:"0.3vh"}}>
+                            <div className="" style={{width: "20vw", margin: "0.3vh"}}>
 
-                                    <div className="" style={{position:"relative",marginTop:"0.3vh"}}>
-                                        <div className="fw-bold d-flex "  style={{flexcolumn: 'row'}}>
-                                            {thisOrder.client.lastName } {thisOrder.client.firstName } {thisOrder.client.familyName } <div className="fw-lighter" style={{fontSize:"1vmin"}}>: №{thisOrder.client.id}</div>
+                                <div className="" style={{position: "relative", marginTop: "0.3vh"}}>
+                                    <div className="fw-bold d-flex " style={{flexcolumn: 'row'}}>
+                                        {thisOrder.client.lastName} {thisOrder.client.firstName} {thisOrder.client.familyName}
+                                        <div className="fw-lighter" style={{fontSize: "1vmin"}}>:
+                                            №{thisOrder.client.id}</div>
+                                    </div>
+                                </div>
+                                {thisOrder.client.phoneNumber && (
+                                    <div className="d-flex" style={{marginTop: "0.3vh"}}>
+
+                                        <div className="">
+                                            <strong className="">Телефон:</strong> {thisOrder.client.phoneNumber}
                                         </div>
                                     </div>
-                                    {thisOrder.client.phoneNumber && (
-                                        <div className="d-flex" style={{marginTop:"0.3vh"}}>
+                                )}
 
-                                            <div className="">
-                                                <strong className="">Телефон:</strong> {thisOrder.client.phoneNumber}
-                                            </div>
-                                        </div>
-                                    )}
-
-                                    {thisOrder.client.email && (
-                                        <div className="d-flex " style={{marginTop:"0.3vh"}}>
-                                            <div className="">
-                                                <strong>Пошта:</strong> {thisOrder.client.email}
-                                            </div>
-                                        </div>
-                                    )}
-
-
-                                    {thisOrder.client.address && (
+                                {thisOrder.client.email && (
+                                    <div className="d-flex " style={{marginTop: "0.3vh"}}>
                                         <div className="">
-                                            <div className="" style={{marginTop:"0.3vh"}}>
-                                                <strong>Адреса:</strong> {thisOrder.client.address}
-                                            </div>
+                                            <strong>Пошта:</strong> {thisOrder.client.email}
                                         </div>
-                                    )}
-                                    {thisOrder.client.telegram && (
-                                        <div className="" style={{marginTop:"0.3vh"}}>
-                                            <div>
-                                                <strong>Telegram: </strong>{thisOrder.client.telegram}
-                                            </div>
+                                    </div>
+                                )}
+
+
+                                {thisOrder.client.address && (
+                                    <div className="">
+                                        <div className="" style={{marginTop: "0.3vh"}}>
+                                            <strong>Адреса:</strong> {thisOrder.client.address}
                                         </div>
-                                    )}
-                                    {thisOrder.client.discount && (
-                                        <div className="" style={{marginTop:"0.3vh"}} >
-                                            <div>
-                                                <strong> <span
+                                    </div>
+                                )}
+                                {thisOrder.client.telegram && (
+                                    <div className="" style={{marginTop: "0.3vh"}}>
+                                        <div>
+                                            <strong>Telegram: </strong>{thisOrder.client.telegram}
+                                        </div>
+                                    </div>
+                                )}
+                                {thisOrder.client.discount && (
+                                    <div className="" style={{marginTop: "0.3vh"}}>
+                                        <div>
+                                            <strong> <span
                                                 className="text-success">Знижка: {thisOrder.client.discount}%</span></strong>
-                                            </div>
                                         </div>
-                                    )}
+                                    </div>
+                                )}
 
-                                    {thisOrder.client.notes && (
-                                        <div className="d-flex" style={{marginTop:"0.3vh"}}>
-                                            <div>
-                                                <strong>Нотатки:</strong> {thisOrder.client.notes}
-                                            </div>
+                                {thisOrder.client.notes && (
+                                    <div className="d-flex" style={{marginTop: "0.3vh"}}>
+                                        <div>
+                                            <strong>Нотатки:</strong> {thisOrder.client.notes}
                                         </div>
-                                    )}
+                                    </div>
+                                )}
 
-                                </div>
+                            </div>
 
 
                             {/* Кнопки для взаємодії з поточним клієнтом */}
                             <div className="d-flex flex-wrap gap-1" style={{marginTop: '1vh'}}>
-                                {!show && thisOrder.client && thisOrder.client.phoneNumber &&(
+                                {!show && thisOrder.client && thisOrder.client.phoneNumber && (
                                     <>
 
                                         <button
@@ -512,21 +534,20 @@ const ClientChangerUIArtem = ({thisOrder, setThisOrder}) => {
                             <>
 
 
-
-                                    <div style={{ display: 'flex', justifyContent: 'center' }}>
-                                        <button
-                                            onClick={() => setModalVisible(true)}
-                                            className="adminButtonAdd"
-                                            style={{
-                                                position: 'absolute',
-                                                bottom: '1vh',
-                                                right: '0.5vw',
-                                                display: 'flex',
-                                                alignItems: 'flex-end'
-                                            }}
-                                        >
-                                            Створити клієнта
-                                        </button>
+                                <div style={{display: 'flex', justifyContent: 'center'}}>
+                                    <button
+                                        onClick={() => setModalVisible(true)}
+                                        className="adminButtonAdd"
+                                        style={{
+                                            position: 'absolute',
+                                            bottom: '1vh',
+                                            right: '0.5vw',
+                                            display: 'flex',
+                                            alignItems: 'flex-end'
+                                        }}
+                                    >
+                                        Створити клієнта
+                                    </button>
 
                                 </div>
 
@@ -547,7 +568,7 @@ const ClientChangerUIArtem = ({thisOrder, setThisOrder}) => {
                     {/* Пошук клієнтів */}
                     <div>
                         <InputGroup>
-                            <div style={{ position: 'relative', width: '100%' }}>
+                            <div style={{position: 'relative', width: '100%'}}>
                                 <Form.Control
                                     type="text"
                                     placeholder="Пошук за ім'ям, прізвищем, номером телефону або email..."
@@ -560,7 +581,7 @@ const ClientChangerUIArtem = ({thisOrder, setThisOrder}) => {
                                         fontSize: '1.5vmin',
                                         marginTop: '1vh',
                                         background: "#f8f9fa"
-                                                                            }}
+                                    }}
                                 />
 
                                 <button
@@ -579,7 +600,7 @@ const ClientChangerUIArtem = ({thisOrder, setThisOrder}) => {
                                     <img
                                         src={ChangeClienticons}
                                         alt="Change Client"
-                                        style={{ width: '20px', height: '20px', flexShrink: 0 }}
+                                        style={{width: '20px', height: '20px', flexShrink: 0}}
                                     />
                                 </button>
                             </div>
@@ -589,13 +610,20 @@ const ClientChangerUIArtem = ({thisOrder, setThisOrder}) => {
 
                     {/* Відображення списку користувачів */}
                     {load ? (
-                        <div className="" style={{color: "#f8f9fa", display: 'flex', alignItems: 'center', justifyContent: 'center', border:"none"}}>
+                        <div className="" style={{
+                            color: "#f8f9fa",
+                            display: 'flex',
+                            alignItems: 'center',
+                            justifyContent: 'center',
+                            border: "none"
+                        }}>
                             <Spinner animation="border" variant="primary"/>
                         </div>
                     ) : error ? (
                         <div className="" style={{
 
-                            color: "#f8f9fa"}}
+                            color: "#f8f9fa"
+                        }}
                         >{error}</div>
                     ) : (
                         <div style={{
@@ -604,7 +632,7 @@ const ClientChangerUIArtem = ({thisOrder, setThisOrder}) => {
                             padding: '1vh 0.8vw',
                             Height: '74vh',
 
-marginTop: '0.5vh',
+                            marginTop: '0.5vh',
                             overflow: 'hidden',              // ← додано
                             paddingRight: "0.5vw",
                         }}>
@@ -752,7 +780,8 @@ marginTop: '0.5vh',
 
             {/* Інші модальні вікна, які можуть бути потрібні */}
             {/*{showNP && <NP show={showNP} onHide={() => setShowNP(false)}/>}*/}
-            {showPays && <PaysInOrderRestored showPays={showPays} setShowPays={setShowPays} thisOrder={thisOrder} setThisOrder={setThisOrder}/>}
+            {showPays && <PaysInOrderRestored showPays={showPays} setShowPays={setShowPays} thisOrder={thisOrder}
+                                              setThisOrder={setThisOrder}/>}
 
 
             {/* Модальне вікно для генерації документів */}
