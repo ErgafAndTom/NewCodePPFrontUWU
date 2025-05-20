@@ -30,18 +30,20 @@ function OneProductInOrders({item, thisOrder}) {
                     </div>
 
                     {/* discounted row */}
-                    {!['0', '0%', '', '%'].includes(thisOrder.prepayment) && (
+                    {/*{["0", "1", "2", "3", "4", "5", "6", "7", "8", "9",].includes(thisOrder.prepayment) && thisOrder.prepayment.includes('%')(*/}
+                    {/*{thisOrder.prepayment.includes('%') && !parseFloat(unit.priceForOneThis) === parseFloat(unit.priceForOneThisDiscount) && (*/}
+                    {parseFloat(unit.priceForOneThis) !== parseFloat(unit.priceForOneThisDiscount) && (
                         <div className="unit-discount">
                             <span className="unit-qty">{unit.newField5}</span>
                             <small>шт</small>
                             <span className="sep">×</span>
 
                             <span
-                                className="unit-price-discounted"> {parseFloat(unit.priceForOneThisDiscount).toFixed(0)}</span>
+                                className="unit-price-discounted"> {parseFloat(unit.priceForOneThisDiscount).toFixed(2)}</span>
                             <small>грн</small>
                             <span className="sep">=</span>
                             <span
-                                className="unit-total-discounted">{parseFloat(unit.priceForAllThisDiscount).toFixed(0)}</span>
+                                className="unit-total-discounted">{parseFloat(unit.priceForAllThisDiscount).toFixed(2)}</span>
 
                             <small>грн</small>
                         </div>

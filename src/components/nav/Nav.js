@@ -17,7 +17,7 @@ const Nav = () => {
     const userIsLoading = useSelector(state => state.auth.loading);
     const userError = useSelector(state => state.auth.error);
     const allFilesForEffect = useSelector(state => state.files.allFiles);
-    const [search, setSearch] = useState({ search: "" });
+    const [search, setSearch] = useState({search: ""});
     const [showNav, setShowNav] = useState(false);
     const [basicActive, setBasicActive] = useState('/');
     useEffect(() => {
@@ -29,7 +29,7 @@ const Nav = () => {
         setBasicActive(document.location.pathname);
     }, [document.location.pathname])
 
-    const handleSearch  = () => {
+    const handleSearch = () => {
         console.log(search.search);
         dispatch(fetchUser(search.search))
     };
@@ -53,24 +53,33 @@ const Nav = () => {
     };
 
     return (
-        <MDBNavbar expand='lg' light bgColor='' className="navbarMy" >
+        <MDBNavbar expand='lg' light bgColor='' className="navbarMy">
             <MDBContainer fluid>
                 <div className="d-flex">
                     <div className="logo">
                         <h1 className="Logo">
 
-                            <div className="gradient-text">PRINT PEAKS <span style={{fontSize: "0.7vw"}}>ERP 9.05</span></div>
+                            <div className="gradient-text">PRINT PEAKS <span style={{fontSize: "0.7vw"}}>ERP 9.05</span>
+                            </div>
                             {/*<div style={{fontSize: "0.7vw"}}> ERP 6.1</div>*/}
                             {/*<Logo/>*/}
 
                         </h1>
                     </div>
 
-                    <div className="top-menu" style={{height:"1vw", justifyContent:'center', alignItems:'center', padding: "0", background: "transparent", boxShadow: "none"}}>
-                        <Link to="/Desktop" style={{textDecoration: 'none',  padding: '0', background: 'transparent'}}>
+                    <div className="top-menu" style={{
+                        height: "1vw",
+                        justifyContent: 'center',
+                        alignItems: 'center',
+                        padding: "0",
+                        background: "transparent",
+                        boxShadow: "none"
+                    }}>
+                        <Link to="/Desktop" style={{textDecoration: 'none', padding: '0', background: 'transparent'}}>
                             <button
                                 onClick={() => handleBasicClick('/Desktop')}
-                                className={basicActive === "/Desktop" ? 'ButtonClients ButtonVimogia' : 'ButtonClients'} style={basicActive === "/Desktop" ? {background: "#FAB416"} : {}}>Головна
+                                className={basicActive === "/Desktop" ? 'ButtonClients ButtonVimogia' : 'ButtonClients'}
+                                style={basicActive === "/Desktop" ? {background: "#FAB416"} : {}}>Головна
                             </button>
                         </Link>
 
@@ -104,7 +113,7 @@ const Nav = () => {
                         </Link>
 
                         <Link disabled onClick={() => handleBasicClick('/db2')} to="/db2"
-                              style={{textDecoration: 'none',  padding: '0', background: 'transparent'}}>
+                              style={{textDecoration: 'none', padding: '0', background: 'transparent'}}>
                             <button
                                 className={basicActive === "/db2" ? 'ButtonVimogi ButtonVimogia' : 'ButtonVimogi'}
                                 style={basicActive === "/db2" ? {background: "#FAB416"} : {}}
@@ -112,7 +121,7 @@ const Nav = () => {
                             </button>
                         </Link>
                         <Link disabled onClick={() => handleBasicClick('/Trello')} to="/Trello"
-                              style={{textDecoration: 'none',  padding: '0', background: 'transparent'}}>
+                              style={{textDecoration: 'none', padding: '0', background: 'transparent'}}>
                             <button
                                 className={basicActive === "/Trello" ? 'ButtonVimogi ButtonVimogia' : 'ButtonVimogi'}
                                 style={basicActive === "/Trello" ? {background: "#FAB416"} : {}}
@@ -120,17 +129,17 @@ const Nav = () => {
                             </button>
                         </Link>
 
-                        <Link disabled onClick={() => handleBasicClick('/myFiles')} to="/myFiles"
-                              style={{textDecoration: 'none',  padding: '0', background: 'transparent'}}>
-                            <button disabled
-                                className={basicActive === "/myFiles" ? 'ButtonVimogi ButtonVimogia' : 'ButtonVimogi'}
-                                style={basicActive === "/myFiles" ? {background: "#FAB416"} : {}}
-                            >Файли
-                            </button>
-                        </Link>
+                        {/*<Link disabled onClick={() => handleBasicClick('/myFiles')} to="/myFiles"*/}
+                        {/*      style={{textDecoration: 'none', padding: '0', background: 'transparent'}}>*/}
+                        {/*    <button disabled*/}
+                        {/*            className={basicActive === "/myFiles" ? 'ButtonVimogi ButtonVimogia' : 'ButtonVimogi'}*/}
+                        {/*            style={basicActive === "/myFiles" ? {background: "#FAB416"} : {}}*/}
+                        {/*    >Файли*/}
+                        {/*    </button>*/}
+                        {/*</Link>*/}
 
 
-                        <Link to="/Vimogi" style={{textDecoration: 'none',  padding: '0', background: 'transparent'}}>
+                        <Link to="/Vimogi" style={{textDecoration: 'none', padding: '0', background: 'transparent'}}>
                             <button
                                 onClick={() => handleBasicClick('/Vimogi')}
                                 className={basicActive === "/Vimogi" ? 'ButtonVimogi ButtonVimogia' : 'ButtonVimogi'}
@@ -138,14 +147,14 @@ const Nav = () => {
                             >Вимоги
                             </button>
                         </Link>
-                        <Link to="/Invoices" style={{textDecoration: 'none',  padding: '0', background: 'transparent'}}>
-                            <button
-                                onClick={() => handleBasicClick('/Invoices')}
-                                className={basicActive === "/Invoices" ? 'ButtonVimogi ButtonVimogia' : 'ButtonVimogi'}
-                                style={basicActive === "/Invoices" ? {background: "#FAB416"} : {}}
-                            >Рахунки
-                            </button>
-                        </Link>
+                        {/*<Link to="/Invoices" style={{textDecoration: 'none',  padding: '0', background: 'transparent'}}>*/}
+                        {/*    <button*/}
+                        {/*        onClick={() => handleBasicClick('/Invoices')}*/}
+                        {/*        className={basicActive === "/Invoices" ? 'ButtonVimogi ButtonVimogia' : 'ButtonVimogi'}*/}
+                        {/*        style={basicActive === "/Invoices" ? {background: "#FAB416"} : {}}*/}
+                        {/*    >Рахунки*/}
+                        {/*    </button>*/}
+                        {/*</Link>*/}
 
                         {currentUser ? (
                             <div style={{marginLeft: "0vw"}}>
@@ -153,7 +162,12 @@ const Nav = () => {
                                     {currentUser.role === "admin" ? (
                                         <>
                                             <Link onClick={() => handleBasicClick('/currentUser')} to="/currentUser"
-                                                  style={{textDecoration: 'none', margin: 'auto', padding: '0', background: 'transparent'}}>
+                                                  style={{
+                                                      textDecoration: 'none',
+                                                      margin: 'auto',
+                                                      padding: '0',
+                                                      background: 'transparent'
+                                                  }}>
                                                 <button
                                                     className={basicActive === "/currentUser" ? 'ButtonVimogi' : 'ButtonVimogi'}
                                                     style={basicActive === "/currentUser" ? {background: "#FAB416"} : {}}
@@ -163,12 +177,18 @@ const Nav = () => {
                                                     {/*       src={whiteSVG} roundedCircle/>*/}
                                                 </button>
                                             </Link>
-                                            <button onClick={logoutt} className="ButtonVimogi ButtonSetting">Вийти</button>
+                                            <button onClick={logoutt} className="ButtonVimogi ButtonSetting">Вийти
+                                            </button>
                                         </>
                                     ) : (
                                         <>
                                             <Link onClick={() => handleBasicClick('/currentUser')} to="/currentUser"
-                                                  style={{textDecoration: 'none', margin: 'auto', padding: '0', background: 'transparent'}}>
+                                                  style={{
+                                                      textDecoration: 'none',
+                                                      margin: 'auto',
+                                                      padding: '0',
+                                                      background: 'transparent'
+                                                  }}>
                                                 <button
                                                     className={basicActive === "/createOrder" ? 'ButtonVimogi' : 'ButtonVimogi'}
                                                     style={basicActive === "/createOrder" ? {background: "#FAB416"} : {}}
@@ -178,14 +198,20 @@ const Nav = () => {
                                                     {/*       src={whiteSVG} roundedCircle/>*/}
                                                 </button>
                                             </Link>
-                                            <button onClick={logoutt} className="ButtonVimogi ButtonSetting">Вийти</button>
+                                            <button onClick={logoutt} className="ButtonVimogi ButtonSetting">Вийти
+                                            </button>
                                         </>
                                     )}
                                 </MDBInputGroup>
                             </div>
                         ) : (
                             <Link onClick={() => handleBasicClick('/login')} to="/login"
-                                  style={{textDecoration: 'none', margin: 'auto', padding: '0', background: 'transparent'}}>
+                                  style={{
+                                      textDecoration: 'none',
+                                      margin: 'auto',
+                                      padding: '0',
+                                      background: 'transparent'
+                                  }}>
                                 <button
                                     className={basicActive === "/login" ? 'ButtonSetting' : 'ButtonSetting'}
                                     style={basicActive === "/login" ? {background: "#FAB416"} : {}}
@@ -196,7 +222,7 @@ const Nav = () => {
                     </div>
                 </div>
                 <AddNewOrder/>
-                <div style={{ position: 'relative', marginTop:'-1vw', display: 'inline-block' }}>
+                <div style={{position: 'relative', marginTop: '-1vw', display: 'inline-block'}}>
                     <Form.Control
                         className="Search"
                         name="search"

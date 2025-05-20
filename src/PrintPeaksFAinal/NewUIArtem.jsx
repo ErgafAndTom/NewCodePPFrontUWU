@@ -408,18 +408,17 @@ const NewUIArtem = () => {
                                             {/*}}*/}
                                             {/*      onClick={(e) => handleThingClickDelete2(thing)}>✕</span>*/}
                                             <div className="containerOrderUnits">
-
-
                                                 <div key={index} className="d-flex">
 
                                                     <div
-                                                        className="d-flex flex-column justify-content-start ">
+                                                        className="d-flex flex-column justify-content-start">
                                                         <div
-                                                            className="d-flex justify-content-right align-items-right"
+                                                            className=""
                                                             style={{
                                                                 display: "flex",
                                                                 alignItems: "right",
-                                                                marginLeft: "22vw",
+                                                                justifyContent: "flex-end",
+                                                                marginRight: "1.3vw",
                                                                 marginTop: "-1.5vh",
                                                                 marginBottom: "-1vh",
                                                                 padding: "0.3vw"
@@ -427,7 +426,7 @@ const NewUIArtem = () => {
                                                         >
                                                             <div className="adminFontTable booooold"
                                                                  style={{
-                                                                     marginLeft: "0.5vw",
+                                                                     // marginLeft: "0.5vw",
                                                                      fontSize: "2vh",
                                                                  }}
                                                             >
@@ -456,28 +455,22 @@ const NewUIArtem = () => {
                                                                  }}>грн
                                                             </div>
                                                         </div>
-                                                        <div className="d-flex"
-                                                        >
-
-
+                                                        <div className="d-flex">
                                                             <div
-
                                                                 className="d-flex align-items-start priceord"
-
                                                             >
-
                                                                 <div
                                                                     className="adminFontTable d-flex justify-content-center align-items-start"
                                                                     style={{
-                                                                        fontSize: "2vh",
+                                                                        fontSize: "1.8vh",
                                                                     }}
                                                                 >
                                                                     {thing.name}
                                                                     <div
-                                                                        className="d-flex justify-content-center align-items-start">
+                                                                        className="d-flex justify-content-center align-items-start fontSize1VH">
                                                                         <div className="adminFontTable"
                                                                              style={{
-                                                                                 fontSize: "1.5vh",
+                                                                                 // fontSize: "1.5vh",
                                                                                  opacity: "0.6",
                                                                                  marginLeft: "0.5vw",
                                                                              }}>
@@ -497,7 +490,7 @@ const NewUIArtem = () => {
                                                                         className="d-flex align-items-start">
                                                                         <div className="adminFontTable"
                                                                              style={{
-                                                                                 fontSize: "1.5vh",
+                                                                                 // fontSize: "1.5vh",
                                                                                  opacity: "0.6",
                                                                              }}>
                                                                             {thing.newField3}
@@ -507,17 +500,44 @@ const NewUIArtem = () => {
                                                                             style={{opacity: "0.6",}}>
                                                                             мм
                                                                         </div>
-
                                                                     </div>
-
                                                                 </div>
-
-
                                                             </div>
-
-
                                                         </div>
-                                                        {!['0', '0%', '', '%'].includes(thisOrder.prepayment) && (
+                                                        {/*{!['0', '0%', '', '%'].includes(thisOrder.prepayment) && (*/}
+                                                        {/*    <div className="discount-container"*/}
+                                                        {/*         style={{*/}
+                                                        {/*             paddingLeft: "0.5vw",*/}
+                                                        {/*             paddingBottom: "0.6vh"*/}
+                                                        {/*         }}>*/}
+
+                                                        {/*        <div*/}
+                                                        {/*            className="d-flex justify-content-flex-end align-items-end"*/}
+                                                        {/*            style={{*/}
+                                                        {/*                display: "flex",*/}
+                                                        {/*                alignItems: "flex-end",*/}
+                                                        {/*                position: "relative",*/}
+                                                        {/*                right: "0.5vw"*/}
+                                                        {/*            }}*/}
+                                                        {/*        >*/}
+                                                        {/*                <span*/}
+                                                        {/*                    className="label booooold"*/}
+                                                        {/*                    style={{*/}
+                                                        {/*                        color: "#008249",*/}
+                                                        {/*                        marginRight: "1vw",*/}
+                                                        {/*                        marginLeft: "0.2vw",*/}
+                                                        {/*                    }}>Зі знижкою {thisOrder.prepayment}</span>*/}
+                                                        {/*            <span className="value">*/}
+                                                        {/*                               {thing.amount}<small> шт</small> × {thing.priceForOneThisDiscount}<small> грн</small> =&nbsp; </span>*/}
+                                                        {/*            <span*/}
+                                                        {/*                className="price booooold"*/}
+                                                        {/*                style={{color: "#008249"}}> {thing.priceForThisDiscount}<small> грн</small></span>*/}
+
+                                                        {/*        </div>*/}
+
+                                                        {/*    </div>*/}
+                                                        {/*)}*/}
+                                                        {parseFloat(thing.priceForOneThis) !== parseFloat(thing.priceForOneThisDiscount) && (
                                                             <div className="discount-container"
                                                                  style={{
                                                                      paddingLeft: "0.5vw",
@@ -575,18 +595,20 @@ const NewUIArtem = () => {
                                                                     style={{
                                                                         fontSize: "1.5vmin",
                                                                         color: "#ee3c23"
-                                                                    }}> {parseFloat(thing.priceForOneThis).toFixed(0)} </strong>
+                                                                    }}> {parseFloat(thing.priceForOneThis).toFixed(2)} </strong>
                                                                 &nbsp;грн
                                                             </div>
-                                                            <div className="d-flex adminFontTable">
-                                                                За 1 шт зі знижкою:&nbsp;
-                                                                <strong
-                                                                    style={{
-                                                                        fontSize: "1.5vmin",
-                                                                        color: "#008249"
-                                                                    }}>  {parseFloat(thing.priceForOneThisDiscount).toFixed(0)} </strong>
-                                                                &nbsp;грн
-                                                            </div>
+                                                            {parseFloat(thing.priceForOneThis) !== parseFloat(thing.priceForOneThisDiscount) && (
+                                                                <div className="d-flex adminFontTable">
+                                                                    За 1 шт зі знижкою:&nbsp;
+                                                                    <strong
+                                                                        style={{
+                                                                            fontSize: "1.5vmin",
+                                                                            color: "#008249"
+                                                                        }}>  {parseFloat(thing.priceForOneThisDiscount).toFixed(2)} </strong>
+                                                                    &nbsp;грн
+                                                                </div>
+                                                            )}
                                                         </div>
 
                                                         <Modal.Footer>
