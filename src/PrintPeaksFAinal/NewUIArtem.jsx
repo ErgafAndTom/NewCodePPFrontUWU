@@ -477,12 +477,16 @@ const NewUIArtem = () => {
                                                                     style={{
                                                                         fontSize: "1.8vh",
                                                                         width: "31vw",
-                                                                        overflow: "hidden"
+                                                                        overflow: "hidden",
+                                                                        wordBreak: "break-word", whiteSpace: "pre-line"
                                                                     }}
                                                                 >
                                                                     {thing.name}
                                                                     <div
-                                                                        className="d-flex justify-content-center align-items-start fontSize1VH">
+                                                                        className="d-flex justify-content-center align-items-start fontSize1VH"
+                                                                        style={{
+                                                                            wordBreak: "normal", whiteSpace: "balance"
+                                                                        }}>
                                                                         <div className="adminFontTable"
                                                                              style={{
                                                                                  // fontSize: "1.5vh",
@@ -499,10 +503,10 @@ const NewUIArtem = () => {
                                                                     </div>
 
                                                                     <div className="adminFontTable"
-                                                                         style={{opacity: "0.6",}}>x
+                                                                         style={{opacity: "0.6", }}>x
                                                                     </div>
                                                                     <div
-                                                                        className="d-flex align-items-start">
+                                                                        className="d-flex align-items-start" style={{wordBreak: "normal", whiteSpace: "balance"}}>
                                                                         <div className="adminFontTable"
                                                                              style={{
                                                                                  // fontSize: "1.5vh",
