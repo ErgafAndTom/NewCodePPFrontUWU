@@ -90,7 +90,7 @@ const NewSheetCut = ({
         let dataToSend = {
             orderId: thisOrder.id,
             toCalc: {
-                nameOrderUnit: "Цифровий друк в аркушах",
+                nameOrderUnit: `Друк `,
                 type: "SheetCut",
                 size: size,
                 material: material,
@@ -115,7 +115,7 @@ const NewSheetCut = ({
                 setShowNewSheetCut(false)
             })
             .catch(error => {
-                if(error.response.status === 403){
+                if (error.response.status === 403) {
                     navigate('/login');
                 }
                 console.log(error.message);
@@ -159,7 +159,7 @@ const NewSheetCut = ({
             })
             .catch(error => {
                 setError(error)
-                if(error.response.status === 403){
+                if (error.response.status === 403) {
                     navigate('/login');
                 }
                 console.log(error.message);
@@ -224,14 +224,19 @@ const NewSheetCut = ({
                             </div>
                         </div>
                         <div className="d-flex flex-column">
-                            <div className="d-flex flex-row inputsArtemkilk allArtemElem" style={{marginLeft: "1.4vw", border: "transparent", justifyContent:"left", marginTop:"1vw"}}> У кількості:
+                            <div className="d-flex flex-row inputsArtemkilk allArtemElem" style={{
+                                marginLeft: "1.4vw",
+                                border: "transparent",
+                                justifyContent: "left",
+                                marginTop: "1vw"
+                            }}> У кількості:
                                 <input
                                     className="d-flex inputsArtemNumber inputsArtem"
                                     style={{
                                         marginLeft: "1vw",
-                                                                                width: "5vw",
+                                        width: "5vw",
                                         alignItems: "center",
-                                        justifyContent:"center",
+                                        justifyContent: "center",
                                         paddingLeft: "0.5vw",
                                     }}
                                     type="number"
@@ -240,9 +245,12 @@ const NewSheetCut = ({
                                     // disabled
                                     onChange={(event) => handleChange(event.target.value)}
                                 />
-                                <div className="inputsArtemx allArtemElem" style={{ border:"transparent", marginTop:"-2vh" }}> шт</div></div>
-                            <MDBContainer fluid style={{width: '100%', marginLeft: '-1vw', marginTop:"2vh"}}>
-                                <Row  xs={1} md={6} className="">
+                                <div className="inputsArtemx allArtemElem"
+                                     style={{border: "transparent", marginTop: "-2vh"}}> шт
+                                </div>
+                            </div>
+                            <MDBContainer fluid style={{width: '100%', marginLeft: '-1vw', marginTop: "2vh"}}>
+                                <Row xs={1} md={6} className="">
                                     <div className="d-flex flex-column">
                                         <NewNoModalSize
                                             size={size}
@@ -335,7 +343,8 @@ const NewSheetCut = ({
                                                 height: '3vw',
                                             }}
                                         >
-                                            <button  className="adminButtonAdd" variant="danger"  onClick={addNewOrderUnit}
+                                            <button className="adminButtonAdd" variant="danger"
+                                                    onClick={addNewOrderUnit}
                                             >
                                                 Додати до замовлення
                                             </button>
@@ -352,33 +361,44 @@ const NewSheetCut = ({
                                     </div>
                                 ) : (
                                     <div className="d-flex justify-content-between pricesBlockContainer"
-                                    style={{height: "39vmin"}}>
+                                         style={{height: "39vmin"}}>
 
                                         <div className="">
                                             {/* Друк (рахується за sheetCount) */}
                                             <div className="fontInfoForPricing">
-                                                Друк: {pricesThis.priceDrukPerSheet.toFixed(2)} грн * {pricesThis.sheetCount} шт = {(pricesThis.priceDrukPerSheet * pricesThis.sheetCount).toFixed(2)} грн
+                                                Друк: {pricesThis.priceDrukPerSheet.toFixed(2)} грн
+                                                * {pricesThis.sheetCount} шт
+                                                = {(pricesThis.priceDrukPerSheet * pricesThis.sheetCount).toFixed(2)} грн
                                             </div>
 
                                             {/* Матеріали (папір, рахуються за sheetCount) */}
                                             <div className="fontInfoForPricing">
-                                                Матеріали: {pricesThis.pricePaperPerSheet.toFixed(2)} грн * {pricesThis.sheetCount} шт = {(pricesThis.pricePaperPerSheet * pricesThis.sheetCount).toFixed(2)} грн
+                                                Матеріали: {pricesThis.pricePaperPerSheet.toFixed(2)} грн
+                                                * {pricesThis.sheetCount} шт
+                                                = {(pricesThis.pricePaperPerSheet * pricesThis.sheetCount).toFixed(2)} грн
                                             </div>
 
                                             {/* Ламінація (рахується за sheetCount) */}
                                             <div className="fontInfoForPricing">
-                                                Ламінація: {pricesThis.priceLaminationPerSheet.toFixed(2)} грн * {pricesThis.sheetCount} шт = {(pricesThis.priceLaminationPerSheet * pricesThis.sheetCount).toFixed(2)} грн
+                                                Ламінація: {pricesThis.priceLaminationPerSheet.toFixed(2)} грн
+                                                * {pricesThis.sheetCount} шт
+                                                = {(pricesThis.priceLaminationPerSheet * pricesThis.sheetCount).toFixed(2)} грн
                                             </div>
 
                                             {/* Постпресові операції (рахуються за body.count) */}
                                             <div className="fontInfoForPricing">
-                                                Згинання: {pricesThis.big.pricePerUnit.toFixed(2)} грн * {pricesThis.big.count} шт = {pricesThis.big.totalPrice.toFixed(2)} грн
+                                                Згинання: {pricesThis.big.pricePerUnit.toFixed(2)} грн
+                                                * {pricesThis.big.count} шт = {pricesThis.big.totalPrice.toFixed(2)} грн
                                             </div>
                                             <div className="fontInfoForPricing">
-                                                Скруглення кутів: {pricesThis.cute.pricePerUnit.toFixed(2)} грн * {pricesThis.cute.count} шт = {pricesThis.cute.totalPrice.toFixed(2)} грн
+                                                Скруглення кутів: {pricesThis.cute.pricePerUnit.toFixed(2)} грн
+                                                * {pricesThis.cute.count} шт
+                                                = {pricesThis.cute.totalPrice.toFixed(2)} грн
                                             </div>
                                             <div className="fontInfoForPricing">
-                                                Свердління отворів: {pricesThis.holes.pricePerUnit.toFixed(2)} грн * {pricesThis.holes.count} шт = {pricesThis.holes.totalPrice.toFixed(2)} грн
+                                                Свердління отворів: {pricesThis.holes.pricePerUnit.toFixed(2)} грн
+                                                * {pricesThis.holes.count} шт
+                                                = {pricesThis.holes.totalPrice.toFixed(2)} грн
                                             </div>
 
                                             {/* Додаткова послуга "Порізка" */}
@@ -395,7 +415,8 @@ const NewSheetCut = ({
 
                                             {/* Інформація про кількість аркушів */}
                                             <div className="fontInfoForPricing">
-                                                - З одного аркуша {pricesThis.listsFromBd} можливо зробити {pricesThis.sheetsPerUnit} виробів
+                                                - З одного аркуша {pricesThis.listsFromBd} можливо
+                                                зробити {pricesThis.sheetsPerUnit} виробів
                                             </div>
                                             <div className="fontInfoForPricing">
                                                 - Затрачено {pricesThis.sheetCount} аркушів {pricesThis.listsFromBd}
@@ -412,10 +433,12 @@ const NewSheetCut = ({
 
                                             {/* Додатковий розрахунок ціни за лист */}
                                             <div className="fontInfoForPricing">
-                                                Ціна за аркуш {pricesThis.listsFromBd} (зі всіма допами): {pricesThis.priceForSheetWithExtras.toFixed(2)} грн
+                                                Ціна за аркуш {pricesThis.listsFromBd} (зі всіма
+                                                допами): {pricesThis.priceForSheetWithExtras.toFixed(2)} грн
                                             </div>
                                             <div className="fontInfoForPricing">
-                                                Ціна за аркуш {pricesThis.listsFromBd} (лише матеріал та друк): {pricesThis.priceForSheetMaterialPrint.toFixed(2)} грн
+                                                Ціна за аркуш {pricesThis.listsFromBd} (лише матеріал та
+                                                друк): {pricesThis.priceForSheetMaterialPrint.toFixed(2)} грн
                                             </div>
                                             {/*<div className="fontInfoForPricing">*/}
                                             {/*    Ціна за all(2спосіб) {pricesThis.totalSheetPrice} грн*/}
@@ -430,7 +453,6 @@ const NewSheetCut = ({
                                                 priceForSheetWithExtras {pricesThis.priceForSheetWithExtras} грн
                                             </div>
                                         </div>
-
 
 
                                         <img

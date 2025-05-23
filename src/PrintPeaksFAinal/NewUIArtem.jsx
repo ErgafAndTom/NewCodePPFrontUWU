@@ -394,8 +394,12 @@ const NewUIArtem = () => {
                                                  padding: "0.5vw",
                                                  marginBottom: "1vh",
                                                  borderRadius: "0.5vw",
+                                                 width: "35vw",
+                                                 overflow: "hidden",
+
                                                  // backgroundColor: "#ffffff"
-                                             }}>
+                                             }}
+                                        >
                                             <div
                                                 onClick={(e) => handleThingClickDelete2(thing)}
                                                 className="battonClosed">
@@ -411,9 +415,11 @@ const NewUIArtem = () => {
                                             {/*    zIndex: "1000",*/}
                                             {/*}}*/}
                                             {/*      onClick={(e) => handleThingClickDelete2(thing)}>✕</span>*/}
-                                            <div className="containerOrderUnits">
-                                                <div key={index} className="d-flex">
-
+                                            <div className="containerOrderUnits" style={{
+                                                // width: "30vw",
+                                                // overflow: "hidden"
+                                            }}>
+                                                <div className="d-flex">
                                                     <div
                                                         className="d-flex flex-column justify-content-start">
                                                         <div
@@ -459,7 +465,10 @@ const NewUIArtem = () => {
                                                                  }}>грн
                                                             </div>
                                                         </div>
-                                                        <div className="d-flex">
+                                                        <div className="d-flex" style={{
+                                                            // width: "27vw",
+                                                            // overflow: "hidden"
+                                                        }}>
                                                             <div
                                                                 className="d-flex align-items-start priceord"
                                                             >
@@ -467,6 +476,8 @@ const NewUIArtem = () => {
                                                                     className="adminFontTable d-flex justify-content-center align-items-start"
                                                                     style={{
                                                                         fontSize: "1.8vh",
+                                                                        width: "31vw",
+                                                                        overflow: "hidden"
                                                                     }}
                                                                 >
                                                                     {thing.name}
@@ -508,39 +519,6 @@ const NewUIArtem = () => {
                                                                 </div>
                                                             </div>
                                                         </div>
-                                                        {/*{!['0', '0%', '', '%'].includes(thisOrder.prepayment) && (*/}
-                                                        {/*    <div className="discount-container"*/}
-                                                        {/*         style={{*/}
-                                                        {/*             paddingLeft: "0.5vw",*/}
-                                                        {/*             paddingBottom: "0.6vh"*/}
-                                                        {/*         }}>*/}
-
-                                                        {/*        <div*/}
-                                                        {/*            className="d-flex justify-content-flex-end align-items-end"*/}
-                                                        {/*            style={{*/}
-                                                        {/*                display: "flex",*/}
-                                                        {/*                alignItems: "flex-end",*/}
-                                                        {/*                position: "relative",*/}
-                                                        {/*                right: "0.5vw"*/}
-                                                        {/*            }}*/}
-                                                        {/*        >*/}
-                                                        {/*                <span*/}
-                                                        {/*                    className="label booooold"*/}
-                                                        {/*                    style={{*/}
-                                                        {/*                        color: "#008249",*/}
-                                                        {/*                        marginRight: "1vw",*/}
-                                                        {/*                        marginLeft: "0.2vw",*/}
-                                                        {/*                    }}>Зі знижкою {thisOrder.prepayment}</span>*/}
-                                                        {/*            <span className="value">*/}
-                                                        {/*                               {thing.amount}<small> шт</small> × {thing.priceForOneThisDiscount}<small> грн</small> =&nbsp; </span>*/}
-                                                        {/*            <span*/}
-                                                        {/*                className="price booooold"*/}
-                                                        {/*                style={{color: "#008249"}}> {thing.priceForThisDiscount}<small> грн</small></span>*/}
-
-                                                        {/*        </div>*/}
-
-                                                        {/*    </div>*/}
-                                                        {/*)}*/}
                                                         {parseFloat(thing.priceForOneThis) !== parseFloat(thing.priceForOneThisDiscount) && (
                                                             <div className="discount-container"
                                                                  style={{
