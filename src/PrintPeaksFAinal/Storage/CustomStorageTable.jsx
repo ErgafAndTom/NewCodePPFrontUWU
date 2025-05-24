@@ -16,7 +16,7 @@ import InputGroup from "react-bootstrap/InputGroup";
 import Form from "react-bootstrap/Form";
 import {da} from "date-fns/locale";
 import NewNote from "../poslugi/NewNote";
-import { columnTranslations, translateColumnName } from "./translations";
+import {columnTranslations, translateColumnName} from "./translations";
 
 
 // Основний компонент CustomOrderTable
@@ -113,7 +113,7 @@ const CustomStorageTable = ({name}) => {
         setShow(false);
     }
 
-    let saveAll = (event) => {
+    let saveAll = (event, id) => {
         let forData = formValues
         forData.id = 0
         let data = {
@@ -145,6 +145,42 @@ const CustomStorageTable = ({name}) => {
 
     const handleShow = () => setShow(true);
 
+
+    const handleItemClickCopy = (item, event, metaItem) => {
+        // setShow(true)
+        setEvent(event)
+        setThisItemForModal(item)
+        setThisMetaItemForModal(metaItem)
+        copyThis(item, event, metaItem)
+    };
+
+    let copyThis = (item, event, metaItem) => {
+        let data = {
+            id: item.id,
+            inPageCount: inPageCount,
+            currentPage: currentPage,
+            search: typeSelect,
+            columnName: thisColumn
+        }
+        console.log(data);
+        setError(null)
+        // setLoad(true)
+        axios.put(`/materials/copy`, data)
+            .then(response => {
+                console.log(response.data);
+                setData(response.data)
+                setPageCount(Math.ceil(response.data.count / inPageCount))
+                setShowRed(false)
+            })
+            .catch(error => {
+                if (error.response.status === 403) {
+                    navigate('/login');
+                }
+                setError(error.message)
+                console.log(error.message);
+            })
+    }
+
     if (data) {
         return (
             <div className="CustomOrderTable-order-list">
@@ -153,16 +189,25 @@ const CustomStorageTable = ({name}) => {
                     {data.metadata.map((item, iter) => {
                         // Визначення ширини для конкретних стовпців
                         const getColumnWidth = (columnName) => {
-                            switch(columnName) {
-                                case 'id': return '2vw';
-                                case 'amount': return '3.35vw';
-                                case 'name': return '13.9vw'; // Фіксована ширина для name в пікселях
-                                case 'type': return '7vw';  // Фіксована ширина для type в пікселях
-                                case 'typeUse': return '7vw'; // Фіксована ширина для typeUse в пікселях
-                                case 'createdAt': return '6vw';
-                                case 'updatedAt': return '6vw';
-                                case 'price4': return '3.6vw';
-                                default: return '3.54vw';     // Фіксована ширина для інших колонок в пікселях
+                            switch (columnName) {
+                                case 'id':
+                                    return '2vw';
+                                case 'amount':
+                                    return '3.35vw';
+                                case 'name':
+                                    return '13.9vw'; // Фіксована ширина для name в пікселях
+                                case 'type':
+                                    return '7vw';  // Фіксована ширина для type в пікселях
+                                case 'typeUse':
+                                    return '7vw'; // Фіксована ширина для typeUse в пікселях
+                                case 'createdAt':
+                                    return '6vw';
+                                case 'updatedAt':
+                                    return '6vw';
+                                case 'price4':
+                                    return '3.6vw';
+                                default:
+                                    return '3.54vw';     // Фіксована ширина для інших колонок в пікселях
                             }
                         };
                         return (
@@ -193,14 +238,29 @@ const CustomStorageTable = ({name}) => {
                                 onClick={(event) => setCol(item)}
                             >
                                 {item === thisColumn.column ? (
-                                    <div  style={{ display: 'flex', alignItems: "center", justifyContent: "center", flexDirection: "row", cursor: "pointer", borderRadius: "none", height:"2vh" }}>
-                                        <span style={{ whiteSpace: "pre-line", }}>{translateColumnName(item)}</span>
-                                        <span style={{ color: "#FAB416", fontSize: "1.2rem", position:'relative', right: "-0.2rem", cursor: "pointer", whiteSpace: "pre-line" }}>
+                                    <div style={{
+                                        display: 'flex',
+                                        alignItems: "center",
+                                        justifyContent: "center",
+                                        flexDirection: "row",
+                                        cursor: "pointer",
+                                        borderRadius: "none",
+                                        height: "2vh"
+                                    }}>
+                                        <span style={{whiteSpace: "pre-line",}}>{translateColumnName(item)}</span>
+                                        <span style={{
+                                            color: "#FAB416",
+                                            fontSize: "1.2rem",
+                                            position: 'relative',
+                                            right: "-0.2rem",
+                                            cursor: "pointer",
+                                            whiteSpace: "pre-line"
+                                        }}>
                                             {!thisColumn.reverse ? "↑" : "↓"}
                                         </span>
                                     </div>
                                 ) : (
-                                    <span style={{ whiteSpace: "pre-line",  }}>{translateColumnName(item)}</span>
+                                    <span style={{whiteSpace: "pre-line",}}>{translateColumnName(item)}</span>
                                 )}
                             </div>
                         );
@@ -214,7 +274,7 @@ const CustomStorageTable = ({name}) => {
                          display: "flex",
                          flexDirection: "column"
                      }}>
-                
+
                     {data.rows.map((item, iter) => (
                         <div key={item.id} className="table-row-container">
                             <div className="CustomOrderTable-row">
@@ -226,13 +286,14 @@ const CustomStorageTable = ({name}) => {
                                         itemData={item[metaItem]}
                                         tablPosition={metaItem}
                                         handleItemClickRed={handleItemClickRed}
+                                        handleItemClickCopy={handleItemClickCopy}
                                     />
                                 ))}
                             </div>
                         </div>
                     ))}
                 </div>
-                
+
                 <div className="controls-row">
                     <div className="pagination-container">
                         <PaginationMy
@@ -250,10 +311,10 @@ const CustomStorageTable = ({name}) => {
                             thisColumn={thisColumn}
                         />
                     </div>
-                    <div className="right-group" style={{ display: "flex", alignItems: "center" }}>
-                        <Button 
-                            className="adminButtonAdd" 
-                            variant="primary" 
+                    <div className="right-group" style={{display: "flex", alignItems: "center"}}>
+                        <Button
+                            className="adminButtonAdd"
+                            variant="primary"
                             onClick={handleShow}
                             style={{
                                 border: "none",
@@ -300,20 +361,20 @@ const CustomStorageTable = ({name}) => {
                     </Offcanvas.Header>
                     <Offcanvas.Body>
                         <Form>
-                            {Object.keys(formValues).map((metaItem, index) => (
-                                <Form.Group key={index} className="">
-                                    <Form.Label>{translateColumnName(metaItem)}</Form.Label>
-                                    <Form.Control
-                                        type="text"
-                                        placeholder={`Введіть ${translateColumnName(metaItem).toLowerCase()}`}
-                                        value={formValues[metaItem]}
-                                        onChange={(e) => handleInputChange(e, metaItem)}
-                                    />
-                                </Form.Group>
-                            ))}
-                            <Button 
-                                onClick={saveAll} 
-                                variant="primary" 
+                            {/*{Object.keys(formValues).map((metaItem, index) => (*/}
+                            {/*    <Form.Group key={index} className="">*/}
+                            {/*        <Form.Label>{translateColumnName(metaItem)}</Form.Label>*/}
+                            {/*        <Form.Control*/}
+                            {/*            type="text"*/}
+                            {/*            placeholder={`Введіть ${translateColumnName(metaItem).toLowerCase()}`}*/}
+                            {/*            value={formValues[metaItem]}*/}
+                            {/*            onChange={(e) => handleInputChange(e, metaItem)}*/}
+                            {/*        />*/}
+                            {/*    </Form.Group>*/}
+                            {/*))}*/}
+                            <Button
+                                onClick={saveAll}
+                                variant="primary"
                                 type="button"
                                 style={{
                                     marginTop: '1rem',
@@ -321,6 +382,17 @@ const CustomStorageTable = ({name}) => {
                                 }}
                             >
                                 Зберегти
+                            </Button>
+                            <Button
+                                onClick={copyThis}
+                                variant="primary"
+                                type="button"
+                                style={{
+                                    marginTop: '1rem',
+                                    width: '100%'
+                                }}
+                            >
+                                copyThis
                             </Button>
                         </Form>
                     </Offcanvas.Body>

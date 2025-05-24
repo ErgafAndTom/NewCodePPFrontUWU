@@ -47,7 +47,7 @@ export const columnTranslations = {
     'price5': "501+ шт \n21+ м2",
     'x': 'Ширина',
     'y': 'Висота',
-    'created': '?',
+    'created': 'копіювати',
     'article': 'Артикул',
     // Додаткові колонки
     'category': 'Категорія',

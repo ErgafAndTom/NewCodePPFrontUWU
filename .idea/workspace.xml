@@ -6,10 +6,9 @@
   <component name="ChangeListManager">
     <list default="true" id="7e58169f-d1e8-4cb2-8753-447dd0b39044" name="Changes" comment="ddd">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/PrintPeaksFAinal/NewUIArtem.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/PrintPeaksFAinal/NewUIArtem.jsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/PrintPeaksFAinal/userInNewUiArtem/ClientChangerUIArtem.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/PrintPeaksFAinal/userInNewUiArtem/ClientChangerUIArtem.jsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/newcalc/Orders/OneProductInOrders.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/newcalc/Orders/OneProductInOrders.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/newcalc/Orders/OneProductInOrders.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/newcalc/Orders/OneProductInOrders.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/PrintPeaksFAinal/Storage/CustomStorageTable.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/PrintPeaksFAinal/Storage/CustomStorageTable.jsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/PrintPeaksFAinal/Storage/OneUnitInTable.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/PrintPeaksFAinal/Storage/OneUnitInTable.jsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/PrintPeaksFAinal/Storage/translations.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/PrintPeaksFAinal/Storage/translations.js" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -306,6 +305,8 @@
       <workItem from="1748004849886" duration="7000" />
       <workItem from="1748004867346" duration="7980000" />
       <workItem from="1748060935161" duration="7000" />
+      <workItem from="1748108215782" duration="4000" />
+      <workItem from="1748108226575" duration="3158000" />
     </task>
     <task id="LOCAL-00056" summary="ddd">
       <option name="closed" value="true" />
@@ -722,17 +723,6 @@
     <MESSAGE value="ddd" />
     <option name="LAST_COMMIT_MESSAGE" value="ddd" />
     <option name="NON_MODAL_COMMIT_POSTPONE_SLOW_CHECKS" value="false" />
-  </component>
-  <component name="XDebuggerManager">
-    <breakpoint-manager>
-      <breakpoints>
-        <line-breakpoint enabled="true" type="javascript">
-          <url>file://$PROJECT_DIR$/src/PrintPeaksFAinal/Storage/OneUnitInTable.jsx</url>
-          <line>123</line>
-          <option name="timeStamp" value="1" />
-        </line-breakpoint>
-      </breakpoints>
-    </breakpoint-manager>
   </component>
   <component name="XSLT-Support.FileAssociations.UIState">
     <expand />

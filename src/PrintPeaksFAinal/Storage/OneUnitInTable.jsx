@@ -1,23 +1,31 @@
 import React from 'react';
-import { translateColumnName } from './translations';
 
-const OneItemInTable = ({itemData, tablPosition, item, metaItem, handleItemClickRed}) => {
+const OneItemInTable = ({itemData, tablPosition, item, metaItem, handleItemClickRed, handleItemClickCopy}) => {
     // Функція для визначення ширини стовпця - має бути ідентичним в CustomStorageTable.jsx
     const getColumnWidth = (columnName) => {
-        switch(columnName) {
+        switch (columnName) {
             // Спільні колонки
-            case 'id': return '2vw';
-            case 'name': return '14vw'; // Фіксована ширина для name в пікселях
-            case 'type': return '7vw';  // Фіксована ширина для type в пікселях
-            case 'typeUse': return '7vw'; // Фіксована ширина для typeUse в пікселях
-            case 'createdAt': return '6vw';
-            case 'price4': return '3.6vw';
-            case 'amount': return '3.35vw';
-            case 'updatedAt': return '6vw';
-            default: return '3.54vw';     // Фіксована ширина для інших колонок в пікселях
+            case 'id':
+                return '2vw';
+            case 'name':
+                return '14vw'; // Фіксована ширина для name в пікселях
+            case 'type':
+                return '7vw';  // Фіксована ширина для type в пікселях
+            case 'typeUse':
+                return '7vw'; // Фіксована ширина для typeUse в пікселях
+            case 'createdAt':
+                return '6vw';
+            case 'price4':
+                return '3.6vw';
+            case 'amount':
+                return '3.35vw';
+            case 'updatedAt':
+                return '6vw';
+            default:
+                return '3.54vw';     // Фіксована ширина для інших колонок в пікселях
         }
     };
-    
+
     // Базові стилі для клітинки
     const cellStyle = {
         // border: "0.05vw solid #FBFAF6",
@@ -55,13 +63,21 @@ const OneItemInTable = ({itemData, tablPosition, item, metaItem, handleItemClick
             <div className="CustomOrderTable-cell" style={cellStyle}>{itemData}</div>
         );
     }
-    
+
+    if (tablPosition === "created") {
+        return (
+            <button className="CustomOrderTable-cell btn-black" style={cellStyle} onClick={(e) => {
+                handleItemClickCopy(item, e, metaItem)
+            }}>{"cop"}</button>
+        );
+    }
+
     if (tablPosition === "password") {
         return (
             <div className="CustomOrderTable-cell" style={cellStyle}>•••••••</div>
         );
     }
-    
+
     if (tablPosition === "createdAt" || tablPosition === "updatedAt") {
         return (
             <div className="CustomOrderTable-cell" style={cellStyle}>
@@ -69,7 +85,7 @@ const OneItemInTable = ({itemData, tablPosition, item, metaItem, handleItemClick
             </div>
         );
     }
-    
+
     if (tablPosition === "photo") {
         return (
             <div className="CustomOrderTable-cell" style={cellStyle}>{itemData}</div>
@@ -90,8 +106,8 @@ const OneItemInTable = ({itemData, tablPosition, item, metaItem, handleItemClick
                 className="CustomOrderTable-cell CustomOrderTable-cellCan"
                 style={{
                     ...editableCellStyle,
-                    backgroundColor: itemData === 'папір' ? '#f2ffe9' : 
-                                    itemData === 'фарба' ? '#e9f8ff' : '#FBFAF6'
+                    backgroundColor: itemData === 'папір' ? '#f2ffe9' :
+                        itemData === 'фарба' ? '#e9f8ff' : '#FBFAF6'
                 }}
                 onClick={(e) => handleItemClickRed(item, e, metaItem)}
             >
