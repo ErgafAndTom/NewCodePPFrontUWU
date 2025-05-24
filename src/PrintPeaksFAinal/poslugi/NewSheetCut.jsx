@@ -115,10 +115,11 @@ const NewSheetCut = ({
                 setShowNewSheetCut(false)
             })
             .catch(error => {
+                setError(error)
                 if (error.response.status === 403) {
                     navigate('/login');
                 }
-                console.log(error.message);
+                console.log(error.response);
                 // setErr(error)
             });
     }
@@ -162,7 +163,7 @@ const NewSheetCut = ({
                 if (error.response.status === 403) {
                     navigate('/login');
                 }
-                console.log(error.message);
+                console.log(error.response);
             })
     }, [size, material, color, lamination.materialId, big, cute, cuteLocal, holes, holesR, count, porizka]);
 
@@ -353,7 +354,28 @@ const NewSheetCut = ({
                                     )}
                                 </div>
                                 {error &&
-                                    <div>{error.message}</div>
+                                    <div style={{
+                                        transition: "all 0.3s ease",
+                                        color: "red",
+                                        width: "20vw",
+                                        marginLeft: "2.5vw",
+                                        fontFamily: "inter",
+                                        display: 'flex',
+                                        justifyContent: 'center',
+                                        alignItems: 'center',
+                                        height: '3vw',
+                                        marginTop: "1vh",
+                                        marginBottom: "1vh",
+                                        border: "1px solid red",
+                                        borderRadius: "10px",
+                                        padding: "10px",
+                                        backgroundColor: "rgba(255, 0, 0, 0.2)",
+                                        fontSize: "1.5vw",
+                                        fontWeight: "bold",
+                                        textAlign: "center",
+                                        cursor: "pointer",
+
+                                    }}>{error.response.data.error}</div>
                                 }
                                 {null === pricesThis ? (
                                     <div style={{width: '50vw'}}>

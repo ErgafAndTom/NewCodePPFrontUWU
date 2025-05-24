@@ -18,6 +18,7 @@
     margin: 0.3vmin;
     align-items: start;
     justify-content: start;
+    transform: matrix(1, 0, 0, 1, 0, 0);
 
     /* Вертикальне вирівнювання тексту */
 }
