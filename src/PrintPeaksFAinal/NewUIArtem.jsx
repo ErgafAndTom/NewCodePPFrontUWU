@@ -204,7 +204,7 @@ const NewUIArtem = () => {
             <div>
                 <div className="d-flex">
                     <div className="containerForContNewUI">
-                        <div className="buttonsRow">
+                        <div className="buttonsRow" style={{width: "62vw"}}>
                             {/* 1 */}
                             <div
                                 onClick={() => setShowNewSheetCutBw(true)}
@@ -381,8 +381,8 @@ const NewUIArtem = () => {
                     {/*</div>*/}
 
 
-                    <div className="d-flex flex-column">
-                        <div className="order-panel">
+                    <div className="d-flex flex-column" style={{width: "37.5vw"}}>
+                        <div className="order-panel" style={{width: "37.5vw"}}>
                             {selectedThings2 && selectedThings2.length !== 0 ? (
                                 <div className="order-list">
                                     {selectedThings2.map((thing, index) => (
@@ -394,7 +394,7 @@ const NewUIArtem = () => {
                                                  padding: "0.5vw",
                                                  marginBottom: "1vh",
                                                  borderRadius: "0.5vw",
-                                                 width: "35vw",
+                                                 width: "35.5vw",
                                                  overflow: "hidden",
 
                                                  // backgroundColor: "#ffffff"
@@ -799,7 +799,9 @@ const NewUIArtem = () => {
                     />
                 }
                 {thisOrder ? (
-                    <div className="ClientsMenuAll">
+                    <div className="ClientsMenuAll" style={{
+                        width: "36.5vw",
+                    }}>
                         <ProgressBar thisOrder={thisOrder} setThisOrder={setThisOrder}
                                      setNewThisOrder={setNewThisOrder}
                                      handleThisOrderChange={handleThisOrderChange}

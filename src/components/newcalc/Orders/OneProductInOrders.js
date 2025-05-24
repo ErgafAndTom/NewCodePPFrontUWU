@@ -7,24 +7,27 @@ function OneProductInOrders({item, thisOrder}) {
     const handleShow = () => setShow(true);
 
     return (
-        <div className="unit-list">
+        <div className="unit-list" style={{width: "34.5vw"}}>
             {item.OrderUnitUnits.map((unit, idx) => (
                 <div key={unit.idKey} className="unit-item">
                     {/* header row */}
                     <div className="unit-header">
                         <div className="unit-index-name">
-                            <span className="unit-index">{idx + 1}.</span>
-                            <span className="unit-name">{unit.name}</span>
+                            <span className="unit-index2">{idx + 1}.</span>
+                            <span className="unit-name2">{unit.name}</span>
                         </div>
-                        <div className="unit-total">
-                            <span className="unit-qty">{unit.newField5}</span>
+                        <div className="unit-total22">
+                            <span className="">{unit.newField5}</span>
                             <small>шт</small>
-                            <span className="sep">×</span>
-                            <span className="unit-price-one">{unit.priceForOneThis}</span>
+                            <span className="">×</span>
+                            <span className="">{unit.priceForOneThis}</span>
                             <small>грн</small>
-                            <span className="sep">=</span>
-                            <span className="unit-sum booooold"
-                                  style={{color: "#ef5223"}}>{unit.priceForOneThis * unit.newField5}</span>
+                            <span className="">=</span>
+                            <span className="booooold"
+                                  style={{
+                                      color: "#ef5223",
+                                      fontSize: "1.5vh"
+                                  }}>{unit.priceForOneThis * unit.newField5}</span>
                             <small>грн</small>
                         </div>
                     </div>

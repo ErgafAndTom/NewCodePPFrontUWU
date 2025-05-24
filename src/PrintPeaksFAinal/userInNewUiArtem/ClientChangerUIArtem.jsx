@@ -186,6 +186,7 @@ const ClientChangerUIArtem = ({thisOrder, setThisOrder, setSelectedThings2}) => 
                     alignItems: 'flex-start',
                     gap: '4px',
                     maxWidth: '100%',
+                    // width: '30vw',
                     overflow: 'hidden',
 
                     marginTop: '-1vh',
