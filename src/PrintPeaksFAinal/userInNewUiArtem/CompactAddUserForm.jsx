@@ -1,9 +1,9 @@
-import React, { useState } from "react";
+import React, {useState} from "react";
 import axios from "../../api/axiosInstance";
-import { BsPerson, BsEnvelope, BsTelephone, BsTelegram, BsGeoAlt } from "react-icons/bs";
+import {BsPerson, BsEnvelope, BsTelephone, BsTelegram, BsGeoAlt, BsPercent, BsPencil} from "react-icons/bs";
 import './CompactAddUserForm.css';
 
-const CompactAddUserForm = ({ onClose, onUserAdded }) => {
+const CompactAddUserForm = ({onClose, onUserAdded, handleCloseAddUser}) => {
     const [loading, setLoading] = useState(false);
     const [error, setError] = useState(null);
     const [validated, setValidated] = useState(false);
@@ -29,25 +29,36 @@ const CompactAddUserForm = ({ onClose, onUserAdded }) => {
             .replace(/(\d{3})(\d)/, '$1 $2')
             .replace(/(\d{3}) (\d{3})(\d)/, '$1 $2-$3')
             .replace(/-(\d{2})(\d{1,2})/, '-$1-$2');
-        setUser({ ...user, phoneNumber: formattedValue.trim() });
+        setUser({...user, phoneNumber: formattedValue.trim()});
     };
 
     const handleChange = (e) => {
-        const { name, value } = e.target;
-        setUser({ ...user, [name]: value });
+        const {name, value} = e.target;
+        setUser({...user, [name]: value});
+        if (name === 'discount') {
+            const numeric = value.replace(/[^\d]/g, ''); // залишає тільки цифри
+            const percentValue = numeric ? `${numeric}%` : '';
+            setUser({...user, discount: percentValue});
+        } else {
+            setUser({...user, [name]: value});
+        }
+
     };
 
     const handleSubmit = async (e) => {
+
         e.preventDefault();
         setValidated(true);
-        if (!user.firstName || !user.familyName || !user.phoneNumber) return;
+        // if (!user.firstName || !user.familyName || !user.phoneNumber) return;
 
         setLoading(true);
         try {
             const response = await axios.post('/user/create', user);
             setLoading(false);
+
             if (onUserAdded) onUserAdded(response.data);
-            onClose();
+            // onClose();
+            handleCloseAddUser()
         } catch (err) {
             setLoading(false);
             setError(err.response?.data?.message || 'Помилка при додаванні клієнта');
@@ -56,68 +67,77 @@ const CompactAddUserForm = ({ onClose, onUserAdded }) => {
     };
 
     return (
-        <div className="user-form-container">
+        <div>
 
             {error && <div className="user-form-error">{error}</div>}
-            <form onSubmit={handleSubmit} noValidate>
+            <form noValidate
+
+            >
                 {[
-                    { label: "Ім'я", name: 'firstName', icon: <BsPerson /> },
-                    { label: "По батькові", name: 'lastName', icon: <BsPerson /> },
-                    { label: "Прізвище", name: 'familyName', icon: <BsPerson /> },
-                    { label: "Телефон", name: 'phoneNumber', icon: <BsTelephone />, onChange: handlePhoneChange },
-                    { label: "Email", name: 'email', icon: <BsEnvelope /> },
-                    { label: "Telegram", name: 'telegramlogin', icon: <BsTelegram /> },
-                    { label: "Адреса", name: 'address', icon: <BsGeoAlt /> },
-                ].map(({ label, name, icon, onChange }) => (
-                    <div key={name} className="form-group-floating">
+                    {label: "Ім'я", name: 'firstName', icon: <BsPerson/>},
+                    {label: "По батькові", name: 'lastName', icon: <BsPerson/>},
+                    {label: "Прізвище", name: 'familyName', icon: <BsPerson/>},
+                    {label: "Телефон", name: 'phoneNumber', icon: <BsTelephone/>, onChange: handlePhoneChange},
+                    {label: "E-mail", name: 'email', icon: <BsEnvelope/>},
+                    {label: "Telegram", name: 'telegramlogin', icon: <BsTelegram/>},
+                    {label: "Адреса", name: 'address', icon: <BsGeoAlt/>},
+                    {label: "Знижка", name: 'discount', icon: <BsPercent/>},
+
+                ].map(({label, name, icon, onChange}) => (
+                    <div key={name} className="form-group-floating"
+                    >
                         <div className="input-wrapper">
                             <span className="input-icon">{icon}</span>
                             <input
                                 required={label.includes('*')}
                                 type="text"
+                                placeholder={label}
                                 name={name}
                                 value={user[name]}
                                 onChange={onChange || handleChange}
                                 className="form-input"
                             />
-                            {!user[name] && (
-                                <label htmlFor={name} className="form-floating-label">{label}</label>
-                            )}
+                            {/*{!user[name] && (*/}
+                            {/*    <label htmlFor={name} className="form-floating-label">{label}</label>*/}
+                            {/*)}*/}
                         </div>
                     </div>
                 ))}
 
-                <div className="form-group">
-                    <textarea
-                        name="notes"
-                        value={user.notes}
-                        onChange={handleChange}
-                        rows={3}
-                        placeholder="Примітки"
-                        className="form-textarea"
-                    />
-                </div>
 
-                <div className="form-group">
-                    <input
-                        type="number"
-                        name="discount"
-                        value={user.discount}
-                        onChange={handleChange}
-                        min="0"
-                        max="100"
-                        placeholder="Знижка (%)"
-                        className="form-input"
-                    />
-                </div>
-
-                <div className="form-actions">
-                    <button type="button" onClick={onClose} className="btn-cancel">Скасувати</button>
-                    <button type="submit" disabled={loading} className="btn-confirm">
-                        {loading ? 'Зберігаємо...' : 'Додати клієнта'}
-                    </button>
-                </div>
             </form>
+
+
+            {[
+                {label: "Примітка", name: 'notes', icon: <BsPencil/>},
+            ].map(({label, name, icon, onChange}) => (
+                <div key={name} className="form-group-floating">
+                    <div className="input-wrapper"
+                         style={{height: '15vh', border: 'none', overflowWrap: 'break-word'}}>
+                        <span className="input-icon">{icon}</span>
+                        <textarea
+                            required={label.includes('*')}
+                            type="text"
+                            placeholder={label}
+                            name={name}
+                            value={user[name]}
+                            onChange={onChange || handleChange}
+                            className="form-input"
+                            style={{height: '15vh', border: 'none', overflowWrap: 'break-word'}}
+                        />
+                        {/*{!user[name] && (*/}
+                        {/*    <label htmlFor={name} className="form-floating-label">{label}</label>*/}
+                        {/*)}*/}
+                    </div>
+                </div>
+            ))}
+            <button className="adminButtonAdd" onClick={handleSubmit}
+                    style={{
+                        position: "absolute",
+                        right: "2vw",
+                        bottom: "2vh",
+                    }}>Зберегти
+            </button>
         </div>
     );
 };

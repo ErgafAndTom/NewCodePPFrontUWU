@@ -1,7 +1,7 @@
-import React, { useEffect, useState } from "react";
+import React, {useEffect, useState} from "react";
 import axios from "../../../../api/axiosInstance";
-import { useNavigate } from "react-router-dom";
-import { Spinner } from "react-bootstrap";
+import {useNavigate} from "react-router-dom";
+import {Spinner} from "react-bootstrap";
 
 const Materials2NoteBack = ({
                                 materialAndDrukBack,
@@ -193,6 +193,7 @@ const Materials2NoteBack = ({
 
     const handleColorCountChange = (e) => {
         const value = Number(e.target.value);
+        const value2 = e.target.value;
         setMaterialAndDrukBack((prev) => ({
             ...prev,
             count: value
@@ -202,7 +203,7 @@ const Materials2NoteBack = ({
     return (
         <div
             className="d-flex flex-column allArtemElem"
-style={{ position: "absolute", marginLeft: "42vw", marginTop: "-2vh"}}
+            style={{position: "absolute", marginLeft: "45vw"}}
         >
             {/* Заголовок "Блок:" */}
 
@@ -224,21 +225,21 @@ style={{ position: "absolute", marginLeft: "42vw", marginTop: "-2vh"}}
                 >
                     Блок:
                 </div>
-            <span
-                style={{
-                    fontSize: "1vw",
-                    marginRight: "0.5vw",
-                    fontFamily: "inter",
-                    whiteSpace: "nowrap",
+                <span
+                    style={{
+                        fontSize: "1vw",
+                        marginRight: "0.5vw",
+                        fontFamily: "inter",
+                        whiteSpace: "nowrap",
 
-                }}
-            >
+                    }}
+                >
                 Кількість аркушів:
             </span>
                 <input
                     className="inputsArtem"
                     type="number"
-                    value={materialAndDrukBack.count || 1}
+                    value={materialAndDrukBack.count}
                     onChange={handleColorCountChange}
                     style={{
                         width: "5vw",
@@ -246,17 +247,17 @@ style={{ position: "absolute", marginLeft: "42vw", marginTop: "-2vh"}}
                         padding: "0.5vw",
 
 
-
                     }}
                     min={1}
 
-                /> <div className="inputsArtemx allArtemElem" style={{ border:"transparent", marginTop:"-2vh" }}> шт</div>
+                />
+                <div className="inputsArtemx allArtemElem" style={{border: "transparent", marginTop: "-2vh"}}> шт</div>
             </div>
 
             {/* 2. Друк */}
             <div
                 className="d-flex align-items-center"
-                style={{ marginTop: "1vh", marginLeft: "6vw" }}
+                style={{marginTop: "1vh", marginLeft: "6vw"}}
             >
             <span
                 style={{
@@ -281,7 +282,7 @@ style={{ position: "absolute", marginLeft: "42vw", marginTop: "-2vh"}}
                         value={materialAndDrukBack.drukColor || ""}
                         onChange={handleSelectDrukColorChange}
                         className="selectArtem"
-                        style={{ marginRight: "1vw" }}
+                        style={{marginRight: "1vw"}}
                     >
                         {buttonsArrColor.map((item, iter) => (
                             <option
@@ -330,7 +331,7 @@ style={{ position: "absolute", marginLeft: "42vw", marginTop: "-2vh"}}
             {/* 3. Матеріал */}
             <div
                 className="d-flex align-items-center"
-                style={{ marginTop: "1vh", marginLeft: "6vw" }}
+                style={{marginTop: "1vh", marginLeft: "6vw"}}
             >
             <span
                 style={{
@@ -399,16 +400,16 @@ style={{ position: "absolute", marginLeft: "42vw", marginTop: "-2vh"}}
                             </option>
                         ))}
                     </select>
-                    {load && <Spinner animation="border" variant="danger" size="sm" />}
+                    {load && <Spinner animation="border" variant="danger" size="sm"/>}
                     {error && <div>{error}</div>}
                 </div>
             </div>
 
             {/* 4. Ламінація */}
             <div
-                className="d-flex align-items-center"
-                style={{ marginTop: "0.5vh", marginLeft: "6vw", fontSize: "1vw", alignItems:"center" }}
-            >Ламінація:
+                className="d-flex"
+                style={{display: "flex", marginTop: "0.5vh", marginLeft: "5.3vw", alignItems: "center"}}
+            >
                 <div
                     className={`toggleContainer scale04ForButtonToggle ${
                         materialAndDrukBack.laminationType === "Не потрібно"
@@ -426,97 +427,90 @@ style={{ position: "absolute", marginLeft: "42vw", marginTop: "-2vh"}}
                         }`}
                     ></div>
                 </div>
+                <div>{"Ламінація:"}</div>
 
-                <span
-                    style={{
-                        fontSize: "1vw",
-                        fontFamily: "inter",
-
-
-                        whiteSpace: "nowrap",
-                        alignSelf: "center",
-                        // marginLeft: "0.5vw"
-                    }}
-                >
-
-
-
-            {/* Якщо ламінування не вимкнено, показати додаткові селекти */}
-            {materialAndDrukBack.laminationType !== "Не потрібно" && (
                 <div
-                    className="d-flex "
-                    style={{ marginTop: "-0.7vh" , marginLeft: "-1vw"}}
+                    className="laminationContainer"
+
                 >
-                    <div
-                        className="ArtemNewSelectContainer"
-                        style={{
-                            display: "flex",
-                            justifyContent: "center",
-                            alignItems: "center",
-                            marginRight: "1vw"
-                        }}
-                    >
-                        <select
-                            name="laminationTypeUse"
-                            value={materialAndDrukBack.laminationTypeUse || ""}
-                            onChange={handleSelectLaminationTypeUseChange}
-                            className="selectArtem"
+
+
+                    {/* Якщо ламінування не вимкнено, показати додаткові селекти */}
+                    {materialAndDrukBack.laminationType !== "Не потрібно" && (
+                        <div
+                            className="d-flex interFont"
+                            style={{marginTop: "-0.7vh", marginLeft: "-1vw"}}
                         >
-                            {buttonsArrLamination.map((item, iter) => (
-                                <option
-                                    key={item + iter}
-                                    value={item}
-                                    data-id={item}
-                                    className="optionInSelectArtem"
+                            <div
+                                className="ArtemNewSelectContainer interFont"
+                                style={{
+                                    display: "flex",
+                                    justifyContent: "center",
+                                    alignItems: "center",
+                                    marginRight: "1vw"
+                                }}
+                            >
+                                <select
+                                    name="laminationTypeUse"
+                                    value={materialAndDrukBack.laminationTypeUse || ""}
+                                    onChange={handleSelectLaminationTypeUseChange}
+                                    className="selectArtem"
                                 >
-                                    {item}
-                                </option>
-                            ))}
-                        </select>
-                    </div>
-                    <div
-                        className="ArtemNewSelectContainer"
-                        style={{
-                            display: "flex",
-                            justifyContent: "center",
-                            alignItems: "center"
-                        }}
-                    >
-                        <select
-                            name="laminationMaterial"
-                            value={materialAndDrukBack.laminationmaterial || ""}
-                            onChange={(e) => {
-                                const selectedOption =
-                                    e.target.options[e.target.selectedIndex];
-                                const selectedId =
-                                    selectedOption.getAttribute("data-id") || "default";
-                                const selectedValue = e.target.value || "";
-                                setMaterialAndDrukBack((prev) => ({
-                                    ...prev,
-                                    laminationmaterial: selectedValue,
-                                    laminationmaterialId: selectedId
-                                }));
-                            }}
-                            className="selectArtem"
-                        >
-                            {lamination.map((item, iter) => (
-                                <option
-                                    key={item.name + iter}
-                                    value={item.thickness}
-                                    data-id={item.id}
-                                    className="optionInSelectArtem"
+                                    {buttonsArrLamination.map((item, iter) => (
+                                        <option
+                                            key={item + iter}
+                                            value={item}
+                                            data-id={item}
+                                            className="optionInSelectArtem"
+                                        >
+                                            {item}
+                                        </option>
+                                    ))}
+                                </select>
+                            </div>
+                            <div
+                                className="ArtemNewSelectContainer interFont"
+                                style={{
+                                    display: "flex",
+                                    justifyContent: "center",
+                                    alignItems: "center"
+                                }}
+                            >
+                                <select
+                                    name="laminationMaterial"
+                                    value={materialAndDrukBack.laminationmaterial || ""}
+                                    onChange={(e) => {
+                                        const selectedOption =
+                                            e.target.options[e.target.selectedIndex];
+                                        const selectedId =
+                                            selectedOption.getAttribute("data-id") || "default";
+                                        const selectedValue = e.target.value || "";
+                                        setMaterialAndDrukBack((prev) => ({
+                                            ...prev,
+                                            laminationmaterial: selectedValue,
+                                            laminationmaterialId: selectedId
+                                        }));
+                                    }}
+                                    className="selectArtem interFont"
                                 >
-                                    {item.thickness} мл
-                                </option>
-                            ))}
-                        </select>
-                        {loadLamination && (
-                            <Spinner animation="border" variant="danger" size="sm" />
-                        )}
-                    </div>
+                                    {lamination.map((item, iter) => (
+                                        <option
+                                            key={item.name + iter}
+                                            value={item.thickness}
+                                            data-id={item.id}
+                                            className="optionInSelectArtem"
+                                        >
+                                            {item.thickness} мл
+                                        </option>
+                                    ))}
+                                </select>
+                                {loadLamination && (
+                                    <Spinner animation="border" variant="danger" size="sm"/>
+                                )}
+                            </div>
+                        </div>
+                    )}
                 </div>
-            )}
-                    </span>
             </div>
         </div>
     );

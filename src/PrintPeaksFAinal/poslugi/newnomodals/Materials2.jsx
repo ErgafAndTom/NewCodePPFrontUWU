@@ -104,7 +104,7 @@ const Materials2 = ({
             })
     }, [
         material.thickness,
-        // size
+        size
     ]);
 
 
@@ -162,7 +162,9 @@ const Materials2 = ({
                                 <>{" "}</>
                                 <>{item.thickness} gsm</>
                                 {/*<>{"id:"}</>*/}
-                                {/*<>{item.typeUse}</>*/}
+                                <> {item.x}</>
+                                <>x</>
+                                <>{item.y}</>
                                 {/*<>{" "}</>*/}
                             </option>
                         ))}

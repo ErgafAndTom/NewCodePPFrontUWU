@@ -14,6 +14,7 @@ import {useNavigate} from "react-router-dom";
 import PhotoPosluga from "./newnomodals/photo/PhotoPosluga";
 import Porizka from "./newnomodals/Porizka";
 import "../global.css"
+import PerepletPereplet from "./newnomodals/PerepletPereplet";
 
 const NewSheetCut = ({
                          thisOrder,
@@ -47,15 +48,15 @@ const NewSheetCut = ({
 
 
     const [size, setSize] = useState({
-        x: 210,
-        y: 297
+        x: 310,
+        y: 440
     });
     const [material, setMaterial] = useState({
         type: "Папір",
-        thickness: "Офісний",
+        thickness: "Цупкий",
         material: "Крейдований",
         materialId: "237",
-        typeUse: "Офісний"
+        typeUse: "Цупкий"
     });
 
     const [color, setColor] = useState({
@@ -69,6 +70,14 @@ const NewSheetCut = ({
         material: "",
         materialId: "",
         size: ""
+    });
+    const [pereplet, setPereplet] = useState({
+        type: "",
+        thickness: "Тонкі",
+        material: "",
+        materialId: "",
+        size: "<120",
+        typeUse: "Брошурування до 120 аркушів"
     });
     const [big, setBig] = useState("Не потрібно");
     const [cute, setCute] = useState("Не потрібно");
@@ -326,6 +335,15 @@ const NewSheetCut = ({
                                             prices={prices}
                                             type={"SheetCut"}
                                         />
+                                        <PerepletPereplet
+                                            size={size}
+                                            pereplet={pereplet}
+                                            setPereplet={setPereplet}
+                                            prices={prices}
+                                            type={"SheetCut"}
+                                            buttonsArr={["Брошурування до 120 аркушів", "Брошурування від 120 до 280 аркушів",]}
+                                            defaultt={"А3 (297 х 420 мм)"}
+                                        />
                                     </div>
                                 </Row>
                                 <div className="d-flex">
@@ -426,7 +444,7 @@ const NewSheetCut = ({
                                             {/* Додаткова послуга "Порізка" */}
                                             {pricesThis.porizka !== 0 && (
                                                 <div className="fontInfoForPricing">
-                                                    Порізка: {pricesThis.porizka.toFixed(2)} грн
+                                                    Порізка: {pricesThis.porizka} грн
                                                 </div>
                                             )}
 

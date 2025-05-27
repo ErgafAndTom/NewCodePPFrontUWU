@@ -13,6 +13,7 @@ import Button from "react-bootstrap/Button";
 import {translateColumnName} from "./translations";
 import OneUnitInTable from "./OneUnitInTable";
 import {buttonStyles, formStyles} from "./profile/styles";
+import SlideInModal from "../userInNewUiArtem/SlideInModal";
 
 // Основний компонент таблиці користувачів
 const UsersCustomTable = ({name}) => {
@@ -22,6 +23,7 @@ const UsersCustomTable = ({name}) => {
     const [thisMetaItemForModal, setThisMetaItemForModal] = useState(null);
     const [showDeleteItemModal, setShowDeleteItemModal] = useState(false);
     const [event, setEvent] = useState(false);
+    const [modalVisible, setModalVisible] = useState(false);
     const [loading, setLoading] = useState(false);
     const navigate = useNavigate();
     const [inPageCount, setInPageCount] = useState(500);
@@ -37,6 +39,10 @@ const UsersCustomTable = ({name}) => {
     const [showRed, setShowRed] = useState(false);
     const [selectedUser, setSelectedUser] = useState(null);
     const [show, setShow] = useState(false);
+
+    const handleCloseAddUser = () => {
+        setModalVisible(false);
+    }
 
     // Функція для сортування колонок
     const setCol = (e) => {
@@ -93,7 +99,7 @@ const UsersCustomTable = ({name}) => {
                 console.log(error.message);
                 setLoading(false);
             });
-    }, [typeSelect, thisColumn, inPageCount, currentPage, navigate, show, showRed]);
+    }, [typeSelect, thisColumn, inPageCount, currentPage, navigate, show, showRed, modalVisible]);
 
     const toggleOrder = (orderId) => {
         if (expandedOrders.includes(orderId)) {
@@ -283,14 +289,23 @@ const UsersCustomTable = ({name}) => {
                         />
                     </div>
                     <div className="right-group" style={{display: "flex", alignItems: "center"}}>
-                        <UserForm
-                            data={data}
-                            setData={setData}
-                            selectedUser={selectedUser}
-                            setSelectedUser={setSelectedUser}
-                            show={show}
-                            setShow={setShow}
+                        {/*<UserForm*/}
+                        {/*    data={data}*/}
+                        {/*    setData={setData}*/}
+                        {/*    selectedUser={selectedUser}*/}
+                        {/*    setSelectedUser={setSelectedUser}*/}
+                        {/*    show={show}*/}
+                        {/*    setShow={setShow}*/}
+                        {/*/>*/}
+                        <SlideInModal
+                            show={modalVisible}
+                            handleCloseAddUser={handleCloseAddUser}
+                            title="Додавання клієнта"
                         />
+
+                        <Button className="adminButtonAdd" variant="danger" onClick={() => setModalVisible(true)}>
+                            {selectedUser ? "Редагувати користувача" : "Додати користувача"}
+                        </Button>
 
 
                     </div>

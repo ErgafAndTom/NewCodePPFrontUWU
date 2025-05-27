@@ -27,7 +27,7 @@ function OneProductInOrders({item, thisOrder}) {
                                   style={{
                                       color: "#ef5223",
                                       fontSize: "1.5vh"
-                                  }}>{unit.priceForOneThis * unit.newField5}</span>
+                                  }}>{unit.priceForAllThis}</span>
                             <small>грн</small>
                         </div>
                     </div>

@@ -7,7 +7,7 @@ const NewNoModalBig = ({big, setBig, prices, buttonsArr, selectArr}) => {
     }
 
     let handleToggle = (e) => {
-        if(big === "Не потрібно"){
+        if (big === "Не потрібно") {
             setBig("1")
         } else {
             setBig("Не потрібно")
@@ -17,9 +17,10 @@ const NewNoModalBig = ({big, setBig, prices, buttonsArr, selectArr}) => {
     return (
         <div className="d-flex allArtemElem">
             <div style={{display: 'flex', alignItems: 'center',}}>
-                <div className={`toggleContainer scale04ForButtonToggle ${big === "Не потрібно" ? 'disabledCont' : 'enabledCont'}`}
-                     onClick={handleToggle}
-                     >
+                <div
+                    className={`toggleContainer scale04ForButtonToggle ${big === "Не потрібно" ? 'disabledCont' : 'enabledCont'}`}
+                    onClick={handleToggle}
+                >
                     <div className={`toggle-button ${big === "Не потрібно" ? 'disabled' : 'enabledd'}`}>
                     </div>
                 </div>
@@ -30,7 +31,8 @@ const NewNoModalBig = ({big, setBig, prices, buttonsArr, selectArr}) => {
 
                     }}>{"Згинання:"}</span>
                     {big !== "Не потрібно" ? (
-                        <div className="ArtemNewSelectContainer" style={{display: 'flex', justifyContent: 'center', alignItems: 'center',}}>
+                        <div className="ArtemNewSelectContainer"
+                             style={{display: 'flex', justifyContent: 'center', alignItems: 'center',}}>
                             <select
                                 value={big}
                                 onChange={(event) => handleSelectChange(event)}

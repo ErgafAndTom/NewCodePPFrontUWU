@@ -11,6 +11,7 @@ import {Modal} from "react-bootstrap";
 import p8svg from "../components/newUIArtem/printers/p8.png";
 import p800 from "../components/newUIArtem/printers/p800.png";
 import creo from "../components/newUIArtem/printers/creo.png";
+import MUG from "../components/newUIArtem/printers/mug.png";
 import OrderItem from "./Orders/OrderItem.jsx";
 
 // Usage of ClientsMenu
@@ -34,6 +35,8 @@ import imgg6 from "../components/newUIArtem/printers/p6.svg";
 import imgg7 from "../components/newUIArtem/printers/p7.svg";
 import imgg8 from "../components/newUIArtem/printers/p8.svg";
 import imgg9 from "../components/newUIArtem/printers/p9.svg";
+import imgg101 from "./evroscoba.png";
+import scoba from "./poslugi/newnomodals/skoba.svg";
 
 import versantIcon from "../components/newUIArtem/printers/group-1468.svg";
 
@@ -56,6 +59,7 @@ import NewCup from "./poslugi/NewCup";
 import NovaPoshtaButton from "./userInNewUiArtem/novaPoshta/NovaPoshtaButton";
 import FilesInOrder from "./filesInOrder/FilesInOrder";
 import CommentsInOrder from "./commentsInOrders/CommentsInOrder";
+import NewBooklet from "./poslugi/NewBooklet";
 
 const NewUIArtem = () => {
     const navigate = useNavigate();
@@ -85,6 +89,7 @@ const NewUIArtem = () => {
     const [showNewSheetCut, setShowNewSheetCut] = useState(false);
     const [showNewWide, setShowNewWide] = useState(false);
     const [showNewNote, setShowNewNote] = useState(false);
+    const [showNewBooklet, setShowNewBooklet] = useState(false);
     const [showNewPhoto, setShowNewPhoto] = useState(false);
     const [showPlotter, setShowPlotter] = useState(false);
     const [showBigOvshik, setShowBigOvshik] = useState(false);
@@ -259,7 +264,7 @@ const NewUIArtem = () => {
                             {/* 6 */}
                             <div
                                 onClick={() => setShowPerepletMet(true)}
-                                className="colorButton bg-lavender skewed cursorPointer gif"
+                                className="colorButton bg-lavender skewed cursorPointer"
                             >
                                 <img src={imgg6} className="card-img-top noanim" alt="Переплет"/>
                                 <img src={img9} className="card-img-top anim" alt="Переплет"/>
@@ -299,6 +304,20 @@ const NewUIArtem = () => {
                                 <img src={versantIcon} className="card-img-top noanim" alt="Продукти"/>
                                 <img src={versantIcon} className="card-img-top anim" alt="Продукти"/>
                                 <div className="buttonLabel">NOTE</div>
+                            </div>
+                            <div
+                                onClick={() => setShowNewBooklet(true)}
+                                className="colorButtonNote colorButton bg-peach  cursorPointer">
+                                <img src={scoba} className="card-img-top noanim" alt="Продукти"/>
+                                <img src={imgg101} className="card-img-top anim" alt="Продукти"/>
+                                <div className="buttonLabel">BOOKLET</div>
+                            </div>
+                            <div
+                                onClick={() => setShowNewCup(true)}
+                                className="colorButtonNote colorButton bg-green  cursorPointer">
+                                <img src={MUG} className="card-img-top noanim" alt="Продукти"/>
+                                <img src={MUG} className="card-img-top anim" alt="Продукти"/>
+                                <div className="buttonLabel">MUG</div>
                             </div>
                         </div>
                         <div className="containerNewUI" style={{height: "15vh"}}>
@@ -392,9 +411,10 @@ const NewUIArtem = () => {
                                                  // border: "0.2vw solid #0000001a",
                                                  border: "0.1vw solid #ffffff",
                                                  padding: "0.5vw",
+                                                 marginLeft: "0vw",
                                                  marginBottom: "1vh",
                                                  borderRadius: "0.5vw",
-                                                 width: "35.5vw",
+                                                 width: "36vw",
                                                  overflow: "hidden",
 
                                                  // backgroundColor: "#ffffff"
@@ -503,10 +523,13 @@ const NewUIArtem = () => {
                                                                     </div>
 
                                                                     <div className="adminFontTable"
-                                                                         style={{opacity: "0.6", }}>x
+                                                                         style={{opacity: "0.6",}}>x
                                                                     </div>
                                                                     <div
-                                                                        className="d-flex align-items-start" style={{wordBreak: "normal", whiteSpace: "balance"}}>
+                                                                        className="d-flex align-items-start" style={{
+                                                                        wordBreak: "normal",
+                                                                        whiteSpace: "balance"
+                                                                    }}>
                                                                         <div className="adminFontTable"
                                                                              style={{
                                                                                  // fontSize: "1.5vh",
@@ -733,6 +756,18 @@ const NewUIArtem = () => {
                         setNewThisOrder={setNewThisOrder}
                         setShowNewNote={setShowNewNote}
                         showNewNote={showNewNote}
+                        setThisOrder={setThisOrder}
+                        setSelectedThings2={setSelectedThings2}
+                    />
+                }
+                {showNewBooklet &&
+                    <NewBooklet
+                        productName={productName}
+                        thisOrder={thisOrder} newThisOrder={newThisOrder}
+                        selectedThings2={selectedThings2}
+                        setNewThisOrder={setNewThisOrder}
+                        setShowNewBooklet={setShowNewBooklet}
+                        showNewBooklet={showNewBooklet}
                         setThisOrder={setThisOrder}
                         setSelectedThings2={setSelectedThings2}
                     />

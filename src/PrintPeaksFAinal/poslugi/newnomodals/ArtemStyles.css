@@ -1,48 +1,51 @@
 
 .allArtemElem2 {
-     transform: scale(0.6);
+    transform: scale(0.6);
 
 }
+
 .allArtemElem {
     margin-left: 2vw;
     font-style: var(--font-inter);
     font-size: var(--font-size-base);
 
 }
-.scale04ForButtonToggle{
-   transform: scale(0.5);
+
+.scale04ForButtonToggle {
+    transform: scale(0.5);
     margin-left: -0.5vw;
     font-size: var(--font-size-base);
 
 }
 
-.blockInNoteInBody{
+.blockInNoteInBody {
     /*box-shadow: 0 0 0.5vw rgba(0, 0, 0, 0.1);*/
     margin-top: 1vh;
     font-size: var(--font-size-base);
 
 }
-.inputsArtemx
-{
+
+.inputsArtemx {
     align-items: center;
     border: none;
     background: transparent;
     margin-left: 0.5vw;
     margin-right: 0.5vw;
     font-size: var(--font-size-base);
-   justify-content: center;
+    justify-content: center;
     /* border: 0.15vw solid grey; */ /* если понадобится, масштабировать аналогично */
     width: 1vw; /* 10vw * 0.6 */
     border-bottom: 3px solid #FFA500; /* 5px * 0.6 */
 }
-.inputsArtemNumber{
+
+.inputsArtemNumber {
     margin-left: 1vw;
     align-items: center;
     font-size: var(--font-size-base);
     background: #ebebe6;
 }
-.inputsArtemkilk
-{
+
+.inputsArtemkilk {
     align-items: center;
     border: none;
     background: transparent;
@@ -55,6 +58,7 @@
     width: 5vw;
     display: flex
 }
+
 .inputsArtem {
     display: flex;
     justify-content: center;
@@ -70,9 +74,11 @@
     width: 5vw; /* 10vw * 0.6 */
     border-bottom: 3px solid #FFA500; /* 5px * 0.6 */
 }
+
 .onChange {
     margin-left: 0.5vw;
 }
+
 .selectArtem {
     display: flex;
     justify-content: center;
@@ -123,6 +129,8 @@
 
 .buttonsArtem:hover {
     border-bottom: 3px solid gray; /* 5px * 0.6 */
+    transform: scale(1.05);
+
 }
 
 .buttonsArtemActive {
@@ -147,7 +155,7 @@
     justify-content: center;
     display: flex;
 
-     /* по центру по вертикалі внутри блока */
+    /* по центру по вертикалі внутри блока */
     margin: 1vw; /* небольшой отступ от краёв */
     overflow: hidden;
 }
@@ -212,7 +220,7 @@
 }
 
 .ArtemNewSelect {
-    font-size:  var(--font-size-base);
+    font-size: var(--font-size-base);
     padding: 3px 18px 3px 6px; /* верх/низ: 5px*0.6, правый: 30px*0.6, левый: 10px*0.6 */
     border: none;
     outline: none;
@@ -225,7 +233,7 @@
     content: "";
     font-style: var(--font-inter);
     font-size: var(--font-size-base);
-    border-left: 6px solid transparent;  /* 10px * 0.6 */
+    border-left: 6px solid transparent; /* 10px * 0.6 */
     border-right: 6px solid transparent;
     border-top: 6px solid #1E90FF; /* 10px * 0.6 */
     position: absolute;
@@ -234,7 +242,18 @@
     transform: translateY(-50%);
     pointer-events: none;
 }
+
 .nashichka {
     border-radius: 1vw;
     font-size: var(--font-size-base);
+}
+
+.laminationContainer {
+
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    margin-left: 1.2vw;
+    white-space: nowrap;
+
 }

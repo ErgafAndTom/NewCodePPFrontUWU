@@ -5,10 +5,10 @@ import skoba from './skoba.svg';
 import plastick from './plastick.svg';
 import metall from './metall.svg';
 import diplom from './diplom.svg';
+import imgg101 from "../../evroscoba.png";
 import './CornerRounding.css';
 import './ArtemStyles.css';
 import './PerepletSize';
-
 
 
 const PerepletPereplet = ({pereplet, setPereplet, prices, buttonsArr, selectArr, size, setCount, type, defaultt}) => {
@@ -79,7 +79,7 @@ const PerepletPereplet = ({pereplet, setPereplet, prices, buttonsArr, selectArr,
         <div className="d-flex allArtemElem">
 
 
-            <div style={{ marginTop: "1vw",marginLeft: "-2.1vw"}}>
+            <div style={{marginTop: "1vw", marginLeft: "-2.1vw"}}>
 
                 <div className="d-flex flex-column">
 
@@ -146,6 +146,9 @@ const PerepletPereplet = ({pereplet, setPereplet, prices, buttonsArr, selectArr,
                                         }
                                         {item.name === "Твердий перепліт" &&
                                             <img src={diplom} alt="Твердий перепліт" style={{height: "5vw"}}/>
+                                        }
+                                        {item.name === "На євроскобу" &&
+                                            <img src={imgg101} alt="На євроскобу" style={{height: "5vw"}}/>
                                         }
                                         {item.name}
                                     </div>

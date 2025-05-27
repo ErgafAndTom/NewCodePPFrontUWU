@@ -19,9 +19,10 @@
     width: 98%; /* статична ширина, щоб не “розпливалося” */
     height: 59vh; /* щоб не виростало висотою більше за 60% екрану */
     background: #f2f0e7;
-    padding: 1rem;
-    border-radius: 1vw;
-    box-shadow: 0 0 0.1rem rgba(0.2, 0.2, 0.2, 0.2);
+    /*padding: 1rem;*/
+    border: none;
+    border-radius: 1vh;
+
 
     overflow-y: auto; /* внутрішня прокрутка, якщо занадто багато контенту */
     /* вище за всі інші елементи на сторінці */
@@ -57,7 +58,7 @@
     align-items: center;
 
     background: #f2f0e7;
-    border-radius: 1vw;
+    border-radius: 1vh;
 
 }
 
@@ -79,6 +80,7 @@
         right: 1rem;
         width: 90vw;
         max-height: 70vh;
+        margin: 0vh;
     }
 
     .order-panel .order-item {

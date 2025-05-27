@@ -49,6 +49,11 @@ const ClientChangerUIArtem = ({thisOrder, setThisOrder, setSelectedThings2}) => 
         return () => clearTimeout(timer);
     };
 
+    // Функція для закриття модального вікна
+    const handleCloseAddUser = () => {
+        setModalVisible(false);
+    }
+
     // Функція для відкриття модального вікна
     const handleShow = () => {
         setShowVisible(true)
@@ -189,7 +194,7 @@ const ClientChangerUIArtem = ({thisOrder, setThisOrder, setSelectedThings2}) => 
                     // width: '30vw',
                     overflow: 'hidden',
 
-                    marginTop: '-1vh',
+                    marginTop: '1vh',
                     textAlign: 'left',
 
                     border: 'none',
@@ -387,6 +392,7 @@ const ClientChangerUIArtem = ({thisOrder, setThisOrder, setSelectedThings2}) => 
                 style={{
                     transform: `${showVisible ? 'translateX(0)' : 'translateX(35%)'}`,
                     transition: 'transform 0.3s ease-in-out',
+                    overflow: "hidden",
                 }}
             >
                 {/*<Modal.Header dialogClassName="Modal-Header" closeButton style={{background:"#f2f0e7", borderRadius: '1vw 1vw 0 0 ', fontSize:"1.2vmin", height: '3vh' }}>*/}
@@ -396,7 +402,9 @@ const ClientChangerUIArtem = ({thisOrder, setThisOrder, setSelectedThings2}) => 
                     background: "transparent",
                     borderRadius: '1vw',
                     fontSize: "1.5vmin",
+                    position: "absolute",
                     minHeight: '75vh',
+                    top: '-1vw',
                     maxHeight: "75vh",
                 }}>
                     {/* Відображення поточного клієнта якщо він обраний */}
@@ -564,16 +572,13 @@ const ClientChangerUIArtem = ({thisOrder, setThisOrder, setSelectedThings2}) => 
 
                                 </div>
 
-                                {/* Виносимо поза DOM потоку, щоб працювали позиціонування */}
                                 <SlideInModal
                                     show={modalVisible}
+                                    handleCloseAddUser={handleCloseAddUser}
                                     onClose={() => setModalVisible(false)}
                                     onHide={handleClose}
                                     title="Додавання клієнта"
-                                >
-
-
-                                </SlideInModal>
+                                />
                             </>
                         </div>
                     )}
@@ -593,7 +598,8 @@ const ClientChangerUIArtem = ({thisOrder, setThisOrder, setSelectedThings2}) => 
                                         border: 'none',
                                         fontSize: '1.5vmin',
                                         marginTop: '1vh',
-                                        background: "#f8f9fa"
+                                        background: "#f8f9fa",
+                                        position: 'relative',
                                     }}
                                 />
 
@@ -601,11 +607,11 @@ const ClientChangerUIArtem = ({thisOrder, setThisOrder, setSelectedThings2}) => 
                                     onClick={fetchUsers}
                                     style={{
                                         position: 'absolute',
-                                        top: '50%',
-                                        right: '0.5vw',
-                                        transform: 'translateY(-50%)',
-                                        background: 'transparent',
-                                        border: 'none',
+                                        // top: '50%',
+                                        right: '1vw',
+                                        // width: '0vw',
+                                        height: '0vh',
+                                        border: '1px',
                                         padding: 0,
                                         cursor: 'pointer',
                                     }}
@@ -613,7 +619,16 @@ const ClientChangerUIArtem = ({thisOrder, setThisOrder, setSelectedThings2}) => 
                                     <img
                                         src={ChangeClienticons}
                                         alt="Change Client"
-                                        style={{width: '20px', height: '20px', flexShrink: 0}}
+                                        style={{
+
+                                            width: '20px',
+                                            height: '20px',
+                                            alignItemss: 'center',
+                                            justifyContent: 'center',
+                                            background: 'transparent',
+                                            marginLeft: '29vw',
+                                            transform: 'translateY(-155%)',
+                                        }}
                                     />
                                 </button>
                             </div>
@@ -629,7 +644,7 @@ const ClientChangerUIArtem = ({thisOrder, setThisOrder, setSelectedThings2}) => 
                             padding: '1vh 0.8vw',
                             Height: '74vh',
 
-                            marginTop: '0.5vh',
+                            marginTop: '-0.5vh',
                             overflow: 'hidden',              // ← додано
                             paddingRight: "0.5vw",
                         }}>
@@ -668,7 +683,6 @@ const ClientChangerUIArtem = ({thisOrder, setThisOrder, setSelectedThings2}) => 
                             borderRadius: '1vw',
                             padding: '1vh 0.8vw',
                             Height: '74vh',
-
                             marginTop: '0.5vh',
                             overflow: 'hidden',              // ← додано
                             paddingRight: "0.5vw",
@@ -780,15 +794,12 @@ const ClientChangerUIArtem = ({thisOrder, setThisOrder, setSelectedThings2}) => 
                                         </div>
 
                                         {/* Виносимо поза DOM потоку, щоб працювали позиціонування */}
-                                        <SlideInModal
-                                            show={modalVisible}
-                                            onClose={() => setModalVisible(false)}
-                                            onHide={handleClose}
-                                            title="Додавання клієнта"
-                                        >
-
-
-                                        </SlideInModal>
+                                        {/*<SlideInModal*/}
+                                        {/*    // onClose={() => setModalVisible(false)}*/}
+                                        {/*    // onHide={handleClose}*/}
+                                        {/*    title="Додавання клієнта"*/}
+                                        {/*    handleCloseAddUser={handleCloseAddUser}*/}
+                                        {/*/>*/}
                                     </>
 
                                 )}

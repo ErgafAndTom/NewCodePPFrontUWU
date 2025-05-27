@@ -2,25 +2,26 @@ import React from 'react';
 import './SlideInModal.css';
 import CompactAddUserForm from "./CompactAddUserForm";
 
-const SlideInModal = ({ show, onClose, children, title }) => {
+const SlideInModal = ({show, onClose, children, title, handleCloseAddUser}) => {
     if (!show) return null;
 
     return (
-        <div className="modal-backdrop-custom">
+        <>
+            <div className="modal-backdrop-custom" onClick={handleCloseAddUser}>
+
+            </div>
             <div className="modal-slide-container">
                 <div className="modal-slide-header">
                     {title}
                     <button onClick={onClose} className="modal-close-btn">×</button>
                 </div>
-                <div className="modal-slide-body">
-                    <CompactAddUserForm></CompactAddUserForm>
+                <div className="modal-slide-body" style={{position: "unset"}}>
+                    <CompactAddUserForm handleCloseAddUser={handleCloseAddUser}></CompactAddUserForm>
                 </div>
-                <div className="modal-slide-footer">
-                    <button onClick={onClose} className="modal-footer-btn cancel">Скасувати</button>
-                    <button className="modal-footer-btn confirm">Зберегти</button>
-                </div>
+
             </div>
-        </div>
+        </>
+
     );
 };
 

@@ -8,14 +8,11 @@
     font-size: 20px;
     color: #323232;
 }
+
 .user-form-container {
-    scrollbar-width: thin;               /* Для Firefox */
-    scrollbar-color: #f5a400 transparent;
+    scrollbar-width: thin; /* Для Firefox */
+    scrollbar-color: #c8c8c8 transparent;
     scrollbar-gutter: stable;
-
-
-
-
 
     /*border-radius: 1vw 1vw ;!* thumb | track *!*/
 }
@@ -38,7 +35,7 @@
 
 .user-form-container::-webkit-scrollbar-thumb {
     background-color: #3c60a6;
-    border-radius: 1vw;
+    border-radius: 1vh;
     border: 2px solid #ffffff;
 
 }
@@ -58,24 +55,24 @@
         opacity: 1;
     }
 }
-.Modal-Header{
+
+.Modal-Header {
     background-color: transparent;
 }
-.modal-content
-{
+
+.modal-content {
     position: fixed;
     top: 1.7vmin;
     right: 1vmin;
     opacity: 0;
     transform: translateX(100%);
-   border-radius: 1vw;
+    border-radius: 1vw;
     max-width: 32.5vw;
     max-height: 84vh;
     min-height: 84vh;
     background: transparent;
     animation: slideInRight 0.5s ease-out forwards;
 }
-
 
 
 .clienta {
